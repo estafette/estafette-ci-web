@@ -38,7 +38,6 @@ pipelines:
     - cp -r dist publish
     - cp nginx.vh.default.conf ./publish
     - cp Dockerfile ./publish
-    - ls ./publish
     - docker build -f ./publish/Dockerfile -t estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION} ./publish
 
   push-to-docker-hub:
