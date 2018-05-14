@@ -138,7 +138,7 @@ spec:
             memory: ${MEMORY_LIMIT}
         ports:
         - name: web
-          containerPort: 5000
+          containerPort: 8080
         livenessProbe:
           httpGet:
             path: /robots.txt
@@ -170,7 +170,7 @@ spec:
         - name: "OFFLOAD_TO_HOST"
           value: "localhost"
         - name: "OFFLOAD_TO_PORT"
-          value: "5000"
+          value: "8080"
         - name: "SERVICE_NAME"
           value: "estafette-ci-web"
         - name: "NAMESPACE"
