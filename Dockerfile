@@ -1,9 +1,6 @@
-FROM scratch
+FROM nginx:1.14.0-alpine
 
 LABEL maintainer="estafette.io" \
       description="The estafette-ci-web is the component that renders the Esfafette CI web interface"
 
-COPY ca-certificates.crt /etc/ssl/certs/
-COPY estafette-ci-web /
-
-ENTRYPOINT ["/estafette-ci-web"]
+COPY . /usr/share/nginx/html

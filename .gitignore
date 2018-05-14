@@ -1,14 +1,23 @@
-# Binaries for programs and plugins
-*.exe
-*.dll
-*.so
-*.dylib
+# See https://help.github.com/ignore-files/ for more about ignoring files.
 
-# Test binary, build with `go test -c`
-*.test
+# compiled output
+/dist
+/tmp
 
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
+# dependencies
+/node_modules
+/bower_components
 
-# Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
-.glide/
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log*
+yarn-error.log
+testem.log
+
+# ember-try
+.node_modules.ember-try/
+bower.json.ember-try
+package.json.ember-try

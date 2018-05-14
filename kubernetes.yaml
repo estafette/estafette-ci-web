@@ -141,7 +141,7 @@ spec:
           containerPort: 5000
         livenessProbe:
           httpGet:
-            path: /liveness
+            path: /robots.txt
             port: web
           initialDelaySeconds: 30
           timeoutSeconds: 1
@@ -176,7 +176,7 @@ spec:
         - name: "NAMESPACE"
           value: "estafette"
         - name: "HEALT_CHECK_PATH"
-          value: "/readiness"
+          value: "/robots.txt"
         volumeMounts:
         - name: ssl-certificate
           mountPath: /etc/ssl/private
