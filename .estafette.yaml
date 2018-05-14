@@ -36,6 +36,7 @@ pipelines:
     image: docker:18.03.1-ce
     commands:
     - cp Dockerfile ./publish
+    - cp /etc/ssl/certs/ca-certificates.crt ./publish
     - docker build -f ./publish/Dockerfile -t estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION} ./publish
 
   push-to-docker-hub:
