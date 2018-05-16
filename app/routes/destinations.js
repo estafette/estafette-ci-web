@@ -30,20 +30,24 @@ export default Route.extend({
                     type: "Kubernetes Engine"
                 },
                 {
-                    name: "nuget.org",
+                    name: "nuget-org",
                     type: "NuGet Repository"
                 },
                 {
-                    name: "myget.org",
+                    name: "myget-org",
                     type: "NuGet Repository"
                 },
                 {
-                    name: "myget.org",
+                    name: "myget-org",
                     type: "Maven Repository"
                 },
                 {
-                    name: "hub.docker.com",
+                    name: "docker-hub",
                     type: "Docker Registry"
+                },
+                {
+                    name: "docker-hub-tag",
+                    type: "Docker Tag"
                 },
                 {
                     name: "gcr.io",

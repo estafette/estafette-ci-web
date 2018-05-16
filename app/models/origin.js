@@ -8,6 +8,8 @@ export default DS.Model.extend({
     repoBranch: DS.attr(),
     repoRevision: DS.attr(),
     buildVersion: DS.attr(),
+    buildStatus: DS.attr(),
+    buildProgress: DS.attr(),
     repoFullName: computed('repoOwner', 'repoName', function() {
         return `${this.get('repoOwner')}/${this.get('repoName')}`;
     }),
