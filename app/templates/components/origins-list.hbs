@@ -1,32 +1,48 @@
 <table class="table">
 <thead>
     <tr>
-    <th scope="col">Pipeline</th>
+    <th scope="col">Origin</th>
     <th scope="col">Version</th>
+    <th scope="col">Branch</th>
+    <th scope="col">Revision</th>
     <th scope="col">Status</th>
     <th scope="col">Labels</th>
-    <th scope="col">Deployments</th>
+    <th scope="col">Destinations</th>
     </tr>
 </thead>
 <tbody>
+
+{{#each origins as |origin|}}
     <tr>
-    <td scope="row"><span class="text-muted">github.com/estafette/</span><strong>estafette-ci-api</strong></td>
-    <td>0.0.228-beta</td>
+    <td scope="row"><span class="text-muted">{{origin.repoSource}}/{{origin.repoOwner}}/</span><strong>{{origin.repoName}}</strong></td>
+    <td>{{origin.buildVersion}}</td>
+    <td>{{origin.repoBranch}}</td>
+    <td>{{origin.repoRevision}}</td>
     <td class="align-middle">
         <div class="progress">
         <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
     </td>
     <td>
-        <button type="button" class="btn btn-light btn-sm">app=estafette-ci-api</button>
-        <button type="button" class="btn btn-light btn-sm">team=estafette</button>
-        <button type="button" class="btn btn-light btn-sm">language=golang</button>
+        {{#each origin.labels as |label|}}
+        <button type="button" class="btn btn-light btn-sm">{{label.key}}={{label.value}}</button>
+        {{/each}}
     </td>
-    <td>tooling=0.0.228</td>
+    <td>
+        {{#each origin.destinationVersions as |destinationVersion|}}
+        <button type="button" class="btn btn-light btn-sm">
+            {{destinationVersion.destination.name}} <span class="badge badge-warning">{{destinationVersion.buildVersion}}</span>
+        </button>
+        {{/each}}
+    </td>
     </tr>
+{{/each}}
+
     <tr>
     <td scope="row"><span class="text-muted">github.com/estafette/</span><strong>estafette-ci-web</strong></td>
     <td>0.0.13</td>
+    <td>master</td>
+    <td>d97625</td>
     <td class="align-middle">
         <div class="progress">
         <div class="progress-bar progress-bar bg-warning" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
@@ -37,11 +53,17 @@
         <button type="button" class="btn btn-light btn-sm">team=estafette</button>
         <button type="button" class="btn btn-light btn-sm">language=node</button>
     </td>
-    <td>tooling=0.0.12</td>
+    <td>
+        <button type="button" class="btn btn-light btn-sm">
+            tooling <span class="badge badge-success">0.0.12</span>
+        </button>    
+    </td>
     </tr>
     <tr>
     <td scope="row"><span class="text-muted">github.com/estafette/</span><strong>estafette-ci-builder</strong></td>
     <td>0.0.260</td>
+    <td>master</td>
+    <td>d97625</td>
     <td class="align-middle">
         <div class="progress">
         <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -52,11 +74,23 @@
         <button type="button" class="btn btn-light btn-sm">team=estafette</button>
         <button type="button" class="btn btn-light btn-sm">language=golang</button>
     </td>
-    <td></td>
+    <td>
+        <button type="button" class="btn btn-light btn-sm">
+            beta <span class="badge badge-success">0.0.260</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            stable <span class="badge badge-warning">0.0.260</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            latest <span class="badge badge-success">0.0.259</span>
+        </button>    
+    </td>
     </tr>
     <tr>
     <td scope="row"><span class="text-muted">github.com/estafette/</span><strong>estafette-ci-libraries</strong></td>
     <td>0.0.19</td>
+    <td>master</td>
+    <td>d97625</td>
     <td class="align-middle">
         <div class="progress">
         <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -67,12 +101,18 @@
         <button type="button" class="btn btn-light btn-sm">team=estafette</button>
         <button type="button" class="btn btn-light btn-sm">language=golang</button>
     </td>
-    <td></td>
+    <td>
+        <button type="button" class="btn btn-light btn-sm">
+            github <span class="badge badge-danger">0.0.19</span>
+        </button>    
+    </td>
     </tr>
 
     <tr>
     <td scope="row"><span class="text-muted">github.com/estafette/</span><strong>estafette-extension-github-status</strong></td>
     <td>0.0.19</td>
+    <td>master</td>
+    <td>d97625</td>
     <td class="align-middle">
         <div class="progress">
         <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -83,12 +123,24 @@
         <button type="button" class="btn btn-light btn-sm">team=estafette</button>
         <button type="button" class="btn btn-light btn-sm">language=golang</button>
     </td>
-    <td></td>
+    <td>
+        <button type="button" class="btn btn-light btn-sm">
+            beta <span class="badge badge-warning">0.0.19</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            stable <span class="badge badge-success">0.0.17</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            latest <span class="badge badge-success">0.0.17</span>
+        </button>    
+    </td>
     </tr>
 
     <tr>
     <td scope="row"><span class="text-muted">github.com/estafette/</span><strong>estafette-extension-bitbucket-status</strong></td>
     <td>0.0.17</td>
+    <td>master</td>
+    <td>d97625</td>
     <td class="align-middle">
         <div class="progress">
         <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -99,12 +151,25 @@
         <button type="button" class="btn btn-light btn-sm">team=estafette</button>
         <button type="button" class="btn btn-light btn-sm">language=golang</button>
     </td>
-    <td></td>
+    <td>
+        <button type="button" class="btn btn-light btn-sm">
+            beta <span class="badge badge-success">0.0.17</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            stable <span class="badge badge-warning">0.0.17</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            latest <span class="badge badge-light">-</span>
+        </button>    
+    </td>
+
     </tr>
 
     <tr>
     <td scope="row"><span class="text-muted">github.com/estafette/</span><strong>estafette-extension-slack-build-status</strong></td>
     <td>0.0.21</td>
+    <td>master</td>
+    <td>d97625</td>
     <td class="align-middle">
         <div class="progress">
         <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -115,12 +180,24 @@
         <button type="button" class="btn btn-light btn-sm">team=estafette</button>
         <button type="button" class="btn btn-light btn-sm">language=golang</button>
     </td>
-    <td></td>
+    <td>
+        <button type="button" class="btn btn-light btn-sm">
+            beta <span class="badge badge-success">0.0.21</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            stable <span class="badge badge-success">0.0.21</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            latest <span class="badge badge-success">0.0.21</span>
+        </button>    
+    </td>
     </tr>
 
     <tr>
     <td scope="row"><span class="text-muted">github.com/estafette/</span><strong>estafette-extension-git-clone</strong></td>
     <td>0.0.14</td>
+    <td>master</td>
+    <td>d97625</td>
     <td class="align-middle">
         <div class="progress">
         <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -131,12 +208,24 @@
         <button type="button" class="btn btn-light btn-sm">team=estafette</button>
         <button type="button" class="btn btn-light btn-sm">language=golang</button>
     </td>
-    <td></td>
+    <td>
+        <button type="button" class="btn btn-light btn-sm">
+            beta <span class="badge badge-success">0.0.14</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            stable <span class="badge badge-success">0.0.14</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            latest <span class="badge badge-success">0.0.14</span>
+        </button>    
+    </td>
     </tr>
 
     <tr>
     <td scope="row"><span class="text-muted">github.com/estafette/</span><strong>estafette-cloudflare-dns</strong></td>
     <td>0.0.107</td>
+    <td>master</td>
+    <td>d97625</td>
     <td class="align-middle">
         <div class="progress">
         <div class="progress-bar progress-bar bg-warning" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
@@ -147,12 +236,27 @@
         <button type="button" class="btn btn-light btn-sm">team=estafette</button>
         <button type="button" class="btn btn-light btn-sm">language=golang</button>
     </td>
-    <td></td>
+    <td>
+        <button type="button" class="btn btn-light btn-sm">
+            development <span class="badge badge-success">0.0.107</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            staging <span class="badge badge-success">0.0.107</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            production <span class="badge badge-success">0.0.107</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            tooling <span class="badge badge-success">0.0.107</span>
+        </button>    
+    </td>
     </tr>
 
     <tr>
     <td scope="row"><span class="text-muted">github.com/estafette/</span><strong>estafette-letsencrypt-certificate</strong></td>
     <td>0.0.91</td>
+    <td>master</td>
+    <td>d97625</td>
     <td class="align-middle">
         <div class="progress">
         <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -163,12 +267,27 @@
         <button type="button" class="btn btn-light btn-sm">team=estafette</button>
         <button type="button" class="btn btn-light btn-sm">language=golang</button>
     </td>
-    <td></td>
+    <td>
+        <button type="button" class="btn btn-light btn-sm">
+            development <span class="badge badge-success">0.0.91</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            staging <span class="badge badge-success">0.0.91</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            production <span class="badge badge-success">0.0.91</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            tooling <span class="badge badge-success">0.0.91</span>
+        </button>    
+    </td>
     </tr>
 
     <tr>
     <td scope="row"><span class="text-muted">github.com/estafette/</span><strong>estafette-gke-preemptible-killer</strong></td>
     <td>1.0.38</td>
+    <td>master</td>
+    <td>d97625</td>
     <td class="align-middle">
         <div class="progress">
         <div class="progress-bar progress-bar bg-warning" role="progressbar" style="width: 97%" aria-valuenow="97" aria-valuemin="0" aria-valuemax="100"></div>
@@ -179,12 +298,27 @@
         <button type="button" class="btn btn-light btn-sm">team=estafette</button>
         <button type="button" class="btn btn-light btn-sm">language=golang</button>
     </td>
-    <td></td>
+    <td>
+        <button type="button" class="btn btn-light btn-sm">
+            development <span class="badge badge-success">1.0.38</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            staging <span class="badge badge-success">1.0.38</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            production <span class="badge badge-success">1.0.38</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            tooling <span class="badge badge-success">1.0.38</span>
+        </button>    
+    </td>
     </tr>
 
     <tr>
     <td scope="row"><span class="text-muted">github.com/estafette/</span><strong>estafette-gke-node-pool-shifter</strong></td>
     <td>1.0.13</td>
+    <td>master</td>
+    <td>d97625</td>
     <td class="align-middle">
         <div class="progress">
         <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -195,7 +329,20 @@
         <button type="button" class="btn btn-light btn-sm">team=estafette</button>
         <button type="button" class="btn btn-light btn-sm">language=golang</button>
     </td>
-    <td></td>
+    <td>
+        <button type="button" class="btn btn-light btn-sm">
+            development <span class="badge badge-success">1.0.13</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            staging <span class="badge badge-success">1.0.13</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            production <span class="badge badge-success">1.0.13</span>
+        </button>    
+        <button type="button" class="btn btn-light btn-sm">
+            tooling <span class="badge badge-light">-</span>
+        </button>    
+    </td>
     </tr>
 </tbody>
 </table>

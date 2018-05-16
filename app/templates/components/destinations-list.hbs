@@ -6,71 +6,13 @@
     </tr>
 </thead>
 <tbody>
+{{#each destinations as |destination|}}
     <tr>
-    <td scope="row">development</td>
+    <td scope="row">{{destination.name}}</td>
     <td>
-        <button type="button" class="btn btn-light btn-sm">Kubernetes Engine</button>
+        <button type="button" class="btn btn-light btn-sm">{{destination.type}}</button>
     </td>
     </tr>
-    <tr>
-    <td scope="row">staging</td>
-    <td>
-        <button type="button" class="btn btn-light btn-sm">Kubernetes Engine</button>
-    </td>
-    </tr>
-    <tr>
-    <td scope="row">production</td>
-    <td>
-        <button type="button" class="btn btn-light btn-sm">Kubernetes Engine</button>
-    </td>
-    </tr>
-    <tr>
-    <td scope="row">tooling</td>
-    <td>
-        <button type="button" class="btn btn-light btn-sm">Kubernetes Engine</button>
-    </td>
-    </tr>
-    <tr>
-    <td scope="row">bi-test</td>
-    <td>
-        <button type="button" class="btn btn-light btn-sm">Kubernetes Engine</button>
-    </td>
-    </tr>
-    <tr>
-    <td scope="row">nuget.org</td>
-    <td>
-        <button type="button" class="btn btn-light btn-sm">NuGet</button>
-    </td>
-    </tr>
-    <tr>
-    <td scope="row">nuget.travix.com</td>
-    <td>
-        <button type="button" class="btn btn-light btn-sm">NuGet</button>
-    </td>
-    </tr>
-    <tr>
-    <td scope="row">travix-int.myget.org</td>
-    <td>
-        <button type="button" class="btn btn-light btn-sm">NuGet</button>
-    </td>
-    </tr>
-    <tr>
-    <td scope="row">travix-int.myget.org</td>
-    <td>
-        <button type="button" class="btn btn-light btn-sm">Maven</button>
-    </td>
-    </tr>
-    <tr>
-    <td scope="row">hub.docker.com</td>
-    <td>
-        <button type="button" class="btn btn-light btn-sm">Docker Registry</button>
-    </td>
-    </tr>
-    <tr>
-    <td scope="row">gcr.io</td>
-    <td>
-        <button type="button" class="btn btn-light btn-sm">Docker Registry</button>
-    </td>
-    </tr>
+{{/each}}
 </tbody>
 </table>

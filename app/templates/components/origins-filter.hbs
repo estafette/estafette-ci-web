@@ -3,7 +3,7 @@
 <button type="button" class="btn btn-outline-success">Succeeded</button>
 <button type="button" class="btn btn-outline-danger">Failed</button>
 <button type="button" class="btn btn-outline-warning">Running</button>
-<button type="button" class="btn btn-outline-secondary">team=estafette</button>
-<button type="button" class="btn btn-outline-secondary">language=golang</button>
-<button type="button" class="btn btn-outline-secondary">language=node</button>
+{{#each pinnedLabels as |label|}}
+<button type="button" class="btn btn-outline-secondary">{{label.key}}={{label.value}}</button>
+{{/each}}
 </div>
