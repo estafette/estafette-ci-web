@@ -7,7 +7,7 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('origins');
+  this.route('pipelines');
   this.route('targets');
   this.route('statistics');
 });

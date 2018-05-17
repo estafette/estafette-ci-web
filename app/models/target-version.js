@@ -4,5 +4,5 @@ export default DS.Model.extend({
     target: DS.belongsTo('target'),
     buildVersion: DS.attr(),
     buildStatus: DS.attr(),
-    origin: DS.belongsTo('origin')
+    pipeline: DS.belongsTo('pipeline')
 });

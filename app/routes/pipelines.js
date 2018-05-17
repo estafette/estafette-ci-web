@@ -17,7 +17,7 @@ export default Route.extend({
                     value: "nodejs"
                 }
             ],
-            origins: [
+            pipelines: [
                 {
                     repoSource: "github.com",
                     repoOwner: "estafette",

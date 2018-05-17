@@ -1,7 +1,7 @@
 <table class="table">
 <thead>
     <tr>
-    <th scope="col">Origin</th>
+    <th scope="col">Pipeline</th>
     <th scope="col">Version</th>
     <th scope="col">Branch</th>
     <th scope="col">Revision</th>
@@ -12,24 +12,24 @@
 </thead>
 <tbody>
 
-{{#each origins as |origin|}}
+{{#each pipelines as |pipeline|}}
     <tr>
-    <td scope="row"><span class="text-muted">{{origin.repoSource}}/{{origin.repoOwner}}/</span><strong>{{origin.repoName}}</strong></td>
-    <td>{{origin.buildVersion}}</td>
-    <td>{{origin.repoBranch}}</td>
-    <td>{{origin.repoRevision}}</td>
+    <td scope="row"><span class="text-muted">{{pipeline.repoSource}}/{{pipeline.repoOwner}}/</span><strong>{{pipeline.repoName}}</strong></td>
+    <td>{{pipeline.buildVersion}}</td>
+    <td>{{pipeline.repoBranch}}</td>
+    <td>{{pipeline.repoRevision}}</td>
     <td class="align-middle">
         <div class="progress">
-        <div class="progress-bar bg-{{transform-build-status-to-css origin.buildStatus}}" role="progressbar" style="width: {{origin.buildProgress}}%" aria-valuenow="{{origin.buildProgress}}" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bg-{{transform-build-status-to-css pipeline.buildStatus}}" role="progressbar" style="width: {{pipeline.buildProgress}}%" aria-valuenow="{{pipeline.buildProgress}}" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
     </td>
     <td>
-        {{#each origin.labels as |label|}}
+        {{#each pipeline.labels as |label|}}
         <button type="button" class="btn btn-light btn-sm">{{label.key}}={{label.value}}</button>
         {{/each}}
     </td>
     <td>
-        {{#each origin.targetVersions as |targetVersion|}}
+        {{#each pipeline.targetVersions as |targetVersion|}}
         <button type="button" class="btn btn-light btn-sm">
             {{targetVersion.target.name}} <span class="badge badge-{{transform-build-status-to-css targetVersion.buildStatus}}">{{targetVersion.buildVersion}}</span>
         </button>
