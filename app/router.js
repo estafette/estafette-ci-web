@@ -8,7 +8,7 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('origins');
-  this.route('destinations');
+  this.route('targets');
   this.route('statistics');
 });
 

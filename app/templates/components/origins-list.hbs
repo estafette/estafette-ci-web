@@ -7,7 +7,7 @@
     <th scope="col">Revision</th>
     <th scope="col">Status</th>
     <th scope="col">Labels</th>
-    <th scope="col">Destinations</th>
+    <th scope="col">Releases</th>
     </tr>
 </thead>
 <tbody>
@@ -29,9 +29,9 @@
         {{/each}}
     </td>
     <td>
-        {{#each origin.destinationVersions as |destinationVersion|}}
+        {{#each origin.targetVersions as |targetVersion|}}
         <button type="button" class="btn btn-light btn-sm">
-            {{destinationVersion.destination.name}} <span class="badge badge-{{transform-build-status-to-css destinationVersion.buildStatus}}">{{destinationVersion.buildVersion}}</span>
+            {{targetVersion.target.name}} <span class="badge badge-{{transform-build-status-to-css targetVersion.buildStatus}}">{{targetVersion.buildVersion}}</span>
         </button>
         {{/each}}
     </td>

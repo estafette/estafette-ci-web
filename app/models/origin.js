@@ -14,5 +14,5 @@ export default DS.Model.extend({
         return `${this.get('repoOwner')}/${this.get('repoName')}`;
     }),
     labels: DS.hasMany('label'),
-    destinationVersions: DS.hasMany('destination-version'),
+    targetVersions: DS.hasMany('target-version'),
 });

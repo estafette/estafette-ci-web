@@ -41,9 +41,9 @@ export default Route.extend({
                             value: "golang"
                         }
                     ],
-                    destinationVersions: [
+                    targetVersions: [
                         {
-                            destination: {
+                            target: {
                                 name: "tooling",
                                 type: "Kubernetes Engine"
                             },
@@ -75,9 +75,9 @@ export default Route.extend({
                             value: "nodejs"
                         }
                     ],
-                    destinationVersions: [
+                    targetVersions: [
                         {
-                            destination: {
+                            target: {
                                 name: "tooling",
                                 type: "Kubernetes Engine"
                             },
@@ -109,9 +109,9 @@ export default Route.extend({
                             value: "golang"
                         }
                     ],
-                    destinationVersions: [
+                    targetVersions: [
                         {
-                            destination: {
+                            target: {
                                 name: "beta",
                                 type: "Docker Tag"
                             },
@@ -119,7 +119,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "stable",
                                 type: "Docker Tag"
                             },
@@ -127,7 +127,7 @@ export default Route.extend({
                             buildStatus: "running"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "latest",
                                 type: "Docker Tag"
                             },
@@ -159,9 +159,9 @@ export default Route.extend({
                             value: "golang"
                         }
                     ],
-                    destinationVersions: [
+                    targetVersions: [
                         {
-                            destination: {
+                            target: {
                                 name: "github-tag",
                                 type: "Git Tag"
                             },
@@ -193,9 +193,9 @@ export default Route.extend({
                             value: "golang"
                         }
                     ],
-                    destinationVersions: [
+                    targetVersions: [
                         {
-                            destination: {
+                            target: {
                                 name: "beta",
                                 type: "Docker Tag"
                             },
@@ -203,7 +203,7 @@ export default Route.extend({
                             buildStatus: "running"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "stable",
                                 type: "Docker Tag"
                             },
@@ -211,7 +211,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "latest",
                                 type: "Docker Tag"
                             },
@@ -243,9 +243,9 @@ export default Route.extend({
                             value: "golang"
                         }
                     ],
-                    destinationVersions: [
+                    targetVersions: [
                         {
-                            destination: {
+                            target: {
                                 name: "beta",
                                 type: "Docker Tag"
                             },
@@ -253,7 +253,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "stable",
                                 type: "Docker Tag"
                             },
@@ -261,7 +261,7 @@ export default Route.extend({
                             buildStatus: "running"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "latest",
                                 type: "Docker Tag"
                             },
@@ -293,9 +293,9 @@ export default Route.extend({
                             value: "golang"
                         }
                     ],
-                    destinationVersions: [
+                    targetVersions: [
                         {
-                            destination: {
+                            target: {
                                 name: "beta",
                                 type: "Docker Tag"
                             },
@@ -303,7 +303,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "stable",
                                 type: "Docker Tag"
                             },
@@ -311,7 +311,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "latest",
                                 type: "Docker Tag"
                             },
@@ -343,9 +343,9 @@ export default Route.extend({
                             value: "golang"
                         }
                     ],
-                    destinationVersions: [
+                    targetVersions: [
                         {
-                            destination: {
+                            target: {
                                 name: "beta",
                                 type: "Docker Tag"
                             },
@@ -353,7 +353,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "stable",
                                 type: "Docker Tag"
                             },
@@ -361,7 +361,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "latest",
                                 type: "Docker Tag"
                             },
@@ -393,9 +393,9 @@ export default Route.extend({
                             value: "golang"
                         }
                     ],
-                    destinationVersions: [
+                    targetVersions: [
                         {
-                            destination: {
+                            target: {
                                 name: "development",
                                 type: "Kubernetes Engine"
                             },
@@ -403,7 +403,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "staging",
                                 type: "Kubernetes Engine"
                             },
@@ -411,7 +411,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "production",
                                 type: "Kubernetes Engine"
                             },
@@ -419,7 +419,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "tooling",
                                 type: "Kubernetes Engine"
                             },
@@ -451,9 +451,9 @@ export default Route.extend({
                             value: "golang"
                         }
                     ],
-                    destinationVersions: [
+                    targetVersions: [
                         {
-                            destination: {
+                            target: {
                                 name: "development",
                                 type: "Kubernetes Engine"
                             },
@@ -461,7 +461,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "staging",
                                 type: "Kubernetes Engine"
                             },
@@ -469,7 +469,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "production",
                                 type: "Kubernetes Engine"
                             },
@@ -477,7 +477,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "tooling",
                                 type: "Kubernetes Engine"
                             },
@@ -509,9 +509,9 @@ export default Route.extend({
                             value: "golang"
                         }
                     ],
-                    destinationVersions: [
+                    targetVersions: [
                         {
-                            destination: {
+                            target: {
                                 name: "development",
                                 type: "Kubernetes Engine"
                             },
@@ -519,7 +519,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "staging",
                                 type: "Kubernetes Engine"
                             },
@@ -527,7 +527,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "production",
                                 type: "Kubernetes Engine"
                             },
@@ -535,7 +535,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "tooling",
                                 type: "Kubernetes Engine"
                             },
@@ -567,9 +567,9 @@ export default Route.extend({
                             value: "golang"
                         }
                     ],
-                    destinationVersions: [
+                    targetVersions: [
                         {
-                            destination: {
+                            target: {
                                 name: "development",
                                 type: "Kubernetes Engine"
                             },
@@ -577,7 +577,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "staging",
                                 type: "Kubernetes Engine"
                             },
@@ -585,7 +585,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "production",
                                 type: "Kubernetes Engine"
                             },
@@ -593,7 +593,7 @@ export default Route.extend({
                             buildStatus: "succeeded"
                         },
                         {
-                            destination: {
+                            target: {
                                 name: "tooling",
                                 type: "Kubernetes Engine"
                             },

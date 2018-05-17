@@ -1,5 +1,4 @@
 import Route from '@ember/routing/route';
-import destination from '../models/destination';
 
 export default Route.extend({
     model() {
@@ -12,7 +11,7 @@ export default Route.extend({
                 "Github Release",
                 "Git Tag"
             ],
-            destinations: [
+            targets: [
                 {
                     name: "development",
                     type: "Kubernetes Engine"

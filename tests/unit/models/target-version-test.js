@@ -2,13 +2,13 @@ import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { run } from '@ember/runloop';
 
-module('Unit | Model | destination version', function(hooks) {
+module('Unit | Model | target version', function(hooks) {
   setupTest(hooks);
 
   // Replace this with your real tests.
   test('it exists', function(assert) {
     let store = this.owner.lookup('service:store');
-    let model = run(() => store.createRecord('destination-version', {}));
+    let model = run(() => store.createRecord('target-version', {}));
     assert.ok(model);
   });
 });
