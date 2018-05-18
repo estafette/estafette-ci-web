@@ -10,6 +10,8 @@ Router.map(function() {
   this.route('pipelines');
   this.route('targets');
   this.route('statistics');
+
+  this.route('api', function() {});
 });
 
 export default Router;

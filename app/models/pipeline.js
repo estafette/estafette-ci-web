@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import { computed } from '@ember/object';
 
 export default DS.Model.extend({
     repoSource: DS.attr(),
@@ -10,9 +9,6 @@ export default DS.Model.extend({
     buildVersion: DS.attr(),
     buildStatus: DS.attr(),
     buildProgress: DS.attr(),
-    repoFullName: computed('repoOwner', 'repoName', function() {
-        return `${this.get('repoOwner')}/${this.get('repoName')}`;
-    }),
-    labels: DS.hasMany('label'),
-    targetVersions: DS.hasMany('target-version'),
+    labels: DS.attr(),
+    targetVersions: DS.attr(),
 });
