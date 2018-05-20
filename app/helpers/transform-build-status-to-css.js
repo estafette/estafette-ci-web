@@ -1,6 +1,6 @@
 import { helper } from '@ember/component/helper';
 
-export function transformBuildStatusToCss(value) {
+export function transformBuildStatusToCss([value, ...rest]) {
   if (value == "succeeded") {
     return "success"
   }

@@ -17,10 +17,10 @@
     <td scope="row"><span class="text-muted">{{pipeline.repoSource}}/{{pipeline.repoOwner}}/</span><strong>{{pipeline.repoName}}</strong></td>
     <td>{{pipeline.buildVersion}}</td>
     <td>{{pipeline.repoBranch}}</td>
-    <td>{{pipeline.repoRevision}}</td>
+    <td>{{git-hash pipeline.repoRevision}}</td>
     <td class="align-middle">
         <div class="progress">
-        <div class="progress-bar bg-{{transform-build-status-to-css pipeline.buildStatus}}" role="progressbar" style="width: {{pipeline.buildProgress}}%" aria-valuenow="{{pipeline.buildProgress}}" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bg-{{transform-build-status-to-css pipeline.buildStatus}}" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
     </td>
     <td>
