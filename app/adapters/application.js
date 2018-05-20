@@ -4,15 +4,15 @@ export default DS.JSONAPIAdapter.extend({
     namespace: 'api',
 
     shouldReloadRecord(store, snapshot) {
-        return false;
+        return true;
     },
     shouldReloadAll(store, snapshot) {
-        return false;
+        return true;
     },
     shouldBackgroundReloadRecord(store, snapshot) {
-        return true;
+        return false;
     },
     shouldBackgroundReloadAll(store, snapshot) {
-        return true;
+        return false;
     }
 });
