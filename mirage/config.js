@@ -23,16 +23,16 @@ export default function() {
       data: [
             {
                 "id": "github/estafette/estafette-ci-api",
-                "type": "pipeline",
+                "type": "pipelines",
                 "attributes": {
-                  "repoSource": "github",
-                  "repoOwner": "estafette",
-                  "repoName": "estafette-ci-api",
-                  "repoBranch": "master",
-                  "repoRevision": "d97625",
-                  "buildVersion": "0.0.228-beta",
-                  "buildStatus": "succeeded",
-                  "buildProgress": 100,
+                  "repo-source": "github",
+                  "repo-owner": "estafette",
+                  "repo-name": "estafette-ci-api",
+                  "repo-branch": "master",
+                  "repo-revision": "d97625",
+                  "build-version": "0.0.228-beta",
+                  "build-status": "succeeded",
+                  "build-progress": 100,
                   "labels": [
                       {
                           "key": "app",
@@ -47,7 +47,7 @@ export default function() {
                           "value": "golang"
                       }
                   ],
-                  "targetVersions": [
+                  "target-versions": [
                       {
                           "target": {
                               "name": "tooling",
@@ -61,17 +61,17 @@ export default function() {
             },
             {
                 "id": "github/estafette/estafette-ci-web",
-                "type": "pipeline",
+                "type": "pipelines",
                 "attributes": {
                   
-                "repoSource": "github",
-                "repoOwner": "estafette",
-                "repoName": "estafette-ci-web",
-                "repoBranch": "master",
-                "repoRevision": "d97625",
-                "buildVersion": "0.0.13",
-                "buildStatus": "running",
-                "buildProgress": 33,
+                "repo-source": "github",
+                "repo-owner": "estafette",
+                "repo-name": "estafette-ci-web",
+                "repo-branch": "master",
+                "repo-revision": "d97625",
+                "build-version": "0.0.13",
+                "build-status": "running",
+                "build-progress": 33,
                 "labels": [
                     {
                         "key": "app",
@@ -86,7 +86,7 @@ export default function() {
                         "value": "nodejs"
                     }
                 ],
-                "targetVersions": [
+                "target-versions": [
                     {
                         "target": {
                             "name": "tooling",
@@ -100,17 +100,17 @@ export default function() {
             },
             {
                 "id": "github/estafette/estafette-ci-builder",
-                "type": "pipeline",
+                "type": "pipelines",
                 "attributes": {
                   
-                  "repoSource": "github",
-                "repoOwner": "estafette",
-                "repoName": "estafette-ci-builder",
-                "repoBranch": "master",
-                "repoRevision": "d97625",
-                "buildVersion": "0.0.260",
-                "buildStatus": "failed",
-                "buildProgress": 100,
+                  "repo-source": "github",
+                "repo-owner": "estafette",
+                "repo-name": "estafette-ci-builder",
+                "repo-branch": "master",
+                "repo-revision": "d97625",
+                "build-version": "0.0.260",
+                "build-status": "failed",
+                "build-progress": 100,
                 "labels": [
                     {
                         "key": "app",
@@ -125,7 +125,7 @@ export default function() {
                         "value": "golang"
                     }
                 ],
-                "targetVersions": [
+                "target-versions": [
                     {
                         "target": {
                             "name": "beta",
@@ -155,17 +155,17 @@ export default function() {
             },
             {
               "id": "github/estafette/estafette-ci-libraries",
-              "type": "pipeline",
+              "type": "pipelines",
               "attributes": {
                   
-                "repoSource": "github",
-                "repoOwner": "estafette",
-                "repoName": "estafette-ci-libraries",
-                "repoBranch": "master",
-                "repoRevision": "d97625",
-                "buildVersion": "0.0.19",
-                "buildStatus": "succeeded",
-                "buildProgress": 100,
+                "repo-source": "github",
+                "repo-owner": "estafette",
+                "repo-name": "estafette-ci-libraries",
+                "repo-branch": "master",
+                "repo-revision": "d97625",
+                "build-version": "0.0.19",
+                "build-status": "succeeded",
+                "build-progress": 100,
                 "labels": [
                     {
                         "key": "app",
@@ -180,7 +180,7 @@ export default function() {
                         "value": "golang"
                     }
                 ],
-                "targetVersions": [
+                "target-versions": [
                     {
                         "target": {
                             "name": "github-tag",
@@ -194,17 +194,17 @@ export default function() {
             },
             {
               "id": "github/estafette/estafette-extension-github-status",
-              "type": "pipeline",
+              "type": "pipelines",
               "attributes": {
                   
-                "repoSource": "github",
-                "repoOwner": "estafette",
-                "repoName": "estafette-extension-github-status",
-                "repoBranch": "master",
-                "repoRevision": "d97625",
-                "buildVersion": "0.0.19",
-                "buildStatus": "succeeded",
-                "buildProgress": 100,
+                "repo-source": "github",
+                "repo-owner": "estafette",
+                "repo-name": "estafette-extension-github-status",
+                "repo-branch": "master",
+                "repo-revision": "d97625",
+                "build-version": "0.0.19",
+                "build-status": "succeeded",
+                "build-progress": 100,
                 "labels": [
                     {
                         "key": "app",
@@ -219,13 +219,13 @@ export default function() {
                         "value": "golang"
                     }
                 ],
-                "targetVersions": [
+                "target-versions": [
                     {
                         "target": {
                             "name": "beta",
                             "type": "Docker Tag"
                         },
-                        "buildVersion": "0.0.19",
+                        "build-version": "0.0.19",
                         "buildStatus": "running"
                     },
                     {
@@ -249,17 +249,17 @@ export default function() {
             },
             {
               "id": "github/estafette/estafette-extension-bitbucket-status",
-              "type": "pipeline",
+              "type": "pipelines",
               "attributes": {
                   
-                "repoSource": "github",
-                "repoOwner": "estafette",
-                "repoName": "estafette-extension-bitbucket-status",
-                "repoBranch": "master",
-                "repoRevision": "d97625",
-                "buildVersion": "0.0.17",
-                "buildStatus": "succeeded",
-                "buildProgress": 100,
+                "repo-source": "github",
+                "repo-owner": "estafette",
+                "repo-name": "estafette-extension-bitbucket-status",
+                "repo-branch": "master",
+                "repo-revision": "d97625",
+                "build-version": "0.0.17",
+                "build-status": "succeeded",
+                "build-progress": 100,
                 "labels": [
                     {
                         "key": "app",
@@ -274,7 +274,7 @@ export default function() {
                         "value": "golang"
                     }
                 ],
-                "targetVersions": [
+                "target-versions": [
                     {
                         "target": {
                             "name": "beta",
@@ -304,17 +304,17 @@ export default function() {
             },
             {
               "id": "github/estafette/estafette-slack-buildStatus",
-              "type": "pipeline",
+              "type": "pipelines",
               "attributes": {
                   
-                "repoSource": "github",
-                "repoOwner": "estafette",
-                "repoName": "estafette-extension-slack-buildStatus",
-                "repoBranch": "master",
-                "repoRevision": "d97625",
-                "buildVersion": "0.0.21",
-                "buildStatus": "succeeded",
-                "buildProgress": 100,
+                "repo-source": "github",
+                "repo-owner": "estafette",
+                "repo-name": "estafette-extension-slack-buildStatus",
+                "repo-branch": "master",
+                "repo-revision": "d97625",
+                "build-version": "0.0.21",
+                "build-status": "succeeded",
+                "build-progress": 100,
                 "labels": [
                     {
                         "key": "app",
@@ -329,7 +329,7 @@ export default function() {
                         "value": "golang"
                     }
                 ],
-                "targetVersions": [
+                "target-versions": [
                     {
                         "target": {
                             "name": "beta",
@@ -359,17 +359,17 @@ export default function() {
             },
             {
               "id": "github/estafette/estafette-extension-git-clone",
-              "type": "pipeline",
+              "type": "pipelines",
               "attributes": {
                   
-                "repoSource": "github",
-                "repoOwner": "estafette",
-                "repoName": "estafette-extension-git-clone",
-                "repoBranch": "master",
-                "repoRevision": "d97625",
-                "buildVersion": "0.0.14",
-                "buildStatus": "succeeded",
-                "buildProgress": 100,
+                "repo-source": "github",
+                "repo-owner": "estafette",
+                "repo-name": "estafette-extension-git-clone",
+                "repo-branch": "master",
+                "repo-revision": "d97625",
+                "build-version": "0.0.14",
+                "build-status": "succeeded",
+                "build-progress": 100,
                 "labels": [
                     {
                         "key": "app",
@@ -384,7 +384,7 @@ export default function() {
                         "value": "golang"
                     }
                 ],
-                "targetVersions": [
+                "target-versions": [
                     {
                         "target": {
                             "name": "beta",
@@ -414,17 +414,17 @@ export default function() {
             },
             {
               "id": "github/estafette/estafette-cloudflare-dns",
-              "type": "pipeline",
+              "type": "pipelines",
               "attributes": {
                   
-                "repoSource": "github",
-                "repoOwner": "estafette",
-                "repoName": "estafette-cloudflare-dns",
-                "repoBranch": "master",
-                "repoRevision": "d97625",
-                "buildVersion": "0.0.108",
-                "buildStatus": "running",
-                "buildProgress": 66,
+                "repo-source": "github",
+                "repo-owner": "estafette",
+                "repo-name": "estafette-cloudflare-dns",
+                "repo-branch": "master",
+                "repo-revision": "d97625",
+                "build-version": "0.0.108",
+                "build-status": "running",
+                "build-progress": 66,
                 "labels": [
                     {
                         "key": "app",
@@ -439,7 +439,7 @@ export default function() {
                         "value": "golang"
                     }
                 ],
-                "targetVersions": [
+                "target-versions": [
                     {
                         "target": {
                             "name": "development",
@@ -477,17 +477,17 @@ export default function() {
             },
             {
               "id": "github/estafette/estafette-letsencrypt-certificate",
-              "type": "pipeline",
+              "type": "pipelines",
               "attributes": {
                   
-                "repoSource": "github",
-                "repoOwner": "estafette",
-                "repoName": "estafette-letsencrypt-certificate",
-                "repoBranch": "master",
-                "repoRevision": "d97625",
-                "buildVersion": "0.0.91",
-                "buildStatus": "succeeded",
-                "buildProgress": 100,
+                "repo-source": "github",
+                "repo-owner": "estafette",
+                "repo-name": "estafette-letsencrypt-certificate",
+                "repo-branch": "master",
+                "repo-revision": "d97625",
+                "build-version": "0.0.91",
+                "build-status": "succeeded",
+                "build-progress": 100,
                 "labels": [
                     {
                         "key": "app",
@@ -502,7 +502,7 @@ export default function() {
                         "value": "golang"
                     }
                 ],
-                "targetVersions": [
+                "target-versions": [
                     {
                         "target": {
                             "name": "development",
@@ -540,17 +540,17 @@ export default function() {
             },
             {
               "id": "github/estafette/estafette-gke-preemptible-killer",
-              "type": "pipeline",
+              "type": "pipelines",
               "attributes": {
                   
-                "repoSource": "github",
-                "repoOwner": "estafette",
-                "repoName": "estafette-gke-preemptible-killer",
-                "repoBranch": "master",
-                "repoRevision": "d97625",
-                "buildVersion": "1.0.38",
-                "buildStatus": "running",
-                "buildProgress": 98,
+                "repo-source": "github",
+                "repo-owner": "estafette",
+                "repo-name": "estafette-gke-preemptible-killer",
+                "repo-branch": "master",
+                "repo-revision": "d97625",
+                "build-version": "1.0.38",
+                "build-status": "running",
+                "build-progress": 98,
                 "labels": [
                     {
                         "key": "app",
@@ -565,7 +565,7 @@ export default function() {
                         "value": "golang"
                     }
                 ],
-                "targetVersions": [
+                "target-versions": [
                     {
                         "target": {
                             "name": "development",
@@ -603,17 +603,17 @@ export default function() {
             },
             {
               "id": "github/estafette/estafette-gke-node-pool-shifter",
-              "type": "pipeline",
+              "type": "pipelines",
               "attributes": {
                   
-                "repoSource": "github",
-                "repoOwner": "estafette",
-                "repoName": "estafette-gke-node-pool-shifter",
-                "repoBranch": "master",
-                "repoRevision": "d97625",
-                "buildVersion": "1.0.13",
-                "buildStatus": "succeeded",
-                "buildProgress": 100,
+                "repo-source": "github",
+                "repo-owner": "estafette",
+                "repo-name": "estafette-gke-node-pool-shifter",
+                "repo-branch": "master",
+                "repo-revision": "d97625",
+                "build-version": "1.0.13",
+                "build-status": "succeeded",
+                "build-progress": 100,
                 "labels": [
                     {
                         "key": "app",
@@ -628,7 +628,7 @@ export default function() {
                         "value": "golang"
                     }
                 ],
-                "targetVersions": [
+                "target-versions": [
                     {
                         "target": {
                             "name": "development",
