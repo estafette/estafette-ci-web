@@ -22,10 +22,10 @@ export default function() {
     return {
       data: [
             {
-                "id": "github/estafette/estafette-ci-api",
+                "id": "github.com/estafette/estafette-ci-api",
                 "type": "pipelines",
                 "attributes": {
-                  "repo-source": "github",
+                  "repo-source": "github.com",
                   "repo-owner": "estafette",
                   "repo-name": "estafette-ci-api",
                   "repo-branch": "master",
@@ -60,11 +60,11 @@ export default function() {
               }
             },
             {
-                "id": "github/estafette/estafette-ci-web",
+                "id": "github.com/estafette/estafette-ci-web",
                 "type": "pipelines",
                 "attributes": {
                   
-                "repo-source": "github",
+                "repo-source": "github.com",
                 "repo-owner": "estafette",
                 "repo-name": "estafette-ci-web",
                 "repo-branch": "master",
@@ -99,11 +99,11 @@ export default function() {
               }
             },
             {
-                "id": "github/estafette/estafette-ci-builder",
+                "id": "github.com/estafette/estafette-ci-builder",
                 "type": "pipelines",
                 "attributes": {
                   
-                  "repo-source": "github",
+                  "repo-source": "github.com",
                 "repo-owner": "estafette",
                 "repo-name": "estafette-ci-builder",
                 "repo-branch": "master",
@@ -154,11 +154,11 @@ export default function() {
               }
             },
             {
-              "id": "github/estafette/estafette-ci-libraries",
+              "id": "github.com/estafette/estafette-ci-libraries",
               "type": "pipelines",
               "attributes": {
                   
-                "repo-source": "github",
+                "repo-source": "github.com",
                 "repo-owner": "estafette",
                 "repo-name": "estafette-ci-libraries",
                 "repo-branch": "master",
@@ -193,11 +193,11 @@ export default function() {
               }
             },
             {
-              "id": "github/estafette/estafette-extension-github-status",
+              "id": "github.com/estafette/estafette-extension-github-status",
               "type": "pipelines",
               "attributes": {
                   
-                "repo-source": "github",
+                "repo-source": "github.com",
                 "repo-owner": "estafette",
                 "repo-name": "estafette-extension-github-status",
                 "repo-branch": "master",
@@ -248,11 +248,11 @@ export default function() {
               }
             },
             {
-              "id": "github/estafette/estafette-extension-bitbucket-status",
+              "id": "github.com/estafette/estafette-extension-bitbucket-status",
               "type": "pipelines",
               "attributes": {
                   
-                "repo-source": "github",
+                "repo-source": "github.com",
                 "repo-owner": "estafette",
                 "repo-name": "estafette-extension-bitbucket-status",
                 "repo-branch": "master",
@@ -303,11 +303,11 @@ export default function() {
               }
             },
             {
-              "id": "github/estafette/estafette-slack-buildStatus",
+              "id": "github.com/estafette/estafette-slack-buildStatus",
               "type": "pipelines",
               "attributes": {
                   
-                "repo-source": "github",
+                "repo-source": "github.com",
                 "repo-owner": "estafette",
                 "repo-name": "estafette-extension-slack-buildStatus",
                 "repo-branch": "master",
@@ -358,11 +358,11 @@ export default function() {
               }
             },
             {
-              "id": "github/estafette/estafette-extension-git-clone",
+              "id": "github.com/estafette/estafette-extension-git-clone",
               "type": "pipelines",
               "attributes": {
                   
-                "repo-source": "github",
+                "repo-source": "github.com",
                 "repo-owner": "estafette",
                 "repo-name": "estafette-extension-git-clone",
                 "repo-branch": "master",
@@ -413,11 +413,11 @@ export default function() {
               }
             },
             {
-              "id": "github/estafette/estafette-cloudflare-dns",
+              "id": "github.com/estafette/estafette-cloudflare-dns",
               "type": "pipelines",
               "attributes": {
                   
-                "repo-source": "github",
+                "repo-source": "github.com",
                 "repo-owner": "estafette",
                 "repo-name": "estafette-cloudflare-dns",
                 "repo-branch": "master",
@@ -476,11 +476,11 @@ export default function() {
               }
             },
             {
-              "id": "github/estafette/estafette-letsencrypt-certificate",
+              "id": "github.com/estafette/estafette-letsencrypt-certificate",
               "type": "pipelines",
               "attributes": {
                   
-                "repo-source": "github",
+                "repo-source": "github.com",
                 "repo-owner": "estafette",
                 "repo-name": "estafette-letsencrypt-certificate",
                 "repo-branch": "master",
@@ -539,11 +539,11 @@ export default function() {
               }
             },
             {
-              "id": "github/estafette/estafette-gke-preemptible-killer",
+              "id": "github.com/estafette/estafette-gke-preemptible-killer",
               "type": "pipelines",
               "attributes": {
                   
-                "repo-source": "github",
+                "repo-source": "github.com",
                 "repo-owner": "estafette",
                 "repo-name": "estafette-gke-preemptible-killer",
                 "repo-branch": "master",
@@ -602,11 +602,11 @@ export default function() {
               }
             },
             {
-              "id": "github/estafette/estafette-gke-node-pool-shifter",
+              "id": "github.com/estafette/estafette-gke-node-pool-shifter",
               "type": "pipelines",
               "attributes": {
                   
-                "repo-source": "github",
+                "repo-source": "github.com",
                 "repo-owner": "estafette",
                 "repo-name": "estafette-gke-node-pool-shifter",
                 "repo-branch": "master",
