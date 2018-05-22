@@ -15,7 +15,7 @@
 {{#each pipelines as |pipeline|}}
     <tr>
     <td scope="row">
-        {{#link-to "pipelines.pipeline.builds" pipeline}}<span class="text-muted">{{pipeline.repoSource}}/{{pipeline.repoOwner}}/</span><strong>{{pipeline.repoName}}</strong>{{/link-to}}
+        <span class="text-muted">{{pipeline.repoSource}}/{{pipeline.repoOwner}}/</span><strong>{{pipeline.repoName}}</strong>
     </td>
     <td>{{pipeline.buildVersion}}</td>
     <td>{{pipeline.repoBranch}}</td>

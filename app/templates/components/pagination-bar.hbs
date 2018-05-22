@@ -1,19 +1,19 @@
 <nav aria-label="Pipeline page navigation">
   <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" aria-label="Previous">
+    <li class="page-item {{disable-when-false pagination.hasPreviousPage}}">
+      {{#link-to "pipelines" (query-params page=pagination.previousPage) class="page-link" aria-label="Previous"}}
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
-      </a>
+      {{/link-to}}
     </li>
-    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
+    <li class="page-item {{active-page-class pagination.activePage 1}}">{{#link-to "pipelines" (query-params page="1") class="page-link"}}1{{/link-to}}</li>
+    <li class="page-item {{active-page-class pagination.activePage 2}}">{{#link-to "pipelines" (query-params page="2") class="page-link"}}2{{/link-to}}</li>
+    <li class="page-item {{active-page-class pagination.activePage 3}}">{{#link-to "pipelines" (query-params page="3") class="page-link"}}3{{/link-to}}</li>
+    <li class="page-item {{disable-when-false pagination.hasNextPage}}">
+      {{#link-to "pipelines" (query-params page=pagination.nextPage) class="page-link" aria-label="Next"}}
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
-      </a>
+      {{/link-to}}
     </li>
   </ul>
 </nav>

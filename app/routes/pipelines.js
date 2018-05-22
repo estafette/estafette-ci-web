@@ -1,7 +1,16 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-    model() {
+    queryParams: {
+        page: {
+            refreshModel: true
+        },
+        size: {
+            refreshModel: true
+        },
+    },
+
+    model(params) {
         return {            
             pinnedLabels: //this.get('store').findAll('label'),
             [
@@ -18,7 +27,19 @@ export default Route.extend({
                     value: "nodejs"
                 }
             ],
-            pipelines: this.get('store').findAll('pipeline'),
+            pipelines: this.get('store').query('pipeline', { page: {
+                number: params.page,
+                size: params.size
+              }
+            }),
+            pagination: {
+                activePage: params.page,
+                previousPage: params.page-1,
+                hasPreviousPage: params.page > 1,
+                nextPage: params.page+1,
+                hasNextPage: params.page < 10,
+                totalPages: 10,
+            },
         };
     }
 });
