@@ -7,11 +7,19 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('pipelines');
+  this.route('pipelines', function() {
+    this.route('pipeline', { path: '/:repoSource/:repoOwner/:repoName'}, function() {
+      this.route('builds', function() {
+        this.route('build', {path: '/:repoRevision'});
+      });
+      this.route('releases', function() {
+        this.route('release');
+      });
+      this.route('statistics');
+    });
+  });
   this.route('targets');
   this.route('statistics');
-
-  this.route('api', function() {});
 });
 
 export default Router;
