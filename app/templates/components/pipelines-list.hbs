@@ -13,7 +13,7 @@
 <tbody>
 
 {{#each pipelines as |pipeline|}}
-    <tr>
+    {{#link-to "pipeline-builds" pipeline tagName="tr"}}
     <td scope="row">
         <span class="text-muted">{{pipeline.repoSource}}/{{pipeline.repoOwner}}/</span><strong>{{pipeline.repoName}}</strong>
     </td>
@@ -37,7 +37,7 @@
         </button>
         {{/each}}
     </td>
-    </tr>
+    {{/link-to}}
 {{/each}}
 </tbody>
 </table>

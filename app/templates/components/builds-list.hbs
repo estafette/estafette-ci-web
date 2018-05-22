@@ -1,0 +1,31 @@
+<table class="table">
+<thead>
+    <tr>
+    <th scope="col">Version</th>
+    <th scope="col">Branch</th>
+    <th scope="col">Revision</th>
+    <th scope="col">Status</th>
+    <th scope="col">Labels</th>
+    </tr>
+</thead>
+<tbody>
+
+{{#each builds as |build|}}
+    {{#link-to "pipeline-build-details" build tagName="tr"}}
+    <td>{{build.buildVersion}}</td>
+    <td>{{build.repoBranch}}</td>
+    <td>{{git-hash build.repoRevision}}</td>
+    <td class="align-middle">
+        <div class="progress">
+        <div class="progress-bar bg-{{transform-build-status-to-css build.buildStatus}}" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </td>
+    <td>
+        {{#each build.labels as |label|}}
+        <button type="button" class="btn btn-light btn-sm">{{label.key}}={{label.value}}</button>
+        {{/each}}
+    </td>
+    {{/link-to}}
+{{/each}}
+</tbody>
+</table>

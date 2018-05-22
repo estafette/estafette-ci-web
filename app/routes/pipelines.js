@@ -33,6 +33,7 @@ export default Route.extend({
               }
             }),
             pagination: {
+                linkRoute: "pipelines",
                 activePage: params.page,
                 previousPage: params.page-1,
                 hasPreviousPage: params.page > 1,
