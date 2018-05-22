@@ -1,6 +1,6 @@
 import { helper } from '@ember/component/helper';
 
-export function activePageClass([activePage, actualPage, ...rest]) {
+export function activePageClass([activePage, actualPage]) {
   if (activePage == actualPage) {
     return "active"
   }

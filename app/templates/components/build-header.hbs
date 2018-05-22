@@ -1,0 +1,8 @@
+
+<nav class="m-3" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">{{#link-to "pipelines"}}Pipelines{{/link-to}}</li>
+    <li class="breadcrumb-item">{{#link-to "pipeline-builds" build.repoSource build.repoOwner build.repoName}}{{build.repoSource}}/{{build.repoOwner}}/{{build.repoName}}{{/link-to}}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{build.repoRevision}}</li>
+  </ol>
+</nav>

@@ -12,13 +12,21 @@ export default Route.extend({
 
     model(params) {
         return {
-            pipeline: this.get('store').queryRecord('pipeline', { repoSource: params.repoSource, repoOwner: params.repoOwner, repoName: params.repoName}),
+            pipeline: this.get('store').queryRecord('pipeline', { 
+                repoSource: params.repoSource, 
+                repoOwner: params.repoOwner, 
+                repoName: params.repoName,
+                reload: true,
+            }),
             builds: this.get('store').query('build', { 
-                repoSource: params.repoSource, repoOwner: params.repoOwner, repoName: params.repoName,
+                repoSource: params.repoSource, 
+                repoOwner: params.repoOwner, 
+                repoName: params.repoName,
                 page: {
                     number: params.page,
                     size: params.size
                 },
+                reload: true,
             }),
             pagination: {
                 linkRoute: "pipeline-builds",

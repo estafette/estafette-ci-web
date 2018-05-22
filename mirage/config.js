@@ -775,6 +775,39 @@ export default function() {
         };
       });
     
+
+      this.get('/pipelines/:repoSource/:repoOwner/:repoName/builds/:repoRevision', () => {
+        return {
+          data: {
+                    "id": "github.com/estafette/estafette-ci-api",
+                    "type": "pipelines",
+                    "attributes": {
+                      "repo-source": "github.com",
+                      "repo-owner": "estafette",
+                      "repo-name": "estafette-ci-api",
+                      "repo-branch": "master",
+                      "repo-revision": "ad8925fb46c540b662f61eb89049b27142124df8",
+                      "build-version": "0.0.228-beta",
+                      "build-status": "succeeded",
+                      "build-progress": 100,
+                      "labels": [
+                          {
+                              "key": "app",
+                              "value": "estafette-ci-api"
+                          },
+                          {
+                              "key": "team",
+                              "value": "estafette"
+                          },
+                          {
+                              "key": "language",
+                              "value": "golang"
+                          }
+                      ],
+                  }
+                }
+            };
+          });
   // These comments are here to help you get started. Feel free to delete them.
 
   /*
