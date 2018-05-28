@@ -1,7 +1,10 @@
 import { helper } from '@ember/component/helper';
 
 export function gitHash([value]) {
-  return value.substring(0,6);
+  if (value && value.length > 6){
+    return value.substring(0,6);  
+  }
+  return value;
 }
 
 export default helper(gitHash);

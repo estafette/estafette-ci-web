@@ -22,6 +22,8 @@ export default DS.JSONAPIAdapter.extend({
                 return `/api/pipelines/${query.repoSource}/${query.repoOwner}/${query.repoName}`;
             case 'build':
                 return `/api/pipelines/${query.repoSource}/${query.repoOwner}/${query.repoName}/builds/${query.repoRevision}`;
+            case 'build-log':
+                return `/api/pipelines/${query.repoSource}/${query.repoOwner}/${query.repoName}/builds/${query.repoRevision}/logs`;
             default:
               return this._super(...arguments);
           }
