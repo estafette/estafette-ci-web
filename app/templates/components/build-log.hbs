@@ -1,7 +1,7 @@
 <div class="accordion m-3" id="accordionExample">
 {{#each log.steps as |step index|}}
   <div class="card">
-    <div class="card-header" id="heading-{{index}}" data-toggle="collapse" data-target="#collapse-{{index}}" aria-expanded="true" aria-controls="collapse-{{index}}">
+    <div class="card-header" id="heading-{{index}}" data-toggle="collapse" data-target="#collapse-{{index}}" aria-expanded="{{expanded-by-status step.status}}" aria-controls="collapse-{{index}}">
         <div class="row">
           <div class="col">
             <h4>
@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <div id="collapse-{{index}}" class="collapse show" aria-labelledby="heading-{{index}}" data-parent="#accordionExample">
+    <div id="collapse-{{index}}" class="collapse {{collapse-by-status step.status}}" aria-labelledby="heading-{{index}}" data-parent="#accordionExample">
       <div class="card-body text-monospace bg-dark text-light">
         {{#each step.logLines as |line|}}
             <span class="text-white-50">{{line.timestamp}}</span> {{line.text}}<br />
