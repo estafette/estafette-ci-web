@@ -28,7 +28,10 @@
     <div id="collapse-{{index}}" class="collapse {{collapse-by-status step.status}}" aria-labelledby="heading-{{index}}" data-parent="#accordionExample">
       <div class="card-body text-monospace bg-dark text-light">
         {{#each step.logLines as |line|}}
-            <span class="text-white-50">{{line.timestamp}}</span> {{line.text}}<br />
+        <div class="row no-gutters">
+          <div class="col-2 text-white-50" style="min-width: 300px;">{{line.timestamp}}</div>
+          <div class="col">{{line.text}}</div>
+        </div>
         {{/each}}
       </div>
     </div>
