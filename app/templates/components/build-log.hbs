@@ -1,13 +1,28 @@
 <div class="accordion m-3" id="accordionExample">
 {{#each log.steps as |step index|}}
   <div class="card">
-    <div class="card-header" id="heading-{{index}}">
-      <h5 class="mb-0">
-        <button class="btn btn-link {{build-step-class step}}" type="button" data-toggle="collapse" data-target="#collapse-{{index}}" aria-expanded="true" aria-controls="collapse-{{index}}">
-          {{step.step}}
-        </button>
-      </h5>
-      {{!-- {{step.image.name}}:{{step.image.tag}} ({{step.image.imageSize}}, {{step.image.pullDuration}}) --}}
+    <div class="card-header" id="heading-{{index}}" data-toggle="collapse" data-target="#collapse-{{index}}" aria-expanded="true" aria-controls="collapse-{{index}}">
+        <div class="row">
+          <div class="col">
+            <h4>
+              {{step.step}}
+            </h4>
+            </div>
+          <div class="col text-right">
+            <span class="badge {{build-step-class step.status}}">{{step.status}}</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-secondary">
+            {{step.image.name}}:{{step.image.tag}} 
+            {{#if step.image.imageSize}}
+            ({{pretty-print-bytes step.image.imageSize}}, pulled in {{pretty-print-timestamp step.image.pullDuration}})
+            {{/if}}
+          </div>
+          <div class="col text-right text-secondary">
+            {{pretty-print-timestamp step.duration}}
+          </div>
+        </div>
     </div>
 
     <div id="collapse-{{index}}" class="collapse show" aria-labelledby="heading-{{index}}" data-parent="#accordionExample">

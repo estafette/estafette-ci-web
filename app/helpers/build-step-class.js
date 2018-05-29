@@ -1,20 +1,17 @@
 import { helper } from '@ember/component/helper';
 
-export function buildStepClass(step) {
+export function buildStepClass([status]) {
 
-  if (step) {
-    switch (step[0].status) {
+  if (status) {
+    switch (status) {
       case "SUCCEEDED":
-        return "btn-outline-success text-success";
-      break;
+      return "badge-success";
 
       case "FAILED":
-      return "btn-outline-danger text-danger";
-      break;
+      return "badge-danger";
 
       case "SKIPPED":
-      return "btn-outline-secondary text-secondary";
-      break;
+      return "badge-secondary";
     }
   }
   

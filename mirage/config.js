@@ -896,7 +896,7 @@ export default function() {
                     "step": "build",
                     "image": {
                     "name": "golang",
-                    "tag": "",
+                    "tag": "1.10.2-alpine3.7",
                     "isPulled": false,
                     "imageSize": 0,
                     "pullDuration": 65471,
