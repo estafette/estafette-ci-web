@@ -1,6 +1,6 @@
 <div class="accordion m-3" id="accordionExample">
 
-  <div class="card">
+  <div class="card mb-3">
     <div class="card-header">
         <div class="row text-center">
           <div class="col-1">
@@ -82,4 +82,27 @@
     </div>
   </div>
 {{/each}}
+
+
+<div class="card mt-3">
+  <div class="card-header">
+      <div class="row text-center">
+        <div class="col">
+        </div>
+        <div class="col-1 text-right">
+          <strong>{{pretty-print-bytes log.totalImageSize}}</strong>
+        </div>
+        <div class="col-1 text-right">
+          <strong>{{pretty-print-timespan log.totalPullDuration}}</strong>
+        </div>
+        <div class="col-1 text-right">
+          <strong>{{pretty-print-timespan log.totalDuration}}</strong>
+        </div>
+        <div class="col-1 text-right">
+          <strong>{{pretty-print-timespan log.totalPullDuration log.totalDuration}}</strong>
+        </div>
+      </div>
+  </div>
+</div>
+
 </div>

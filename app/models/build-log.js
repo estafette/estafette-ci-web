@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import { computed } from '@ember/object';
 
 export default DS.Model.extend({
     repoSource: DS.attr(),
@@ -8,4 +9,40 @@ export default DS.Model.extend({
     repoRevision: DS.attr(),
     steps: DS.attr(),
     insertedAt: DS.attr(),
+
+    totalImageSize: Ember.computed('steps', function() {
+
+        var d = 0
+        this.get('steps').forEach(function (step) {
+            if (step.image && step.image.imageSize) {
+                d += step.image.imageSize
+            }
+        });
+
+        return d;
+    }),
+
+    totalPullDuration: Ember.computed('steps', function() {
+
+        var d = 0
+        this.get('steps').forEach(function (step) {
+            if (step.image && step.image.pullDuration) {
+                d += step.image.pullDuration
+            }
+        });
+
+        return d;
+    }),
+
+    totalDuration: Ember.computed('steps', function() {
+
+        var d = 0
+        this.get('steps').forEach(function (step) {
+            if (step.duration) {
+                d += step.duration
+            }
+        });
+
+        return d;
+    }),
 });
