@@ -898,7 +898,7 @@ export default function() {
                     "name": "golang",
                     "tag": "1.10.2-alpine3.7",
                     "isPulled": false,
-                    "imageSize": 375644187,
+                    "imageSize": 1375644187,
                     "pullDuration": 8745457612
                     },
                     "duration": 735887098,

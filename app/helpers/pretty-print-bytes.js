@@ -14,9 +14,10 @@ export function prettyPrintBytes([bytes]) {
   var formattedString = ""
 
   if (gigabytes > 0) {
-    formattedString += `${gigabytes}GB`
+    var decigigabytes = Math.floor(10*remainderForMegabytes/Math.pow(2, 30));
+    formattedString += `${gigabytes}.${decigigabytes}GB`
   }
-  if (megabytes > 0 || gigabytes > 0) {
+  if (megabytes > 0 && gigabytes == 0) {
     formattedString += `${megabytes}MB`
   }
 
