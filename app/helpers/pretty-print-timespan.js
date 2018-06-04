@@ -1,6 +1,14 @@
 import { helper } from '@ember/component/helper';
 
-export function prettyPrintTimestamp([timespan]) {
+export function prettyPrintTimespan(params/*, hash*/) {
+
+  if (!params) {
+    return ""
+  }
+
+  var timespan = params.reduce((previous, current) => {
+    return previous + current;
+  });
 
   if (timespan <= 0) {
     return ""
@@ -28,4 +36,4 @@ export function prettyPrintTimestamp([timespan]) {
   return formattedString
 }
 
-export default helper(prettyPrintTimestamp);
+export default helper(prettyPrintTimespan);
