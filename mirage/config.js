@@ -994,7 +994,7 @@ export default function() {
                     "imageSize": 9185123,
                     "pullDuration": 2157171676
                     },
-                    "duration": 842450599,
+                    "duration": 111842450599,
                     "logLines": [
                     {
                     "timestamp": "2018-05-29T13:49:59.137856798Z",
