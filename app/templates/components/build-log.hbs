@@ -44,14 +44,22 @@
             {{step.image.name}}:{{step.image.tag}} 
           </div>
           <div class="col-1 text-right">
-            {{#if step.image.imageSize}}
-            {{pretty-print-bytes step.image.imageSize}}
-            {{/if}} 
+            {{#if (is-step-executed step.status)}}
+              {{#if step.image.imageSize}}
+              {{pretty-print-bytes step.image.imageSize}}
+              {{else}}
+              <em class="text-muted">(cached)</em>
+              {{/if}}
+            {{/if}}
           </div>
           <div class="col-1 text-right">
-            {{#if step.image.imageSize}}
-            {{pretty-print-timespan step.image.pullDuration}}
-            {{/if}} 
+            {{#if (is-step-executed step.status)}}
+              {{#if step.image.imageSize}}
+              {{pretty-print-timespan step.image.pullDuration}}
+              {{else}}
+              <em class="text-muted">(cached)</em>
+              {{/if}}
+            {{/if}}
           </div>
           <div class="col-1 text-right">
             {{pretty-print-timespan step.duration}}
