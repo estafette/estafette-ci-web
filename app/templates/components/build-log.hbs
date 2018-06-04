@@ -46,15 +46,11 @@
           <div class="col-1 text-right">
             {{#if step.image.imageSize}}
             {{pretty-print-bytes step.image.imageSize}}
-            {{else}}
-            <em class="text-muted">(cached)</em>
             {{/if}} 
           </div>
           <div class="col-1 text-right">
             {{#if step.image.imageSize}}
             {{pretty-print-timespan step.image.pullDuration}}
-            {{else}}
-            <em class="text-muted">(cached)</em>
             {{/if}} 
           </div>
           <div class="col-1 text-right">
