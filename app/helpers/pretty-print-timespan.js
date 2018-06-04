@@ -21,6 +21,8 @@ export function prettyPrintTimespan(params/*, hash*/) {
   var seconds = Math.floor(remainderForSeconds/Math.pow(10, 9));
   var remainderForMilliseconds = remainderForSeconds % Math.pow(10, 9);
 
+  var deciSeconds = Math.floor(remainderForMilliseconds/Math.pow(10, 8));
+
   var formattedString = ""
 
   if (hours > 0) {
@@ -29,8 +31,8 @@ export function prettyPrintTimespan(params/*, hash*/) {
   if (minutes > 0 || hours > 0) {
     formattedString += `${minutes}m`
   }
-  if (seconds > 0 || minutes > 0 || hours > 0) {
-    formattedString += `${seconds}s`
+  if (deciSeconds > 0 || seconds > 0 || minutes > 0 || hours > 0) {
+    formattedString += `${seconds}.${deciSeconds}s`
   }
 
   return formattedString
