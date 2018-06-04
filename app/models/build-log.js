@@ -10,7 +10,7 @@ export default DS.Model.extend({
     steps: DS.attr(),
     insertedAt: DS.attr(),
 
-    totalImageSize: Ember.computed('steps', function() {
+    totalImageSize: computed('steps', function() {
 
         var d = 0
         this.get('steps').forEach(function (step) {
@@ -22,7 +22,7 @@ export default DS.Model.extend({
         return d;
     }),
 
-    totalPullDuration: Ember.computed('steps', function() {
+    totalPullDuration: computed('steps', function() {
 
         var d = 0
         this.get('steps').forEach(function (step) {
@@ -34,7 +34,7 @@ export default DS.Model.extend({
         return d;
     }),
 
-    totalDuration: Ember.computed('steps', function() {
+    totalDuration: computed('steps', function() {
 
         var d = 0
         this.get('steps').forEach(function (step) {
