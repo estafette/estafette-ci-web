@@ -849,7 +849,8 @@ export default function() {
                     }
                     ],
                     "exitCode": 0,
-                    "status": "SUCCEEDED"
+                    "status": "SUCCEEDED",
+                    "autoInjected": true
                     },
                     {
                     "step": "set-pending-build-status",
