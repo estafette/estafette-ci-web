@@ -9,7 +9,6 @@ export function prettyPrintBytes([bytes]) {
   var gigabytes = Math.floor(bytes/Math.pow(2, 30));
   var remainderForMegabytes = bytes % Math.pow(2, 30);
   var megabytes = Math.floor(remainderForMegabytes/Math.pow(2, 20));
-  var remainderForKilobytes = remainderForMegabytes % Math.pow(2, 20);
 
   var formattedString = ""
 

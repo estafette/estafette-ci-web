@@ -11,38 +11,20 @@ export default DS.Model.extend({
     insertedAt: DS.attr(),
 
     totalImageSize: computed('steps', function() {
-
-        var d = 0
-        this.get('steps').forEach(function (step) {
-            if (step.image && step.image.imageSize) {
-                d += step.image.imageSize
-            }
-        });
-
-        return d;
+        return this.get('steps').reduce((acc, step) => {
+            return acc + (step.image && step.image.imageSize ? step.image.imageSize : 0)
+        }, 0);
     }),
 
     totalPullDuration: computed('steps', function() {
-
-        var d = 0
-        this.get('steps').forEach(function (step) {
-            if (step.image && step.image.pullDuration) {
-                d += step.image.pullDuration
-            }
-        });
-
-        return d;
+        return this.get('steps').reduce((acc, step) => {
+            return acc + (step.image && step.image.pullDuration ? step.image.pullDuration : 0)
+        }, 0);
     }),
 
     totalDuration: computed('steps', function() {
-
-        var d = 0
-        this.get('steps').forEach(function (step) {
-            if (step.duration) {
-                d += step.duration
-            }
-        });
-
-        return d;
+        return this.get('steps').reduce((acc, step) => {
+            return acc + (step.duration ? step.duration : 0)
+        }, 0);
     }),
 });
