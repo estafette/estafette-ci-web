@@ -31,7 +31,7 @@ export function prettyPrintTimespan(params/*, hash*/) {
   if (minutes > 0 || hours > 0) {
     formattedString += `${minutes}m`
   }
-  if ((deciSeconds > 0 || seconds > 0) && minutes == 0 && hours == 0) {
+  if ((deciSeconds > 0 || seconds > 0) && minutes === 0 && hours === 0) {
     formattedString += `${seconds}.${deciSeconds}s`
   } else if (seconds > 0 || minutes > 0 || hours > 0) {
     formattedString += `${seconds}s`

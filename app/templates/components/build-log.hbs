@@ -4,25 +4,25 @@
     <div class="card-header">
         <div class="row text-center">
           <div class="col-1">
-            <small class="text-muted">Status</small>
+            <strong>Status</strong>
           </div>
           <div class="col">
-            <small class="text-muted">Step</small>
+            <strong>Step</strong>
           </div>
           <div class="col-2">
-            <small class="text-muted">Image</small>
+            <strong>Image</strong>
           </div>
           <div class="col-1 text-right">
-            <small class="text-muted">Image size</small>
+            <strong>Image size</strong>
           </div>
           <div class="col-1 text-right">
-            <small class="text-muted">Pull time</small>
+            <strong>Pull time</strong>
           </div>
           <div class="col-1 text-right">
-            <small class="text-muted">Execution time</small>
+            <strong>Execution time</strong>
           </div>
           <div class="col-1 text-right">
-            <small class="text-muted">Total time</small>
+            <strong>Total time</strong>
           </div>
         </div>
     </div>
@@ -65,7 +65,7 @@
             {{pretty-print-timespan step.duration}}
           </div>
           <div class="col-1 text-right">
-            <strong>{{pretty-print-timespan step.image.pullDuration step.duration}}</strong>
+            {{pretty-print-timespan step.image.pullDuration step.duration}}
           </div>
         </div>
     </div>
