@@ -1,0 +1,8 @@
+<ul class="nav nav-tabs m-3">
+  <li class="nav-item">
+    {{#link-to "pipeline-build-logs" build.repoSource build.repoOwner build.repoName build.repoRevision class="nav-link"}}Logs{{/link-to}}
+  </li>
+  <li class="nav-item">
+    {{#link-to "pipeline-build-manifest" build.repoSource build.repoOwner build.repoName build.repoRevision class="nav-link"}}Manifest{{/link-to}}
+  </li>
+</ul>

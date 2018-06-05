@@ -778,33 +778,22 @@ export default function() {
 
       this.get('/pipelines/:repoSource/:repoOwner/:repoName/builds/:repoRevision', () => {
         return {
-          data: {
-                    "id": "github.com/estafette/estafette-ci-api",
-                    "type": "pipelines",
-                    "attributes": {
-                      "repo-source": "github.com",
-                      "repo-owner": "estafette",
-                      "repo-name": "estafette-ci-api",
-                      "repo-branch": "master",
-                      "repo-revision": "ad8925fb46c540b662f61eb89049b27142124df8",
-                      "build-version": "0.0.228-beta",
-                      "build-status": "succeeded",
-                      "build-progress": 100,
-                      "labels": [
-                          {
-                              "key": "app",
-                              "value": "estafette-ci-api"
-                          },
-                          {
-                              "key": "team",
-                              "value": "estafette"
-                          },
-                          {
-                              "key": "language",
-                              "value": "golang"
-                          }
-                      ],
-                  }
+            "data": {
+                "type": "builds",
+                "id": "354276415673794562",
+                "attributes": {
+                "build-status": "succeeded",
+                "build-version": "0.0.60",
+                "inserted-at": 1528186981,
+                "labels": "",
+                "manifest": "builder:\n  track: dev\n\nlabels:\n  app: estafette-ci-web\n  team: estafette-team\n  language: node\n\nversion:\n  semver:\n    major: 0\n    minor: 0\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: master\n\nenv:\n  GCR_PROJECT: estafette.secret(3tHZ9bT_wEz5K8Cx.kZyD5m8L-7-zpvzZ4bkeyUdKLiGfRx_ttoY=)\n\npipelines:\n  set-pending-build-status:\n    image: extensions/github-status:dev\n    status: pending\n    when:\n      server == 'estafette'\n\n  build:\n    image: node:10.1.0-alpine\n    commands:\n    - npm install\n    - npm install -g ember-cli@3.1.3\n    - ember build --environment production\n\n  bake:\n    image: docker:18.03.1-ce\n    commands:\n    - mkdir publish\n    - cp -r dist publish\n    - cp nginx.vh.default.conf ./publish\n    - cp Dockerfile ./publish\n    - docker build -f ./publish/Dockerfile -t estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION} ./publish\n\n  push-to-docker-hub:\n    image: docker:18.03.1-ce\n    env:\n      DOCKER_HUB_USERNAME: estafette.secret(mhN5HP5qcUkpSp4m.s9UnvG027LhQjT-bvvyjYcLKtyd_-xY1Cw==)\n      DOCKER_HUB_PASSWORD: estafette.secret(_oi7CDX50U8qjQSS.U3dzq3cw3J-_-hODYbNtOEDWgeUGzgXk2J0T-WMOmkil56tg)\n    commands:\n    - docker login --username=${DOCKER_HUB_USERNAME} --password=\"${DOCKER_HUB_PASSWORD}\"\n    - docker push estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION}\n    when:\n      status == 'succeeded' &&\n      branch == 'master' &&\n      server == 'gocd'\n\n  set-build-status:\n    image: extensions/github-status:dev\n    when:\n      server == 'estafette'\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    webhook: estafette.secret(VQhyeydGURZSFLmh.zxAW1ZVhI7JqLgr9-K7_YuzSFWAasNFRIHAm9OXj2RK_Wa-FWXt9LCCJuD6K6jz_SYpbEhiBWcjd0VkD23AazyLmz3EsImi2C1AJ82ltxuMmN93rPZbdP3kT5vwa)\n    name: ${ESTAFETTE_LABEL_APP}\n    channels:\n    - '#build-status'\n    when:\n      status == 'failed'",
+                "repo-branch": "master",
+                "repo-name": "estafette-ci-web",
+                "repo-owner": "estafette",
+                "repo-revision": "34c96df503e8c62e70fe1b9cedb7bec54aa92cda",
+                "repo-source": "github.com",
+                "updated-at": 1528187094
+                }
                 }
             };
           });

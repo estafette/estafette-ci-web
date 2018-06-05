@@ -14,6 +14,8 @@ Router.map(function() {
   this.route('pipeline-statistics', { path: 'pipelines/:repoSource/:repoOwner/:repoName/statistics'});
   this.route('pipeline-releases', { path: 'pipelines/:repoSource/:repoOwner/:repoName/releases'});
   this.route('pipeline-build-details', { path: 'pipelines/:repoSource/:repoOwner/:repoName/builds/:repoRevision'});
+  this.route('pipeline-build-logs', { path: 'pipelines/:repoSource/:repoOwner/:repoName/builds/:repoRevision/logs'});
+  this.route('pipeline-build-manifest', { path: 'pipelines/:repoSource/:repoOwner/:repoName/builds/:repoRevision/manifest'});
 });
 
 export default Router;

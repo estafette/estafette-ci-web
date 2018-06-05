@@ -10,4 +10,5 @@ export default DS.Model.extend({
     buildStatus: DS.attr(),
     buildProgress: DS.attr(),
     labels: DS.attr(),
+    manifest: DS.attr(),
 });
