@@ -83,10 +83,12 @@
   </div>
 {{/each}}
 
-
 <div class="card mt-3">
   <div class="card-header">
       <div class="row text-center">
+        <div class="col-1 text-center">
+          <span class="badge {{build-step-class log.totalStatus}}">{{log.totalStatus}}</span>
+        </div>
         <div class="col">
         </div>
         <div class="col-1 text-right">

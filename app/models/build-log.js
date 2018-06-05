@@ -27,4 +27,13 @@ export default DS.Model.extend({
             return acc + (step.duration ? step.duration : 0)
         }, 0);
     }),
+
+    totalStatus: computed('steps', function() {
+        return this.get('steps').reduce((acc, step) => {
+            if (acc === "FAILED" || step.status === "FAILED") {
+                return "FAILED"
+            }
+            return "SUCCEEDED";
+        }, "SUCCEEDED");
+    }),
 });
