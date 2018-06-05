@@ -1,5 +1,7 @@
 <div class="accordion m-3" id="accordionExample">
 
+{{#if log}}
+
   <div class="card mb-3">
     <div class="card-header">
         <div class="row text-center">
@@ -109,5 +111,9 @@
       </div>
   </div>
 </div>
+
+{{else}}
+Sorry, no logs!
+{{/if}}
 
 </div>
