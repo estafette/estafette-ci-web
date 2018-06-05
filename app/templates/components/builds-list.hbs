@@ -11,7 +11,7 @@
 <tbody>
 
 {{#each builds as |build|}}
-    {{#link-to "pipeline-build-details" build.repoSource build.repoOwner build.repoName build.repoRevision tagName="tr"}}
+    {{#link-to "pipeline-build-details" build.repoSource build.repoOwner build.repoName build.repoRevision tagName="tr" class="clickable"}}
     <td>{{build.buildVersion}}</td>
     <td>{{build.repoBranch}}</td>
     <td>{{git-hash build.repoRevision}}</td>

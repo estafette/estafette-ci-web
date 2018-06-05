@@ -14,7 +14,7 @@
 <tbody>
 
 {{#each pipelines as |pipeline|}}
-    {{#link-to "pipeline-builds" pipeline.repoSource pipeline.repoOwner pipeline.repoName tagName="tr"}}
+    {{#link-to "pipeline-builds" pipeline.repoSource pipeline.repoOwner pipeline.repoName tagName="tr" class="clickable"}}
     <td scope="row">
         <span class="text-muted">{{pipeline.repoSource}}/{{pipeline.repoOwner}}/</span><strong>{{pipeline.repoName}}</strong>
     </td>

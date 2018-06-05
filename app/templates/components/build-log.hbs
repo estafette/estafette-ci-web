@@ -30,7 +30,7 @@
 
 {{#each log.steps as |step index|}}
   <div class="card">
-    <div class="card-header" id="heading-{{index}}" data-toggle="collapse" data-target="#collapse-{{index}}" aria-expanded="{{expanded-by-status step.status}}" aria-controls="collapse-{{index}}">
+    <div class="card-header clickable" id="heading-{{index}}" data-toggle="collapse" data-target="#collapse-{{index}}" aria-expanded="{{expanded-by-status step.status}}" aria-controls="collapse-{{index}}">
         <div class="row">
           <div class="col-1 text-center">
             <span class="badge {{build-step-class step.status}}">{{step.status}}</span>
