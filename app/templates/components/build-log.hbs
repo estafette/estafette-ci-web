@@ -12,13 +12,13 @@
           <div class="col-2">
             <strong>Image</strong>
           </div>
-          <div class="col-1 text-right">
+          <div class="col-1 text-right d-none d-xl-flex">
             <strong>Image size</strong>
           </div>
-          <div class="col-1 text-right">
+          <div class="col-1 text-right d-none d-xl-flex">
             <strong>Pull time</strong>
           </div>
-          <div class="col-1 text-right">
+          <div class="col-1 text-right d-none d-xl-flex">
             <strong>Execution time</strong>
           </div>
           <div class="col-1 text-right">
@@ -46,7 +46,7 @@
           <div class="col-2">
             {{step.image.name}}:{{step.image.tag}} 
           </div>
-          <div class="col-1 text-right">
+          <div class="col-1 text-right d-none d-xl-flex">
             {{#if (is-step-executed step.status)}}
               {{#if step.image.imageSize}}
               {{pretty-print-bytes step.image.imageSize}}
@@ -55,7 +55,7 @@
               {{/if}}
             {{/if}}
           </div>
-          <div class="col-1 text-right">
+          <div class="col-1 text-right d-none d-xl-flex">
             {{#if (is-step-executed step.status)}}
               {{#if step.image.imageSize}}
               {{pretty-print-timespan step.image.pullDuration}}
@@ -64,7 +64,7 @@
               {{/if}}
             {{/if}}
           </div>
-          <div class="col-1 text-right">
+          <div class="col-1 text-right d-none d-xl-flex">
             {{pretty-print-timespan step.duration}}
           </div>
           <div class="col-1 text-right">
@@ -94,13 +94,13 @@
         </div>
         <div class="col">
         </div>
-        <div class="col-1 text-right">
+        <div class="col-1 text-right d-none d-xl-flex">
           <strong>{{pretty-print-bytes log.totalImageSize}}</strong>
         </div>
-        <div class="col-1 text-right">
+        <div class="col-1 text-right d-none d-xl-flex">
           <strong>{{pretty-print-timespan log.totalPullDuration}}</strong>
         </div>
-        <div class="col-1 text-right">
+        <div class="col-1 text-right d-none d-xl-flex">
           <strong>{{pretty-print-timespan log.totalDuration}}</strong>
         </div>
         <div class="col-1 text-right">
