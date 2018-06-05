@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-    beforeModel(/* transition */) {
-        this.transitionTo('pipeline-build-logs'); // Implicitly aborts the on-going transition.
-    }});
+    afterModel(model, transition) {
+        this.replaceWith('pipeline-build-logs', model.repoSource ,model.repoOwner, model.repoName, model.repoRevision); // Implicitly aborts the on-going transition.
+    },
+});
