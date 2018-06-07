@@ -8,6 +8,9 @@ export default Route.extend({
         size: {
             refreshModel: true
         },
+        status: {
+            refreshModel: true
+        },
     },
 
     model(params) {
@@ -30,6 +33,9 @@ export default Route.extend({
             pipelines: this.get('store').query('pipeline', { page: {
                 number: params.page,
                 size: params.size
+              },
+              filter: {
+                  status: params.status
               }
             }),
             pagination: {
