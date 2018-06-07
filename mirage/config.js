@@ -714,7 +714,138 @@ export default function() {
           ]
         };
       });
+
+      this.get('/pipelines/:repoSource/:repoOwner/:repoName', () => {
+        return {
+          data: {
+                "type": "builds",
+                "id": "354360051318030337",
+                "attributes": {
+                "build-status": "succeeded",
+                "build-version": "0.0.75",
+                "inserted-at": 1528212505,
+                "labels": [
+                    {
+                        "key": "app",
+                        "value": "estafette-ci-api"
+                    },
+                    {
+                        "key": "team",
+                        "value": "estafette"
+                    },
+                    {
+                        "key": "language",
+                        "value": "golang"
+                    }
+                ],
+                "manifest": "builder:\n  track: dev\n\nlabels:\n  app: estafette-ci-api\n  team: estafette-team\n  language: golang\n\nversion:\n  semver:\n    major: 0\n    minor: 0\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: master\n\npipelines:\n  set-pending-build-status:\n    image: extensions/github-status:dev\n    status: pending\n    when:\n      server == 'estafette'\n\n  build:\n    image: golang:1.10.2-alpine3.7\n    workDir: /go/src/github.com/estafette/${ESTAFETTE_LABEL_APP}\n    commands:\n    - go test `go list ./... | grep -v /vendor/`\n    - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags \"-X main.version=${ESTAFETTE_BUILD_VERSION} -X main.revision=${ESTAFETTE_GIT_REVISION} -X main.branch=${ESTAFETTE_GIT_BRANCH} -X main.buildDate=${ESTAFETTE_BUILD_DATETIME}\" -o ./publish/${ESTAFETTE_LABEL_APP} .\n\n  bake:\n    image: docker:18.03.1-ce\n    commands:\n    - cp Dockerfile ./publish\n    - cp /etc/ssl/certs/ca-certificates.crt ./publish\n    - cp -r ./cockroach/migrations ./publish/\n    - docker build -t estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION} ./publish\n\n  push-to-docker-hub:\n    image: docker:18.03.1-ce\n    env:\n      DOCKER_HUB_USERNAME: estafette.secret(IXFQ9igip3IH0KVY.N6RTT4RB9dz15UGKHQUBctAf5QNI8G8QYg==)\n      DOCKER_HUB_PASSWORD: estafette.secret(zhN34B3iKmWis2t-.guUQYqZPjXTjaWK4G6ZU4n-DYyOZvigT2tdRYEP3zQddr4HA)\n    commands:\n    - docker login --username=${DOCKER_HUB_USERNAME} --password=\"${DOCKER_HUB_PASSWORD}\"\n    - docker push estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION}\n    when:\n      status == 'succeeded' &&\n      branch == 'master' &&\n      server == 'gocd'\n\n  set-build-status:\n    image: extensions/github-status:dev\n    when:\n      server == 'estafette'\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    webhook: estafette.secret(08UOJSF6Fvdz9u2X.lzsCArDpf97g7i2Vx-3UTyWsxCB81e05jthdY_AI3OffXBA-NurQePraQqzNf-9IhdoDvr1Akg0yom4S2kHjvWLhRC8Y7xgheK8MR6qPu2oi3QvlYbnNtTTOOjMi)\n    name: ${ESTAFETTE_LABEL_APP}\n    channels:\n    - '#build-status'\n    when:\n      status == 'failed'",
+                "repo-branch": "master",
+                "repo-name": "estafette-ci-api",
+                "repo-owner": "estafette",
+                "repo-revision": "795549a1b02eb50e41d34a13edbcf4253a95b7a1",
+                "repo-source": "github.com",
+                "updated-at": 1528212590
+                }
+            }
+        };
+    });
     
+      this.get('/pipelines/:repoSource/:repoOwner/:repoName/builds', () => {
+        return {
+          data: [
+            {
+                "type": "builds",
+                "id": "354360051318030337",
+                "attributes": {
+                "build-status": "succeeded",
+                "build-version": "0.0.75",
+                "inserted-at": 1528212505,
+                "labels": [
+                    {
+                        "key": "app",
+                        "value": "estafette-ci-api"
+                    },
+                    {
+                        "key": "team",
+                        "value": "estafette"
+                    },
+                    {
+                        "key": "language",
+                        "value": "golang"
+                    }
+                ],
+                "manifest": "builder:\n  track: dev\n\nlabels:\n  app: estafette-ci-api\n  team: estafette-team\n  language: golang\n\nversion:\n  semver:\n    major: 0\n    minor: 0\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: master\n\npipelines:\n  set-pending-build-status:\n    image: extensions/github-status:dev\n    status: pending\n    when:\n      server == 'estafette'\n\n  build:\n    image: golang:1.10.2-alpine3.7\n    workDir: /go/src/github.com/estafette/${ESTAFETTE_LABEL_APP}\n    commands:\n    - go test `go list ./... | grep -v /vendor/`\n    - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags \"-X main.version=${ESTAFETTE_BUILD_VERSION} -X main.revision=${ESTAFETTE_GIT_REVISION} -X main.branch=${ESTAFETTE_GIT_BRANCH} -X main.buildDate=${ESTAFETTE_BUILD_DATETIME}\" -o ./publish/${ESTAFETTE_LABEL_APP} .\n\n  bake:\n    image: docker:18.03.1-ce\n    commands:\n    - cp Dockerfile ./publish\n    - cp /etc/ssl/certs/ca-certificates.crt ./publish\n    - cp -r ./cockroach/migrations ./publish/\n    - docker build -t estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION} ./publish\n\n  push-to-docker-hub:\n    image: docker:18.03.1-ce\n    env:\n      DOCKER_HUB_USERNAME: estafette.secret(IXFQ9igip3IH0KVY.N6RTT4RB9dz15UGKHQUBctAf5QNI8G8QYg==)\n      DOCKER_HUB_PASSWORD: estafette.secret(zhN34B3iKmWis2t-.guUQYqZPjXTjaWK4G6ZU4n-DYyOZvigT2tdRYEP3zQddr4HA)\n    commands:\n    - docker login --username=${DOCKER_HUB_USERNAME} --password=\"${DOCKER_HUB_PASSWORD}\"\n    - docker push estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION}\n    when:\n      status == 'succeeded' &&\n      branch == 'master' &&\n      server == 'gocd'\n\n  set-build-status:\n    image: extensions/github-status:dev\n    when:\n      server == 'estafette'\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    webhook: estafette.secret(08UOJSF6Fvdz9u2X.lzsCArDpf97g7i2Vx-3UTyWsxCB81e05jthdY_AI3OffXBA-NurQePraQqzNf-9IhdoDvr1Akg0yom4S2kHjvWLhRC8Y7xgheK8MR6qPu2oi3QvlYbnNtTTOOjMi)\n    name: ${ESTAFETTE_LABEL_APP}\n    channels:\n    - '#build-status'\n    when:\n      status == 'failed'",
+                "repo-branch": "master",
+                "repo-name": "estafette-ci-api",
+                "repo-owner": "estafette",
+                "repo-revision": "795549a1b02eb50e41d34a13edbcf4253a95b7a1",
+                "repo-source": "github.com",
+                "updated-at": 1528212590
+                }
+            },
+            {
+                "type": "builds",
+                "id": "354360051318030337",
+                "attributes": {
+                "build-status": "succeeded",
+                "build-version": "0.0.74",
+                "inserted-at": 1528212505,
+                "labels": [
+                    {
+                        "key": "app",
+                        "value": "estafette-ci-api"
+                    },
+                    {
+                        "key": "team",
+                        "value": "estafette"
+                    },
+                    {
+                        "key": "language",
+                        "value": "golang"
+                    }
+                ],
+                "manifest": "builder:\n  track: dev\n\nlabels:\n  app: estafette-ci-api\n  team: estafette-team\n  language: golang\n\nversion:\n  semver:\n    major: 0\n    minor: 0\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: master\n\npipelines:\n  set-pending-build-status:\n    image: extensions/github-status:dev\n    status: pending\n    when:\n      server == 'estafette'\n\n  build:\n    image: golang:1.10.2-alpine3.7\n    workDir: /go/src/github.com/estafette/${ESTAFETTE_LABEL_APP}\n    commands:\n    - go test `go list ./... | grep -v /vendor/`\n    - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags \"-X main.version=${ESTAFETTE_BUILD_VERSION} -X main.revision=${ESTAFETTE_GIT_REVISION} -X main.branch=${ESTAFETTE_GIT_BRANCH} -X main.buildDate=${ESTAFETTE_BUILD_DATETIME}\" -o ./publish/${ESTAFETTE_LABEL_APP} .\n\n  bake:\n    image: docker:18.03.1-ce\n    commands:\n    - cp Dockerfile ./publish\n    - cp /etc/ssl/certs/ca-certificates.crt ./publish\n    - cp -r ./cockroach/migrations ./publish/\n    - docker build -t estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION} ./publish\n\n  push-to-docker-hub:\n    image: docker:18.03.1-ce\n    env:\n      DOCKER_HUB_USERNAME: estafette.secret(IXFQ9igip3IH0KVY.N6RTT4RB9dz15UGKHQUBctAf5QNI8G8QYg==)\n      DOCKER_HUB_PASSWORD: estafette.secret(zhN34B3iKmWis2t-.guUQYqZPjXTjaWK4G6ZU4n-DYyOZvigT2tdRYEP3zQddr4HA)\n    commands:\n    - docker login --username=${DOCKER_HUB_USERNAME} --password=\"${DOCKER_HUB_PASSWORD}\"\n    - docker push estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION}\n    when:\n      status == 'succeeded' &&\n      branch == 'master' &&\n      server == 'gocd'\n\n  set-build-status:\n    image: extensions/github-status:dev\n    when:\n      server == 'estafette'\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    webhook: estafette.secret(08UOJSF6Fvdz9u2X.lzsCArDpf97g7i2Vx-3UTyWsxCB81e05jthdY_AI3OffXBA-NurQePraQqzNf-9IhdoDvr1Akg0yom4S2kHjvWLhRC8Y7xgheK8MR6qPu2oi3QvlYbnNtTTOOjMi)\n    name: ${ESTAFETTE_LABEL_APP}\n    channels:\n    - '#build-status'\n    when:\n      status == 'failed'",
+                "repo-branch": "master",
+                "repo-name": "estafette-ci-api",
+                "repo-owner": "estafette",
+                "repo-revision": "795549a1b02eb50e41d34a13edbcf4253a95b7a1",
+                "repo-source": "github.com",
+                "updated-at": 1528212590
+                }
+            },
+            {
+                "type": "builds",
+                "id": "354360051318030337",
+                "attributes": {
+                "build-status": "succeeded",
+                "build-version": "0.0.73",
+                "inserted-at": 1528212505,
+                "labels": [
+                    {
+                        "key": "app",
+                        "value": "estafette-ci-api"
+                    },
+                    {
+                        "key": "team",
+                        "value": "estafette"
+                    },
+                    {
+                        "key": "language",
+                        "value": "golang"
+                    }
+                ],
+                "manifest": "builder:\n  track: dev\n\nlabels:\n  app: estafette-ci-api\n  team: estafette-team\n  language: golang\n\nversion:\n  semver:\n    major: 0\n    minor: 0\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: master\n\npipelines:\n  set-pending-build-status:\n    image: extensions/github-status:dev\n    status: pending\n    when:\n      server == 'estafette'\n\n  build:\n    image: golang:1.10.2-alpine3.7\n    workDir: /go/src/github.com/estafette/${ESTAFETTE_LABEL_APP}\n    commands:\n    - go test `go list ./... | grep -v /vendor/`\n    - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags \"-X main.version=${ESTAFETTE_BUILD_VERSION} -X main.revision=${ESTAFETTE_GIT_REVISION} -X main.branch=${ESTAFETTE_GIT_BRANCH} -X main.buildDate=${ESTAFETTE_BUILD_DATETIME}\" -o ./publish/${ESTAFETTE_LABEL_APP} .\n\n  bake:\n    image: docker:18.03.1-ce\n    commands:\n    - cp Dockerfile ./publish\n    - cp /etc/ssl/certs/ca-certificates.crt ./publish\n    - cp -r ./cockroach/migrations ./publish/\n    - docker build -t estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION} ./publish\n\n  push-to-docker-hub:\n    image: docker:18.03.1-ce\n    env:\n      DOCKER_HUB_USERNAME: estafette.secret(IXFQ9igip3IH0KVY.N6RTT4RB9dz15UGKHQUBctAf5QNI8G8QYg==)\n      DOCKER_HUB_PASSWORD: estafette.secret(zhN34B3iKmWis2t-.guUQYqZPjXTjaWK4G6ZU4n-DYyOZvigT2tdRYEP3zQddr4HA)\n    commands:\n    - docker login --username=${DOCKER_HUB_USERNAME} --password=\"${DOCKER_HUB_PASSWORD}\"\n    - docker push estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION}\n    when:\n      status == 'succeeded' &&\n      branch == 'master' &&\n      server == 'gocd'\n\n  set-build-status:\n    image: extensions/github-status:dev\n    when:\n      server == 'estafette'\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    webhook: estafette.secret(08UOJSF6Fvdz9u2X.lzsCArDpf97g7i2Vx-3UTyWsxCB81e05jthdY_AI3OffXBA-NurQePraQqzNf-9IhdoDvr1Akg0yom4S2kHjvWLhRC8Y7xgheK8MR6qPu2oi3QvlYbnNtTTOOjMi)\n    name: ${ESTAFETTE_LABEL_APP}\n    channels:\n    - '#build-status'\n    when:\n      status == 'failed'",
+                "repo-branch": "master",
+                "repo-name": "estafette-ci-api",
+                "repo-owner": "estafette",
+                "repo-revision": "795549a1b02eb50e41d34a13edbcf4253a95b7a1",
+                "repo-source": "github.com",
+                "updated-at": 1528212590
+                }
+            },            
+            ]
+        };
+      });                
 
       this.get('/pipelines/:repoSource/:repoOwner/:repoName/builds/:repoRevision', () => {
         return {

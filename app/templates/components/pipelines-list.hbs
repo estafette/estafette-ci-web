@@ -7,6 +7,7 @@
     <th scope="col">Branch</th>
     <th scope="col">Revision</th>
     <th scope="col">Status</th>
+    <th scope="col">Built at</th>
     <th scope="col" class="d-none d-xl-table-cell">Labels</th>
     <th scope="col">Releases</th>
     </tr>
@@ -26,6 +27,7 @@
         <div class="progress-bar bg-{{transform-build-status-to-css pipeline.buildStatus}}" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
     </td>
+    <td>{{moment-calendar (unix pipeline.insertedAt) locale="nl"}}</td>
     <td class="d-none d-xl-table-cell">
         {{#each pipeline.labels as |label|}}
         <button type="button" class="btn btn-light btn-sm">{{label.key}}={{label.value}}</button>

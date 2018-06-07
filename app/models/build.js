@@ -11,4 +11,5 @@ export default DS.Model.extend({
     buildProgress: DS.attr(),
     labels: DS.attr(),
     manifest: DS.attr(),
+    insertedAt: DS.attr(),
 });
