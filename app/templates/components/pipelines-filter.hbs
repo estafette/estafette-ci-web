@@ -1,9 +1,9 @@
 <div class="m-3 justify-content-center">
-<button type="button" class="btn btn-outline-primary active">All</button>
-<button type="button" class="btn btn-outline-success">Succeeded</button>
-<button type="button" class="btn btn-outline-danger">Failed</button>
-<button type="button" class="btn btn-outline-warning">Running</button>
-{{#each pinnedLabels key="id" as |label|}}
+{{#link-to "pipelines" (query-params status="") class="btn btn-outline-primary"}}All{{/link-to}}
+{{#link-to "pipelines" (query-params status="succeeded") class="btn btn-outline-success"}}Succeeded{{/link-to}}
+{{#link-to "pipelines" (query-params status="failed") class="btn btn-outline-danger"}}Failed{{/link-to}}
+{{#link-to "pipelines" (query-params status="running") class="btn btn-outline-warning"}}Running{{/link-to}}
+{{!-- {{#each pinnedLabels key="id" as |label|}}
 <button type="button" class="btn btn-outline-secondary">{{label.key}}={{label.value}}</button>
-{{/each}}
+{{/each}} --}}
 </div>
