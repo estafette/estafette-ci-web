@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import { later } from '@ember/runloop';
+// import { later } from '@ember/runloop';
 
 export default Route.extend({
     queryParams: {
@@ -51,15 +51,15 @@ export default Route.extend({
         };
     },
 
-    afterModel() {
-        var self = this;
-        var max = 37500;
-        var min = 22500;
+    // afterModel() {
+    //     var self = this;
+    //     var max = 37500;
+    //     var min = 22500;
 
-        var intervalWithJitter = Math.floor(Math.random() * (max - min + 1) + min);
+    //     var intervalWithJitter = Math.floor(Math.random() * (max - min + 1) + min);
 
-        later(function(){
-            self.refresh();
-        }, intervalWithJitter);
-    }
+    //     later(function(){
+    //         self.refresh();
+    //     }, intervalWithJitter);
+    // }
 });
