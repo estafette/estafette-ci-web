@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { later } from '@ember/runloop';
 
 export default Route.extend({
     queryParams: {
@@ -48,5 +49,17 @@ export default Route.extend({
                 totalPages: 10,
             },
         };
+    },
+
+    afterModel() {
+        var self = this;
+        var max = 37500;
+        var min = 22500;
+
+        var intervalWithJitter = Math.floor(Math.random() * (max - min + 1) + min);
+
+        later(function(){
+            self.refresh();
+        }, intervalWithJitter);
     }
 });
