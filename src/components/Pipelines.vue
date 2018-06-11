@@ -15,10 +15,11 @@
         </thead>
         <tbody>
 
-        <tr v-for="pipeline in pipelines">
-            <!-- {{#link-to "pipeline-builds" pipeline.repoSource pipeline.repoOwner pipeline.repoName tagName="tr" class="clickable"}} -->
+        <tr v-for="pipeline in pipelines" v-bind:key="pipeline.id">
             <td scope="row">
-                <span class="text-muted d-none d-xl-inline">{{pipeline.repoSource}}/{{pipeline.repoOwner}}/</span><strong>{{pipeline.repoName}}</strong>
+                <router-link :to="{ name: 'PipelineBuilds', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName }}">
+                    <span class="text-muted d-none d-xl-inline">{{pipeline.repoSource}}/{{pipeline.repoOwner}}/</span><strong>{{pipeline.repoName}}</strong>
+                </router-link>
             </td>
             <td>{{pipeline.buildVersion}}</td>
             <td>{{pipeline.repoBranch}}</td>
@@ -30,14 +31,13 @@
             </td>
             <td>{{pipeline.insertedAt}}</td>
             <td class="d-none d-xl-table-cell">
-                <button type="button" class="btn btn-light btn-sm" v-for="label in pipeline.labels">{{label.key}}={{label.value}}</button>
+                <button type="button" class="btn btn-light btn-sm" v-for="label in pipeline.labels" v-bind:key="label.key">{{label.key}}={{label.value}}</button>
             </td>
             <td>
-                <button type="button" class="btn btn-light btn-sm" v-for="targetVersion in pipeline.targetVersions">
+                <button type="button" class="btn btn-light btn-sm" v-for="targetVersion in pipeline.targetVersions" v-bind:key="targetVersion.target.name">
                     {{targetVersion.target.name}} <span class="badge">{{targetVersion.buildVersion}}</span>
                 </button>
             </td>
-            <!-- {{/link-to}} -->
         </tr>
         </tbody>
         </table>
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 
 export default {
   name: 'Pipelines',
@@ -56,15 +56,15 @@ export default {
     }
   },
 
-  created() {
+  created () {
     axios.get('/api/pipelines')
-    .then(response => {
-      this.pipelines = response.data
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
-  }  
+      .then(response => {
+        this.pipelines = response.data
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+  }
 }
 </script>
 
