@@ -1,0 +1,73 @@
+<template>
+    <div class="m-3">
+        <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Pipeline</th>
+            <th scope="col">Version</th>
+            <th scope="col">Branch</th>
+            <th scope="col">Revision</th>
+            <th scope="col">Status</th>
+            <th scope="col">Built at</th>
+            <th scope="col" class="d-none d-xl-table-cell">Labels</th>
+            <th scope="col">Releases</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        <tr v-for="pipeline in pipelines">
+            <!-- {{#link-to "pipeline-builds" pipeline.repoSource pipeline.repoOwner pipeline.repoName tagName="tr" class="clickable"}} -->
+            <td scope="row">
+                <span class="text-muted d-none d-xl-inline">{{pipeline.repoSource}}/{{pipeline.repoOwner}}/</span><strong>{{pipeline.repoName}}</strong>
+            </td>
+            <td>{{pipeline.buildVersion}}</td>
+            <td>{{pipeline.repoBranch}}</td>
+            <td>{{pipeline.repoRevision}}</td>
+            <td class="align-middle">
+                <div class="progress">
+                <!-- <div class="progress-bar bg-{{transform-build-status-to-css pipeline.buildStatus}}" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div> -->
+                </div>
+            </td>
+            <td>{{pipeline.insertedAt}}</td>
+            <td class="d-none d-xl-table-cell">
+                <button type="button" class="btn btn-light btn-sm" v-for="label in pipeline.labels">{{label.key}}={{label.value}}</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-light btn-sm" v-for="targetVersion in pipeline.targetVersions">
+                    {{targetVersion.target.name}} <span class="badge">{{targetVersion.buildVersion}}</span>
+                </button>
+            </td>
+            <!-- {{/link-to}} -->
+        </tr>
+        </tbody>
+        </table>
+    </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  name: 'Pipelines',
+  data: function () {
+    return {
+      pipelines: [],
+      errors: []
+    }
+  },
+
+  created() {
+    axios.get('/api/pipelines')
+    .then(response => {
+      this.pipelines = response.data
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
+  }  
+}
+</script>
+
+<style>
+
+</style>
