@@ -1,7 +1,7 @@
 <template>
   <div class="m-3 justify-content-center">
-    <router-link :to="{ name: 'Targets', query: { }}" exact active-class="active" class="btn btn-outline-primary">All</router-link>
-    <router-link v-for="type in types" v-bind:key="type" :to="{ name: 'Targets', query: { type: type }}" exact active-class="active" class="btn btn-outline-primary mr-1">{{ type }}</router-link>
+    <router-link :to="{ name: 'Targets', query: { }}" exact class="btn btn-outline-primary">All</router-link>
+    <router-link v-for="type in types" v-bind:key="type" :to="{ name: 'Targets', query: { type: type }}" exact class="btn btn-outline-primary mr-1">{{ type }}</router-link>
   </div>
 </template>
 

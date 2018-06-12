@@ -21,13 +21,13 @@
             </td>
             <td>{{pipeline.buildVersion}}</td>
             <td>{{pipeline.repoBranch}}</td>
-            <td>{{pipeline.repoRevision}}</td>
+            <td>{{pipeline.repoRevision | git-hash}}</td>
             <td class="align-middle">
                 <div class="progress">
-                <!-- <div class="progress-bar bg-{{transform-build-status-to-css pipeline.buildStatus}}" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div> -->
+                    <div class="progress-bar" :class="pipeline.buildStatus | bgClass" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </td>
-            <td>{{pipeline.insertedAt}}</td>
+            <td>{{pipeline.insertedAt | moment("calendar")}}</td>
             <td class="d-none d-xl-table-cell">
                 <button type="button" class="btn btn-light btn-sm mr-1" v-for="label in pipeline.labels" v-bind:key="label.key">{{label.key}}={{label.value}}</button>
             </td>
@@ -62,6 +62,25 @@ export default {
       .catch(e => {
         this.errors.push(e)
       })
+  },
+
+  filters: {
+    bgClass: function (value) {
+      if (!value) {
+        return 'bg-light'
+      }
+      value = value.toString()
+      if (value === 'succeeded') {
+        return 'bg-success'
+      }
+      if (value === 'running') {
+        return 'bg-warning'
+      }
+      if (value === 'failed') {
+        return 'bg-danger'
+      }
+      return 'bg-light'
+    }
   }
 }
 </script>

@@ -40,7 +40,26 @@ requireComponent.keys().forEach(fileName => {
   )
 })
 
+// filter to trim a git commit revision to 6 chars
+Vue.filter('git-hash', function (value) {
+  if (!value) {
+    return ''
+  }
+  value = value.toString()
+  if (value.length <= 6) {
+    return value
+  }
+  return value.substring(0, 6)
+})
+
 Vue.config.productionTip = false
+
+// use vue-moment for rendering timestamps
+const moment = require('moment')
+require('moment/locale/en-il')
+Vue.use(require('vue-moment'), {
+  moment
+})
 
 /* eslint-disable no-new */
 new Vue({
