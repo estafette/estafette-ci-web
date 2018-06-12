@@ -7,7 +7,6 @@
 
 <script>
 export default {
-  name: 'Targets',
   data: function () {
     return {
     }

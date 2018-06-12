@@ -380,7 +380,7 @@
        "repoBranch":"master",
        "repoRevision":"3313c11be983386a53a55a4509314f7d0819679f",
        "buildVersion":"0.0.5",
-       "buildStatus":"succeeded",
+       "buildStatus":"running",
        "labels": [
             {
                 "key": "app",
@@ -636,7 +636,7 @@
        "repoBranch":"master",
        "repoRevision":"689ed48a83ef753b58dfeda61ea8a4679878b5f6",
        "buildVersion":"1.0.14",
-       "buildStatus":"succeeded",
+       "buildStatus":"failed",
        "labels": [
             {
                 "key": "app",

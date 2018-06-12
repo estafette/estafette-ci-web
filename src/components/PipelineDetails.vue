@@ -4,12 +4,6 @@
 
 <script>
 export default {
-  name: 'PipelineDetails',
-  data: function () {
-    return {
-      statistics: [],
-      errors: []
-    }
-  }
+  props: ['repoSource', 'repoOwner', 'repoName']
 }
 </script>

@@ -7,7 +7,6 @@
 
 <script>
 export default {
-  name: 'TargetsFilter',
   data: function () {
     return {
       types: [

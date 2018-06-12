@@ -4,7 +4,6 @@
 
 <script>
 export default {
-  name: 'PipelineBuilds',
   data: function () {
     return {
       statistics: [],

@@ -21,7 +21,6 @@
 
 <script>
 export default {
-  name: 'TargetsList',
   data: function () {
     return {
       targets: [
@@ -46,11 +45,11 @@ export default {
           type: 'NuGet Repository'
         },
         {
-          name: 'myget-org',
+          name: 'myget-org-nuget',
           type: 'NuGet Repository'
         },
         {
-          name: 'myget-org',
+          name: 'myget-org-maven',
           type: 'Maven Repository'
         },
         {

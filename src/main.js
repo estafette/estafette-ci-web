@@ -1,6 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './router'
 
@@ -53,6 +54,8 @@ Vue.filter('git-hash', function (value) {
 })
 
 Vue.config.productionTip = false
+
+Vue.use(BootstrapVue)
 
 // use vue-moment for rendering timestamps
 const moment = require('moment')

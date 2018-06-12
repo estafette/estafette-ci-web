@@ -46,7 +46,6 @@
 import axios from 'axios'
 
 export default {
-  name: 'PipelinesList',
   data: function () {
     return {
       pipelines: [],
@@ -84,7 +83,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

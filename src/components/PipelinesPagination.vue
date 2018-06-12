@@ -1,15 +1,14 @@
 <template>
-    <nav aria-label="Pipeline page navigation">
-        <ul class="pagination justify-content-center">
-            <router-link v-for="page in 10" :key="page" :to="{ query: { page: page }}" exact class="page-item" tag="li"><a class="page-link">{{page}}</a></router-link>
-        </ul>
-    </nav>
+    <b-pagination size="md" :total-rows="totalRows" v-model="currentPage" :per-page="20" class="justify-content-center"/>
 </template>
 
 <script>
 export default {
   data: function () {
-    return {}
+    return {
+      totalRows: 50,
+      currentPage: 1
+    }
   }
 }
 </script>

@@ -25,11 +25,13 @@ export default new Router({
     {
       path: '/pipelines',
       name: 'Pipelines',
-      component: Pipelines
+      component: Pipelines,
+      props: (route) => ({ query: route.query })
     },
     {
       path: '/pipelines/:repoSource/:repoOwner/:repoName',
       name: 'PipelineDetails',
+      props: true,
       component: PipelineDetails,
       redirect: { name: 'PipelineBuilds' },
       children: [

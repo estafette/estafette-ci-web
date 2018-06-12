@@ -8,16 +8,6 @@
 
 <script>
 export default {
-  name: 'Pipelines',
-  data: function () {
-    return {
-      pipelines: [],
-      errors: []
-    }
-  }
+  props: ['query']
 }
 </script>
-
-<style>
-
-</style>
