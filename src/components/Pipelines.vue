@@ -2,6 +2,7 @@
     <div>
         <pipelines-filter/>
         <pipelines-list/>
+        <pipelines-pagination/>
     </div>
 </template>
 

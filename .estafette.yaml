@@ -19,17 +19,17 @@ env:
 
 pipelines:
   restore:
-    image: node:10.1.0-alpine
+    image: node:10.4.0-alpine
     commands:
     - npm install
 
-  test:
-    image: node:10.1.0-alpine
+  unit-test:
+    image: node:10.4.0-alpine
     commands:
     - npm run unit
 
   build:
-    image: node:10.1.0-alpine
+    image: node:10.4.0-alpine
     commands:
     - npm run build
 
