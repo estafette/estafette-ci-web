@@ -42,7 +42,7 @@ requireComponent.keys().forEach(fileName => {
 })
 
 // filter to trim a git commit revision to 6 chars
-Vue.filter('git-hash', function (value) {
+Vue.filter('gitHash', function (value) {
   if (!value) {
     return ''
   }
@@ -51,6 +51,23 @@ Vue.filter('git-hash', function (value) {
     return value
   }
   return value.substring(0, 6)
+})
+
+Vue.filter('bgClass', function (value) {
+  if (!value) {
+    return 'bg-light'
+  }
+  value = value.toString()
+  if (value === 'succeeded') {
+    return 'bg-success'
+  }
+  if (value === 'running') {
+    return 'bg-warning'
+  }
+  if (value === 'failed') {
+    return 'bg-danger'
+  }
+  return 'bg-light'
 })
 
 Vue.config.productionTip = false

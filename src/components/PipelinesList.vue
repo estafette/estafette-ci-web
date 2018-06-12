@@ -21,7 +21,7 @@
             </td>
             <td>{{pipeline.buildVersion}}</td>
             <td>{{pipeline.repoBranch}}</td>
-            <td>{{pipeline.repoRevision | git-hash}}</td>
+            <td>{{pipeline.repoRevision | gitHash}}</td>
             <td class="align-middle">
                 <div class="progress">
                     <div class="progress-bar" :class="pipeline.buildStatus | bgClass" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -36,7 +36,7 @@
                     {{targetVersion.target.name}} <span class="badge">{{targetVersion.buildVersion}}</span>
                 </button>
             </td>
-        </router-link>
+          </router-link>
         </tbody>
         </table>
     </div>
@@ -61,25 +61,12 @@ export default {
       .catch(e => {
         this.errors.push(e)
       })
-  },
-
-  filters: {
-    bgClass: function (value) {
-      if (!value) {
-        return 'bg-light'
-      }
-      value = value.toString()
-      if (value === 'succeeded') {
-        return 'bg-success'
-      }
-      if (value === 'running') {
-        return 'bg-warning'
-      }
-      if (value === 'failed') {
-        return 'bg-danger'
-      }
-      return 'bg-light'
-    }
   }
 }
 </script>
+
+<style scoped>
+tbody tr {
+  cursor: pointer;
+}
+</style>

@@ -1,0 +1,37 @@
+{
+    "id":"355190264354078724",
+    "repoSource":"github.com",
+    "repoOwner":"estafette",
+    "repoName":"estafette-ci-web",
+    "repoBranch":"master",
+    "repoRevision":"abb6817a8bdee28c7121018e60c67a641756c5c3",
+    "buildVersion":"0.0.73",
+    "buildStatus":"succeeded",
+    "labels": [
+         {
+             "key": "app",
+             "value": "estafette-ci-web"
+         },
+         {
+             "key": "team",
+             "value": "estafette"
+         },
+         {
+             "key": "language",
+             "value": "nodejs"
+         }
+     ],
+     "targetVersions": [
+         {
+             "target": {
+                 "name": "tooling",
+                 "type": "Kubernetes Engine"
+             },
+             "buildVersion": "0.0.12",
+             "buildStatus": "succeeded"
+         }
+     ],
+    "manifest":"builder:\n  track: dev\n\nlabels:\n  app: estafette-ci-web\n  team: estafette-team\n  language: node\n\nversion:\n  semver:\n    major: 0\n    minor: 0\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: master\n\nenv:\n  GCR_PROJECT: estafette.secret(3tHZ9bT_wEz5K8Cx.kZyD5m8L-7-zpvzZ4bkeyUdKLiGfRx_ttoY=)\n\npipelines:\n  build:\n    image: node:10.1.0-alpine\n    commands:\n    - npm install\n    - npm install -g ember-cli@3.1.3\n    - ember build --environment production\n\n  bake:\n    image: docker:18.03.1-ce\n    commands:\n    - mkdir publish\n    - cp -r dist publish\n    - cp nginx.vh.default.conf ./publish\n    - cp Dockerfile ./publish\n    - docker build -f ./publish/Dockerfile -t estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION} ./publish\n\n  push-to-docker-hub:\n    image: docker:18.03.1-ce\n    env:\n      DOCKER_HUB_USERNAME: estafette.secret(mhN5HP5qcUkpSp4m.s9UnvG027LhQjT-bvvyjYcLKtyd_-xY1Cw==)\n      DOCKER_HUB_PASSWORD: estafette.secret(_oi7CDX50U8qjQSS.U3dzq3cw3J-_-hODYbNtOEDWgeUGzgXk2J0T-WMOmkil56tg)\n    commands:\n    - docker login --username=${DOCKER_HUB_USERNAME} --password=\"${DOCKER_HUB_PASSWORD}\"\n    - docker push estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION}\n    when:\n      status == 'succeeded' &&\n      branch == 'master' &&\n      server == 'gocd'\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    webhook: estafette.secret(VQhyeydGURZSFLmh.zxAW1ZVhI7JqLgr9-K7_YuzSFWAasNFRIHAm9OXj2RK_Wa-FWXt9LCCJuD6K6jz_SYpbEhiBWcjd0VkD23AazyLmz3EsImi2C1AJ82ltxuMmN93rPZbdP3kT5vwa)\n    name: ${ESTAFETTE_LABEL_APP}\n    channels:\n    - '#build-status'\n    when:\n      status == 'failed'",
+    "insertedAt":"2018-06-08T13:51:06.416458Z",
+    "updatedAt":"2018-06-08T13:53:10.695248Z"
+}

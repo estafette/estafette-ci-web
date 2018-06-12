@@ -8,6 +8,8 @@
 
 <script>
 export default {
-  props: ['query']
+  props: {
+    query: Object
+  }
 }
 </script>
