@@ -70,6 +70,41 @@ Vue.filter('bootstrapClass', function (value, prefix) {
   return prefix + '-light'
 })
 
+Vue.filter('formatDuration', function (value) {
+  if (!value) {
+    return ''
+  }
+
+  if (value <= 0) {
+    return ''
+  }
+
+  var hours = Math.floor(value / (3600 * Math.pow(10, 9)))
+  var remainderForMinutes = value % (3600 * Math.pow(10, 9))
+  var minutes = Math.floor(remainderForMinutes / (60 * Math.pow(10, 9)))
+  var remainderForSeconds = remainderForMinutes % (60 * Math.pow(10, 9))
+  var seconds = Math.floor(remainderForSeconds / Math.pow(10, 9))
+  var remainderForMilliseconds = remainderForSeconds % Math.pow(10, 9)
+
+  var deciSeconds = Math.floor(remainderForMilliseconds / Math.pow(10, 8))
+
+  var formattedString = ''
+
+  if (hours > 0) {
+    formattedString += `${hours}h`
+  }
+  if (minutes > 0 || hours > 0) {
+    formattedString += `${minutes}m`
+  }
+  if ((deciSeconds > 0 || seconds > 0) && minutes === 0 && hours === 0) {
+    formattedString += `${seconds}.${deciSeconds}s`
+  } else if (seconds > 0 || minutes > 0 || hours > 0) {
+    formattedString += `${seconds}s`
+  }
+
+  return formattedString
+})
+
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)

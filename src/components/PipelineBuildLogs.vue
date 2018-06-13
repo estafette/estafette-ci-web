@@ -69,7 +69,7 @@
             -->
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
-            {{step.duration}}
+            {{step.duration | formatDuration}}
           </div>
           <div class="col-1 text-right">
           <!--
@@ -100,7 +100,7 @@
             <strong>{{log.totalImageSize}}</strong>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
-            <strong>{{log.totalPullDuration}}</strong>
+            <strong>{{log.totalPullDuration | formatDuration}}</strong>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
             <strong>{{log.totalDuration}}</strong>
