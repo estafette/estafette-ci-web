@@ -35,7 +35,7 @@
     <div class="card-header clickable" :id="'heading-'+index" data-toggle="collapse" :data-target="'#collapse-'+index" :aria-expanded="step.status === 'failed'" :aria-controls="'collapse-'+index">
         <div class="row">
           <div class="col-1 text-center">
-            <span class="badge" :class="step.status | bgClass">{{step.status}}</span>
+            <span class="badge" :class="step.status | bootstrapClass('badge')">{{step.status}}</span>
           </div>
           <div class="col">
             <h4>
@@ -92,7 +92,7 @@
     <div class="card-header">
         <div class="row text-center">
           <div class="col-1 text-center">
-            <span class="badge" :class="log.totalStatus | bgClass">{{log.totalStatus}}</span>
+            <span class="badge" :class="log.totalStatus | bootstrapClass('badge')">{{log.totalStatus}}</span>
           </div>
           <div class="col">
           </div>

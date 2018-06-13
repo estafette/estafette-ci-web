@@ -18,7 +18,7 @@
         <td>{{build.repoRevision | gitHash}}</td>
         <td class="align-middle">
             <div class="progress">
-            <div class="progress-bar" :class="build.buildStatus | bgClass" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar" :class="build.buildStatus | bootstrapClass('bg')" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </td>
         <td>{{build.insertedAt | moment("calendar")}}</td>

@@ -53,21 +53,21 @@ Vue.filter('gitHash', function (value) {
   return value.substring(0, 6)
 })
 
-Vue.filter('bgClass', function (value) {
+Vue.filter('bootstrapClass', function (value, prefix) {
   if (!value) {
-    return 'bg-light'
+    return ''
   }
-  value = value.toString()
+  value = value.toString().toLowerCase()
   if (value === 'succeeded') {
-    return 'bg-success'
+    return prefix + '-success'
   }
   if (value === 'running') {
-    return 'bg-warning'
+    return prefix + '-warning'
   }
   if (value === 'failed') {
-    return 'bg-danger'
+    return prefix + '-danger'
   }
-  return 'bg-light'
+  return prefix + '-light'
 })
 
 Vue.config.productionTip = false
