@@ -44,37 +44,25 @@
             </h4>
           </div>
           <div class="col-2">
-            <!--{{step.image.name}}:{{step.image.tag}}-->
+            {{step.image.name}}:{{step.image.tag}}
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
-          <!--
-            {{#if (is-step-executed step.status)}}
-              {{#if step.image.imageSize}}
-              {{pretty-print-bytes step.image.imageSize}}
-              {{else}}
-              <em class="text-muted">(cached)</em>
-              {{/if}}
-            {{/if}}
-            -->
+            <span v-if="step.status == 'SUCCEEDED' || step.status == 'FAILED'">
+              <span v-if="step.image.imageSize">{{step.image.imageSize | formatBytes}}</span>
+              <em v-else class="text-muted">(cached)</em>
+            </span>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
-          <!--
-            {{#if (is-step-executed step.status)}}
-              {{#if step.image.imageSize}}
-              {{pretty-print-timespan step.image.pullDuration}}
-              {{else}}
-              <em class="text-muted">(cached)</em>
-              {{/if}}
-            {{/if}}
-            -->
+            <span v-if="step.status == 'SUCCEEDED' || step.status == 'FAILED'">
+              <span v-if="step.image.imageSize">{{step.image.pullDuration | formatDuration}}</span>
+              <em v-else class="text-muted">(cached)</em>
+            </span>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
             {{step.duration | formatDuration}}
           </div>
           <div class="col-1 text-right">
-          <!--
-            {{step.image.pullDuration step.duration}}
-            -->
+            {{step.image.pullDuration + step.duration | formatDuration}}
           </div>
         </div>
     </div>
