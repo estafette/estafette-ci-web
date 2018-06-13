@@ -33,7 +33,7 @@
             </td>
             <td>
                 <button type="button" class="btn btn-light btn-sm mr-1" v-for="targetVersion in pipeline.targetVersions" v-bind:key="targetVersion.target.name">
-                    {{targetVersion.target.name}} <span class="badge">{{targetVersion.buildVersion}}</span>
+                    {{targetVersion.target.name}} <span class="badge" :class="targetVersion.buildStatus | bootstrapClass('badge')">{{targetVersion.buildVersion}}</span>
                 </button>
             </td>
           </router-link>
