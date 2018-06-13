@@ -38,36 +38,40 @@ export default new Router({
         {
           path: 'builds',
           name: 'PipelineBuilds',
-          component: PipelineBuilds,
-          children: [
-            {
-              path: ':repoRevision',
-              name: 'PipelineBuildDetails',
-              component: PipelineBuildDetails,
-              children: [
-                {
-                  path: 'logs',
-                  name: 'PipelineBuildLogs',
-                  component: PipelineBuildLogs
-                },
-                {
-                  path: 'manifest',
-                  name: 'PipelineBuildManifest',
-                  component: PipelineBuildManifest
-                }
-              ]
-            }
-          ]
+          props: true,
+          component: PipelineBuilds
         },
         {
           path: 'statistics',
           name: 'PipelineStatistics',
+          props: true,
           component: PipelineStatistics
         },
         {
           path: 'releases',
           name: 'PipelineReleases',
+          props: true,
           component: PipelineReleases
+        }
+      ]
+    },
+    {
+      path: '/pipelines/:repoSource/:repoOwner/:repoName/builds/:repoRevision',
+      name: 'PipelineBuildDetails',
+      props: true,
+      component: PipelineBuildDetails,
+      children: [
+        {
+          path: 'logs',
+          name: 'PipelineBuildLogs',
+          props: true,
+          component: PipelineBuildLogs
+        },
+        {
+          path: 'manifest',
+          name: 'PipelineBuildManifest',
+          props: true,
+          component: PipelineBuildManifest
         }
       ]
     },
