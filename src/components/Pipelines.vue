@@ -105,12 +105,12 @@ export default {
       axios.get(`/api/pipelines?filter[status]=${this.filter.status}&page[number]=${this.pagination.currentPage}&page[size]=${this.pagination.rowsPerPage}`)
         .then(response => {
           this.pipelines = response.data
+          this.periodicallyRefreshPipelines(30)
         })
         .catch(e => {
           this.errors.push(e)
+          this.periodicallyRefreshPipelines(60)
         })
-
-      this.periodicallyRefreshPipelines(30)
     },
 
     periodicallyRefreshPipelines (intervalSeconds) {

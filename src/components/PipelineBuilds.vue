@@ -71,12 +71,12 @@ export default {
       axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds?page[number]=${this.pagination.currentPage}&page[size]=${this.pagination.rowsPerPage}`)
         .then(response => {
           this.builds = response.data
+          this.periodicallyRefreshBuilds(30)
         })
         .catch(e => {
           this.errors.push(e)
+          this.periodicallyRefreshBuilds(60)
         })
-
-      this.periodicallyRefreshBuilds(30)
     },
 
     periodicallyRefreshBuilds (intervalSeconds) {
