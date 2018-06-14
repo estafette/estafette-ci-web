@@ -96,7 +96,7 @@
             <strong>{{totalDuration | formatDuration}}</strong>
           </div>
           <div class="col-1 text-right">
-            <strong>{{log.totalPullDuration + log.totalDuration | formatDuration}}</strong>
+            <strong>{{totalPullDuration + totalDuration | formatDuration}}</strong>
           </div>
         </div>
     </div>
