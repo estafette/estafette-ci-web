@@ -84,7 +84,10 @@ export default {
 
   methods: {
     paginationLinkGenerator (pageNum) {
-      return { name: 'Pipelines', query: { status: this.filter.status, page: pageNum } }
+      if (this.filter && this.filter.status && this.filter.status != '') {
+        return { name: 'Pipelines', query: { status: this.filter.status, page: pageNum } }
+      }
+      return { name: 'Pipelines', query: { page: pageNum } }
     },
 
     setDataFromQueryParams (query) {
