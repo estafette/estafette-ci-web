@@ -161,13 +161,38 @@ export default {
   },
 
   created () {
-    axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.repoRevision}/logs`)
-      .then(response => {
-        this.log = response.data
-      })
-      .catch(e => {
-        this.errors.push(e)
-      })
+    this.loadLogs()
+  },
+
+  methods: {
+    loadLogs () {
+      axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.repoRevision}/logs`)
+        .then(response => {
+          this.log = response.data
+        })
+        .catch(e => {
+          this.errors.push(e)
+          this.periodicallyRefreshLogs(10)
+        })
+    },
+
+    periodicallyRefreshBuilds (intervalSeconds) {
+      if (this.refreshTimeout) {
+        clearTimeout(this.refreshTimeout)
+      }
+
+      var max = 1000 * intervalSeconds * 0.75
+      var min = 1000 * intervalSeconds * 1.25
+      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+
+      this.refreshTimeout = setTimeout(this.loadLogs, timeoutWithJitter)
+    }
+  },
+
+  beforeDestroy () {
+    if (this.refreshTimeout) {
+      clearTimeout(this.refreshTimeout)
+    }
   }
 }
 </script>

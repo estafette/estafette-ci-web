@@ -75,6 +75,20 @@ export default {
         .catch(e => {
           this.errors.push(e)
         })
+
+      this.periodicallyRefreshBuilds(30)
+    },
+
+    periodicallyRefreshBuilds (intervalSeconds) {
+      if (this.refreshTimeout) {
+        clearTimeout(this.refreshTimeout)
+      }
+
+      var max = 1000 * intervalSeconds * 0.75
+      var min = 1000 * intervalSeconds * 1.25
+      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+
+      this.refreshTimeout = setTimeout(this.loadPipelines, timeoutWithJitter)
     }
   },
 
@@ -82,6 +96,12 @@ export default {
     '$route' (to, from) {
       this.setDataFromQueryParams(to.query)
       this.loadBuilds()
+    }
+  },
+
+  beforeDestroy () {
+    if (this.refreshTimeout) {
+      clearTimeout(this.refreshTimeout)
     }
   }
 }

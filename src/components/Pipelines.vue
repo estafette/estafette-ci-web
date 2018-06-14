@@ -1,10 +1,10 @@
 <template>
     <div>
       <div class="m-3 justify-content-center">
-          <router-link :to="{ name: 'Pipelines', query: { page: pagination.currentPage } }" exact class="btn btn-outline-primary">All</router-link>
-          <router-link :to="{ name: 'Pipelines', query: { status: 'succeeded', page: pagination.currentPage } }" exact class="btn btn-outline-success">Succeeded</router-link>
-          <router-link :to="{ name: 'Pipelines', query: { status: 'failed', page: pagination.currentPage } }" exact class="btn btn-outline-danger">Failed</router-link>
-          <router-link :to="{ name: 'Pipelines', query: { status: 'running', page: pagination.currentPage } }" exact class="btn btn-outline-warning">Running</router-link>
+          <router-link :to="{ query: { page: pagination.currentPage } }" exact class="btn btn-outline-primary">All</router-link>
+          <router-link :to="{ query: { status: 'succeeded', page: pagination.currentPage } }" exact class="btn btn-outline-success">Succeeded</router-link>
+          <router-link :to="{ query: { status: 'failed', page: pagination.currentPage } }" exact class="btn btn-outline-danger">Failed</router-link>
+          <router-link :to="{ query: { status: 'running', page: pagination.currentPage } }" exact class="btn btn-outline-warning">Running</router-link>
       </div>
 
       <div class="m-3">
@@ -84,15 +84,21 @@ export default {
 
   methods: {
     paginationLinkGenerator (pageNum) {
-      if (this.filter && this.filter.status && this.filter.status != '') {
-        return { name: 'Pipelines', query: { status: this.filter.status, page: pageNum } }
+      if (this.filter && this.filter.status && this.filter.status !== '') {
+        return { query: { status: this.filter.status, page: pageNum } }
       }
-      return { name: 'Pipelines', query: { page: pageNum } }
+      return { query: { page: pageNum } }
     },
 
     setDataFromQueryParams (query) {
       this.pagination.currentPage = query && query.page ? Number.parseInt(query.page, 10) : 1
       this.filter.status = query && query.status ? query.status : ''
+
+      if (this.filter && this.filter.status && this.filter.status !== '') {
+        this.$router.replace({query: { status: this.filter.status, page: this.pagination.currentPage }})
+      } else {
+        this.$router.replace({query: { page: this.pagination.currentPage }})
+      }
     },
 
     loadPipelines () {
@@ -103,6 +109,20 @@ export default {
         .catch(e => {
           this.errors.push(e)
         })
+
+      this.periodicallyRefreshPipelines(30)
+    },
+
+    periodicallyRefreshPipelines (intervalSeconds) {
+      if (this.refreshTimeout) {
+        clearTimeout(this.refreshTimeout)
+      }
+
+      var max = 1000 * intervalSeconds * 0.75
+      var min = 1000 * intervalSeconds * 1.25
+      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+
+      this.refreshTimeout = setTimeout(this.loadPipelines, timeoutWithJitter)
     }
   },
 
@@ -110,6 +130,12 @@ export default {
     '$route' (to, from) {
       this.setDataFromQueryParams(to.query)
       this.loadPipelines()
+    }
+  },
+
+  beforeDestroy () {
+    if (this.refreshTimeout) {
+      clearTimeout(this.refreshTimeout)
     }
   }
 }
