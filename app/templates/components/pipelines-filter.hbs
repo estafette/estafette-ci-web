@@ -1,9 +1,0 @@
-<div class="m-3 justify-content-center">
-{{#link-to "pipelines" (query-params status=null page=1) class="btn btn-outline-primary"}}All{{/link-to}}
-{{#link-to "pipelines" (query-params status="succeeded" page=1) class="btn btn-outline-success"}}Succeeded{{/link-to}}
-{{#link-to "pipelines" (query-params status="failed" page=1) class="btn btn-outline-danger"}}Failed{{/link-to}}
-{{#link-to "pipelines" (query-params status="running" page=1) class="btn btn-outline-warning"}}Running{{/link-to}}
-{{!-- {{#each pinnedLabels key="id" as |label|}}
-<button type="button" class="btn btn-outline-secondary">{{label.key}}={{label.value}}</button>
-{{/each}} --}}
-</div>

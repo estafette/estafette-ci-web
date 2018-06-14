@@ -1,0 +1,11 @@
+<template>
+  <pre class="bg-light m-3 p-3">{{build.manifest}}</pre>
+</template>
+
+<script>
+export default {
+  props: {
+    build: Object
+  }
+}
+</script>
