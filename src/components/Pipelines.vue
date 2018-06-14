@@ -49,9 +49,7 @@
           </table>
       </div>
 
-      <div class="justify-content-center">
-        <b-pagination-nav size="md" :link-gen="paginationLinkGenerator" use-router :number-of-pages="pagination.numberOfPages" v-model="pagination.currentPage"/>
-      </div>
+      <b-pagination-nav size="md" :link-gen="paginationLinkGenerator" use-router :number-of-pages="pagination.numberOfPages" v-model="pagination.currentPage" align="center"/>
     </div>
 </template>
 

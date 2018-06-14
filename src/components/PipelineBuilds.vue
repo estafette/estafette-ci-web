@@ -25,6 +25,8 @@
       </router-link>
     </tbody>
     </table>
+
+    <b-pagination-nav size="md" :link-gen="paginationLinkGenerator" use-router :number-of-pages="pagination.numberOfPages" v-model="pagination.currentPage" align="center"/>
   </div>
 </template>
 
@@ -35,23 +37,52 @@ export default {
   props: {
     repoSource: String,
     repoOwner: String,
-    repoName: String
+    repoName: String,
+    query: Object
   },
   data: function () {
     return {
       builds: [],
-      errors: []
+      errors: [],
+      pagination: {
+        totalRows: 500,
+        currentPage: 1,
+        rowsPerPage: 20,
+        numberOfPages: 25
+      }
     }
   },
 
   created () {
-    axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds`)
-      .then(response => {
-        this.builds = response.data
-      })
-      .catch(e => {
-        this.errors.push(e)
-      })
+    this.setDataFromQueryParams(this.query)
+    this.loadBuilds()
+  },
+
+  methods: {
+    paginationLinkGenerator (pageNum) {
+      return { query: { page: pageNum } }
+    },
+
+    setDataFromQueryParams (query) {
+      this.pagination.currentPage = query && query.page ? Number.parseInt(query.page, 10) : 1
+    },
+
+    loadBuilds () {
+      axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds?page[number]=${this.pagination.currentPage}&page[size]=${this.pagination.rowsPerPage}`)
+        .then(response => {
+          this.builds = response.data
+        })
+        .catch(e => {
+          this.errors.push(e)
+        })
+    }
+  },
+
+  watch: {
+    '$route' (to, from) {
+      this.setDataFromQueryParams(to.query)
+      this.loadBuilds()
+    }
   }
 }
 </script>
