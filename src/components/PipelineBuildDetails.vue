@@ -17,7 +17,7 @@
       </li>
     </ul>
 
-    <router-view/>
+    <router-view :build="build"/>
   </div>
 </template>
 
@@ -41,7 +41,7 @@ export default {
   created () {
     axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.repoRevision}`)
       .then(response => {
-        this.pipeline = response.data
+        this.build = response.data
       })
       .catch(e => {
         this.errors.push(e)
