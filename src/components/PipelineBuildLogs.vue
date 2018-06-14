@@ -1,5 +1,5 @@
 <template>
-  <div class="accordion m-3" id="accordionExample">
+  <div class="accordion m-3" id="pipelineStepsAccordion">
 
     <!--{{#if log}}-->
 
@@ -31,8 +31,9 @@
       </div>
   </div>
 
-  <div class="card" v-for="(step, index) in log.steps" v-bind:key="index">
-    <div class="card-header clickable" :id="'heading-'+index" data-toggle="collapse" :data-target="'#collapse-'+index" :aria-expanded="step.status === 'failed'" :aria-controls="'collapse-'+index">
+  <div role="tablist">
+    <b-card no-body v-for="(step, index) in log.steps" v-bind:key="index">
+      <b-card-header class="clickable" v-b-toggle="'accordion'+index" role="tab">
         <div class="row">
           <div class="col-1 text-center">
             <span class="badge" :class="step.status | bootstrapClass('badge')">{{step.status}}</span>
@@ -65,38 +66,37 @@
             {{step.image.pullDuration + step.duration | formatDuration}}
           </div>
         </div>
-    </div>
-    <div :id="'collapse-'+index" class="collapse" :class="{show: step.status === 'FAILED'}" :aria-labelledby="'heading-'+index" data-parent="#accordionExample">
-      <div class="card-body text-monospace bg-dark text-light">
-        <div class="row no-gutters" v-for="(line, index) in step.logLines" v-bind:key="index">
-          <div class="col-1 text-white-50" style="min-width: 300px;">{{line.timestamp}}</div>
-          <div class="col">{{line.text}}</div>
-        </div>
-      </div>
-    </div>
+      </b-card-header>
+      <b-collapse :id="'accordion'+index" :visible="step.status === 'FAILED'" accordion="log-steps-accordion" role="tabpanel">
+        <b-card-body class="text-monospace bg-dark text-light">
+          <div class="row no-gutters" v-for="(line, index) in step.logLines" v-bind:key="index">
+            <div class="col-1 text-white-50" style="min-width: 300px;">{{line.timestamp}}</div>
+            <div class="col">{{line.text}}</div>
+          </div>
+        </b-card-body>
+      </b-collapse>
+    </b-card>
   </div>
 
   <div class="card mt-3">
     <div class="card-header">
         <div class="row text-center">
           <div class="col-1 text-center">
-            <span class="badge" :class="log.totalStatus | bootstrapClass('badge')">{{log.totalStatus}}</span>
+            <span class="badge" :class="totalStatus | bootstrapClass('badge')">{{totalStatus}}</span>
           </div>
           <div class="col">
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
-            <strong>{{log.totalImageSize}}</strong>
+            <strong>{{totalImageSize | formatBytes}}</strong>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
-            <strong>{{log.totalPullDuration | formatDuration}}</strong>
+            <strong>{{totalPullDuration | formatDuration}}</strong>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
-            <strong>{{log.totalDuration}}</strong>
+            <strong>{{totalDuration | formatDuration}}</strong>
           </div>
           <div class="col-1 text-right">
-          <!--
-            <strong>{{log.totalPullDuration log.totalDuration}}</strong>
-          -->
+            <strong>{{log.totalPullDuration + log.totalDuration | formatDuration}}</strong>
           </div>
         </div>
     </div>
@@ -107,7 +107,6 @@
   Sorry, no logs!
   {{/if}}
   -->
-
   </div>
 </template>
 
@@ -128,6 +127,47 @@ export default {
     }
   },
 
+  computed: {
+    totalImageSize: function () {
+      if (!this.log || !this.log.steps) {
+        return 0
+      }
+      return this.log.steps.reduce((acc, step) => {
+        return acc + (step.image && step.image.imageSize ? step.image.imageSize : 0)
+      }, 0)
+    },
+
+    totalPullDuration: function () {
+      if (!this.log || !this.log.steps) {
+        return 0
+      }
+      return this.log.steps.reduce((acc, step) => {
+        return acc + (step.image && step.image.pullDuration ? step.image.pullDuration : 0)
+      }, 0)
+    },
+
+    totalDuration: function () {
+      if (!this.log || !this.log.steps) {
+        return 0
+      }
+      return this.log.steps.reduce((acc, step) => {
+        return acc + (step.duration ? step.duration : 0)
+      }, 0)
+    },
+
+    totalStatus: function () {
+      if (!this.log || !this.log.steps) {
+        return ''
+      }
+      return this.log.steps.reduce((acc, step) => {
+        if (acc === 'FAILED' || step.status === 'FAILED') {
+          return 'FAILED'
+        }
+        return 'SUCCEEDED'
+      }, 'SUCCEEDED')
+    }
+  },
+
   created () {
     axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.repoRevision}/logs`)
       .then(response => {
@@ -139,3 +179,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.clickable {
+  cursor: pointer;
+}
+</style>

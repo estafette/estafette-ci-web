@@ -67,6 +67,9 @@ Vue.filter('bootstrapClass', function (value, prefix) {
   if (value === 'failed') {
     return prefix + '-danger'
   }
+  if (value === 'skipped') {
+    return prefix + '-secondary'
+  }
   return prefix + '-light'
 })
 
