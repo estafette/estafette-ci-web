@@ -176,7 +176,7 @@ export default {
         })
     },
 
-    periodicallyRefreshBuilds (intervalSeconds) {
+    periodicallyRefreshLogs (intervalSeconds) {
       if (this.refreshTimeout) {
         clearTimeout(this.refreshTimeout)
       }
