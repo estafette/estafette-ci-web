@@ -124,7 +124,7 @@ export default {
     loadPipelines () {
       axios.get(`/api/pipelines?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&page[number]=${this.pagination.currentPage}&page[size]=${this.pagination.rowsPerPage}`)
         .then(response => {
-          this.pipelines = response.data
+          this.pipelines = response.data.items ? response.data.items : response.data
           this.periodicallyRefreshPipelines(30)
         })
         .catch(e => {
