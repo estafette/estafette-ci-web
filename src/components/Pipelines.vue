@@ -3,10 +3,10 @@
       <div class="m-3">
         <div class="row">
           <div class="col">
-            <router-link :to="{ query: { since: filter.since, page: pagination.currentPage } }" exact class="btn btn-outline-primary">All</router-link>
-            <router-link :to="{ query: { status: 'succeeded', since: filter.since, page: pagination.currentPage } }" exact class="btn btn-outline-success">Succeeded</router-link>
-            <router-link :to="{ query: { status: 'failed', since: filter.since, page: pagination.currentPage } }" exact class="btn btn-outline-danger">Failed</router-link>
-            <router-link :to="{ query: { status: 'running', since: filter.since, page: pagination.currentPage } }" exact class="btn btn-outline-warning">Running</router-link>
+            <router-link :to="{ query: { since: filter.since, page: pagination.page } }" exact class="btn btn-outline-primary">All</router-link>
+            <router-link :to="{ query: { status: 'succeeded', since: filter.since, page: pagination.page } }" exact class="btn btn-outline-success">Succeeded</router-link>
+            <router-link :to="{ query: { status: 'failed', since: filter.since, page: pagination.page } }" exact class="btn btn-outline-danger">Failed</router-link>
+            <router-link :to="{ query: { status: 'running', since: filter.since, page: pagination.page } }" exact class="btn btn-outline-warning">Running</router-link>
           </div>
           <div class="col-1 text-right">
             <b-form-select v-model="filter.since" :options="sinceOptions" v-on:change="setSince" class="border-primary text-primary" />
@@ -56,7 +56,7 @@
           </table>
       </div>
 
-      <b-pagination-nav size="md" :link-gen="paginationLinkGenerator" use-router :number-of-pages="pagination.numberOfPages" v-model="pagination.currentPage" align="center"/>
+      <b-pagination-nav size="md" :link-gen="paginationLinkGenerator" use-router :number-of-pages="pagination.totalPages" v-model="pagination.page" align="center" hide-goto-end-buttons/>
     </div>
 </template>
 
@@ -73,10 +73,10 @@ export default {
       pipelines: [],
       errors: [],
       pagination: {
-        totalRows: 500,
-        currentPage: 1,
-        rowsPerPage: 20,
-        numberOfPages: 25
+        page: 1,
+        size: 20,
+        totalPages: 0,
+        totalItems: 0
       },
       filter: {
         status: '',
@@ -106,7 +106,7 @@ export default {
     },
 
     setDataFromQueryParams (query) {
-      this.pagination.currentPage = query && query.page ? Number.parseInt(query.page, 10) : 1
+      this.pagination.page = query && query.page ? Number.parseInt(query.page, 10) : 1
       this.filter.status = query && query.status ? query.status : ''
       this.filter.since = query && query.since ? query.since : '1w'
 
@@ -115,16 +115,18 @@ export default {
 
     updateQueryParams () {
       if (this.filter && this.filter.status && this.filter.status !== '') {
-        this.$router.push({query: { status: this.filter.status, since: this.filter.since, page: this.pagination.currentPage }})
+        this.$router.push({query: { status: this.filter.status, since: this.filter.since, page: this.pagination.page }})
       } else {
-        this.$router.push({query: { since: this.filter.since, page: this.pagination.currentPage }})
+        this.$router.push({query: { since: this.filter.since, page: this.pagination.page }})
       }
     },
 
     loadPipelines () {
-      axios.get(`/api/pipelines?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&page[number]=${this.pagination.currentPage}&page[size]=${this.pagination.rowsPerPage}`)
+      axios.get(`/api/pipelines?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
-          this.pipelines = response.data.items ? response.data.items : response.data
+          this.pipelines = response.data.items
+          this.pagination = response.data.pagination
+
           this.periodicallyRefreshPipelines(30)
         })
         .catch(e => {

@@ -690,5 +690,11 @@
         "insertedAt":"2018-06-07T11:52:12.753823Z",
         "updatedAt":"2018-06-07T11:53:08.260033Z"
         }
-    ]
+    ],
+    "pagination": {
+        "page": 1,
+        "size": 20,
+        "totalPages": 4,
+        "totalItems": 63
+    }
 }

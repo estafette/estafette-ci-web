@@ -26,7 +26,7 @@
     </tbody>
     </table>
 
-    <b-pagination-nav size="md" :link-gen="paginationLinkGenerator" use-router :number-of-pages="pagination.numberOfPages" v-model="pagination.currentPage" align="center"/>
+    <b-pagination-nav size="md" :link-gen="paginationLinkGenerator" use-router :number-of-pages="pagination.totalPages" v-model="pagination.page" align="center" hide-goto-end-buttons/>
   </div>
 </template>
 
@@ -45,10 +45,10 @@ export default {
       builds: [],
       errors: [],
       pagination: {
-        totalRows: 500,
-        currentPage: 1,
-        rowsPerPage: 20,
-        numberOfPages: 25
+        page: 1,
+        size: 20,
+        totalPages: 0,
+        totalItems: 0
       }
     }
   },
@@ -64,13 +64,15 @@ export default {
     },
 
     setDataFromQueryParams (query) {
-      this.pagination.currentPage = query && query.page ? Number.parseInt(query.page, 10) : 1
+      this.pagination.page = query && query.page ? Number.parseInt(query.page, 10) : 1
     },
 
     loadBuilds () {
-      axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds?page[number]=${this.pagination.currentPage}&page[size]=${this.pagination.rowsPerPage}`)
+      axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds?page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
-          this.builds = response.data.items ? response.data.items : response.data
+          this.builds = response.data.items
+          this.pagination = response.data.pagination
+
           this.periodicallyRefreshBuilds(30)
         })
         .catch(e => {

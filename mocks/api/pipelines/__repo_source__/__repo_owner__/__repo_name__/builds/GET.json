@@ -280,5 +280,11 @@
         "insertedAt": "2018-06-05T09:51:53.15666Z",
         "updatedAt": "2018-06-05T09:53:47.342061Z"
         }
-        ]
+    ],
+    "pagination": {
+        "page": 1,
+        "size": 20,
+        "totalPages": 2,
+        "totalItems": 33
+    }
 }
