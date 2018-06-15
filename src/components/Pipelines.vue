@@ -1,10 +1,17 @@
 <template>
     <div>
-      <div class="m-3 justify-content-center">
-          <router-link :to="{ query: { page: pagination.currentPage } }" exact class="btn btn-outline-primary">All</router-link>
-          <router-link :to="{ query: { status: 'succeeded', page: pagination.currentPage } }" exact class="btn btn-outline-success">Succeeded</router-link>
-          <router-link :to="{ query: { status: 'failed', page: pagination.currentPage } }" exact class="btn btn-outline-danger">Failed</router-link>
-          <router-link :to="{ query: { status: 'running', page: pagination.currentPage } }" exact class="btn btn-outline-warning">Running</router-link>
+      <div class="m-3">
+        <div class="row">
+          <div class="col">
+            <router-link :to="{ query: { since: filter.since, page: pagination.currentPage } }" exact class="btn btn-outline-primary">All</router-link>
+            <router-link :to="{ query: { status: 'succeeded', since: filter.since, page: pagination.currentPage } }" exact class="btn btn-outline-success">Succeeded</router-link>
+            <router-link :to="{ query: { status: 'failed', since: filter.since, page: pagination.currentPage } }" exact class="btn btn-outline-danger">Failed</router-link>
+            <router-link :to="{ query: { status: 'running', since: filter.since, page: pagination.currentPage } }" exact class="btn btn-outline-warning">Running</router-link>
+          </div>
+          <div class="col-1 text-right">
+            <b-form-select v-model="filter.since" :options="sinceOptions" v-on:change="setSince" class="border-primary text-primary" />
+          </div>
+        </div>
       </div>
 
       <div class="m-3">
@@ -72,8 +79,16 @@ export default {
         numberOfPages: 25
       },
       filter: {
-        status: ''
-      }
+        status: '',
+        since: '1w'
+      },
+      sinceOptions: [
+        { value: '1d', text: 'Since 1 day ago' },
+        { value: '1w', text: 'Since 1 week ago' },
+        { value: '1m', text: 'Since 1 month ago' },
+        { value: '1y', text: 'Since 1 year ago' },
+        { value: 'eternity', text: 'Since dawn of mankind' }
+      ]
     }
   },
 
@@ -85,24 +100,29 @@ export default {
   methods: {
     paginationLinkGenerator (pageNum) {
       if (this.filter && this.filter.status && this.filter.status !== '') {
-        return { query: { status: this.filter.status, page: pageNum } }
+        return { query: { status: this.filter.status, since: this.filter.since, page: pageNum } }
       }
-      return { query: { page: pageNum } }
+      return { query: { since: this.filter.since, page: pageNum } }
     },
 
     setDataFromQueryParams (query) {
       this.pagination.currentPage = query && query.page ? Number.parseInt(query.page, 10) : 1
       this.filter.status = query && query.status ? query.status : ''
+      this.filter.since = query && query.since ? query.since : '1w'
 
+      this.updateQueryParams()
+    },
+
+    updateQueryParams () {
       if (this.filter && this.filter.status && this.filter.status !== '') {
-        this.$router.replace({query: { status: this.filter.status, page: this.pagination.currentPage }})
+        this.$router.push({query: { status: this.filter.status, since: this.filter.since, page: this.pagination.currentPage }})
       } else {
-        this.$router.replace({query: { page: this.pagination.currentPage }})
+        this.$router.push({query: { since: this.filter.since, page: this.pagination.currentPage }})
       }
     },
 
     loadPipelines () {
-      axios.get(`/api/pipelines?filter[status]=${this.filter.status}&page[number]=${this.pagination.currentPage}&page[size]=${this.pagination.rowsPerPage}`)
+      axios.get(`/api/pipelines?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&page[number]=${this.pagination.currentPage}&page[size]=${this.pagination.rowsPerPage}`)
         .then(response => {
           this.pipelines = response.data
           this.periodicallyRefreshPipelines(30)
@@ -123,6 +143,11 @@ export default {
       var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       this.refreshTimeout = setTimeout(this.loadPipelines, timeoutWithJitter)
+    },
+
+    setSince (value) {
+      this.filter.since = value
+      this.updateQueryParams()
     }
   },
 
