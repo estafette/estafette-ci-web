@@ -8,7 +8,7 @@
             <router-link :to="{ query: { status: 'failed', since: filter.since, page: pagination.page } }" exact class="btn btn-outline-danger">Failed</router-link>
             <router-link :to="{ query: { status: 'running', since: filter.since, page: pagination.page } }" exact class="btn btn-outline-warning">Running</router-link>
           </div>
-          <div class="col-1 text-right">
+          <div class="col-2 text-right">
             <b-form-select v-model="filter.since" :options="sinceOptions" v-on:change="setSince" class="border-primary text-primary" />
           </div>
         </div>
