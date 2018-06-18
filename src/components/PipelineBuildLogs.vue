@@ -172,7 +172,7 @@ export default {
         })
         .catch(e => {
           this.errors.push(e)
-          this.periodicallyRefreshLogs(10)
+          this.periodicallyRefreshLogs(15)
         })
     },
 

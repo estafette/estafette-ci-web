@@ -127,7 +127,7 @@ export default {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination
 
-          this.periodicallyRefreshPipelines(30)
+          this.periodicallyRefreshPipelines(15)
         })
         .catch(e => {
           this.errors.push(e)

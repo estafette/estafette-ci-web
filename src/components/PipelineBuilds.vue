@@ -73,7 +73,7 @@ export default {
           this.builds = response.data.items
           this.pagination = response.data.pagination
 
-          this.periodicallyRefreshBuilds(30)
+          this.periodicallyRefreshBuilds(15)
         })
         .catch(e => {
           this.errors.push(e)
