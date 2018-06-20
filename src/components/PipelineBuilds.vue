@@ -90,7 +90,7 @@ export default {
       var min = 1000 * intervalSeconds * 1.25
       var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
-      this.refreshTimeout = setTimeout(this.loadPipelines, timeoutWithJitter)
+      this.refreshTimeout = setTimeout(this.loadBuilds, timeoutWithJitter)
     }
   },
 
