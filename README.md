@@ -6,4 +6,4 @@ Please file any issues related to Estafette CI at https://github.com/estafette/e
 
 ## estafette-ci-web
 
-This is the web interface for the Estafette CI system.
+This is the web interface for the Estafette CI system. It's built using Vue.js, Webpack and Bootstrap CSS.
