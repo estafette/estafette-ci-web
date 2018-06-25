@@ -1,0 +1,20 @@
+html, body, #app {
+    height: 100%;
+}
+
+#header-and-main {
+    min-height: 100%;
+}
+
+#main {
+    overflow: auto;
+    padding-bottom: 56px; /* this needs to be bigger than footer height*/
+}
+
+.footer {
+    position: relative;
+    margin-top: -56px; /* negative value of footer height */
+    height: 56px;
+    clear:both;
+    padding-top:20px;
+} 

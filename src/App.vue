@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <navigation-bar/>
-    <router-view/>
+    <div id="header-and-main">
+      <navigation-bar/>
+      <div id="main">
+        <router-view/>
+      </div>
+    </div>
     <site-footer/>
   </div>
 </template>
@@ -11,3 +15,7 @@ export default {
   name: 'App'
 }
 </script>
+
+<style>
+@import 'assets/css/estafette.css';
+</style>
