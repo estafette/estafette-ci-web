@@ -44,7 +44,7 @@
               </td>
               <td>{{pipeline.insertedAt | moment("calendar")}}</td>
               <td class="d-none d-xl-table-cell">
-                  <button type="button" class="btn btn-light btn-sm mr-1" v-for="label in pipeline.labels" v-bind:key="label.key">{{label.key}}={{label.value}}</button>
+                  <button type="button" class="btn btn-light btn-sm mr-1" v-for="label in sortLabels(pipeline.labels)" v-bind:key="label.key">{{label.key}}={{label.value}}</button>
               </td>
               <td>
                   <button type="button" class="btn btn-light btn-sm mr-1" v-for="targetVersion in pipeline.targetVersions" v-bind:key="targetVersion.target.name">
@@ -150,6 +150,15 @@ export default {
     setSince (value) {
       this.filter.since = value
       this.updateQueryParams()
+    },
+
+    sortLabels (labels) {
+      if (!labels) {
+        return labels
+      }
+      return labels.slice().sort(function (a, b) {
+        return a.key > b.key
+      })
     }
   },
 

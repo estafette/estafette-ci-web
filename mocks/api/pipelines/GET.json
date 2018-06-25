@@ -11,12 +11,12 @@
         "buildStatus":"succeeded",
         "labels": [
                 {
-                    "key": "app",
-                    "value": "estafette-ci-api"
-                },
-                {
                     "key": "team",
                     "value": "estafette"
+                },
+                {
+                    "key": "app",
+                    "value": "estafette-ci-api"
                 },
                 {
                     "key": "language",
