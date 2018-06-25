@@ -21,7 +21,7 @@
               <th scope="col">Pipeline</th>
               <th scope="col">Version</th>
               <th scope="col">Branch</th>
-              <th scope="col">Revision</th>
+              <th scope="col">Commit</th>
               <th scope="col">Status</th>
               <th scope="col">Built at</th>
               <th scope="col" class="d-none d-xl-table-cell">Labels</th>
@@ -36,7 +36,10 @@
               </td>
               <td>{{pipeline.buildVersion}}</td>
               <td>{{pipeline.repoBranch}}</td>
-              <td>{{pipeline.repoRevision | gitHash}}</td>
+              <td>
+                {{pipeline.repoRevision | gitHash}}
+                <small v-for="commit in pipeline.commits" v-bind:key="commit.message" class="text-muted" :title="commit.message">{{commit.message | ellipsis(20)}} / {{commit.author.name}}</small>
+              </td>
               <td class="align-middle">
                   <div class="progress">
                       <div class="progress-bar" :class="pipeline.buildStatus | bootstrapClass('bg')" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>

@@ -134,6 +134,18 @@ Vue.filter('formatBytes', function (value) {
   return formattedString
 })
 
+Vue.filter('ellipsis', function (value, length) {
+  if (!value) {
+    return ''
+  }
+
+  value = value.toString()
+  if (value.length >= length) {
+    return value.substring(0, length).trim() + '...'
+  }
+  return value
+})
+
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)

@@ -5,7 +5,7 @@
         <tr>
         <th scope="col">Version</th>
         <th scope="col">Branch</th>
-        <th scope="col">Revision</th>
+        <th scope="col">Commit</th>
         <th scope="col">Status</th>
         <th scope="col">Built at</th>
         </tr>
@@ -15,7 +15,10 @@
     <router-link v-for="build in builds" v-bind:key="build.id" :to="{ name: 'PipelineBuildLogs', params: { repoSource: build.repoSource, repoOwner: build.repoOwner, repoName: build.repoName, repoRevision: build.repoRevision }}" tag="tr">
         <td>{{build.buildVersion}}</td>
         <td>{{build.repoBranch}}</td>
-        <td>{{build.repoRevision | gitHash}}</td>
+        <td>
+          {{build.repoRevision | gitHash}}
+          <small v-for="commit in build.commits" v-bind:key="commit.message" class="text-muted" :title="commit.message">{{commit.message | ellipsis(40)}} / {{commit.author.name}}</small>
+        </td>
         <td class="align-middle">
             <div class="progress">
             <div class="progress-bar" :class="build.buildStatus | bootstrapClass('bg')" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>

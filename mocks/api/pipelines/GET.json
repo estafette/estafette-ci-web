@@ -34,6 +34,16 @@
                 }
             ],
         "manifest":"builder:\n  track: dev\n\nlabels:\n  app: estafette-ci-api\n  team: estafette-team\n  language: golang\n\nversion:\n  semver:\n    major: 0\n    minor: 0\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: master\n\npipelines:\n  build:\n    image: golang:1.10.2-alpine3.7\n    workDir: /go/src/github.com/estafette/${ESTAFETTE_LABEL_APP}\n    commands:\n    - go test `go list ./... | grep -v /vendor/`\n    - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags \"-X main.version=${ESTAFETTE_BUILD_VERSION} -X main.revision=${ESTAFETTE_GIT_REVISION} -X main.branch=${ESTAFETTE_GIT_BRANCH} -X main.buildDate=${ESTAFETTE_BUILD_DATETIME}\" -o ./publish/${ESTAFETTE_LABEL_APP} .\n\n  bake:\n    image: docker:18.03.1-ce\n    commands:\n    - cp Dockerfile ./publish\n    - cp /etc/ssl/certs/ca-certificates.crt ./publish\n    - cp -r ./cockroach/migrations ./publish/\n    - docker build -t estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION} ./publish\n\n  push-to-docker-hub:\n    image: docker:18.03.1-ce\n    env:\n      DOCKER_HUB_USERNAME: estafette.secret(IXFQ9igip3IH0KVY.N6RTT4RB9dz15UGKHQUBctAf5QNI8G8QYg==)\n      DOCKER_HUB_PASSWORD: estafette.secret(zhN34B3iKmWis2t-.guUQYqZPjXTjaWK4G6ZU4n-DYyOZvigT2tdRYEP3zQddr4HA)\n    commands:\n    - docker login --username=${DOCKER_HUB_USERNAME} --password=\"${DOCKER_HUB_PASSWORD}\"\n    - docker push estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION}\n    when:\n      status == 'succeeded' &&\n      branch == 'master' &&\n      server == 'gocd'\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    webhook: estafette.secret(08UOJSF6Fvdz9u2X.lzsCArDpf97g7i2Vx-3UTyWsxCB81e05jthdY_AI3OffXBA-NurQePraQqzNf-9IhdoDvr1Akg0yom4S2kHjvWLhRC8Y7xgheK8MR6qPu2oi3QvlYbnNtTTOOjMi)\n    name: ${ESTAFETTE_LABEL_APP}\n    channels:\n    - '#build-status'\n    when:\n      status == 'failed'",
+        "commits": [
+            {
+            "message": "sort labels by key",
+                "author": {
+                    "email": "name@server.com",
+                    "name": "Some Author",
+                    "username": "SomeAuthor"
+                }
+            }
+        ],
         "insertedAt":"2018-06-11T14:21:44.603738Z",
         "updatedAt":"2018-06-11T14:23:05.352406Z"
         },
