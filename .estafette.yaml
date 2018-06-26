@@ -4,7 +4,7 @@ builder:
 labels:
   app: estafette-ci-web
   team: estafette-team
-  language: node
+  language: nodejs
 
 version:
   semver:
