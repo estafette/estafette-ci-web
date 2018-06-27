@@ -27,11 +27,11 @@
           </div>
 
           <router-link v-for="pipeline in pipelines" v-bind:key="pipeline.id" :to="{ name: 'PipelineBuilds', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName }}" tag="div" class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0" :class="pipeline.buildStatus | bootstrapClass('border')">
-              <div class="mb-2 col-6 col-md-6 col-xl-5">
+              <div class="mb-2 col-6 col-md-6 col-xl-5 text-truncate">
                 <div class="small text-black-50 mb-1 d-xl-none">Pipeline</div>
                 <span class="text-muted d-none d-md-inline">{{pipeline.repoSource}}/{{pipeline.repoOwner}}/</span><strong>{{pipeline.repoName}}</strong>
               </div>
-              <div class="mb-2 col-6 col-md-6 col-xl-1">
+              <div class="mb-2 col-6 col-md-6 col-xl-1 text-truncate" :title="pipeline.buildVersion">
                 <div class="small text-black-50 mb-1 d-xl-none">Version</div>
                 {{pipeline.buildVersion}}
               </div>
@@ -45,7 +45,7 @@
                 <div class="small text-black-50 mb-1 d-xl-none">Built-at</div>
                 {{pipeline.insertedAt | moment("calendar")}}
               </div>
-              <div class="mb-2 col-6 col-md-3 col-xl-1">
+              <div class="mb-2 col-6 col-md-3 col-xl-1 text-truncate" :title="pipeline.repoBranch">
                 <div class="small text-black-50 mb-1 d-xl-none">Branch</div>
                 {{pipeline.repoBranch}}
               </div>
@@ -55,7 +55,7 @@
               </div>
               <div class="mb-2 col-6 col-md-6 col-xl-2">
                 <div class="small text-black-50 mb-1 d-xl-none">Commit(s)</div>
-                <div v-for="commit in pipeline.commits" v-bind:key="commit.message" :title="commit.message" class="small">{{commit.message | ellipsis(20)}} / {{commit.author.name}}</div>
+                <div v-for="commit in pipeline.commits" v-bind:key="commit.message" :title="commit.message + '/' + commit.author.name" class="text-truncate">{{commit.message}} / {{commit.author.name}}</div>
               </div>
               <div class="col-12"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
               <div class="mb-2 col-12 col-xl-6 text-center">

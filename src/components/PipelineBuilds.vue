@@ -12,7 +12,7 @@
 
     <router-link v-for="build in builds" v-bind:key="build.id" :to="{ name: 'PipelineBuildLogs', params: { repoSource: build.repoSource, repoOwner: build.repoOwner, repoName: build.repoName, repoRevision: build.repoRevision }}" tag="div" class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0" :class="build.buildStatus | bootstrapClass('border')">
 
-        <div class="mb-2 col-6 col-md-4 col-xl-2">
+        <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="build.buildVersion">
           <div class="small text-black-50 mb-1 d-xl-none">Version</div>
           {{build.buildVersion}}
         </div>
@@ -26,7 +26,7 @@
           <div class="small text-black-50 mb-1 d-xl-none">Built at</div>
           {{build.insertedAt | moment("calendar")}}
         </div>
-        <div class="mb-2 col-6 col-md-4 col-xl-2">
+        <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="build.repoBranch">
           <div class="small text-black-50 mb-1 d-xl-none">Branch</div>
           {{build.repoBranch}}
         </div>
@@ -36,7 +36,7 @@
         </div>
         <div class="mb-2 col-6 col-md-4 col-xl-3">
           <div class="small text-black-50 mb-1 d-xl-none">Commit(s)</div>
-          <div v-for="commit in build.commits" v-bind:key="commit.message" :title="commit.message" class="small">{{commit.message | ellipsis(20)}} / {{commit.author.name}}</div>
+          <div v-for="commit in build.commits" v-bind:key="commit.message" :title="commit.message + '/' + commit.author.name" class="text-truncate">{{commit.message}} / {{commit.author.name}}</div>
         </div>
 
      </router-link>
