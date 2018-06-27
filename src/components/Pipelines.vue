@@ -27,7 +27,7 @@
           </div>
 
           <router-link v-for="pipeline in pipelines" v-bind:key="pipeline.id" :to="{ name: 'PipelineBuilds', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName }}" tag="div" class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0" :class="pipeline.buildStatus | bootstrapClass('border')">
-              <div class="mb-2 col-6 col-md-6 col-xl-5 text-truncate">
+              <div class="mb-2 col-6 col-md-6 col-xl-5 text-truncate" :title="pipeline.repoSource + '/' + pipeline.repoOwner + '/' + pipeline.repoName">
                 <div class="small text-black-50 mb-1 d-xl-none">Pipeline</div>
                 <span class="text-muted d-none d-md-inline">{{pipeline.repoSource}}/{{pipeline.repoOwner}}/</span><strong>{{pipeline.repoName}}</strong>
               </div>
