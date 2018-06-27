@@ -1,33 +1,31 @@
 <template>
   <div class="m-3">
-    <table class="table">
-    <thead>
-        <tr>
-        <th scope="col">Version</th>
-        <th scope="col">Branch</th>
-        <th scope="col">Commit</th>
-        <th scope="col">Status</th>
-        <th scope="col">Built at</th>
-        </tr>
-    </thead>
-    <tbody>
 
-    <router-link v-for="build in builds" v-bind:key="build.id" :to="{ name: 'PipelineBuildLogs', params: { repoSource: build.repoSource, repoOwner: build.repoOwner, repoName: build.repoName, repoRevision: build.repoRevision }}" tag="tr">
-        <td>{{build.buildVersion}}</td>
-        <td>{{build.repoBranch}}</td>
-        <td>
-          {{build.repoRevision | gitHash}}
-          <small v-for="commit in build.commits" v-bind:key="commit.message" class="text-muted" :title="commit.message">{{commit.message | ellipsis(40)}} / {{commit.author.name}}</small>
-        </td>
-        <td class="align-middle">
-            <div class="progress">
-            <div class="progress-bar" :class="build.buildStatus | bootstrapClass('bg')" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="row rounded border p-2 mt-2 mr-0 mb-2 ml-0 font-weight-bold">
+      <div class="col-6 col-md-4 col-xl-2">Version</div>
+      <div class="col-6 col-md-4 col-xl-1">Status</div>
+      <div class="col-6 col-md-4 col-xl-2 d-none d-md-block">Branch</div>
+      <div class="col-6 col-md-4 col-xl-2 d-none d-xl-block">Revision</div>
+      <div class="col-6 col-md-4 col-xl-3 d-none d-xl-block">Commit(s)</div>
+      <div class="col-6 col-md-4 col-xl-2 d-none d-xl-block">Built at</div>
+    </div>
+
+    <router-link v-for="build in builds" v-bind:key="build.id" :to="{ name: 'PipelineBuildLogs', params: { repoSource: build.repoSource, repoOwner: build.repoOwner, repoName: build.repoName, repoRevision: build.repoRevision }}" tag="div" class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0" :class="build.buildStatus | bootstrapClass('border')">
+
+        <div class="mb-2 col-6 col-md-4 col-xl-2">{{build.buildVersion}}</div>
+        <div class="mb-2 col-6 col-md-4 col-xl-1 align-middle">
+            <div class="progress mt-1">
+                <div class="progress-bar" :class="build.buildStatus | bootstrapClass('bg')" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-        </td>
-        <td>{{build.insertedAt | moment("calendar")}}</td>
-      </router-link>
-    </tbody>
-    </table>
+        </div>
+        <div class="mb-2 col-6 col-md-4 col-xl-2">{{build.repoBranch}}</div>
+        <div class="mb-2 col-6 col-md-4 col-xl-2">{{build.repoRevision | gitHash}}</div>
+        <div class="mb-2 col-6 col-md-4 col-xl-3">
+          <div v-for="commit in build.commits" v-bind:key="commit.message" :title="commit.message" class="small">{{commit.message | ellipsis(20)}} / {{commit.author.name}}</div>
+        </div>
+        <div class="mb-2 col-6 col-md-4 col-xl-2">{{build.insertedAt | moment("calendar")}}</div>
+
+     </router-link>
 
     <b-pagination-nav size="md" :link-gen="paginationLinkGenerator" use-router :number-of-pages="pagination.totalPages" v-model="pagination.page" align="center" hide-goto-end-buttons/>
   </div>
