@@ -76,7 +76,7 @@ export default {
       axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.repoRevision}`)
         .then(response => {
           this.build = response.data
-          if (reponse.data.buildStatus === 'running') {
+          if (response.data.buildStatus === 'running') {
             this.periodicallyRefreshBuild(15)
           }
         })
