@@ -20,6 +20,10 @@
         </div>
       </div>
       <div class="mb-2 col-6 col-md-4 col-xl-2">
+        <div class="small text-muted mb-1">Built at</div>
+        {{build.insertedAt | moment("calendar")}}
+      </div>
+      <div class="mb-2 col-6 col-md-4 col-xl-2">
         <div class="small text-muted mb-1">Branch</div>
         {{build.repoBranch}}
       </div>
@@ -30,10 +34,6 @@
       <div class="mb-2 col-6 col-md-4 col-xl-3">
         <div class="small text-muted mb-1">Commit(s)</div>
         <div v-for="commit in build.commits" v-bind:key="commit.message" :title="commit.message" class="small">{{commit.message | ellipsis(20)}} / {{commit.author.name}}</div>
-      </div>
-      <div class="mb-2 col-6 col-md-4 col-xl-2">
-        <div class="small text-muted mb-1">Built at</div>
-        {{build.insertedAt | moment("calendar")}}
       </div>
     </div>
 
