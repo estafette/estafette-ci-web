@@ -27,8 +27,7 @@ html, body, #app {
         right: 0;
         width: 20%;
         height: 100%;
-        background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(80%, white), to(white));
-        background: linear-gradient(left, rgba(255,255,255,0) 0%, white 80%, white 100%);
+        background: linear-gradient(to right, rgba(255,255,255,0) 0%, white 80%, white 100%);
         pointer-events: none;
       }
 }
