@@ -7,6 +7,7 @@
             <router-link :to="{ query: { status: 'succeeded', since: filter.since, page: pagination.page } }" exact class="btn btn-outline-success">Succeeded</router-link>
             <router-link :to="{ query: { status: 'failed', since: filter.since, page: pagination.page } }" exact class="btn btn-outline-danger">Failed</router-link>
             <router-link :to="{ query: { status: 'running', since: filter.since, page: pagination.page } }" exact class="btn btn-outline-warning">Running</router-link>
+            <router-link v-if="filter.labels" :to="{ query: { status: filter.status, since: filter.since, page: pagination.page } }" exact class="btn btn-outline-secondary active">{{ filter.labels }}</router-link>
           </div>
           <div class="col-12 col-md-4 col-lg-2 mb-2 text-right">
             <b-form-select v-model="filter.since" :options="sinceOptions" v-on:change="setSince" class="border-primary text-primary" />
@@ -62,7 +63,7 @@
               <div v-if="(pipeline.labels && pipeline.labels.length > 0) || (pipeline.targetVersions && pipeline.targetVersions.length > 0)" class="col-12 d-xxl-none"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
               <div v-if="pipeline.labels && pipeline.labels.length > 0" class="mb-2 col-12 col-xl-6 col-xxl-2 text-center text-xxl-left text-truncate text-truncate-fade">
                 <div class="small text-black-50 mb-1 d-xxl-none">Labels</div>
-                <button type="button" class="btn btn-light btn-sm mr-1 mb-1" v-for="label in sortLabels(pipeline.labels)" v-bind:key="label.key">{{label.key}}={{label.value}}</button>
+                <router-link :to="{ query: { status: filter.status, since: filter.since, labels: label.key + '=' + label.value, page: pagination.page } }" exact class="btn btn-light btn-sm mr-1 mb-1" v-for="label in sortLabels(pipeline.labels)" v-bind:key="label.key">{{label.key}}={{label.value}}</router-link>
               </div>
               <div v-if="pipeline.targetVersions && pipeline.targetVersions.length > 0" class="col-12 d-none d-xxl-flex d-xxxl-none"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
               <div v-if="pipeline.targetVersions && pipeline.targetVersions.length > 0" class="mb-2 col-12 col-xl-6 col-xxl-12 col-xxxl-2 text-center text-xxxl-left text-truncate text-truncate-fade">
@@ -100,7 +101,8 @@ export default {
       },
       filter: {
         status: '',
-        since: '1d'
+        since: '1d',
+        labels: ''
       },
       sinceOptions: [
         { value: '1d', text: 'Since 1 day ago' },
@@ -129,12 +131,15 @@ export default {
       this.pagination.page = query && query.page ? Number.parseInt(query.page, 10) : 1
       this.filter.status = query && query.status ? query.status : ''
       this.filter.since = query && query.since ? query.since : '1d'
+      this.filter.labels = query && query.labels ? query.labels : ''
 
       this.updateQueryParams()
     },
 
     updateQueryParams () {
-      if (this.filter && this.filter.status && this.filter.status !== '') {
+      if (this.filter && this.filter.labels && this.filter.labels !== '') {
+        this.$router.push({query: { status: this.filter.status, since: this.filter.since, labels: this.filter.labels, page: this.pagination.page }})
+      } else if (this.filter && this.filter.status && this.filter.status !== '') {
         this.$router.push({query: { status: this.filter.status, since: this.filter.since, page: this.pagination.page }})
       } else {
         this.$router.push({query: { since: this.filter.since, page: this.pagination.page }})
@@ -142,7 +147,7 @@ export default {
     },
 
     loadPipelines () {
-      axios.get(`/api/pipelines?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      axios.get(`/api/pipelines?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&filter[labels]=${this.filter.labels}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination
