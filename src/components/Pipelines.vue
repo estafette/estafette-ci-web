@@ -59,14 +59,14 @@
                 <div class="small text-black-50 mb-1 d-xl-none">Commit(s)</div>
                 <div v-for="commit in pipeline.commits" v-bind:key="commit.message" :title="commit.message + '/' + commit.author.name" class="text-truncate">{{commit.message}} / {{commit.author.name}}</div>
               </div>
-              <div class="col-12 d-xxl-none"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
-              <div class="mb-2 col-12 col-xl-6 col-xxl-2 text-center text-xxl-left">
-                <div class="small text-black-50 mb-1 d-xxl-none" v-if="pipeline.labels">Labels</div>
+              <div v-if="(pipeline.labels && pipeline.labels.length > 0) || (pipeline.targetVersions && pipeline.targetVersions.length > 0)" class="col-12 d-xxl-none"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
+              <div v-if="pipeline.labels && pipeline.labels.length > 0" class="mb-2 col-12 col-xl-6 col-xxl-2 text-center text-xxl-left">
+                <div class="small text-black-50 mb-1 d-xxl-none">Labels</div>
                 <button type="button" class="btn btn-light btn-sm mr-1 mb-1" v-for="label in sortLabels(pipeline.labels)" v-bind:key="label.key">{{label.key}}={{label.value}}</button>
               </div>
-              <div class="col-12 d-none d-xxl-flex d-xxxl-none"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
-              <div class="mb-2 col-12 col-xl-6 col-xxl-12 col-xxxl-2 text-center text-xxxl-left">
-                <div class="small text-black-50 mb-1 d-xxxl-none" v-if="pipeline.targetVersions">Releases</div>
+              <div v-if="pipeline.targetVersions && pipeline.targetVersions.length > 0" class="col-12 d-none d-xxl-flex d-xxxl-none"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
+              <div v-if="pipeline.targetVersions && pipeline.targetVersions.length > 0" class="mb-2 col-12 col-xl-6 col-xxl-12 col-xxxl-2 text-center text-xxxl-left">
+                <div class="small text-black-50 mb-1 d-xxxl-none">Releases</div>
                 <button type="button" class="btn btn-light btn-sm mr-1 mb-1" v-for="targetVersion in pipeline.targetVersions" v-bind:key="targetVersion.target.name">
                     {{targetVersion.target.name}} <span class="badge" :class="targetVersion.buildStatus | bootstrapClass('badge')">{{targetVersion.buildVersion}}</span>
                 </button>
