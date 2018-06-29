@@ -17,17 +17,19 @@
       <div class="m-3">
 
           <div class="row rounded border p-2 mt-2 mr-0 mb-2 ml-0 font-weight-bold">
-            <div class="col-6 col-md-6 col-xl-5">Pipeline</div>
+            <div class="col-6 col-md-6 col-xl-5 col-xxl-3 col-xxxl-2">Pipeline</div>
             <div class="col-6 col-md-6 col-xl-1">Version</div>
             <div class="col-12 col-md-6 col-xl-1 d-none d-xl-block">Status</div>
             <div class="col-6 col-md-6 col-xl-1 d-none d-xl-block">Built at</div>
             <div class="col-6 col-md-3 col-xl-1 d-none d-xl-block">Branch</div>
             <div class="col-6 col-md-3 col-xl-1 d-none d-xl-block">Revision</div>
-            <div class="col-6 col-md-6 col-xl-2 d-none d-xl-block">Commit(s)</div>
+            <div class="col-6 col-md-6 col-xl-2 col-xxxl-1 d-none d-xl-block">Commit(s)</div>
+            <div class="col-2 d-none d-xxl-block">Labels</div>
+            <div class="col-2 d-none d-xxxl-block">Releases</div>
           </div>
 
           <router-link v-for="pipeline in pipelines" v-bind:key="pipeline.id" :to="{ name: 'PipelineBuilds', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName }}" tag="div" class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0" :class="pipeline.buildStatus | bootstrapClass('border')">
-              <div class="mb-2 col-6 col-md-6 col-xl-5 text-truncate" :title="pipeline.repoSource + '/' + pipeline.repoOwner + '/' + pipeline.repoName">
+              <div class="mb-2 col-6 col-md-6 col-xl-5 col-xxl-3 col-xxxl-2 text-truncate" :title="pipeline.repoSource + '/' + pipeline.repoOwner + '/' + pipeline.repoName">
                 <div class="small text-black-50 mb-1 d-xl-none">Pipeline</div>
                 <span class="text-muted d-none d-md-inline">{{pipeline.repoSource}}/{{pipeline.repoOwner}}/</span><strong>{{pipeline.repoName}}</strong>
               </div>
@@ -53,17 +55,18 @@
                 <div class="small text-black-50 mb-1 d-xl-none">Revision</div>
                 {{pipeline.repoRevision | gitHash}}
               </div>
-              <div class="mb-2 col-6 col-md-6 col-xl-2">
+              <div class="mb-2 col-6 col-md-6 col-xl-2 col-xxxl-1">
                 <div class="small text-black-50 mb-1 d-xl-none">Commit(s)</div>
                 <div v-for="commit in pipeline.commits" v-bind:key="commit.message" :title="commit.message + '/' + commit.author.name" class="text-truncate">{{commit.message}} / {{commit.author.name}}</div>
               </div>
-              <div class="col-12"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
-              <div class="mb-2 col-12 col-xl-6 text-center">
-                <div class="small text-black-50 mb-1" v-if="pipeline.labels">Labels</div>
+              <div class="col-12 d-xxl-none"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
+              <div class="mb-2 col-12 col-xl-6 col-xxl-2 text-center text-xxl-left">
+                <div class="small text-black-50 mb-1 d-xxl-none" v-if="pipeline.labels">Labels</div>
                 <button type="button" class="btn btn-light btn-sm mr-1 mb-1" v-for="label in sortLabels(pipeline.labels)" v-bind:key="label.key">{{label.key}}={{label.value}}</button>
               </div>
-              <div class="mb-2 col-12 col-xl-6 text-center">
-                <div class="small text-black-50 mb-1" v-if="pipeline.targetVersions">Releases</div>
+              <div class="col-12 d-none d-xxl-flex d-xxxl-none"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
+              <div class="mb-2 col-12 col-xl-6 col-xxl-12 col-xxxl-2 text-center text-xxxl-left">
+                <div class="small text-black-50 mb-1 d-xxxl-none" v-if="pipeline.targetVersions">Releases</div>
                 <button type="button" class="btn btn-light btn-sm mr-1 mb-1" v-for="targetVersion in pipeline.targetVersions" v-bind:key="targetVersion.target.name">
                     {{targetVersion.target.name}} <span class="badge" :class="targetVersion.buildStatus | bootstrapClass('badge')">{{targetVersion.buildVersion}}</span>
                 </button>

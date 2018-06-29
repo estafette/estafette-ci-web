@@ -18,3 +18,57 @@ html, body, #app {
     clear:both;
     padding-top:20px;
 } 
+
+@media (min-width: 1440px) {
+
+    .d-xxl-block {
+        display: block!important;
+    }
+
+    .d-xxl-flex {
+        display: flex!important;
+    }
+
+    .d-xxl-none {
+        display: none!important;
+    }
+
+    .text-xxl-left {
+        text-align: left!important;
+    }
+
+    @for $i from 1 through 12 {
+        .col-xxl-#{$i} {
+            -ms-flex: 0 0 percentage(($i / 12));
+            flex: 0 0 percentage(($i / 12));
+            max-width: percentage(($i / 12));
+        }
+    }
+}
+
+@media (min-width: 1920px) {
+
+    .d-xxxl-block {
+        display: block!important;
+    }
+
+    .d-xxxl-flex {
+        display: flex!important;
+    }
+
+    .d-xxxl-none {
+        display: none!important;
+    }
+
+    .text-xxxl-left {
+        text-align: left!important;
+    }
+
+    @for $i from 1 through 12 {
+        .col-xxxl-#{$i} {
+            -ms-flex: 0 0 percentage(($i / 12));
+            flex: 0 0 percentage(($i / 12));
+            max-width: percentage(($i / 12));
+        }
+    }
+}
