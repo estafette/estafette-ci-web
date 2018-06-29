@@ -19,6 +19,19 @@ html, body, #app {
     padding-top:20px;
 } 
 
+.text-truncate-fade {
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 20%;
+        height: 100%;
+        background: linear-gradient(left, rgba(255,255,255,0) 0%, white 80%, white 100%);
+        pointer-events: none;
+      }
+}
+
 @media (min-width: 1440px) {
 
     #main {
