@@ -3,7 +3,7 @@
     <nav class="m-3" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><router-link :to="{ name: 'Pipelines'}">Pipelines</router-link></li>
-        <li class="breadcrumb-item"><router-link :to="{ name: 'PipelineBuilds', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}">{{repoSource}}/{{repoOwner}}/{{repoName}}</router-link></li>
+        <li class="breadcrumb-item"><router-link :to="{ name: 'PipelineBuilds', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"><span class="d-none d-md-inline">{{repoSource}}/{{repoOwner}}/</span>{{repoName}}</router-link></li>
         <li class="breadcrumb-item active" aria-current="page">{{repoRevision | gitHash}}</li>
       </ol>
     </nav>

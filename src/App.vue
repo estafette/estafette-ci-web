@@ -16,6 +16,6 @@ export default {
 }
 </script>
 
-<style>
-@import 'assets/css/estafette.css';
+<style lang="scss">
+@import 'assets/css/estafette.scss';
 </style>
