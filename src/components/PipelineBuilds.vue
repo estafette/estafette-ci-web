@@ -22,7 +22,7 @@
               <div class="progress-bar" :class="build.buildStatus | bootstrapClass('bg')" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
-        <div class="mb-2 col-6 col-md-4 col-xl-2">
+        <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="moment(build.insertedAt)">
           <div class="small text-black-50 mb-1 d-xl-none">Built at</div>
           {{build.insertedAt | moment("calendar")}}
         </div>
@@ -47,6 +47,8 @@
 
 <script>
 import axios from 'axios'
+const moment = require('moment')
+require('moment/locale/en-il')
 
 export default {
   props: {
@@ -106,6 +108,10 @@ export default {
       var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       this.refreshTimeout = setTimeout(this.loadBuilds, timeoutWithJitter)
+    },
+
+    moment (value) {
+      return moment(value).calendar()
     }
   },
 

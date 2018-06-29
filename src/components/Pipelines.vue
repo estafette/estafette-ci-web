@@ -41,7 +41,7 @@
                     <div class="progress-bar" :class="pipeline.buildStatus | bootstrapClass('bg')" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
-              <div class="mb-2 col-6 col-md-6 col-xl-1">
+              <div class="mb-2 col-6 col-md-6 col-xl-1 text-truncate" :title="moment(pipeline.insertedAt)">
                 <div class="small text-black-50 mb-1 d-xl-none">Built-at</div>
                 {{pipeline.insertedAt | moment("calendar")}}
               </div>
@@ -77,6 +77,8 @@
 
 <script>
 import axios from 'axios'
+const moment = require('moment')
+require('moment/locale/en-il')
 
 export default {
   props: {
@@ -174,6 +176,10 @@ export default {
       return labels.slice().sort(function (a, b) {
         return a.key > b.key
       })
+    },
+
+    moment (value) {
+      return moment(value).calendar()
     }
   },
 
