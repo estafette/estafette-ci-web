@@ -100,7 +100,7 @@ export default {
       },
       filter: {
         status: '',
-        since: '1w'
+        since: '1d'
       },
       sinceOptions: [
         { value: '1d', text: 'Since 1 day ago' },
@@ -128,7 +128,7 @@ export default {
     setDataFromQueryParams (query) {
       this.pagination.page = query && query.page ? Number.parseInt(query.page, 10) : 1
       this.filter.status = query && query.status ? query.status : ''
-      this.filter.since = query && query.since ? query.since : '1w'
+      this.filter.since = query && query.since ? query.since : '1d'
 
       this.updateQueryParams()
     },
