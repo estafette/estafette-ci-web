@@ -179,4 +179,8 @@ export default {
 .clickable {
   cursor: pointer;
 }
+
+.card-header {
+  background: none;
+}
 </style>
