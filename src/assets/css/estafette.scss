@@ -19,7 +19,7 @@ html, body, #app {
     padding-top:20px;
 } 
 
-.text-truncate-fade {
+#main .text-truncate-fade {
     &:after {
         content: '';
         position: absolute;
