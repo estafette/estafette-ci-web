@@ -3,13 +3,13 @@
       <div class="m-3">
         <div class="row">
           <div class="col-12 col-md-8 col-lg mb-2" id="status-filters">
-            <router-link :to="{ query: { status: 'all', since: filter.since, labels: filter.labels, page: pagination.page } }" active-class="router-link-active" class="btn btn-outline-primary" :class="{ active: filter.status === 'all' }">All</router-link>
-            <router-link :to="{ query: { status: 'succeeded', since: filter.since, labels: filter.labels, page: pagination.page } }" active-class="router-link-active" class="btn btn-outline-success" :class="{ active: filter.status === 'succeeded' }">Succeeded</router-link>
-            <router-link :to="{ query: { status: 'failed', since: filter.since, labels: filter.labels, page: pagination.page } }" active-class="router-link-active" class="btn btn-outline-danger" :class="{ active: filter.status === 'failed' }">Failed</router-link>
-            <router-link :to="{ query: { status: 'running', since: filter.since, labels: filter.labels, page: pagination.page } }" active-class="router-link-active" class="btn btn-outline-warning" :class="{ active: filter.status === 'running' }">Running</router-link>
+            <router-link :to="{ query: { status: 'all', since: filter.since, labels: filter.labels, page: 1 } }" active-class="router-link-active" class="btn btn-outline-primary" :class="{ active: filter.status === 'all' }">All</router-link>
+            <router-link :to="{ query: { status: 'succeeded', since: filter.since, labels: filter.labels, page: 1 } }" active-class="router-link-active" class="btn btn-outline-success" :class="{ active: filter.status === 'succeeded' }">Succeeded</router-link>
+            <router-link :to="{ query: { status: 'failed', since: filter.since, labels: filter.labels, page: 1 } }" active-class="router-link-active" class="btn btn-outline-danger" :class="{ active: filter.status === 'failed' }">Failed</router-link>
+            <router-link :to="{ query: { status: 'running', since: filter.since, labels: filter.labels, page: 1 } }" active-class="router-link-active" class="btn btn-outline-warning" :class="{ active: filter.status === 'running' }">Running</router-link>
 
             <span v-if="filter.labels" class="btn btn-outline-secondary">
-                {{ filter.labels }} <router-link :to="{ query: { status: filter.status, since: filter.since, page: pagination.page } }" active-class="router-link-active" class="badge badge-secondary">&times;</router-link>
+                {{ filter.labels }} <router-link :to="{ query: { status: filter.status, since: filter.since, page: 1 } }" active-class="router-link-active" class="badge badge-secondary">&times;</router-link>
             </span>
           </div>
           <div class="col-12 col-md-4 col-lg-2 mb-2 text-right">
@@ -66,7 +66,7 @@
               <div v-if="(pipeline.labels && pipeline.labels.length > 0) || (pipeline.targetVersions && pipeline.targetVersions.length > 0)" class="col-12 d-xxl-none"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
               <div v-if="pipeline.labels && pipeline.labels.length > 0" class="mb-2 col-12 col-xl-6 col-xxl-2 text-center text-xxl-left text-truncate text-truncate-fade">
                 <div class="small text-black-50 mb-1 d-xxl-none">Labels</div>
-                <router-link :to="{ query: { status: filter.status, since: filter.since, labels: label.key + '=' + label.value, page: pagination.page } }" exact class="btn btn-light btn-sm mr-1 mb-1" v-for="label in sortLabels(pipeline.labels)" v-bind:key="label.key">{{label.key}}={{label.value}}</router-link>
+                <router-link :to="{ query: { status: filter.status, since: filter.since, labels: label.key + '=' + label.value, page: 1 } }" exact class="btn btn-light btn-sm mr-1 mb-1" v-for="label in sortLabels(pipeline.labels)" v-bind:key="label.key">{{label.key}}={{label.value}}</router-link>
               </div>
               <div v-if="pipeline.targetVersions && pipeline.targetVersions.length > 0" class="col-12 d-none d-xxl-flex d-xxxl-none"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
               <div v-if="pipeline.targetVersions && pipeline.targetVersions.length > 0" class="mb-2 col-12 col-xl-6 col-xxl-12 col-xxxl-2 text-center text-xxxl-left text-truncate text-truncate-fade">
@@ -175,6 +175,7 @@ export default {
 
     setSince (value) {
       this.filter.since = value
+      this.pagination.page = 1
       this.updateQueryParams()
     },
 
