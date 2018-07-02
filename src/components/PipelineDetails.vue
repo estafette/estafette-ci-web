@@ -1,9 +1,9 @@
 <template>
   <div>
     <nav class="m-3" aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><router-link :to="{ name: 'Pipelines'}">Pipelines</router-link></li>
-        <li class="breadcrumb-item active" aria-current="page"><span class="d-none d-md-inline">{{pipeline.repoSource}}/{{pipeline.repoOwner}}/</span>{{pipeline.repoName}}</li>
+      <ol class="breadcrumb flex-nowrap">
+        <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'Pipelines'}">Pipelines</router-link></li>
+        <li class="breadcrumb-item text-truncate active" aria-current="page"><span class="d-none d-md-inline">{{pipeline.repoSource}}/{{pipeline.repoOwner}}/</span>{{pipeline.repoName}}</li>
       </ol>
     </nav>
     <router-view/>

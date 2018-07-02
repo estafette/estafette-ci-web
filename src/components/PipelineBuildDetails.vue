@@ -1,10 +1,10 @@
 <template>
   <div>
     <nav class="m-3" aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><router-link :to="{ name: 'Pipelines'}">Pipelines</router-link></li>
-        <li class="breadcrumb-item"><router-link :to="{ name: 'PipelineBuilds', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"><span class="d-none d-md-inline">{{repoSource}}/{{repoOwner}}/</span>{{repoName}}</router-link></li>
-        <li class="breadcrumb-item active" aria-current="page">{{repoRevision | gitHash}}</li>
+      <ol class="breadcrumb flex-nowrap">
+        <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'Pipelines'}">Pipelines</router-link></li>
+        <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'PipelineBuilds', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"><span class="d-none d-md-inline">{{repoSource}}/{{repoOwner}}/</span>{{repoName}}</router-link></li>
+        <li class="breadcrumb-item text-truncate active" aria-current="page">{{repoRevision | gitHash}}</li>
       </ol>
     </nav>
 
@@ -33,7 +33,7 @@
       </div>
       <div class="mb-2 col-6 col-md-4 col-xl-3">
         <div class="small text-muted mb-1">Commit(s)</div>
-        <div v-for="commit in build.commits" v-bind:key="commit.message" :title="commit.message + '/' + commit.author.name" class="text-truncate">{{commit.message}} / {{commit.author.name}}</div>
+        <div v-for="commit in build.commits" v-bind:key="commit.message" :title="commit.message + ' / ' + commit.author.name" class="text-truncate">{{commit.message}} / {{commit.author.name}}</div>
       </div>
     </div>
 

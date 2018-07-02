@@ -3,11 +3,14 @@
       <div class="m-3">
         <div class="row">
           <div class="col-12 col-md-8 col-lg mb-2" id="status-filters">
-            <router-link :to="{ query: { since: filter.since, page: pagination.page } }" exact class="btn btn-outline-primary">All</router-link>
-            <router-link :to="{ query: { status: 'succeeded', since: filter.since, page: pagination.page } }" exact class="btn btn-outline-success">Succeeded</router-link>
-            <router-link :to="{ query: { status: 'failed', since: filter.since, page: pagination.page } }" exact class="btn btn-outline-danger">Failed</router-link>
-            <router-link :to="{ query: { status: 'running', since: filter.since, page: pagination.page } }" exact class="btn btn-outline-warning">Running</router-link>
-            <router-link v-if="filter.labels" :to="{ query: { status: filter.status, since: filter.since, page: pagination.page } }" exact class="btn btn-outline-secondary active">{{ filter.labels }}</router-link>
+            <router-link :to="{ query: { status: 'all', since: filter.since, labels: filter.labels, page: pagination.page } }" active-class="router-link-active" class="btn btn-outline-primary" :class="{ active: filter.status === 'all' }">All</router-link>
+            <router-link :to="{ query: { status: 'succeeded', since: filter.since, labels: filter.labels, page: pagination.page } }" active-class="router-link-active" class="btn btn-outline-success" :class="{ active: filter.status === 'succeeded' }">Succeeded</router-link>
+            <router-link :to="{ query: { status: 'failed', since: filter.since, labels: filter.labels, page: pagination.page } }" active-class="router-link-active" class="btn btn-outline-danger" :class="{ active: filter.status === 'failed' }">Failed</router-link>
+            <router-link :to="{ query: { status: 'running', since: filter.since, labels: filter.labels, page: pagination.page } }" active-class="router-link-active" class="btn btn-outline-warning" :class="{ active: filter.status === 'running' }">Running</router-link>
+
+            <span v-if="filter.labels" class="btn btn-outline-secondary">
+                {{ filter.labels }} <router-link :to="{ query: { status: filter.status, since: filter.since, page: pagination.page } }" active-class="router-link-active" class="badge badge-secondary">&times;</router-link>
+            </span>
           </div>
           <div class="col-12 col-md-4 col-lg-2 mb-2 text-right">
             <b-form-select v-model="filter.since" :options="sinceOptions" v-on:change="setSince" class="border-primary text-primary" />
@@ -58,7 +61,7 @@
               </div>
               <div class="mb-2 col-6 col-md-6 col-xl-2 col-xxxl-1">
                 <div class="small text-black-50 mb-1 d-xl-none">Commit(s)</div>
-                <div v-for="commit in pipeline.commits" v-bind:key="commit.message" :title="commit.message + '/' + commit.author.name" class="text-truncate">{{commit.message}} / {{commit.author.name}}</div>
+                <div v-for="commit in pipeline.commits" v-bind:key="commit.message" :title="commit.message + ' / ' + commit.author.name" class="text-truncate">{{commit.message}} / {{commit.author.name}}</div>
               </div>
               <div v-if="(pipeline.labels && pipeline.labels.length > 0) || (pipeline.targetVersions && pipeline.targetVersions.length > 0)" class="col-12 d-xxl-none"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
               <div v-if="pipeline.labels && pipeline.labels.length > 0" class="mb-2 col-12 col-xl-6 col-xxl-2 text-center text-xxl-left text-truncate text-truncate-fade">
@@ -100,7 +103,7 @@ export default {
         totalItems: 0
       },
       filter: {
-        status: '',
+        status: 'all',
         since: '1d',
         labels: ''
       },
@@ -121,15 +124,15 @@ export default {
 
   methods: {
     paginationLinkGenerator (pageNum) {
-      if (this.filter && this.filter.status && this.filter.status !== '') {
-        return { query: { status: this.filter.status, since: this.filter.since, page: pageNum } }
+      if (this.filter && this.filter.labels && this.filter.labels !== '') {
+        return { query: { status: this.filter.status, since: this.filter.since, labels: this.filter.labels, page: pageNum } }
       }
-      return { query: { since: this.filter.since, page: pageNum } }
+      return { query: { status: this.filter.status, since: this.filter.since, page: pageNum } }
     },
 
     setDataFromQueryParams (query) {
       this.pagination.page = query && query.page ? Number.parseInt(query.page, 10) : 1
-      this.filter.status = query && query.status ? query.status : ''
+      this.filter.status = query && query.status ? query.status : 'all'
       this.filter.since = query && query.since ? query.since : '1d'
       this.filter.labels = query && query.labels ? query.labels : ''
 
@@ -139,10 +142,8 @@ export default {
     updateQueryParams () {
       if (this.filter && this.filter.labels && this.filter.labels !== '') {
         this.$router.push({query: { status: this.filter.status, since: this.filter.since, labels: this.filter.labels, page: this.pagination.page }})
-      } else if (this.filter && this.filter.status && this.filter.status !== '') {
-        this.$router.push({query: { status: this.filter.status, since: this.filter.since, page: this.pagination.page }})
       } else {
-        this.$router.push({query: { since: this.filter.since, page: this.pagination.page }})
+        this.$router.push({query: { status: this.filter.status, since: this.filter.since, page: this.pagination.page }})
       }
     },
 

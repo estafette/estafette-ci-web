@@ -36,7 +36,7 @@
         </div>
         <div class="mb-2 col-6 col-md-4 col-xl-3">
           <div class="small text-black-50 mb-1 d-xl-none">Commit(s)</div>
-          <div v-for="commit in build.commits" v-bind:key="commit.message" :title="commit.message + '/' + commit.author.name" class="text-truncate">{{commit.message}} / {{commit.author.name}}</div>
+          <div v-for="commit in build.commits" v-bind:key="commit.message" :title="commit.message + ' / ' + commit.author.name" class="text-truncate">{{commit.message}} / {{commit.author.name}}</div>
         </div>
 
      </router-link>
