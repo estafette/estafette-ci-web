@@ -24,10 +24,10 @@ pipelines:
     commands:
     - npm install
 
-  # unit-test:
-  #   image: node:10.4.0-alpine
-  #   commands:
-  #   - npm run unit
+  unit-test:
+    image: node:10.4.0-alpine
+    commands:
+    - npm run unit
 
   build:
     image: node:10.4.0-alpine
