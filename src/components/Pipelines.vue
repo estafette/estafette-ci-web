@@ -32,7 +32,7 @@
             <div class="col-2 d-none d-xxxl-block">Releases</div>
           </div>
 
-          <router-link v-for="pipeline in pipelines" v-bind:key="pipeline.id" :to="{ name: 'PipelineBuilds', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName }}" tag="div" class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0" :class="pipeline.buildStatus | bootstrapClass('border')">
+          <router-link v-for="pipeline in pipelines" v-bind:key="pipeline.id" :to="{ name: 'PipelineBuilds', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName }}" tag="div" class="row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0" :class="pipeline.buildStatus | bootstrapClass('border')">
               <div class="mb-2 col-6 col-md-6 col-xl-5 col-xxl-3 col-xxxl-2 text-truncate" :title="pipeline.repoSource + '/' + pipeline.repoOwner + '/' + pipeline.repoName">
                 <div class="small text-black-50 mb-1 d-xl-none">Pipeline</div>
                 <span class="text-muted d-none d-md-inline">{{pipeline.repoSource}}/{{pipeline.repoOwner}}/</span><strong>{{pipeline.repoName}}</strong>
@@ -43,9 +43,9 @@
               </div>
               <div class="mb-2 col-12 col-md-6 col-xl-1 align-middle">
                 <div class="small text-black-50 mb-1 d-xl-none">Status</div>
-                <div class="progress mt-1">
-                    <div class="progress-bar" :class="pipeline.buildStatus | bootstrapClass('bg')" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                <router-link :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, repoRevision: pipeline.repoRevision }}" tag="div" class="progress mt-1">
+                  <div class="progress-bar" :class="pipeline.buildStatus | bootstrapClass('bg')" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </router-link>
               </div>
               <div class="mb-2 col-6 col-md-6 col-xl-1 text-truncate" :title="moment(pipeline.insertedAt)">
                 <div class="small text-black-50 mb-1 d-xl-none">Built-at</div>

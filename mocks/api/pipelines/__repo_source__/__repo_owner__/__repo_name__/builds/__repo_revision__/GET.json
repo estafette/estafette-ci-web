@@ -7,7 +7,20 @@
 "repoRevision": "e9e4a894f736591268b37a2a406cb96a9babb100",
 "buildVersion": "0.0.81-very-long-branch-name-to-truncate-in-order-not-to-ruin-the-layout",
 "buildStatus": "succeeded",
-"labels": "",
+"labels": [
+    {
+        "key": "team",
+        "value": "estafette"
+    },
+    {
+        "key": "app",
+        "value": "estafette-ci-api"
+    },
+    {
+        "key": "language",
+        "value": "golang"
+    }
+],
 "manifest": "builder:\n  track: dev\n\nlabels:\n  app: estafette-ci-web\n  team: estafette-team\n  language: node\n\nversion:\n  semver:\n    major: 0\n    minor: 0\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: master\n\nenv:\n  GCR_PROJECT: estafette.secret(3tHZ9bT_wEz5K8Cx.kZyD5m8L-7-zpvzZ4bkeyUdKLiGfRx_ttoY=)\n\npipelines:\n  restore:\n    image: node:10.4.0-alpine\n    commands:\n    - npm install\n\n  unit-test:\n    image: node:10.4.0-alpine\n    commands:\n    - npm run unit\n\n  build:\n    image: node:10.4.0-alpine\n    commands:\n    - npm run build\n\n  bake:\n    image: docker:18.03.1-ce\n    commands:\n    - mkdir publish\n    - cp -r dist publish\n    - cp nginx.vh.default.conf ./publish\n    - cp Dockerfile ./publish\n    - docker build -f ./publish/Dockerfile -t estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION} ./publish\n\n  push-to-docker-hub:\n    image: docker:18.03.1-ce\n    env:\n      DOCKER_HUB_USERNAME: estafette.secret(mhN5HP5qcUkpSp4m.s9UnvG027LhQjT-bvvyjYcLKtyd_-xY1Cw==)\n      DOCKER_HUB_PASSWORD: estafette.secret(_oi7CDX50U8qjQSS.U3dzq3cw3J-_-hODYbNtOEDWgeUGzgXk2J0T-WMOmkil56tg)\n    commands:\n    - docker login --username=${DOCKER_HUB_USERNAME} --password=\"${DOCKER_HUB_PASSWORD}\"\n    - docker push estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION}\n    when:\n      status == 'succeeded' &&\n      branch == 'master' &&\n      server == 'gocd'\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    webhook: estafette.secret(VQhyeydGURZSFLmh.zxAW1ZVhI7JqLgr9-K7_YuzSFWAasNFRIHAm9OXj2RK_Wa-FWXt9LCCJuD6K6jz_SYpbEhiBWcjd0VkD23AazyLmz3EsImi2C1AJ82ltxuMmN93rPZbdP3kT5vwa)\n    name: ${ESTAFETTE_LABEL_APP}\n    channels:\n    - '#build-status'\n    when:\n      status == 'failed'",
 "commits": [
     {

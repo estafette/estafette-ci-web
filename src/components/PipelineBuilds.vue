@@ -10,7 +10,7 @@
       <div class="col-6 col-md-4 col-xl-3 d-none d-xl-block">Commit(s)</div>
     </div>
 
-    <router-link v-for="build in builds" v-bind:key="build.id" :to="{ name: 'PipelineBuildLogs', params: { repoSource: build.repoSource, repoOwner: build.repoOwner, repoName: build.repoName, repoRevision: build.repoRevision }}" tag="div" class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0" :class="build.buildStatus | bootstrapClass('border')">
+    <router-link v-for="build in builds" v-bind:key="build.id" :to="{ name: 'PipelineBuildLogs', params: { repoSource: build.repoSource, repoOwner: build.repoOwner, repoName: build.repoName, repoRevision: build.repoRevision }}" tag="div" class="row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0" :class="build.buildStatus | bootstrapClass('border')">
 
         <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="build.buildVersion">
           <div class="small text-black-50 mb-1 d-xl-none">Version</div>

@@ -32,6 +32,10 @@ html, body, #app {
       }
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 @media (min-width: 1440px) {
 
     #main {

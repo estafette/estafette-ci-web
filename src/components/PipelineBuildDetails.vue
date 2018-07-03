@@ -35,6 +35,13 @@
         <div class="small text-muted mb-1">Commit(s)</div>
         <div v-for="commit in build.commits" v-bind:key="commit.message" :title="commit.message + ' / ' + commit.author.name" class="text-truncate">{{commit.message}} / {{commit.author.name}}</div>
       </div>
+
+      <div v-if="build.labels && build.labels.length > 0" class="col-12"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
+      <div v-if="build.labels && build.labels.length > 0" class="mb-2 col-12 text-center text-truncate text-truncate-fade">
+        <div class="small text-black-50 mb-1">Labels</div>
+        <router-link :to="{ name: 'Pipelines', query: { labels: label.key + '=' + label.value } }" exact class="btn btn-light btn-sm mr-1 mb-1" v-for="label in sortLabels(build.labels)" v-bind:key="label.key">{{label.key}}={{label.value}}</router-link>
+      </div>
+
     </div>
 
     <ul class="nav nav-tabs m-3">
@@ -97,6 +104,15 @@ export default {
       var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       this.refreshTimeout = setTimeout(this.loadBuild, timeoutWithJitter)
+    },
+
+    sortLabels (labels) {
+      if (!labels) {
+        return labels
+      }
+      return labels.slice().sort(function (a, b) {
+        return a.key > b.key
+      })
     },
 
     moment (value) {
