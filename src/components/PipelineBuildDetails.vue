@@ -3,12 +3,12 @@
     <nav class="m-3" aria-label="breadcrumb">
       <ol class="breadcrumb flex-nowrap">
         <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'Pipelines'}">Pipelines</router-link></li>
-        <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'PipelineBuilds', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"><span class="d-none d-md-inline">{{repoSource}}/{{repoOwner}}/</span>{{repoName}}</router-link></li>
+        <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'PipelineBuilds', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}"><span class="d-none d-md-inline">{{repoSource}}/{{repoOwner}}/</span>{{repoName}}</router-link></li>
         <li class="breadcrumb-item text-truncate active" aria-current="page">{{repoRevision | gitHash}}</li>
       </ol>
     </nav>
 
-    <div class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-3 mb-2 ml-3" :class="build.buildStatus | bootstrapClass('border')">
+    <div v-if="build" class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-3 mb-2 ml-3" :class="build.buildStatus | bootstrapClass('border')">
       <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="build.buildVersion">
         <div class="small text-muted mb-1">Version</div>
         {{build.buildVersion}}
@@ -71,7 +71,7 @@ export default {
   },
   data: function () {
     return {
-      build: {},
+      build: null,
       errors: []
     }
   },
