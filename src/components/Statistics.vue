@@ -7,12 +7,15 @@
         </div>
       </div>
       <div class="row m-0">
-        <stats-pipelines-count :filter="filter"/>
-        <stats-builds-count :filter="filter"/>
+        <stats-pipelines-count :filter="filter" status="all"/>
+        <stats-pipelines-count :filter="filter" status="succeeded"/>
+        <stats-pipelines-count :filter="filter" status="failed"/>
+        <stats-pipelines-count :filter="filter" status="running"/>
 
-        <stats-builds-by-status-count :filter="filter" status="succeeded"/>
-        <stats-builds-by-status-count :filter="filter" status="failed"/>
-        <stats-builds-by-status-count :filter="filter" status="running"/>
+        <stats-builds-count :filter="filter" status="all"/>
+        <stats-builds-count :filter="filter" status="succeeded"/>
+        <stats-builds-count :filter="filter" status="failed"/>
+        <stats-builds-count :filter="filter" status="running"/>
       </div>
     </div>
 </template>

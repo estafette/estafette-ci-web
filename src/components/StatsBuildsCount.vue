@@ -1,8 +1,8 @@
 <template>
-    <div class="col-12 col-sm p-0 stat">
-      <div class="rounded border border-secondary text-center">
-        <h6 class="text-muted">Nr of total builds</h6>
-        <p class="display-1">{{animatedCount}}</p>
+    <div class="col-12 col-lg-3 p-0 stat">
+      <div class="rounded border text-center" :class="status | bootstrapClass('border')">
+        <h6 :class="status | bootstrapClass('text')">{{status | capitalize}} builds</h6>
+        <p class="display-1" :class="status | bootstrapClass('text')">{{animatedCount}}</p>
       </div>
     </div>
 </template>
@@ -13,7 +13,8 @@ import TweenLite from 'gsap/TweenMax'
 
 export default {
   props: {
-    filter: Object
+    filter: Object,
+    status: String
   },
 
   data: function () {
@@ -28,7 +29,7 @@ export default {
 
   methods: {
     loadStat () {
-      axios.get(`/api/stats/buildscount?filter[since]=${this.filter.since}`)
+      axios.get(`/api/stats/buildscount?filter[status]=${this.status}&filter[since]=${this.filter.since}`)
         .then(response => {
           TweenLite.to(this.$data, 0.5, { count: response.data.count })
           this.periodicallyRefreshStat(15)
