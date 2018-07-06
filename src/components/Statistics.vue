@@ -1,43 +1,54 @@
 <template>
-  <div>
-    <div class="d-inline-flex singlestat card bg-light mb-3 mt-3 ml-3">
-    <div class="card-body">
-        <h5 class="card-title text-center">Pipelines</h5>
-        <p class="card-text">546</p>
+    <div class="m-3">
+      <div class="row mt-0 mr-0 mb-3 ml-0">
+        <div class="col-12 col-sm-8 col-lg"></div>
+        <div class="col-12 col-sm-4 col-lg-2 p-0 text-right">
+          <b-form-select v-model="filter.since" :options="sinceOptions" v-on:change="setSince" class="border-primary text-primary" />
+        </div>
+      </div>
+      <div class="row m-0">
+        <stats-pipelines-count :filter="filter"/>
+        <stats-builds-count :filter="filter"/>
+      </div>
     </div>
-    </div>
-
-    <div class="d-inline-flex singlestat card bg-light mb-3 mt-3 ml-3">
-    <div class="card-body">
-        <h5 class="card-title text-center">Targets</h5>
-        <p class="card-text">17</p>
-    </div>
-    </div>
-
-    <div class="d-inline-flex singlestat card bg-light mb-3 mt-3 ml-3">
-    <div class="card-body">
-        <h5 class="card-title text-center">Builds (last month)</h5>
-        <p class="card-text">1381</p>
-    </div>
-    </div>
-  </div>
 </template>
 
 <script>
 export default {
   data: function () {
     return {
-      statistics: [],
-      errors: []
+      filter: {
+        since: '1d'
+      },
+      sinceOptions: [
+        { value: '1d', text: 'Since 1 day ago' },
+        { value: '1w', text: 'Since 1 week ago' },
+        { value: '1m', text: 'Since 1 month ago' },
+        { value: '1y', text: 'Since 1 year ago' },
+        { value: 'eternity', text: 'Since dawn of mankind' }
+      ]
+    }
+  },
+
+  created () {
+    this.setDataFromQueryParams(this.query)
+  },
+
+  methods: {
+    setDataFromQueryParams (query) {
+      this.filter.since = query && query.since ? query.since : '1d'
+
+      this.updateQueryParams()
+    },
+
+    updateQueryParams () {
+      this.$router.push({query: { since: this.filter.since }})
+    },
+
+    setSince (value) {
+      this.filter.since = value
+      this.updateQueryParams()
     }
   }
 }
 </script>
-
-<style scoped>
-.singlestat {
-    font-size: 4vw;
-    text-align: center;
-    width: 4em;
-}
-</style>

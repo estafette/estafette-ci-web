@@ -36,6 +36,23 @@ html, body, #app {
     cursor: pointer;
 }
 
+.stat {
+
+    @media (min-width: 576px) {
+        min-width: 270px;
+        max-width: 270px;
+    }
+
+    div {
+        padding: 1em;
+        margin: 0 0 1em 0;
+
+        @media (min-width: 576px) {
+            margin: 0 1em 1em 0;
+        }        
+    }
+}
+
 @media (min-width: 1440px) {
 
     #main {

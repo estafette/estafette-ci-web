@@ -1,15 +1,16 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <router-link :to="{ name: 'Home'}" class="navbar-brand">Estafette CI</router-link>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <router-link :to="{ name: 'Pipelines'}" class="nav-item nav-link">Pipelines</router-link>
-            <router-link :to="{ name: 'Targets'}" class="nav-item nav-link disabled">Targets</router-link>
-            <router-link :to="{ name: 'Statistics'}" class="nav-item nav-link disabled">Statistics</router-link>
-        </div>
-    </div>
-    </nav>
+    <b-navbar toggleable="sm" type="dark" variant="dark">
+
+        <b-navbar-brand :to="{ name: 'Pipelines'}">Estafette CI</b-navbar-brand>
+        <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+
+        <b-collapse is-nav id="nav_collapse">
+            <b-navbar-nav>
+                <b-nav-item :to="{ name: 'Pipelines'}">Pipelines</b-nav-item>
+                <b-nav-item :to="{ name: 'Targets'}"  disabled>Targets</b-nav-item>
+                <b-nav-item :to="{ name: 'Statistics'}" >Statistics</b-nav-item>
+            </b-navbar-nav>
+        </b-collapse>
+
+    </b-navbar>
 </template>
