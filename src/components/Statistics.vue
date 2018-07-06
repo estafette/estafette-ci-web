@@ -9,6 +9,10 @@
       <div class="row m-0">
         <stats-pipelines-count :filter="filter"/>
         <stats-builds-count :filter="filter"/>
+
+        <stats-builds-by-status-count :filter="filter" status="succeeded"/>
+        <stats-builds-by-status-count :filter="filter" status="failed"/>
+        <stats-builds-by-status-count :filter="filter" status="running"/>
       </div>
     </div>
 </template>
