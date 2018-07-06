@@ -84,6 +84,11 @@ export default new Router({
       path: '/statistics',
       name: 'Statistics',
       component: Statistics
+    },
+    {
+      path: '/logs/:repoSource/:repoOwner/:repoName/:repoBranch/:repoRevision',
+      name: 'LegacyLogs',
+      redirect: { name: 'PipelineBuildLogs' }
     }
   ]
 })
