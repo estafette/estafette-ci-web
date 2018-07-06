@@ -1,6 +1,6 @@
 <template>
     <div class="col-12 col-sm p-0 stat">
-      <div class="rounded border border-success text-center">
+      <div class="rounded border border-secondary text-center">
         <h6 class="text-muted">Nr of pipelines</h6>
         <p class="display-1">{{animatedCount}}</p>
       </div>
