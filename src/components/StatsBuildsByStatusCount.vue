@@ -1,8 +1,8 @@
 <template>
     <div class="col-12 col-sm p-0 stat">
       <div class="rounded border text-center" :class="status | bootstrapClass('border')">
-        <h6 class="text-muted">Nr of {{status}} builds</h6>
-        <p class="display-1">{{animatedCount}}</p>
+        <h6 :class="status | bootstrapClass('text')">Nr of {{status}} builds</h6>
+        <p class="display-1" :class="status | bootstrapClass('text')">{{animatedCount}}</p>
       </div>
     </div>
 </template>
