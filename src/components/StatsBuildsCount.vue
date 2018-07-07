@@ -1,5 +1,5 @@
 <template>
-    <div class="col-12 col-lg-3 p-0 stat">
+    <div class="col-12 col-lg-3 col-xxxl p-0 stat">
       <div class="rounded border text-center" :class="status | bootstrapClass('border')">
         <h6 :class="status | bootstrapClass('text')">{{status | capitalize}} builds</h6>
         <p class="display-1" :class="status | bootstrapClass('text')">{{animatedCount}}</p>

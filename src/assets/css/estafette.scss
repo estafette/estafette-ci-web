@@ -38,8 +38,6 @@ html, body, #app {
 
 #main .stat {
 
-
-
     div {
         padding: 1em;
         margin: 0 0 1em 0;
@@ -68,6 +66,14 @@ html, body, #app {
 
         .text-xxl-left {
             text-align: left!important;
+        }
+
+        .col-xxl {
+            -ms-flex-preferred-size: 0;
+            flex-basis: 0;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            max-width: 100%;
         }
 
         @for $i from 1 through 12 {
@@ -101,6 +107,14 @@ html, body, #app {
             text-align: left!important;
         }
 
+        .col-xxxl {
+            -ms-flex-preferred-size: 0;
+            flex-basis: 0;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            max-width: 100%;
+        }
+
         @for $i from 1 through 12 {
             .col-xxxl-#{$i} {
                 -ms-flex: 0 0 percentage(($i / 12));
@@ -119,7 +133,4 @@ html, body, #app {
     /* .list-complete-leave-active below version 2.1.8 */ {
     opacity: 0;
     transform: translateX(30px);
-}
-.list-complete-leave-active {
-    position: absolute;
 }
