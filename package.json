@@ -19,6 +19,7 @@
     "bootstrap-vue": "^2.0.0-rc.11",
     "gsap": "^2.0.1",
     "vue": "^2.5.2",
+    "vue-analytics": "^5.12.2",
     "vue-moment": "^4.0.0-0",
     "vue-router": "^3.0.1"
   },

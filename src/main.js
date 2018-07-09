@@ -2,6 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
+import VueAnalytics from 'vue-analytics'
+
 import App from './App'
 import router from './router'
 
@@ -152,6 +154,11 @@ const moment = require('moment')
 require('moment/locale/en-il')
 Vue.use(require('vue-moment'), {
   moment
+})
+
+Vue.use(VueAnalytics, {
+  id: 'UA-464018-10',
+  router
 })
 
 /* eslint-disable no-new */
