@@ -121,6 +121,10 @@ Vue.filter('formatDuration', function (value) {
     formattedString += `${seconds}s`
   }
 
+  if (formattedString === '') {
+    formattedString = '-'
+  }
+
   return formattedString
 })
 
