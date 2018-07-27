@@ -37,10 +37,14 @@
             </span>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
-            {{step.duration | formatDuration}}
+            <span v-if="step.status == 'SUCCEEDED' || step.status == 'FAILED'">
+              {{step.duration | formatDuration}}
+            </span>
           </div>
           <div class="col-2 col-lg-1 text-right d-none d-md-flex">
-            {{step.image.pullDuration + step.duration | formatDuration}}
+            <span v-if="step.status == 'SUCCEEDED' || step.status == 'FAILED'">
+              {{step.image.pullDuration + step.duration | formatDuration}}
+            </span>
           </div>
         </b-card-header>
 

@@ -85,11 +85,11 @@ Vue.filter('capitalize', function (value) {
 })
 
 Vue.filter('formatDuration', function (value) {
-  if (!value) {
+  if (value === null) {
     return ''
   }
 
-  if (value <= 0) {
+  if (value < 0) {
     return ''
   }
 
