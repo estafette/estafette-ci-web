@@ -20,22 +20,22 @@ env:
 
 pipelines:
   restore:
-    image: node:10.5.0-alpine
+    image: node:10.7.0-alpine
     commands:
     - npm install
 
   unit-test:
-    image: node:10.5.0-alpine
+    image: node:10.7.0-alpine
     commands:
     - npm run unit
 
   build:
-    image: node:10.5.0-alpine
+    image: node:10.7.0-alpine
     commands:
     - npm run build
 
   bake:
-    image: docker:18.03.1-ce
+    image: docker:18.06.0-ce
     commands:
     - mkdir publish
     - cp -r dist publish
@@ -44,7 +44,7 @@ pipelines:
     - docker build -f ./publish/Dockerfile -t estafette/${ESTAFETTE_LABEL_APP}:${ESTAFETTE_BUILD_VERSION} ./publish
 
   push-to-docker-hub:
-    image: docker:18.03.1-ce
+    image: docker:18.06.0-ce
     env:
       DOCKER_HUB_USERNAME: estafette.secret(mhN5HP5qcUkpSp4m.s9UnvG027LhQjT-bvvyjYcLKtyd_-xY1Cw==)
       DOCKER_HUB_PASSWORD: estafette.secret(_oi7CDX50U8qjQSS.U3dzq3cw3J-_-hODYbNtOEDWgeUGzgXk2J0T-WMOmkil56tg)
