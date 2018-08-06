@@ -57,7 +57,7 @@ Vue.filter('gitHash', function (value) {
 
 Vue.filter('bootstrapClass', function (value, prefix) {
   if (!value) {
-    return ''
+    return prefix + '-light'
   }
   value = value.toString().toLowerCase()
   if (value === 'succeeded') {
@@ -77,6 +77,14 @@ Vue.filter('bootstrapClass', function (value, prefix) {
   }
   return prefix + '-light'
 })
+
+Vue.filter('default', function (value, defaultValue) {
+  if (!value) {
+    return defaultValue
+  }
+  return value
+})
+
 
 Vue.filter('capitalize', function (value) {
   if (!value) return ''

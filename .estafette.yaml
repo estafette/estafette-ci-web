@@ -18,7 +18,7 @@ version:
 env:
   GCR_PROJECT: estafette.secret(3tHZ9bT_wEz5K8Cx.kZyD5m8L-7-zpvzZ4bkeyUdKLiGfRx_ttoY=)
 
-pipelines:
+stages:
   restore:
     image: node:10.7.0-alpine
     commands:
