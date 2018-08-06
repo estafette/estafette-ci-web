@@ -3,7 +3,7 @@
 
     <div class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 font-weight-bold">
       <div class="col-4 col-md-2 col-xl-1 text-center">Status</div>
-      <div class="col-8 col-lg-5 col-xl-4">Step</div>
+      <div class="col-8 col-lg-5 col-xl-4">Stage</div>
       <div class="col-4 col-xl-3 d-none d-lg-flex">Image</div>
       <div class="col-1 text-right d-none d-xl-flex">Image size</div>
       <div class="col-1 text-right d-none d-xl-flex">Pull time</div>
