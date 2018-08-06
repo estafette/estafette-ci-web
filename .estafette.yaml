@@ -64,3 +64,6 @@ stages:
     - '#build-status'
     when:
       status == 'failed'
+
+releases:
+  tooling:
