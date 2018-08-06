@@ -458,20 +458,6 @@
         "repoRevision":"a670e2ea29ba7431f76fca06fe2bdc9eb4bc8c36",
         "buildVersion":"1.0.13",
         "buildStatus":"succeeded",
-        "labels": [
-            {
-                "key": "app",
-                "value": "estafette-gke-node-pool-shifter"
-            },
-            {
-                "key": "team",
-                "value": "estafette"
-            },
-            {
-                "key": "language",
-                "value": "golang"
-            }
-        ],
         "releases": [
             {
                 "name": "development",

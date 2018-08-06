@@ -78,13 +78,12 @@ Vue.filter('bootstrapClass', function (value, prefix) {
   return prefix + '-light'
 })
 
-Vue.filter('default', function (value, defaultValue) {
+Vue.filter('defaultValue', function (value, defaultValue) {
   if (!value) {
     return defaultValue
   }
   return value
 })
-
 
 Vue.filter('capitalize', function (value) {
   if (!value) return ''
