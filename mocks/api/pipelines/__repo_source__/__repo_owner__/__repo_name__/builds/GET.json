@@ -7,7 +7,7 @@
             "repoName":"estafette-ci-web-with-very-long-name-to-get-truncated-in-breadcrumb",
             "repoBranch":"master",
             "repoRevision":"abb6817a8bdee28c7121018e60c67a641756c5c3",
-            "buildVersion":"0.0.73",
+            "buildVersion":"0.0.81",
             "buildStatus":"succeeded",
             "labels": [
                  {
@@ -23,7 +23,7 @@
                      "value": "nodejs"
                  }
              ],
-             "targetVersions": [
+             "releases": [
                  {
                      "target": {
                          "name": "tooling",

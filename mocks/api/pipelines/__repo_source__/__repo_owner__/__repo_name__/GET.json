@@ -23,8 +23,18 @@
      ],
      "releases": [
         {
-            "name": "tooling",
-            "releaseVersion": "0.0.12",
+            "name": "development",
+            "releaseVersion": "0.0.77-vuejs",
+            "releaseStatus": "running"
+        },
+        {
+            "name": "staging",
+            "releaseVersion": "0.0.81",
+            "releaseStatus": "succeeded"
+        },
+        {
+            "name": "production",
+            "releaseVersion": "0.0.73",
             "releaseStatus": "succeeded"
         }
     ],

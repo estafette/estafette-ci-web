@@ -35,12 +35,28 @@
         <div v-for="commit in pipeline.commits" v-bind:key="commit.message" :title="commit.message + ' / ' + commit.author.name" class="text-truncate">{{commit.message}} / {{commit.author.name}}</div>
       </div>
 
-      <div v-if="pipeline.labels && pipeline.labels.length > 0" class="col-12"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
-      <div v-if="pipeline.labels && pipeline.labels.length > 0" class="mb-2 col-12 text-center text-truncate text-truncate-fade">
+      <div v-if="(pipeline.labels && pipeline.labels.length > 0) || (pipeline.releases && pipeline.releases.length > 0)" class="col-12"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
+      <div v-if="pipeline.labels && pipeline.labels.length > 0" class="mb-2 col-12 col-xl-6 text-center text-truncate text-truncate-fade">
         <div class="small text-black-50 mb-1">Labels</div>
         <router-link :to="{ name: 'Pipelines', query: { labels: label.key + '=' + label.value } }" exact class="btn btn-light btn-sm mr-1 mb-1" v-for="label in sortLabels(pipeline.labels)" v-bind:key="label.key">{{label.key}}={{label.value}}</router-link>
       </div>
+      <div v-if="pipeline.releases && pipeline.releases.length > 0" class="mb-2 col-12 col-xl-6 text-center text-truncate text-truncate-fade">
+        <div class="small text-black-50 mb-1">Releases</div>
+        <button type="button" class="btn btn-light btn-sm mr-1 mb-1" v-for="release in pipeline.releases" v-bind:key="release.name">
+            {{release.name}} <span class="badge" :class="release.releaseStatus | bootstrapClass('badge')">{{release.releaseVersion | defaultValue('-')}}</span>
+        </button>
+      </div>
+
     </div>
+
+    <ul class="nav nav-tabs m-3">
+      <li class="nav-item">
+        <router-link :to="{ name: 'PipelineBuilds', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}" class="nav-link">Builds</router-link>
+      </li>
+      <li class="nav-item">
+        <router-link :to="{ name: 'PipelineReleases', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}" class="nav-link">Releases</router-link>
+      </li>
+    </ul>
 
     <router-view/>
   </div>
