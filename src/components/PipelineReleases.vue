@@ -14,7 +14,7 @@
 
         <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="release.name">
           <div class="small text-black-50 mb-1 d-xl-none">Name</div>
-          {{release.name}} ({{release.id}})
+          {{release.name}}
         </div>
         <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="release.releaseVersion">
           <div class="small text-black-50 mb-1 d-xl-none">Version</div>

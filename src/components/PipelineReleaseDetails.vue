@@ -54,7 +54,7 @@ export default {
     repoSource: String,
     repoOwner: String,
     repoName: String,
-    releaseID: Number
+    releaseID: String
   },
   data: function () {
     return {

@@ -4,7 +4,7 @@
     "repoBranch": "estafette-extension-bitbucket-status",
     "repoName": "estafette",
     "repoOwner": "github.com",
-    "releaseID": 12345,
+    "releaseID": "372762091039162371",
     "steps": [
     {
     "step": "git-clone",
