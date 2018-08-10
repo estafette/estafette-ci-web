@@ -26,6 +26,10 @@
         "releases": [
             {
                 "name": "tooling",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.228",
                 "releaseStatus": "running"
             }
@@ -70,16 +74,28 @@
         "releases": [
             {
                 "name": "beta",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.260",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "stable",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.260",
                 "releaseStatus": "running"
             },
             {
                 "name": "latest",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.259",
                 "releaseStatus": "succeeded"
             }
@@ -114,6 +130,10 @@
         "releases": [
             {
                 "name": "github-tag",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.19",
                 "releaseStatus": "failed"
             }
@@ -176,6 +196,10 @@
         "releases": [
             {
                 "name": "tooling",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.12",
                 "releaseStatus": "succeeded"
             }
@@ -210,21 +234,37 @@
         "releases": [
             {
                 "name": "development",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.107",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "staging",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.107",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "production",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.107",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "tooling",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.107",
                 "releaseStatus": "succeeded"
             }
@@ -273,11 +313,19 @@
         "releases": [
             {
                 "name": "beta",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.17",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "stable",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.17",
                 "releaseStatus": "running"
             },
@@ -315,16 +363,28 @@
         "releases": [
             {
                 "name": "beta",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.14",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "stable",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.14",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "latest",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.14",
                 "releaseStatus": "succeeded"
             }
@@ -359,16 +419,28 @@
         "releases": [
             {
                 "name": "beta",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.19",
                 "releaseStatus": "running"
             },
             {
                 "name": "stable",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.17",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "latest",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.17",
                 "releaseStatus": "succeeded"
             }
@@ -417,16 +489,28 @@
         "releases": [
             {
                 "name": "beta",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.21",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "stable",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.21",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "latest",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.21",
                 "releaseStatus": "succeeded"
             }
@@ -461,16 +545,28 @@
         "releases": [
             {
                 "name": "development",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "1.0.13",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "staging",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "1.0.13",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "production",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "1.0.13",
                 "releaseStatus": "succeeded"
             },
@@ -508,21 +604,37 @@
         "releases": [
             {
                 "name": "development",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "1.0.38",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "staging",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "1.0.38",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "production",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "1.0.38",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "tooling",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "1.0.38",
                 "releaseStatus": "succeeded"
             }
@@ -557,20 +669,36 @@
         "releases": [
             {
                 "name": "development",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.91",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "staging",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.91",
                 "releaseStatus": "succeeded"
             },
             {
                 "name": "production",
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "releaseVersion": "0.0.91",
                 "releaseStatus": "succeeded"
             },
             {
+                "repoSource":"github.com",
+                "repoOwner":"estafette",
+                "repoName":"estafette-ci-api",
+                "id":"352057520731619331",
                 "name": "tooling",
                 "releaseVersion": "0.0.91",
                 "releaseStatus": "succeeded"

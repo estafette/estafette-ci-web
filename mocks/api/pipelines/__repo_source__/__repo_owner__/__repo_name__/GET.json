@@ -24,16 +24,28 @@
      "releases": [
         {
             "name": "development",
+            "repoSource":"github.com",
+            "repoOwner":"estafette",
+            "repoName":"estafette-ci-api",
+            "id":"352057520731619331",
             "releaseVersion": "0.0.77-vuejs",
             "releaseStatus": "running"
         },
         {
             "name": "staging",
+            "repoSource":"github.com",
+            "repoOwner":"estafette",
+            "repoName":"estafette-ci-api",
+            "id":"352057520731619331",
             "releaseVersion": "0.0.81",
             "releaseStatus": "succeeded"
         },
         {
             "name": "production",
+            "repoSource":"github.com",
+            "repoOwner":"estafette",
+            "repoName":"estafette-ci-api",
+            "id":"352057520731619331",
             "releaseVersion": "0.0.73",
             "releaseStatus": "succeeded"
         }

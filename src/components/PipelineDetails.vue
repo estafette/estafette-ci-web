@@ -42,9 +42,9 @@
       </div>
       <div v-if="pipeline.releases && pipeline.releases.length > 0" class="mb-2 col-12 col-xl-6 text-center text-truncate text-truncate-fade">
         <div class="small text-black-50 mb-1">Releases</div>
-        <button type="button" class="btn btn-light btn-sm mr-1 mb-1" v-for="release in pipeline.releases" v-bind:key="release.name">
-            {{release.name}} <span class="badge" :class="release.releaseStatus | bootstrapClass('badge')">{{release.releaseVersion | defaultValue('-')}}</span>
-        </button>
+        <router-link :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}" exact class="btn btn-light btn-sm mr-1 mb-1" v-for="release in pipeline.releases" v-bind:key="release.name">
+          {{release.name}} <span class="badge" :class="release.releaseStatus | bootstrapClass('badge')">{{release.releaseVersion | defaultValue('-')}}</span>
+        </router-link>
       </div>
 
     </div>
