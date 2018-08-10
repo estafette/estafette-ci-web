@@ -10,7 +10,7 @@
     </div>
 
     <transition-group name="list-complete" tag="div">
-    <router-link v-for="release in releases" v-bind:key="release.id" :to="{ name: 'PipelineRelease', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, id: release.id }}" tag="div" class="row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 list-complete-item" :class="release.releaseStatus | bootstrapClass('border')">
+    <router-link v-for="release in releases" v-bind:key="release.id" :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}" tag="div" class="row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 list-complete-item" :class="release.releaseStatus | bootstrapClass('border')">
 
         <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="release.name">
           <div class="small text-black-50 mb-1 d-xl-none">Name</div>

@@ -10,6 +10,8 @@ import PipelineBuildLogs from '@/components/PipelineBuildLogs'
 import PipelineBuildManifest from '@/components/PipelineBuildManifest'
 import PipelineStatistics from '@/components/PipelineStatistics'
 import PipelineReleases from '@/components/PipelineReleases'
+import PipelineReleaseDetails from '@/components/PipelineReleaseDetails'
+import PipelineReleaseLogs from '@/components/PipelineReleaseLogs'
 
 Vue.use(Router)
 
@@ -72,6 +74,20 @@ export default new Router({
           name: 'PipelineBuildManifest',
           props: true,
           component: PipelineBuildManifest
+        }
+      ]
+    },
+    {
+      path: '/pipelines/:repoSource/:repoOwner/:repoName/releases/:releaseID',
+      name: 'PipelineReleaseDetails',
+      props: true,
+      component: PipelineReleaseDetails,
+      children: [
+        {
+          path: 'logs',
+          name: 'PipelineReleaseLogs',
+          props: true,
+          component: PipelineReleaseLogs
         }
       ]
     },
