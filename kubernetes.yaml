@@ -52,6 +52,7 @@ metadata:
   annotations:
     prometheus.io/probe: "true"
     prometheus.io/probe-path: "/robots.txt"
+    service.alpha.kubernetes.io/app-protocols: '{"https":"HTTPS"}'
 spec:
   type: ClusterIP
   ports:
@@ -187,8 +188,9 @@ spec:
           initialDelaySeconds: 15
         readinessProbe:
           httpGet:
-            path: /readiness
-            port: nginx-readiness
+            path: /robots.txt
+            port: https
+            scheme: HTTPS
       volumes:
       - name: ssl-certificate
         secret:
