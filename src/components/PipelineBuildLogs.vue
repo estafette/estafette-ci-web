@@ -19,6 +19,7 @@
           </div>
           <div class="col-8 col-lg-5 col-xl-4 text-truncate h4" :title="step.step">
             {{step.step}}
+            <span v-if="step.runIndex && step.runIndex > 0" class="small text-muted" :title="'Retry '+step.runIndex">(retry {{step.runIndex}})</span>
             <span v-if="step.autoInjected" class="small text-muted" title="This step is automatically injected by Estafette CI">(injected)</span>
           </div>
           <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">

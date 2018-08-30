@@ -114,6 +114,42 @@
     "status": "FAILED"
     },
     {
+    "step": "build",
+    "image": {
+    "name": "golang",
+    "tag": "1.10.2-alpine3.7",
+    "isPulled": true,
+    "imageSize": 0,
+    "pullDuration": 0
+    },
+    "runIndex":1,
+    "duration": 735887098,
+    "logLines": [
+    {
+    "timestamp": "2018-05-29T13:49:55.122160894Z",
+    "streamType": "stderr",
+    "text": "bitbucketApiClient.go:12:2: cannot find package \"github.com/rs/zerolog/log\" in any of:"
+    },
+    {
+    "timestamp": "2018-05-29T13:49:55.122226049Z",
+    "streamType": "stderr",
+    "text": "\t/go/src/github.com/estafette/estafette-extension-bitbucket-status/vendor/github.com/rs/zerolog/log (vendor tree)"
+    },
+    {
+    "timestamp": "2018-05-29T13:49:55.12225973Z",
+    "streamType": "stderr",
+    "text": "\t/usr/local/go/src/github.com/rs/zerolog/log (from $GOROOT)"
+    },
+    {
+    "timestamp": "2018-05-29T13:49:55.122298858Z",
+    "streamType": "stderr",
+    "text": "\t/go/src/github.com/rs/zerolog/log (from $GOPATH)"
+    }
+    ],
+    "exitCode": 1,
+    "status": "FAILED"
+    },
+    {
     "step": "bake",
     "image": {
     "name": "docker",
