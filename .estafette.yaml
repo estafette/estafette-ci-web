@@ -10,7 +10,7 @@ labels:
 version:
   semver:
     major: 0
-    minor: 0
+    minor: 1
     patch: '{{auto}}'
     labelTemplate: '{{branch}}'
     releaseBranch: master
