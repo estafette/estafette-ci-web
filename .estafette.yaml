@@ -77,6 +77,7 @@ releases:
           CPU_LIMIT: 200m
           MEMORY_REQUEST: 15Mi
           MEMORY_LIMIT: 512Mi
+          HOSTNAMES: estafette.secret(z6C9Piz4EhMxWMc8.uxcITmg39HiLJuuqSyPRM06PTWNd6S1x1QxfYYeyGoBLcgkM)
         shell: /bin/bash
         commands:
         - apk add --update --no-cache gettext
