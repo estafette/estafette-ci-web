@@ -128,7 +128,7 @@ spec:
       containers:
       - name: estafette-ci-web
         image: estafette/estafette-ci-web:${ESTAFETTE_BUILD_VERSION}
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         resources:
           requests:
             cpu: ${CPU_REQUEST}
@@ -147,7 +147,7 @@ spec:
           timeoutSeconds: 1
       - name: estafette-ci-web-openresty
         image: estafette/openresty-sidecar:1.13.6.1-alpine
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         resources:
           limits:
             cpu: 50m
