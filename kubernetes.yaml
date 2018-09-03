@@ -209,7 +209,7 @@ spec:
     kind: Deployment
     name: estafette-ci-web
   minReplicas: 3
-  maxReplicas: ${MAX_PODS}
+  maxReplicas: 10
   targetCPUUtilizationPercentage: 80
 ---
 apiVersion: policy/v1beta1
