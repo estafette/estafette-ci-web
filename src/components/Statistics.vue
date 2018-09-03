@@ -17,12 +17,12 @@
         <stats-builds-count :filter="filter" status="failed"/>
         <stats-builds-count :filter="filter" status="running"/>
       </div>
-      <div class="row m-0">
+      <!-- <div class="row m-0">
         <stats-builds-duration :filter="filter" status="all"/>
         <stats-builds-duration :filter="filter" status="succeeded"/>
         <stats-builds-duration :filter="filter" status="failed"/>
         <stats-builds-duration :filter="filter" status="running"/>
-      </div>
+      </div> -->
     </div>
 </template>
 
