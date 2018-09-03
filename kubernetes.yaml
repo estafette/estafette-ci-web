@@ -128,7 +128,7 @@ spec:
                 - "true"
       containers:
       - name: estafette-ci-web
-        image: estafette/estafette-ci-web:${GO_PIPELINE_LABEL}
+        image: estafette/estafette-ci-web:${ESTAFETTE_BUILD_VERSION}
         imagePullPolicy: Always
         resources:
           requests:
