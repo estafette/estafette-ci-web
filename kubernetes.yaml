@@ -98,7 +98,6 @@ spec:
       labels:
         app: estafette-ci-web
         team: tooling
-        version: ${VERSION}
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "9001"
