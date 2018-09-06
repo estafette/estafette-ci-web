@@ -81,6 +81,8 @@ releases:
           HOSTNAMES: estafette.secret(z6C9Piz4EhMxWMc8.uxcITmg39HiLJuuqSyPRM06PTWNd6S1x1QxfYYeyGoBLcgkM)
         shell: /bin/bash
         commands:
+        - apk add --update --no-cache gettext
+        - gcloud components install kubectl
         - echo "${GCLOUD_KEY_FILE}" | base64 -d > key-file.json
         - gcloud auth activate-service-account ${GCLOUD_SA_NAME} --key-file ./key-file.json
         - gcloud config set account ${GCLOUD_SA_NAME}
