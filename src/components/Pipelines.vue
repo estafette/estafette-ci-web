@@ -44,7 +44,7 @@
               </div>
               <div class="mb-2 col-12 col-md-6 col-xl-1 align-middle">
                 <div class="small text-black-50 mb-1 d-xl-none">Status</div>
-                <router-link :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, repoRevision: pipeline.repoRevision }}" tag="div" class="progress mt-1">
+                <router-link :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: pipeline.id }}" tag="div" class="progress mt-1">
                   <div class="progress-bar" :class="pipeline.buildStatus | bootstrapClass('bg')" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                 </router-link>
               </div>

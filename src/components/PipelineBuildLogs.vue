@@ -94,7 +94,7 @@ export default {
     repoSource: String,
     repoOwner: String,
     repoName: String,
-    repoRevision: String,
+    id: String,
     build: Object
   },
   data: function () {
@@ -151,7 +151,7 @@ export default {
 
   methods: {
     loadLogs () {
-      axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.repoRevision}/logs`)
+      axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs`)
         .then(response => {
           this.log = response.data
         })

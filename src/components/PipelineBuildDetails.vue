@@ -5,7 +5,7 @@
         <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'Pipelines'}">Pipelines</router-link></li>
         <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'PipelineBuilds', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}"><span class="d-none d-md-inline">{{repoSource}}/{{repoOwner}}/</span>{{repoName}}</router-link></li>
         <li class="breadcrumb-item text-truncate active">builds</li>
-        <li class="breadcrumb-item text-truncate active" aria-current="page">{{repoRevision | gitHash}}</li>
+        <li class="breadcrumb-item text-truncate active" aria-current="page" v-if="build">{{build.buildVersion}}</li>
       </ol>
     </nav>
 
@@ -68,7 +68,7 @@ export default {
     repoSource: String,
     repoOwner: String,
     repoName: String,
-    repoRevision: String
+    id: String
   },
   data: function () {
     return {
@@ -83,7 +83,7 @@ export default {
 
   methods: {
     loadBuild () {
-      axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.repoRevision}`)
+      axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}`)
         .then(response => {
           this.build = response.data
           if (response.data.buildStatus === 'running') {

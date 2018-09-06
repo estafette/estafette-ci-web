@@ -58,7 +58,7 @@ export default new Router({
       ]
     },
     {
-      path: '/pipelines/:repoSource/:repoOwner/:repoName/builds/:repoRevision',
+      path: '/pipelines/:repoSource/:repoOwner/:repoName/builds/:id',
       name: 'PipelineBuildDetails',
       props: true,
       component: PipelineBuildDetails,
@@ -102,7 +102,7 @@ export default new Router({
       component: Statistics
     },
     {
-      path: '/logs/:repoSource/:repoOwner/:repoName/:repoBranch/:repoRevision',
+      path: '/logs/:repoSource/:repoOwner/:repoName/:repoBranch/:id',
       name: 'LegacyLogs',
       redirect: { name: 'PipelineBuildLogs' }
     }

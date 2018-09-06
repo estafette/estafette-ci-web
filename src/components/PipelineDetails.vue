@@ -14,7 +14,7 @@
       </div>
       <div class="mb-2 col-6 col-md-4 col-xl-1 align-middle">
         <div class="small text-muted mb-1">Status</div>
-        <router-link :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, repoRevision: pipeline.repoRevision }}" tag="div" class="progress mt-2 clickable">
+        <router-link :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: pipeline.id }}" tag="div" class="progress mt-2 clickable">
           <div class="progress-bar" :class="pipeline.buildStatus | bootstrapClass('bg')" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
         </router-link>
       </div>
