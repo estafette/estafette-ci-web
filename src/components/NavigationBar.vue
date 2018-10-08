@@ -21,49 +21,9 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
-  data: function () {
-    return {
-      user: null,
-      errors: []
-    }
-  },
-
-  created () {
-    this.loadUser()
-  },
-
-  methods: {
-    loadUser () {
-      axios.get(`/api/users/me`)
-        .then(response => {
-          this.user = response.data
-        })
-        .catch(e => {
-          this.errors.push(e)
-          this.periodicallyRefreshUser(60)
-        })
-    },
-
-    periodicallyRefreshUser (intervalSeconds) {
-      if (this.refreshTimeout) {
-        clearTimeout(this.refreshTimeout)
-      }
-
-      var max = 1000 * intervalSeconds * 0.75
-      var min = 1000 * intervalSeconds * 1.25
-      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
-
-      this.refreshTimeout = setTimeout(this.loadUser, timeoutWithJitter)
-    }
-  },
-
-  beforeDestroy () {
-    if (this.refreshTimeout) {
-      clearTimeout(this.refreshTimeout)
-    }
+  props: {
+    user: Object
   }
 }
 </script>

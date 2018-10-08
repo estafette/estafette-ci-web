@@ -47,10 +47,10 @@
 
     <ul class="nav nav-tabs m-3">
       <li class="nav-item">
-        <router-link :to="{ name: 'PipelineBuildLogs', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName, repoRevision: repoRevision }}" class="nav-link">Logs</router-link>
+        <router-link :to="{ name: 'PipelineBuildLogs', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName, id: id }}" class="nav-link">Logs</router-link>
       </li>
       <li class="nav-item">
-        <router-link :to="{ name: 'PipelineBuildManifest', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName, repoRevision: repoRevision }}" class="nav-link">Manifest</router-link>
+        <router-link :to="{ name: 'PipelineBuildManifest', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName, id: id }}" class="nav-link">Manifest</router-link>
       </li>
     </ul>
 

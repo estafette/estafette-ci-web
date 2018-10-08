@@ -57,7 +57,8 @@ export default {
     repoSource: String,
     repoOwner: String,
     repoName: String,
-    query: Object
+    query: Object,
+    user: Object
   },
   data: function () {
     return {
