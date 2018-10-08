@@ -39,6 +39,10 @@
           <div class="small text-black-50 mb-1 d-xl-none">Commit(s)</div>
           <div v-for="commit in build.commits" v-bind:key="commit.message" :title="commit.message + ' / ' + commit.author.name" class="text-truncate">{{commit.message}} / {{commit.author.name}}</div>
         </div>
+        <div class="mb-2 col-12 text-center" v-if="user && user.authenticated">
+          <div class="small text-black-50 mb-1">Release to</div>
+          <release-button v-for="release in build.releases" v-bind:key="release.name" :release="release" :build="build" :user="user" />
+        </div>
 
      </router-link>
      </transition-group>

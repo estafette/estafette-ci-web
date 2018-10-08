@@ -56,7 +56,7 @@
       </li>
     </ul>
 
-    <router-view/>
+    <router-view :user="user"/>
   </div>
 </template>
 
@@ -69,7 +69,8 @@ export default {
   props: {
     repoSource: String,
     repoOwner: String,
-    repoName: String
+    repoName: String,
+    user: Object
   },
   data: function () {
     return {
