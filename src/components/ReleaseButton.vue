@@ -38,6 +38,8 @@ export default {
         })
           .then(function (response) {
             console.log(response)
+            startedRelease = response.data
+            this.pipeline.releases = this.pipeline.releases.map(r => r.name === startedRelease.name ? startedRelease : r)
           })
           .catch(function (error) {
             console.log(error)
