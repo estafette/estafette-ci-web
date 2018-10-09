@@ -86,8 +86,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   props: {
     repoSource: String,
@@ -150,7 +148,7 @@ export default {
 
   methods: {
     loadLogs () {
-      axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}/logs`)
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}/logs`)
         .then(response => {
           this.log = response.data
         })

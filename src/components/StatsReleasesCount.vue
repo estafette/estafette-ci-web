@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import TweenLite from 'gsap/TweenMax'
 
 export default {
@@ -29,7 +28,7 @@ export default {
 
   methods: {
     loadStat () {
-      axios.get(`/api/stats/releasescount?filter[status]=${this.status}&filter[since]=${this.filter.since}`)
+      this.axios.get(`/api/stats/releasescount?filter[status]=${this.status}&filter[since]=${this.filter.since}`)
         .then(response => {
           TweenLite.to(this.$data, 1.0, { count: response.data.count })
           this.periodicallyRefreshStat(15)

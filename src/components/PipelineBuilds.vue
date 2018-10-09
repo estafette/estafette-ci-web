@@ -60,7 +60,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 const moment = require('moment')
 require('moment/locale/en-il')
 
@@ -101,7 +100,7 @@ export default {
     },
 
     loadBuilds () {
-      axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds?page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds?page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.builds = response.data.items
           this.pagination = response.data.pagination

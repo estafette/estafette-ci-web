@@ -6,8 +6,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   props: {
     pipeline: Object,
@@ -29,7 +27,7 @@ export default {
 
     startRelease: function (release, event) {
       if (this.user.authenticated) {
-        axios.post(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/releases`, {
+        this.axios.post(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/releases`, {
           name: release.name,
           repoSource: this.build.repoSource,
           repoOwner: this.build.repoOwner,

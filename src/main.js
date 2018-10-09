@@ -4,6 +4,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import BootstrapVue from 'bootstrap-vue'
 import VueAnalytics from 'vue-analytics'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 import App from './App'
 import router from './router'
@@ -163,6 +165,19 @@ Vue.filter('formatBytes', function (value) {
 })
 
 Vue.config.productionTip = false
+
+Vue.use(VueAxios, axios)
+
+// intercept api responses to check for 401 caused by iap session timeout and reload entire vue app
+Vue.axios.interceptors.response.use((response) => {
+  return response
+}, function (error) {
+  if (error.response.status === 401) {
+    location.reload()
+    return
+  }
+  return Promise.reject(error)
+})
 
 Vue.use(BootstrapVue)
 Vue.use(Vuex)

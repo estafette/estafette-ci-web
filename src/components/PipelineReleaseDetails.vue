@@ -45,7 +45,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 const moment = require('moment')
 require('moment/locale/en-il')
 
@@ -69,7 +68,7 @@ export default {
 
   methods: {
     loadRelease () {
-      axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}`)
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}`)
         .then(response => {
           this.release = response.data
           if (response.data.releaseStatus === 'running') {

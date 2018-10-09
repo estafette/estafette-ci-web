@@ -61,7 +61,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 const moment = require('moment')
 require('moment/locale/en-il')
 
@@ -85,7 +84,7 @@ export default {
 
   methods: {
     loadPipeline () {
-      axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}`)
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}`)
         .then(response => {
           this.pipeline = response.data
           this.periodicallyRefreshPipeline(15)

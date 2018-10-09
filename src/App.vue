@@ -11,8 +11,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'App',
   data: function () {
@@ -27,7 +25,7 @@ export default {
 
   methods: {
     loadUser () {
-      axios.get(`/api/users/me`)
+      this.axios.get(`/api/users/me`)
         .then(response => {
           this.user = response.data
         })

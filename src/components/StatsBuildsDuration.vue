@@ -8,8 +8,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   props: {
     filter: Object,
@@ -28,7 +26,7 @@ export default {
 
   methods: {
     loadStat () {
-      axios.get(`/api/stats/buildsduration?filter[status]=${this.status}&filter[since]=${this.filter.since}`)
+      this.axios.get(`/api/stats/buildsduration?filter[status]=${this.status}&filter[since]=${this.filter.since}`)
         .then(response => {
           this.duration = response.data.duration
           this.periodicallyRefreshStat(15)
