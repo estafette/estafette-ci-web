@@ -58,9 +58,6 @@ export default {
 }
 </script>
 
-// https://useiconic.com/open/
-<style src="open-iconic/font/css/open-iconic-bootstrap.css"></style>
-
 <style lang="scss">
 @import 'assets/css/estafette.scss';
 </style>
