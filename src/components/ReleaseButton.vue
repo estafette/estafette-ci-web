@@ -34,12 +34,12 @@ export default {
           repoName: this.build.repoName,
           releaseVersion: this.build.buildVersion
         })
-          .then(function (response) {
+          .then(response => {
             console.log(response)
             var startedRelease = response.data
             this.pipeline.releases = this.pipeline.releases.map(r => r.name === startedRelease.name ? startedRelease : r)
           })
-          .catch(function (error) {
+          .catch(error => {
             console.log(error)
           })
       }
