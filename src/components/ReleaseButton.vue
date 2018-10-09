@@ -1,9 +1,8 @@
 <template>
-  <span v-if="release">
-    <button class="btn btn-outline-dark btn mr-1 mb-1" v-on:click.stop="startRelease" :disabled="!user || !user.authenticated">
-      {{release.name}} <span class="oi oi-play-circle pull-right ml-1"></span>
-    </button>
-  </span>
+  <b-dropdown v-if="user && user.authenticated && build.releases && build.releases.length > 0 && build.buildStatus === 'succeeded'" id="releaseAction" text="Release to..." variant="outline-dark" class="mr-1 mb-1">
+    <b-dropdown-item-button v-for="release in build.releases" v-bind:key="release.name" v-on:click.stop="startRelease(release, $event)">{{release.name}}</b-dropdown-item-button>
+  </b-dropdown>
+  <span v-else class="d-xxl-none">-</span>
 </template>
 
 <script>
@@ -11,7 +10,6 @@ import axios from 'axios'
 
 export default {
   props: {
-    release: Object,
     build: Object,
     user: Object
   },
@@ -21,24 +19,20 @@ export default {
     }
   },
   methods: {
-    startRelease: function (event) {
+    startRelease: function (release, event) {
       if (this.user.authenticated) {
-        this.clicked = true
         axios.post(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/releases`, {
-          name: this.release.name,
+          name: release.name,
           repoSource: this.build.repoSource,
           repoOwner: this.build.repoOwner,
           repoName: this.build.repoName,
           releaseVersion: this.build.buildVersion
         })
           .then(function (response) {
-            // redirect to release logs?
             console.log(response)
-            this.clicked = false
           })
           .catch(function (error) {
             console.log(error)
-            this.clicked = false
           })
       }
     }

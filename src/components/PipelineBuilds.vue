@@ -46,11 +46,11 @@
           <router-link v-for="release in pipeline.releases" v-bind:key="release.name" v-if="release.releaseVersion === build.buildVersion" :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}" exact class="btn btn-light btn-sm mr-1">
             {{release.name}} <span class="badge" :class="release.releaseStatus | bootstrapClass('badge')">{{release.releaseStatus | defaultValue('-')}}</span>
           </router-link>
-          <span v-if="!showReleases(build)">-</span>
+          <span v-if="!showReleases(build)" class="d-xxl-none">-</span>
         </div>
-        <div class="mb-2 col-12 col-md-6 col-xxl-2 text-truncate text-truncate-fade">
+        <div class="mb-2 col-12 col-md-6 col-xxl-2">
           <div class="small text-black-50 mb-1 d-xxl-none">Actions</div>
-          <release-button v-for="release in build.releases" v-bind:key="release.name" :release="release" :build="build" :user="user" />
+          <release-button :build="build" :user="user" />
         </div>
      </router-link>
      </transition-group>
