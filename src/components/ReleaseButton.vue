@@ -1,5 +1,5 @@
 <template>
-  <b-dropdown v-if="user && user.authenticated && build.releases && build.releases.length > 0 && build.buildStatus === 'succeeded'" id="releaseAction" text="Release to..." variant="outline-dark" class="mr-1 mb-1">
+  <b-dropdown size="sm" v-if="user && user.authenticated && build.releases && build.releases.length > 0 && build.buildStatus === 'succeeded'" id="releaseAction" text="Release to..." variant="outline-dark" class="mr-1 mb-1">
     <b-dropdown-item-button v-for="release in build.releases" v-bind:key="release.name" v-on:click.stop="startRelease(release, $event)" :disabled="releaseTargetDisabled(release)">{{release.name}}</b-dropdown-item-button>
   </b-dropdown>
   <span v-else class="d-xxl-none">-</span>
