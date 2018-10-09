@@ -56,7 +56,7 @@
       </li>
     </ul>
 
-    <router-view :user="user"/>
+    <router-view :user="user" :pipeline="pipeline"/>
   </div>
 </template>
 
