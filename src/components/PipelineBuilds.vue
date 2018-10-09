@@ -35,7 +35,7 @@
         </div>
         <div class="mb-2 col-6 col-md-4 col-xl-2 col-xxl-1">
           <div class="small text-black-50 mb-1 d-xl-none">Revision</div>
-          {{build.repoRevision | gitHash}}
+          <commit-link :build="build"/>
         </div>
         <div class="mb-2 col-6 col-md-4 col-xl-3 col-xxl-2">
           <div class="small text-black-50 mb-1 d-xl-none">Commit(s)</div>

@@ -28,7 +28,7 @@
       </div>
       <div class="mb-2 col-6 col-md-4 col-xl-2">
         <div class="small text-muted mb-1">Revision</div>
-        {{pipeline.repoRevision | gitHash}}
+        <commit-link :build="pipeline"/>
       </div>
       <div class="mb-2 col-6 col-md-4 col-xl-3">
         <div class="small text-muted mb-1">Commit(s)</div>
