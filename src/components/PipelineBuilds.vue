@@ -51,6 +51,7 @@
         <div class="mb-2 col-12 col-md-6 col-xxl-2">
           <div class="small text-black-50 mb-1 d-xxl-none">Actions</div>
           <release-button :pipeline="pipeline" :build="build" :user="user" />
+          <rebuild-button :pipeline="pipeline" :build="build" :user="user" />
         </div>
      </router-link>
      </transition-group>

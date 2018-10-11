@@ -8,7 +8,7 @@
         "repoBranch": "master",
         "repoRevision": "7568a5c3dfb59af2d395f8ab6c741a4d4145615a",
         "buildVersion": "0.1.208",
-        "buildStatus": "succeeded",
+        "buildStatus": "running",
         "labels": [
           {
             "key": "app",
@@ -167,7 +167,7 @@
         "repoBranch": "master",
         "repoRevision": "3037c0ac0e5adabc38adde2332e59d038863aa6b",
         "buildVersion": "0.1.205",
-        "buildStatus": "succeeded",
+        "buildStatus": "failed",
         "labels": [
           {
             "key": "team",
