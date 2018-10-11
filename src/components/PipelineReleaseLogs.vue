@@ -81,8 +81,7 @@
       </div>
     </div>
   </div>
-  <div v-else-if="release && release.releaseStatus == 'running'" class="m-3">Hold on, we're waiting for the logs to come in!</div>
-  <div v-else class="m-3">Sorry, I can't find logs for this release!</div>
+  <div v-else class="m-3">Hold on, we're waiting for the logs to come in!</div>
 </template>
 
 <script>
