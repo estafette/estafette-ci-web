@@ -28,24 +28,24 @@
             </span>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
-            <span v-if="step.status == 'SUCCEEDED' || step.status == 'FAILED'">
-              <span v-if="step.image.imageSize">{{step.image.imageSize | formatBytes}}</span>
+            <span v-if="step.image && (step.status == 'SUCCEEDED' || step.status == 'FAILED')">
+              <span v-if="step.image && step.image.imageSize">{{step.image.imageSize | formatBytes}}</span>
               <em v-else class="text-muted">(cached)</em>
             </span>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
-            <span v-if="step.status == 'SUCCEEDED' || step.status == 'FAILED'">
+            <span v-if="step.image && (step.status == 'SUCCEEDED' || step.status == 'FAILED')">
               <span v-if="step.image.imageSize">{{step.image.pullDuration | formatDuration}}</span>
               <em v-else class="text-muted">(cached)</em>
             </span>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
-            <span v-if="step.status == 'SUCCEEDED' || step.status == 'FAILED'">
+            <span v-if="step.duration && (step.status == 'SUCCEEDED' || step.status == 'FAILED')">
               {{step.duration | formatDuration}}
             </span>
           </div>
           <div class="col-2 col-lg-1 text-right d-none d-md-flex">
-            <span v-if="step.status == 'SUCCEEDED' || step.status == 'FAILED'">
+            <span v-if="step.image && (step.status == 'SUCCEEDED' || step.status == 'FAILED')">
               {{step.image.pullDuration + step.duration | formatDuration}}
             </span>
           </div>
