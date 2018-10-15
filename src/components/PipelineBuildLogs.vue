@@ -149,14 +149,18 @@ export default {
 
   methods: {
     loadLogs () {
-      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs`)
-        .then(response => {
-          this.log = response.data
-        })
-        .catch(e => {
-          this.errors.push(e)
-          this.periodicallyRefreshLogs(15)
-        })
+      if (this.build.buildStatus === 'succeeded' || this.build.buildStatus === 'failed') {
+        this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs`)
+          .then(response => {
+            this.log = response.data
+          })
+          .catch(e => {
+            this.errors.push(e)
+            this.periodicallyRefreshLogs(15)
+          })
+      } else {
+        this.periodicallyRefreshLogs(15)
+      }
     },
 
     periodicallyRefreshLogs (intervalSeconds) {
@@ -174,20 +178,41 @@ export default {
     tailLogs () {
       if (this.build.buildStatus === 'running') {
         this.axios({
-          method:'get',
-          url:`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs/tail`,
-          responseType:'stream'
+          method: 'get',
+          url: `/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs/tail`,
+          responseType: 'stream'
         })
           .then(response => {
-            var stream = response.data;
+            var stream = response.data
             stream.on('data', function (chunk) {
               // event:log
               // data:{"step":"git-clone","logLine":{"timestamp":"2018-10-15T11:40:04.105871286Z","streamType":"stderr","text":" Cloning into '/***-work'...\n"}}
               console.log(chunk)
-            });
+
+              if (!this.log) {
+                this.log = {}
+              }
+              if (!this.log.steps) {
+                this.log.steps = []
+              }
+
+              var step = this.log.steps.find(s => s.step === chunk.step)
+              if (!step) {
+                // set all previous steps to SUCCEEDED so they close
+                this.log.steps.forEach(s => {
+                  s.status = 'SUCCEEDED'
+                })
+
+                // create new step
+                step = {step: chunk.step, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: false}
+                this.log.steps.push(step)
+              }
+
+              step.logLines.push(chunk.logLine)
+            })
             stream.on('end', function () {
               console.log('done streaming logs')
-            });
+            })
           })
           .catch(e => {
             this.errors.push(e)
