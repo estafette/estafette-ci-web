@@ -48,7 +48,7 @@
           </div>
         </b-card-header>
 
-        <b-collapse class="row collapse text-monospace bg-dark text-light m-0 p-3" :id="'accordion'+index" :visible="step.status === 'FAILED'" accordion="log-steps-accordion" role="tabpanel">
+        <b-collapse class="row collapse text-monospace bg-dark text-light m-0 p-3" :id="'accordion'+index" :visible="step.status === 'RUNNING' || step.status === 'FAILED'" accordion="log-steps-accordion" role="tabpanel">
           <div class="container-fluid">
             <div class="row no-gutters" v-for="(line, index) in step.logLines" v-bind:key="index">
               <div class="col-1 text-white-50 d-none d-xl-flex" style="min-width: 300px;">{{line.timestamp}}</div>
