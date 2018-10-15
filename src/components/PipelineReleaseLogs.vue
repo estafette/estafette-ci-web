@@ -22,7 +22,9 @@
             <span v-if="step.autoInjected" class="small text-muted" title="This step is automatically injected by Estafette CI">(injected)</span>
           </div>
           <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">
-            {{step.image.name}}:{{step.image.tag}}
+            <span v-if="step.image">
+              {{step.image.name}}:{{step.image.tag}}
+            </span>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
             <span v-if="step.status == 'SUCCEEDED' || step.status == 'FAILED'">
