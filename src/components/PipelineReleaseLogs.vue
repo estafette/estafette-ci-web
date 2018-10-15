@@ -181,12 +181,15 @@ export default {
         es.addEventListener('log', event => {
           console.log(event)
           let data = JSON.parse(event.data)
+          console.log(data)
 
           if (!this.log) {
             this.log = {}
+            console.log('init log', this.log)
           }
           if (!this.log.steps) {
             this.log.steps = []
+            console.log('init log.steps', this.log.steps)
           }
 
           var step = this.log.steps.find(s => s.step === data.step)
@@ -198,14 +201,15 @@ export default {
 
             // create new step
             step = {step: data.step, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: false}
+            console.log('init step', step)
             this.log.steps.push(step)
           }
 
           step.logLines.push(data.logLine)
+          console.log('pushed logLine', data.logLine)
         }, false)
 
         es.addEventListener('close', event => {
-          console.log(event)
           es.close()
           console.log('done streaming logs')
         }, false)
