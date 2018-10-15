@@ -202,11 +202,17 @@ export default {
             })
 
             // create new step
-            step = {step: data.step, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: false}
+            if (data.image) {
+              step = {step: data.step, image: data.image, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: false}
+            } else {
+              step = {step: data.step, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: false}
+            }
             this.log.steps.push(step)
           }
 
-          step.logLines.push(data.logLine)
+          if (data.logLine) {
+            step.logLines.push(data.logLine)
+          }
           window.scrollTo(0, document.body.scrollHeight)
         }, false)
 
