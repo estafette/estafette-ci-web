@@ -214,10 +214,10 @@ export default {
             step.status = data.status
           }
           if (data.exitCode) {
-            step.status = data.exitCode
+            step.exitCode = data.exitCode
           }
           if (data.duration) {
-            step.status = data.duration
+            step.duration = data.duration
           }
 
           if (data.logLine) {
