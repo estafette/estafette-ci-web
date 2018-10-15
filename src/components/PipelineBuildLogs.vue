@@ -164,7 +164,7 @@ export default {
             this.periodicallyRefreshLogs(15)
           })
       } else {
-        this.periodicallyRefreshLogs(15)
+        this.periodicallyRefreshLogs(3)
       }
     },
 
