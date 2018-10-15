@@ -45,7 +45,7 @@
             </span>
           </div>
           <div class="col-2 col-lg-1 text-right d-none d-md-flex">
-            <span v-if="step.image && (step.status == 'SUCCEEDED' || step.status == 'FAILED')">
+            <span v-if="step.image && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
               {{step.image.pullDuration + step.duration | formatDuration}}
             </span>
           </div>
