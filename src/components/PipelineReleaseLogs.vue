@@ -175,6 +175,7 @@ export default {
     },
 
     tailLogs () {
+      console.log('this', this)
       if (this.release.releaseStatus === 'running') {
         let es = new EventSource(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}/logs/tail`)
 
@@ -212,6 +213,7 @@ export default {
         es.addEventListener('close', event => {
           es.close()
           console.log('done streaming logs')
+          console.log('this', this)
         }, false)
       }
     }
