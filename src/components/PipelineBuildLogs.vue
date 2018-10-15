@@ -86,8 +86,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
-
 export default {
   props: {
     repoSource: String,
@@ -188,7 +186,7 @@ export default {
             this.log = {}
           }
           if (!this.log.steps) {
-            Vue.set(this.log, 'steps', [])
+            this.$set(this.log, 'steps', [])
           }
 
           var step = this.log.steps.find(s => s.step === data.step)
@@ -208,7 +206,6 @@ export default {
 
         es.addEventListener('close', event => {
           es.close()
-          console.log('done streaming logs')
         }, false)
       }
     }
