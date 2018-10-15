@@ -172,11 +172,21 @@ export default {
 
     tailLogs () {
       if (this.release.releaseStatus === 'running') {
-        this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}/logs/tail`)
+        this.axios({
+          method:'get',
+          url:`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}/logs/tail`,
+          responseType:'stream'
+        })
           .then(response => {
-            // event:log
-            // data:{"step":"git-clone","logLine":{"timestamp":"2018-10-15T11:40:04.105871286Z","streamType":"stderr","text":" Cloning into '/***-work'...\n"}}
-            console.log(response.data)
+            var stream = response.data;
+            stream.on('data', function (chunk) {
+              // event:log
+              // data:{"step":"git-clone","logLine":{"timestamp":"2018-10-15T11:40:04.105871286Z","streamType":"stderr","text":" Cloning into '/***-work'...\n"}}
+              console.log(chunk)
+            });
+            stream.on('end', function () {
+              console.log('done streaming logs')
+            });
           })
           .catch(e => {
             this.errors.push(e)
