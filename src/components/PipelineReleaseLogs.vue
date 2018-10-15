@@ -138,6 +138,9 @@ export default {
         if (acc === 'FAILED' || step.status === 'FAILED') {
           return 'FAILED'
         }
+        if (step.status === 'RUNNING') {
+          return 'RUNNING'
+        }
         return 'SUCCEEDED'
       }, 'SUCCEEDED')
     }
