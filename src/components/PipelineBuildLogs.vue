@@ -86,6 +86,8 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
 export default {
   props: {
     repoSource: String,
@@ -180,14 +182,13 @@ export default {
         let es = new EventSource(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs/tail`)
 
         es.addEventListener('log', event => {
-          console.log(event)
           let data = JSON.parse(event.data)
 
           if (!this.log) {
             this.log = {}
           }
           if (!this.log.steps) {
-            this.log.steps = []
+            Vue.set(this.log, 'steps', [])
           }
 
           var step = this.log.steps.find(s => s.step === data.step)
@@ -206,7 +207,6 @@ export default {
         }, false)
 
         es.addEventListener('close', event => {
-          console.log(event)
           es.close()
           console.log('done streaming logs')
         }, false)
