@@ -180,6 +180,7 @@ export default {
         let es = new EventSource(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs/tail`)
 
         es.addEventListener('log', event => {
+          console.log(event)
           let data = JSON.parse(event.data)
 
           if (!this.log) {
@@ -205,6 +206,7 @@ export default {
         }, false)
 
         es.addEventListener('error', event => {
+          console.log(event)
           if (event.readyState === EventSource.CLOSED) {
             console.log('done streaming logs')
           }
