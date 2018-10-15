@@ -143,6 +143,7 @@ export default {
   },
 
   created () {
+    this.tailLogs()
     this.loadLogs()
   },
 
@@ -168,6 +169,20 @@ export default {
       var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       this.refreshTimeout = setTimeout(this.loadLogs, timeoutWithJitter)
+    },
+
+    tailLogs () {
+      if (this.build.buildStatus === 'running') {
+        this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs/tail`)
+          .then(response => {
+            // event:log
+            // data:{"step":"git-clone","logLine":{"timestamp":"2018-10-15T11:40:04.105871286Z","streamType":"stderr","text":" Cloning into '/***-work'...\n"}}
+            console.log(response.data)
+          })
+          .catch(e => {
+            this.errors.push(e)
+          })
+      }
     }
   },
 

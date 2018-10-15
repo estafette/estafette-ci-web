@@ -40,7 +40,7 @@
       </li>
     </ul>
 
-    <router-view :release="release"/>
+    <router-view :release="release" v-if="release"/>
   </div>
 </template>
 

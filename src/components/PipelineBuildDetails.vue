@@ -54,7 +54,7 @@
       </li>
     </ul>
 
-    <router-view :build="build"/>
+    <router-view :build="build" v-if="build"/>
   </div>
 </template>
 
