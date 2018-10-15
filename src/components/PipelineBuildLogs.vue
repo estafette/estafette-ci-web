@@ -212,6 +212,7 @@ export default {
 
         es.addEventListener('close', event => {
           es.close()
+          this.loadLogs()
         }, false)
       }
     }
