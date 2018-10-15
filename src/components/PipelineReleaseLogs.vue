@@ -206,6 +206,7 @@ export default {
           }
 
           step.logLines.push(data.logLine)
+          window.scrollTo(0, document.body.scrollHeight)
         }, false)
 
         es.addEventListener('close', event => {
