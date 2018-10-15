@@ -205,11 +205,10 @@ export default {
           step.logLines.push(data.logLine)
         }, false)
 
-        es.addEventListener('error', event => {
+        es.addEventListener('close', event => {
           console.log(event)
-          if (event.readyState === EventSource.CLOSED) {
-            console.log('done streaming logs')
-          }
+          es.close()
+          console.log('done streaming logs')
         }, false)
       }
     }
