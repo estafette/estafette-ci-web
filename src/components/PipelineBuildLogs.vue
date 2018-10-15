@@ -28,13 +28,13 @@
             </span>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
-            <span v-if="step.image && (step.status == 'SUCCEEDED' || step.status == 'FAILED')">
+            <span v-if="step.image && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
               <span v-if="step.image && step.image.imageSize">{{step.image.imageSize | formatBytes}}</span>
               <em v-else class="text-muted">(cached)</em>
             </span>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
-            <span v-if="step.image && (step.status == 'SUCCEEDED' || step.status == 'FAILED')">
+            <span v-if="step.image && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
               <span v-if="step.image.imageSize">{{step.image.pullDuration | formatDuration}}</span>
               <em v-else class="text-muted">(cached)</em>
             </span>
