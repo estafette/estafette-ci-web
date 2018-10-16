@@ -15,9 +15,6 @@ version:
     labelTemplate: '{{branch}}'
     releaseBranch: master
 
-env:
-  GCR_PROJECT: estafette.secret(3tHZ9bT_wEz5K8Cx.kZyD5m8L-7-zpvzZ4bkeyUdKLiGfRx_ttoY=)
-
 stages:
   restore:
     image: node:10.9.0-alpine
@@ -41,7 +38,6 @@ stages:
     - estafette
     path: ./publish
     copy:
-    - Dockerfile
     - dist
     - nginx.vh.default.conf
 
