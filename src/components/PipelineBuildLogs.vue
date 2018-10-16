@@ -255,5 +255,6 @@ export default {
 pre {
   font-size: inherit;
   margin: 0;
+  white-space: pre-wrap;
 }
 </style>
