@@ -50,11 +50,11 @@
           </div>
         </b-card-header>
 
-        <b-collapse class="row collapse text-monospace bg-dark text-light m-0 p-3" :id="'accordion'+index" :visible="step.status === 'RUNNING' || step.status === 'FAILED'" accordion="log-steps-accordion" role="tabpanel">
+        <b-collapse class="row collapse bg-dark m-0 p-3" :id="'accordion'+index" :visible="step.status === 'RUNNING' || step.status === 'FAILED'" accordion="log-steps-accordion" role="tabpanel">
           <div class="container-fluid">
             <div class="row no-gutters" v-for="(line, index) in step.logLines" v-bind:key="index">
-              <div class="col-1 text-white-50 d-none d-xl-flex" style="min-width: 300px;">{{line.timestamp}}</div>
-              <div class="col">{{line.text}}</div>
+              <pre class="col-1 text-white-50 d-none d-xl-flex" style="min-width: 300px;">{{line.timestamp}}</pre>
+              <pre class="col text-light">{{line.text}}</pre>
             </div>
           </div>
         </b-collapse>
@@ -249,5 +249,10 @@ export default {
 
 .card-header {
   background: none;
+}
+
+pre {
+  font-size: inherit;
+  margin: 0;
 }
 </style>
