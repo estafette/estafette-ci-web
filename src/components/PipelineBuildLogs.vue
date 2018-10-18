@@ -55,7 +55,7 @@
           <div class="container-fluid">
             <div class="row no-gutters" v-for="(line, index) in step.logLines" v-bind:key="index">
               <pre class="col-1 text-white-50 d-none d-xl-flex" style="min-width: 300px;">{{line.timestamp}}</pre>
-              <pre class="col text-light">{{line.text}}</pre>
+              <pre class="col text-light" v-html="formatLog(line.text)"></pre>
             </div>
           </div>
         </b-collapse>
@@ -88,6 +88,8 @@
 </template>
 
 <script>
+import AnsiUp from 'ansi_up'
+
 export default {
   props: {
     repoSource: String,
@@ -153,6 +155,12 @@ export default {
   },
 
   methods: {
+    formatLog (value) {
+      if (!value) return value
+      var ansi = new AnsiUp()
+      return ansi.ansi_to_html(value)
+    },
+
     loadLogs () {
       if (this.build.buildStatus === 'succeeded' || this.build.buildStatus === 'failed') {
         this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs`)
