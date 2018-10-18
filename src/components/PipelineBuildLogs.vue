@@ -190,9 +190,9 @@ export default {
 
     tailLogs () {
       if (this.build.buildStatus === 'running') {
-        let es = new EventSource(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs/tail`)
+        this.es = new EventSource(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs/tail`)
 
-        es.addEventListener('log', event => {
+        this.es.addEventListener('log', event => {
           let data = JSON.parse(event.data)
 
           if (!this.log) {
@@ -230,8 +230,8 @@ export default {
           window.scrollTo(0, document.body.scrollHeight)
         }, false)
 
-        es.addEventListener('close', event => {
-          es.close()
+        this.es.addEventListener('close', event => {
+          this.es.close()
           this.loadLogs()
         }, false)
       }
@@ -241,6 +241,9 @@ export default {
   beforeDestroy () {
     if (this.refreshTimeout) {
       clearTimeout(this.refreshTimeout)
+    }
+    if (this.es) {
+      this.es.close()
     }
   }
 }
