@@ -204,11 +204,6 @@ export default {
 
           var step = this.log.steps.find(s => s.step === data.step)
           if (!step) {
-            // set all previous steps to SUCCEEDED so they close
-            this.log.steps.forEach(s => {
-              s.status = 'SUCCEEDED'
-            })
-
             // create new step
             if (data.image) {
               step = {step: data.step, image: data.image, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: data.autoInjected ? data.autoInjected : false, duration: 0}
