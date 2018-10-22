@@ -117,7 +117,7 @@ export default {
     },
 
     moment (value) {
-      return moment(value).calendar()
+      return moment(value).format('YYYY-MM-DD HH:mm:ss')
     }
   },
 

@@ -50,13 +50,11 @@
           </div>
         </b-card-header>
 
-        <b-collapse class="row collapse bg-dark m-0 p-3" :id="'accordion'+index" :visible="step.status === 'RUNNING' || step.status === 'FAILED'" accordion="log-steps-accordion" role="tabpanel">
-          <div class="container-fluid">
+        <b-collapse class="container-fluid text-light text-monospace collapse bg-dark m-0 p-3" :id="'accordion'+index" :visible="step.status === 'RUNNING' || step.status === 'FAILED'" accordion="log-steps-accordion" role="tabpanel">
             <div class="row no-gutters" v-for="(line, index) in step.logLines" v-bind:key="index">
-              <pre class="col-1 text-white-50 d-none d-xl-flex" style="min-width: 300px;">{{line.timestamp}}</pre>
-              <pre class="col text-light" v-html="formatLog(line.text)"></pre>
+              <div class="col-1 log-timestamp text-white-50 d-none d-xl-flex">{{line.timestamp | moment('YYYY-MM-DD HH:mm:ss')}}</div>
+              <div class="col log-text" v-html="formatLog(line.text)"></div>
             </div>
-          </div>
         </b-collapse>
       </b-card>
     </div>
@@ -257,9 +255,12 @@ export default {
   background: none;
 }
 
-pre {
-  font-size: inherit;
-  margin: 0;
+.log-timestamp {
+  min-width: 200px;
+  max-width: 200px;
+}
+
+.log-text {
   white-space: pre-wrap;
 }
 </style>
