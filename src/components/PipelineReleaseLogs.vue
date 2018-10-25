@@ -206,7 +206,7 @@ export default {
             this.$set(this.log, 'steps', [])
           }
 
-          var stepIndex = this.log.steps.indexOf(s => s.step === data.step)
+          var stepIndex = this.log.steps.findIndex(s => s.step === data.step)
           var step = stepIndex > -1 ? this.log.steps[stepIndex] : null
           if (stepIndex === -1) {
             // create new step
