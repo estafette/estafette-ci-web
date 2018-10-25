@@ -206,8 +206,9 @@ export default {
             this.$set(this.log, 'steps', [])
           }
 
-          var step = this.log.steps.find(s => s.step === data.step)
-          if (!step) {
+          var stepIndex = this.log.steps.indexOf(s => s.step === data.step)
+          var step = stepIndex > -1 ? this.log.steps[stepIndex] : null
+          if (stepIndex === -1) {
             // create new step
             if (data.image) {
               step = {step: data.step, image: data.image, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: data.autoInjected ? data.autoInjected : false, duration: 0}
@@ -215,6 +216,12 @@ export default {
               step = {step: data.step, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: false, duration: 0}
             }
             this.log.steps.push(step)
+            stepIndex = this.log.steps.length - 1
+          }
+
+          if (stepIndex !== this.log.steps.length - 1) {
+            // the data is not for the last step in the array, we're dealing with an event stream restart; skip processing until we catch up with the last step
+            return
           }
 
           if (data.status) {
