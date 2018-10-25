@@ -191,6 +191,13 @@ export default {
         this.es = new EventSource(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs/tail`)
 
         this.es.addEventListener('log', event => {
+          if (this.build.buildStatus !== 'running') {
+            // stop handling stream when build status changes
+            this.es.close()
+            window.scrollTo(0, 0)
+            return
+          }
+
           let data = JSON.parse(event.data)
 
           if (!this.log) {
@@ -230,6 +237,7 @@ export default {
 
         this.es.addEventListener('close', event => {
           this.es.close()
+          window.scrollTo(0, 0)
         }, false)
 
         this.es.onerror = event => {
