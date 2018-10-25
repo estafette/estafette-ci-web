@@ -229,8 +229,11 @@ export default {
 
         this.es.addEventListener('close', event => {
           this.es.close()
-          this.loadLogs()
         }, false)
+
+        this.es.onerror = event => {
+          console.log('EventSource failed.', event)
+        }
       }
     }
   },
