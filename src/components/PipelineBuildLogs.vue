@@ -148,7 +148,6 @@ export default {
   },
 
   created () {
-    this.ansi = new AnsiUp()
     this.tailLogs()
     this.loadLogs()
   },
@@ -156,7 +155,8 @@ export default {
   methods: {
     formatLog (value) {
       if (!value) return value
-      return this.ansi.ansi_to_html(value)
+      var ansi = new AnsiUp()
+      return ansi.ansi_to_html(value)
     },
 
     loadLogs () {
