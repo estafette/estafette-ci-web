@@ -2,7 +2,7 @@
   "name": "estafette-ci-web",
   "version": "1.0.0",
   "description": "The web frontend for Estafette CI",
-  "author": "Jorrit Salverda <jorrit.salverda@gmail.com>",
+  "author": "Jorrit Salverda",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
