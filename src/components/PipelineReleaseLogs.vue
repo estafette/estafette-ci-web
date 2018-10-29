@@ -24,6 +24,7 @@
           <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">
             <span v-if="step.image">
               {{step.image.name}}:{{step.image.tag}}
+              <span v-if="step.image.isTrusted" class="small text-muted" title="This image is configured as trusted by Estafette CI">(trusted)</span>
             </span>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">

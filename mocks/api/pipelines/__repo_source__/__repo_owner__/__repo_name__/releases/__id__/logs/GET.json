@@ -13,7 +13,8 @@
     "tag": "dev",
     "isPulled": false,
     "imageSize": 31398692,
-    "pullDuration": 3439766775
+    "pullDuration": 3439766775,
+    "isTrusted": true
     },
     "duration": 2685832708,
     "logLines": [

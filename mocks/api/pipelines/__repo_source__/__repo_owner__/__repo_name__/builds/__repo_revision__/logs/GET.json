@@ -14,7 +14,8 @@
     "tag": "dev",
     "isPulled": false,
     "imageSize": 31398692,
-    "pullDuration": 3439766775
+    "pullDuration": 3439766775,
+    "isTrusted": true
     },
     "duration": 2685832708,
     "logLines": [
@@ -55,7 +56,8 @@
     "tag": "dev",
     "isPulled": false,
     "imageSize": 9152576,
-    "pullDuration": 2017064119
+    "pullDuration": 2017064119,
+    "isTrusted": true
     },
     "duration": 1217239938,
     "logLines": [
@@ -156,7 +158,8 @@
     "tag": "18.03.1-ce",
     "isPulled": false,
     "imageSize": 0,
-    "pullDuration": 0
+    "pullDuration": 0,
+    "isTrusted": true
     },
     "duration": 0,
     "logLines": [],
@@ -170,7 +173,8 @@
     "tag": "18.03.1-ce",
     "isPulled": false,
     "imageSize": 0,
-    "pullDuration": 0
+    "pullDuration": 0,
+    "isTrusted": true
     },
     "duration": 0,
     "logLines": [],
@@ -184,7 +188,8 @@
     "tag": "dev",
     "isPulled": true,
     "imageSize": 0,
-    "pullDuration": 0
+    "pullDuration": 0,
+    "isTrusted": true
     },
     "duration": 1311413609,
     "logLines": [
@@ -214,7 +219,8 @@
     "tag": "dev",
     "isPulled": false,
     "imageSize": 9185123,
-    "pullDuration": 2157171676
+    "pullDuration": 2157171676,
+    "isTrusted": true
     },
     "duration": 111842450599,
     "logLines": [
