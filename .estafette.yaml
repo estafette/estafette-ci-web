@@ -63,6 +63,7 @@ releases:
         namespace: estafette
         visibility: iap
         container:
+          repository: estafette
           port: 8080
           cpu:
             request: 10m
