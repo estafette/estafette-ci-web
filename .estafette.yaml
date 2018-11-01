@@ -85,4 +85,3 @@ releases:
         resilient: true
         localmanifests:
         - gke/ingress.yaml
-        dryrun: true
