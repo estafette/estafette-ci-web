@@ -82,6 +82,6 @@ releases:
             scrape: false
         hosts:
         - estafette.secret(z6C9Piz4EhMxWMc8.uxcITmg39HiLJuuqSyPRM06PTWNd6S1x1QxfYYeyGoBLcgkM)
-        resilient: true
+        chaosproof: true
         localmanifests:
         - gke/ingress.yaml
