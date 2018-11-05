@@ -168,19 +168,39 @@ Vue.config.productionTip = false
 
 Vue.use(VueAxios, axios)
 
+// use global store for global state management
+Vue.use(Vuex)
+const store = new Vuex.Store({
+  state: {
+    sessionRefreshModalActive: false
+  },
+  mutations: {
+    showModal (state) {
+      if (!state.sessionRefreshModalActive) {
+        state.sessionRefreshModalActive = true
+      }
+    },
+    hideModal (state) {
+      if (state.sessionRefreshModalActive) {
+        state.sessionRefreshModalActive = false
+      }
+    }
+  }
+})
+
 // intercept api responses to check for 401 caused by iap session timeout and reload entire vue app
 Vue.axios.interceptors.response.use((response) => {
   return response
 }, function (error) {
   if (error.response.status === 401) {
-    location.reload()
+    // open session refresh modal
+    store.commit('showModal')
     return
   }
   return Promise.reject(error)
 })
 
 Vue.use(BootstrapVue)
-Vue.use(Vuex)
 
 // use vue-moment for rendering timestamps
 const moment = require('moment')
@@ -198,6 +218,7 @@ Vue.use(VueAnalytics, {
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

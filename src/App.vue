@@ -7,6 +7,7 @@
       </div>
     </div>
     <site-footer/>
+    <session-refresh-modal/>
   </div>
 </template>
 
