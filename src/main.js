@@ -191,7 +191,7 @@ const store = new Vuex.Store({
 // intercept api responses to check for 401 caused by iap session timeout and reload entire vue app
 Vue.axios.interceptors.response.use((response) => {
   return response
-}, function (error) {
+}, (error) => {
   if (typeof error.response === 'undefined' || error.response.status === 401) {
     // open session refresh modal
     store.commit('showModal')
