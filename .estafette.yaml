@@ -39,6 +39,7 @@ stages:
     path: ./publish
     copy:
     - dist
+    - favicon.ico
     - nginx.vh.default.conf
 
   push-to-docker-hub:
