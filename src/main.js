@@ -192,7 +192,7 @@ const store = new Vuex.Store({
 Vue.axios.interceptors.response.use((response) => {
   return response
 }, function (error) {
-  if (error.response.status === 401) {
+  if (typeof error.response === 'undefined' || error.response.status === 401) {
     // open session refresh modal
     store.commit('showModal')
     return
