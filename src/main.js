@@ -6,6 +6,7 @@ import BootstrapVue from 'bootstrap-vue'
 import VueAnalytics from 'vue-analytics'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueApexCharts from 'vue-apexcharts'
 
 import App from './App'
 import router from './router'
@@ -167,6 +168,7 @@ Vue.filter('formatBytes', function (value) {
 Vue.config.productionTip = false
 
 Vue.use(VueAxios, axios)
+Vue.use(VueApexCharts)
 
 // use global store for global state management
 Vue.use(Vuex)

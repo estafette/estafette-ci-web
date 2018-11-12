@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Pipelines from '@/components/Pipelines'
 import Statistics from '@/components/Statistics'
+import StatisticsCounters from '@/components/StatisticsCounters'
+import StatisticsTrends from '@/components/StatisticsTrends'
 import PipelineDetails from '@/components/PipelineDetails'
 import PipelineBuilds from '@/components/PipelineBuilds'
 import PipelineBuildDetails from '@/components/PipelineBuildDetails'
@@ -93,7 +95,23 @@ export default new Router({
     {
       path: '/statistics',
       name: 'Statistics',
-      component: Statistics
+      component: Statistics,
+      props: true,
+      redirect: { name: 'StatisticsCounters' },
+      children: [
+        {
+          path: 'counters',
+          name: 'StatisticsCounters',
+          props: true,
+          component: StatisticsCounters
+        },
+        {
+          path: 'trends',
+          name: 'StatisticsTrends',
+          props: true,
+          component: StatisticsTrends
+        }
+      ]
     },
     {
       path: '/logs/:repoSource/:repoOwner/:repoName/:repoBranch/:id',
