@@ -1,6 +1,6 @@
 <template>
-    <div class="col-12 col-xxl-6 p-0">
-      <div>
+    <div class="col-12 col-xxl-6 p-0 graph">
+      <div class="rounded border" :class="`border-${status}`">
         <apexcharts width="100%" :type="options.type" :options="options" :series="series"></apexcharts>
       </div>
     </div>
@@ -13,7 +13,7 @@ import upperFirst from 'lodash/upperFirst'
 export default {
   props: {
     type: String,
-    color: String
+    status: String
   },
 
   components: {
@@ -45,14 +45,15 @@ export default {
         },
         title: {
           text: upperFirst(this.type) + ' adoption rate',
+          align: 'center',
           style: {
             fontSize: '24px',
-            color: this.color
+            color: this.getColor(this.status)
           }
         },
         subtitle: {
           text: 'by repositories',
-          offsetX: 10,
+          align: 'center',
           offsetY: 35,
           style: {
             fontSize: '14px',
@@ -63,7 +64,16 @@ export default {
         xaxis: {
           type: 'datetime'
         },
-        colors: [this.color]
+        colors: [this.getColor(this.status)],
+        grid: {
+          show: true,
+          yaxis: {
+            lines: {
+              show: false,
+              animate: false
+            }
+          }
+        }
       },
       series: [{
         name: upperFirst(this.type),
@@ -77,6 +87,17 @@ export default {
   },
 
   methods: {
+    getColor (status) {
+      switch (status) {
+        case 'primary':
+          return '#007bff'
+
+        case 'success':
+          return '#28a745'
+      }
+      return '#212529'
+    },
+
     loadStat () {
       this.axios.get(`/api/stats/${this.type}adoption`)
         .then(response => {

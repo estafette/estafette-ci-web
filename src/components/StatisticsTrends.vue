@@ -1,6 +1,6 @@
 <template>
     <div class="m-3 row">
-      <stats-adoption type="builds" color="#007bff"/>
-      <stats-adoption type="releases" color="#28a745"/>
+      <stats-adoption type="builds" status="primary"/>
+      <stats-adoption type="releases" status="success"/>
     </div>
 </template>
