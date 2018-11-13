@@ -1,6 +1,7 @@
 <template>
     <div class="col-12 col-xxl-6 p-0 graph">
       <div class="rounded border" :class="`border-${status}`">
+        <spinner v-if="series[0].data.length == 0" :color="status"/>
         <apexcharts width="100%" :type="options.type" :options="options" :series="series"></apexcharts>
       </div>
     </div>
