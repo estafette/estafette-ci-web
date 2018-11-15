@@ -136,6 +136,9 @@ export default {
         return ''
       }
       return this.log.steps.reduce((acc, step) => {
+        if (acc === 'CANCELED' || step.status === 'CANCELED') {
+          return 'CANCELED'
+        }
         if (acc === 'FAILED' || step.status === 'FAILED') {
           return 'FAILED'
         }
