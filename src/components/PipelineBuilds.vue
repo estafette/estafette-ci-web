@@ -48,7 +48,7 @@
           </router-link>
           <span v-if="!showReleases(build)" class="d-xxl-none">-</span>
         </div>
-        <div v-if="user && user.authenticated && build && ((build.buildStatus === 'failed' || build.buildStatus === 'running') || (build.releases && build.releases.length > 0 && build.buildStatus === 'succeeded'))" class="mb-2 col-12 col-md-6 col-xxl-2">
+        <div v-if="user && user.authenticated && build && ((build.buildStatus === 'failed' || build.buildStatus === 'running' || build.buildStatus === 'canceled') || (build.releases && build.releases.length > 0 && build.buildStatus === 'succeeded'))" class="mb-2 col-12 col-md-6 col-xxl-2">
           <div class="small text-black-50 mb-1 d-xxl-none">Actions</div>
           <release-button :pipeline="pipeline" :build="build" :user="user" />
           <rebuild-button :build="build" :user="user" />

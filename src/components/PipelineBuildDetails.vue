@@ -38,9 +38,16 @@
       </div>
 
       <div v-if="build.labels && build.labels.length > 0" class="col-12"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
-      <div v-if="build.labels && build.labels.length > 0" class="mb-2 col-12 text-center text-truncate text-truncate-fade">
+      <div v-if="build.labels && build.labels.length > 0" class="mb-2 col-12 col-md-6 text-center text-truncate text-truncate-fade">
         <div class="small text-black-50 mb-1">Labels</div>
         <router-link :to="{ name: 'Pipelines', query: { labels: label.key + '=' + label.value } }" exact class="btn btn-light btn-sm mr-1 mb-1" v-for="label in sortLabels(build.labels)" v-bind:key="label.key">{{label.key}}={{label.value}}</router-link>
+      </div>
+
+      <div v-if="user && user.authenticated && build && ((build.buildStatus === 'failed' || build.buildStatus === 'running' || build.buildStatus === 'canceled') || (build.releases && build.releases.length > 0 && build.buildStatus === 'succeeded'))" class="mb-2 col-12 col-md-6 text-center">
+        <div class="small text-black-50 mb-1">Actions</div>
+        <release-button :pipeline="pipeline" :build="build" :user="user" />
+        <rebuild-button :build="build" :user="user" />
+        <cancel-button :build="build" :user="user" />
       </div>
 
     </div>
@@ -67,7 +74,8 @@ export default {
     repoSource: String,
     repoOwner: String,
     repoName: String,
-    id: String
+    id: String,
+    user: Object
   },
   data: function () {
     return {

@@ -10,28 +10,34 @@
     </nav>
 
     <div v-if="release" class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-3 mb-2 ml-3" :class="release.releaseStatus | bootstrapClass('border')">
-      <div class="mb-2 col-6 col-md-4 col-lg-3 col-xl-2 text-truncate" :title="release.name">
+      <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="release.name">
         <div class="small text-muted mb-1">Name</div>
         {{release.name}}
       </div>
-      <div class="mb-2 col-6 col-md-4 col-lg-3 col-xl-2 text-truncate" :title="release.releaseVersion">
+      <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="release.releaseVersion">
         <div class="small text-muted mb-1">Version</div>
         {{release.releaseVersion}}
       </div>
-      <div class="mb-2 col-6 col-md-4 col-lg-3 col-xl-2 align-middle">
+      <div class="mb-2 col-6 col-md-4 col-xl-2 align-middle">
         <div class="small text-muted mb-1">Status</div>
         <div class="progress mt-2">
             <div class="progress-bar" :class="release.releaseStatus | bootstrapClass('bg')" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </div>
-      <div class="mb-2 col-6 col-md-4 col-lg-3 col-xl-2 text-truncate" :title="moment(release.insertedAt)">
+      <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="moment(release.insertedAt)">
         <div class="small text-muted mb-1">Triggered at</div>
         {{release.insertedAt | moment("calendar")}}
       </div>
-      <div class="mb-2 col-6 col-md-4 col-lg-3 col-xl-4 text-truncate" :title="release.triggeredBy">
+      <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="release.triggeredBy">
         <div class="small text-muted mb-1">Triggered by</div>
         {{release.triggeredBy}}
       </div>
+
+      <div v-if="user && user.authenticated && release && release.releaseStatus === 'running'" class="mb-2 col-6 col-md-4 col-xl-2">
+        <div class="small text-black-50 mb-1">Actions</div>
+        <cancel-button :release="release" :user="user" />
+      </div>
+
     </div>
 
     <ul class="nav nav-tabs m-3">
@@ -53,7 +59,8 @@ export default {
     repoSource: String,
     repoOwner: String,
     repoName: String,
-    releaseID: String
+    releaseID: String,
+    user: Object
   },
   data: function () {
     return {
