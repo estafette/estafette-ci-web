@@ -1,5 +1,5 @@
 <template>
-  <div v-if="user.authenticated && build && build.buildStatus === 'failed'" class="btn btn-outline-success btn-sm" v-on:click.stop="rebuild">Rebuild</div>
+  <div v-if="user.authenticated && build && (build.buildStatus === 'failed' || build.buildStatus === 'canceled')" class="btn btn-outline-success btn-sm" v-on:click.stop="rebuild">Rebuild</div>
 </template>
 
 <script>
@@ -18,6 +18,7 @@ export default {
       if (this.user.authenticated) {
         this.axios.post(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/builds`, this.build)
           .then(response => {
+            this.build.buildStatus = 'running'
             console.log(response)
           })
           .catch(error => {
