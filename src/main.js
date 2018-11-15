@@ -88,6 +88,20 @@ Vue.filter('bootstrapClass', function (value, prefix) {
   return prefix + '-light'
 })
 
+Vue.filter('stripedProgressBarClass', function (value) {
+  if (!value) {
+    return ''
+  }
+  value = value.toString().toLowerCase()
+  if (value === 'running') {
+    return 'progress-bar-striped progress-bar-animated'
+  }
+  if (value === 'canceling') {
+    return 'progress-bar-striped progress-bar-animated'
+  }
+  return ''
+})
+
 Vue.filter('defaultValue', function (value, defaultValue) {
   if (!value) {
     return defaultValue

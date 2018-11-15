@@ -24,7 +24,7 @@
         <div class="mb-2 col-6 col-md-4 col-xl-1 align-middle">
           <div class="small text-black-50 mb-1 d-xl-none">Status</div>
           <div class="progress mt-1">
-              <div class="progress-bar" :class="release.releaseStatus | bootstrapClass('bg')" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar" :class="[$options.filters.bootstrapClass(release.releaseStatus,'bg'), $options.filters.stripedProgressBarClass(release.releaseStatus)]" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
         <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="moment(release.insertedAt)">
