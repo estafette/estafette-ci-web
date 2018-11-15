@@ -9,7 +9,7 @@
       <div class="col-6 col-md-4 col-xl-2 col-xxl-1 d-none d-xl-block">Revision</div>
       <div class="col-6 col-md-4 col-xl-3 col-xxl-2 d-none d-xl-block">Commit(s)</div>
       <div class="col-xxl-2 d-none d-xxl-block">Releases</div>
-      <div class="col-xxl-2 d-none d-xxl-block">Actions</div>
+      <div v-if="user && user.authenticated" class="col-xxl-2 d-none d-xxl-block">Actions</div>
     </div>
 
     <transition-group name="list-complete" tag="div">
@@ -48,10 +48,11 @@
           </router-link>
           <span v-if="!showReleases(build)" class="d-xxl-none">-</span>
         </div>
-        <div class="mb-2 col-12 col-md-6 col-xxl-2">
+        <div v-if="user && user.authenticated && build && ((build.buildStatus === 'failed' || build.buildStatus === 'running') || (build.releases && build.releases.length > 0 && build.buildStatus === 'succeeded'))" class="mb-2 col-12 col-md-6 col-xxl-2">
           <div class="small text-black-50 mb-1 d-xxl-none">Actions</div>
           <release-button :pipeline="pipeline" :build="build" :user="user" />
           <rebuild-button :build="build" :user="user" />
+          <cancel-button :build="build" :user="user" />
         </div>
      </router-link>
      </transition-group>

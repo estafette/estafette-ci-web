@@ -1,5 +1,5 @@
 <template>
-  <div v-if="user.authenticated && build && build.buildStatus === 'failed'" class="btn btn-outline-dark btn-sm" v-on:click.stop="rebuild">Rebuild</div>
+  <div v-if="user.authenticated && build && build.buildStatus === 'failed'" class="btn btn-outline-success btn-sm" v-on:click.stop="rebuild">Rebuild</div>
 </template>
 
 <script>

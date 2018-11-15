@@ -76,6 +76,12 @@ Vue.filter('bootstrapClass', function (value, prefix) {
   if (value === 'skipped') {
     return prefix + '-secondary'
   }
+  if (value === 'canceling') {
+    return prefix + '-secondary'
+  }
+  if (value === 'canceled') {
+    return prefix + '-secondary'
+  }
   if (value === 'all') {
     return prefix + '-primary'
   }

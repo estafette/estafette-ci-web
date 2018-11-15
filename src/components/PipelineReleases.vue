@@ -5,8 +5,9 @@
       <div class="col-6 col-md-4 col-xl-2">Name</div>
       <div class="col-6 col-md-4 col-xl-2">Version</div>
       <div class="col-6 col-md-4 col-xl-1">Status</div>
-      <div class="col-6 col-md-4 col-xl-3 d-none d-md-block">Triggered at</div>
-      <div class="col-6 col-md-4 col-xl-4 d-none d-xl-block">Triggered by</div>
+      <div class="col-6 col-md-4 col-xl-2 d-none d-md-block">Triggered at</div>
+      <div class="col-6 col-md-4 col-xl-3 d-none d-xl-block">Triggered by</div>
+      <div v-if="user && user.authenticated" class="col-xl-2 d-none d-xl-block">Actions</div>
     </div>
 
     <transition-group name="list-complete" tag="div">
@@ -26,13 +27,17 @@
               <div class="progress-bar" :class="release.releaseStatus | bootstrapClass('bg')" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
-        <div class="mb-2 col-6 col-md-4 col-xl-3 text-truncate" :title="moment(release.insertedAt)">
+        <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="moment(release.insertedAt)">
           <div class="small text-black-50 mb-1 d-xl-none">Triggered at</div>
           {{release.insertedAt | moment("calendar")}}
         </div>
-        <div class="mb-2 col-6 col-md-4 col-xl-4 text-truncate" :title="release.triggeredBy">
+        <div class="mb-2 col-6 col-md-4 col-xl-3 text-truncate" :title="release.triggeredBy">
           <div class="small text-black-50 mb-1 d-xl-none">Triggered by</div>
           {{release.triggeredBy}}
+        </div>
+        <div v-if="user && user.authenticated && release && release.releaseStatus === 'running'" class="mb-2 col-6 col-md-4 col-xl-2">
+          <div class="small text-black-50 mb-1 d-xl-none">Actions</div>
+          <cancel-button :release="release" :user="user" />
         </div>
 
      </router-link>
@@ -51,7 +56,8 @@ export default {
     repoSource: String,
     repoOwner: String,
     repoName: String,
-    query: Object
+    query: Object,
+    user: Object
   },
   data: function () {
     return {
