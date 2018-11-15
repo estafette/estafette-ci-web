@@ -22,7 +22,7 @@
         <div class="mb-2 col-6 col-md-4 col-xl-1 align-middle">
           <div class="small text-black-50 mb-1 d-xl-none">Status</div>
           <div class="progress mt-1">
-              <div class="progress-bar" :class="[$options.filters.bootstrapClass(build.buildStatus,'bg'), $options.filters.stripedProgressBarClass(build.buildStatus)]" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar" :class="[$options.filters.bootstrapClass(build.buildStatus,'bg'), $options.filters.stripedProgressBarClass(build.buildStatus)]" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"  :title="build.buildStatus"></div>
           </div>
         </div>
         <div class="mb-2 col-6 col-md-4 col-xl-2 col-xxl-1 text-truncate" :title="moment(build.insertedAt)">

@@ -7,6 +7,7 @@
             <router-link :to="{ query: { status: 'succeeded', since: filter.since, labels: filter.labels, page: 1 } }" active-class="router-link-active" class="btn btn-outline-success mb-1" :class="{ active: filter.status === 'succeeded' }">Succeeded</router-link>
             <router-link :to="{ query: { status: 'failed', since: filter.since, labels: filter.labels, page: 1 } }" active-class="router-link-active" class="btn btn-outline-danger mb-1" :class="{ active: filter.status === 'failed' }">Failed</router-link>
             <router-link :to="{ query: { status: 'running', since: filter.since, labels: filter.labels, page: 1 } }" active-class="router-link-active" class="btn btn-outline-warning mb-1" :class="{ active: filter.status === 'running' }">Running</router-link>
+            <router-link :to="{ query: { status: 'canceled', since: filter.since, labels: filter.labels, page: 1 } }" active-class="router-link-active" class="btn btn-outline-secondary mb-1" :class="{ active: filter.status === 'running' }">Canceled</router-link>
 
             <span v-if="filter.labels" class="btn btn-outline-secondary mb-1">
                 {{ filter.labels }} <router-link :to="{ query: { status: filter.status, since: filter.since, page: 1 } }" active-class="router-link-active" class="badge badge-secondary">&times;</router-link>
@@ -44,7 +45,7 @@
               </div>
               <div class="mb-2 col-12 col-md-6 col-xl-1 align-middle">
                 <div class="small text-black-50 mb-1 d-xl-none">Status</div>
-                <router-link :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: pipeline.id }}" tag="div" class="progress mt-1">
+                <router-link :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: pipeline.id }}" tag="div" class="progress mt-1" :title="pipeline.buildStatus">
                   <div class="progress-bar" :class="[$options.filters.bootstrapClass(pipeline.buildStatus,'bg'), $options.filters.stripedProgressBarClass(pipeline.buildStatus)]" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                 </router-link>
               </div>
