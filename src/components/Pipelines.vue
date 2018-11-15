@@ -99,7 +99,7 @@ export default {
       errors: [],
       pagination: {
         page: 1,
-        size: 20,
+        size: 15,
         totalPages: 0,
         totalItems: 0
       },
@@ -136,8 +136,6 @@ export default {
       this.filter.status = query && query.status ? query.status : 'all'
       this.filter.since = query && query.since ? query.since : '1d'
       this.filter.labels = query && query.labels ? query.labels : ''
-
-      this.updateQueryParams()
     },
 
     updateQueryParams () {
