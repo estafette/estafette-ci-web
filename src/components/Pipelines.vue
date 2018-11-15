@@ -7,7 +7,7 @@
             <router-link :to="{ query: { status: 'succeeded', since: filter.since, labels: filter.labels, page: 1 } }" active-class="router-link-active" class="btn btn-outline-success mb-1" :class="{ active: filter.status === 'succeeded' }">Succeeded</router-link>
             <router-link :to="{ query: { status: 'failed', since: filter.since, labels: filter.labels, page: 1 } }" active-class="router-link-active" class="btn btn-outline-danger mb-1" :class="{ active: filter.status === 'failed' }">Failed</router-link>
             <router-link :to="{ query: { status: 'running', since: filter.since, labels: filter.labels, page: 1 } }" active-class="router-link-active" class="btn btn-outline-warning mb-1" :class="{ active: filter.status === 'running' }">Running</router-link>
-            <router-link :to="{ query: { status: 'canceled', since: filter.since, labels: filter.labels, page: 1 } }" active-class="router-link-active" class="btn btn-outline-secondary mb-1" :class="{ active: filter.status === 'running' }">Canceled</router-link>
+            <router-link :to="{ query: { status: 'canceled', since: filter.since, labels: filter.labels, page: 1 } }" active-class="router-link-active" class="btn btn-outline-secondary mb-1" :class="{ active: filter.status === 'canceled' }">Canceled</router-link>
 
             <span v-if="filter.labels" class="btn btn-outline-secondary mb-1">
                 {{ filter.labels }} <router-link :to="{ query: { status: filter.status, since: filter.since, page: 1 } }" active-class="router-link-active" class="badge badge-secondary">&times;</router-link>

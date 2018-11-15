@@ -7,7 +7,7 @@
         <router-link :to="{ query: { status: 'succeeded', page: 1 } }" active-class="router-link-active" class="btn btn-outline-success btn-sm mb-1" :class="{ active: filter.status === 'succeeded' }">Succeeded</router-link>
         <router-link :to="{ query: { status: 'failed', page: 1 } }" active-class="router-link-active" class="btn btn-outline-danger btn-sm mb-1" :class="{ active: filter.status === 'failed' }">Failed</router-link>
         <router-link :to="{ query: { status: 'running', page: 1 } }" active-class="router-link-active" class="btn btn-outline-warning btn-sm mb-1" :class="{ active: filter.status === 'running' }">Running</router-link>
-        <router-link :to="{ query: { status: 'canceled', page: 1 } }" active-class="router-link-active" class="btn btn-outline-secondary btn-sm mb-1" :class="{ active: filter.status === 'running' }">Canceled</router-link>
+        <router-link :to="{ query: { status: 'canceled', page: 1 } }" active-class="router-link-active" class="btn btn-outline-secondary btn-sm mb-1" :class="{ active: filter.status === 'canceled' }">Canceled</router-link>
       </div>
     </div>
 
