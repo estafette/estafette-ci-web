@@ -160,7 +160,7 @@ export default {
     },
 
     loadLogs () {
-      if (this.release.releaseStatus === 'succeeded' || this.release.releaseStatus === 'failed') {
+      if (this.release.releaseStatus === 'succeeded' || this.release.releaseStatus === 'failed' || this.release.releaseStatus === 'canceled') {
         this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}/logs`)
           .then(response => {
             this.log = response.data
@@ -187,7 +187,7 @@ export default {
     },
 
     tailLogs () {
-      if (this.release.releaseStatus === 'running') {
+      if (this.release.releaseStatus === 'running' || this.release.releaseStatus === 'canceling') {
         this.es = new EventSource(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}/logs/tail`)
 
         this.es.addEventListener('log', event => {
