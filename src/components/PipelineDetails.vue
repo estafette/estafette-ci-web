@@ -20,7 +20,7 @@
       </div>
       <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="$options.filters.formatDuration(pipeline.duration) + ', ' + $options.filters.formatDatetime(pipeline.insertedAt)">
         <div class="small text-muted mb-1">Built</div>
-        <span :class="pipeline.duration | colorDurationClass">{{pipeline.duration | formatDuration}}</span>, {{pipeline.insertedAt | formatDatetime}}
+        <span v-if="pipeline.duration > 0" :class="pipeline.duration | colorDurationClass">{{pipeline.duration | formatDuration}},</span> {{pipeline.insertedAt | formatDatetime}}
       </div>
       <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="pipeline.repoBranch">
         <div class="small text-muted mb-1">Branch</div>

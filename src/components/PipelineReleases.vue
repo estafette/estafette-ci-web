@@ -39,7 +39,7 @@
         </div>
         <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="$options.filters.formatDuration(release.duration) + ', ' + $options.filters.formatDatetime(release.insertedAt)">
           <div class="small text-black-50 mb-1 d-xl-none">Released</div>
-          <span :class="release.duration | colorDurationClass">{{release.duration | formatDuration}}</span>, {{release.insertedAt | formatDatetime}}
+          <span v-if="release.duration > 0" :class="release.duration | colorDurationClass">{{release.duration | formatDuration}},</span> {{release.insertedAt | formatDatetime}}
         </div>
         <div class="mb-2 col-6 col-md-4 col-xl-3 text-truncate" :title="release.triggeredBy">
           <div class="small text-black-50 mb-1 d-xl-none">By</div>
