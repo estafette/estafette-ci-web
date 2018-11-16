@@ -15,8 +15,8 @@
       <div class="col-6 col-md-4 col-xl-2">Name</div>
       <div class="col-6 col-md-4 col-xl-2">Version</div>
       <div class="col-6 col-md-4 col-xl-1">Status</div>
-      <div class="col-6 col-md-4 col-xl-2 d-none d-md-block">Triggered at</div>
-      <div class="col-6 col-md-4 col-xl-3 d-none d-xl-block">Triggered by</div>
+      <div class="col-6 col-md-4 col-xl-2 d-none d-md-block">Released</div>
+      <div class="col-6 col-md-4 col-xl-3 d-none d-xl-block">By</div>
       <div v-if="user && user.authenticated" class="col-xl-2 d-none d-xl-block">Actions</div>
     </div>
 
@@ -37,12 +37,12 @@
               <div class="progress-bar" :class="[$options.filters.bootstrapClass(release.releaseStatus,'bg'), $options.filters.stripedProgressBarClass(release.releaseStatus)]" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" :title="release.releaseStatus"></div>
           </div>
         </div>
-        <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="moment(release.insertedAt)">
-          <div class="small text-black-50 mb-1 d-xl-none">Triggered at</div>
-          {{release.insertedAt | moment("calendar")}} in <span :class="release.duration | colorDurationClass">{{release.duration | formatDuration}}</span>
+        <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="$options.filters.formatDuration(release.duration) + ', ' + $options.filters.formatDatetime(release.insertedAt)">
+          <div class="small text-black-50 mb-1 d-xl-none">Released</div>
+          <span :class="release.duration | colorDurationClass">{{release.duration | formatDuration}}</span>, {{release.insertedAt | formatDatetime}}
         </div>
         <div class="mb-2 col-6 col-md-4 col-xl-3 text-truncate" :title="release.triggeredBy">
-          <div class="small text-black-50 mb-1 d-xl-none">Triggered by</div>
+          <div class="small text-black-50 mb-1 d-xl-none">By</div>
           {{release.triggeredBy}}
         </div>
         <div v-if="user && user.authenticated && release && release.releaseStatus === 'running'" class="mb-2 col-6 col-md-4 col-xl-2">
@@ -58,9 +58,6 @@
 </template>
 
 <script>
-const moment = require('moment')
-require('moment/locale/en-il')
-
 export default {
   props: {
     repoSource: String,
@@ -124,10 +121,6 @@ export default {
       var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       this.refreshTimeout = setTimeout(this.loadReleases, timeoutWithJitter)
-    },
-
-    moment (value) {
-      return moment(value).format('YYYY-MM-DD HH:mm:ss')
     }
   },
 

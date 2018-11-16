@@ -24,12 +24,12 @@
           <div class="progress-bar" :class="[$options.filters.bootstrapClass(release.releaseStatus,'bg'), $options.filters.stripedProgressBarClass(release.releaseStatus)]" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" :title="release.releaseStatus"></div>
         </router-link>
       </div>
-      <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="moment(release.insertedAt)">
-        <div class="small text-muted mb-1">Triggered at</div>
-        {{release.insertedAt | moment("calendar")}} in <span :class="release.duration | colorDurationClass">{{release.duration | formatDuration}}</span>
+      <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="$options.filters.formatDuration(release.duration) + ', ' + $options.filters.formatDatetime(release.insertedAt)">
+        <div class="small text-muted mb-1">Released</div>
+        <span :class="release.duration | colorDurationClass">{{release.duration | formatDuration}}</span>, {{release.insertedAt | formatDatetime}}
       </div>
       <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="release.triggeredBy">
-        <div class="small text-muted mb-1">Triggered by</div>
+        <div class="small text-muted mb-1">By</div>
         {{release.triggeredBy}}
       </div>
 
@@ -51,9 +51,6 @@
 </template>
 
 <script>
-const moment = require('moment')
-require('moment/locale/en-il')
-
 export default {
   props: {
     repoSource: String,
@@ -106,10 +103,6 @@ export default {
       return labels.slice().sort(function (a, b) {
         return a.key > b.key
       })
-    },
-
-    moment (value) {
-      return moment(value).format('YYYY-MM-DD HH:mm:ss')
     }
   },
 

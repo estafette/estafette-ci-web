@@ -14,7 +14,7 @@
     <div class="row rounded border p-2 mt-2 mr-0 mb-2 ml-0 font-weight-bold">
       <div class="col-6 col-md-4 col-xl-2">Version</div>
       <div class="col-6 col-md-4 col-xl-1">Status</div>
-      <div class="col-6 col-md-4 col-xl-2 col-xxl-1 d-none d-md-block">Built at</div>
+      <div class="col-6 col-md-4 col-xl-2 col-xxl-1 d-none d-md-block">Built</div>
       <div class="col-6 col-md-4 col-xl-2 col-xxl-1 d-none d-xl-block">Branch</div>
       <div class="col-6 col-md-4 col-xl-2 col-xxl-1 d-none d-xl-block">Revision</div>
       <div class="col-6 col-md-4 col-xl-3 col-xxl-2 d-none d-xl-block">Commit(s)</div>
@@ -35,9 +35,9 @@
               <div class="progress-bar" :class="[$options.filters.bootstrapClass(build.buildStatus,'bg'), $options.filters.stripedProgressBarClass(build.buildStatus)]" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" :title="build.buildStatus"></div>
           </div>
         </div>
-        <div class="mb-2 col-6 col-md-4 col-xl-2 col-xxl-1 text-truncate" :title="moment(build.insertedAt)">
-          <div class="small text-black-50 mb-1 d-xl-none">Built at</div>
-          {{build.insertedAt | moment("calendar")}} in <span :class="build.duration | colorDurationClass">{{build.duration | formatDuration}}</span>
+        <div class="mb-2 col-6 col-md-4 col-xl-2 col-xxl-1 text-truncate" :title="$options.filters.formatDuration(build.duration) + ', ' + $options.filters.formatDatetime(build.insertedAt)">
+          <div class="small text-black-50 mb-1 d-xl-none">Built</div>
+          <span :class="build.duration | colorDurationClass">{{build.duration | formatDuration}}</span>, {{build.insertedAt | formatDatetime}}
         </div>
         <div class="mb-2 col-6 col-md-4 col-xl-2 col-xxl-1 text-truncate" :title="build.repoBranch">
           <div class="small text-black-50 mb-1 d-xl-none">Branch</div>
@@ -72,9 +72,6 @@
 </template>
 
 <script>
-const moment = require('moment')
-require('moment/locale/en-il')
-
 export default {
   props: {
     repoSource: String,
@@ -139,10 +136,6 @@ export default {
       var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       this.refreshTimeout = setTimeout(this.loadBuilds, timeoutWithJitter)
-    },
-
-    moment (value) {
-      return moment(value).format('YYYY-MM-DD HH:mm:ss')
     },
 
     showReleases (build) {

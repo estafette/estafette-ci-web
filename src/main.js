@@ -135,6 +135,19 @@ Vue.filter('colorDurationClass', function (value) {
   return 'text-success'
 })
 
+Vue.filter('formatDatetime', function (value) {
+  if (value === null) {
+    return ''
+  }
+
+  if (!moment(value).isSame(moment(), 'year')) {
+    return moment(value).format('D MMM YYYY [at] H:mm')
+  }
+
+  // other day
+  return moment(value).format('D MMM [at] H:mm')
+})
+
 Vue.filter('formatDuration', function (value) {
   if (value === null) {
     return ''

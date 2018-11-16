@@ -18,9 +18,9 @@
           <div class="progress-bar" :class="[$options.filters.bootstrapClass(pipeline.buildStatus,'bg'), $options.filters.stripedProgressBarClass(pipeline.buildStatus)]" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" :title="pipeline.buildStatus"></div>
         </router-link>
       </div>
-      <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="moment(pipeline.insertedAt)">
-        <div class="small text-muted mb-1">Built at</div>
-        {{pipeline.insertedAt | moment("calendar")}} in <span :class="pipeline.duration | colorDurationClass">{{pipeline.duration | formatDuration}}</span>
+      <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="$options.filters.formatDuration(pipeline.duration) + ', ' + $options.filters.formatDatetime(pipeline.insertedAt)">
+        <div class="small text-muted mb-1">Built</div>
+        <span :class="pipeline.duration | colorDurationClass">{{pipeline.duration | formatDuration}}</span>, {{pipeline.insertedAt | formatDatetime}}
       </div>
       <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="pipeline.repoBranch">
         <div class="small text-muted mb-1">Branch</div>
@@ -61,9 +61,6 @@
 </template>
 
 <script>
-const moment = require('moment')
-require('moment/locale/en-il')
-
 export default {
   props: {
     repoSource: String,
@@ -114,10 +111,6 @@ export default {
       return labels.slice().sort(function (a, b) {
         return a.key > b.key
       })
-    },
-
-    moment (value) {
-      return moment(value).format('YYYY-MM-DD HH:mm:ss')
     }
   },
 
