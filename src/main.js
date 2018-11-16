@@ -120,7 +120,7 @@ Vue.filter('colorDurationClass', function (value) {
     return ''
   }
 
-  if (value < 0) {
+  if (value <= 0) {
     return ''
   }
 
@@ -144,8 +144,12 @@ Vue.filter('formatDatetime', function (value) {
     return moment(value).format('D MMM YYYY [at] H:mm')
   }
 
+  if (!moment(value).isSame(moment(), 'day')) {
+    return moment(value).format('D MMM [at] H:mm')
+  }
+
   // other day
-  return moment(value).format('D MMM [at] H:mm')
+  return moment(value).format('[today] [at] H:mm')
 })
 
 Vue.filter('formatDuration', function (value) {
