@@ -3,7 +3,7 @@
     <nav class="m-3" aria-label="breadcrumb">
       <ol class="breadcrumb flex-nowrap">
         <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'Pipelines'}">Pipelines</router-link></li>
-        <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'PipelineReleases', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}"><span class="d-none d-md-inline">{{repoSource}}/{{repoOwner}}/</span>{{repoName}}</router-link></li>
+        <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'PipelineBuilds', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}"><span class="d-none d-md-inline">{{repoSource}}/{{repoOwner}}/</span>{{repoName}}</router-link></li>
         <li class="breadcrumb-item text-truncate active">releases</li>
         <li class="breadcrumb-item text-truncate active" aria-current="page" v-if="release" >{{release.releaseVersion}} to {{release.name}}</li>
       </ol>
