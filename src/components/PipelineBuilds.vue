@@ -37,7 +37,7 @@
         </div>
         <div class="mb-2 col-6 col-md-4 col-xl-2 col-xxl-1 text-truncate" :title="$options.filters.formatDuration(build.duration) + ', ' + $options.filters.formatDatetime(build.insertedAt)">
           <div class="small text-black-50 mb-1 d-xl-none">Built</div>
-          <span v-if="build.duration > 0" :class="build.duration | colorDurationClass">{{build.duration | formatDuration}},</span> {{build.insertedAt | formatDatetime}}
+          <span v-if="build.duration > 0" :class="build.duration | colorDurationClass">{{build.duration | formatDuration}}</span> {{build.insertedAt | formatDatetime}}
         </div>
         <div class="mb-2 col-6 col-md-4 col-xl-2 col-xxl-1 text-truncate" :title="build.repoBranch">
           <div class="small text-black-50 mb-1 d-xl-none">Branch</div>
