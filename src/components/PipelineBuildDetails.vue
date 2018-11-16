@@ -22,7 +22,7 @@
       </div>
       <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="moment(build.insertedAt)">
         <div class="small text-muted mb-1">Built at</div>
-        {{build.insertedAt | moment("calendar")}}
+        {{build.insertedAt | moment("calendar")}} in <span :class="build.duration | colorDurationClass">{{build.duration | formatDuration}}</span>
       </div>
       <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="build.repoBranch">
         <div class="small text-muted mb-1">Branch</div>

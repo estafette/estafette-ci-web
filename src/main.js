@@ -115,6 +115,26 @@ Vue.filter('capitalize', function (value) {
   return value.charAt(0).toUpperCase() + value.slice(1)
 })
 
+Vue.filter('colorDurationClass', function (value) {
+  if (value === null) {
+    return ''
+  }
+
+  if (value < 0) {
+    return ''
+  }
+
+  var seconds = Math.floor(value / Math.pow(10, 9))
+  if (seconds > 300) {
+    return 'text-danger'
+  }
+  if (seconds > 120) {
+    return 'text-warning'
+  }
+
+  return 'text-success'
+})
+
 Vue.filter('formatDuration', function (value) {
   if (value === null) {
     return ''

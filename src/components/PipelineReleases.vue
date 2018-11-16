@@ -39,7 +39,7 @@
         </div>
         <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="moment(release.insertedAt)">
           <div class="small text-black-50 mb-1 d-xl-none">Triggered at</div>
-          {{release.insertedAt | moment("calendar")}}
+          {{release.insertedAt | moment("calendar")}} in <span :class="release.duration | colorDurationClass">{{release.duration | formatDuration}}</span>
         </div>
         <div class="mb-2 col-6 col-md-4 col-xl-3 text-truncate" :title="release.triggeredBy">
           <div class="small text-black-50 mb-1 d-xl-none">Triggered by</div>

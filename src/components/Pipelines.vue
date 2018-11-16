@@ -51,7 +51,7 @@
               </div>
               <div class="mb-2 col-6 col-md-6 col-xl-1 text-truncate" :title="moment(pipeline.insertedAt)">
                 <div class="small text-black-50 mb-1 d-xl-none">Built-at</div>
-                {{pipeline.insertedAt | moment("calendar")}}
+                {{pipeline.insertedAt | moment("calendar")}} in <span :class="pipeline.duration | colorDurationClass">{{pipeline.duration | formatDuration}}</span>
               </div>
               <div class="mb-2 col-6 col-md-3 col-xl-1 text-truncate" :title="pipeline.repoBranch">
                 <div class="small text-black-50 mb-1 d-xl-none">Branch</div>
