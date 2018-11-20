@@ -50,7 +50,7 @@ export default {
                 releaseTarget.activeReleases = [startedRelease]
               } else {
                 // remove active release item if name and optional action matches the just started release
-                releaseTarget.activeReleases = releaseTarget.activeReleases.filter(r => !r.action || (r.action && startedRelease.action && r.action !== startedRelease.action))
+                releaseTarget.activeReleases = releaseTarget.activeReleases.filter(r => r.action && startedRelease.action && r.action !== startedRelease.action)
 
                 // prepend newly started release
                 releaseTarget.activeReleases.unshift(startedRelease)

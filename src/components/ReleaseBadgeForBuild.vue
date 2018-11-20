@@ -15,7 +15,7 @@ export default {
 
   computed: {
     matchingReleases: function () {
-      return this.releaseTarget.activeReleases.filter(r => r.releaseVersion === this.build.buildVersion)
+      return this.releaseTarget && this.releaseTarget.activeReleases ? this.releaseTarget.activeReleases.filter(r => r.releaseVersion === this.build.buildVersion) : []
     }
   }
 }
