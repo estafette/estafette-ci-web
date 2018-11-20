@@ -1,5 +1,6 @@
 {
     "name":"development",
+    "action":"deploy-stable",
     "id":"372762091039162371",
     "repoSource":"github.com",
     "repoOwner":"estafette",

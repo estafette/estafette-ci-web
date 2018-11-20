@@ -4,7 +4,7 @@
       <ol class="breadcrumb flex-nowrap">
         <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'Pipelines'}">Pipelines</router-link></li>
         <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'PipelineBuilds', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}"><span class="d-none d-md-inline">{{repoSource}}/{{repoOwner}}/</span>{{repoName}}</router-link></li>
-        <li class="breadcrumb-item text-truncate active">builds</li>
+        <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'PipelineBuilds', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}">builds</router-link></li>
         <li class="breadcrumb-item text-truncate active" aria-current="page" v-if="build">{{build.buildVersion}}</li>
       </ol>
     </nav>
