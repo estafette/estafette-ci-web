@@ -65,16 +65,16 @@
                 <div class="small text-black-50 mb-1 d-xl-none">Commit(s)</div>
                 <div v-for="commit in pipeline.commits" v-bind:key="commit.message" :title="commit.message + ' / ' + commit.author.name" class="text-truncate">{{commit.message}} / {{commit.author.name}}</div>
               </div>
-              <div v-if="(pipeline.labels && pipeline.labels.length > 0) || (pipeline.releases && pipeline.releases.length > 0)" class="col-12 d-xxl-none"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
+              <div v-if="(pipeline.labels && pipeline.labels.length > 0) || (pipeline.releaseTargets && pipeline.releaseTargets.length > 0)" class="col-12 d-xxl-none"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
               <div v-if="pipeline.labels && pipeline.labels.length > 0" class="mb-2 col-12 col-xl-6 col-xxl-2 text-center text-xxl-left text-truncate text-truncate-fade">
                 <div class="small text-black-50 mb-1 d-xxl-none">Labels</div>
                 <router-link :to="{ query: { status: filter.status, since: filter.since, labels: label.key + '=' + label.value, page: 1 } }" exact class="btn btn-light btn-sm mr-1 mb-1" v-for="label in sortLabels(pipeline.labels)" v-bind:key="label.key">{{label.key}}={{label.value}}</router-link>
               </div>
-              <div v-if="(!pipeline.labels || pipeline.labels.length == 0) && pipeline.releases && pipeline.releases.length > 0" class="mb-2 col-12 col-xl-6 col-xxl-2 text-center text-xxl-left"></div>
-              <div v-if="pipeline.releases && pipeline.releases.length > 0" class="col-12 d-none d-xxl-flex d-xxxl-none"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
-              <div v-if="pipeline.releases && pipeline.releases.length > 0" class="mb-2 col-12 col-xl-6 col-xxl-12 col-xxxl-2 text-center text-xxxl-left text-truncate text-truncate-fade">
+              <div v-if="(!pipeline.labels || pipeline.labels.length == 0) && pipeline.releaseTargets && pipeline.releaseTargets.length > 0" class="mb-2 col-12 col-xl-6 col-xxl-2 text-center text-xxl-left"></div>
+              <div v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0" class="col-12 d-none d-xxl-flex d-xxxl-none"><div class="mt-3 mb-3 w-50 mx-auto border-bottom"></div></div>
+              <div v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0" class="mb-2 col-12 col-xl-6 col-xxl-12 col-xxxl-2 text-center text-xxxl-left text-truncate text-truncate-fade">
                 <div class="small text-black-50 mb-1 d-xxxl-none">Releases</div>
-                <release-badge v-for="release in pipeline.releases" v-bind:key="release.name" :release="release"/>
+                <release-badge v-for="releaseTarget in pipeline.releaseTargets" v-bind:key="releaseTarget.name" :releaseTarget="releaseTarget"/>
               </div>
           </router-link>
           </transition-group>

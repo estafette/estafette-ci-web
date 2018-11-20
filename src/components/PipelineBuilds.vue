@@ -53,12 +53,10 @@
         </div>
         <div class="mb-2 col-12 col-md-6 col-xxl-2 text-truncate text-truncate-fade">
           <div class="small text-black-50 mb-1 d-xxl-none">Releases</div>
-          <router-link v-for="release in pipeline.releases" v-bind:key="release.name" v-if="release.releaseVersion === build.buildVersion" :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}" exact class="btn btn-light btn-sm mr-1">
-            {{release.name}} <span class="badge" :class="release.releaseStatus | bootstrapClass('badge')">{{release.releaseStatus | defaultValue('-')}}</span>
-          </router-link>
+          <release-badge-for-build v-for="releaseTarget in pipeline.releaseTargets" v-bind:key="releaseTarget.name" :releaseTarget="releaseTarget" :build="build"/>
           <span v-if="!showReleases(build)" class="d-xxl-none">-</span>
         </div>
-        <div v-if="user && user.authenticated && build && ((build.buildStatus === 'failed' || build.buildStatus === 'running' || build.buildStatus === 'canceled') || (build.releases && build.releases.length > 0 && build.buildStatus === 'succeeded'))" class="mb-2 col-12 col-md-6 col-xxl-2">
+        <div v-if="user && user.authenticated && build && ((build.buildStatus === 'failed' || build.buildStatus === 'running' || build.buildStatus === 'canceled') || (pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'))" class="mb-2 col-12 col-md-6 col-xxl-2">
           <div class="small text-black-50 mb-1 d-xxl-none">Actions</div>
           <release-button :pipeline="pipeline" :build="build" :user="user" />
           <rebuild-button :build="build" :user="user" />
@@ -117,7 +115,6 @@ export default {
         .then(response => {
           this.builds = response.data.items
           this.pagination = response.data.pagination
-
           this.periodicallyRefreshBuilds(15)
         })
         .catch(e => {
@@ -139,8 +136,15 @@ export default {
     },
 
     showReleases (build) {
-      if (this.pipeline && this.pipeline.releases && this.pipeline.releases.length > 0) {
-        return this.pipeline.releases.some(r => r.releaseVersion === build.buildVersion)
+      if (this.pipeline && this.pipeline.releaseTargets && this.pipeline.releaseTargets.length > 0) {
+        return this.pipeline.releaseTargets.some(r => r.activeReleases && r.activeReleases.some(ar => ar.releaseVersion === build.buildVersion))
+      }
+      return false
+    },
+
+    isActiveRelease (releaseTarget, build) {
+      if (releaseTarget && releaseTarget.activeReleases && releaseTarget.activeReleases.length > 0) {
+        return releaseTarget.activeReleases.some(ar => ar.releaseVersion === build.buildVersion)
       }
       return false
     }
