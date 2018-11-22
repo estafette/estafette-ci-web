@@ -1,9 +1,5 @@
 <template>
-  <span>
-      <router-link v-for="release in matchingReleases" v-bind:key="release.name" :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}" exact class="btn btn-light btn-sm mr-1">
-        {{release.name}}<span class="badge ml-1" :class="release.releaseStatus | bootstrapClass('badge')"><span v-if="release.action">{{release.action}}: </span>{{release.releaseStatus | defaultValue('-')}}</span>
-      </router-link>
-  </span>
+    <div v-if="matchingReleases.length > 0" class="btn btn-light btn-sm mr-1 mb-1">{{releaseTarget.name}}<router-link v-for="release in matchingReleases" v-bind:key="release.id" :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}" exact class="badge ml-1" :class="release.releaseStatus | bootstrapClass('badge')" tag="span" :title="release.action"><span v-if="release.action">{{release.action}}: </span>{{release.releaseStatus}}</router-link></div>
 </template>
 
 <script>

@@ -56,6 +56,20 @@
             "insertedAt":"2018-11-20T15:37:23.365593Z",
             "updatedAt":"2018-11-20T15:38:42.44489Z",
             "duration":79000000000
+         },
+         {
+            "name":"tooling",
+            "action":"rollback-canary",
+            "id":"401925221141577735",
+            "repoSource":"github.com",
+            "repoOwner":"estafette",
+            "repoName":"estafette-ci-api",
+            "releaseVersion":"0.1.338",
+            "releaseStatus":"succeeded",
+            "triggeredBy":"jsalverda@travix.com",
+            "insertedAt":"2018-11-20T15:37:23.365593Z",
+            "updatedAt":"2018-11-20T15:38:42.44489Z",
+            "duration":79000000000
          }
         ]
      }
