@@ -5,7 +5,7 @@
         <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'Pipelines'}">Pipelines</router-link></li>
         <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'PipelineBuilds', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}"><span class="d-none d-md-inline">{{repoSource}}/{{repoOwner}}/</span>{{repoName}}</router-link></li>
         <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'PipelineReleases', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}">releases</router-link></li>
-        <li class="breadcrumb-item text-truncate active" aria-current="page" v-if="release" >{{release.releaseVersion}} to {{release.name}}</li>
+        <li class="breadcrumb-item text-truncate active" aria-current="page" v-if="release" >{{release.releaseVersion}} to {{release.name}}<span v-if="release.action"> / {{release.action}}</span></li>
       </ol>
     </nav>
 
