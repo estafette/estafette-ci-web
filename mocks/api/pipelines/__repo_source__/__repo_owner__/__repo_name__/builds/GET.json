@@ -93,6 +93,52 @@
         "duration":95000000000
      },
      {
+      "id":"401924769903869917",
+      "repoSource":"github.com",
+      "repoOwner":"estafette",
+      "repoName":"estafette-ci-api",
+      "repoBranch":"master",
+      "repoRevision":"71adb3d3b48de318224b2f39d308ac8b4f3a1a0f",
+      "buildVersion":"0.1.339",
+      "buildStatus":"failed",
+      "labels":[
+         {
+            "key":"app",
+            "value":"estafette-ci-api"
+         },
+         {
+            "key":"app-group",
+            "value":"estafette-ci"
+         },
+         {
+            "key":"language",
+            "value":"golang"
+         },
+         {
+            "key":"team",
+            "value":"estafette-team"
+         }
+      ],
+      "releaseTargets":[
+         {
+            "name":"tooling"
+         }
+      ],
+      "commits":[
+         {
+            "message":"fix query for getting latest release",
+            "author":{
+               "email":"jsalverda@travix.com",
+               "name":"Jorrit Salverda",
+               "username":"JorritSalverda"
+            }
+         }
+      ],
+      "insertedAt":"2018-11-20T15:35:05.658825Z",
+      "updatedAt":"2018-11-20T15:36:41.244921Z",
+      "duration":95000000000
+   },
+     {
         "id":"401923121088888837",
         "repoSource":"github.com",
         "repoOwner":"estafette",
@@ -413,52 +459,6 @@
         "insertedAt":"2018-11-19T15:44:55.31162Z",
         "updatedAt":"2018-11-19T15:46:25.320415Z",
         "duration":90000000000
-     },
-     {
-        "id":"401642091942576131",
-        "repoSource":"github.com",
-        "repoOwner":"estafette",
-        "repoName":"estafette-ci-api",
-        "repoBranch":"master",
-        "repoRevision":"2f2fb85aa23d69b1a2a318890455f009cf3da3ea",
-        "buildVersion":"0.1.331",
-        "buildStatus":"succeeded",
-        "labels":[
-           {
-              "key":"app",
-              "value":"estafette-ci-api"
-           },
-           {
-              "key":"app-group",
-              "value":"estafette-ci"
-           },
-           {
-              "key":"language",
-              "value":"golang"
-           },
-           {
-              "key":"team",
-              "value":"estafette-team"
-           }
-        ],
-        "releaseTargets":[
-           {
-              "name":"tooling"
-           }
-        ],
-        "commits":[
-           {
-              "message":"make sure to return release target actions and active releases as arrays",
-              "author":{
-                 "email":"jsalverda@travix.com",
-                 "name":"Jorrit Salverda",
-                 "username":"JorritSalverda"
-              }
-           }
-        ],
-        "insertedAt":"2018-11-19T15:37:19.191043Z",
-        "updatedAt":"2018-11-19T15:38:39.258137Z",
-        "duration":80000000000
      }
   ],
   "pagination":{
