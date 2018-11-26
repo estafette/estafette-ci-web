@@ -9,6 +9,12 @@
 
 <script>
 export default {
+  data: function () {
+    return {
+      refresh: true
+    }
+  },
+
   computed: {
     modalVisible: {
       get: function () {
@@ -28,7 +34,9 @@ export default {
     refreshSession () {
       if (this.iapSessionRefreshWindow == null) {
         this.iapSessionRefreshWindow = window.open('/_gcp_iap/do_session_refresh')
-        this.refreshTimeout = window.setTimeout(this.checkSessionRefresh, 500)
+        if (this.refresh) {
+          this.refreshTimeout = window.setTimeout(this.checkSessionRefresh, 500)
+        }
       }
       return false
     },
@@ -37,7 +45,9 @@ export default {
       if (this.iapSessionRefreshWindow != null && !this.iapSessionRefreshWindow.closed) {
         fetch('/favicon.ico').then((response) => {
           if (response.status === 401) {
-            this.refreshTimeout = window.setTimeout(this.checkSessionRefresh, 500)
+            if (this.refresh) {
+              this.refreshTimeout = window.setTimeout(this.checkSessionRefresh, 500)
+            }
           } else {
             this.iapSessionRefreshWindow.close()
             this.iapSessionRefreshWindow = null
@@ -52,6 +62,7 @@ export default {
   },
 
   beforeDestroy () {
+    this.refresh = false
     if (this.refreshTimeout) {
       clearTimeout(this.refreshTimeout)
     }

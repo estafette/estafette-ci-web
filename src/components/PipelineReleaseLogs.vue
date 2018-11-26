@@ -99,7 +99,8 @@ export default {
   data: function () {
     return {
       log: {},
-      errors: []
+      errors: [],
+      refresh: true
     }
   },
 
@@ -186,7 +187,9 @@ export default {
       var min = 1000 * intervalSeconds * 1.25
       var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
-      this.refreshTimeout = setTimeout(this.loadLogs, timeoutWithJitter)
+      if (this.refresh) {
+        this.refreshTimeout = setTimeout(this.loadLogs, timeoutWithJitter)
+      }
     },
 
     tailLogs () {
@@ -258,6 +261,7 @@ export default {
   },
 
   beforeDestroy () {
+    this.refresh = false
     if (this.refreshTimeout) {
       clearTimeout(this.refreshTimeout)
     }

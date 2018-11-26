@@ -111,7 +111,8 @@ export default {
         { value: '1m', text: 'Since 1 month ago' },
         { value: '1y', text: 'Since 1 year ago' },
         { value: 'eternity', text: 'Since dawn of mankind' }
-      ]
+      ],
+      refresh: true
     }
   },
 
@@ -166,7 +167,9 @@ export default {
       var min = 1000 * intervalSeconds * 1.25
       var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
-      this.refreshTimeout = setTimeout(this.loadPipelines, timeoutWithJitter)
+      if (this.refresh) {
+        this.refreshTimeout = setTimeout(this.loadPipelines, timeoutWithJitter)
+      }
     },
 
     setSince (value) {
@@ -193,6 +196,7 @@ export default {
   },
 
   beforeDestroy () {
+    this.refresh = false
     if (this.refreshTimeout) {
       clearTimeout(this.refreshTimeout)
     }
