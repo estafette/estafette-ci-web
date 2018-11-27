@@ -96,7 +96,7 @@ export default {
         .then(response => {
           this.build = response.data
           if (response.data.buildStatus === 'running') {
-            this.periodicallyRefreshBuild(15)
+            this.periodicallyRefreshBuild(10)
           }
         })
         .catch(e => {

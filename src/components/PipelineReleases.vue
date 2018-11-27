@@ -64,7 +64,8 @@ export default {
     repoOwner: String,
     repoName: String,
     query: Object,
-    user: Object
+    user: Object,
+    pipeline: Object
   },
   data: function () {
     return {
@@ -103,12 +104,10 @@ export default {
         .then(response => {
           this.releases = response.data.items
           this.pagination = response.data.pagination
-
-          this.periodicallyRefreshReleases(15)
         })
         .catch(e => {
           this.errors.push(e)
-          this.periodicallyRefreshRelease(60)
+          this.periodicallyRefreshRelease(15)
         })
     },
 
@@ -131,6 +130,13 @@ export default {
     '$route' (to, from) {
       this.setDataFromQueryParams(to.query)
       this.loadReleases()
+    },
+
+    pipeline: {
+      handler: function (to, from) {
+        this.loadReleases()
+      },
+      deep: true
     }
   },
 

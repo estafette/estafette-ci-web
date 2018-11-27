@@ -116,11 +116,10 @@ export default {
         .then(response => {
           this.builds = response.data.items
           this.pagination = response.data.pagination
-          this.periodicallyRefreshBuilds(15)
         })
         .catch(e => {
           this.errors.push(e)
-          this.periodicallyRefreshBuilds(60)
+          this.periodicallyRefreshBuilds(15)
         })
     },
 
@@ -157,6 +156,13 @@ export default {
     '$route' (to, from) {
       this.setDataFromQueryParams(to.query)
       this.loadBuilds()
+    },
+
+    pipeline: {
+      handler: function (to, from) {
+        this.loadBuilds()
+      },
+      deep: true
     }
   },
 
