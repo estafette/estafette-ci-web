@@ -159,34 +159,6 @@ export default {
     },
 
     updateSeries (durations) {
-      // init series if not done yet
-      if (this.type === 'releases') {
-        if (this.series.length === 0) {
-          this.pipeline.releaseTargets.forEach(target => {
-            if (target.actions && target.actions.length > 0) {
-              target.actions.forEach(action => {
-                this.series.push({
-                  name: target.name + ' / ' + action.name,
-                  data: []
-                })
-              })
-            } else {
-              this.series.push({
-                name: target.name,
-                data: []
-              })
-            }
-          })
-        }
-      } else {
-        if (this.series.length === 0) {
-          this.series.push({
-            name: 'duration',
-            data: []
-          })
-        }
-      }
-
       var durationsMap = {}
       durations.forEach(duration => {
         // generate key
@@ -208,12 +180,15 @@ export default {
 
       // update series from durations dictionary
       for (var key in durationsMap) {
-        if (durationsMap.hasOwnProperty(key)) {
-          var serie = this.series.find(s => s.name === key)
-          if (serie) {
-            serie.data = durationsMap[key]
+        var serie = this.series.find(s => s.name === key)
+        if (!serie) {
+          serie = {
+            name: key,
+            data: []
           }
+          this.series.push(serie)
         }
+        serie.data = durationsMap[key]
       }
     }
   },
