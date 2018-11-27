@@ -215,6 +215,7 @@ export default {
 
           var stepIndex = this.log.steps.findIndex(s => s.step === data.step)
           var step = stepIndex > -1 ? this.log.steps[stepIndex] : null
+          var lastLineNumber = 0
           if (stepIndex === -1) {
             // create new step
             if (data.image) {
@@ -224,6 +225,9 @@ export default {
             }
             this.log.steps.push(step)
             stepIndex = this.log.steps.length - 1
+
+            // reset last line number
+            lastLineNumber = 0
           }
 
           if (stepIndex !== this.log.steps.length - 1) {
@@ -242,7 +246,10 @@ export default {
           }
 
           if (data.logLine) {
-            step.logLines.push(data.logLine)
+            if (data.logLine.line > lastLineNumber) {
+              step.logLines.push(data.logLine)
+              lastLineNumber = data.logLine.line
+            }
           }
 
           window.scrollTo(0, document.body.scrollHeight)
