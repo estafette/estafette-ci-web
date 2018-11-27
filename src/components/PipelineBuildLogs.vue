@@ -101,7 +101,8 @@ export default {
     return {
       log: {},
       errors: [],
-      refrersh: true
+      refrersh: true,
+      lastLineNumber: 0
     }
   },
 
@@ -216,7 +217,6 @@ export default {
 
           var stepIndex = this.log.steps.findIndex(s => s.step === data.step)
           var step = stepIndex > -1 ? this.log.steps[stepIndex] : null
-          var lastLineNumber = 0
           if (stepIndex === -1) {
             // create new step
             if (data.image) {
@@ -228,7 +228,7 @@ export default {
             stepIndex = this.log.steps.length - 1
 
             // reset last line number
-            lastLineNumber = 0
+            this.lastLineNumber = 0
           }
 
           if (stepIndex !== this.log.steps.length - 1) {
@@ -247,9 +247,9 @@ export default {
           }
 
           if (data.logLine) {
-            if (data.logLine.line > lastLineNumber) {
+            if (data.logLine.line > this.lastLineNumber) {
               step.logLines.push(data.logLine)
-              lastLineNumber = data.logLine.line
+              this.lastLineNumber = data.logLine.line
             }
           }
 

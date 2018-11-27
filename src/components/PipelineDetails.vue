@@ -54,6 +54,9 @@
       <li class="nav-item">
         <router-link :to="{ name: 'PipelineReleases', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}" class="nav-link">Releases</router-link>
       </li>
+      <li class="nav-item">
+        <router-link :to="{ name: 'PipelineStatistics', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}" class="nav-link">Statistics</router-link>
+      </li>
     </ul>
 
     <router-view :user="user" :pipeline="pipeline" v-if="pipeline"/>
