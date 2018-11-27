@@ -28,6 +28,17 @@
   "releaseTargets":[
      {
         "name":"tooling",
+        "actions":[
+            {
+               "name": "deploy-canary"
+            },
+            {
+               "name": "rollback-canary"
+            },
+            {
+               "name": "deploy-stable"
+            }
+         ],
         "activeReleases":[
            {
               "name":"tooling",

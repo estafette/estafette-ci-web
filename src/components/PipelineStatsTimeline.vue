@@ -1,7 +1,7 @@
 <template>
     <div class="col-12 col-xxl-6 p-0 graph">
       <div class="rounded border" :class="`border-${status}`">
-        <spinner v-if="series[0].data.length == 0" :color="status"/>
+        <spinner v-if="series.length == 0 || series[0].data.length == 0" :color="status"/>
         <apexcharts width="100%" :type="options.type" :options="options" :series="series"></apexcharts>
       </div>
     </div>
@@ -54,15 +54,26 @@ export default {
           }
         },
         type: 'line',
+        stroke: {
+          curve: 'smooth'
+        },
         xaxis: {
           type: 'datetime'
         },
         yaxis: {
           title: {
             text: 'seconds'
+          },
+          labels: {
+            formatter: y => {
+              if (typeof y !== 'undefined') {
+                return this.$options.filters.formatDuration(y)
+              }
+              return y
+            }
           }
         },
-        colors: [this.getColor(this.status)],
+        colors: this.getColors(this.status),
         grid: {
           show: true,
           yaxis: {
@@ -71,12 +82,21 @@ export default {
               animate: false
             }
           }
+        },
+        tooltip: {
+          shared: true,
+          intersect: false,
+          y: {
+            formatter: y => {
+              if (typeof y !== 'undefined') {
+                return this.$options.filters.formatDuration(y)
+              }
+              return y
+            }
+          }
         }
       },
-      series: [{
-        name: 'Duration',
-        data: []
-      }],
+      series: [],
       refresh: true
     }
   },
@@ -95,6 +115,21 @@ export default {
           return '#28a745'
       }
       return '#212529'
+    },
+
+    getColors (status) {
+      var bootstrapColors = ['#007bff', '#28a745', '#dc3545', '#ffc107', '#17a2b8']
+      var mainColor = this.getColor(this.status)
+      var colors = [mainColor]
+
+      for (var index in bootstrapColors) {
+        var color = bootstrapColors[index]
+        if (color !== mainColor) {
+          colors.push(color)
+        }
+      }
+
+      return colors
     },
 
     loadStat () {
@@ -124,12 +159,62 @@ export default {
     },
 
     updateSeries (durations) {
-      var data = []
+      // init series if not done yet
+      if (this.type === 'releases') {
+        if (this.series.length === 0) {
+          this.pipeline.releaseTargets.forEach(target => {
+            if (target.actions && target.actions.length > 0) {
+              target.actions.forEach(action => {
+                this.series.push({
+                  name: target.name + ' / ' + action.name,
+                  data: []
+                })
+              })
+            } else {
+              this.series.push({
+                name: target.name,
+                data: []
+              })
+            }
+          })
+        }
+      } else {
+        if (this.series.length === 0) {
+          this.series.push({
+            name: 'duration',
+            data: []
+          })
+        }
+      }
+
+      var durationsMap = {}
       durations.forEach(duration => {
-        data.push({ x: duration.insertedAt, y: duration.duration / Math.pow(10, 9) })
+        // generate key
+        key = 'duration'
+        if (duration.name) {
+          key = duration.name
+          if (duration.action && duration.action !== '') {
+            key += ' / ' + duration.action
+          }
+        }
+
+        if (!durationsMap[key]) {
+          // init key in dictionary
+          durationsMap[key] = []
+        }
+
+        durationsMap[key].push({ x: duration.insertedAt, y: duration.duration })
       })
 
-      this.series[0].data = data
+      // update series from durations dictionary
+      for (var key in durationsMap) {
+        if (durationsMap.hasOwnProperty(key)) {
+          var serie = this.series.find(s => s.name === key)
+          if (serie) {
+            serie.data = durationsMap[key]
+          }
+        }
+      }
     }
   },
 

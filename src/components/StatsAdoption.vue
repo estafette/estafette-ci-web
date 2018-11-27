@@ -62,8 +62,16 @@ export default {
           }
         },
         type: 'line',
+        stroke: {
+          curve: 'smooth'
+        },
         xaxis: {
           type: 'datetime'
+        },
+        yaxis: {
+          title: {
+            text: this.type
+          }
         },
         colors: [this.getColor(this.status)],
         grid: {
