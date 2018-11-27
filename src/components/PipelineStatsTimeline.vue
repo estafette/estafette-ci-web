@@ -139,7 +139,6 @@ export default {
           this.periodicallyRefreshStat(60)
         })
         .catch(e => {
-          this.errors.push(e)
           this.periodicallyRefreshStat(120)
         })
     },
@@ -195,15 +194,17 @@ export default {
     },
 
     filterOutliers (durations) {
-      if (durations.length < 10) {
+      if (durations.length < 4) {
         return durations
       }
 
       let values, q1, q3, iqr, maxValue, minValue
 
-      values = durations.slice().sort((a, b) => a.y > b.y) // copy array fast and sort
+      // copy array fast and sort
+      values = durations.slice().sort((a, b) => a.y > b.y)
 
-      if ((values.length / 4) % 1 === 0) { // find quartiles
+      // find quartiles
+      if ((values.length / 4) % 1 === 0) {
         q1 = 1 / 2 * (values[(values.length / 4)].y + values[(values.length / 4) + 1].y)
         q3 = 1 / 2 * (values[(values.length * (3 / 4))].y + values[(values.length * (3 / 4)) + 1].y)
       } else {
@@ -215,6 +216,9 @@ export default {
       maxValue = q3 + iqr * 1.5
       minValue = q1 - iqr * 1.5
 
+      if (minValue >= maxValue) {
+        return values.filter((x) => (x.y >= maxValue) && (x.y <= minValue))
+      }
       return values.filter((x) => (x.y >= minValue) && (x.y <= maxValue))
     }
   },
