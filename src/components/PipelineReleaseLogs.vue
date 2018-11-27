@@ -172,6 +172,8 @@ export default {
             this.errors.push(e)
             this.periodicallyRefreshLogs(15)
           })
+      } else {
+        this.periodicallyRefreshLogs(5)
       }
     },
 
