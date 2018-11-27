@@ -77,12 +77,12 @@ export default {
         .then(response => {
           this.release = response.data
           if (this.release.releaseStatus === 'running' || this.release.releaseStatus === 'canceling') {
-            this.periodicallyRefreshRelease(10)
+            this.periodicallyRefreshRelease(5)
           }
         })
         .catch(e => {
           this.errors.push(e)
-          this.periodicallyRefreshRelease(60)
+          this.periodicallyRefreshRelease(30)
         })
     },
 

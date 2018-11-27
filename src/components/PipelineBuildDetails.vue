@@ -96,12 +96,12 @@ export default {
         .then(response => {
           this.build = response.data
           if (this.build.buildStatus === 'running' || this.build.buildStatus === 'canceling') {
-            this.periodicallyRefreshBuild(10)
+            this.periodicallyRefreshBuild(5)
           }
         })
         .catch(e => {
           this.errors.push(e)
-          this.periodicallyRefreshBuild(60)
+          this.periodicallyRefreshBuild(30)
         })
     },
 

@@ -150,11 +150,11 @@ export default {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination
 
-          this.periodicallyRefreshPipelines(10)
+          this.periodicallyRefreshPipelines(5)
         })
         .catch(e => {
           this.errors.push(e)
-          this.periodicallyRefreshPipelines(60)
+          this.periodicallyRefreshPipelines(30)
         })
     },
 
