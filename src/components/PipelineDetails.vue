@@ -85,7 +85,7 @@ export default {
       this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}`)
         .then(response => {
           this.pipeline = response.data
-          this.periodicallyRefreshPipeline(15)
+          this.periodicallyRefreshPipeline(10)
         })
         .catch(e => {
           this.errors.push(e)

@@ -153,7 +153,6 @@ export default {
 
   created () {
     this.tailLogs()
-    this.loadLogs()
   },
 
   methods: {
@@ -173,8 +172,6 @@ export default {
             this.errors.push(e)
             this.periodicallyRefreshLogs(15)
           })
-      } else {
-        this.periodicallyRefreshLogs(3)
       }
     },
 
@@ -197,10 +194,11 @@ export default {
         this.es = new EventSource(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}/logs/tail`)
 
         this.es.addEventListener('log', event => {
-          if (this.release.releaseStatus !== 'running') {
-            // stop handling stream when build status changes
+          if (this.release.releaseStatus !== 'running' && this.release.releaseStatus !== 'canceling') {
+            // stop handling stream when release status changes
             this.es.close()
             window.scrollTo(0, 0)
+            this.loadLogs()
             return
           }
 
@@ -251,11 +249,14 @@ export default {
         this.es.addEventListener('close', event => {
           this.es.close()
           window.scrollTo(0, 0)
+          this.loadLogs()
         }, false)
 
         this.es.onerror = event => {
           console.log('EventSource failed.', event)
         }
+      } else {
+        this.loadLogs()
       }
     }
   },
