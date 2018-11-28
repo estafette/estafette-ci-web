@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Pipelines from '@/components/Pipelines'
+import Config from '@/components/Config'
 import Statistics from '@/components/Statistics'
 import StatisticsCounters from '@/components/StatisticsCounters'
 import StatisticsTrends from '@/components/StatisticsTrends'
@@ -91,6 +92,11 @@ export default new Router({
           component: PipelineReleaseLogs
         }
       ]
+    },
+    {
+      path: '/config',
+      name: 'Config',
+      component: Config
     },
     {
       path: '/statistics',
