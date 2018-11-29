@@ -19,7 +19,11 @@
       <div v-if="manifest" class="mt-4">
         <h5>Manifest</h5>
         <p>Store the content below in file <code>.estafette.yaml</code> in the root of your application repository, add it to git and push it to the origin and Estafette CI will automatically build your application, regardless of which branch you push.</p>
-        <pre class="bg-light p-3"><code>{{manifest}}</code></pre>
+
+        <div class="pre-wrapper">
+          <pre class="bg-light p-3"><code>{{manifest}}</code></pre>
+          <b-btn class="btn-clipboard" v-on:click="copy" v-b-tooltip.click title="Copied!">Copy</b-btn>
+        </div>
       </div>
     </div>
 </template>
@@ -50,6 +54,15 @@ export default {
   },
 
   methods: {
+    copy () {
+      const el = document.createElement('textarea')
+      el.value = this.manifest
+      document.body.appendChild(el)
+      el.select()
+      document.execCommand('copy')
+      document.body.removeChild(el)
+    },
+
     loadTemplates () {
       this.axios.get(`/api/manifest/templates`)
         .then(response => {
@@ -107,3 +120,29 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.btn-clipboard {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    z-index: 10;
+    display: block;
+    padding: .25rem .5rem;
+    font-size: 75%;
+    color: #818a91;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    border-radius: .25rem;
+
+    &:hover {
+      color: #fff;
+      background-color: #007bff;
+    }
+}
+
+.pre-wrapper {
+  position: relative;
+}
+</style>
