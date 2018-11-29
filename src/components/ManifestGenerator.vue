@@ -18,7 +18,7 @@
 
       <div v-if="manifest" class="mt-4">
         <h5>Manifest</h5>
-        <p>Store the content below in file <code>.estafette.yaml</code> in the root of your application repository.</p>
+        <p>Store the content below in file <code>.estafette.yaml</code> in the root of your application repository, add it to git and push it to the origin and Estafette CI will automatically build your application, regardless of which branch you push.</p>
         <pre class="bg-light p-3"><code>{{manifest}}</code></pre>
       </div>
     </div>

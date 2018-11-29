@@ -13,7 +13,12 @@
         <spinner color="secondary"/>
       </div>
 
-      <div v-if="errors" class="mt-4">
+      <div v-if="status == 'succeeded'" class="mt-4">
+        <h5 class="text-success">Your manifest is valid!</h5>
+        <p>Store the manifest in file <code>.estafette.yaml</code> in the root of your application repository.</p>
+      </div>
+
+      <div v-if="status == 'failed'" class="mt-4">
         <h5 class="text-danger">Validation errors</h5>
         <p>Please address the following errors and validate again!</p>
         <pre class="bg-light border-danger p-3"><code>{{errors}}</code></pre>
@@ -45,6 +50,7 @@ export default {
           this.validating = false
           this.status = response.data.status
           this.errors = response.data.errors
+          window.scrollTo(0, document.body.scrollHeight)
         })
         .catch(error => {
           this.validating = false
