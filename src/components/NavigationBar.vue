@@ -7,8 +7,8 @@
         <b-collapse is-nav id="nav_collapse">
             <b-navbar-nav>
                 <b-nav-item :to="{ name: 'Pipelines'}">Pipelines</b-nav-item>
-                <b-nav-item v-if="user && user.authenticated" :to="{ name: 'Config'}">Configuration</b-nav-item>
                 <b-nav-item :to="{ name: 'Statistics'}">Statistics</b-nav-item>
+                <b-nav-item v-if="user && user.authenticated" :to="{ name: 'Config'}">Configuration</b-nav-item>
             </b-navbar-nav>
 
             <b-navbar-nav class="ml-auto" v-if="user && user.authenticated">

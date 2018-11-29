@@ -96,6 +96,7 @@ export default new Router({
     {
       path: '/config',
       name: 'Config',
+      props: true,
       component: Config
     },
     {
