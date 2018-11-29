@@ -14,6 +14,9 @@ import PipelineStatistics from '@/components/PipelineStatistics'
 import PipelineReleases from '@/components/PipelineReleases'
 import PipelineReleaseDetails from '@/components/PipelineReleaseDetails'
 import PipelineReleaseLogs from '@/components/PipelineReleaseLogs'
+import Manifest from '@/components/Manifest'
+import ManifestGenerator from '@/components/ManifestGenerator'
+import ManifestValidator from '@/components/ManifestValidator'
 
 Vue.use(Router)
 
@@ -117,6 +120,27 @@ export default new Router({
           name: 'StatisticsTrends',
           props: true,
           component: StatisticsTrends
+        }
+      ]
+    },
+    {
+      path: '/manifest',
+      name: 'Manifest',
+      component: Manifest,
+      props: true,
+      redirect: { name: 'ManifestGenerator' },
+      children: [
+        {
+          path: 'generate',
+          name: 'ManifestGenerator',
+          props: true,
+          component: ManifestGenerator
+        },
+        {
+          path: 'validate',
+          name: 'ManifestValidator',
+          props: true,
+          component: ManifestValidator
         }
       ]
     },
