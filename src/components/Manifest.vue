@@ -5,7 +5,7 @@
         <router-link :to="{ name: 'ManifestGenerator'}" class="nav-link">Generate</router-link>
       </li>
       <li class="nav-item">
-        <router-link :to="{ name: 'ManifestValidator'}" class="nav-link disabled" event="">Validate</router-link>
+        <router-link :to="{ name: 'ManifestValidator'}" class="nav-link">Validate</router-link>
       </li>
     </ul>
 
