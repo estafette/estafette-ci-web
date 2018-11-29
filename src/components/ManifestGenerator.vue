@@ -12,6 +12,10 @@
         <b-button v-if="form.template" type="submit" variant="primary" class="mt-3">Generate</b-button>
       </b-form>
 
+      <div v-if="generating">
+        <spinner color="secondary"/>
+      </div>
+
       <div v-if="manifest" class="mt-4">
         <h5>Manifest</h5>
         <p>Store the content below in file <code>.estafette.yaml</code> in the root of your application repository.</p>
@@ -36,6 +40,7 @@ export default {
       templatesOptions: [],
       placeholders: [],
       manifest: null,
+      generating: false,
       refresh: true
     }
   },
@@ -79,12 +84,16 @@ export default {
 
     onSubmit (evt) {
       evt.preventDefault()
+      this.generating = true
+      this.manifest = null
 
       this.axios.post(`/api/manifest/generate`, this.form)
         .then(response => {
+          this.generating = false
           this.manifest = response.data.manifest
         })
         .catch(error => {
+          this.generating = false
           console.log(error)
         })
     }

@@ -237,8 +237,17 @@ html, body, #app {
 .lds-default.primary div {
     background: #007bff;
 }
+.lds-default.secondary div {
+    background: #6c757d;
+}
 .lds-default.success div {
     background: #28a745;
+}
+.lds-default.warning div {
+    background: #ffc107;
+}
+.lds-default.danger div {
+    background: #dc3545;
 }
 
 pre {
