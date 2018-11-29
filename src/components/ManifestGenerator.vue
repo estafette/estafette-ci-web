@@ -5,15 +5,18 @@
         <b-form-select v-if="templatesOptions.length > 0" :id="`template-select`" v-model="form.template" :options="templatesOptions" v-on:change="setTemplate" class="border-primary text-primary" />
 
         <div v-for="placeholder in placeholders" v-bind:key="placeholder.name" class="mt-3">
-          <label :for="`placeholder-${placeholder.name}`">{{placeholder.name}}</label>
-          <b-form-input :id="`placeholder-${placeholder.name}`" v-model="form.placeholders[placeholder.name]" type="text" :placeholder="`Enter ${placeholder.name}`"></b-form-input>
+          <label :for="`placeholder-${placeholder.name}`">{{placeholder.name | splitCamelcase}}</label>
+          <b-form-input :id="`placeholder-${placeholder.name}`" v-model="form.placeholders[placeholder.name]" type="text" :placeholder="'Enter ' + $options.filters.splitCamelcase(placeholder.name)"></b-form-input>
         </div>
 
         <b-button v-if="form.template" type="submit" variant="primary" class="mt-3">Generate</b-button>
       </b-form>
 
-      <h3 v-if="manifest">.estafette.yaml</h3>
-      <pre v-if="manifest" class="bg-light p-3"><code>{{manifest}}</code></pre>
+      <div v-if="manifest" class="mt-4">
+        <h5>Manifest</h5>
+        <p>Store the content below in file <code>.estafette.yaml</code> in the root of your application repository.</p>
+        <pre class="bg-light p-3"><code>{{manifest}}</code></pre>
+      </div>
     </div>
 </template>
 

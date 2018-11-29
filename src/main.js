@@ -222,6 +222,14 @@ Vue.filter('formatBytes', function (value) {
   return formattedString
 })
 
+Vue.filter('splitCamelcase', function (value) {
+  if (!value) {
+    return ''
+  }
+
+  return value.replace(/([a-z])([A-Z])/g, '$1 $2')
+})
+
 Vue.config.productionTip = false
 
 Vue.use(VueAxios, axios)
