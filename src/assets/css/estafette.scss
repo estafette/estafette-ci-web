@@ -358,3 +358,19 @@ code {
         color: #28a745!important;
     }
 }
+
+.alert {
+    code {
+        color: inherit;
+        background-color: transparent!important;    
+    }
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
