@@ -64,16 +64,16 @@ Vue.filter('bootstrapClass', function (value, prefix) {
     return prefix + '-light'
   }
   value = value.toString().toLowerCase()
-  if (value === 'succeeded') {
+  if (value === 'succeeded' || value === 'success') {
     return prefix + '-success'
   }
-  if (value === 'running') {
+  if (value === 'running' || value === 'warning') {
     return prefix + '-warning'
   }
-  if (value === 'failed') {
+  if (value === 'failed' || value === 'danger') {
     return prefix + '-danger'
   }
-  if (value === 'skipped') {
+  if (value === 'skipped' || value === 'secondary') {
     return prefix + '-secondary'
   }
   if (value === 'canceling') {
@@ -82,7 +82,7 @@ Vue.filter('bootstrapClass', function (value, prefix) {
   if (value === 'canceled') {
     return prefix + '-secondary'
   }
-  if (value === 'all') {
+  if (value === 'all' || value === 'primary') {
     return prefix + '-primary'
   }
   return prefix + '-light'

@@ -47,6 +47,8 @@
 
     </div>
 
+    <pipeline-warnings v-if="pipeline" :pipeline="pipeline" />
+
     <ul class="nav nav-tabs m-3">
       <li class="nav-item">
         <router-link :to="{ name: 'PipelineBuilds', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}" class="nav-link">Builds</router-link>

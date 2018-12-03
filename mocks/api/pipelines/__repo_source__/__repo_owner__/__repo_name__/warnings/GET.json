@@ -1,0 +1,12 @@
+{
+  "warnings":[
+    {
+      "status":"danger",
+      "message":"The median build time of this pipeline is 5m35s. This is far too slow, please optimize your build speed by using smaller images or running less intensive steps to ensure it finishes within 2 minutes."
+    },
+    {
+      "status":"warning",
+      "message":"This pipeline has one or more stages that use the latest tag for a container image: test, build, clone-gce-scripts, deploy-acceptance, deploy-staging, deploy-production, release-types; it is best practice to pin stage images to specific versions so you don't spend hours tracking down build failures because the used image has changed."
+    }
+  ]
+}
