@@ -9,7 +9,7 @@
 
     <div class="m-3 row">
       <pipeline-stats-timeline :pipeline="pipeline" :filter="filter" type="builds" status="primary" />
-      <pipeline-stats-timeline :pipeline="pipeline" :filter="filter" type="releases" status="success" />
+      <pipeline-stats-timeline v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0" :pipeline="pipeline" :filter="filter" type="releases" status="success" />
     </div>
   </div>
 </template>
