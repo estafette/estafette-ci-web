@@ -17,6 +17,7 @@
 <script>
 export default {
   props: {
+    query: Object,
     pipeline: Object
   },
   data: function () {

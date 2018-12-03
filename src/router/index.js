@@ -51,7 +51,7 @@ export default new Router({
         {
           path: 'statistics',
           name: 'PipelineStatistics',
-          props: true,
+          props: (route) => ({ query: route.query }),
           component: PipelineStatistics
         },
         {
