@@ -1,5 +1,5 @@
 <template>
-  <div class="m-3" v-if="warnings && warnings.length > 0">
+  <div class="col m-0 mt-3" v-if="warnings && warnings.length > 0">
     <warning v-for="(warning, index) in warnings" v-bind:key="index" :warning="warning" />
   </div>
 </template>

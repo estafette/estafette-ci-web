@@ -15,7 +15,8 @@ export default {
   props: {
     type: String,
     status: String,
-    pipeline: Object
+    pipeline: Object,
+    filter: Object
   },
 
   components: {
@@ -133,7 +134,7 @@ export default {
     },
 
     loadStat () {
-      this.axios.get(`/api/pipelines/${this.pipeline.repoSource}/${this.pipeline.repoOwner}/${this.pipeline.repoName}/stats/${this.type}durations`)
+      this.axios.get(`/api/pipelines/${this.pipeline.repoSource}/${this.pipeline.repoOwner}/${this.pipeline.repoName}/stats/${this.type}durations?filter[last]=${this.filter.last}`)
         .then(response => {
           this.updateSeries(response.data.durations)
           this.periodicallyRefreshStat(60)
@@ -224,6 +225,15 @@ export default {
       }
 
       return filteredValues.sort((a, b) => new Date(a.x) - new Date(b.x))
+    }
+  },
+
+  watch: {
+    filter: {
+      handler: function (to, from) {
+        this.loadStat()
+      },
+      deep: true
     }
   },
 

@@ -54,8 +54,11 @@ export default {
   },
 
   watch: {
-    '$route' (to, from) {
-      this.loadStat()
+    filter: {
+      handler: function (to, from) {
+        this.loadStat()
+      },
+      deep: true
     }
   },
 
