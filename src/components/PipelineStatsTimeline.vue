@@ -193,15 +193,16 @@ export default {
       }
     },
 
+    // https://gist.github.com/rmeissn/f5b42fb3e1386a46f60304a57b6d215a
     filterOutliers (durations) {
       if (durations.length < 4) {
         return durations
       }
 
-      let values, q1, q3, iqr, maxValue, minValue
+      let values, filteredValues, q1, q3, iqr, maxValue, minValue
 
       // copy array fast and sort
-      values = durations.slice().sort((a, b) => a.y > b.y)
+      values = durations.slice().sort((a, b) => a.y - b.y)
 
       // find quartiles
       if ((values.length / 4) % 1 === 0) {
@@ -217,9 +218,12 @@ export default {
       minValue = q1 - iqr * 1.5
 
       if (minValue >= maxValue) {
-        return values.filter((x) => (x.y >= maxValue) && (x.y <= minValue))
+        filteredValues = values.filter((x) => (x.y >= maxValue) && (x.y <= minValue))
+      } else {
+        filteredValues = values.filter((x) => (x.y >= minValue) && (x.y <= maxValue))
       }
-      return values.filter((x) => (x.y >= minValue) && (x.y <= maxValue))
+
+      return filteredValues.sort((a, b) => new Date(a.x) - new Date(b.x))
     }
   },
 
