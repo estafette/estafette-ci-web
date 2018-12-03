@@ -54,7 +54,8 @@
         <router-link :to="{ name: 'PipelineBuilds', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}" class="nav-link">Builds</router-link>
       </li>
       <li class="nav-item">
-        <router-link :to="{ name: 'PipelineReleases', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}" class="nav-link">Releases</router-link>
+        <router-link :to="{ name: 'PipelineReleases', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}" v-if="pipeline && pipeline.releaseTargets && pipeline.releaseTargets.length > 0" class="nav-link">Releases</router-link>
+        <span v-else class="nav-link disabled">Releases</span>
       </li>
       <li class="nav-item">
         <router-link :to="{ name: 'PipelineStatistics', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}" class="nav-link">Statistics</router-link>
