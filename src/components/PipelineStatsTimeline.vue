@@ -196,8 +196,8 @@ export default {
 
     // https://gist.github.com/rmeissn/f5b42fb3e1386a46f60304a57b6d215a
     filterOutliers (durations) {
-      if (durations.length < 4) {
-        return durations
+      if (durations.length < 10) {
+        return durations.sort((a, b) => new Date(a.x) - new Date(b.x))
       }
 
       let values, filteredValues, q1, q3, iqr, maxValue, minValue
