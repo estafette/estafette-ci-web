@@ -7,6 +7,9 @@
       <li class="nav-item">
         <router-link :to="{ name: 'ManifestValidator'}" class="nav-link">Validate</router-link>
       </li>
+      <li class="nav-item">
+        <router-link :to="{ name: 'SecretEncrypter'}" class="nav-link">Secrets</router-link>
+      </li>
     </ul>
 
     <router-view />

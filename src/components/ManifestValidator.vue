@@ -35,8 +35,7 @@ export default {
       },
       validating: false,
       status: 'secondary',
-      errors: null,
-      refresh: true
+      errors: null
     }
   },
 

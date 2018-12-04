@@ -17,6 +17,7 @@ import PipelineReleaseLogs from '@/components/PipelineReleaseLogs'
 import Manifest from '@/components/Manifest'
 import ManifestGenerator from '@/components/ManifestGenerator'
 import ManifestValidator from '@/components/ManifestValidator'
+import SecretEncrypter from '@/components/SecretEncrypter'
 
 Vue.use(Router)
 
@@ -141,6 +142,12 @@ export default new Router({
           name: 'ManifestValidator',
           props: true,
           component: ManifestValidator
+        },
+        {
+          path: 'encrypt',
+          name: 'SecretEncrypter',
+          props: true,
+          component: SecretEncrypter
         }
       ]
     },
