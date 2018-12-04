@@ -62,8 +62,9 @@ export default {
           type: 'datetime'
         },
         yaxis: {
+          min: 0,
           title: {
-            text: 'seconds'
+            text: 'duration'
           },
           labels: {
             formatter: y => {

@@ -69,6 +69,7 @@ export default {
           type: 'datetime'
         },
         yaxis: {
+          min: 0,
           title: {
             text: this.type
           }
