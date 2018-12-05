@@ -18,7 +18,10 @@
 
       <div v-if="secret" class="mt-4">
         <h5>Use this in your manifest to hide secrets in plain sight!</h5>
-        <pre class="bg-light p-3"><code>{{secret}}</code></pre>
+        <div class="pre-wrapper">
+          <pre class="bg-light p-3"><code>{{secret}}</code></pre>
+          <b-btn class="btn-clipboard" v-on:click="copy" v-b-tooltip.click title="Copied!">Copy</b-btn>
+        </div>
       </div>
     </div>
 </template>
@@ -51,6 +54,15 @@ export default {
           this.encrypting = false
           console.log(error)
         })
+    },
+
+    copy () {
+      const el = document.createElement('textarea')
+      el.value = this.secret
+      document.body.appendChild(el)
+      el.select()
+      document.execCommand('copy')
+      document.body.removeChild(el)
     }
   }
 }
