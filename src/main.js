@@ -255,11 +255,20 @@ const store = new Vuex.Store({
   }
 })
 
+// intercept api requests to add X-Requested-With: XMLHttpRequest header to have IAP return 401 instead of 302
+Vue.axios.interceptors.request.use(
+  config => {
+    config.headers = {'X-Requested-With': 'XMLHttpRequest'}
+    return config
+  },
+  error => Promise.reject(error)
+)
+
 // intercept api responses to check for 401 caused by iap session timeout and reload entire vue app
 Vue.axios.interceptors.response.use((response) => {
   return response
 }, (error) => {
-  if (typeof error.response === 'undefined' || error.response.status === 401) {
+  if (typeof error.response !== 'undefined' && error.response.status === 401) {
     // open session refresh modal
     store.commit('showModal')
     return
