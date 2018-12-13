@@ -19,7 +19,7 @@ stages:
   restore:
     image: node:11.4.0-alpine
     commands:
-    - npm install
+    - npm ci
 
   unit-test:
     image: node:11.4.0-alpine
