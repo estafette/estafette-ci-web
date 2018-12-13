@@ -52,7 +52,7 @@
         </b-card-header>
 
         <b-collapse class="container-fluid text-light text-monospace collapse bg-dark m-0 p-3" :id="'accordion'+index" :visible="step.status === 'RUNNING' || step.status === 'FAILED'" accordion="log-steps-accordion" role="tabpanel">
-            <div class="row no-gutters" v-for="(line, index) in step.logLines" v-bind:key="index">
+            <div class="row no-gutters" v-for="(line, index) in step.logLines" v-bind:key="line.line ? line.line : index">
               <div class="col-1 log-timestamp text-white-50 d-none d-xl-flex">{{line.timestamp | moment('YYYY-MM-DD HH:mm:ss')}}</div>
               <div class="col log-text" v-html="formatLog(line.text)"></div>
             </div>
@@ -101,6 +101,7 @@ export default {
       log: {},
       errors: [],
       refresh: true,
+      tailedSteps: [],
       lastLineNumber: 0
     }
   },
@@ -214,7 +215,7 @@ export default {
             this.$set(this.log, 'steps', [])
           }
 
-          var stepIndex = this.log.steps.findIndex(s => s.step === data.step)
+          var stepIndex = this.tailedSteps.findIndex(s => s === data.step)
           var step = stepIndex > -1 ? this.log.steps[stepIndex] : null
           if (stepIndex === -1) {
             // create new step
@@ -223,14 +224,20 @@ export default {
             } else {
               step = {step: data.step, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: false, duration: 0}
             }
+            this.tailedSteps.push(data.step)
             this.log.steps.push(step)
             stepIndex = this.log.steps.length - 1
 
             // reset last line number
             this.lastLineNumber = 0
+
+            // remove logs from previous step to keep dom light
+            if (this.tailedSteps.length > 1) {
+              this.log.steps[this.tailedSteps.length - 2].logLines = []
+            }
           }
 
-          if (stepIndex !== this.log.steps.length - 1) {
+          if (stepIndex !== this.tailedSteps.length - 1) {
             // the data is not for the last step in the array, we're dealing with an event stream restart; skip processing until we catch up with the last step
             return
           }

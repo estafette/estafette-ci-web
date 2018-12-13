@@ -53,7 +53,7 @@
         </b-card-header>
 
         <b-collapse class="container-fluid text-light text-monospace collapse bg-dark m-0 p-3" :id="'accordion'+index" :visible="step.status === 'RUNNING' || step.status === 'FAILED'" accordion="log-steps-accordion" role="tabpanel">
-            <div class="row no-gutters" v-for="(line, index) in step.logLines" v-bind:key="index">
+            <div class="row no-gutters" v-for="(line, index) in step.logLines" v-bind:key="line.line ? line.line : index">
               <div class="col-1 log-timestamp text-white-50 d-none d-xl-flex">{{line.timestamp | moment('YYYY-MM-DD HH:mm:ss')}}</div>
               <div class="col log-text" v-html="formatLog(line.text)"></div>
             </div>
