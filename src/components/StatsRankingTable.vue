@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-center text-primary">Most {{type}}</h1>
+    <h1 class="text-center" :class="`text-${status}`">Most {{type}}</h1>
     <table class="table">
       <thead>
         <tr>
@@ -29,7 +29,8 @@
 export default {
   props: {
     filter: Object,
-    type: String
+    type: String,
+    status: String
   },
 
   data: function () {

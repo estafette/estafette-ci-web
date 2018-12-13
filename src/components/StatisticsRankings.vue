@@ -13,10 +13,10 @@
 
       <div class="row">
         <div class="col col-lg-6">
-          <stats-ranking-table :filter="filter" type="builds"/>
+          <stats-ranking-table :filter="filter" type="builds" status="primary"/>
         </div>
         <div class="col col-lg-6">
-          <stats-ranking-table :filter="filter" type="releases"/>
+          <stats-ranking-table :filter="filter" type="releases" status="success"/>
         </div>
       </div>
     </div>
