@@ -23,8 +23,10 @@ stages:
 
   build:
     image: node:11.4.0-alpine
+    env:
+      NODE_ENV: production
     commands:
-    - npm run build --report
+    - npm run build
 
   bake:
     image: extensions/docker:dev
