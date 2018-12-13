@@ -256,6 +256,11 @@ export default {
             if (data.logLine.line > this.lastLineNumber) {
               step.logLines.push(data.logLine)
               this.lastLineNumber = data.logLine.line
+
+              // tail only last 50 rows
+              if (data.logLine.line > 50) {
+                step.logLines.shift()
+              }
             }
           }
 
