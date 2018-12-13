@@ -1,7 +1,8 @@
 <template>
   <div>
     <h1 class="text-center" :class="`text-${status}`">Most {{type}}</h1>
-    <table class="table">
+    <spinner v-if="rows.length == 0" :color="status"/>
+    <table v-else class="table">
       <thead>
         <tr>
           <th>Pipeline</th>
