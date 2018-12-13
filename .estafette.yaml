@@ -17,17 +17,17 @@ version:
 
 stages:
   restore:
-    image: node:11.1.0-alpine
+    image: node:11.4.0-alpine
     commands:
     - npm install
 
   unit-test:
-    image: node:11.1.0-alpine
+    image: node:11.4.0-alpine
     commands:
     - npm run unit
 
   build:
-    image: node:11.1.0-alpine
+    image: node:11.4.0-alpine
     commands:
     - npm run build
 
