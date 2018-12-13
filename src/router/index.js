@@ -4,6 +4,7 @@ import Pipelines from '@/components/Pipelines'
 import Config from '@/components/Config'
 import Statistics from '@/components/Statistics'
 import StatisticsCounters from '@/components/StatisticsCounters'
+import StatisticsRankings from '@/components/StatisticsRankings'
 import StatisticsTrends from '@/components/StatisticsTrends'
 import PipelineDetails from '@/components/PipelineDetails'
 import PipelineBuilds from '@/components/PipelineBuilds'
@@ -115,6 +116,12 @@ export default new Router({
           name: 'StatisticsCounters',
           props: true,
           component: StatisticsCounters
+        },
+        {
+          path: 'rankings',
+          name: 'StatisticsRankings',
+          props: true,
+          component: StatisticsRankings
         },
         {
           path: 'trends',
