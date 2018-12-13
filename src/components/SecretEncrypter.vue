@@ -4,6 +4,9 @@
         <label for="base64">Base64 encode <span class="text-secondary">(this is needed if you use it as a Kubernetes secret)</span></label>
         <b-form-checkbox id="base64" v-model="form.base64" />
 
+        <label for="double">Double encrypt <span class="text-secondary">(this encrypts the secret envelope a second time for injecting it into Estafette's configmap)</span></label>
+        <b-form-checkbox id="double" v-model="form.double" />
+
         <label for="value">Value to encrypt</label>
         <b-form-textarea id="value" v-model="form.value"
                         placeholder="Paste your value to be eencrypted"
@@ -32,6 +35,7 @@ export default {
     return {
       form: {
         base64: false,
+        double: false,
         value: null
       },
       encrypting: false,
