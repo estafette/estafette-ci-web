@@ -1,19 +1,23 @@
 <template>
   <div>
-    <h1>Most {{type}}</h1>
+    <h1 class="text-center text-primary">Most {{type}}</h1>
     <table class="table">
-      <tr>
-        <th>Pipeline</th>
-        <th>Count</th>
-      </tr>
-      <tr v-for="(row, index) in rows" v-bind:key="index">
-        <td>
-          <span class="text-muted d-none d-md-inline">{{row.repo_source}}/{{row.repo_owner}}/</span><strong>{{row.repo_name}}</strong>
-        </td>
-        <td>
-          {{row.nr_records}}
-        </td>
-      </tr>
+      <thead>
+        <tr>
+          <th>Pipeline</th>
+          <th>{{type | capitalize}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(row, index) in rows" v-bind:key="index">
+          <td>
+            <span class="text-muted d-none d-md-inline">{{row.repo_source}}/{{row.repo_owner}}/</span><strong>{{row.repo_name}}</strong>
+          </td>
+          <td>
+            {{row.nr_records}}
+          </td>
+        </tr>
+      </tbody>
     </table>
 
     <b-pagination size="md" :total-rows="pagination.totalItems" :per-page="pagination.size" v-model="pagination.page" align="center" hide-goto-end-buttons/>
