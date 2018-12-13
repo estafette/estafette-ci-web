@@ -21,13 +21,10 @@ stages:
     commands:
     - npm ci
 
-  unit-test:
-    image: node:11.4.0-alpine
-    commands:
-    - npm run unit
-
   build:
     image: node:11.4.0-alpine
+    env:
+      NODE_ENV: production
     commands:
     - npm run build
 
