@@ -11,7 +11,7 @@
       <tbody>
         <tr v-for="(row, index) in rows" v-bind:key="index">
           <td>
-            <span class="text-muted d-none d-md-inline">{{row.repo_source}}/{{row.repo_owner}}/</span><strong>{{row.repo_name}}</strong>
+            <span class="text-muted d-none d-sm-inline">{{row.repo_source}}/{{row.repo_owner}}/</span><strong>{{row.repo_name}}</strong>
           </td>
           <td>
             {{row.nr_records}}

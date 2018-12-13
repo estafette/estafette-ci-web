@@ -12,10 +12,10 @@
       </div>
 
       <div class="row">
-        <div class="col col-lg-6">
+        <div class="col-12 col-xl-6">
           <stats-ranking-table :filter="filter" type="builds" status="primary"/>
         </div>
-        <div class="col col-lg-6">
+        <div class="col-12 col-xl-6">
           <stats-ranking-table :filter="filter" type="releases" status="success"/>
         </div>
       </div>
