@@ -4,12 +4,16 @@
     <table class="table">
       <thead>
         <tr>
+          <th>#</th>
           <th>Pipeline</th>
           <th>{{type | capitalize}}</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(row, index) in rows" v-bind:key="index">
+          <td>
+            {{ index + 1 + (pagination.page-1) * pagination.size }}
+          </td>
           <td>
             <span class="text-muted d-none d-sm-inline">{{row.repo_source}}/{{row.repo_owner}}/</span><strong>{{row.repo_name}}</strong>
           </td>
