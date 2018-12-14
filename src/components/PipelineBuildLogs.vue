@@ -231,11 +231,6 @@ export default {
 
             // reset last line number
             this.lastLineNumber = 0
-
-            // remove logs from previous step to keep dom light
-            if (this.tailedSteps.length > 1) {
-              this.log.steps[this.tailedSteps.length - 2].logLines = []
-            }
           }
 
           if (stepIndex !== this.tailedSteps.length - 1) {
@@ -258,7 +253,7 @@ export default {
               step.logLines.push(data.logLine)
               this.lastLineNumber = data.logLine.line
 
-              // tail only last 50 rows
+              // tail only last 50 rows per stage to keep dom light
               if (data.logLine.line > 50) {
                 step.logLines.shift()
               }
