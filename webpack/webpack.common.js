@@ -35,6 +35,11 @@ module.exports = {
       }
     }
   },
+  stats: {
+    colors: true,
+    modules: false,
+    children: false
+  },
   plugins: [
     new CleanWebpackPlugin(['dist'], { root: path.resolve(__dirname , '..') }),
     new VueLoaderPlugin(),
