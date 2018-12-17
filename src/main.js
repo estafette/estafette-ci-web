@@ -7,12 +7,12 @@ import VueAnalytics from 'vue-analytics'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueApexCharts from 'vue-apexcharts'
-
 import App from './App'
 import router from './router'
-
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import moment from 'moment'
+import 'moment/locale/en-il'
+import vueMoment from 'vue-moment'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 
@@ -279,9 +279,7 @@ Vue.axios.interceptors.response.use((response) => {
 Vue.use(BootstrapVue)
 
 // use vue-moment for rendering timestamps
-const moment = require('moment')
-require('moment/locale/en-il')
-Vue.use(require('vue-moment'), {
+Vue.use(vueMoment, {
   moment
 })
 
