@@ -6,6 +6,10 @@
 
 <script>
 export default {
+  components: {
+    'warning': () => import('@/components/Warning')
+  },
+
   props: {
     pipeline: Object
   },

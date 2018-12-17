@@ -38,6 +38,11 @@
 
 <script>
 export default {
+  components: {
+    'stats-pipelines-count': () => import('@/components/StatsPipelinesCount'),
+    'stats-builds-count': () => import('@/components/StatsBuildsCount'),
+    'stats-releases-count': () => import('@/components/StatsReleasesCount')
+  },
   data: function () {
     return {
       filter: {

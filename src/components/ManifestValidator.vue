@@ -28,6 +28,9 @@
 
 <script>
 export default {
+  components: {
+    'spinner': () => import('@/components/Spinner')
+  },
   data: function () {
     return {
       form: {

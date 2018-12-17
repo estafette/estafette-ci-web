@@ -71,6 +71,14 @@
 
 <script>
 export default {
+  components: {
+    'commit-link': () => import('@/components/CommitLink'),
+    'release-button': () => import('@/components/ReleaseButton'),
+    'rebuild-button': () => import('@/components/RebuildButton'),
+    'cancel-button': () => import('@/components/CancelButton'),
+    'release-badge-for-build': () => import('@/components/ReleaseBadgeForBuild')
+  },
+
   props: {
     repoSource: String,
     repoOwner: String,

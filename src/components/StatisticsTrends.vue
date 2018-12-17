@@ -4,3 +4,11 @@
       <stats-adoption type="releases" status="success"/>
     </div>
 </template>
+
+<script>
+export default {
+  components: {
+    'stats-adoption': () => import('@/components/StatsAdoption')
+  }
+}
+</script>

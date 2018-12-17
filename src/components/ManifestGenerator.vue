@@ -30,6 +30,9 @@
 
 <script>
 export default {
+  components: {
+    'spinner': () => import('@/components/Spinner')
+  },
   props: {
     query: Object
   },

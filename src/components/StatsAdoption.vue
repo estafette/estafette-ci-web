@@ -8,17 +8,16 @@
 </template>
 
 <script>
-import VueApexCharts from 'vue-apexcharts'
 import upperFirst from 'lodash/upperFirst'
 
 export default {
+  components: {
+    'spinner': () => import('@/components/Spinner'),
+    'apexcharts': () => import('vue-apexcharts')
+  },
   props: {
     type: String,
     status: String
-  },
-
-  components: {
-    apexcharts: VueApexCharts
   },
 
   data: function () {

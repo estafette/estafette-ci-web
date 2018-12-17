@@ -25,6 +25,10 @@
 
 <script>
 export default {
+  components: {
+    'stats-ranking-table': () => import('@/components/StatsRankingTable')
+  },
+
   data: function () {
     return {
       filter: {

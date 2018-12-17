@@ -68,6 +68,12 @@
 
 <script>
 export default {
+  components: {
+    'commit-link': () => import('@/components/CommitLink'),
+    'release-badge': () => import('@/components/ReleaseBadge'),
+    'pipeline-warnings': () => import('@/components/PipelineWarnings')
+  },
+
   props: {
     repoSource: String,
     repoOwner: String,

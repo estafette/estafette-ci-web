@@ -86,6 +86,11 @@
 
 <script>
 export default {
+  components: {
+    'commit-link': () => import('@/components/CommitLink'),
+    'release-badge': () => import('@/components/ReleaseBadge')
+  },
+
   props: {
     query: Object
   },

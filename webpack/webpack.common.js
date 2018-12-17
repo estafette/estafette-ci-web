@@ -14,6 +14,7 @@ module.exports = {
   output: {
     publicPath: '/',
     filename: 'static/js/[name].[contenthash].js',
+    chunkFilename: 'static/js/[id].[contenthash].js',
     path: path.resolve(__dirname, '..', 'dist')
   },
   resolve: {
@@ -31,6 +32,7 @@ module.exports = {
     sideEffects: true,
     runtimeChunk: 'single',
     splitChunks: {
+      chunks: 'all',
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
@@ -71,6 +73,7 @@ module.exports = {
         include: path.resolve(__dirname, '..', 'src'),
         loader: 'babel-loader',
         options: {
+          plugins: ['@babel/plugin-syntax-dynamic-import'],
           presets: [
             ['@babel/preset-env', { modules: false }]
           ]

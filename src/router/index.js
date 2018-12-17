@@ -1,24 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Pipelines from '@/components/Pipelines'
-import Config from '@/components/Config'
-import Statistics from '@/components/Statistics'
-import StatisticsCounters from '@/components/StatisticsCounters'
-import StatisticsRankings from '@/components/StatisticsRankings'
-import StatisticsTrends from '@/components/StatisticsTrends'
-import PipelineDetails from '@/components/PipelineDetails'
-import PipelineBuilds from '@/components/PipelineBuilds'
-import PipelineBuildDetails from '@/components/PipelineBuildDetails'
-import PipelineBuildLogs from '@/components/PipelineBuildLogs'
-import PipelineBuildManifest from '@/components/PipelineBuildManifest'
-import PipelineStatistics from '@/components/PipelineStatistics'
-import PipelineReleases from '@/components/PipelineReleases'
-import PipelineReleaseDetails from '@/components/PipelineReleaseDetails'
-import PipelineReleaseLogs from '@/components/PipelineReleaseLogs'
-import Manifest from '@/components/Manifest'
-import ManifestGenerator from '@/components/ManifestGenerator'
-import ManifestValidator from '@/components/ManifestValidator'
-import SecretEncrypter from '@/components/SecretEncrypter'
+
+const Pipelines = () => import('@/components/Pipelines')
+const PipelineDetails = () => import('@/components/PipelineDetails')
+const PipelineBuilds = () => import('@/components/PipelineBuilds')
+const PipelineBuildDetails = () => import('@/components/PipelineBuildDetails')
+const PipelineBuildLogs = () => import('@/components/PipelineBuildLogs')
+const PipelineBuildManifest = () => import('@/components/PipelineBuildManifest')
+const PipelineStatistics = () => import('@/components/PipelineStatistics')
+const PipelineReleases = () => import('@/components/PipelineReleases')
+const PipelineReleaseDetails = () => import('@/components/PipelineReleaseDetails')
+const PipelineReleaseLogs = () => import('@/components/PipelineReleaseLogs')
+
+const Config = () => import('@/components/Config')
+
+const Statistics = () => import('@/components/Statistics')
+const StatisticsCounters = () => import('@/components/StatisticsCounters')
+const StatisticsRankings = () => import('@/components/StatisticsRankings')
+const StatisticsTrends = () => import('@/components/StatisticsTrends')
+
+const Manifest = () => import('@/components/Manifest')
+const ManifestGenerator = () => import('@/components/ManifestGenerator')
+const ManifestValidator = () => import('@/components/ManifestValidator')
+const SecretEncrypter = () => import('@/components/SecretEncrypter')
 
 Vue.use(Router)
 

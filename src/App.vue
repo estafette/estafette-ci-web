@@ -14,6 +14,11 @@
 <script>
 export default {
   name: 'App',
+  components: {
+    'navigation-bar': () => import('@/components/NavigationBar'),
+    'site-footer': () => import('@/components/SiteFooter'),
+    'session-refresh-modal': () => import('@/components/SessionRefreshModal')
+  },
   data: function () {
     return {
       user: null,

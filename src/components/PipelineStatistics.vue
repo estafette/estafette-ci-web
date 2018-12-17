@@ -16,6 +16,10 @@
 
 <script>
 export default {
+  components: {
+    'pipeline-stats-timeline': () => import('@/components/PipelineStatsTimeline')
+  },
+
   props: {
     query: Object,
     pipeline: Object
