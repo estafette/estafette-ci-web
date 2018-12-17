@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --progress --config webpack/webpack.dev.js",
-    "lint": "eslint --version --color '{src,test,webpack,mocks}/**/*.{js,vue}'",
+    "lint": "eslint --color '{src,test,webpack,mocks}/**/*.{js,vue}'",
     "build": "webpack --config webpack/webpack.prod.js"
   },
   "dependencies": {
