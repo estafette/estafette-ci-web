@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --open --config webpack/webpack.dev.js",
-    "build": "webpack --config webpack/webpack.prod.js"
+    "build": "webpack --progress --profile --config webpack/webpack.prod.js"
   },
   "dependencies": {
     "vue": "^2.5.21"
