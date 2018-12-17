@@ -21,10 +21,13 @@ stages:
     commands:
     - npm ci
 
+  lint:
+    image: node:11.4.0-alpine
+    commands:
+    - npm run lint
+
   build:
     image: node:11.4.0-alpine
-    env:
-      NODE_ENV: production
     commands:
     - npm run build
 

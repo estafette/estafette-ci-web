@@ -1,15 +1,15 @@
-const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
+const merge = require('webpack-merge')
+const common = require('./webpack.common.js')
 
-const ApiMocker = require('connect-api-mocker');
+const ApiMocker = require('connect-api-mocker')
 
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
     historyApiFallback: true,
-    before: function(app) {
-      app.use(ApiMocker('/api', 'mocks/api'));
+    before: app => {
+      app.use(ApiMocker('/api', 'mocks/api'))
     }
   },
   module: {
@@ -24,4 +24,4 @@ module.exports = merge(common, {
       }
     ]
   }
-});
+})

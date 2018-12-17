@@ -221,9 +221,9 @@ export default {
           if (stepIndex === -1) {
             // create new step
             if (data.image) {
-              step = {step: data.step, image: data.image, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: data.autoInjected ? data.autoInjected : false, duration: 0}
+              step = { step: data.step, image: data.image, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: data.autoInjected ? data.autoInjected : false, duration: 0 }
             } else {
-              step = {step: data.step, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: false, duration: 0}
+              step = { step: data.step, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: false, duration: 0 }
             }
             this.tailedSteps.push(data.step)
             this.log.steps.push(step)

@@ -1,8 +1,8 @@
-const path = require('path');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require('path')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   context: path.resolve(__dirname, '..'),
@@ -17,7 +17,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': path.resolve(__dirname, '..', 'src'),
+      '@': path.resolve(__dirname, '..', 'src')
     }
   },
   optimization: {
@@ -41,7 +41,7 @@ module.exports = {
     children: false
   },
   plugins: [
-    new CleanWebpackPlugin(['dist'], { root: path.resolve(__dirname , '..') }),
+    new CleanWebpackPlugin(['dist'], { root: path.resolve(__dirname, '..') }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -52,10 +52,21 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: 'pre',
+        test: /\.(js|vue)$/,
+        include: [ path.resolve(__dirname, '..', 'src'), path.resolve(__dirname, '..', 'test') ],
+        loader: 'eslint-loader'
+      },
+      {
+        test: /\.js$/,
+        include: path.resolve(__dirname, '..', 'src'),
+        loader: 'babel-loader'
+      },
+      {
         test: /\.vue$/,
         include: path.resolve(__dirname, '..', 'src'),
         loader: 'vue-loader'
-      },  
+      },
       {
         test: /\.(png|svg|jpg|gif)$/,
         include: path.resolve(__dirname, '..', 'src'),
@@ -71,4 +82,4 @@ module.exports = {
       }
     ]
   }
-};
+}
