@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -26,6 +27,7 @@ module.exports = {
       new TerserPlugin({}),
       new OptimizeCSSAssetsPlugin({})
     ],
+    sideEffects: true,
     runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {
@@ -49,7 +51,11 @@ module.exports = {
       filename: 'index.html',
       template: 'index.html',
       inject: true
-    })
+    }),
+    new webpack.IgnorePlugin(
+      /^\.\/locale$/,
+      /moment$/
+    )
   ],
   module: {
     rules: [

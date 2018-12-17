@@ -279,6 +279,7 @@ Vue.axios.interceptors.response.use((response) => {
 Vue.use(BootstrapVue)
 
 // use vue-moment for rendering timestamps
+moment.locale('en-il')
 Vue.use(vueMoment, {
   moment
 })
