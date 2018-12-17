@@ -45,7 +45,7 @@ export default {
     },
 
     updateQueryParams () {
-      this.$router.push({query: { last: this.filter.last }})
+      this.$router.push({ query: { last: this.filter.last } })
     },
 
     setLast (value) {

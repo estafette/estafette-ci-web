@@ -65,7 +65,7 @@ export default {
     },
 
     updateQueryParams () {
-      this.$router.push({query: { since: this.filter.since }})
+      this.$router.push({ query: { since: this.filter.since } })
     },
 
     setSince (value) {

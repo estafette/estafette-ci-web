@@ -138,9 +138,9 @@ export default {
 
     updateQueryParams () {
       if (this.filter && this.filter.labels && this.filter.labels !== '') {
-        this.$router.push({query: { status: this.filter.status, since: this.filter.since, labels: this.filter.labels, page: this.pagination.page }})
+        this.$router.push({ query: { status: this.filter.status, since: this.filter.since, labels: this.filter.labels, page: this.pagination.page } })
       } else {
-        this.$router.push({query: { status: this.filter.status, since: this.filter.since, page: this.pagination.page }})
+        this.$router.push({ query: { status: this.filter.status, since: this.filter.since, page: this.pagination.page } })
       }
     },
 

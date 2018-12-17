@@ -7,12 +7,12 @@ import VueAnalytics from 'vue-analytics'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueApexCharts from 'vue-apexcharts'
-
 import App from './App'
 import router from './router'
-
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import moment from 'moment'
+import 'moment/locale/en-il'
+import vueMoment from 'vue-moment'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 
@@ -258,7 +258,7 @@ const store = new Vuex.Store({
 // intercept api requests to add X-Requested-With: XMLHttpRequest header to have IAP return 401 instead of 302
 Vue.axios.interceptors.request.use(
   config => {
-    config.headers = {'X-Requested-With': 'XMLHttpRequest'}
+    config.headers = { 'X-Requested-With': 'XMLHttpRequest' }
     return config
   },
   error => Promise.reject(error)
@@ -279,9 +279,8 @@ Vue.axios.interceptors.response.use((response) => {
 Vue.use(BootstrapVue)
 
 // use vue-moment for rendering timestamps
-const moment = require('moment')
-require('moment/locale/en-il')
-Vue.use(require('vue-moment'), {
+moment.locale('en-il')
+Vue.use(vueMoment, {
   moment
 })
 
