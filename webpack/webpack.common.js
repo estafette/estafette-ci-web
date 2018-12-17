@@ -84,15 +84,18 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|gif)$/,
         include: path.resolve(__dirname, '..', 'src'),
-        use: [
-          'file-loader'
-        ]
+        loader: 'file-loader',
+        options: {
+          name: 'static/images/[name].[hash].[ext]'
+        }
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: [
-          'file-loader'
-        ]
+        include: path.resolve(__dirname, '..', 'src'),
+        loader: 'file-loader',
+        options: {
+          name: 'static/fonts/[name].[hash].[ext]'
+        }
       }
     ]
   }
