@@ -36,9 +36,8 @@ stages:
     action: build
     repositories:
     - estafette
-    path: ./publish
+    path: ./dist
     copy:
-    - dist
     - favicon.ico
     - nginx.vh.default.conf
 

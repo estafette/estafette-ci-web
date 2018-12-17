@@ -12,7 +12,7 @@ module.exports = {
     app: './src/main.js'
   },
   output: {
-    filename: 'js/[name].[contenthash].js',
+    filename: 'static/js/[name].[contenthash].js',
     path: path.resolve(__dirname, '..', 'dist')
   },
   resolve: {
