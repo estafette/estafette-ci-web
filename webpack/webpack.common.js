@@ -12,6 +12,7 @@ module.exports = {
     app: './src/main.js'
   },
   output: {
+    publicPath: '/',
     filename: 'static/js/[name].[contenthash].js',
     path: path.resolve(__dirname, '..', 'dist')
   },
