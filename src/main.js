@@ -1,17 +1,18 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import Vuex from 'vuex'
-import VueAnalytics from 'vue-analytics'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-import VueApexCharts from 'vue-apexcharts'
 import App from './App'
 import router from './router'
-import 'bootstrap/dist/css/bootstrap.css'
-import moment from 'moment'
-import 'moment/locale/en-il'
-import vueMoment from 'vue-moment'
+
+const Vue = import(/* webpackChunkName: "vue" */ 'vue')
+const Vuex = import(/* webpackChunkName: "vuex" */ 'vuex')
+const VueAnalytics = import(/* webpackChunkName: "vue-analytics" */ 'vue-analytics')
+const axios = import(/* webpackChunkName: "axios" */ 'axios')
+const VueAxios = import(/* webpackChunkName: "vue-axios" */ 'vue-axios')
+const VueApexCharts = import(/* webpackChunkName: "vue-apexcharts" */ 'vue-apexcharts')
+import(/* webpackChunkName: "bootstrap" */ 'bootstrap/dist/css/bootstrap.css')
+const moment = import(/* webpackChunkName: "moment" */ 'moment')
+import(/* webpackChunkName: "moment" */ 'moment/locale/en-il')
+const vueMoment = import(/* webpackChunkName: "moment" */ 'vue-moment')
 
 // filter to trim a git commit revision to 6 chars
 Vue.filter('gitHash', function (value) {

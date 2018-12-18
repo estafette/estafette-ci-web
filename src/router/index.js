@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const Pipelines = () => import(/* webpackChunkName: "pipelines" */ '@/components/Pipelines')
-const PipelineDetails = () => import(/* webpackChunkName: "pipeline-builds" */ '@/components/PipelineDetails')
+const PipelineDetails = () => import(/* webpackChunkName: "pipeline-details" */ '@/components/PipelineDetails')
 const PipelineBuilds = () => import(/* webpackChunkName: "pipeline-builds" */ '@/components/PipelineBuilds')
 const PipelineBuildDetails = () => import(/* webpackChunkName: "pipeline-build-details" */ '@/components/PipelineBuildDetails')
 const PipelineBuildLogs = () => import(/* webpackChunkName: "pipeline-build-logs" */ '@/components/PipelineBuildLogs')
