@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import upperFirst from 'lodash/upperFirst'
+const upperFirst = import(/* webpackChunkName: "lodash" */ 'lodash/upperFirst')
 
 export default {
   components: {

@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import vBTooltip from 'bootstrap-vue/es/directives/tooltip/tooltip'
+const vBTooltip = import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/directives/tooltip/tooltip')
 
 export default {
   components: {

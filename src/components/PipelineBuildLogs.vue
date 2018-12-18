@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import vBToggle from 'bootstrap-vue/es/directives/toggle/toggle'
+const vBToggle = import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/directives/toggle/toggle')
 const AnsiUp = import(/* webpackChunkName: "ansiup" */ 'ansi_up')
 
 export default {

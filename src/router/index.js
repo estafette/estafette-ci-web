@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+const Vue = import(/* webpackChunkName: "vue" */ 'vue')
+const Router = import(/* webpackChunkName: "vue-router" */ 'vue-router')
 
 const Pipelines = () => import(/* webpackChunkName: "pipelines" */ '@/components/Pipelines')
 const PipelineDetails = () => import(/* webpackChunkName: "pipeline-details" */ '@/components/PipelineDetails')
