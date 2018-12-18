@@ -17,7 +17,7 @@
 <script>
 export default {
   components: {
-    'pipeline-stats-timeline': () => import(/* webpackChunkName: "pipeline-stats-timeline" */ '@/components/PipelineStatsTimeline'),
+    'pipeline-stats-timeline': () => import(/* webpackChunkName: "components" */ '@/components/PipelineStatsTimeline'),
     'b-form-select': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-select/form-select')
   },
 

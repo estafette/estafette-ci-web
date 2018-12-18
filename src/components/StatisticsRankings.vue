@@ -26,7 +26,7 @@
 <script>
 export default {
   components: {
-    'stats-ranking-table': () => import(/* webpackChunkName: "stats-ranking-table" */ '@/components/StatsRankingTable'),
+    'stats-ranking-table': () => import(/* webpackChunkName: "components" */ '@/components/StatsRankingTable'),
     'b-form-select': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-select/form-select')
   },
 

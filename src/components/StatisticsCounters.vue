@@ -27,21 +27,15 @@
         <stats-releases-count :filter="filter" status="failed"/>
         <stats-releases-count :filter="filter" status="running"/>
       </div>
-      <!-- <div class="row m-0">
-        <stats-builds-duration :filter="filter" status="all"/>
-        <stats-builds-duration :filter="filter" status="succeeded"/>
-        <stats-builds-duration :filter="filter" status="failed"/>
-        <stats-builds-duration :filter="filter" status="running"/>
-      </div> -->
     </div>
 </template>
 
 <script>
 export default {
   components: {
-    'stats-pipelines-count': () => import(/* webpackChunkName: "stats-pipelines-count" */ '@/components/StatsPipelinesCount'),
-    'stats-builds-count': () => import(/* webpackChunkName: "stats-builds-count" */ '@/components/StatsBuildsCount'),
-    'stats-releases-count': () => import(/* webpackChunkName: "stats-releases-count" */ '@/components/StatsReleasesCount'),
+    'stats-pipelines-count': () => import(/* webpackChunkName: "stats-counters" */ '@/components/StatsPipelinesCount'),
+    'stats-builds-count': () => import(/* webpackChunkName: "stats-counters" */ '@/components/StatsBuildsCount'),
+    'stats-releases-count': () => import(/* webpackChunkName: "stats-counters" */ '@/components/StatsReleasesCount'),
     'b-form-select': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-select/form-select')
   },
 

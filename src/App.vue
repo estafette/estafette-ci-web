@@ -13,11 +13,10 @@
 
 <script>
 export default {
-  name: 'App',
   components: {
-    'navigation-bar': () => import(/* webpackChunkName: "navigation-bar" */ '@/components/NavigationBar'),
-    'site-footer': () => import(/* webpackChunkName: "site-footer" */ '@/components/SiteFooter'),
-    'session-refresh-modal': () => import(/* webpackChunkName: "session-refresh-modal" */ '@/components/SessionRefreshModal')
+    'navigation-bar': () => import(/* webpackChunkName: "components" */ '@/components/NavigationBar'),
+    'site-footer': () => import(/* webpackChunkName: "components" */ '@/components/SiteFooter'),
+    'session-refresh-modal': () => import(/* webpackChunkName: "components" */ '@/components/SessionRefreshModal')
   },
   data: function () {
     return {

@@ -69,11 +69,10 @@
 <script>
 export default {
   components: {
-    'commit-link': () => import(/* webpackChunkName: "commit-link" */ '@/components/CommitLink'),
-    'release-badge': () => import(/* webpackChunkName: "release-badge" */ '@/components/ReleaseBadge'),
-    'pipeline-warnings': () => import(/* webpackChunkName: "pipeline-warnings" */ '@/components/PipelineWarnings')
+    'commit-link': () => import(/* webpackChunkName: "components" */ '@/components/CommitLink'),
+    'release-badge': () => import(/* webpackChunkName: "components" */ '@/components/ReleaseBadge'),
+    'pipeline-warnings': () => import(/* webpackChunkName: "components" */ '@/components/PipelineWarnings')
   },
-
   props: {
     repoSource: String,
     repoOwner: String,

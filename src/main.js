@@ -1,18 +1,25 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import Vue from 'vue'
+import Vuex from 'vuex'
+import VueAnalytics from 'vue-analytics'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import App from './App'
 import router from './router'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import moment from 'moment'
+import 'moment/locale/en-il'
 
-const Vue = import(/* webpackChunkName: "vue" */ 'vue')
-const Vuex = import(/* webpackChunkName: "vuex" */ 'vuex')
-const VueAnalytics = import(/* webpackChunkName: "vue-analytics" */ 'vue-analytics')
-const axios = import(/* webpackChunkName: "axios" */ 'axios')
-const VueAxios = import(/* webpackChunkName: "vue-axios" */ 'vue-axios')
-const VueApexCharts = import(/* webpackChunkName: "vue-apexcharts" */ 'vue-apexcharts')
-import(/* webpackChunkName: "bootstrap" */ 'bootstrap/dist/css/bootstrap.css')
-const moment = import(/* webpackChunkName: "moment" */ 'moment')
-import(/* webpackChunkName: "moment" */ 'moment/locale/en-il')
-const vueMoment = import(/* webpackChunkName: "moment" */ 'vue-moment')
+Vue.use(VueAxios, axios)
+Vue.use(Vuex)
+
+moment.locale('en-il')
+
+Vue.use(VueAnalytics, {
+  id: 'UA-464018-10',
+  router
+})
 
 // filter to trim a git commit revision to 6 chars
 Vue.filter('gitHash', function (value) {
@@ -119,6 +126,10 @@ Vue.filter('formatDatetime', function (value) {
   return moment(value).format('[today] [at] H:mm')
 })
 
+Vue.filter('moment', function (value, format) {
+  return moment(value).format(format)
+})
+
 Vue.filter('formatDuration', function (value) {
   if (value === null) {
     return ''
@@ -199,11 +210,6 @@ Vue.filter('splitCamelcase', function (value) {
 
 Vue.config.productionTip = false
 
-Vue.use(VueAxios, axios)
-Vue.use(VueApexCharts)
-
-// use global store for global state management
-Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     sessionRefreshModalActive: false
@@ -241,17 +247,6 @@ Vue.axios.interceptors.response.use((response) => {
     return
   }
   return Promise.reject(error)
-})
-
-// use vue-moment for rendering timestamps
-moment.locale('en-il')
-Vue.use(vueMoment, {
-  moment
-})
-
-Vue.use(VueAnalytics, {
-  id: 'UA-464018-10',
-  router
 })
 
 /* eslint-disable no-new */

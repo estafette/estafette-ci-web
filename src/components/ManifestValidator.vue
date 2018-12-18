@@ -29,7 +29,7 @@
 <script>
 export default {
   components: {
-    'spinner': () => import(/* webpackChunkName: "spinner" */ '@/components/Spinner'),
+    'spinner': () => import(/* webpackChunkName: "components" */ '@/components/Spinner'),
     'b-form': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form/form'),
     'b-form-textarea': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-textarea/form-textarea'),
     'b-button': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/button/button')

@@ -8,8 +8,8 @@
 </template>
 
 <script>
-const TweenLite = import(/* webpackChunkName: "tweenlite" */ 'gsap/TweenLite')
-import(/* webpackChunkName: "tweenlite" */ 'gsap/CSSPlugin')
+import TweenLite from 'gsap/TweenLite'
+import 'gsap/CSSPlugin'
 
 export default {
   props: {

@@ -1,13 +1,13 @@
 <template>
 <div class="alert rounded border" :class="[alertClass, borderClass]" role="alert">
-  <vue-markdown>{{warning.message}}</vue-markdown>
+  <mark-down>{{warning.message}}</mark-down>
 </div>
 </template>
 
 <script>
 export default {
   components: {
-    'vue-markdown': () => import(/* webpackChunkName: "vue-markdown" */ 'vue-markdown')
+    'mark-down': () => import(/* webpackChunkName: "mark-down" */ '@/components/MarkDown')
   },
   props: {
     warning: Object

@@ -29,11 +29,11 @@
 </template>
 
 <script>
-const vBTooltip = import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/directives/tooltip/tooltip')
+import vBTooltip from 'bootstrap-vue/es/directives/tooltip/tooltip'
 
 export default {
   components: {
-    'spinner': () => import(/* webpackChunkName: "spinner" */ '@/components/Spinner'),
+    'spinner': () => import(/* webpackChunkName: "components" */ '@/components/Spinner'),
     'b-form': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form/form'),
     'b-form-select': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-select/form-select'),
     'b-form-input': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-input/form-input'),
