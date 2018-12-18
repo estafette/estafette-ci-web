@@ -30,18 +30,23 @@
 </template>
 
 <script>
-import vBTooltip from 'bootstrap-vue/es/directives/tooltip/tooltip'
+import spinner from '@/components/Spinner'
+import bForm from 'bootstrap-vue/es/components/form/form'
+import bFormCheckbox from 'bootstrap-vue/es/components/form-checkbox/form-checkbox'
+import bFormTextarea from 'bootstrap-vue/es/components//form-textarea/form-textarea'
+import bButton from 'bootstrap-vue/es/components/button/button'
+import bTooltip from 'bootstrap-vue/es/directives/tooltip/tooltip'
 
 export default {
   components: {
-    'spinner': () => import(/* webpackChunkName: "components" */ '@/components/Spinner'),
-    'b-form': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form/form'),
-    'b-form-checkbox': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-checkbox/form-checkbox'),
-    'b-form-textarea': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-textarea/form-textarea'),
-    'b-button': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/button/button')
+    spinner,
+    bForm,
+    bFormCheckbox,
+    bFormTextarea,
+    bButton
   },
   directives: {
-    'b-tooltip': vBTooltip
+    bTooltip
   },
   data: function () {
     return {

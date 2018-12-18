@@ -30,9 +30,11 @@
 </template>
 
 <script>
+import bPagination from 'bootstrap-vue/es/components/pagination/pagination'
+
 export default {
   components: {
-    'b-pagination': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/pagination/pagination')
+    bPagination
   },
   props: {
     filter: Object,

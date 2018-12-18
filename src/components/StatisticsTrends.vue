@@ -6,9 +6,11 @@
 </template>
 
 <script>
+import StatsAdoption from '@/components/StatsAdoption'
+
 export default {
   components: {
-    'stats-adoption': () => import(/* webpackChunkName: "components" */ '@/components/StatsAdoption')
+    StatsAdoption
   }
 }
 </script>

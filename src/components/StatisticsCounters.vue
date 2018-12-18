@@ -31,12 +31,14 @@
 </template>
 
 <script>
+import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
+
 export default {
   components: {
-    'stats-pipelines-count': () => import(/* webpackChunkName: "stats-counters" */ '@/components/StatsPipelinesCount'),
-    'stats-builds-count': () => import(/* webpackChunkName: "stats-counters" */ '@/components/StatsBuildsCount'),
-    'stats-releases-count': () => import(/* webpackChunkName: "stats-counters" */ '@/components/StatsReleasesCount'),
-    'b-form-select': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-select/form-select')
+    StatsPipelinesCount: () => import(/* webpackChunkName: "tweenlite" */ '@/components/StatsPipelinesCount'),
+    StatsBuildsCount: () => import(/* webpackChunkName: "tweenlite" */ '@/components/StatsBuildsCount'),
+    StatsReleasesCount: () => import(/* webpackChunkName: "tweenlite" */ '@/components/StatsReleasesCount'),
+    bFormSelect
   },
 
   data: function () {

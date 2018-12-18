@@ -22,15 +22,23 @@
 </template>
 
 <script>
+import bNavbar from 'bootstrap-vue/es/components/navbar/navbar'
+import bNavbarBrand from 'bootstrap-vue/es/components/navbar/navbar-brand'
+import bNavbarToggle from 'bootstrap-vue/es/components/navbar/navbar-toggle'
+import bNavbarNav from 'bootstrap-vue/es/components/navbar/navbar-nav'
+import bNavItem from 'bootstrap-vue/es/components/nav/nav-item'
+import bNavText from 'bootstrap-vue/es/components/nav/nav-text'
+import bCollapse from 'bootstrap-vue/es/components/collapse/collapse'
+
 export default {
   components: {
-    'b-navbar': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/navbar/navbar'),
-    'b-navbar-brand': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/navbar/navbar-brand'),
-    'b-navbar-toggle': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/navbar/navbar-toggle'),
-    'b-navbar-nav': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/navbar/navbar-nav'),
-    'b-nav-item': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/nav/nav-item'),
-    'b-nav-text': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/nav/nav-text'),
-    'b-collapse': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/collapse/collapse')
+    bNavbar,
+    bNavbarBrand,
+    bNavbarToggle,
+    bNavbarNav,
+    bNavItem,
+    bNavText,
+    bCollapse
   },
   props: {
     user: Object

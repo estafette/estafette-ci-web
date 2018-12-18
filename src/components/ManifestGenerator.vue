@@ -29,18 +29,23 @@
 </template>
 
 <script>
-import vBTooltip from 'bootstrap-vue/es/directives/tooltip/tooltip'
+import Spinner from '@/components/Spinner'
+import bForm from 'bootstrap-vue/es/components/form/form'
+import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
+import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
+import bButton from 'bootstrap-vue/es/components/button/button'
+import bTooltip from 'bootstrap-vue/es/directives/tooltip/tooltip'
 
 export default {
   components: {
-    'spinner': () => import(/* webpackChunkName: "components" */ '@/components/Spinner'),
-    'b-form': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form/form'),
-    'b-form-select': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-select/form-select'),
-    'b-form-input': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-input/form-input'),
-    'b-button': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/button/button')
+    Spinner,
+    bForm,
+    bFormSelect,
+    bFormInput,
+    bButton
   },
   directives: {
-    'b-tooltip': vBTooltip
+    bTooltip
   },
   props: {
     query: Object

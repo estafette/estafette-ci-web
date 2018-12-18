@@ -5,9 +5,11 @@
 </template>
 
 <script>
+import Warning from '@/components/Warning'
+
 export default {
   components: {
-    'warning': () => import(/* webpackChunkName: "components" */ '@/components/Warning')
+    Warning
   },
   props: {
     pipeline: Object

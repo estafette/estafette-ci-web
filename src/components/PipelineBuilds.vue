@@ -70,14 +70,21 @@
 </template>
 
 <script>
+import CommitLink from '@/components/CommitLink'
+import ReleaseButton from '@/components/ReleaseButton'
+import RebuildButton from '@/components/RebuildButton'
+import CancelButton from '@/components/CancelButton'
+import ReleaseBadgeForBuild from '@/components/ReleaseBadgeForBuild'
+import bPaginationNav from 'bootstrap-vue/es/components/pagination-nav/pagination-nav'
+
 export default {
   components: {
-    'commit-link': () => import(/* webpackChunkName: "components" */ '@/components/CommitLink'),
-    'release-button': () => import(/* webpackChunkName: "components" */ '@/components/ReleaseButton'),
-    'rebuild-button': () => import(/* webpackChunkName: "components" */ '@/components/RebuildButton'),
-    'cancel-button': () => import(/* webpackChunkName: "components" */ '@/components/CancelButton'),
-    'release-badge-for-build': () => import(/* webpackChunkName: "components" */ '@/components/ReleaseBadgeForBuild'),
-    'b-pagination-nav': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/pagination-nav/pagination-nav')
+    CommitLink,
+    ReleaseButton,
+    RebuildButton,
+    CancelButton,
+    ReleaseBadgeForBuild,
+    bPaginationNav
   },
 
   props: {

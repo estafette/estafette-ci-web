@@ -31,48 +31,7 @@ module.exports = {
     sideEffects: true,
     runtimeChunk: 'single',
     splitChunks: {
-      chunks: 'all',
-      cacheGroups: {
-        'vue-analytics': {
-          test: /[\\/]node_modules[\\/]vue-analytics[\\/]/,
-          name: 'vue-analytics',
-          priority: -5
-        },
-        'moment': {
-          test: /[\\/]node_modules[\\/]moment[\\/]/,
-          name: 'moment',
-          priority: -5
-        },
-        'lodash': {
-          test: /[\\/]node_modules[\\/]lodash[\\/]/,
-          name: 'lodash',
-          priority: -5
-        },
-        'bootstrap': {
-          test: /[\\/]node_modules[\\/]bootstrap[\\/]/,
-          name: 'bootstrap',
-          priority: -5
-        },
-        'apexcharts': {
-          test: /[\\/]node_modules[\\/]apexcharts[\\/]/,
-          name: 'apexcharts',
-          priority: -5
-        },
-        'vuex': {
-          test: /[\\/]node_modules[\\/]vuex[\\/]/,
-          name: 'vuex',
-          priority: -5
-        },
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      }
+      chunks: 'all'
     }
   },
   stats: {

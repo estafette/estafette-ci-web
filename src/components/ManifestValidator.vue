@@ -27,12 +27,17 @@
 </template>
 
 <script>
+import Spinner from '@/components/Spinner'
+import bForm from 'bootstrap-vue/es/components/form/form'
+import bFormTextarea from 'bootstrap-vue/es/components//form-textarea/form-textarea'
+import bButton from 'bootstrap-vue/es/components/button/button'
+
 export default {
   components: {
-    'spinner': () => import(/* webpackChunkName: "components" */ '@/components/Spinner'),
-    'b-form': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form/form'),
-    'b-form-textarea': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-textarea/form-textarea'),
-    'b-button': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/button/button')
+    Spinner,
+    bForm,
+    bFormTextarea,
+    bButton
   },
   data: function () {
     return {

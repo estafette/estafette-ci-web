@@ -7,7 +7,7 @@
 <script>
 export default {
   components: {
-    'mark-down': () => import(/* webpackChunkName: "mark-down" */ '@/components/MarkDown')
+    'mark-down': () => import(/* webpackChunkName: "marked" */ '@/components/MarkDown')
   },
   props: {
     warning: Object

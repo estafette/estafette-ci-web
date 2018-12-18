@@ -72,14 +72,21 @@
 </template>
 
 <script>
+import CommitLink from '@/components/CommitLink'
+import ReleaseBadge from '@/components/ReleaseBadge'
+import ReleaseButton from '@/components/ReleaseButton'
+import RebuildButton from '@/components/RebuildButton'
+import CancelButton from '@/components/CancelButton'
+import PipelineBuildWarnings from '@/components/PipelineBuildWarnings'
+
 export default {
   components: {
-    'commit-link': () => import(/* webpackChunkName: "components" */ '@/components/CommitLink'),
-    'release-badge': () => import(/* webpackChunkName: "components" */ '@/components/ReleaseBadge'),
-    'release-button': () => import(/* webpackChunkName: "components" */ '@/components/ReleaseButton'),
-    'rebuild-button': () => import(/* webpackChunkName: "components" */ '@/components/RebuildButton'),
-    'cancel-button': () => import(/* webpackChunkName: "components" */ '@/components/CancelButton'),
-    'pipeline-build-warnings': () => import(/* webpackChunkName: "components" */ '@/components/PipelineBuildWarnings')
+    CommitLink,
+    ReleaseBadge,
+    ReleaseButton,
+    RebuildButton,
+    CancelButton,
+    PipelineBuildWarnings
   },
   props: {
     repoSource: String,

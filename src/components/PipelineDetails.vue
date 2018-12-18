@@ -67,11 +67,15 @@
 </template>
 
 <script>
+import CommitLink from '@/components/CommitLink'
+import ReleaseBadge from '@/components/ReleaseBadge'
+import PipelineWarnings from '@/components/PipelineWarnings'
+
 export default {
   components: {
-    'commit-link': () => import(/* webpackChunkName: "components" */ '@/components/CommitLink'),
-    'release-badge': () => import(/* webpackChunkName: "components" */ '@/components/ReleaseBadge'),
-    'pipeline-warnings': () => import(/* webpackChunkName: "components" */ '@/components/PipelineWarnings')
+    CommitLink,
+    ReleaseBadge,
+    PipelineWarnings
   },
   props: {
     repoSource: String,

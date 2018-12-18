@@ -9,9 +9,11 @@
 </template>
 
 <script>
+import bFormCheckbox from 'bootstrap-vue/es/components/form-checkbox/form-checkbox'
+
 export default {
   components: {
-    'b-form-checkbox': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-checkbox/form-checkbox')
+    bFormCheckbox
   },
   props: {
     build: Object

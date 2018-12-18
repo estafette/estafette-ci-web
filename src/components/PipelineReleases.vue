@@ -58,9 +58,11 @@
 </template>
 
 <script>
+import bPaginationNav from 'bootstrap-vue/es/components/pagination-nav/pagination-nav'
+
 export default {
   components: {
-    'b-pagination-nav': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/pagination-nav/pagination-nav')
+    bPaginationNav
   },
   props: {
     repoSource: String,

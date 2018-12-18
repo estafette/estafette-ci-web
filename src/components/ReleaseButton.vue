@@ -11,11 +11,15 @@
 </template>
 
 <script>
+import bDropdown from 'bootstrap-vue/es/components/dropdown/dropdown'
+import bDropdownHeader from 'bootstrap-vue/es/components/dropdown/dropdown-header'
+import bDropdownItemButton from 'bootstrap-vue/es/components/dropdown/dropdown-item-button'
+
 export default {
   components: {
-    'b-dropdown': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/dropdown/dropdown'),
-    'b-dropdown-header': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/dropdown/dropdown-header'),
-    'b-dropdown-item-button': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/dropdown/dropdown-item-button')
+    bDropdown,
+    bDropdownHeader,
+    bDropdownItemButton
   },
   props: {
     pipeline: Object,

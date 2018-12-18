@@ -3,15 +3,18 @@
       <div class="d-block text-center">
         <h3>Your session has expired. Please refresh!</h3>
       </div>
-      <b-btn class="mt-3" variant="outline-danger" block @click="refreshSession">Refresh session</b-btn>
+      <b-button class="mt-3" variant="outline-danger" block @click="refreshSession">Refresh session</b-button>
     </b-modal>
 </template>
 
 <script>
+import bModal from 'bootstrap-vue/es/components/modal/modal'
+import bButton from 'bootstrap-vue/es/components/button/button'
+
 export default {
   components: {
-    'b-modal': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/modal/modal'),
-    'b-btn': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/button/button')
+    bModal,
+    bButton
   },
 
   data: function () {

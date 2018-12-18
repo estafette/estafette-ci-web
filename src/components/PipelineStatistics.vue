@@ -15,10 +15,13 @@
 </template>
 
 <script>
+import PipelineStatsTimeline from '@/components/PipelineStatsTimeline'
+import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
+
 export default {
   components: {
-    'pipeline-stats-timeline': () => import(/* webpackChunkName: "components" */ '@/components/PipelineStatsTimeline'),
-    'b-form-select': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-select/form-select')
+    PipelineStatsTimeline,
+    bFormSelect
   },
 
   props: {

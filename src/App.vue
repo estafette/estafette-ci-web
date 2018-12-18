@@ -12,11 +12,15 @@
 </template>
 
 <script>
+import NavigationBar from '@/components/NavigationBar'
+import SiteFooter from '@/components/SiteFooter'
+import SessionRefreshModal from '@/components/SessionRefreshModal'
+
 export default {
   components: {
-    'navigation-bar': () => import(/* webpackChunkName: "components" */ '@/components/NavigationBar'),
-    'site-footer': () => import(/* webpackChunkName: "components" */ '@/components/SiteFooter'),
-    'session-refresh-modal': () => import(/* webpackChunkName: "components" */ '@/components/SessionRefreshModal')
+    NavigationBar,
+    SiteFooter,
+    SessionRefreshModal
   },
   data: function () {
     return {

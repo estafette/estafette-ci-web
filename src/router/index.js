@@ -1,25 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const Pipelines = () => import(/* webpackChunkName: "components" */ '@/components/Pipelines')
-const Config = () => import(/* webpackChunkName: "components" */ '@/components/Config')
-const Statistics = () => import(/* webpackChunkName: "components" */ '@/components/Statistics')
-const StatisticsCounters = () => import(/* webpackChunkName: "components" */ '@/components/StatisticsCounters')
-const StatisticsRankings = () => import(/* webpackChunkName: "components" */ '@/components/StatisticsRankings')
-const StatisticsTrends = () => import(/* webpackChunkName: "components" */ '@/components/StatisticsTrends')
-const PipelineDetails = () => import(/* webpackChunkName: "components" */ '@/components/PipelineDetails')
-const PipelineBuilds = () => import(/* webpackChunkName: "components" */ '@/components/PipelineBuilds')
-const PipelineBuildDetails = () => import(/* webpackChunkName: "components" */ '@/components/PipelineBuildDetails')
-const PipelineBuildLogs = () => import(/* webpackChunkName: "components" */ '@/components/PipelineBuildLogs')
-const PipelineBuildManifest = () => import(/* webpackChunkName: "components" */ '@/components/PipelineBuildManifest')
-const PipelineStatistics = () => import(/* webpackChunkName: "components" */ '@/components/PipelineStatistics')
-const PipelineReleases = () => import(/* webpackChunkName: "components" */ '@/components/PipelineReleases')
-const PipelineReleaseDetails = () => import(/* webpackChunkName: "components" */ '@/components/PipelineReleaseDetails')
-const PipelineReleaseLogs = () => import(/* webpackChunkName: "components" */ '@/components/PipelineReleaseLogs')
-const Manifest = () => import(/* webpackChunkName: "components" */ '@/components/Manifest')
-const ManifestGenerator = () => import(/* webpackChunkName: "components" */ '@/components/ManifestGenerator')
-const ManifestValidator = () => import(/* webpackChunkName: "components" */ '@/components/ManifestValidator')
-const SecretEncrypter = () => import(/* webpackChunkName: "components" */ '@/components/SecretEncrypter')
+import Pipelines from '@/components/Pipelines'
+import PipelineDetails from '@/components/PipelineDetails'
+import PipelineBuilds from '@/components/PipelineBuilds'
+import PipelineBuildDetails from '@/components/PipelineBuildDetails'
+import PipelineBuildLogs from '@/components/PipelineBuildLogs'
+import PipelineBuildManifest from '@/components/PipelineBuildManifest'
+import PipelineReleases from '@/components/PipelineReleases'
+import PipelineReleaseDetails from '@/components/PipelineReleaseDetails'
+import PipelineReleaseLogs from '@/components/PipelineReleaseLogs'
+import PipelineStatistics from '@/components/PipelineStatistics'
+
+import Manifest from '@/components/Manifest'
+import ManifestGenerator from '@/components/ManifestGenerator'
+import ManifestValidator from '@/components/ManifestValidator'
+import SecretEncrypter from '@/components/SecretEncrypter'
+
+import StatisticsRankings from '@/components/StatisticsRankings'
+import Statistics from '@/components/Statistics'
+import StatisticsCounters from '@/components/StatisticsCounters'
+import StatisticsTrends from '@/components/StatisticsTrends'
+
+import Config from '@/components/Config'
 
 Vue.use(Router)
 

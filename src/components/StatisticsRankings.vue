@@ -24,10 +24,13 @@
 </template>
 
 <script>
+import StatsRankingTable from '@/components/StatsRankingTable'
+import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
+
 export default {
   components: {
-    'stats-ranking-table': () => import(/* webpackChunkName: "components" */ '@/components/StatsRankingTable'),
-    'b-form-select': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-select/form-select')
+    StatsRankingTable,
+    bFormSelect
   },
 
   data: function () {

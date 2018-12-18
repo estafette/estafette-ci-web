@@ -85,12 +85,17 @@
 </template>
 
 <script>
+import CommitLink from '@/components/CommitLink'
+import ReleaseBadge from '@/components/ReleaseBadge'
+import bPaginationNav from 'bootstrap-vue/es/components/pagination-nav/pagination-nav'
+import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
+
 export default {
   components: {
-    'commit-link': () => import(/* webpackChunkName: "components" */ '@/components/CommitLink'),
-    'release-badge': () => import(/* webpackChunkName: "components" */ '@/components/ReleaseBadge'),
-    'b-pagination-nav': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/pagination-nav/pagination-nav'),
-    'b-form-select': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-select/form-select')
+    CommitLink,
+    ReleaseBadge,
+    bPaginationNav,
+    bFormSelect
   },
 
   props: {

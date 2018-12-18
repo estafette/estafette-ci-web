@@ -86,17 +86,20 @@
 </template>
 
 <script>
-import vBToggle from 'bootstrap-vue/es/directives/toggle/toggle'
 import AnsiUp from 'ansi_up'
+import bCard from 'bootstrap-vue/es/components/card/card'
+import bCardHeader from 'bootstrap-vue/es/components/card/card-header'
+import bCollapse from 'bootstrap-vue/es/components/collapse/collapse'
+import bToggle from 'bootstrap-vue/es/directives/toggle/toggle'
 
 export default {
   components: {
-    'b-card': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/card/card'),
-    'b-card-header': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/card/card-header'),
-    'b-collapse': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/collapse/collapse')
+    bCard,
+    bCardHeader,
+    bCollapse
   },
   directives: {
-    'b-toggle': vBToggle
+    bToggle
   },
   props: {
     repoSource: String,

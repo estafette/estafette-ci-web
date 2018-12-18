@@ -8,11 +8,12 @@
 </template>
 
 <script>
+import Spinner from '@/components/Spinner'
 import upperFirst from 'lodash/upperFirst'
 
 export default {
   components: {
-    'spinner': () => import(/* webpackChunkName: "components" */ '@/components/Spinner'),
+    Spinner,
     'apexcharts': () => import(/* webpackChunkName: "vue-apexcharts" */ 'vue-apexcharts')
   },
   props: {
