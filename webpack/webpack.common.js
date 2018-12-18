@@ -14,7 +14,6 @@ module.exports = {
   output: {
     publicPath: '/',
     filename: 'static/js/[name].[contenthash].js',
-    chunkFilename: 'static/js/[id].[contenthash].js',
     path: path.resolve(__dirname, '..', 'dist')
   },
   resolve: {
@@ -32,14 +31,7 @@ module.exports = {
     sideEffects: true,
     runtimeChunk: 'single',
     splitChunks: {
-      chunks: 'all',
-      cacheGroups: {
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
-        }
-      }
+      chunks: 'all'
     }
   },
   stats: {

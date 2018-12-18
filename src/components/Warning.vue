@@ -5,11 +5,9 @@
 </template>
 
 <script>
-import VueMarkdown from 'vue-markdown'
-
 export default {
   components: {
-    'vue-markdown': VueMarkdown
+    'vue-markdown': () => import(/* webpackChunkName: "vue-markdown" */ 'vue-markdown')
   },
   props: {
     warning: Object

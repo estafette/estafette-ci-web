@@ -9,6 +9,11 @@
 
 <script>
 export default {
+  components: {
+    'b-modal': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/modal/modal'),
+    'b-btn': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/button/button')
+  },
+
   data: function () {
     return {
       refresh: true

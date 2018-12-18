@@ -88,8 +88,17 @@
 
 <script>
 import AnsiUp from 'ansi_up'
+import vBToggle from 'bootstrap-vue/es/directives/toggle/toggle'
 
 export default {
+  components: {
+    'b-card': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/card/card'),
+    'b-card-header': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/card/card-header'),
+    'b-collapse': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/collapse/collapse')
+  },
+  directives: {
+    'b-toggle': vBToggle
+  },
   props: {
     repoSource: String,
     repoOwner: String,

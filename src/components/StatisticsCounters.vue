@@ -39,10 +39,12 @@
 <script>
 export default {
   components: {
-    'stats-pipelines-count': () => import('@/components/StatsPipelinesCount'),
-    'stats-builds-count': () => import('@/components/StatsBuildsCount'),
-    'stats-releases-count': () => import('@/components/StatsReleasesCount')
+    'stats-pipelines-count': () => import(/* webpackChunkName: "stats-pipelines-count" */ '@/components/StatsPipelinesCount'),
+    'stats-builds-count': () => import(/* webpackChunkName: "stats-builds-count" */ '@/components/StatsBuildsCount'),
+    'stats-releases-count': () => import(/* webpackChunkName: "stats-releases-count" */ '@/components/StatsReleasesCount'),
+    'b-form-select': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-select/form-select')
   },
+
   data: function () {
     return {
       filter: {

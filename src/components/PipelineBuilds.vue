@@ -72,11 +72,12 @@
 <script>
 export default {
   components: {
-    'commit-link': () => import('@/components/CommitLink'),
-    'release-button': () => import('@/components/ReleaseButton'),
-    'rebuild-button': () => import('@/components/RebuildButton'),
-    'cancel-button': () => import('@/components/CancelButton'),
-    'release-badge-for-build': () => import('@/components/ReleaseBadgeForBuild')
+    'commit-link': () => import(/* webpackChunkName: "commit-link" */ '@/components/CommitLink'),
+    'release-button': () => import(/* webpackChunkName: "release-button" */ '@/components/ReleaseButton'),
+    'rebuild-button': () => import(/* webpackChunkName: "rebuild-button" */ '@/components/RebuildButton'),
+    'cancel-button': () => import(/* webpackChunkName: "cancel-button" */ '@/components/CancelButton'),
+    'release-badge-for-build': () => import(/* webpackChunkName: "release-badge-for-build" */ '@/components/ReleaseBadgeForBuild'),
+    'b-pagination-nav': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/pagination-nav/pagination-nav')
   },
 
   props: {

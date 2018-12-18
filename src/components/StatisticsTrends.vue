@@ -8,7 +8,7 @@
 <script>
 export default {
   components: {
-    'stats-adoption': () => import('@/components/StatsAdoption')
+    'stats-adoption': () => import(/* webpackChunkName: "stats-adoption" */ '@/components/StatsAdoption')
   }
 }
 </script>

@@ -15,9 +15,9 @@
 export default {
   name: 'App',
   components: {
-    'navigation-bar': () => import('@/components/NavigationBar'),
-    'site-footer': () => import('@/components/SiteFooter'),
-    'session-refresh-modal': () => import('@/components/SessionRefreshModal')
+    'navigation-bar': () => import(/* webpackChunkName: "navigation-bar" */ '@/components/NavigationBar'),
+    'site-footer': () => import(/* webpackChunkName: "site-footer" */ '@/components/SiteFooter'),
+    'session-refresh-modal': () => import(/* webpackChunkName: "session-refresh-modal" */ '@/components/SessionRefreshModal')
   },
   data: function () {
     return {

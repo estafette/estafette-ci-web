@@ -2,14 +2,13 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import Vuex from 'vuex'
-import BootstrapVue from 'bootstrap-vue'
 import VueAnalytics from 'vue-analytics'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueApexCharts from 'vue-apexcharts'
 import App from './App'
 import router from './router'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.css'
 import moment from 'moment'
 import 'moment/locale/en-il'
 import vueMoment from 'vue-moment'
@@ -242,8 +241,6 @@ Vue.axios.interceptors.response.use((response) => {
   }
   return Promise.reject(error)
 })
-
-Vue.use(BootstrapVue)
 
 // use vue-moment for rendering timestamps
 moment.locale('en-il')

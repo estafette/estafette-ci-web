@@ -12,6 +12,11 @@
 
 <script>
 export default {
+  components: {
+    'b-dropdown': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/dropdown/dropdown'),
+    'b-dropdown-header': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/dropdown/dropdown-header'),
+    'b-dropdown-item-button': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/dropdown/dropdown-item-button')
+  },
   props: {
     pipeline: Object,
     build: Object,

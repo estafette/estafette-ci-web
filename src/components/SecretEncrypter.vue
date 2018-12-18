@@ -23,16 +23,25 @@
         <h5>Use this in your manifest to hide secrets in plain sight!</h5>
         <div class="pre-wrapper">
           <pre class="bg-light p-3"><code>{{secret}}</code></pre>
-          <b-btn class="btn-clipboard" v-on:click="copy" v-b-tooltip.click title="Copied!">Copy</b-btn>
+          <b-button class="btn-clipboard" v-on:click="copy" v-b-tooltip.click title="Copied!">Copy</b-button>
         </div>
       </div>
     </div>
 </template>
 
 <script>
+import vBTooltip from 'bootstrap-vue/es/directives/tooltip/tooltip'
+
 export default {
   components: {
-    'spinner': () => import('@/components/Spinner')
+    'spinner': () => import(/* webpackChunkName: "spinner" */ '@/components/Spinner'),
+    'b-form': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form/form'),
+    'b-form-checkbox': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-checkbox/form-checkbox'),
+    'b-form-textarea': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-textarea/form-textarea'),
+    'b-button': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/button/button')
+  },
+  directives: {
+    'b-tooltip': vBTooltip
   },
   data: function () {
     return {

@@ -87,8 +87,10 @@
 <script>
 export default {
   components: {
-    'commit-link': () => import('@/components/CommitLink'),
-    'release-badge': () => import('@/components/ReleaseBadge')
+    'commit-link': () => import(/* webpackChunkName: "commit-link" */ '@/components/CommitLink'),
+    'release-badge': () => import(/* webpackChunkName: "release-badge" */ '@/components/ReleaseBadge'),
+    'b-pagination-nav': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/pagination-nav/pagination-nav'),
+    'b-form-select': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-select/form-select')
   },
 
   props: {

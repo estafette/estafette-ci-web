@@ -23,6 +23,15 @@
 
 <script>
 export default {
+  components: {
+    'b-navbar': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/navbar/navbar'),
+    'b-navbar-brand': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/navbar/navbar-brand'),
+    'b-navbar-toggle': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/navbar/navbar-toggle'),
+    'b-navbar-nav': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/navbar/navbar-nav'),
+    'b-nav-item': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/nav/nav-item'),
+    'b-nav-text': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/nav/nav-text'),
+    'b-collapse': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/collapse/collapse')
+  },
   props: {
     user: Object
   }

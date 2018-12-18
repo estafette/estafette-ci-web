@@ -74,12 +74,12 @@
 <script>
 export default {
   components: {
-    'commit-link': () => import('@/components/CommitLink'),
-    'release-badge': () => import('@/components/ReleaseBadge'),
-    'release-button': () => import('@/components/ReleaseButton'),
-    'rebuild-button': () => import('@/components/RebuildButton'),
-    'cancel-button': () => import('@/components/CancelButton'),
-    'pipeline-build-warnings': () => import('@/components/PipelineBuildWarnings')
+    'commit-link': () => import(/* webpackChunkName: "commit-link" */ '@/components/CommitLink'),
+    'release-badge': () => import(/* webpackChunkName: "release-badge" */ '@/components/ReleaseBadge'),
+    'release-button': () => import(/* webpackChunkName: "release-button" */ '@/components/ReleaseButton'),
+    'rebuild-button': () => import(/* webpackChunkName: "rebuild-button" */ '@/components/RebuildButton'),
+    'cancel-button': () => import(/* webpackChunkName: "cancel-button" */ '@/components/CancelButton'),
+    'pipeline-build-warnings': () => import(/* webpackChunkName: "pipeline-build-warnings" */ '@/components/PipelineBuildWarnings')
   },
   props: {
     repoSource: String,

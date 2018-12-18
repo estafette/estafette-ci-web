@@ -7,7 +7,7 @@
 <script>
 export default {
   components: {
-    'warning': () => import('@/components/Warning')
+    'warning': () => import(/* webpackChunkName: "warning" */ '@/components/Warning')
   },
 
   props: {

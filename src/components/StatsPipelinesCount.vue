@@ -8,7 +8,8 @@
 </template>
 
 <script>
-import TweenLite from 'gsap/TweenMax'
+import TweenLite from 'gsap/TweenLite'
+import 'gsap/CSSPlugin'
 
 export default {
   props: {

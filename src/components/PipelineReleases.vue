@@ -59,6 +59,9 @@
 
 <script>
 export default {
+  components: {
+    'b-pagination-nav': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/pagination-nav/pagination-nav')
+  },
   props: {
     repoSource: String,
     repoOwner: String,

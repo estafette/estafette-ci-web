@@ -22,16 +22,25 @@
 
         <div class="pre-wrapper">
           <pre class="bg-light p-3"><code>{{manifest}}</code></pre>
-          <b-btn class="btn-clipboard" v-on:click="copy" v-b-tooltip.click title="Copied!">Copy</b-btn>
+          <b-button class="btn-clipboard" v-on:click="copy" v-b-tooltip.click title="Copied!">Copy</b-button>
         </div>
       </div>
     </div>
 </template>
 
 <script>
+import vBTooltip from 'bootstrap-vue/es/directives/tooltip/tooltip'
+
 export default {
   components: {
-    'spinner': () => import('@/components/Spinner')
+    'spinner': () => import(/* webpackChunkName: "spinner" */ '@/components/Spinner'),
+    'b-form': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form/form'),
+    'b-form-select': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-select/form-select'),
+    'b-form-input': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/form-input/form-input'),
+    'b-button': () => import(/* webpackChunkName: "bootstrap-vue" */ 'bootstrap-vue/es/components/button/button')
+  },
+  directives: {
+    'b-tooltip': vBTooltip
   },
   props: {
     query: Object

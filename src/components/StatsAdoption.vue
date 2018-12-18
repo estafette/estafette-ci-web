@@ -12,8 +12,8 @@ import upperFirst from 'lodash/upperFirst'
 
 export default {
   components: {
-    'spinner': () => import('@/components/Spinner'),
-    'apexcharts': () => import('vue-apexcharts')
+    'spinner': () => import(/* webpackChunkName: "spinner" */ '@/components/Spinner'),
+    'apexcharts': () => import(/* webpackChunkName: "vue-apexcharts" */ 'vue-apexcharts')
   },
   props: {
     type: String,
