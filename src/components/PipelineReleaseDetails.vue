@@ -51,7 +51,12 @@
 </template>
 
 <script>
+import CancelButton from '@/components/CancelButton'
+
 export default {
+  components: {
+    CancelButton
+  },
   props: {
     repoSource: String,
     repoOwner: String,
