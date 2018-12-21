@@ -1,59 +1,173 @@
 <template>
   <div class="m-3">
-
     <div class="row">
-      <div class="col-12 col-md-8 col-lg mb-2 text-center" id="status-filters">
-        <router-link :to="{ query: { status: 'all', page: 1 } }" active-class="router-link-active" class="btn btn-outline-primary btn-sm mb-1" :class="{ active: filter.status === 'all' }">All</router-link>
-        <router-link :to="{ query: { status: 'succeeded', page: 1 } }" active-class="router-link-active" class="btn btn-outline-success btn-sm mb-1" :class="{ active: filter.status === 'succeeded' }">Succeeded</router-link>
-        <router-link :to="{ query: { status: 'failed', page: 1 } }" active-class="router-link-active" class="btn btn-outline-danger btn-sm mb-1" :class="{ active: filter.status === 'failed' }">Failed</router-link>
-        <router-link :to="{ query: { status: 'running', page: 1 } }" active-class="router-link-active" class="btn btn-outline-warning btn-sm mb-1" :class="{ active: filter.status === 'running' }">Running</router-link>
-        <router-link :to="{ query: { status: 'canceled', page: 1 } }" active-class="router-link-active" class="btn btn-outline-secondary btn-sm mb-1" :class="{ active: filter.status === 'canceled' }">Canceled</router-link>
+      <div
+        class="col-12 col-md-8 col-lg mb-2 text-center"
+        id="status-filters"
+      >
+        <router-link
+          :to="{ query: { status: 'all', page: 1 } }"
+          active-class="router-link-active"
+          class="btn btn-outline-primary btn-sm mb-1"
+          :class="{ active: filter.status === 'all' }"
+        >
+          All
+        </router-link>
+        <router-link
+          :to="{ query: { status: 'succeeded', page: 1 } }"
+          active-class="router-link-active"
+          class="btn btn-outline-success btn-sm mb-1"
+          :class="{ active: filter.status === 'succeeded' }"
+        >
+          Succeeded
+        </router-link>
+        <router-link
+          :to="{ query: { status: 'failed', page: 1 } }"
+          active-class="router-link-active"
+          class="btn btn-outline-danger btn-sm mb-1"
+          :class="{ active: filter.status === 'failed' }"
+        >
+          Failed
+        </router-link>
+        <router-link
+          :to="{ query: { status: 'running', page: 1 } }"
+          active-class="router-link-active"
+          class="btn btn-outline-warning btn-sm mb-1"
+          :class="{ active: filter.status === 'running' }"
+        >
+          Running
+        </router-link>
+        <router-link
+          :to="{ query: { status: 'canceled', page: 1 } }"
+          active-class="router-link-active"
+          class="btn btn-outline-secondary btn-sm mb-1"
+          :class="{ active: filter.status === 'canceled' }"
+        >
+          Canceled
+        </router-link>
       </div>
     </div>
 
     <div class="row rounded border p-2 mt-2 mr-0 mb-2 ml-0 font-weight-bold">
-      <div class="col-6 col-md-4 col-xl-2">Name</div>
-      <div class="col-6 col-md-4 col-xl-2">Version</div>
-      <div class="col-6 col-md-4 col-xl-1">Status</div>
-      <div class="col-6 col-md-4 col-xl-2 d-none d-md-block">Released</div>
-      <div class="col-6 col-md-4 col-xl-3 d-none d-xl-block">By</div>
-      <div v-if="user && user.authenticated" class="col-xl-2 d-none d-xl-block">Actions</div>
+      <div class="col-6 col-md-4 col-xl-2">
+        Name
+      </div>
+      <div class="col-6 col-md-4 col-xl-2">
+        Version
+      </div>
+      <div class="col-6 col-md-4 col-xl-1">
+        Status
+      </div>
+      <div class="col-6 col-md-4 col-xl-2 d-none d-md-block">
+        Released
+      </div>
+      <div class="col-6 col-md-4 col-xl-3 d-none d-xl-block">
+        By
+      </div>
+      <div
+        v-if="user && user.authenticated"
+        class="col-xl-2 d-none d-xl-block"
+      >
+        Actions
+      </div>
     </div>
 
-    <transition-group name="list-complete" tag="div">
-    <router-link v-for="release in releases" v-bind:key="release.id" :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}" tag="div" class="row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 list-complete-item" :class="release.releaseStatus | bootstrapClass('border')">
-
-        <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="release.name">
-          <div class="small text-black-50 mb-1 d-xl-none">Name</div>
-          {{release.name}}<span v-if="release.action"> / {{release.action}}</span>
+    <transition-group
+      name="list-complete"
+      tag="div"
+    >
+      <router-link
+        v-for="release in releases"
+        :key="release.id"
+        :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
+        tag="div"
+        class="row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 list-complete-item"
+        :class="release.releaseStatus | bootstrapClass('border')"
+      >
+        <div
+          class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
+          :title="release.name"
+        >
+          <div class="small text-black-50 mb-1 d-xl-none">
+            Name
+          </div>
+          {{ release.name }}<span v-if="release.action">
+            / {{ release.action }}
+          </span>
         </div>
-        <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="release.releaseVersion">
-          <div class="small text-black-50 mb-1 d-xl-none">Version</div>
-          {{release.releaseVersion}}
+        <div
+          class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
+          :title="release.releaseVersion"
+        >
+          <div class="small text-black-50 mb-1 d-xl-none">
+            Version
+          </div>
+          {{ release.releaseVersion }}
         </div>
         <div class="mb-2 col-6 col-md-4 col-xl-1 align-middle">
-          <div class="small text-black-50 mb-1 d-xl-none">Status</div>
+          <div class="small text-black-50 mb-1 d-xl-none">
+            Status
+          </div>
           <div class="progress mt-1">
-              <div class="progress-bar" :class="[$options.filters.bootstrapClass(release.releaseStatus,'bg'), $options.filters.stripedProgressBarClass(release.releaseStatus)]" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" :title="release.releaseStatus"></div>
+            <div
+              class="progress-bar"
+              :class="[$options.filters.bootstrapClass(release.releaseStatus,'bg'), $options.filters.stripedProgressBarClass(release.releaseStatus)]"
+              role="progressbar"
+              style="width: 100%"
+              aria-valuenow="100"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              :title="release.releaseStatus"
+            />
           </div>
         </div>
-        <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="$options.filters.formatDuration(release.duration) + ', ' + $options.filters.formatDatetime(release.insertedAt)">
-          <div class="small text-black-50 mb-1 d-xl-none">Released</div>
-          <span v-if="release.duration > 0" :class="release.duration | colorDurationClass">{{release.duration | formatDuration}}</span> {{release.insertedAt | formatDatetime}}
+        <div
+          class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
+          :title="$options.filters.formatDuration(release.duration) + ', ' + $options.filters.formatDatetime(release.insertedAt)"
+        >
+          <div class="small text-black-50 mb-1 d-xl-none">
+            Released
+          </div>
+          <span
+            v-if="release.duration > 0"
+            :class="release.duration | colorDurationClass"
+          >
+            {{ release.duration | formatDuration }}
+          </span> {{ release.insertedAt | formatDatetime }}
         </div>
-        <div class="mb-2 col-6 col-md-4 col-xl-3 text-truncate" :title="release.triggeredBy">
-          <div class="small text-black-50 mb-1 d-xl-none">By</div>
-          {{release.triggeredBy}}
+        <div
+          class="mb-2 col-6 col-md-4 col-xl-3 text-truncate"
+          :title="release.triggeredBy"
+        >
+          <div class="small text-black-50 mb-1 d-xl-none">
+            By
+          </div>
+          {{ release.triggeredBy }}
         </div>
-        <div v-if="user && user.authenticated && release && release.releaseStatus === 'running'" class="mb-2 col-6 col-md-4 col-xl-2">
-          <div class="small text-black-50 mb-1 d-xl-none">Actions</div>
-          <cancel-button :release="release" :user="user" />
+        <div
+          v-if="user && user.authenticated && release && release.releaseStatus === 'running'"
+          class="mb-2 col-6 col-md-4 col-xl-2"
+        >
+          <div class="small text-black-50 mb-1 d-xl-none">
+            Actions
+          </div>
+          <cancel-button
+            :release="release"
+            :user="user"
+          />
         </div>
+      </router-link>
+    </transition-group>
 
-     </router-link>
-     </transition-group>
-
-    <b-pagination-nav size="md" :link-gen="paginationLinkGenerator" use-router :number-of-pages="pagination.totalPages" v-model="pagination.page" align="center" hide-goto-end-buttons/>
+    <b-pagination-nav
+      size="md"
+      :link-gen="paginationLinkGenerator"
+      use-router
+      :number-of-pages="pagination.totalPages"
+      v-model="pagination.page"
+      align="center"
+      hide-goto-end-buttons
+    />
   </div>
 </template>
 
@@ -65,12 +179,30 @@ export default {
     bPaginationNav
   },
   props: {
-    repoSource: String,
-    repoOwner: String,
-    repoName: String,
-    query: Object,
-    user: Object,
-    pipeline: Object
+    repoSource: {
+      type: String,
+      default: null
+    },
+    repoOwner: {
+      type: String,
+      default: null
+    },
+    repoName: {
+      type: String,
+      default: null
+    },
+    query: {
+      type: Object,
+      default: null
+    },
+    user: {
+      type: Object,
+      default: null
+    },
+    pipeline: {
+      type: Object,
+      default: null
+    }
   },
   data: function () {
     return {

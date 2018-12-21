@@ -1,16 +1,23 @@
 <template>
-<div class="alert rounded border" :class="[alertClass, borderClass]" role="alert">
-  <mark-down>{{warning.message}}</mark-down>
-</div>
+  <div
+    class="alert rounded border"
+    :class="[alertClass, borderClass]"
+    role="alert"
+  >
+    <mark-down>{{ warning.message }}</mark-down>
+  </div>
 </template>
 
 <script>
 export default {
   components: {
-    'mark-down': () => import(/* webpackChunkName: "marked" */ '@/components/MarkDown')
+    'MarkDown': () => import(/* webpackChunkName: "marked" */ '@/components/MarkDown')
   },
   props: {
-    warning: Object
+    warning: {
+      type: Object,
+      default: null
+    }
   },
   data: function () {
     return {

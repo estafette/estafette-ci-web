@@ -1,6 +1,13 @@
 <template>
-  <div class="col m-0 mt-3" v-if="warnings && warnings.length > 0">
-    <warning v-for="(warning, index) in warnings" v-bind:key="index" :warning="warning" />
+  <div
+    class="col m-0 mt-3"
+    v-if="warnings && warnings.length > 0"
+  >
+    <warning
+      v-for="(warning, index) in warnings"
+      :key="index"
+      :warning="warning"
+    />
   </div>
 </template>
 
@@ -12,7 +19,10 @@ export default {
     Warning
   },
   props: {
-    pipeline: Object
+    pipeline: {
+      type: Object,
+      default: null
+    }
   },
   data: function () {
     return {

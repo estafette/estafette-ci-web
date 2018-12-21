@@ -1,10 +1,21 @@
 <template>
-    <div class="col-12 col-xxl-6 p-0 graph">
-      <div class="rounded border" :class="`border-${status}`">
-        <spinner v-if="series[0].data.length == 0" :color="status"/>
-        <apexcharts width="100%" :type="options.type" :options="options" :series="series"></apexcharts>
-      </div>
+  <div class="col-12 col-xxl-6 p-0 graph">
+    <div
+      class="rounded border"
+      :class="`border-${status}`"
+    >
+      <spinner
+        v-if="series[0].data.length == 0"
+        :color="status"
+      />
+      <apexcharts
+        width="100%"
+        :type="options.type"
+        :options="options"
+        :series="series"
+      />
     </div>
+  </div>
 </template>
 
 <script>
@@ -17,8 +28,14 @@ export default {
     'apexcharts': () => import(/* webpackChunkName: "vue-apexcharts" */ 'vue-apexcharts')
   },
   props: {
-    type: String,
-    status: String
+    type: {
+      type: String,
+      default: null
+    },
+    status: {
+      type: String,
+      default: null
+    }
   },
 
   data: function () {

@@ -1,5 +1,5 @@
 <template>
-  <div v-html="markedContent"></div>
+  <div v-html="markedContent" />
 </template>
 
 <script>

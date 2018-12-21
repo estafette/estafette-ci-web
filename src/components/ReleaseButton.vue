@@ -1,11 +1,41 @@
 <template>
-  <b-dropdown size="sm" v-if="user && user.authenticated && pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'" id="releaseAction" text="Release to..." variant="outline-dark">
-    <div v-for="releaseTarget in pipeline.releaseTargets" v-bind:key="releaseTarget.name">
-      <div role="group" v-if="hasActions(releaseTarget)" :aria-labelledby="releaseTarget.name">
-        <b-dropdown-header :id="releaseTarget.name">{{releaseTarget.name}}:</b-dropdown-header>
-        <b-dropdown-item-button v-for="action in releaseTarget.actions" v-bind:key="releaseTarget.name+'-'+action.name" v-on:click.stop="startRelease(releaseTarget, action, $event)" :disabled="releaseTargetDisabled(releaseTarget)" :aria-describedby="releaseTarget.name">- {{action.name}}</b-dropdown-item-button>
+  <b-dropdown
+    size="sm"
+    v-if="user && user.authenticated && pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'"
+    id="releaseAction"
+    text="Release to..."
+    variant="outline-dark"
+  >
+    <div
+      v-for="releaseTarget in pipeline.releaseTargets"
+      :key="releaseTarget.name"
+    >
+      <div
+        role="group"
+        v-if="hasActions(releaseTarget)"
+        :aria-labelledby="releaseTarget.name"
+      >
+        <b-dropdown-header :id="releaseTarget.name">
+          {{ releaseTarget.name }}:
+        </b-dropdown-header>
+        <b-dropdown-item-button
+          v-for="action in releaseTarget.actions"
+          :key="releaseTarget.name+'-'+action.name"
+          @click.stop="startRelease(releaseTarget, action, $event)"
+          :disabled="releaseTargetDisabled(releaseTarget)"
+          :aria-describedby="releaseTarget.name"
+        >
+          - {{ action.name }}
+        </b-dropdown-item-button>
       </div>
-      <b-dropdown-item-button v-if="!hasActions(releaseTarget)" v-bind:key="releaseTarget.name" v-on:click.stop="startRelease(releaseTarget, null, $event)" :disabled="releaseTargetDisabled(releaseTarget)">{{releaseTarget.name}}</b-dropdown-item-button>
+      <b-dropdown-item-button
+        v-if="!hasActions(releaseTarget)"
+        :key="releaseTarget.name"
+        @click.stop="startRelease(releaseTarget, null, $event)"
+        :disabled="releaseTargetDisabled(releaseTarget)"
+      >
+        {{ releaseTarget.name }}
+      </b-dropdown-item-button>
     </div>
   </b-dropdown>
 </template>
@@ -22,9 +52,18 @@ export default {
     bDropdownItemButton
   },
   props: {
-    pipeline: Object,
-    build: Object,
-    user: Object
+    pipeline: {
+      type: Object,
+      default: null
+    },
+    build: {
+      type: Object,
+      default: null
+    },
+    user: {
+      type: Object,
+      default: null
+    }
   },
   data: function () {
     return {

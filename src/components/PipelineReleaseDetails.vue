@@ -1,52 +1,138 @@
 <template>
   <div>
-    <nav class="m-3" aria-label="breadcrumb">
+    <nav
+      class="m-3"
+      aria-label="breadcrumb"
+    >
       <ol class="breadcrumb flex-nowrap">
-        <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'Pipelines'}">Pipelines</router-link></li>
-        <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'PipelineBuilds', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}"><span class="d-none d-md-inline">{{repoSource}}/{{repoOwner}}/</span>{{repoName}}</router-link></li>
-        <li class="breadcrumb-item text-truncate"><router-link :to="{ name: 'PipelineReleases', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}">releases</router-link></li>
-        <li class="breadcrumb-item text-truncate active" aria-current="page" v-if="release" >{{release.releaseVersion}} to {{release.name}}<span v-if="release.action"> / {{release.action}}</span></li>
+        <li class="breadcrumb-item text-truncate">
+          <router-link :to="{ name: 'Pipelines'}">
+            Pipelines
+          </router-link>
+        </li>
+        <li class="breadcrumb-item text-truncate">
+          <router-link :to="{ name: 'PipelineBuilds', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}">
+            <span class="d-none d-md-inline">
+              {{ repoSource }}/{{ repoOwner }}/
+            </span>{{ repoName }}
+          </router-link>
+        </li>
+        <li class="breadcrumb-item text-truncate">
+          <router-link :to="{ name: 'PipelineReleases', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}">
+            releases
+          </router-link>
+        </li>
+        <li
+          class="breadcrumb-item text-truncate active"
+          aria-current="page"
+          v-if="release"
+        >
+          {{ release.releaseVersion }} to {{ release.name }}<span v-if="release.action">
+            / {{ release.action }}
+          </span>
+        </li>
       </ol>
     </nav>
 
-    <div v-if="release" class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-3 mb-2 ml-3" :class="release.releaseStatus | bootstrapClass('border')">
-      <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="release.name">
-        <div class="small text-muted mb-1">Name</div>
-        {{release.name}}<span v-if="release.action"> / {{release.action}}</span>
+    <div
+      v-if="release"
+      class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-3 mb-2 ml-3"
+      :class="release.releaseStatus | bootstrapClass('border')"
+    >
+      <div
+        class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
+        :title="release.name"
+      >
+        <div class="small text-muted mb-1">
+          Name
+        </div>
+        {{ release.name }}<span v-if="release.action">
+          / {{ release.action }}
+        </span>
       </div>
-      <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="release.releaseVersion">
-        <div class="small text-muted mb-1">Version</div>
-        {{release.releaseVersion}}
+      <div
+        class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
+        :title="release.releaseVersion"
+      >
+        <div class="small text-muted mb-1">
+          Version
+        </div>
+        {{ release.releaseVersion }}
       </div>
       <div class="mb-2 col-6 col-md-4 col-xl-2 align-middle">
-        <div class="small text-muted mb-1">Status</div>
-        <router-link :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}" tag="div" class="progress mt-2 clickable">
-          <div class="progress-bar" :class="[$options.filters.bootstrapClass(release.releaseStatus,'bg'), $options.filters.stripedProgressBarClass(release.releaseStatus)]" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" :title="release.releaseStatus"></div>
+        <div class="small text-muted mb-1">
+          Status
+        </div>
+        <router-link
+          :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
+          tag="div"
+          class="progress mt-2 clickable"
+        >
+          <div
+            class="progress-bar"
+            :class="[$options.filters.bootstrapClass(release.releaseStatus,'bg'), $options.filters.stripedProgressBarClass(release.releaseStatus)]"
+            role="progressbar"
+            style="width: 100%"
+            aria-valuenow="100"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            :title="release.releaseStatus"
+          />
         </router-link>
       </div>
-      <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="$options.filters.formatDuration(release.duration) + ', ' + $options.filters.formatDatetime(release.insertedAt)">
-        <div class="small text-muted mb-1">Released</div>
-        <span v-if="release.duration > 0" :class="release.duration | colorDurationClass">{{release.duration | formatDuration}}</span> {{release.insertedAt | formatDatetime}}
+      <div
+        class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
+        :title="$options.filters.formatDuration(release.duration) + ', ' + $options.filters.formatDatetime(release.insertedAt)"
+      >
+        <div class="small text-muted mb-1">
+          Released
+        </div>
+        <span
+          v-if="release.duration > 0"
+          :class="release.duration | colorDurationClass"
+        >
+          {{ release.duration | formatDuration }}
+        </span> {{ release.insertedAt | formatDatetime }}
       </div>
-      <div class="mb-2 col-6 col-md-4 col-xl-2 text-truncate" :title="release.triggeredBy">
-        <div class="small text-muted mb-1">By</div>
-        {{release.triggeredBy}}
+      <div
+        class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
+        :title="release.triggeredBy"
+      >
+        <div class="small text-muted mb-1">
+          By
+        </div>
+        {{ release.triggeredBy }}
       </div>
 
-      <div v-if="user && user.authenticated && release && release.releaseStatus === 'running'" class="mb-2 col-6 col-md-4 col-xl-2">
-        <div class="small text-black-50 mb-1">Actions</div>
-        <cancel-button :release="release" :user="user" />
+      <div
+        v-if="user && user.authenticated && release && release.releaseStatus === 'running'"
+        class="mb-2 col-6 col-md-4 col-xl-2"
+      >
+        <div class="small text-black-50 mb-1">
+          Actions
+        </div>
+        <cancel-button
+          :release="release"
+          :user="user"
+        />
       </div>
-
     </div>
 
     <ul class="nav nav-tabs m-3">
       <li class="nav-item">
-        <router-link :to="{ name: 'PipelineReleaseLogs', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName, releaseID: releaseID }}" class="nav-link">Logs</router-link>
+        <router-link
+          :to="{ name: 'PipelineReleaseLogs', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName, releaseID: releaseID }}"
+          class="nav-link"
+        >
+          Logs
+        </router-link>
       </li>
     </ul>
 
-    <router-view :release="release" v-if="release"/>
+    <router-view
+      :release="release"
+      v-if="release"
+    />
   </div>
 </template>
 
@@ -58,11 +144,26 @@ export default {
     CancelButton
   },
   props: {
-    repoSource: String,
-    repoOwner: String,
-    repoName: String,
-    releaseID: String,
-    user: Object
+    repoSource: {
+      type: String,
+      default: null
+    },
+    repoOwner: {
+      type: String,
+      default: null
+    },
+    repoName: {
+      type: String,
+      default: null
+    },
+    releaseID: {
+      type: String,
+      default: null
+    },
+    user: {
+      type: Object,
+      default: null
+    }
   },
   data: function () {
     return {

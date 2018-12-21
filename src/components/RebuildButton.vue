@@ -1,12 +1,24 @@
 <template>
-  <div v-if="user.authenticated && build && (build.buildStatus === 'failed' || build.buildStatus === 'canceled')" class="btn btn-outline-success btn-sm" v-on:click.stop="rebuild">Rebuild</div>
+  <div
+    v-if="user.authenticated && build && (build.buildStatus === 'failed' || build.buildStatus === 'canceled')"
+    class="btn btn-outline-success btn-sm"
+    @click.stop="rebuild"
+  >
+    Rebuild
+  </div>
 </template>
 
 <script>
 export default {
   props: {
-    build: Object,
-    user: Object
+    build: {
+      type: Object,
+      default: null
+    },
+    user: {
+      type: Object,
+      default: null
+    }
   },
   data: function () {
     return {

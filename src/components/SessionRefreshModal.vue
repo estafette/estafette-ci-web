@@ -1,10 +1,26 @@
 <template>
-    <b-modal ref="sessionRefreshModal" centered hide-footer hide-header hide-header-close no-close-on-esc no-close-on-backdrop v-model="modalVisible">
-      <div class="d-block text-center">
-        <h3>Your session has expired. Please refresh!</h3>
-      </div>
-      <b-button class="mt-3" variant="outline-danger" block @click="refreshSession">Refresh session</b-button>
-    </b-modal>
+  <b-modal
+    ref="sessionRefreshModal"
+    centered
+    hide-footer
+    hide-header
+    hide-header-close
+    no-close-on-esc
+    no-close-on-backdrop
+    v-model="modalVisible"
+  >
+    <div class="d-block text-center">
+      <h3>Your session has expired. Please refresh!</h3>
+    </div>
+    <b-button
+      class="mt-3"
+      variant="outline-danger"
+      block
+      @click="refreshSession"
+    >
+      Refresh session
+    </b-button>
+  </b-modal>
 </template>
 
 <script>

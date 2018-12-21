@@ -1,32 +1,71 @@
 <template>
-    <div class="m-3 p-3">
-      <b-form @submit="onSubmit" autocomplete="off">
-        <label for="base64">Base64 encode <span class="text-secondary">(this is needed if you use it as a Kubernetes secret)</span></label>
-        <b-form-checkbox id="base64" v-model="form.base64" />
+  <div class="m-3 p-3">
+    <b-form
+      @submit="onSubmit"
+      autocomplete="off"
+    >
+      <label for="base64">
+        Base64 encode <span class="text-secondary">
+          (this is needed if you use it as a Kubernetes secret)
+        </span>
+      </label>
+      <b-form-checkbox
+        id="base64"
+        v-model="form.base64"
+      />
 
-        <label for="double">Double encrypt <span class="text-secondary">(this encrypts the secret envelope a second time for injecting it into Estafette's configmap)</span></label>
-        <b-form-checkbox id="double" v-model="form.double" />
+      <label for="double">
+        Double encrypt <span class="text-secondary">
+          (this encrypts the secret envelope a second time for injecting it into Estafette's configmap)
+        </span>
+      </label>
+      <b-form-checkbox
+        id="double"
+        v-model="form.double"
+      />
 
-        <label for="value">Value to encrypt</label>
-        <b-form-textarea id="value" v-model="form.value"
-                        placeholder="Paste your value to be eencrypted"
-                        :rows="5" class="border bg-light"></b-form-textarea>
+      <label for="value">
+        Value to encrypt
+      </label>
+      <b-form-textarea
+        id="value"
+        v-model="form.value"
+        placeholder="Paste your value to be eencrypted"
+        :rows="5"
+        class="border bg-light"
+      />
 
-        <b-button type="submit" variant="primary" class="mt-3">Encrypt</b-button>
-      </b-form>
+      <b-button
+        type="submit"
+        variant="primary"
+        class="mt-3"
+      >
+        Encrypt
+      </b-button>
+    </b-form>
 
-      <div v-if="encrypting">
-        <spinner color="secondary"/>
-      </div>
+    <div v-if="encrypting">
+      <spinner color="secondary" />
+    </div>
 
-      <div v-if="secret" class="mt-4">
-        <h5>Use this in your manifest to hide secrets in plain sight!</h5>
-        <div class="pre-wrapper">
-          <pre class="bg-light p-3"><code>{{secret}}</code></pre>
-          <b-button class="btn-clipboard" v-on:click="copy" v-b-tooltip.click title="Copied!">Copy</b-button>
-        </div>
+    <div
+      v-if="secret"
+      class="mt-4"
+    >
+      <h5>Use this in your manifest to hide secrets in plain sight!</h5>
+      <div class="pre-wrapper">
+        <pre class="bg-light p-3"><code>{{ secret }}</code></pre>
+        <b-button
+          class="btn-clipboard"
+          @click="copy"
+          v-b-tooltip.click
+          title="Copied!"
+        >
+          Copy
+        </b-button>
       </div>
     </div>
+  </div>
 </template>
 
 <script>

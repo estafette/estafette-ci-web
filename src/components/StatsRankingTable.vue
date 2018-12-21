@@ -1,31 +1,47 @@
 <template>
   <div>
-    <h1 class="text-center" :class="`text-${status}`">Most {{type}}</h1>
+    <h1
+      class="text-center"
+      :class="`text-${status}`"
+    >
+      Most {{ type }}
+    </h1>
     <table class="table">
       <thead>
         <tr>
           <th>#</th>
           <th>Pipeline</th>
-          <th>{{type | capitalize}}</th>
+          <th>{{ type | capitalize }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(row, index) in rows" v-bind:key="index">
+        <tr
+          v-for="(row, index) in rows"
+          :key="index"
+        >
           <td>
             {{ index + 1 + (pagination.page-1) * pagination.size }}
           </td>
           <td>
-            <span class="text-muted d-none d-sm-inline">{{row.repo_source}}/{{row.repo_owner}}/</span><strong>{{row.repo_name}}</strong>
+            <span class="text-muted d-none d-sm-inline">
+              {{ row.repo_source }}/{{ row.repo_owner }}/
+            </span><strong>{{ row.repo_name }}</strong>
           </td>
           <td>
-            {{row.nr_records}}
+            {{ row.nr_records }}
           </td>
         </tr>
       </tbody>
     </table>
 
-    <b-pagination size="md" :total-rows="pagination.totalItems" :per-page="pagination.size" v-model="pagination.page" align="center" hide-goto-end-buttons/>
-
+    <b-pagination
+      size="md"
+      :total-rows="pagination.totalItems"
+      :per-page="pagination.size"
+      v-model="pagination.page"
+      align="center"
+      hide-goto-end-buttons
+    />
   </div>
 </template>
 
@@ -37,9 +53,18 @@ export default {
     bPagination
   },
   props: {
-    filter: Object,
-    type: String,
-    status: String
+    filter: {
+      type: Object,
+      default: null
+    },
+    type: {
+      type: String,
+      default: null
+    },
+    status: {
+      type: String,
+      default: null
+    }
   },
 
   data: function () {

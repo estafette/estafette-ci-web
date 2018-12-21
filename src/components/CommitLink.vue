@@ -1,11 +1,21 @@
 <template>
-  <a :href="commitURL()" target="_blank" class="text-dark" v-on:click.stop>{{build.repoRevision | gitHash}}</a>
+  <a
+    :href="commitURL()"
+    target="_blank"
+    class="text-dark"
+    @click.stop
+  >
+    {{ build.repoRevision | gitHash }}
+  </a>
 </template>
 
 <script>
 export default {
   props: {
-    build: Object
+    build: {
+      type: Object,
+      default: null
+    }
   },
   methods: {
     commitURL: function () {

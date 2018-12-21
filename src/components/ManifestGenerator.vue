@@ -1,31 +1,71 @@
 <template>
-    <div class="m-3 p-3">
-      <b-form @submit="onSubmit" autocomplete="off">
-        <label :for="`template-select`">Template</label>
-        <b-form-select v-if="templatesOptions.length > 0" :id="`template-select`" v-model="form.template" :options="templatesOptions" v-on:change="setTemplate" class="border-primary text-primary" />
+  <div class="m-3 p-3">
+    <b-form
+      @submit="onSubmit"
+      autocomplete="off"
+    >
+      <label :for="`template-select`">
+        Template
+      </label>
+      <b-form-select
+        v-if="templatesOptions.length > 0"
+        :id="`template-select`"
+        v-model="form.template"
+        :options="templatesOptions"
+        @change="setTemplate"
+        class="border-primary text-primary"
+      />
 
-        <div v-for="placeholder in placeholders" v-bind:key="placeholder.name" class="mt-3">
-          <label :for="`placeholder-${placeholder.name}`">{{placeholder.name | splitCamelcase}}</label>
-          <b-form-input :id="`placeholder-${placeholder.name}`" v-model="form.placeholders[placeholder.name]" type="text" :placeholder="'Enter ' + $options.filters.splitCamelcase(placeholder.name)"></b-form-input>
-        </div>
-
-        <b-button v-if="form.template" type="submit" variant="primary" class="mt-3">Generate</b-button>
-      </b-form>
-
-      <div v-if="generating">
-        <spinner color="secondary"/>
+      <div
+        v-for="placeholder in placeholders"
+        :key="placeholder.name"
+        class="mt-3"
+      >
+        <label :for="`placeholder-${placeholder.name}`">
+          {{ placeholder.name | splitCamelcase }}
+        </label>
+        <b-form-input
+          :id="`placeholder-${placeholder.name}`"
+          v-model="form.placeholders[placeholder.name]"
+          type="text"
+          :placeholder="'Enter ' + $options.filters.splitCamelcase(placeholder.name)"
+        />
       </div>
 
-      <div v-if="manifest" class="mt-4">
-        <h5>Manifest</h5>
-        <p>Store the content below in file <code>.estafette.yaml</code> in the root of your application repository, add it to git and push it to the origin and Estafette CI will automatically build your application, regardless of which branch you push.</p>
+      <b-button
+        v-if="form.template"
+        type="submit"
+        variant="primary"
+        class="mt-3"
+      >
+        Generate
+      </b-button>
+    </b-form>
 
-        <div class="pre-wrapper">
-          <pre class="bg-light p-3"><code>{{manifest}}</code></pre>
-          <b-button class="btn-clipboard" v-on:click="copy" v-b-tooltip.click title="Copied!">Copy</b-button>
-        </div>
+    <div v-if="generating">
+      <spinner color="secondary" />
+    </div>
+
+    <div
+      v-if="manifest"
+      class="mt-4"
+    >
+      <h5>Manifest</h5>
+      <p>Store the content below in file <code>.estafette.yaml</code> in the root of your application repository, add it to git and push it to the origin and Estafette CI will automatically build your application, regardless of which branch you push.</p>
+
+      <div class="pre-wrapper">
+        <pre class="bg-light p-3"><code>{{ manifest }}</code></pre>
+        <b-button
+          class="btn-clipboard"
+          @click="copy"
+          v-b-tooltip.click
+          title="Copied!"
+        >
+          Copy
+        </b-button>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -48,7 +88,10 @@ export default {
     bTooltip
   },
   props: {
-    query: Object
+    query: {
+      type: Object,
+      default: null
+    }
   },
 
   data: function () {

@@ -1,10 +1,20 @@
 <template>
-    <div class="col-12 col-lg-3 col-xxxl p-0 stat">
-      <div class="rounded border text-center" :class="status | bootstrapClass('border')">
-        <h6 :class="status | bootstrapClass('text')">{{status | capitalize}} releases</h6>
-        <p class="display-1" :class="status | bootstrapClass('text')">{{animatedCount}}</p>
-      </div>
+  <div class="col-12 col-lg-3 col-xxxl p-0 stat">
+    <div
+      class="rounded border text-center"
+      :class="status | bootstrapClass('border')"
+    >
+      <h6 :class="status | bootstrapClass('text')">
+        {{ status | capitalize }} releases
+      </h6>
+      <p
+        class="display-1"
+        :class="status | bootstrapClass('text')"
+      >
+        {{ animatedCount }}
+      </p>
     </div>
+  </div>
 </template>
 
 <script>
@@ -13,8 +23,14 @@ import 'gsap/CSSPlugin'
 
 export default {
   props: {
-    filter: Object,
-    status: String
+    filter: {
+      type: Object,
+      default: null
+    },
+    status: {
+      type: String,
+      default: null
+    }
   },
 
   data: function () {

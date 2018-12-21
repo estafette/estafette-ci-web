@@ -1,88 +1,174 @@
 <template>
-  <div v-if="log && log.steps" class="accordion m-3">
-
+  <div
+    v-if="log && log.steps"
+    class="accordion m-3"
+  >
     <div class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 font-weight-bold">
-      <div class="col-4 col-md-2 col-xl-1 text-center">Status</div>
-      <div class="col-8 col-lg-5 col-xl-4">Stage</div>
-      <div class="col-4 col-xl-3 d-none d-lg-flex">Image</div>
-      <div class="col-1 text-right d-none d-xl-flex">Image size</div>
-      <div class="col-1 text-right d-none d-xl-flex">Pull time</div>
-      <div class="col-1 text-right d-none d-xl-flex">Execution time</div>
-      <div class="col-2 col-lg-1 text-right d-none d-md-flex">Total time</div>
+      <div class="col-4 col-md-2 col-xl-1 text-center">
+        Status
+      </div>
+      <div class="col-8 col-lg-5 col-xl-4">
+        Stage
+      </div>
+      <div class="col-4 col-xl-3 d-none d-lg-flex">
+        Image
+      </div>
+      <div class="col-1 text-right d-none d-xl-flex">
+        Image size
+      </div>
+      <div class="col-1 text-right d-none d-xl-flex">
+        Pull time
+      </div>
+      <div class="col-1 text-right d-none d-xl-flex">
+        Execution time
+      </div>
+      <div class="col-2 col-lg-1 text-right d-none d-md-flex">
+        Total time
+      </div>
     </div>
 
     <div role="tablist">
-      <b-card no-body v-for="(step, index) in log.steps" v-bind:key="index" class="rounded border mt-2 mr-0 mb-2 ml-0 p-0" :class="step.status | bootstrapClass('border')">
-        <b-card-header class="row m-0 pt-3 pr-2 pb-3 pl-2 clickable border-0 rounded-0" v-b-toggle="'accordion'+index" role="tab">
+      <b-card
+        no-body
+        v-for="(step, index) in log.steps"
+        :key="index"
+        class="rounded border mt-2 mr-0 mb-2 ml-0 p-0"
+        :class="step.status | bootstrapClass('border')"
+      >
+        <b-card-header
+          class="row m-0 pt-3 pr-2 pb-3 pl-2 clickable border-0 rounded-0"
+          v-b-toggle="'accordion'+index"
+          role="tab"
+        >
           <div class="col-4 col-md-2 col-xl-1 text-center">
-            <span class="badge mt-2" :class="step.status | bootstrapClass('badge')">{{step.status}}</span>
+            <span
+              class="badge mt-2"
+              :class="step.status | bootstrapClass('badge')"
+            >
+              {{ step.status }}
+            </span>
           </div>
-          <div class="col-8 col-lg-5 col-xl-4 text-truncate h4" :title="step.step">
-            {{step.step}}
-            <span v-if="step.autoInjected" class="small text-muted" title="This step is automatically injected by Estafette CI">(injected)</span>
+          <div
+            class="col-8 col-lg-5 col-xl-4 text-truncate h4"
+            :title="step.step"
+          >
+            {{ step.step }}
+            <span
+              v-if="step.autoInjected"
+              class="small text-muted"
+              title="This step is automatically injected by Estafette CI"
+            >
+              (injected)
+            </span>
           </div>
           <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">
             <span v-if="step.image">
-              {{step.image.name}}:{{step.image.tag}}
-              <span v-if="step.image.isTrusted" class="small text-muted" title="This image is configured as trusted by Estafette CI">(trusted)</span>
+              {{ step.image.name }}:{{ step.image.tag }}
+              <span
+                v-if="step.image.isTrusted"
+                class="small text-muted"
+                title="This image is configured as trusted by Estafette CI"
+              >
+                (trusted)
+              </span>
             </span>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
             <span v-if="step.image && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
-              <span v-if="step.image && step.image.imageSize">{{step.image.imageSize | formatBytes}}</span>
-              <em v-else class="text-muted">(cached)</em>
+              <span v-if="step.image && step.image.imageSize">
+                {{ step.image.imageSize | formatBytes }}
+              </span>
+              <em
+                v-else
+                class="text-muted"
+              >
+                (cached)
+              </em>
             </span>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
             <span v-if="step.image && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
-              <span v-if="step.image.imageSize">{{step.image.pullDuration | formatDuration}}</span>
-              <em v-else class="text-muted">(cached)</em>
+              <span v-if="step.image.imageSize">
+                {{ step.image.pullDuration | formatDuration }}
+              </span>
+              <em
+                v-else
+                class="text-muted"
+              >
+                (cached)
+              </em>
             </span>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
             <span v-if="step.duration && (step.status == 'SUCCEEDED' || step.status == 'FAILED')">
-              {{step.duration | formatDuration}}
+              {{ step.duration | formatDuration }}
             </span>
           </div>
           <div class="col-2 col-lg-1 text-right d-none d-md-flex">
             <span v-if="step.image && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
-              {{step.image.pullDuration + step.duration | formatDuration}}
+              {{ step.image.pullDuration + step.duration | formatDuration }}
             </span>
           </div>
         </b-card-header>
 
-        <b-collapse class="container-fluid text-light text-monospace collapse bg-dark m-0 p-3" :id="'accordion'+index" :visible="step.status === 'RUNNING' || step.status === 'FAILED'" accordion="log-steps-accordion" role="tabpanel">
-            <div class="row no-gutters" v-for="(line, index) in step.logLines" v-bind:key="line.line ? line.line : index">
-              <div class="col-1 log-timestamp text-white-50 d-none d-xl-flex">{{line.timestamp | moment('YYYY-MM-DD HH:mm:ss')}}</div>
-              <div class="col log-text" v-html="formatLog(line.text)"></div>
+        <b-collapse
+          class="container-fluid text-light text-monospace collapse bg-dark m-0 p-3"
+          :id="'accordion'+index"
+          :visible="step.status === 'RUNNING' || step.status === 'FAILED'"
+          accordion="log-steps-accordion"
+          role="tabpanel"
+        >
+          <div
+            class="row no-gutters"
+            v-for="(line, lineIndex) in step.logLines"
+            :key="line.line ? line.line : lineIndex"
+          >
+            <div class="col-1 log-timestamp text-white-50 d-none d-xl-flex">
+              {{ line.timestamp | moment('YYYY-MM-DD HH:mm:ss') }}
             </div>
+            <div
+              class="col log-text"
+              v-html="formatLog(line.text)"
+            />
+          </div>
         </b-collapse>
       </b-card>
     </div>
 
-    <div class="row rounded border mt-2 mr-0 mb-2 ml-0 pt-3 pr-2 pb-3 pl-2 font-weight-bold" :class="totalStatus | bootstrapClass('border')">
+    <div
+      class="row rounded border mt-2 mr-0 mb-2 ml-0 pt-3 pr-2 pb-3 pl-2 font-weight-bold"
+      :class="totalStatus | bootstrapClass('border')"
+    >
       <div class="col-4 col-md-2 col-xl-1 text-center">
-        <span class="badge" :class="totalStatus | bootstrapClass('badge')">{{totalStatus}}</span>
+        <span
+          class="badge"
+          :class="totalStatus | bootstrapClass('badge')"
+        >
+          {{ totalStatus }}
+        </span>
       </div>
-      <div class="col-8 col-lg-5 col-xl-4">
-      </div>
-      <div class="col-4 col-xl-3 d-none d-lg-flex">
+      <div class="col-8 col-lg-5 col-xl-4" />
+      <div class="col-4 col-xl-3 d-none d-lg-flex" />
+      <div class="col-1 text-right d-none d-xl-flex">
+        {{ totalImageSize | formatBytes }}
       </div>
       <div class="col-1 text-right d-none d-xl-flex">
-        {{totalImageSize | formatBytes}}
+        {{ totalPullDuration | formatDuration }}
       </div>
       <div class="col-1 text-right d-none d-xl-flex">
-        {{totalPullDuration | formatDuration}}
-      </div>
-      <div class="col-1 text-right d-none d-xl-flex">
-        {{totalDuration | formatDuration}}
+        {{ totalDuration | formatDuration }}
       </div>
       <div class="col-2 col-lg-1 text-right d-none d-md-flex">
-        {{totalPullDuration + totalDuration | formatDuration}}
+        {{ totalPullDuration + totalDuration | formatDuration }}
       </div>
     </div>
   </div>
-  <div v-else class="m-3">Hold on, we're waiting for the logs to come in!</div>
+  <div
+    v-else
+    class="m-3"
+  >
+    Hold on, we're waiting for the logs to come in!
+  </div>
 </template>
 
 <script>
@@ -102,11 +188,26 @@ export default {
     bToggle
   },
   props: {
-    repoSource: String,
-    repoOwner: String,
-    repoName: String,
-    releaseID: String,
-    release: Object
+    repoSource: {
+      type: String,
+      default: null
+    },
+    repoOwner: {
+      type: String,
+      default: null
+    },
+    repoName: {
+      type: String,
+      default: null
+    },
+    releaseID: {
+      type: String,
+      default: null
+    },
+    release: {
+      type: Object,
+      default: null
+    }
   },
   data: function () {
     return {

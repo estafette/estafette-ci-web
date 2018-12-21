@@ -1,11 +1,19 @@
 <template>
-  <div class="lds-default" :class="color"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  <div
+    class="lds-default"
+    :class="color"
+  >
+    <div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div />
+  </div>
 </template>
 
 <script>
 export default {
   props: {
-    color: String
+    color: {
+      type: String,
+      default: null
+    }
   }
 }
 </script>

@@ -1,27 +1,57 @@
 <template>
-
   <div class="container-fluid">
     <div class="row">
       <div class="col mt-4 mb-4 border-right sidebar d-none d-lg-block">
         <ul>
           <li class="section-item">
-            <router-link v-if="user && user.authenticated" :to="{ name: 'Config'}" class="section-item-link ancestor active">Configuration</router-link>
+            <router-link
+              v-if="user && user.authenticated"
+              :to="{ name: 'Config'}"
+              class="section-item-link ancestor active"
+            >
+              Configuration
+            </router-link>
             <ul>
-              <li class="page-item"><a href="#credentials" class="page-item-link">Credentials</a></li>
-              <li class="page-item"><a href="#trustedimages" class="page-item-link">Trusted images</a></li>
+              <li class="page-item">
+                <a
+                  href="#credentials"
+                  class="page-item-link"
+                >
+                  Credentials
+                </a>
+              </li>
+              <li class="page-item">
+                <a
+                  href="#trustedimages"
+                  class="page-item-link"
+                >
+                  Trusted images
+                </a>
+              </li>
             </ul>
           </li>
         </ul>
       </div>
       <div class="col mt-4 mb-4 pl-5 pt-4 content-block">
-        <h1 class="mb-4">Configuration</h1>
+        <h1 class="mb-4">
+          Configuration
+        </h1>
 
-        <h3 id="credentials">Credentials</h3>
-        <pre v-if="credentials" class="bg-light p-3"><code>{{credentials}}</code></pre>
+        <h3 id="credentials">
+          Credentials
+        </h3>
+        <pre
+          v-if="credentials"
+          class="bg-light p-3"
+        ><code>{{ credentials }}</code></pre>
 
-        <h3 id="trustedimages">Trusted images</h3>
-        <pre v-if="trustedimages" class="bg-light p-3"><code>{{trustedimages}}</code></pre>
-
+        <h3 id="trustedimages">
+          Trusted images
+        </h3>
+        <pre
+          v-if="trustedimages"
+          class="bg-light p-3"
+        ><code>{{ trustedimages }}</code></pre>
       </div>
     </div>
   </div>
@@ -30,7 +60,10 @@
 <script>
 export default {
   props: {
-    user: Object
+    user: {
+      type: Object,
+      default: null
+    }
   },
 
   data: function () {

@@ -1,15 +1,31 @@
 <template>
   <div class="m-3">
     <div class="row mt-0 mr-0 mb-3 ml-0">
-      <div class="col-12 col-sm-8 col-lg"></div>
+      <div class="col-12 col-sm-8 col-lg" />
       <div class="col-12 col-sm-4 col-lg-2 p-0 text-right">
-        <b-form-select v-model="filter.last" :options="lastOptions" v-on:change="setLast" class="border-primary text-primary" />
+        <b-form-select
+          v-model="filter.last"
+          :options="lastOptions"
+          @change="setLast"
+          class="border-primary text-primary"
+        />
       </div>
     </div>
 
     <div class="m-3 row">
-      <pipeline-stats-timeline :pipeline="pipeline" :filter="filter" type="builds" status="primary" />
-      <pipeline-stats-timeline v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0" :pipeline="pipeline" :filter="filter" type="releases" status="success" />
+      <pipeline-stats-timeline
+        :pipeline="pipeline"
+        :filter="filter"
+        type="builds"
+        status="primary"
+      />
+      <pipeline-stats-timeline
+        v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
+        :pipeline="pipeline"
+        :filter="filter"
+        type="releases"
+        status="success"
+      />
     </div>
   </div>
 </template>
@@ -25,8 +41,14 @@ export default {
   },
 
   props: {
-    query: Object,
-    pipeline: Object
+    query: {
+      type: Object,
+      default: null
+    },
+    pipeline: {
+      type: Object,
+      default: null
+    }
   },
   data: function () {
     return {

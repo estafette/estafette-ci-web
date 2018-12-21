@@ -1,33 +1,74 @@
 <template>
-    <div class="m-3">
-      <div class="row mt-0 mr-0 mb-3 ml-0">
-        <div class="col-12 col-sm-8 col-lg"></div>
-        <div class="col-12 col-sm-4 col-lg-2 p-0 text-right">
-          <b-form-select v-model="filter.since" :options="sinceOptions" v-on:change="setSince" class="border-primary text-primary" />
-        </div>
-      </div>
-
-      <div class="row m-0">
-        <stats-pipelines-count :filter="filter" status="all"/>
-        <stats-pipelines-count :filter="filter" status="succeeded"/>
-        <stats-pipelines-count :filter="filter" status="failed"/>
-        <stats-pipelines-count :filter="filter" status="running"/>
-      </div>
-
-      <div class="row m-0">
-        <stats-builds-count :filter="filter" status="all"/>
-        <stats-builds-count :filter="filter" status="succeeded"/>
-        <stats-builds-count :filter="filter" status="failed"/>
-        <stats-builds-count :filter="filter" status="running"/>
-      </div>
-
-      <div class="row m-0">
-        <stats-releases-count :filter="filter" status="all"/>
-        <stats-releases-count :filter="filter" status="succeeded"/>
-        <stats-releases-count :filter="filter" status="failed"/>
-        <stats-releases-count :filter="filter" status="running"/>
+  <div class="m-3">
+    <div class="row mt-0 mr-0 mb-3 ml-0">
+      <div class="col-12 col-sm-8 col-lg" />
+      <div class="col-12 col-sm-4 col-lg-2 p-0 text-right">
+        <b-form-select
+          v-model="filter.since"
+          :options="sinceOptions"
+          @change="setSince"
+          class="border-primary text-primary"
+        />
       </div>
     </div>
+
+    <div class="row m-0">
+      <stats-pipelines-count
+        :filter="filter"
+        status="all"
+      />
+      <stats-pipelines-count
+        :filter="filter"
+        status="succeeded"
+      />
+      <stats-pipelines-count
+        :filter="filter"
+        status="failed"
+      />
+      <stats-pipelines-count
+        :filter="filter"
+        status="running"
+      />
+    </div>
+
+    <div class="row m-0">
+      <stats-builds-count
+        :filter="filter"
+        status="all"
+      />
+      <stats-builds-count
+        :filter="filter"
+        status="succeeded"
+      />
+      <stats-builds-count
+        :filter="filter"
+        status="failed"
+      />
+      <stats-builds-count
+        :filter="filter"
+        status="running"
+      />
+    </div>
+
+    <div class="row m-0">
+      <stats-releases-count
+        :filter="filter"
+        status="all"
+      />
+      <stats-releases-count
+        :filter="filter"
+        status="succeeded"
+      />
+      <stats-releases-count
+        :filter="filter"
+        status="failed"
+      />
+      <stats-releases-count
+        :filter="filter"
+        status="running"
+      />
+    </div>
+  </div>
 </template>
 
 <script>

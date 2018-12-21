@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <div id="header-and-main">
-      <navigation-bar :user="user"/>
+      <navigation-bar :user="user" />
       <div id="main">
-        <router-view :user="user"/>
+        <router-view :user="user" />
       </div>
     </div>
-    <site-footer/>
-    <session-refresh-modal/>
+    <site-footer />
+    <session-refresh-modal />
   </div>
 </template>
 

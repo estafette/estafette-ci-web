@@ -1,13 +1,28 @@
 <template>
-  <div v-if="user.authenticated && ((build && build.buildStatus === 'running') || (release && release.releaseStatus === 'running'))" class="btn btn-outline-danger btn-sm" v-on:click.stop="rebuild">Cancel</div>
+  <div
+    v-if="user.authenticated && ((build && build.buildStatus === 'running') || (release && release.releaseStatus === 'running'))"
+    class="btn btn-outline-danger btn-sm"
+    @click.stop="rebuild"
+  >
+    Cancel
+  </div>
 </template>
 
 <script>
 export default {
   props: {
-    build: Object,
-    release: Object,
-    user: Object
+    build: {
+      type: Object,
+      default: null
+    },
+    release: {
+      type: Object,
+      default: null
+    },
+    user: {
+      type: Object,
+      default: null
+    }
   },
   data: function () {
     return {
