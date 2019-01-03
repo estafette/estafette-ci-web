@@ -1,6 +1,6 @@
 <template>
   <b-navbar
-    toggleable="sm"
+    toggleable="md"
     type="dark"
     variant="dark"
   >
