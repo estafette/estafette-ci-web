@@ -4,7 +4,7 @@ LABEL maintainer="estafette.io" \
       description="The estafette-ci-web is the component that renders the Esfafette CI web interface"
 
 COPY . /usr/local/openresty/nginx/html/
-COPY nginx.vh.default.conf /usr/local/openresty/nginx/conf/nginx.conf
+COPY nginx.vh.default.conf /etc/nginx/conf.d/default.conf
 COPY ./docker-entrypoint.sh /
 
 RUN chmod 500 /docker-entrypoint.sh
