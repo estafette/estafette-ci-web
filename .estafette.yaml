@@ -40,6 +40,7 @@ stages:
     copy:
     - favicon.ico
     - nginx.vh.default.conf
+    - docker-entrypoint.sh
 
   push-to-docker-hub:
     image: extensions/docker:dev
