@@ -14,9 +14,7 @@
           class="breadcrumb-item text-truncate active"
           aria-current="page"
         >
-          <span class="d-none d-md-inline">
-            {{ repoSource }}/{{ repoOwner }}/
-          </span>{{ repoName }}
+          <span class="d-none d-md-inline">{{ repoSource }}/{{ repoOwner }}/</span>{{ repoName }}
         </li>
       </ol>
     </nav>

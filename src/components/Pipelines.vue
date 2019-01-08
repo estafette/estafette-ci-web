@@ -121,9 +121,7 @@
             <div class="small text-black-50 mb-1 d-xl-none">
               Pipeline
             </div>
-            <span class="text-muted d-none d-md-inline">
-              {{ pipeline.repoSource }}/{{ pipeline.repoOwner }}/
-            </span><strong>{{ pipeline.repoName }}</strong>
+            <span class="text-muted d-none d-md-inline">{{ pipeline.repoSource }}/{{ pipeline.repoOwner }}/</span><strong>{{ pipeline.repoName }}</strong>
           </div>
           <div
             class="mb-2 col-6 col-md-6 col-xl-1 text-truncate"

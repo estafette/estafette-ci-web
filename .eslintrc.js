@@ -25,6 +25,11 @@ module.exports = {
     'generator-star-spacing': 'off',
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'vue/component-name-in-template-casing': ['warn','kebab-case']
+    'vue/component-name-in-template-casing': ['warn','kebab-case'],
+    'vue/singleline-html-element-content-newline': ['error', {
+      'ignoreWhenNoAttributes': true,
+      'ignoreWhenEmpty': true,
+      'ignores': ['span', 'pre', 'textarea']
+    }]
   }
 }
