@@ -7,6 +7,8 @@ COPY . /usr/local/openresty/nginx/html/
 COPY nginx.vh.default.conf /usr/local/openresty/nginx/conf/nginx.conf
 COPY ./docker-entrypoint.sh /
 
+RUN chmod 500 /docker-entrypoint.sh
+
 EXPOSE 5000
 
 # runtime environment variables
