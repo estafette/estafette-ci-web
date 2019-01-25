@@ -21,6 +21,11 @@ stages:
     commands:
     - npm ci
 
+  audit:
+    image: node:11.7.0-alpine
+    commands:
+    - npm audit
+
   lint:
     image: node:11.7.0-alpine
     commands:
