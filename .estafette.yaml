@@ -17,17 +17,17 @@ version:
 
 stages:
   restore:
-    image: node:11.6.0-alpine
+    image: node:11.7.0-alpine
     commands:
     - npm ci
 
   lint:
-    image: node:11.6.0-alpine
+    image: node:11.7.0-alpine
     commands:
     - npm run lint
 
   build:
-    image: node:11.6.0-alpine
+    image: node:11.7.0-alpine
     commands:
     - npm run build
 
