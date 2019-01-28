@@ -16,15 +16,15 @@ version:
     releaseBranch: master
 
 stages:
-  restore:
-    image: node:11.7.0-alpine
-    commands:
-    - npm ci
-
   audit:
     image: node:11.7.0-alpine
     commands:
     - npm audit
+
+  restore:
+    image: node:11.7.0-alpine
+    commands:
+    - npm ci
 
   lint:
     image: node:11.7.0-alpine
