@@ -7,7 +7,6 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import App from './App'
 import router from './router'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import moment from 'moment'
 import 'moment/locale/en-il'
 
