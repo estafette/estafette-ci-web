@@ -1,9 +1,10 @@
 <template>
   <div
-    class="lds-default"
-    :class="color"
+    class="spinner-border estafette-spinner"
+    :class="color | bootstrapClass('text')"
+    role="status"
   >
-    <div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div />
+    <span class="sr-only">Loading...</span>
   </div>
 </template>
 
