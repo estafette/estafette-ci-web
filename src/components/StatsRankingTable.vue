@@ -15,9 +15,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr
+        <router-link
           v-for="(row, index) in rows"
           :key="index"
+          :to="{ name: 'PipelineBuilds', params: { repoSource: row.repo_source, repoOwner: row.repo_owner, repoName: row.repo_name }}"
+          tag="tr"
         >
           <td>
             {{ index + 1 + (pagination.page-1) * pagination.size }}
@@ -28,7 +30,7 @@
           <td>
             {{ row.nr_records }}
           </td>
-        </tr>
+        </router-link>
       </tbody>
     </table>
 
@@ -136,3 +138,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+tbody tr {
+  cursor: pointer;
+}
+</style>
