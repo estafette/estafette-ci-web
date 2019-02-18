@@ -30,7 +30,7 @@
       <b-form-textarea
         id="value"
         v-model="form.value"
-        placeholder="Paste your value to be eencrypted"
+        placeholder="Paste your value to be encrypted"
         :rows="5"
         class="border bg-light"
       />
