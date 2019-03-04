@@ -18,22 +18,22 @@ version:
 
 stages:
   audit:
-    image: node:11.9.0-alpine
+    image: node:11.10.1-alpine
     commands:
     - npm audit
 
   restore:
-    image: node:11.9.0-alpine
+    image: node:11.10.1-alpine
     commands:
     - npm ci
 
   lint:
-    image: node:11.9.0-alpine
+    image: node:11.10.1-alpine
     commands:
     - npm run lint
 
   build:
-    image: node:11.9.0-alpine
+    image: node:11.10.1-alpine
     commands:
     - npm run build
 
