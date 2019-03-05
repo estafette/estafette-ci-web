@@ -295,6 +295,7 @@ export default {
         labels: ''
       },
       sinceOptions: [
+        { value: '1h', text: 'Since 1 hour ago' },
         { value: '1d', text: 'Since 1 day ago' },
         { value: '1w', text: 'Since 1 week ago' },
         { value: '1m', text: 'Since 1 month ago' },
