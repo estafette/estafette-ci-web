@@ -33,6 +33,7 @@
                 "activeReleases":[
                    {
                       "name":"tooling",
+                      "action": "deploy-canary",
                       "id":"401925221141577732",
                       "repoSource":"github.com",
                       "repoOwner":"estafette",
@@ -43,8 +44,22 @@
                       "insertedAt":"2018-11-20T15:37:23.365593Z",
                       "updatedAt":"2018-11-20T15:38:42.44489Z",
                       "duration":79000000000
-                   }
-                ]
+                   },
+                   {
+                     "name":"tooling",
+                     "action": "deploy-stable",
+                     "id":"401925221241577732",
+                     "repoSource":"github.com",
+                     "repoOwner":"estafette",
+                     "repoName":"estafette-ci-api",
+                     "releaseVersion":"0.1.339",
+                     "releaseStatus":"running",
+                     "triggeredBy":"jsalverda@travix.com",
+                     "insertedAt":"2018-11-20T15:37:23.365593Z",
+                     "updatedAt":"2018-11-20T15:38:42.44489Z",
+                     "duration":79000000000
+                  }
+               ]
              }
           ],
           "commits":[
@@ -98,7 +113,7 @@
                       "repoSource":"github.com",
                       "repoOwner":"estafette",
                       "repoName":"estafette-ci-builder",
-                      "releaseVersion":"0.0.196",
+                      "releaseVersion":"0.0.200",
                       "releaseStatus":"succeeded",
                       "triggeredBy":"jsalverda@travix.com",
                       "insertedAt":"2018-11-15T14:13:06.579187Z",
@@ -490,7 +505,7 @@
                       "repoOwner":"estafette",
                       "repoName":"estafette-extension-gke",
                       "releaseVersion":"0.1.124",
-                      "releaseStatus":"succeeded",
+                      "releaseStatus":"running",
                       "triggeredBy":"jsalverda@travix.com",
                       "insertedAt":"2018-11-16T16:23:37.419341Z",
                       "updatedAt":"2018-11-16T16:24:06.917879Z",
