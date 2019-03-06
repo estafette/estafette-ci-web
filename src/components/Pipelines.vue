@@ -6,46 +6,49 @@
           class="col-12 col-md-6 col-lg mb-2"
           id="status-filters"
         >
-          <router-link
-            :to="{ query: { status: 'all', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
-            active-class="router-link-active"
-            class="btn btn-outline-primary mb-1"
-            :class="{ active: filter.status === 'all' }"
-          >
-            All
-          </router-link>
-          <router-link
-            :to="{ query: { status: 'succeeded', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
-            active-class="router-link-active"
-            class="btn btn-outline-success mb-1"
-            :class="{ active: filter.status === 'succeeded' }"
-          >
-            Succeeded
-          </router-link>
-          <router-link
-            :to="{ query: { status: 'failed', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
-            active-class="router-link-active"
-            class="btn btn-outline-danger mb-1"
-            :class="{ active: filter.status === 'failed' }"
-          >
-            Failed
-          </router-link>
-          <router-link
-            :to="{ query: { status: 'running', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
-            active-class="router-link-active"
-            class="btn btn-outline-warning mb-1"
-            :class="{ active: filter.status === 'running' }"
-          >
-            Running
-          </router-link>
-          <router-link
-            :to="{ query: { status: 'canceled', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
-            active-class="router-link-active"
-            class="btn btn-outline-secondary mb-1"
-            :class="{ active: filter.status === 'canceled' }"
-          >
-            Canceled
-          </router-link>
+          <div class="btn-group mb-1">
+            <router-link
+              :to="{ query: { status: 'all', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
+              active-class="router-link-active"
+              class="btn btn-outline-primary"
+              :class="[ filter.status === 'all' ? 'active' : 'border-secondary' ]"
+              @click="this.blur()"
+            >
+              All
+            </router-link>
+            <router-link
+              :to="{ query: { status: 'succeeded', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
+              active-class="router-link-active"
+              class="btn btn-outline-success"
+              :class="[ filter.status === 'succeeded' ? 'active' : 'border-secondary' ]"
+            >
+              Succeeded
+            </router-link>
+            <router-link
+              :to="{ query: { status: 'failed', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
+              active-class="router-link-active"
+              class="btn btn-outline-danger"
+              :class="[ filter.status === 'failed' ? 'active' : 'border-secondary' ]"
+            >
+              Failed
+            </router-link>
+            <router-link
+              :to="{ query: { status: 'running', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
+              active-class="router-link-active"
+              class="btn btn-outline-warning"
+              :class="[ filter.status === 'running' ? 'active' : 'border-secondary' ]"
+            >
+              Running
+            </router-link>
+            <router-link
+              :to="{ query: { status: 'canceled', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
+              active-class="router-link-active"
+              class="btn btn-outline-secondary"
+              :class="[ filter.status === 'canceled' ? 'active' : 'border-secondary' ]"
+            >
+              Canceled
+            </router-link>
+          </div>
 
           <span
             v-if="filter.labels"
@@ -61,20 +64,28 @@
           </span>
         </div>
         <div class="col-12 col-md-4 col-lg-2 mb-2">
-          <b-form-input
-            v-model="filter.search"
-            placeholder="Search.."
-            @input="setSearch"
-            class="border-default text-default"
-          />
+          <b-input-group>
+            <b-input-group-prepend is-text>
+              <font-awesome-icon icon="filter" />
+            </b-input-group-prepend>
+            <b-form-input
+              v-model="filter.search"
+              type="text"
+              @input="setSearch"
+            />
+          </b-input-group>
         </div>
         <div class="col-12 col-md-2 col-lg-2 mb-2 text-right">
-          <b-form-select
-            v-model="filter.since"
-            :options="sinceOptions"
-            @change="setSince"
-            class="border-primary text-primary"
-          />
+          <b-input-group>
+            <b-input-group-prepend is-text>
+              <font-awesome-icon icon="clock" />
+            </b-input-group-prepend>
+            <b-form-select
+              v-model="filter.since"
+              :options="sinceOptions"
+              @change="setSince"
+            />
+          </b-input-group>
         </div>
       </div>
     </div>
@@ -258,7 +269,7 @@
       size="md"
       :link-gen="paginationLinkGenerator"
       use-router
-      :number-of-pages="pagination.totalPages"
+      :number-of-pages="pagination.totalPages > 0 ? pagination.totalPages : 1"
       v-model="pagination.page"
       align="center"
       hide-goto-end-buttons
@@ -272,6 +283,15 @@ import ReleaseBadge from '@/components/ReleaseBadge'
 import bPaginationNav from 'bootstrap-vue/es/components/pagination-nav/pagination-nav'
 import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
 import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
+import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
+import bInputGroupPrepend from 'bootstrap-vue/es/components/input-group/input-group-prepend'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faFilter, faClock } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faFilter)
+library.add(faClock)
 
 export default {
   components: {
@@ -279,7 +299,10 @@ export default {
     ReleaseBadge,
     bPaginationNav,
     bFormSelect,
-    bFormInput
+    bFormInput,
+    bInputGroup,
+    bInputGroupPrepend,
+    FontAwesomeIcon
   },
 
   props: {

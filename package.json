@@ -17,7 +17,7 @@
     "apexcharts": "^2.4.2",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
-    "bootstrap-vue": "^2.0.0-rc.11",
+    "bootstrap-vue": "^2.0.0-rc.13",
     "gsap": "^2.0.2",
     "jquery": "^3.3.1",
     "lodash": "^4.17.11",

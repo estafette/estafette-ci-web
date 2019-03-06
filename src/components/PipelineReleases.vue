@@ -5,46 +5,48 @@
         class="col-12 col-md-8 col-lg mb-2 text-center"
         id="status-filters"
       >
-        <router-link
-          :to="{ query: { status: 'all', page: 1 } }"
-          active-class="router-link-active"
-          class="btn btn-outline-primary btn-sm mb-1"
-          :class="{ active: filter.status === 'all' }"
-        >
-          All
-        </router-link>
-        <router-link
-          :to="{ query: { status: 'succeeded', page: 1 } }"
-          active-class="router-link-active"
-          class="btn btn-outline-success btn-sm mb-1"
-          :class="{ active: filter.status === 'succeeded' }"
-        >
-          Succeeded
-        </router-link>
-        <router-link
-          :to="{ query: { status: 'failed', page: 1 } }"
-          active-class="router-link-active"
-          class="btn btn-outline-danger btn-sm mb-1"
-          :class="{ active: filter.status === 'failed' }"
-        >
-          Failed
-        </router-link>
-        <router-link
-          :to="{ query: { status: 'running', page: 1 } }"
-          active-class="router-link-active"
-          class="btn btn-outline-warning btn-sm mb-1"
-          :class="{ active: filter.status === 'running' }"
-        >
-          Running
-        </router-link>
-        <router-link
-          :to="{ query: { status: 'canceled', page: 1 } }"
-          active-class="router-link-active"
-          class="btn btn-outline-secondary btn-sm mb-1"
-          :class="{ active: filter.status === 'canceled' }"
-        >
-          Canceled
-        </router-link>
+        <div class="btn-group mb-1">
+          <router-link
+            :to="{ query: { status: 'all', page: 1 } }"
+            active-class="router-link-active"
+            class="btn btn-outline-primary btn-sm"
+            :class="[ filter.status === 'all' ? 'active' : 'border-secondary' ]"
+          >
+            All
+          </router-link>
+          <router-link
+            :to="{ query: { status: 'succeeded', page: 1 } }"
+            active-class="router-link-active"
+            class="btn btn-outline-success btn-sm"
+            :class="[ filter.status === 'succeeded' ? 'active' : 'border-secondary' ]"
+          >
+            Succeeded
+          </router-link>
+          <router-link
+            :to="{ query: { status: 'failed', page: 1 } }"
+            active-class="router-link-active"
+            class="btn btn-outline-danger btn-sm"
+            :class="[ filter.status === 'failed' ? 'active' : 'border-secondary' ]"
+          >
+            Failed
+          </router-link>
+          <router-link
+            :to="{ query: { status: 'running', page: 1 } }"
+            active-class="router-link-active"
+            class="btn btn-outline-warning btn-sm"
+            :class="[ filter.status === 'running' ? 'active' : 'border-secondary' ]"
+          >
+            Running
+          </router-link>
+          <router-link
+            :to="{ query: { status: 'canceled', page: 1 } }"
+            active-class="router-link-active"
+            class="btn btn-outline-secondary btn-sm"
+            :class="[ filter.status === 'canceled' ? 'active' : 'border-secondary' ]"
+          >
+            Canceled
+          </router-link>
+        </div>
       </div>
     </div>
 
@@ -163,7 +165,7 @@
       size="md"
       :link-gen="paginationLinkGenerator"
       use-router
-      :number-of-pages="pagination.totalPages"
+      :number-of-pages="pagination.totalPages > 0 ? pagination.totalPages : 1"
       v-model="pagination.page"
       align="center"
       hide-goto-end-buttons
