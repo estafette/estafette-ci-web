@@ -3,7 +3,7 @@
     <div class="m-3">
       <div class="row">
         <div
-          class="col-12 col-md-8 col-lg mb-2"
+          class="col-12 col-md-6 col-lg mb-2"
           id="status-filters"
         >
           <router-link
@@ -60,7 +60,15 @@
             </router-link>
           </span>
         </div>
-        <div class="col-12 col-md-4 col-lg-2 mb-2 text-right">
+        <div class="col-12 col-md-4 col-lg-2 mb-2">
+          <b-form-input
+            v-model="filter.search"
+            placeholder="Search.."
+            @input="setSearch"
+            class="border-default text-default"
+          />
+        </div>
+        <div class="col-12 col-md-2 col-lg-2 mb-2 text-right">
           <b-form-select
             v-model="filter.since"
             :options="sinceOptions"
@@ -262,13 +270,15 @@ import CommitLink from '@/components/CommitLink'
 import ReleaseBadge from '@/components/ReleaseBadge'
 import bPaginationNav from 'bootstrap-vue/es/components/pagination-nav/pagination-nav'
 import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
+import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
 
 export default {
   components: {
     CommitLink,
     ReleaseBadge,
     bPaginationNav,
-    bFormSelect
+    bFormSelect,
+    bFormInput
   },
 
   props: {
@@ -291,7 +301,8 @@ export default {
       filter: {
         status: 'all',
         since: '1d',
-        labels: ''
+        labels: '',
+        search: ''
       },
       sinceOptions: [
         { value: '1d', text: 'Since 1 day ago' },
@@ -326,14 +337,14 @@ export default {
 
     updateQueryParams () {
       if (this.filter && this.filter.labels && this.filter.labels !== '') {
-        this.$router.push({ query: { status: this.filter.status, since: this.filter.since, labels: this.filter.labels, page: this.pagination.page } })
+        this.$router.push({ query: { status: this.filter.status, since: this.filter.since, search: this.filter.search, labels: this.filter.labels, page: this.pagination.page } })
       } else {
-        this.$router.push({ query: { status: this.filter.status, since: this.filter.since, page: this.pagination.page } })
+        this.$router.push({ query: { status: this.filter.status, since: this.filter.since, search: this.filter.search, page: this.pagination.page } })
       }
     },
 
     loadPipelines () {
-      this.axios.get(`/api/pipelines?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&filter[labels]=${this.filter.labels}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/pipelines?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${this.filter.labels}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination
@@ -362,6 +373,12 @@ export default {
 
     setSince (value) {
       this.filter.since = value
+      this.pagination.page = 1
+      this.updateQueryParams()
+    },
+
+    setSearch (value) {
+      this.filter.search = value
       this.pagination.page = 1
       this.updateQueryParams()
     },
