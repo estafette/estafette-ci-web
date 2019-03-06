@@ -6,46 +6,48 @@
           class="col-12 col-md-8 col-lg mb-2"
           id="status-filters"
         >
-          <router-link
-            :to="{ query: { status: 'all', since: filter.since, labels: filter.labels, page: 1 } }"
-            active-class="router-link-active"
-            class="btn btn-outline-primary mb-1"
-            :class="{ active: filter.status === 'all' }"
-          >
-            All
-          </router-link>
-          <router-link
-            :to="{ query: { status: 'succeeded', since: filter.since, labels: filter.labels, page: 1 } }"
-            active-class="router-link-active"
-            class="btn btn-outline-success mb-1"
-            :class="{ active: filter.status === 'succeeded' }"
-          >
-            Succeeded
-          </router-link>
-          <router-link
-            :to="{ query: { status: 'failed', since: filter.since, labels: filter.labels, page: 1 } }"
-            active-class="router-link-active"
-            class="btn btn-outline-danger mb-1"
-            :class="{ active: filter.status === 'failed' }"
-          >
-            Failed
-          </router-link>
-          <router-link
-            :to="{ query: { status: 'running', since: filter.since, labels: filter.labels, page: 1 } }"
-            active-class="router-link-active"
-            class="btn btn-outline-warning mb-1"
-            :class="{ active: filter.status === 'running' }"
-          >
-            Running
-          </router-link>
-          <router-link
-            :to="{ query: { status: 'canceled', since: filter.since, labels: filter.labels, page: 1 } }"
-            active-class="router-link-active"
-            class="btn btn-outline-secondary mb-1"
-            :class="{ active: filter.status === 'canceled' }"
-          >
-            Canceled
-          </router-link>
+          <div class="btn-group mb-1">
+            <router-link
+              :to="{ query: { status: 'all', since: filter.since, labels: filter.labels, page: 1 } }"
+              active-class="router-link-active"
+              class="btn btn-outline-primary"
+              :class="{ active: filter.status === 'all' }"
+            >
+              All
+            </router-link>
+            <router-link
+              :to="{ query: { status: 'succeeded', since: filter.since, labels: filter.labels, page: 1 } }"
+              active-class="router-link-active"
+              class="btn btn-outline-success"
+              :class="{ active: filter.status === 'succeeded' }"
+            >
+              Succeeded
+            </router-link>
+            <router-link
+              :to="{ query: { status: 'failed', since: filter.since, labels: filter.labels, page: 1 } }"
+              active-class="router-link-active"
+              class="btn btn-outline-danger"
+              :class="{ active: filter.status === 'failed' }"
+            >
+              Failed
+            </router-link>
+            <router-link
+              :to="{ query: { status: 'running', since: filter.since, labels: filter.labels, page: 1 } }"
+              active-class="router-link-active"
+              class="btn btn-outline-warning"
+              :class="{ active: filter.status === 'running' }"
+            >
+              Running
+            </router-link>
+            <router-link
+              :to="{ query: { status: 'canceled', since: filter.since, labels: filter.labels, page: 1 } }"
+              active-class="router-link-active"
+              class="btn btn-outline-secondary"
+              :class="{ active: filter.status === 'canceled' }"
+            >
+              Canceled
+            </router-link>
+          </div>
 
           <span
             v-if="filter.labels"
