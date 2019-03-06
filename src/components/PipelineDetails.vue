@@ -131,6 +131,7 @@
           v-for="releaseTarget in pipeline.releaseTargets"
           :key="releaseTarget.name"
           :release-target="releaseTarget"
+          :pipeline="pipeline"
         />
       </div>
     </div>

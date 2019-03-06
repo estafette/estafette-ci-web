@@ -17,6 +17,11 @@
         <span v-if="release.action">
           {{ release.action }}:
         </span>{{ release.releaseVersion | defaultValue('-') }}
+
+        <font-awesome-icon
+          icon="fire"
+          v-if="releaseIsUpToDate(release)"
+        />
       </router-link>
     </div>
     <div
@@ -31,11 +36,31 @@
 </template>
 
 <script>
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faFire } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faFire)
+
 export default {
+  components: {
+    FontAwesomeIcon
+  },
+
   props: {
     releaseTarget: {
       type: Object,
       default: null
+    },
+    pipeline: {
+      type: Object,
+      default: null
+    }
+  },
+
+  methods: {
+    releaseIsUpToDate (release) {
+      return this.pipeline && this.pipeline.buildStatus && this.pipeline.buildStatus === 'succeeded' && this.pipeline.buildVersion && release && release.releaseStatus && release.releaseStatus === 'succeeded' && this.pipeline.buildVersion === release.releaseVersion
     }
   }
 }

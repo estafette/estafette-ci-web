@@ -142,6 +142,7 @@
           v-for="releaseTarget in build.releaseTargets"
           :key="releaseTarget.name"
           :release-target="releaseTarget"
+          :pipeline="build"
         />
       </div>
 
