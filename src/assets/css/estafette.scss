@@ -42,6 +42,10 @@
     -webkit-appearance: none;
 }
 
+.border-btn-group {
+    border-color: $custom-select-border-color !important;
+}
+
 a.btn:focus {
     box-shadow: none!important;
 }
