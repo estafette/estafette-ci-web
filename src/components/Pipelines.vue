@@ -3,12 +3,12 @@
     <div class="m-3">
       <div class="row">
         <div
-          class="col-12 col-md-8 col-lg mb-2"
+          class="col-12 col-md-6 col-lg mb-2"
           id="status-filters"
         >
           <div class="btn-group mb-1">
             <router-link
-              :to="{ query: { status: 'all', since: filter.since, labels: filter.labels, page: 1 } }"
+              :to="{ query: { status: 'all', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
               active-class="router-link-active"
               class="btn btn-outline-primary"
               :class="[ filter.status === 'all' ? 'active' : 'border-secondary' ]"
@@ -17,7 +17,7 @@
               All
             </router-link>
             <router-link
-              :to="{ query: { status: 'succeeded', since: filter.since, labels: filter.labels, page: 1 } }"
+              :to="{ query: { status: 'succeeded', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
               active-class="router-link-active"
               class="btn btn-outline-success"
               :class="[ filter.status === 'succeeded' ? 'active' : 'border-secondary' ]"
@@ -25,7 +25,7 @@
               Succeeded
             </router-link>
             <router-link
-              :to="{ query: { status: 'failed', since: filter.since, labels: filter.labels, page: 1 } }"
+              :to="{ query: { status: 'failed', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
               active-class="router-link-active"
               class="btn btn-outline-danger"
               :class="[ filter.status === 'failed' ? 'active' : 'border-secondary' ]"
@@ -33,7 +33,7 @@
               Failed
             </router-link>
             <router-link
-              :to="{ query: { status: 'running', since: filter.since, labels: filter.labels, page: 1 } }"
+              :to="{ query: { status: 'running', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
               active-class="router-link-active"
               class="btn btn-outline-warning"
               :class="[ filter.status === 'running' ? 'active' : 'border-secondary' ]"
@@ -41,7 +41,7 @@
               Running
             </router-link>
             <router-link
-              :to="{ query: { status: 'canceled', since: filter.since, labels: filter.labels, page: 1 } }"
+              :to="{ query: { status: 'canceled', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
               active-class="router-link-active"
               class="btn btn-outline-secondary"
               :class="[ filter.status === 'canceled' ? 'active' : 'border-secondary' ]"
@@ -63,7 +63,19 @@
             </router-link>
           </span>
         </div>
-        <div class="col-12 col-md-4 col-lg-2 mb-2 text-right">
+        <div class="col-12 col-md-4 col-lg-2 mb-2">
+          <b-input-group>
+            <b-input-group-prepend is-text>
+              <font-awesome-icon icon="filter" />
+            </b-input-group-prepend>
+            <b-form-input
+              v-model="filter.search"
+              type="text"
+              @input="setSearch"
+            />
+          </b-input-group>
+        </div>
+        <div class="col-12 col-md-2 col-lg-2 mb-2 text-right">
           <b-input-group>
             <b-input-group-prepend is-text>
               <font-awesome-icon icon="clock" />
@@ -270,13 +282,15 @@ import CommitLink from '@/components/CommitLink'
 import ReleaseBadge from '@/components/ReleaseBadge'
 import bPaginationNav from 'bootstrap-vue/es/components/pagination-nav/pagination-nav'
 import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
+import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
 import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
 import bInputGroupPrepend from 'bootstrap-vue/es/components/input-group/input-group-prepend'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faClock } from '@fortawesome/free-solid-svg-icons'
+import { faFilter, faClock } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+library.add(faFilter)
 library.add(faClock)
 
 export default {
@@ -285,6 +299,7 @@ export default {
     ReleaseBadge,
     bPaginationNav,
     bFormSelect,
+    bFormInput,
     bInputGroup,
     bInputGroupPrepend,
     FontAwesomeIcon
@@ -310,7 +325,8 @@ export default {
       filter: {
         status: 'all',
         since: '1d',
-        labels: ''
+        labels: '',
+        search: ''
       },
       sinceOptions: [
         { value: '1h', text: 'Since 1 hour ago' },
@@ -346,14 +362,14 @@ export default {
 
     updateQueryParams () {
       if (this.filter && this.filter.labels && this.filter.labels !== '') {
-        this.$router.push({ query: { status: this.filter.status, since: this.filter.since, labels: this.filter.labels, page: this.pagination.page } })
+        this.$router.push({ query: { status: this.filter.status, since: this.filter.since, search: this.filter.search, labels: this.filter.labels, page: this.pagination.page } })
       } else {
-        this.$router.push({ query: { status: this.filter.status, since: this.filter.since, page: this.pagination.page } })
+        this.$router.push({ query: { status: this.filter.status, since: this.filter.since, search: this.filter.search, page: this.pagination.page } })
       }
     },
 
     loadPipelines () {
-      this.axios.get(`/api/pipelines?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&filter[labels]=${this.filter.labels}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/pipelines?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${this.filter.labels}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination
@@ -382,6 +398,12 @@ export default {
 
     setSince (value) {
       this.filter.since = value
+      this.pagination.page = 1
+      this.updateQueryParams()
+    },
+
+    setSearch (value) {
+      this.filter.search = value
       this.pagination.page = 1
       this.updateQueryParams()
     },
