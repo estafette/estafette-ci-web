@@ -7,7 +7,7 @@
           id="status-filters"
         >
           <router-link
-            :to="{ query: { status: 'all', since: filter.since, labels: filter.labels, page: 1 } }"
+            :to="{ query: { status: 'all', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
             active-class="router-link-active"
             class="btn btn-outline-primary mb-1"
             :class="{ active: filter.status === 'all' }"
@@ -15,7 +15,7 @@
             All
           </router-link>
           <router-link
-            :to="{ query: { status: 'succeeded', since: filter.since, labels: filter.labels, page: 1 } }"
+            :to="{ query: { status: 'succeeded', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
             active-class="router-link-active"
             class="btn btn-outline-success mb-1"
             :class="{ active: filter.status === 'succeeded' }"
@@ -23,7 +23,7 @@
             Succeeded
           </router-link>
           <router-link
-            :to="{ query: { status: 'failed', since: filter.since, labels: filter.labels, page: 1 } }"
+            :to="{ query: { status: 'failed', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
             active-class="router-link-active"
             class="btn btn-outline-danger mb-1"
             :class="{ active: filter.status === 'failed' }"
@@ -31,7 +31,7 @@
             Failed
           </router-link>
           <router-link
-            :to="{ query: { status: 'running', since: filter.since, labels: filter.labels, page: 1 } }"
+            :to="{ query: { status: 'running', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
             active-class="router-link-active"
             class="btn btn-outline-warning mb-1"
             :class="{ active: filter.status === 'running' }"
@@ -39,7 +39,7 @@
             Running
           </router-link>
           <router-link
-            :to="{ query: { status: 'canceled', since: filter.since, labels: filter.labels, page: 1 } }"
+            :to="{ query: { status: 'canceled', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
             active-class="router-link-active"
             class="btn btn-outline-secondary mb-1"
             :class="{ active: filter.status === 'canceled' }"
