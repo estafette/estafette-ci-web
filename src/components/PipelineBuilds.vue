@@ -10,7 +10,7 @@
             :to="{ query: { status: 'all', page: 1 } }"
             active-class="router-link-active"
             class="btn btn-outline-primary btn-sm"
-            :class="[ filter.status === 'all' ? 'active' : 'border-secondary' ]"
+            :class="[ filter.status === 'all' ? 'active' : 'border-btn-group' ]"
           >
             All
           </router-link>
@@ -18,7 +18,7 @@
             :to="{ query: { status: 'succeeded', page: 1 } }"
             active-class="router-link-active"
             class="btn btn-outline-success btn-sm"
-            :class="[ filter.status === 'succeeded' ? 'active' : 'border-secondary' ]"
+            :class="[ filter.status === 'succeeded' ? 'active' : 'border-btn-group' ]"
           >
             Succeeded
           </router-link>
@@ -26,7 +26,7 @@
             :to="{ query: { status: 'failed', page: 1 } }"
             active-class="router-link-active"
             class="btn btn-outline-danger btn-sm"
-            :class="[ filter.status === 'failed' ? 'active' : 'border-secondary' ]"
+            :class="[ filter.status === 'failed' ? 'active' : 'border-btn-group' ]"
           >
             Failed
           </router-link>
@@ -34,7 +34,7 @@
             :to="{ query: { status: 'running', page: 1 } }"
             active-class="router-link-active"
             class="btn btn-outline-warning btn-sm"
-            :class="[ filter.status === 'running' ? 'active' : 'border-secondary' ]"
+            :class="[ filter.status === 'running' ? 'active' : 'border-btn-group' ]"
           >
             Running
           </router-link>
@@ -42,7 +42,7 @@
             :to="{ query: { status: 'canceled', page: 1 } }"
             active-class="router-link-active"
             class="btn btn-outline-secondary btn-sm"
-            :class="[ filter.status === 'canceled' ? 'active' : 'border-secondary' ]"
+            :class="[ filter.status === 'canceled' ? 'active' : 'border-btn-group' ]"
           >
             Canceled
           </router-link>

@@ -11,7 +11,7 @@
               :to="{ query: { status: 'all', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
               active-class="router-link-active"
               class="btn btn-outline-primary"
-              :class="[ filter.status === 'all' ? 'active' : 'border-secondary' ]"
+              :class="[ filter.status === 'all' ? 'active' : 'border-btn-group' ]"
               @click="this.blur()"
             >
               All
@@ -20,7 +20,7 @@
               :to="{ query: { status: 'succeeded', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
               active-class="router-link-active"
               class="btn btn-outline-success"
-              :class="[ filter.status === 'succeeded' ? 'active' : 'border-secondary' ]"
+              :class="[ filter.status === 'succeeded' ? 'active' : 'border-btn-group' ]"
             >
               Succeeded
             </router-link>
@@ -28,7 +28,7 @@
               :to="{ query: { status: 'failed', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
               active-class="router-link-active"
               class="btn btn-outline-danger"
-              :class="[ filter.status === 'failed' ? 'active' : 'border-secondary' ]"
+              :class="[ filter.status === 'failed' ? 'active' : 'border-btn-group' ]"
             >
               Failed
             </router-link>
@@ -36,7 +36,7 @@
               :to="{ query: { status: 'running', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
               active-class="router-link-active"
               class="btn btn-outline-warning"
-              :class="[ filter.status === 'running' ? 'active' : 'border-secondary' ]"
+              :class="[ filter.status === 'running' ? 'active' : 'border-btn-group' ]"
             >
               Running
             </router-link>
@@ -44,7 +44,7 @@
               :to="{ query: { status: 'canceled', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
               active-class="router-link-active"
               class="btn btn-outline-secondary"
-              :class="[ filter.status === 'canceled' ? 'active' : 'border-secondary' ]"
+              :class="[ filter.status === 'canceled' ? 'active' : 'border-btn-group' ]"
             >
               Canceled
             </router-link>
