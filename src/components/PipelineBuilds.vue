@@ -10,7 +10,7 @@
             :to="{ query: { status: 'all', page: 1 } }"
             active-class="router-link-active"
             class="btn btn-outline-primary btn-sm"
-            :class="{ active: filter.status === 'all' }"
+            :class="[ filter.status === 'all' ? 'active' : 'border-secondary' ]"
           >
             All
           </router-link>
@@ -18,7 +18,7 @@
             :to="{ query: { status: 'succeeded', page: 1 } }"
             active-class="router-link-active"
             class="btn btn-outline-success btn-sm"
-            :class="{ active: filter.status === 'succeeded' }"
+            :class="[ filter.status === 'succeeded' ? 'active' : 'border-secondary' ]"
           >
             Succeeded
           </router-link>
@@ -26,7 +26,7 @@
             :to="{ query: { status: 'failed', page: 1 } }"
             active-class="router-link-active"
             class="btn btn-outline-danger btn-sm"
-            :class="{ active: filter.status === 'failed' }"
+            :class="[ filter.status === 'failed' ? 'active' : 'border-secondary' ]"
           >
             Failed
           </router-link>
@@ -34,7 +34,7 @@
             :to="{ query: { status: 'running', page: 1 } }"
             active-class="router-link-active"
             class="btn btn-outline-warning btn-sm"
-            :class="{ active: filter.status === 'running' }"
+            :class="[ filter.status === 'running' ? 'active' : 'border-secondary' ]"
           >
             Running
           </router-link>
@@ -42,7 +42,7 @@
             :to="{ query: { status: 'canceled', page: 1 } }"
             active-class="router-link-active"
             class="btn btn-outline-secondary btn-sm"
-            :class="{ active: filter.status === 'canceled' }"
+            :class="[ filter.status === 'canceled' ? 'active' : 'border-secondary' ]"
           >
             Canceled
           </router-link>
@@ -205,7 +205,7 @@
       size="md"
       :link-gen="paginationLinkGenerator"
       use-router
-      :number-of-pages="pagination.totalPages"
+      :number-of-pages="pagination.totalPages > 0 ? pagination.totalPages : 1"
       v-model="pagination.page"
       align="center"
       hide-goto-end-buttons

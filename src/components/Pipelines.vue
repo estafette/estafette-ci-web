@@ -11,7 +11,8 @@
               :to="{ query: { status: 'all', since: filter.since, labels: filter.labels, page: 1 } }"
               active-class="router-link-active"
               class="btn btn-outline-primary"
-              :class="{ active: filter.status === 'all' }"
+              :class="[ filter.status === 'all' ? 'active' : 'border-secondary' ]"
+              @click="this.blur()"
             >
               All
             </router-link>
@@ -19,7 +20,7 @@
               :to="{ query: { status: 'succeeded', since: filter.since, labels: filter.labels, page: 1 } }"
               active-class="router-link-active"
               class="btn btn-outline-success"
-              :class="{ active: filter.status === 'succeeded' }"
+              :class="[ filter.status === 'succeeded' ? 'active' : 'border-secondary' ]"
             >
               Succeeded
             </router-link>
@@ -27,7 +28,7 @@
               :to="{ query: { status: 'failed', since: filter.since, labels: filter.labels, page: 1 } }"
               active-class="router-link-active"
               class="btn btn-outline-danger"
-              :class="{ active: filter.status === 'failed' }"
+              :class="[ filter.status === 'failed' ? 'active' : 'border-secondary' ]"
             >
               Failed
             </router-link>
@@ -35,7 +36,7 @@
               :to="{ query: { status: 'running', since: filter.since, labels: filter.labels, page: 1 } }"
               active-class="router-link-active"
               class="btn btn-outline-warning"
-              :class="{ active: filter.status === 'running' }"
+              :class="[ filter.status === 'running' ? 'active' : 'border-secondary' ]"
             >
               Running
             </router-link>
@@ -43,7 +44,7 @@
               :to="{ query: { status: 'canceled', since: filter.since, labels: filter.labels, page: 1 } }"
               active-class="router-link-active"
               class="btn btn-outline-secondary"
-              :class="{ active: filter.status === 'canceled' }"
+              :class="[ filter.status === 'canceled' ? 'active' : 'border-secondary' ]"
             >
               Canceled
             </router-link>
@@ -256,7 +257,7 @@
       size="md"
       :link-gen="paginationLinkGenerator"
       use-router
-      :number-of-pages="pagination.totalPages"
+      :number-of-pages="pagination.totalPages > 0 ? pagination.totalPages : 1"
       v-model="pagination.page"
       align="center"
       hide-goto-end-buttons

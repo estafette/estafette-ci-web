@@ -42,6 +42,10 @@
     -webkit-appearance: none;
 }
 
+a.btn:focus {
+    box-shadow: none!important;
+}
+
 html, body, #app {
     height: 100%;
 }
