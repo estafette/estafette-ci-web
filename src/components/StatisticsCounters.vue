@@ -3,12 +3,16 @@
     <div class="row mt-0 mr-0 mb-3 ml-0">
       <div class="col-12 col-sm-8 col-lg" />
       <div class="col-12 col-sm-4 col-lg-2 p-0 text-right">
-        <b-form-select
-          v-model="filter.since"
-          :options="sinceOptions"
-          @change="setSince"
-          class="border-primary text-primary"
-        />
+        <b-input-group>
+          <b-input-group-prepend is-text>
+            <font-awesome-icon icon="clock" />
+          </b-input-group-prepend>
+          <b-form-select
+            v-model="filter.since"
+            :options="sinceOptions"
+            @change="setSince"
+          />
+        </b-input-group>
       </div>
     </div>
 
@@ -73,13 +77,24 @@
 
 <script>
 import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
+import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
+import bInputGroupPrepend from 'bootstrap-vue/es/components/input-group/input-group-prepend'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faClock } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faClock)
 
 export default {
   components: {
     StatsPipelinesCount: () => import(/* webpackChunkName: "tweenlite" */ '@/components/StatsPipelinesCount'),
     StatsBuildsCount: () => import(/* webpackChunkName: "tweenlite" */ '@/components/StatsBuildsCount'),
     StatsReleasesCount: () => import(/* webpackChunkName: "tweenlite" */ '@/components/StatsReleasesCount'),
-    bFormSelect
+    bFormSelect,
+    bInputGroup,
+    bInputGroupPrepend,
+    FontAwesomeIcon
   },
 
   data: function () {
