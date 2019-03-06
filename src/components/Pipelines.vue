@@ -61,12 +61,16 @@
           </span>
         </div>
         <div class="col-12 col-md-4 col-lg-2 mb-2 text-right">
-          <b-form-select
-            v-model="filter.since"
-            :options="sinceOptions"
-            @change="setSince"
-            class="border-primary text-primary"
-          />
+          <b-input-group>
+            <b-input-group-prepend is-text>
+              <font-awesome-icon icon="clock" />
+            </b-input-group-prepend>
+            <b-form-select
+              v-model="filter.since"
+              :options="sinceOptions"
+              @change="setSince"
+            />
+          </b-input-group>
         </div>
       </div>
     </div>
@@ -263,13 +267,24 @@ import CommitLink from '@/components/CommitLink'
 import ReleaseBadge from '@/components/ReleaseBadge'
 import bPaginationNav from 'bootstrap-vue/es/components/pagination-nav/pagination-nav'
 import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
+import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
+import bInputGroupPrepend from 'bootstrap-vue/es/components/input-group/input-group-prepend'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faClock } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faClock)
 
 export default {
   components: {
     CommitLink,
     ReleaseBadge,
     bPaginationNav,
-    bFormSelect
+    bFormSelect,
+    bInputGroup,
+    bInputGroupPrepend,
+    FontAwesomeIcon
   },
 
   props: {
