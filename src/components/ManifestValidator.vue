@@ -4,17 +4,19 @@
       @submit="onSubmit"
       autocomplete="off"
     >
-      <label for="template">
-        Template
-      </label>
-      <b-form-textarea
-        id="template"
-        v-model="form.template"
-        placeholder="Paste your manifest"
-        :rows="25"
-        class="border bg-light"
-        :class="status | bootstrapClass('border')"
-      />
+      <b-form-group
+        label="Template"
+        label-for="template"
+      >
+        <b-form-textarea
+          id="template"
+          v-model="form.template"
+          placeholder="Paste your manifest"
+          :rows="25"
+          class="border bg-light"
+          :class="status | bootstrapClass('border')"
+        />
+      </b-form-group>
 
       <b-button
         type="submit"
@@ -56,6 +58,7 @@
 import Spinner from '@/components/Spinner'
 import bForm from 'bootstrap-vue/es/components/form/form'
 import bFormTextarea from 'bootstrap-vue/es/components//form-textarea/form-textarea'
+import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group'
 import bButton from 'bootstrap-vue/es/components/button/button'
 
 export default {
@@ -63,6 +66,7 @@ export default {
     Spinner,
     bForm,
     bFormTextarea,
+    bFormGroup,
     bButton
   },
   data: function () {

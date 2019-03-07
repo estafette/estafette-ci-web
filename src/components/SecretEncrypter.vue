@@ -27,7 +27,7 @@
       </b-form-group>
 
       <b-form-group
-        label="Value to encrypt:"
+        label="Value to encrypt"
         label-for="value"
         description="The encrypted secret works only for this Estafette CI installation."
       >

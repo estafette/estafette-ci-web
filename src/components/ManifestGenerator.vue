@@ -4,32 +4,36 @@
       @submit="onSubmit"
       autocomplete="off"
     >
-      <label :for="`template-select`">
-        Template
-      </label>
-      <b-form-select
-        v-if="templatesOptions.length > 0"
-        :id="`template-select`"
-        v-model="form.template"
-        :options="templatesOptions"
-        @change="setTemplate"
-        class="border-primary text-primary"
-      />
+      <b-form-group
+        label="Template"
+        label-for="template-select"
+      >
+        <b-form-select
+          v-if="templatesOptions.length > 0"
+          :id="`template-select`"
+          v-model="form.template"
+          :options="templatesOptions"
+          @change="setTemplate"
+          class="border-primary text-primary"
+        />
+      </b-form-group>
 
       <div
         v-for="placeholder in placeholders"
         :key="placeholder.name"
         class="mt-3"
       >
-        <label :for="`placeholder-${placeholder.name}`">
-          {{ placeholder.name | splitCamelcase }}
-        </label>
-        <b-form-input
-          :id="`placeholder-${placeholder.name}`"
-          v-model="form.placeholders[placeholder.name]"
-          type="text"
-          :placeholder="'Enter ' + $options.filters.splitCamelcase(placeholder.name)"
-        />
+        <b-form-group
+          :label="placeholder.name | splitCamelcase"
+          :label-for="`placeholder-${placeholder.name}`"
+        >
+          <b-form-input
+            :id="`placeholder-${placeholder.name}`"
+            v-model="form.placeholders[placeholder.name]"
+            type="text"
+            :placeholder="'Enter ' + $options.filters.splitCamelcase(placeholder.name)"
+          />
+        </b-form-group>
       </div>
 
       <b-button
@@ -73,6 +77,7 @@ import Spinner from '@/components/Spinner'
 import bForm from 'bootstrap-vue/es/components/form/form'
 import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
 import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
+import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group'
 import bButton from 'bootstrap-vue/es/components/button/button'
 import bTooltip from 'bootstrap-vue/es/directives/tooltip/tooltip'
 
@@ -82,6 +87,7 @@ export default {
     bForm,
     bFormSelect,
     bFormInput,
+    bFormGroup,
     bButton
   },
   directives: {
