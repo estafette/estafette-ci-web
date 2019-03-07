@@ -50,6 +50,41 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-12 mb-2 text-right">
+        <div class="d-inline-flex mr-2">
+          {{ firstPageItem }}-{{ lastPageItem }} of {{ pagination.totalItems }}
+        </div>
+
+        <nav class="d-inline-flex">
+          <ul class="pagination m-0 p-0">
+            <li
+              class="page-item"
+              :class="{ disabled: pagination.page <= 1 }"
+            >
+              <router-link
+                :to="paginationLinkGenerator(pagination.page-1)"
+                class="page-link"
+              >
+                ‹
+              </router-link>
+            </li>
+            <li
+              class="page-item"
+              :class="{ disabled: pagination.page >= pagination.totalPages }"
+            >
+              <router-link
+                :to="paginationLinkGenerator(pagination.page+1)"
+                class="page-link"
+              >
+                ›
+              </router-link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
     <div class="row rounded border p-2 mt-2 mr-0 mb-2 ml-0 font-weight-bold">
       <div class="col-6 col-md-4 col-xl-2">
         Version
@@ -271,6 +306,15 @@ export default {
         status: 'all'
       },
       refresh: true
+    }
+  },
+
+  computed: {
+    firstPageItem: function () {
+      return 1 + (this.pagination.page - 1) * this.pagination.size
+    },
+    lastPageItem: function () {
+      return this.pagination.page * this.pagination.size < this.pagination.totalItems ? this.pagination.page * this.pagination.size : this.pagination.totalItems
     }
   },
 
