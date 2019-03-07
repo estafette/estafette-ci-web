@@ -98,7 +98,7 @@
         </div>
         <div class="col-12 col-md-6 mb-2 text-right">
           <div class="d-inline-flex mr-2">
-            {{ 1 + (pagination.page-1) * pagination.size }}-{{ pagination.page * pagination.size }} of {{ pagination.totalItems }}
+            {{ firstPageItem }}-{{ lastPageItem }} of {{ pagination.totalItems }}
           </div>
 
           <nav class="d-inline-flex">
@@ -382,6 +382,15 @@ export default {
         { value: 'eternity', text: 'Since dawn of mankind' }
       ],
       refresh: true
+    }
+  },
+
+  computed: {
+    firstPageItem: function () {
+      return 1 + (this.pagination.page - 1) * this.pagination.size
+    },
+    lastPageItem: function () {
+      return this.pagination.page * this.pagination.size < this.pagination.totalItems ? this.pagination.page * this.pagination.size : this.pagination.totalItems
     }
   },
 
