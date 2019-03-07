@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="m-3">
+    <div class="mt-3 mr-3 mb-1 ml-3">
       <div class="row">
         <div class="col-12 col-lg-6 mb-2">
           <div class="btn-group mb-1">
@@ -76,12 +76,12 @@
         </div>
       </div>
 
-      <div
-        v-if="filter.labels"
-        class="row"
-      >
-        <div class="col-12 mb-2">
-          <div class="btn-group mb-1">
+      <div class="row">
+        <div class="col-12 col-md-6 mb-2">
+          <div
+            class="btn-group mb-1"
+            v-if="filter.labels"
+          >
             <a class="btn btn-outline-light bg-btn-group-prepend">
               <font-awesome-icon icon="tag" />
             </a>
@@ -96,11 +96,43 @@
             </span>
           </div>
         </div>
+        <div class="col-12 col-md-6 mb-2 text-right">
+          <div class="d-inline-flex mr-2">
+            {{ 1 + (pagination.page-1) * pagination.size }}-{{ pagination.page * pagination.size }} of {{ pagination.totalItems }}
+          </div>
+
+          <nav class="d-inline-flex">
+            <ul class="pagination m-0 p-0">
+              <li
+                class="page-item"
+                :class="{ disabled: pagination.page <= 1 }"
+              >
+                <router-link
+                  :to="paginationLinkGenerator(pagination.page-1)"
+                  class="page-link"
+                >
+                  ‹
+                </router-link>
+              </li>
+              <li
+                class="page-item"
+                :class="{ disabled: pagination.page >= pagination.totalPages }"
+              >
+                <router-link
+                  :to="paginationLinkGenerator(pagination.page+1)"
+                  class="page-link"
+                >
+                  ›
+                </router-link>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
 
-    <div class="m-3">
-      <div class="row rounded border p-2 mt-2 mr-0 mb-2 ml-0 font-weight-bold">
+    <div class="mt-0 mr-3 mb-3 ml-3">
+      <div class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold">
         <div class="col-6 col-md-6 col-xl-5 col-xxl-3 col-xxxl-2">
           Pipeline
         </div>
