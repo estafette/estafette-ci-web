@@ -4,36 +4,41 @@
       @submit="onSubmit"
       autocomplete="off"
     >
-      <label for="base64">
-        Base64 encode <span class="text-secondary">
-          (this is needed if you use it as a Kubernetes secret)
-        </span>
-      </label>
-      <b-form-checkbox
-        id="base64"
-        v-model="form.base64"
-      />
+      <b-form-group
+        description="Required for use as a Kubernetes secret."
+      >
+        <b-form-checkbox
+          id="base64"
+          v-model="form.base64"
+        >
+          Base64 encode
+        </b-form-checkbox>
+      </b-form-group>
 
-      <label for="double">
-        Double encrypt <span class="text-secondary">
-          (this encrypts the secret envelope a second time for injecting it into Estafette's configmap)
-        </span>
-      </label>
-      <b-form-checkbox
-        id="double"
-        v-model="form.double"
-      />
+      <b-form-group
+        description="To encrypt the secret envelope a second time for injecting it into Estafette's configmap."
+      >
+        <b-form-checkbox
+          id="double"
+          v-model="form.double"
+        >
+          Double encrypt
+        </b-form-checkbox>
+      </b-form-group>
 
-      <label for="value">
-        Value to encrypt
-      </label>
-      <b-form-textarea
-        id="value"
-        v-model="form.value"
-        placeholder="Paste your value to be encrypted"
-        :rows="5"
-        class="border bg-light"
-      />
+      <b-form-group
+        label="Value to encrypt:"
+        label-for="value"
+        description="The encrypted secret works only for this Estafette CI installation."
+      >
+        <b-form-textarea
+          id="value"
+          v-model="form.value"
+          placeholder="Paste your value to be encrypted"
+          :rows="5"
+          class="border bg-light"
+        />
+      </b-form-group>
 
       <b-button
         type="submit"
@@ -72,7 +77,8 @@
 import spinner from '@/components/Spinner'
 import bForm from 'bootstrap-vue/es/components/form/form'
 import bFormCheckbox from 'bootstrap-vue/es/components/form-checkbox/form-checkbox'
-import bFormTextarea from 'bootstrap-vue/es/components//form-textarea/form-textarea'
+import bFormTextarea from 'bootstrap-vue/es/components/form-textarea/form-textarea'
+import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group'
 import bButton from 'bootstrap-vue/es/components/button/button'
 import bTooltip from 'bootstrap-vue/es/directives/tooltip/tooltip'
 
@@ -82,6 +88,7 @@ export default {
     bForm,
     bFormCheckbox,
     bFormTextarea,
+    bFormGroup,
     bButton
   },
   directives: {
