@@ -278,6 +278,8 @@
 </template>
 
 <script>
+import debounce from 'lodash.debounce'
+
 import CommitLink from '@/components/CommitLink'
 import ReleaseBadge from '@/components/ReleaseBadge'
 import bPaginationNav from 'bootstrap-vue/es/components/pagination-nav/pagination-nav'
@@ -358,6 +360,7 @@ export default {
       this.filter.status = query && query.status ? query.status : 'all'
       this.filter.since = query && query.since ? query.since : '1d'
       this.filter.labels = query && query.labels ? query.labels : ''
+      this.filter.search = query && query.search ? query.search : ''
     },
 
     updateQueryParams () {
@@ -402,11 +405,14 @@ export default {
       this.updateQueryParams()
     },
 
-    setSearch (value) {
-      this.filter.search = value
-      this.pagination.page = 1
-      this.updateQueryParams()
-    },
+    setSearch: debounce(
+      function (value) {
+        this.filter.search = value
+        this.pagination.page = 1
+        this.updateQueryParams()
+      },
+      500
+    ),
 
     sortLabels (labels) {
       if (!labels) {
