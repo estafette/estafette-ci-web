@@ -403,6 +403,12 @@ export default {
     },
 
     setSearch (value) {
+      if (value && value.length > 0) {
+        this.filter.since = 'eternity'
+      } else {
+        this.filter.since = '1d'
+      }
+
       this.filter.search = value
       this.pagination.page = 1
       this.updateQueryParams()
