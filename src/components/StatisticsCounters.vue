@@ -2,7 +2,7 @@
   <div class="m-3">
     <div class="row mt-0 mr-0 mb-3 ml-0">
       <div class="col-12 col-sm-8 col-lg" />
-      <div class="col-12 col-sm-4 col-lg-2 p-0 text-right">
+      <div class="col-12 col-sm-4 col-lg-3 p-0 text-right">
         <b-input-group>
           <b-input-group-prepend is-text>
             <font-awesome-icon icon="clock" />

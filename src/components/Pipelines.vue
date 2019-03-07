@@ -2,11 +2,11 @@
   <div>
     <div class="m-3">
       <div class="row">
-        <div
-          class="col-12 col-md-6 col-lg mb-2"
-          id="status-filters"
-        >
+        <div class="col-12 col-lg-6 mb-2">
           <div class="btn-group mb-1">
+            <a class="btn btn-outline-light bg-btn-group-prepend">
+              <font-awesome-icon icon="check-circle" />
+            </a>
             <router-link
               :to="{ query: { status: 'all', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
               active-class="router-link-active"
@@ -49,21 +49,8 @@
               Canceled
             </router-link>
           </div>
-
-          <span
-            v-if="filter.labels"
-            class="btn btn-outline-secondary mb-1"
-          >
-            {{ filter.labels }} <router-link
-              :to="{ query: { status: filter.status, since: filter.since, page: 1 } }"
-              active-class="router-link-active"
-              class="badge badge-secondary"
-            >
-              &times;
-            </router-link>
-          </span>
         </div>
-        <div class="col-12 col-md-4 col-lg-2 mb-2">
+        <div class="col-12 col-md-6 col-lg-3 mb-2">
           <b-input-group>
             <b-input-group-prepend is-text>
               <font-awesome-icon icon="filter" />
@@ -75,7 +62,7 @@
             />
           </b-input-group>
         </div>
-        <div class="col-12 col-md-2 col-lg-2 mb-2 text-right">
+        <div class="col-12 col-md-6 col-lg-3 mb-2 text-right">
           <b-input-group>
             <b-input-group-prepend is-text>
               <font-awesome-icon icon="clock" />
@@ -86,6 +73,28 @@
               @change="setSince"
             />
           </b-input-group>
+        </div>
+      </div>
+
+      <div
+        v-if="filter.labels"
+        class="row"
+      >
+        <div class="col-12 mb-2">
+          <div class="btn-group mb-1">
+            <a class="btn btn-outline-light bg-btn-group-prepend">
+              <font-awesome-icon icon="tag" />
+            </a>
+            <span class="btn btn-outline-secondary border-btn-group">
+              {{ filter.labels }} <router-link
+                :to="{ query: { status: filter.status, since: filter.since, page: 1 } }"
+                active-class="router-link-active"
+                class="badge badge-secondary"
+              >
+                &times;
+              </router-link>
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -289,9 +298,11 @@ import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
 import bInputGroupPrepend from 'bootstrap-vue/es/components/input-group/input-group-prepend'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faFilter, faClock } from '@fortawesome/free-solid-svg-icons'
+import { faTag, faCheckCircle, faFilter, faClock } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+library.add(faTag)
+library.add(faCheckCircle)
 library.add(faFilter)
 library.add(faClock)
 
