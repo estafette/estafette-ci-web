@@ -1,55 +1,70 @@
 <template>
-  <b-dropdown
-    size="sm"
-    v-if="user && user.authenticated && pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'"
-    id="releaseAction"
-    text="Release to..."
-    variant="outline-dark"
-  >
-    <div
-      v-for="releaseTarget in pipeline.releaseTargets"
-      :key="releaseTarget.name"
+  <b-input-group v-if="user && user.authenticated && pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'">
+    <b-input-group-text slot="prepend">
+      <font-awesome-icon icon="upload" />
+    </b-input-group-text>
+    <b-dropdown
+      size="sm"
+      id="releaseAction"
+      text="Release to..."
+      variant="outline-dark"
     >
       <div
-        role="group"
-        v-if="hasActions(releaseTarget)"
-        :aria-labelledby="releaseTarget.name"
+        v-for="releaseTarget in pipeline.releaseTargets"
+        :key="releaseTarget.name"
       >
-        <b-dropdown-header :id="releaseTarget.name">
-          {{ releaseTarget.name }}:
-        </b-dropdown-header>
-        <b-dropdown-item-button
-          v-for="action in releaseTarget.actions"
-          :key="releaseTarget.name+'-'+action.name"
-          @click.stop="startRelease(releaseTarget, action, $event)"
-          :disabled="releaseTargetDisabled(releaseTarget)"
-          :aria-describedby="releaseTarget.name"
+        <div
+          role="group"
+          v-if="hasActions(releaseTarget)"
+          :aria-labelledby="releaseTarget.name"
         >
-          - {{ action.name }}
+          <b-dropdown-header :id="releaseTarget.name">
+            {{ releaseTarget.name }}:
+          </b-dropdown-header>
+          <b-dropdown-item-button
+            v-for="action in releaseTarget.actions"
+            :key="releaseTarget.name+'-'+action.name"
+            @click.stop="startRelease(releaseTarget, action, $event)"
+            :disabled="releaseTargetDisabled(releaseTarget)"
+            :aria-describedby="releaseTarget.name"
+          >
+            - {{ action.name }}
+          </b-dropdown-item-button>
+        </div>
+        <b-dropdown-item-button
+          v-if="!hasActions(releaseTarget)"
+          :key="releaseTarget.name"
+          @click.stop="startRelease(releaseTarget, null, $event)"
+          :disabled="releaseTargetDisabled(releaseTarget)"
+        >
+          {{ releaseTarget.name }}
         </b-dropdown-item-button>
       </div>
-      <b-dropdown-item-button
-        v-if="!hasActions(releaseTarget)"
-        :key="releaseTarget.name"
-        @click.stop="startRelease(releaseTarget, null, $event)"
-        :disabled="releaseTargetDisabled(releaseTarget)"
-      >
-        {{ releaseTarget.name }}
-      </b-dropdown-item-button>
-    </div>
-  </b-dropdown>
+    </b-dropdown>
+  </b-input-group>
 </template>
 
 <script>
 import bDropdown from 'bootstrap-vue/es/components/dropdown/dropdown'
 import bDropdownHeader from 'bootstrap-vue/es/components/dropdown/dropdown-header'
 import bDropdownItemButton from 'bootstrap-vue/es/components/dropdown/dropdown-item-button'
+import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
+import bInputGroupText from 'bootstrap-vue/es/components/input-group/input-group-text'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUpload } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faUpload)
 
 export default {
   components: {
     bDropdown,
     bDropdownHeader,
-    bDropdownItemButton
+    bDropdownItemButton,
+    bInputGroup,
+    bInputGroupText,
+    FontAwesomeIcon
   },
   props: {
     pipeline: {

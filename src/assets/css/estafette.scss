@@ -52,6 +52,12 @@
     background-color: $input-group-addon-bg !important;
 }
 
+.input-group .b-dropdown .btn-sm {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-color: $custom-select-border-color !important;
+}
+
 a.btn:focus {
     box-shadow: none!important;
 }
