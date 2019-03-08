@@ -1,5 +1,5 @@
 <template>
-  <b-input-group>
+  <b-input-group class="mb-3">
     <b-input-group-prepend is-text>
       <font-awesome-icon icon="clock" />
     </b-input-group-prepend>

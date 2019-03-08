@@ -1,5 +1,5 @@
 <template>
-  <div class="btn-group mb-1">
+  <div class="btn-group mb-3">
     <a class="btn btn-outline-light bg-btn-group-prepend">
       <font-awesome-icon icon="check-circle" />
     </a>

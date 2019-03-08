@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="mt-3 mr-3 mb-1 ml-3">
+    <div class="mt-3 mr-3 ml-3">
       <div class="row">
-        <div class="col-12 col-lg-6 mb-2">
+        <div class="col-12 col-lg-6">
           <status-filter :filter="filter" />
         </div>
-        <div class="col-12 col-md-6 col-lg-3 mb-2">
-          <b-input-group>
+        <div class="col-12 col-md-6 col-lg-3">
+          <b-input-group class="mb-3">
             <b-input-group-prepend is-text>
               <font-awesome-icon icon="filter" />
             </b-input-group-prepend>
@@ -17,7 +17,7 @@
             />
           </b-input-group>
         </div>
-        <div class="col-12 col-md-6 col-lg-3 mb-2 text-right">
+        <div class="col-12 col-md-6 col-lg-3 text-right">
           <since-selector
             :model="filter.since"
             :on-change="setSince"
@@ -26,9 +26,9 @@
       </div>
 
       <div class="row">
-        <div class="col-12 col-md-6 mb-2">
+        <div class="col-12">
           <div
-            class="btn-group mb-1"
+            class="btn-group mb-3"
             v-if="filter.labels"
           >
             <a class="btn btn-outline-light bg-btn-group-prepend">
@@ -44,11 +44,10 @@
               </router-link>
             </span>
           </div>
-        </div>
-        <div class="col-12 col-md-6 mb-2 text-right">
           <pagination-compact
             :pagination="pagination"
             :link-generator="paginationLinkGenerator"
+            class="float-right"
           />
         </div>
       </div>
@@ -229,14 +228,9 @@
       </transition-group>
     </div>
 
-    <b-pagination-nav
-      size="md"
-      :link-gen="paginationLinkGenerator"
-      use-router
-      :number-of-pages="pagination.totalPages > 0 ? pagination.totalPages : 1"
-      v-model="pagination.page"
-      align="center"
-      hide-goto-end-buttons
+    <pagination
+      :pagination="pagination"
+      :link-generator="paginationLinkGenerator"
     />
   </div>
 </template>
@@ -249,7 +243,7 @@ import ReleaseBadge from '@/components/ReleaseBadge'
 import StatusFilter from '@/components/StatusFilter'
 import SinceSelector from '@/components/SinceSelector'
 import PaginationCompact from '@/components/PaginationCompact'
-import bPaginationNav from 'bootstrap-vue/es/components/pagination-nav/pagination-nav'
+import Pagination from '@/components/Pagination'
 import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
 import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
 import bInputGroupPrepend from 'bootstrap-vue/es/components/input-group/input-group-prepend'
@@ -269,7 +263,7 @@ export default {
     StatusFilter,
     SinceSelector,
     PaginationCompact,
-    bPaginationNav,
+    Pagination,
     bFormInput,
     bInputGroup,
     bInputGroupPrepend,

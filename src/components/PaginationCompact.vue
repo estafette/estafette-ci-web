@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-3">
     <div class="d-inline-flex mr-2">
       {{ firstPageItem }}-{{ lastPageItem }} of {{ pagination.totalItems }}
     </div>

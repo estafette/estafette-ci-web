@@ -1,21 +1,17 @@
 <template>
   <div class="m-3">
     <div class="row">
-      <div class="col-12 col-md-8 col-lg mb-2 text-center">
+      <div class="col-12 text-center">
         <status-filter :filter="filter" />
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12 mb-2 text-right">
         <pagination-compact
           :pagination="pagination"
           :link-generator="paginationLinkGenerator"
+          class="float-right"
         />
       </div>
     </div>
 
-    <div class="row rounded border p-2 mt-2 mr-0 mb-2 ml-0 font-weight-bold">
+    <div class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold">
       <div class="col-6 col-md-4 col-xl-2">
         Name
       </div>
@@ -126,26 +122,21 @@
       </router-link>
     </transition-group>
 
-    <b-pagination-nav
-      size="md"
-      :link-gen="paginationLinkGenerator"
-      use-router
-      :number-of-pages="pagination.totalPages > 0 ? pagination.totalPages : 1"
-      v-model="pagination.page"
-      align="center"
-      hide-goto-end-buttons
+    <pagination
+      :pagination="pagination"
+      :link-generator="paginationLinkGenerator"
     />
   </div>
 </template>
 
 <script>
-import bPaginationNav from 'bootstrap-vue/es/components/pagination-nav/pagination-nav'
+import Pagination from '@/components/Pagination'
 import StatusFilter from '@/components/StatusFilter'
 import PaginationCompact from '@/components/PaginationCompact'
 
 export default {
   components: {
-    bPaginationNav,
+    Pagination,
     StatusFilter,
     PaginationCompact
   },
