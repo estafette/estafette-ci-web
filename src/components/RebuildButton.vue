@@ -2,13 +2,13 @@
   <b-input-group v-if="user.authenticated && build && (build.buildStatus === 'failed' || build.buildStatus === 'canceled')">
     <b-input-group-text
       slot="prepend"
-      class="border border-success text-success bg-white"
+      class="border border-warning text-warning bg-white"
       @click.stop=""
     >
       <font-awesome-icon icon="redo" />
     </b-input-group-text>
     <div
-      class="btn btn-outline-success btn-sm"
+      class="btn btn-outline-warning btn-sm"
       @click.stop="rebuild"
     >
       Rebuild
