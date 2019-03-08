@@ -122,6 +122,10 @@
           :to="{ name: 'PipelineReleaseLogs', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName, releaseID: releaseID }}"
           class="nav-link"
         >
+          <font-awesome-icon
+            icon="file-alt"
+            class="mr-2"
+          />
           Logs
         </router-link>
       </li>
@@ -137,9 +141,16 @@
 <script>
 import CancelButton from '@/components/CancelButton'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faFileAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faFileAlt)
+
 export default {
   components: {
-    CancelButton
+    CancelButton,
+    FontAwesomeIcon
   },
   props: {
     repoSource: {

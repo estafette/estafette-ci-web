@@ -180,6 +180,10 @@
           :to="{ name: 'PipelineBuildLogs', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName, id: id }}"
           class="nav-link"
         >
+          <font-awesome-icon
+            icon="file-alt"
+            class="mr-2"
+          />
           Logs
         </router-link>
       </li>
@@ -188,6 +192,10 @@
           :to="{ name: 'PipelineBuildManifest', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName, id: id }}"
           class="nav-link"
         >
+          <font-awesome-icon
+            icon="book"
+            class="mr-2"
+          />
           Manifest
         </router-link>
       </li>
@@ -208,6 +216,12 @@ import RebuildButton from '@/components/RebuildButton'
 import CancelButton from '@/components/CancelButton'
 import PipelineBuildWarnings from '@/components/PipelineBuildWarnings'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faFileAlt, faBook } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faFileAlt, faBook)
+
 export default {
   components: {
     CommitLink,
@@ -215,7 +229,8 @@ export default {
     ReleaseButton,
     RebuildButton,
     CancelButton,
-    PipelineBuildWarnings
+    PipelineBuildWarnings,
+    FontAwesomeIcon
   },
   props: {
     repoSource: {
