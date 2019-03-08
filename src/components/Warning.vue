@@ -5,7 +5,7 @@
     role="alert"
   >
     <font-awesome-icon
-      icon="radiation"
+      icon="exclamation-circle"
       class="h2 mr-3 align-self-center"
     />
     <mark-down>{{ warning.message }}</mark-down>
@@ -14,10 +14,10 @@
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faRadiation } from '@fortawesome/free-solid-svg-icons'
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faRadiation)
+library.add(faExclamationCircle)
 
 export default {
   components: {
