@@ -1,87 +1,17 @@
 <template>
   <div class="m-3">
     <div class="row">
-      <div
-        class="col-12 col-md-8 col-lg mb-2 text-center"
-        id="status-filters"
-      >
-        <div class="btn-group mb-1">
-          <router-link
-            :to="{ query: { status: 'all', page: 1 } }"
-            active-class="router-link-active"
-            class="btn btn-outline-primary btn-sm"
-            :class="[ filter.status === 'all' ? 'active' : 'border-btn-group' ]"
-          >
-            All
-          </router-link>
-          <router-link
-            :to="{ query: { status: 'succeeded', page: 1 } }"
-            active-class="router-link-active"
-            class="btn btn-outline-success btn-sm"
-            :class="[ filter.status === 'succeeded' ? 'active' : 'border-btn-group' ]"
-          >
-            Succeeded
-          </router-link>
-          <router-link
-            :to="{ query: { status: 'failed', page: 1 } }"
-            active-class="router-link-active"
-            class="btn btn-outline-danger btn-sm"
-            :class="[ filter.status === 'failed' ? 'active' : 'border-btn-group' ]"
-          >
-            Failed
-          </router-link>
-          <router-link
-            :to="{ query: { status: 'running', page: 1 } }"
-            active-class="router-link-active"
-            class="btn btn-outline-warning btn-sm"
-            :class="[ filter.status === 'running' ? 'active' : 'border-btn-group' ]"
-          >
-            Running
-          </router-link>
-          <router-link
-            :to="{ query: { status: 'canceled', page: 1 } }"
-            active-class="router-link-active"
-            class="btn btn-outline-secondary btn-sm"
-            :class="[ filter.status === 'canceled' ? 'active' : 'border-btn-group' ]"
-          >
-            Canceled
-          </router-link>
-        </div>
+      <div class="col-12 col-md-8 col-lg mb-2 text-center">
+        <status-filter :filter="filter" />
       </div>
     </div>
 
     <div class="row">
       <div class="col-12 mb-2 text-right">
-        <div class="d-inline-flex mr-2">
-          {{ firstPageItem }}-{{ lastPageItem }} of {{ pagination.totalItems }}
-        </div>
-
-        <nav class="d-inline-flex">
-          <ul class="pagination m-0 p-0">
-            <li
-              class="page-item"
-              :class="{ disabled: pagination.page <= 1 }"
-            >
-              <router-link
-                :to="paginationLinkGenerator(pagination.page-1)"
-                class="page-link"
-              >
-                ‹
-              </router-link>
-            </li>
-            <li
-              class="page-item"
-              :class="{ disabled: pagination.page >= pagination.totalPages }"
-            >
-              <router-link
-                :to="paginationLinkGenerator(pagination.page+1)"
-                class="page-link"
-              >
-                ›
-              </router-link>
-            </li>
-          </ul>
-        </nav>
+        <pagination-compact
+          :pagination="pagination"
+          :link-generator="paginationLinkGenerator"
+        />
       </div>
     </div>
 
@@ -249,6 +179,8 @@
 </template>
 
 <script>
+import StatusFilter from '@/components/StatusFilter'
+import PaginationCompact from '@/components/PaginationCompact'
 import CommitLink from '@/components/CommitLink'
 import ReleaseButton from '@/components/ReleaseButton'
 import RebuildButton from '@/components/RebuildButton'
@@ -258,6 +190,8 @@ import bPaginationNav from 'bootstrap-vue/es/components/pagination-nav/paginatio
 
 export default {
   components: {
+    StatusFilter,
+    PaginationCompact,
     CommitLink,
     ReleaseButton,
     RebuildButton,
@@ -306,15 +240,6 @@ export default {
         status: 'all'
       },
       refresh: true
-    }
-  },
-
-  computed: {
-    firstPageItem: function () {
-      return 1 + (this.pagination.page - 1) * this.pagination.size
-    },
-    lastPageItem: function () {
-      return this.pagination.page * this.pagination.size < this.pagination.totalItems ? this.pagination.page * this.pagination.size : this.pagination.totalItems
     }
   },
 

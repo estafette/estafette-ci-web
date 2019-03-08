@@ -3,52 +3,7 @@
     <div class="mt-3 mr-3 mb-1 ml-3">
       <div class="row">
         <div class="col-12 col-lg-6 mb-2">
-          <div class="btn-group mb-1">
-            <a class="btn btn-outline-light bg-btn-group-prepend">
-              <font-awesome-icon icon="check-circle" />
-            </a>
-            <router-link
-              :to="{ query: { status: 'all', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
-              active-class="router-link-active"
-              class="btn btn-outline-primary"
-              :class="[ filter.status === 'all' ? 'active' : 'border-btn-group' ]"
-              @click="this.blur()"
-            >
-              All
-            </router-link>
-            <router-link
-              :to="{ query: { status: 'succeeded', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
-              active-class="router-link-active"
-              class="btn btn-outline-success"
-              :class="[ filter.status === 'succeeded' ? 'active' : 'border-btn-group' ]"
-            >
-              Succeeded
-            </router-link>
-            <router-link
-              :to="{ query: { status: 'failed', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
-              active-class="router-link-active"
-              class="btn btn-outline-danger"
-              :class="[ filter.status === 'failed' ? 'active' : 'border-btn-group' ]"
-            >
-              Failed
-            </router-link>
-            <router-link
-              :to="{ query: { status: 'running', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
-              active-class="router-link-active"
-              class="btn btn-outline-warning"
-              :class="[ filter.status === 'running' ? 'active' : 'border-btn-group' ]"
-            >
-              Running
-            </router-link>
-            <router-link
-              :to="{ query: { status: 'canceled', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
-              active-class="router-link-active"
-              class="btn btn-outline-secondary"
-              :class="[ filter.status === 'canceled' ? 'active' : 'border-btn-group' ]"
-            >
-              Canceled
-            </router-link>
-          </div>
+          <status-filter :filter="filter" />
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-2">
           <b-input-group>
@@ -91,36 +46,10 @@
           </div>
         </div>
         <div class="col-12 col-md-6 mb-2 text-right">
-          <div class="d-inline-flex mr-2">
-            {{ firstPageItem }}-{{ lastPageItem }} of {{ pagination.totalItems }}
-          </div>
-
-          <nav class="d-inline-flex">
-            <ul class="pagination m-0 p-0">
-              <li
-                class="page-item"
-                :class="{ disabled: pagination.page <= 1 }"
-              >
-                <router-link
-                  :to="paginationLinkGenerator(pagination.page-1)"
-                  class="page-link"
-                >
-                  ‹
-                </router-link>
-              </li>
-              <li
-                class="page-item"
-                :class="{ disabled: pagination.page >= pagination.totalPages }"
-              >
-                <router-link
-                  :to="paginationLinkGenerator(pagination.page+1)"
-                  class="page-link"
-                >
-                  ›
-                </router-link>
-              </li>
-            </ul>
-          </nav>
+          <pagination-compact
+            :pagination="pagination"
+            :link-generator="paginationLinkGenerator"
+          />
         </div>
       </div>
     </div>
@@ -317,7 +246,9 @@ import debounce from 'lodash.debounce'
 
 import CommitLink from '@/components/CommitLink'
 import ReleaseBadge from '@/components/ReleaseBadge'
+import StatusFilter from '@/components/StatusFilter'
 import SinceSelector from '@/components/SinceSelector'
+import PaginationCompact from '@/components/PaginationCompact'
 import bPaginationNav from 'bootstrap-vue/es/components/pagination-nav/pagination-nav'
 import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
 import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
@@ -335,7 +266,9 @@ export default {
   components: {
     CommitLink,
     ReleaseBadge,
+    StatusFilter,
     SinceSelector,
+    PaginationCompact,
     bPaginationNav,
     bFormInput,
     bInputGroup,
@@ -367,15 +300,6 @@ export default {
         search: ''
       },
       refresh: true
-    }
-  },
-
-  computed: {
-    firstPageItem: function () {
-      return 1 + (this.pagination.page - 1) * this.pagination.size
-    },
-    lastPageItem: function () {
-      return this.pagination.page * this.pagination.size < this.pagination.totalItems ? this.pagination.page * this.pagination.size : this.pagination.totalItems
     }
   },
 
