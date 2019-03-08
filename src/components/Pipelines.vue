@@ -6,16 +6,10 @@
           <status-filter :filter="filter" />
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-          <b-input-group class="mb-3">
-            <b-input-group-prepend is-text>
-              <font-awesome-icon icon="filter" />
-            </b-input-group-prepend>
-            <b-form-input
-              v-model="filter.search"
-              type="text"
-              @input="setSearch"
-            />
-          </b-input-group>
+          <pipeline-filter
+            :model="filter.search"
+            :on-input="setSearch"
+          />
         </div>
         <div class="col-12 col-md-6 col-lg-3 text-right">
           <since-selector
@@ -241,31 +235,20 @@ import debounce from 'lodash.debounce'
 import CommitLink from '@/components/CommitLink'
 import ReleaseBadge from '@/components/ReleaseBadge'
 import StatusFilter from '@/components/StatusFilter'
+import PipelineFilter from '@/components/PipelineFilter'
 import SinceSelector from '@/components/SinceSelector'
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
-import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
-import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
-import bInputGroupPrepend from 'bootstrap-vue/es/components/input-group/input-group-prepend'
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTag, faCheckCircle, faFilter } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faTag, faCheckCircle, faFilter)
 
 export default {
   components: {
     CommitLink,
     ReleaseBadge,
     StatusFilter,
+    PipelineFilter,
     SinceSelector,
     PaginationCompact,
-    Pagination,
-    bFormInput,
-    bInputGroup,
-    bInputGroupPrepend,
-    FontAwesomeIcon
+    Pagination
   },
 
   props: {
