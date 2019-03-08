@@ -55,6 +55,10 @@
 .input-group .btn {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
+
+    &:focus {
+        box-shadow: none!important;
+    }
 }
 
 a.btn:focus {
