@@ -3,16 +3,10 @@
     <div class="row mt-0 mr-0 mb-3 ml-0">
       <div class="col-12 col-sm-8 col-lg" />
       <div class="col-12 col-sm-4 col-lg-3 p-0 text-right">
-        <b-input-group>
-          <b-input-group-prepend is-text>
-            <font-awesome-icon icon="clock" />
-          </b-input-group-prepend>
-          <b-form-select
-            v-model="filter.since"
-            :options="sinceOptions"
-            @change="setSince"
-          />
-        </b-input-group>
+        <since-selector
+          :model="filter.since"
+          :on-change="setSince"
+        />
       </div>
     </div>
 
@@ -76,40 +70,21 @@
 </template>
 
 <script>
-import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
-import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
-import bInputGroupPrepend from 'bootstrap-vue/es/components/input-group/input-group-prepend'
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faClock } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faClock)
+import SinceSelector from '@/components/SinceSelector'
 
 export default {
   components: {
     StatsPipelinesCount: () => import(/* webpackChunkName: "tweenlite" */ '@/components/StatsPipelinesCount'),
     StatsBuildsCount: () => import(/* webpackChunkName: "tweenlite" */ '@/components/StatsBuildsCount'),
     StatsReleasesCount: () => import(/* webpackChunkName: "tweenlite" */ '@/components/StatsReleasesCount'),
-    bFormSelect,
-    bInputGroup,
-    bInputGroupPrepend,
-    FontAwesomeIcon
+    SinceSelector
   },
 
   data: function () {
     return {
       filter: {
         since: '1d'
-      },
-      sinceOptions: [
-        { value: '1h', text: 'Since 1 hour ago' },
-        { value: '1d', text: 'Since 1 day ago' },
-        { value: '1w', text: 'Since 1 week ago' },
-        { value: '1m', text: 'Since 1 month ago' },
-        { value: '1y', text: 'Since 1 year ago' },
-        { value: 'eternity', text: 'Since dawn of mankind' }
-      ]
+      }
     }
   },
 
