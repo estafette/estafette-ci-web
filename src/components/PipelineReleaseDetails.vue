@@ -123,7 +123,7 @@
           class="nav-link"
         >
           <font-awesome-icon
-            icon="file-alt"
+            icon="poll-h"
             class="mr-2"
           />
           Logs
@@ -142,10 +142,10 @@
 import CancelButton from '@/components/CancelButton'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faFileAlt } from '@fortawesome/free-solid-svg-icons'
+import { faPollH } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faFileAlt)
+library.add(faPollH)
 
 export default {
   components: {
