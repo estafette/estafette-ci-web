@@ -252,9 +252,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTag, faCheckCircle, faFilter } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faTag)
-library.add(faCheckCircle)
-library.add(faFilter)
+library.add(faTag, faCheckCircle, faFilter)
 
 export default {
   components: {

@@ -147,6 +147,10 @@
           :to="{ name: 'PipelineBuilds', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
           class="nav-link"
         >
+          <font-awesome-icon
+            icon="tools"
+            class="mr-2"
+          />
           Builds
         </router-link>
       </li>
@@ -156,12 +160,20 @@
           v-if="pipeline && pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
           class="nav-link"
         >
+          <font-awesome-icon
+            icon="upload"
+            class="mr-2"
+          />
           Releases
         </router-link>
         <span
           v-else
           class="nav-link disabled"
         >
+          <font-awesome-icon
+            icon="upload"
+            class="mr-2"
+          />
           Releases
         </span>
       </li>
@@ -170,6 +182,10 @@
           :to="{ name: 'PipelineStatistics', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
           class="nav-link"
         >
+          <font-awesome-icon
+            icon="chart-line"
+            class="mr-2"
+          />
           Statistics
         </router-link>
       </li>
@@ -188,11 +204,18 @@ import CommitLink from '@/components/CommitLink'
 import ReleaseBadge from '@/components/ReleaseBadge'
 import PipelineWarnings from '@/components/PipelineWarnings'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faTools, faUpload, faChartLine } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faTools, faUpload, faChartLine)
+
 export default {
   components: {
     CommitLink,
     ReleaseBadge,
-    PipelineWarnings
+    PipelineWarnings,
+    FontAwesomeIcon
   },
   props: {
     repoSource: {
