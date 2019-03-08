@@ -224,7 +224,7 @@ export default {
       errors: [],
       pagination: {
         page: 1,
-        size: 10,
+        size: 12,
         totalPages: 0,
         totalItems: 0
       },
