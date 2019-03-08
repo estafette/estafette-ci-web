@@ -108,11 +108,6 @@ html, body, #app {
     .graph {
         div {
             padding: .3em;
-            margin: 0 0 1em 0;
-
-            @media (min-width: 576px) {
-                margin: 0 1em 1em 0;
-            }
         }
     }
 }

@@ -1,31 +1,41 @@
 <template>
   <div class="m-3">
-    <div class="row mt-0 mr-0 mb-3 ml-0">
+    <div class="row mt-0 mr-0 ml-0">
       <div class="col-12 col-sm-8 col-lg" />
       <div class="col-12 col-sm-4 col-lg-2 p-0 text-right">
-        <b-form-select
-          v-model="filter.last"
-          :options="lastOptions"
-          @change="setLast"
-          class="border-primary text-primary"
-        />
+        <b-input-group class="mb-3">
+          <b-input-group-prepend is-text>
+            <font-awesome-icon icon="clock" />
+          </b-input-group-prepend>
+          <b-form-select
+            v-model="filter.last"
+            :options="lastOptions"
+            @change="setLast"
+          />
+        </b-input-group>
       </div>
     </div>
 
-    <div class="m-3 row">
-      <pipeline-stats-timeline
-        :pipeline="pipeline"
-        :filter="filter"
-        type="builds"
-        status="primary"
-      />
-      <pipeline-stats-timeline
-        v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
-        :pipeline="pipeline"
-        :filter="filter"
-        type="releases"
-        status="success"
-      />
+    <div class="mt-0 mr-3 mb-3 ml-3 row">
+      <div class="col-12 col-xl-6">
+        <pipeline-stats-timeline
+          :pipeline="pipeline"
+          :filter="filter"
+          type="builds"
+          status="primary"
+          class="mb-3"
+        />
+      </div>
+      <div class="col-12 col-xl-6">
+        <pipeline-stats-timeline
+          v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
+          :pipeline="pipeline"
+          :filter="filter"
+          type="releases"
+          status="success"
+          class="mb-3"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -33,11 +43,22 @@
 <script>
 import PipelineStatsTimeline from '@/components/PipelineStatsTimeline'
 import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
+import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
+import bInputGroupPrepend from 'bootstrap-vue/es/components/input-group/input-group-prepend'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faClock } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faClock)
 
 export default {
   components: {
     PipelineStatsTimeline,
-    bFormSelect
+    bFormSelect,
+    bInputGroup,
+    bInputGroupPrepend,
+    FontAwesomeIcon
   },
 
   props: {
