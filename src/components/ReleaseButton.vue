@@ -1,13 +1,17 @@
 <template>
   <b-input-group v-if="user && user.authenticated && pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'">
-    <b-input-group-text slot="prepend">
+    <b-input-group-text
+      slot="prepend"
+      class="border border-secondary text-secondary bg-white"
+      @click.stop=""
+    >
       <font-awesome-icon icon="upload" />
     </b-input-group-text>
     <b-dropdown
       size="sm"
       id="releaseAction"
       text="Release to..."
-      variant="outline-dark"
+      variant="outline-secondary"
     >
       <div
         v-for="releaseTarget in pipeline.releaseTargets"

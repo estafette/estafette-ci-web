@@ -1,15 +1,37 @@
 <template>
-  <div
-    v-if="user.authenticated && ((build && build.buildStatus === 'running') || (release && release.releaseStatus === 'running'))"
-    class="btn btn-outline-danger btn-sm"
-    @click.stop="rebuild"
-  >
-    Cancel
-  </div>
+  <b-input-group v-if="user.authenticated && ((build && build.buildStatus === 'running') || (release && release.releaseStatus === 'running'))">
+    <b-input-group-text
+      slot="prepend"
+      class="border border-danger text-danger bg-white"
+      @click.stop=""
+    >
+      <font-awesome-icon icon="ban" />
+    </b-input-group-text>
+    <div
+      class="btn btn-outline-danger btn-sm"
+      @click.stop="cancel"
+    >
+      Cancel
+    </div>
+  </b-input-group>
 </template>
 
 <script>
+import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
+import bInputGroupText from 'bootstrap-vue/es/components/input-group/input-group-text'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faBan } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faBan)
+
 export default {
+  components: {
+    bInputGroup,
+    bInputGroupText,
+    FontAwesomeIcon
+  },
   props: {
     build: {
       type: Object,
@@ -30,7 +52,7 @@ export default {
     }
   },
   methods: {
-    rebuild: function (event) {
+    cancel: function (event) {
       if (this.user.authenticated) {
         if (this.build && this.build.buildStatus === 'running') {
           this.axios.delete(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/builds/${this.build.id}`)
