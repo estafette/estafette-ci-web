@@ -1,11 +1,14 @@
 <template>
   <div>
-    <b-form-checkbox
-      v-model="showDefaults"
+    <b-form-group
+      description="Estafette uses a lot of sane defaults to keep your manifest small and readable."
       class="m-3"
     >
-      Show defaults
-    </b-form-checkbox>
+      <b-form-checkbox v-model="showDefaults">
+        Show defaults
+      </b-form-checkbox>
+    </b-form-group>
+
     <pre
       v-if="showDefaults"
       class="bg-light m-3 p-3"
@@ -19,10 +22,12 @@
 
 <script>
 import bFormCheckbox from 'bootstrap-vue/es/components/form-checkbox/form-checkbox'
+import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group'
 
 export default {
   components: {
-    bFormCheckbox
+    bFormCheckbox,
+    bFormGroup
   },
   props: {
     build: {
