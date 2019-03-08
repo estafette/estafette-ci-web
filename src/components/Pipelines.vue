@@ -21,23 +21,7 @@
 
       <div class="row">
         <div class="col-12">
-          <div
-            class="btn-group mb-3"
-            v-if="filter.labels"
-          >
-            <a class="btn btn-outline-light bg-btn-group-prepend">
-              <font-awesome-icon icon="tag" />
-            </a>
-            <span class="btn btn-outline-secondary border-btn-group">
-              {{ filter.labels }} <router-link
-                :to="{ query: { status: filter.status, since: filter.since, page: 1 } }"
-                active-class="router-link-active"
-                class="badge badge-secondary"
-              >
-                &times;
-              </router-link>
-            </span>
-          </div>
+          <label-filter :filter="filter" />
           <pagination-compact
             :pagination="pagination"
             :link-generator="paginationLinkGenerator"
@@ -235,6 +219,7 @@ import debounce from 'lodash.debounce'
 import CommitLink from '@/components/CommitLink'
 import ReleaseBadge from '@/components/ReleaseBadge'
 import StatusFilter from '@/components/StatusFilter'
+import LabelFilter from '@/components/LabelFilter'
 import PipelineFilter from '@/components/PipelineFilter'
 import SinceSelector from '@/components/SinceSelector'
 import PaginationCompact from '@/components/PaginationCompact'
@@ -245,6 +230,7 @@ export default {
     CommitLink,
     ReleaseBadge,
     StatusFilter,
+    LabelFilter,
     PipelineFilter,
     SinceSelector,
     PaginationCompact,
