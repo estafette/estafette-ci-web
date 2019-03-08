@@ -192,7 +192,7 @@
         "repoBranch":"master",
         "repoRevision":"f93ac58c2477e87526fe58640508838376fd0dd3",
         "buildVersion":"0.1.337",
-        "buildStatus":"succeeded",
+        "buildStatus":"failed",
         "labels":[
            {
               "key":"app",

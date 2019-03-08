@@ -153,6 +153,7 @@
           <rebuild-button
             :build="build"
             :user="user"
+            :builds="builds"
           />
           <cancel-button
             :build="build"

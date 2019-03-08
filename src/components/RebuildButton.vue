@@ -1,5 +1,5 @@
 <template>
-  <b-input-group v-if="user.authenticated && build && (build.buildStatus === 'failed' || build.buildStatus === 'canceled')">
+  <b-input-group v-if="allowedToRebuild()">
     <b-input-group-text
       slot="prepend"
       class="border border-warning text-warning bg-white"
@@ -37,6 +37,10 @@ export default {
       type: Object,
       default: null
     },
+    builds: {
+      type: Array,
+      default: null
+    },
     user: {
       type: Object,
       default: null
@@ -48,6 +52,18 @@ export default {
     }
   },
   methods: {
+    allowedToRebuild: function () {
+      if (!this.user.authenticated || !this.build || (this.build.buildStatus !== 'failed' && this.build.buildStatus !== 'canceled')) {
+        return false
+      }
+
+      if (this.builds && this.builds.length > 0) {
+        return !this.builds.some(b => b.buildVersion === this.build.buildVersion && b.buildStatus === 'succeeded')
+      }
+
+      return true
+    },
+
     rebuild: function (event) {
       if (this.user.authenticated) {
         this.axios.post(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/builds`, this.build)
