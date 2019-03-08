@@ -47,6 +47,7 @@ stages:
 
   push-to-docker-hub:
     image: extensions/docker:dev
+    retries: 5
     action: push
     repositories:
     - estafette
