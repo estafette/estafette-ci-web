@@ -10,9 +10,11 @@
     >
       <font-awesome-icon
         icon="shipping-fast"
-        class="m-0 ml-2 mr-2 h5"
+        class="m-0 ml-2 mr-1 h5"
       />
-      <span class="align-top">Estafette</span>
+      <em class="align-top">
+        Estafette
+      </em>
     </b-navbar-brand>
     <b-navbar-toggle target="nav_collapse" />
 
@@ -44,7 +46,7 @@
       >
         <b-nav-text
           right
-          class="pb-1"
+          class="pb-1 text-white"
         >
           <font-awesome-icon
             icon="user-circle"
