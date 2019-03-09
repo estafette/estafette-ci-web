@@ -21,7 +21,7 @@
       <div class="col-6 col-md-4 col-xl-1">
         Status
       </div>
-      <div class="col-6 col-md-4 col-xl-2 d-none d-md-block">
+      <div class="col-6 col-md-4 col-xl-2 d-none d-xl-block">
         Released
       </div>
       <div class="col-6 col-md-4 col-xl-3 d-none d-xl-block">
