@@ -5,7 +5,7 @@
       <div class="col-12 col-sm-4 col-lg-2 p-0 text-right">
         <b-input-group class="mb-3">
           <b-input-group-prepend is-text>
-            <font-awesome-icon icon="clock" />
+            <font-awesome-icon icon="history" />
           </b-input-group-prepend>
           <b-form-select
             v-model="filter.last"
@@ -47,10 +47,10 @@ import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
 import bInputGroupPrepend from 'bootstrap-vue/es/components/input-group/input-group-prepend'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faClock } from '@fortawesome/free-solid-svg-icons'
+import { faHistory } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faClock)
+library.add(faHistory)
 
 export default {
   components: {
