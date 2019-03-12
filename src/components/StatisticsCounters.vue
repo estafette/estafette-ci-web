@@ -12,70 +12,28 @@
 
     <div class="row m-0">
       <stats-pipelines-count
+        v-for="status in statuses"
+        :key="status"
         :filter="filter"
-        status="all"
-      />
-      <stats-pipelines-count
-        :filter="filter"
-        status="succeeded"
-      />
-      <stats-pipelines-count
-        :filter="filter"
-        status="failed"
-      />
-      <stats-pipelines-count
-        :filter="filter"
-        status="running"
-      />
-      <stats-pipelines-count
-        :filter="filter"
-        status="canceled"
+        :status="status"
       />
     </div>
 
     <div class="row m-0">
       <stats-builds-count
+        v-for="status in statuses"
+        :key="status"
         :filter="filter"
-        status="all"
-      />
-      <stats-builds-count
-        :filter="filter"
-        status="succeeded"
-      />
-      <stats-builds-count
-        :filter="filter"
-        status="failed"
-      />
-      <stats-builds-count
-        :filter="filter"
-        status="running"
-      />
-      <stats-builds-count
-        :filter="filter"
-        status="canceled"
+        :status="status"
       />
     </div>
 
     <div class="row m-0">
       <stats-releases-count
+        v-for="status in statuses"
+        :key="status"
         :filter="filter"
-        status="all"
-      />
-      <stats-releases-count
-        :filter="filter"
-        status="succeeded"
-      />
-      <stats-releases-count
-        :filter="filter"
-        status="failed"
-      />
-      <stats-releases-count
-        :filter="filter"
-        status="running"
-      />
-      <stats-releases-count
-        :filter="filter"
-        status="canceled"
+        :status="status"
       />
     </div>
   </div>
@@ -96,7 +54,14 @@ export default {
     return {
       filter: {
         since: '1d'
-      }
+      },
+      statuses: [
+        'all',
+        'succeeded',
+        'failed',
+        'running',
+        'canceled'
+      ]
     }
   },
 
