@@ -27,6 +27,10 @@
         :filter="filter"
         status="running"
       />
+      <stats-pipelines-count
+        :filter="filter"
+        status="canceled"
+      />
     </div>
 
     <div class="row m-0">
@@ -46,6 +50,10 @@
         :filter="filter"
         status="running"
       />
+      <stats-builds-count
+        :filter="filter"
+        status="canceled"
+      />
     </div>
 
     <div class="row m-0">
@@ -64,6 +72,10 @@
       <stats-releases-count
         :filter="filter"
         status="running"
+      />
+      <stats-releases-count
+        :filter="filter"
+        status="canceled"
       />
     </div>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 col-lg-3 col-xxxl p-0 stat">
+  <div class="col-12 col-md-6 col-xxl p-0 stat">
     <div
       class="rounded border text-center"
       :class="status | bootstrapClass('border')"
