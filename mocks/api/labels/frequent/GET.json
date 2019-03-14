@@ -1,0 +1,19 @@
+{
+    "items":[
+        {
+            "key": "language",
+            "value": "golang",
+            "count": 7
+        },
+        {
+            "key": "app-group",
+            "value": "estafette-ci",
+            "count": 5
+        },
+        {
+            "key": "app-group",
+            "value": "estafette-ci-extensions",
+            "count": 3
+        }
+    ]
+}
