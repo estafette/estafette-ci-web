@@ -20,8 +20,11 @@
       </div>
 
       <div class="row">
-        <div class="col-12">
+        <div class="col-6 col-sm-8 col-md-9 col-xl-10 text-truncate text-truncate-fade">
           <label-filter :filter="filter" />
+          <frequent-labels :filter="filter" />
+        </div>
+        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
           <pagination-compact
             :pagination="pagination"
             :link-generator="paginationLinkGenerator"
@@ -220,6 +223,7 @@ import CommitLink from '@/components/CommitLink'
 import ReleaseBadge from '@/components/ReleaseBadge'
 import StatusFilter from '@/components/StatusFilter'
 import LabelFilter from '@/components/LabelFilter'
+import FrequentLabels from '@/components/FrequentLabels'
 import PipelineFilter from '@/components/PipelineFilter'
 import SinceSelector from '@/components/SinceSelector'
 import PaginationCompact from '@/components/PaginationCompact'
@@ -231,6 +235,7 @@ export default {
     ReleaseBadge,
     StatusFilter,
     LabelFilter,
+    FrequentLabels,
     PipelineFilter,
     SinceSelector,
     PaginationCompact,
