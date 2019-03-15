@@ -1,6 +1,6 @@
 <template>
   <div
-    class="btn-group d-xl-inline-flex mb-3 d-none"
+    class="btn-group d-xl-inline-flex mb-3 d-none text-truncate"
     v-if="labels.length > 0"
   >
     <a class="btn btn-outline-light bg-btn-group-prepend">
@@ -10,7 +10,7 @@
       :to="{ query: { status: filter.status, since: filter.since, labels: label.key + '=' + label.value, page: 1 } }"
       exact
       class="btn btn-outline-secondary border-btn-group"
-      v-for="label in labels"
+      v-for="label in filterLabels(labels)"
       tag="span"
       :key="label.key"
     >
@@ -53,9 +53,7 @@ export default {
     loadFrequentLabels () {
       this.axios.get(`/api/labels/frequent?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${this.filter.labels}`)
         .then(response => {
-          var numberOfLabels = 3
-          var labels = response.data.items.filter(i => !this.filter || !this.filter.labels || `${i.key}=${i.value}` !== this.filter.labels).filter(i => i.count > 1)
-          this.labels = labels.slice(0, labels.length > numberOfLabels ? numberOfLabels : labels.length)
+          this.labels = response.data.items
 
           this.periodicallyRefreshFrequentLabels(5)
         })
@@ -77,6 +75,16 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadFrequentLabels, timeoutWithJitter)
       }
+    },
+
+    filterLabels (labels) {
+      if (!labels) {
+        return labels
+      }
+
+      var numberOfLabels = 7
+      var filteredLabels = labels.filter(i => !this.filter || !this.filter.labels || `${i.key}=${i.value}` !== this.filter.labels).filter(i => i.count > 1)
+      return filteredLabels.slice(0, filteredLabels.length > numberOfLabels ? numberOfLabels : filteredLabels.length)
     }
   },
 

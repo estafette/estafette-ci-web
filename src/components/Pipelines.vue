@@ -20,9 +20,11 @@
       </div>
 
       <div class="row">
-        <div class="col-12">
+        <div class="col-6 col-sm-8 col-md-9 col-xl-10 text-truncate text-truncate-fade">
           <label-filter :filter="filter" />
           <frequent-labels :filter="filter" />
+        </div>
+        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
           <pagination-compact
             :pagination="pagination"
             :link-generator="paginationLinkGenerator"
