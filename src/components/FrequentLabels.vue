@@ -1,6 +1,6 @@
 <template>
   <div
-    class="btn-group d-inline-flex mb-3"
+    class="btn-group d-xl-inline-flex mb-3 d-none"
     v-if="labels.length > 0"
   >
     <a class="btn btn-outline-light bg-btn-group-prepend">
@@ -53,7 +53,9 @@ export default {
     loadFrequentLabels () {
       this.axios.get(`/api/labels/frequent?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${this.filter.labels}`)
         .then(response => {
-          this.labels = response.data.items.filter(i => !this.filter || !this.filter.labels || `${i.key}=${i.value}` !== this.filter.labels)
+          var numberOfLabels = 3
+          var labels = response.data.items.filter(i => !this.filter || !this.filter.labels || `${i.key}=${i.value}` !== this.filter.labels).filter(i => i.count > 1)
+          this.labels = labels.slice(0, labels.length > numberOfLabels ? numberOfLabels : labels.length)
 
           this.periodicallyRefreshFrequentLabels(5)
         })
