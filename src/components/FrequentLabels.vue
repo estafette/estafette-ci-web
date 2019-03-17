@@ -1,7 +1,7 @@
 <template>
   <div
     class="btn-group mb-3 text-truncate"
-    v-if="labels.length > 0"
+    v-if="filteredLabels.length > 0"
   >
     <a class="btn btn-outline-light bg-btn-group-prepend">
       <font-awesome-icon icon="tags" />
@@ -10,9 +10,9 @@
       :to="{ query: { status: filter.status, since: filter.since, labels: label.key + '=' + label.value, page: 1 } }"
       exact
       class="btn btn-outline-secondary border-btn-group"
-      v-for="label in filterLabels(labels)"
+      v-for="label in filteredLabels"
       tag="span"
-      :key="label.key"
+      :key="label.key=label.value"
     >
       {{ label.key }}={{ label.value }} ({{ label.count }})
     </router-link>
@@ -75,16 +75,27 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadFrequentLabels, timeoutWithJitter)
       }
-    },
+    }
+  },
 
-    filterLabels (labels) {
-      if (!labels) {
-        return labels
+  computed: {
+    filteredLabels () {
+      if (!this.labels) {
+        return []
       }
 
       var numberOfLabels = 7
-      var filteredLabels = labels.filter(i => !this.filter || !this.filter.labels || `${i.key}=${i.value}` !== this.filter.labels).filter(i => i.count > 1)
+      var filteredLabels = this.labels.filter(i => !this.filter || !this.filter.labels || `${i.key}=${i.value}` !== this.filter.labels).filter(i => i.count > 1)
       return filteredLabels.slice(0, filteredLabels.length > numberOfLabels ? numberOfLabels : filteredLabels.length)
+    }
+  },
+
+  watch: {
+    filter: {
+      handler: function (to, from) {
+        this.loadFrequentLabels()
+      },
+      deep: true
     }
   },
 
