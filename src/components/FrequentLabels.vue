@@ -14,7 +14,7 @@
       tag="span"
       :key="label.key+'='+label.value"
     >
-      {{ label.key }}={{ label.value }} ({{ label.nr_pipelines }})
+      {{ label.key }}={{ label.value }} ({{ label.pipelinescount }})
     </router-link>
   </div>
 </template>

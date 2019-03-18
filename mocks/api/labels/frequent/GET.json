@@ -3,42 +3,42 @@
         {
             "key": "language",
             "value": "golang",
-            "pipelinesCount": 7
+            "pipelinescount": 7
         },
         {
             "key": "app-group",
             "value": "estafette-ci",
-            "pipelinesCount": 5
+            "pipelinescount": 5
         },
         {
             "key": "app-group",
             "value": "estafette-ci-extensions",
-            "pipelinesCount": 3
+            "pipelinescount": 3
         },
         {
             "key": "app-group",
             "value": "estafette-kube-controllers",
-            "pipelinesCount": 3
+            "pipelinescount": 3
         },
         {
             "key": "team",
             "value": "estafette-team",
-            "pipelinesCount": 2
+            "pipelinescount": 2
         },
         {
             "key": "team",
             "value": "estafette-ci-team",
-            "pipelinesCount": 2
+            "pipelinescount": 2
         },
         {
             "key": "team",
             "value": "estafette-extension-team",
-            "pipelinesCount": 2
+            "pipelinescount": 2
         },
         {
             "key": "language",
             "value": "docker",
-            "pipelinesCount": 2
+            "pipelinescount": 2
         }
     ]
 }
