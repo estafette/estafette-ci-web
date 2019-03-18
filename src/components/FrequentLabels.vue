@@ -12,7 +12,7 @@
       class="btn btn-outline-secondary border-btn-group"
       v-for="label in filteredLabels"
       tag="span"
-      :key="label.key=label.value"
+      :key="label.key+'='+label.value"
     >
       {{ label.key }}={{ label.value }} ({{ label.count }})
     </router-link>
