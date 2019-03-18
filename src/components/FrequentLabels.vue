@@ -41,6 +41,10 @@ export default {
   data: function () {
     return {
       labels: [],
+      pagination: {
+        page: 1,
+        size: 7
+      },
       refresh: true
     }
   },
@@ -51,7 +55,7 @@ export default {
 
   methods: {
     loadFrequentLabels () {
-      this.axios.get(`/api/labels/frequent?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${this.filter.labels}`)
+      this.axios.get(`/api/labels/frequent?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${this.filter.labels}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.labels = response.data.items
 
@@ -84,9 +88,7 @@ export default {
         return []
       }
 
-      var numberOfLabels = 7
-      var filteredLabels = this.labels.filter(i => !this.filter || !this.filter.labels || `${i.key}=${i.value}` !== this.filter.labels)
-      return filteredLabels.slice(0, filteredLabels.length > numberOfLabels ? numberOfLabels : filteredLabels.length)
+      return this.labels.filter(i => !this.filter || !this.filter.labels || `${i.key}=${i.value}` !== this.filter.labels)
     }
   },
 
