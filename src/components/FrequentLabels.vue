@@ -14,7 +14,7 @@
       tag="span"
       :key="label.key+'='+label.value"
     >
-      {{ label.key }}={{ label.value }} ({{ label.count }})
+      {{ label.key }}={{ label.value }} ({{ label.nr_pipelines }})
     </router-link>
   </div>
 </template>
@@ -85,7 +85,7 @@ export default {
       }
 
       var numberOfLabels = 7
-      var filteredLabels = this.labels.filter(i => !this.filter || !this.filter.labels || `${i.key}=${i.value}` !== this.filter.labels).filter(i => i.count > 1)
+      var filteredLabels = this.labels.filter(i => !this.filter || !this.filter.labels || `${i.key}=${i.value}` !== this.filter.labels)
       return filteredLabels.slice(0, filteredLabels.length > numberOfLabels ? numberOfLabels : filteredLabels.length)
     }
   },
