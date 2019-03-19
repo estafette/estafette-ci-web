@@ -209,16 +209,20 @@
         </router-link>
       </transition-group>
       <div
-        v-else
+        v-else-if="loaded"
         class="alert alert-warning text-center p-5"
       >
         There are no pipelines for the current filters. Please increase the time range or remove some filters!
+      </div>
+      <div v-else>
+        <spinner color="primary" />
       </div>
     </div>
 
     <pagination
       :pagination="pagination"
       :link-generator="paginationLinkGenerator"
+      v-if="pipelines.length > 0"
     />
   </div>
 </template>
@@ -226,6 +230,7 @@
 <script>
 import debounce from 'lodash.debounce'
 
+import Spinner from '@/components/Spinner'
 import CommitLink from '@/components/CommitLink'
 import ReleaseBadge from '@/components/ReleaseBadge'
 import StatusFilter from '@/components/StatusFilter'
@@ -238,6 +243,7 @@ import Pagination from '@/components/Pagination'
 
 export default {
   components: {
+    Spinner,
     CommitLink,
     ReleaseBadge,
     StatusFilter,
@@ -272,6 +278,7 @@ export default {
         labels: '',
         search: ''
       },
+      loaded: false,
       refresh: true
     }
   },
@@ -310,6 +317,8 @@ export default {
         .then(response => {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination
+
+          this.loaded = true
 
           this.periodicallyRefreshPipelines(5)
         })

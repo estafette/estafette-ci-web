@@ -123,26 +123,32 @@
       </router-link>
     </transition-group>
     <div
-      v-else
+      v-else-if="loaded"
       class="alert alert-warning text-center p-5"
     >
       There are no releases for the current pipeline.
+    </div>
+    <div v-else>
+      <spinner color="primary" />
     </div>
 
     <pagination
       :pagination="pagination"
       :link-generator="paginationLinkGenerator"
+      v-if="releases.length > 0"
     />
   </div>
 </template>
 
 <script>
+import Spinner from '@/components/Spinner'
 import Pagination from '@/components/Pagination'
 import StatusFilter from '@/components/StatusFilter'
 import PaginationCompact from '@/components/PaginationCompact'
 
 export default {
   components: {
+    Spinner,
     Pagination,
     StatusFilter,
     PaginationCompact
@@ -186,6 +192,7 @@ export default {
       filter: {
         status: 'all'
       },
+      loaded: false,
       refresh: true
     }
   },
@@ -210,6 +217,8 @@ export default {
         .then(response => {
           this.releases = response.data.items
           this.pagination = response.data.pagination
+
+          this.loaded = true
         })
         .catch(e => {
           this.errors.push(e)

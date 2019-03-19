@@ -164,20 +164,25 @@
       </router-link>
     </transition-group>
     <div
-      v-else
+      v-else-if="loaded"
       class="alert alert-warning text-center p-5"
     >
       There are no builds for the current pipeline.
+    </div>
+    <div v-else>
+      <spinner color="primary" />
     </div>
 
     <pagination
       :pagination="pagination"
       :link-generator="paginationLinkGenerator"
+      v-if="builds.length > 0"
     />
   </div>
 </template>
 
 <script>
+import Spinner from '@/components/Spinner'
 import StatusFilter from '@/components/StatusFilter'
 import PaginationCompact from '@/components/PaginationCompact'
 import CommitLink from '@/components/CommitLink'
@@ -189,6 +194,7 @@ import Pagination from '@/components/Pagination'
 
 export default {
   components: {
+    Spinner,
     StatusFilter,
     PaginationCompact,
     CommitLink,
@@ -238,6 +244,7 @@ export default {
       filter: {
         status: 'all'
       },
+      loaded: false,
       refresh: true
     }
   },
@@ -262,6 +269,8 @@ export default {
         .then(response => {
           this.builds = response.data.items
           this.pagination = response.data.pagination
+
+          this.loaded = true
         })
         .catch(e => {
           this.errors.push(e)
