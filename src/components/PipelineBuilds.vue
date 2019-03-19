@@ -167,7 +167,7 @@
       v-else-if="loaded"
       class="alert alert-warning text-center p-5"
     >
-      There are no builds for the current pipeline.
+      There are no builds for the current filters. Please change your filters!
     </div>
     <div v-else>
       <spinner color="primary" />
