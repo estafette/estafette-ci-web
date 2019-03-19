@@ -1,6 +1,6 @@
 <template>
   <div class="btn-group mb-3">
-    <a class="btn btn-outline-light bg-btn-group-prepend">
+    <a class="btn btn-outline-light bg-btn-group-prepend icon-container">
       <font-awesome-icon icon="check-circle" />
     </a>
     <router-link

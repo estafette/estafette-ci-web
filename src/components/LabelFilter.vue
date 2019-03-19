@@ -3,7 +3,7 @@
     class="btn-group mb-3 mr-2"
     v-if="filter.labels"
   >
-    <a class="btn btn-outline-light bg-btn-group-prepend">
+    <a class="btn btn-outline-light bg-btn-group-prepend icon-container">
       <font-awesome-icon icon="tag" />
     </a>
     <span class="btn btn-outline-primary border-btn-group">

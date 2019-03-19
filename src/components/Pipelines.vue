@@ -68,6 +68,7 @@
       <transition-group
         name="list-complete"
         tag="div"
+        v-if="pipelines.length > 0"
       >
         <router-link
           v-for="pipeline in pipelines"
@@ -207,6 +208,12 @@
           </div>
         </router-link>
       </transition-group>
+      <div
+        v-else
+        class="alert alert-warning text-center p-5"
+      >
+        There are no pipelines for the current filters. Please increase the time range or remove some filters!
+      </div>
     </div>
 
     <pagination

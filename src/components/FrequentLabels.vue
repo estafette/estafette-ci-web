@@ -3,7 +3,7 @@
     class="btn-group mb-3 text-truncate"
     v-if="filteredLabels.length > 0"
   >
-    <a class="btn btn-outline-light bg-btn-group-prepend">
+    <a class="btn btn-outline-light bg-btn-group-prepend icon-container">
       <font-awesome-icon icon="tags" />
     </a>
     <router-link

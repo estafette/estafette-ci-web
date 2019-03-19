@@ -1,6 +1,9 @@
 <template>
   <b-input-group class="mb-3">
-    <b-input-group-prepend is-text>
+    <b-input-group-prepend
+      is-text
+      class="icon-container"
+    >
       <font-awesome-icon icon="clock" />
     </b-input-group-prepend>
     <b-form-select

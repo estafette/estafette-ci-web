@@ -44,6 +44,7 @@
     <transition-group
       name="list-complete"
       tag="div"
+      v-if="builds.length > 0"
     >
       <router-link
         v-for="build in builds"
@@ -162,6 +163,12 @@
         </div>
       </router-link>
     </transition-group>
+    <div
+      v-else
+      class="alert alert-warning text-center p-5"
+    >
+      There are no builds for the current pipeline.
+    </div>
 
     <pagination
       :pagination="pagination"

@@ -38,6 +38,7 @@
     <transition-group
       name="list-complete"
       tag="div"
+      v-if="releases.length > 0"
     >
       <router-link
         v-for="release in releases"
@@ -121,6 +122,12 @@
         </div>
       </router-link>
     </transition-group>
+    <div
+      v-else
+      class="alert alert-warning text-center p-5"
+    >
+      There are no releases for the current pipeline.
+    </div>
 
     <pagination
       :pagination="pagination"

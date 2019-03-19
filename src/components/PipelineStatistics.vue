@@ -4,7 +4,10 @@
       <div class="col-12 col-sm-8 col-lg" />
       <div class="col-12 col-sm-4 col-lg-2 p-0 text-right">
         <b-input-group class="mb-3">
-          <b-input-group-prepend is-text>
+          <b-input-group-prepend
+            is-text
+            class="icon-container"
+          >
             <font-awesome-icon icon="history" />
           </b-input-group-prepend>
           <b-form-select
