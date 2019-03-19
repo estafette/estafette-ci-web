@@ -10,6 +10,7 @@
       v-model="mutableModel"
       type="text"
       @input="onInput"
+      autocomplete="off"
     />
   </b-input-group>
 </template>
