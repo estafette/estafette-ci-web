@@ -1,0 +1,146 @@
+<template>
+  <div>
+    <h1
+      class="text-center"
+      :class="`text-${status}`"
+    >
+      Most {{ type }} labels
+    </h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Label</th>
+          <th>{{ type | capitalize }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <router-link
+          v-for="(row, index) in rows"
+          :key="index"
+          :to="{ name: 'Pipelines', query: { since: filter.since, labels: row.key+'='+row.value }}"
+          tag="tr"
+        >
+          <td>
+            {{ index + 1 + (pagination.page-1) * pagination.size }}
+          </td>
+          <td>
+            <span class="text-muted">{{ row.key }}=</span><strong>{{ row.value }}</strong>
+          </td>
+          <td>
+            {{ row.pipelinescount }}
+          </td>
+        </router-link>
+      </tbody>
+    </table>
+
+    <!-- <b-pagination
+      size="md"
+      :total-rows="pagination.totalItems"
+      :per-page="pagination.size"
+      v-model="pagination.page"
+      align="center"
+      hide-goto-end-buttons
+    /> -->
+  </div>
+</template>
+
+<script>
+// import bPagination from 'bootstrap-vue/es/components/pagination/pagination'
+
+export default {
+  components: {
+    // bPagination
+  },
+  props: {
+    filter: {
+      type: Object,
+      default: null
+    },
+    type: {
+      type: String,
+      default: null
+    },
+    status: {
+      type: String,
+      default: null
+    }
+  },
+
+  data: function () {
+    return {
+      rows: [],
+      pagination: {
+        page: 1,
+        size: 15,
+        totalPages: 0,
+        totalItems: 0
+      },
+      refresh: true
+    }
+  },
+
+  created () {
+    this.loadStat()
+  },
+
+  methods: {
+    loadStat () {
+      this.axios.get(`/api/labels/${this.type}?filter[since]=${this.filter.since}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+        .then(response => {
+          this.rows = response.data.items
+          // this.pagination = response.data.pagination
+          this.periodicallyRefreshStat(15)
+        })
+        .catch(e => {
+          this.errors.push(e)
+          this.periodicallyRefreshStat(60)
+        })
+    },
+
+    periodicallyRefreshStat (intervalSeconds) {
+      if (this.refreshTimeout) {
+        clearTimeout(this.refreshTimeout)
+      }
+
+      var max = 1000 * intervalSeconds * 0.75
+      var min = 1000 * intervalSeconds * 1.25
+      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+
+      if (this.refresh) {
+        this.refreshTimeout = setTimeout(this.loadStat, timeoutWithJitter)
+      }
+    }
+  },
+
+  watch: {
+    filter: {
+      handler: function (to, from) {
+        this.loadStat()
+      },
+      deep: true
+    },
+    'pagination.page': {
+      handler: function (to, from) {
+        if (to !== from) {
+          this.loadStat()
+        }
+      },
+      deep: true
+    }
+  },
+
+  beforeDestroy () {
+    this.refresh = false
+    if (this.refreshTimeout) {
+      clearTimeout(this.refreshTimeout)
+    }
+  }
+}
+</script>
+
+<style scoped>
+tbody tr {
+  cursor: pointer;
+}
+</style>
