@@ -40,5 +40,6 @@
             "value": "docker",
             "pipelinescount": 2
         }
-    ]
+    ],
+    "pagination":{"page":1,"size":20,"totalPages":4,"totalItems":68}
 }

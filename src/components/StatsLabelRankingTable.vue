@@ -34,23 +34,23 @@
       </tbody>
     </table>
 
-    <!-- <b-pagination
+    <b-pagination
       size="md"
       :total-rows="pagination.totalItems"
       :per-page="pagination.size"
       v-model="pagination.page"
       align="center"
       hide-goto-end-buttons
-    /> -->
+    />
   </div>
 </template>
 
 <script>
-// import bPagination from 'bootstrap-vue/es/components/pagination/pagination'
+import bPagination from 'bootstrap-vue/es/components/pagination/pagination'
 
 export default {
   components: {
-    // bPagination
+    bPagination
   },
   props: {
     filter: {
@@ -89,7 +89,7 @@ export default {
       this.axios.get(`/api/labels/${this.type}?filter[since]=${this.filter.since}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.rows = response.data.items
-          // this.pagination = response.data.pagination
+          this.pagination = response.data.pagination
           this.periodicallyRefreshStat(15)
         })
         .catch(e => {
