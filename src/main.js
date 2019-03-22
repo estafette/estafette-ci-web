@@ -199,6 +199,14 @@ Vue.filter('formatBytes', function (value) {
   return formattedString
 })
 
+Vue.filter('formatNumber', function (value) {
+  if (value === null) {
+    return ''
+  }
+
+  return new Intl.NumberFormat('de-DE').format(value)
+})
+
 Vue.filter('splitCamelcase', function (value) {
   if (!value) {
     return ''

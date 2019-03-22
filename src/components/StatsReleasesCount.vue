@@ -11,7 +11,7 @@
         class="display-1"
         :class="status | bootstrapClass('text')"
       >
-        {{ animatedCount }}
+        {{ animatedCount | formatNumber }}
       </p>
     </div>
   </div>
