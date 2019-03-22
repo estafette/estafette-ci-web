@@ -21,11 +21,6 @@ stages:
     channels:
     - '#npm-audit'
 
-  audit-old:
-    image: node:11.12.0-alpine
-    commands:
-    - npm audit
-
   restore:
     image: node:11.12.0-alpine
     commands:
