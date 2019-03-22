@@ -15,9 +15,16 @@ version:
 
 stages:
   audit:
+    image: extensions/npm-audit:dev
+    action: audit
+    workspace: estafette
+    channels:
+    - '#npm-audit'
+
+  audit-old:
     image: node:11.11.0-alpine
     commands:
-    - npm audit
+    - npm audti
 
   restore:
     image: node:11.11.0-alpine
