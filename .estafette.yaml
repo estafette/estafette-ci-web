@@ -14,30 +14,30 @@ version:
     minor: 1
 
 stages:
-  # audit:
-  #   image: extensions/npm-audit:dev
-  #   action: audit
-  #   workspace: estafette
-  #   channels:
-  #   - '#npm-audit'
+  audit:
+    image: extensions/npm-audit:dev
+    action: audit
+    workspace: estafette
+    channels:
+    - '#npm-audit'
 
   audit-old:
-    image: node:11.11.0-alpine
+    image: node:11.12.0-alpine
     commands:
     - npm audit
 
   restore:
-    image: node:11.11.0-alpine
+    image: node:11.12.0-alpine
     commands:
     - npm ci
 
   lint:
-    image: node:11.11.0-alpine
+    image: node:11.12.0-alpine
     commands:
     - npm run lint
 
   build:
-    image: node:11.11.0-alpine
+    image: node:11.12.0-alpine
     commands:
     - npm run build
 
