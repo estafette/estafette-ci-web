@@ -43,8 +43,10 @@ stages:
     bucket: estafette.secret(8uUO_ASSO694bx59.R4QPJTVZYxrjZpR6f-x3MVxDfL8ggG728kOSewVEwFslM4GR3cjz)
     source: 'dist/*'
     destination: ${ESTAFETTE_BUILD_VERSION}/
+    # defaults
+    recursive: true
     compress: true
-    parallel: false
+    parallel: true
 
   bake:
     image: extensions/docker:dev
