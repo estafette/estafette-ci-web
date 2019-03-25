@@ -7,7 +7,7 @@
       <font-awesome-icon icon="tags" />
     </a>
     <router-link
-      :to="{ query: { status: filter.status, since: filter.since, labels: label.key + '=' + label.value, page: 1 } }"
+      :to="{ query: { status: filter.status, since: filter.since, labels: labelLinkGenerator(label), page: 1 } }"
       exact
       class="btn btn-outline-secondary border-btn-group"
       v-for="label in filteredLabels"
@@ -55,7 +55,12 @@ export default {
 
   methods: {
     loadFrequentLabels () {
-      this.axios.get(`/api/labels/frequent?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${this.filter.labels}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      var labelFilterParams = ''
+      if (this.filter && this.filter.labels && this.filter.labels.length > 0) {
+        labelFilterParams = this.filter.labels.split(',').join('&filter[labels]=')
+      }
+
+      this.axios.get(`/api/labels/frequent?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.labels = response.data.items
 
@@ -79,6 +84,14 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadFrequentLabels, timeoutWithJitter)
       }
+    },
+
+    labelLinkGenerator (label) {
+      if (!this.filter || !this.filter.labels || this.filter.labels.length === 0) {
+        return label.key + '=' + label.value
+      }
+
+      return this.filter.labels + ',' + label.key + '=' + label.value
     }
   },
 
@@ -88,7 +101,12 @@ export default {
         return []
       }
 
-      return this.labels.filter(i => !this.filter || !this.filter.labels || `${i.key}=${i.value}` !== this.filter.labels)
+      var selectedLabelsArray = []
+      if (this.filter && this.filter.labels) {
+        selectedLabelsArray = this.filter.labels.split(',')
+      }
+
+      return this.labels.filter(i => selectedLabelsArray.indexOf(`${i.key}=${i.value}`) === -1)
     }
   },
 

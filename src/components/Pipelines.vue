@@ -313,7 +313,12 @@ export default {
     },
 
     loadPipelines () {
-      this.axios.get(`/api/pipelines?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${this.filter.labels}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      var labelFilterParams = ''
+      if (this.filter && this.filter.labels && this.filter.labels.length > 0) {
+        labelFilterParams = this.filter.labels.split(',').join('&filter[labels]=')
+      }
+
+      this.axios.get(`/api/pipelines?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination
