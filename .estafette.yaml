@@ -44,6 +44,7 @@ stages:
     source: 'dist/*'
     destination: ${ESTAFETTE_BUILD_VERSION}/
     compress: true
+    parallel: true
 
   bake:
     image: extensions/docker:dev
