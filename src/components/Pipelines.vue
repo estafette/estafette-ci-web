@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="mt-3 mr-3 ml-3">
-      <div class="row">
+      <div
+        class="row"
+        v-if="!dashboardModeActive"
+      >
         <div class="col-12 col-lg-6">
           <status-filter :filter="filter" />
         </div>
@@ -19,7 +22,10 @@
         </div>
       </div>
 
-      <div class="row">
+      <div
+        class="row"
+        v-if="!dashboardModeActive"
+      >
         <div class="col-6 col-sm-8 col-md-9 col-xl-10 text-truncate text-truncate-fade">
           <label-filter :filter="filter" />
           <frequent-labels :filter="filter" />
@@ -35,7 +41,10 @@
     </div>
 
     <div class="mt-0 mr-3 mb-3 ml-3">
-      <div class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold">
+      <div
+        class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold"
+        v-if="!dashboardModeActive"
+      >
         <div class="col-6 col-md-6 col-xl-5 col-xxl-3 col-xxxl-2">
           Pipeline
         </div>
@@ -258,6 +267,10 @@ export default {
   props: {
     query: {
       type: Object,
+      default: null
+    },
+    dashboardModeActive: {
+      type: Boolean,
       default: null
     }
   },

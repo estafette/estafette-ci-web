@@ -9,7 +9,7 @@
     <b-form-input
       v-model="mutableModel"
       type="text"
-      @input="onInput"
+      @keyup.stop="onInputForwarder"
       autocomplete="off"
     />
   </b-input-group>
@@ -42,6 +42,12 @@ export default {
     onInput: {
       type: Function,
       default: null
+    }
+  },
+
+  methods: {
+    onInputForwarder (event) {
+      this.onInput(this.mutableModel)
     }
   },
 

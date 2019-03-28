@@ -16,11 +16,15 @@
         Estafette
       </em>
     </b-navbar-brand>
-    <b-navbar-toggle target="nav_collapse" />
+    <b-navbar-toggle
+      target="nav_collapse"
+      v-if="!dashboardModeActive"
+    />
 
     <b-collapse
       is-nav
       id="nav_collapse"
+      v-if="!dashboardModeActive"
     >
       <b-navbar-nav>
         <b-nav-item :to="{ name: 'Pipelines'}">
@@ -90,6 +94,10 @@ export default {
   props: {
     user: {
       type: Object,
+      default: null
+    },
+    dashboardModeActive: {
+      type: Boolean,
       default: null
     }
   }

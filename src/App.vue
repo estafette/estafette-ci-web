@@ -1,13 +1,20 @@
 <template>
   <div id="app">
     <div id="header-and-main">
-      <navigation-bar :user="user" />
+      <navigation-bar
+        :user="user"
+        :dashboard-mode-active="dashboardModeActive"
+      />
       <div id="main">
-        <router-view :user="user" />
+        <router-view
+          :user="user"
+          :dashboard-mode-active="dashboardModeActive"
+        />
       </div>
     </div>
-    <site-footer />
+    <site-footer v-if="!dashboardModeActive" />
     <session-refresh-modal />
+    <help-modal :visible="helpModalActive" />
   </div>
 </template>
 
@@ -15,18 +22,26 @@
 import NavigationBar from '@/components/NavigationBar'
 import SiteFooter from '@/components/SiteFooter'
 import SessionRefreshModal from '@/components/SessionRefreshModal'
+import HelpModal from '@/components/HelpModal'
 
 export default {
   components: {
     NavigationBar,
     SiteFooter,
-    SessionRefreshModal
+    SessionRefreshModal,
+    HelpModal
   },
   data: function () {
     return {
       user: null,
-      refresh: true
+      refresh: true,
+      dashboardModeActive: false,
+      helpModalActive: false
     }
+  },
+
+  mounted () {
+    window.addEventListener('keyup', e => this.handleKeyboardShortcuts(e))
   },
 
   created () {
@@ -56,6 +71,24 @@ export default {
 
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadUser, timeoutWithJitter)
+      }
+    },
+
+    handleKeyboardShortcuts (event) {
+      switch (event.key) {
+        case 'd':
+          this.dashboardModeActive = !this.dashboardModeActive
+          console.log('toggle dashboard mode', this.dashboardModeActive)
+          break
+        case 'h':
+          this.helpModalActive = !this.helpModalActive
+          console.log('toggle keyboard shortcut help dialog', this.helpModalActive)
+          break
+        case 'Escape':
+          this.dashboardModeActive = false
+          this.helpModalActive = false
+          console.log('escape back to defaults')
+          break
       }
     }
   },
