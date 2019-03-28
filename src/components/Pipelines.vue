@@ -85,7 +85,7 @@
           :to="{ name: 'PipelineBuilds', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName }}"
           tag="div"
           class="row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 list-complete-item"
-          :class="pipeline.buildStatus | bootstrapClass('border')"
+          :class="[$options.filters.bootstrapClass(pipeline.buildStatus, 'border'), dashboardModeActive ? $options.filters.bootstrapClass(pipeline.buildStatus, 'bg') : '', dashboardModeActive ? $options.filters.bootstrapTextClass(pipeline.buildStatus) : '']"
         >
           <div
             class="mb-2 col-6 col-md-6 col-xl-5 col-xxl-3 col-xxxl-2 text-truncate"
@@ -94,7 +94,7 @@
             <div class="small text-black-50 mb-1 d-xl-none">
               Pipeline
             </div>
-            <span class="text-muted d-none d-md-inline">{{ pipeline.repoSource }}/{{ pipeline.repoOwner }}/</span><strong>{{ pipeline.repoName }}</strong>
+            <span :class="[dashboardModeActive ? 'd-none d-md-inline' : 'text-muted d-none d-md-inline']">{{ pipeline.repoSource }}/{{ pipeline.repoOwner }}/</span><strong>{{ pipeline.repoName }}</strong>
           </div>
           <div
             class="mb-2 col-6 col-md-6 col-xl-1 text-truncate"
@@ -105,7 +105,10 @@
             </div>
             {{ pipeline.buildVersion }}
           </div>
-          <div class="mb-2 col-12 col-md-6 col-xl-1 align-middle">
+          <div
+            class="mb-2 col-12 col-md-6 col-xl-1 align-middle"
+            v-if="!dashboardModeActive"
+          >
             <div class="small text-black-50 mb-1 d-xl-none">
               Status
             </div>
@@ -134,7 +137,7 @@
               Built-at
             </div>
             <span
-              v-if="pipeline.duration > 0"
+              v-if="!dashboardModeActive && pipeline.duration > 0"
               :class="pipeline.duration | colorDurationClass"
             >
               {{ pipeline.duration | formatDuration }}
@@ -149,13 +152,19 @@
             </div>
             {{ pipeline.repoBranch }}
           </div>
-          <div class="mb-2 col-6 col-md-3 col-xl-1">
+          <div
+            class="mb-2 col-6 col-md-3 col-xl-1"
+            v-if="!dashboardModeActive"
+          >
             <div class="small text-black-50 mb-1 d-xl-none">
               Revision
             </div>
             <commit-link :build="pipeline" />
           </div>
-          <div class="mb-2 col-6 col-md-6 col-xl-2 col-xxxl-1">
+          <div
+            class="mb-2 col-6 col-md-6 col-xl-2 col-xxxl-1"
+            v-if="!dashboardModeActive"
+          >
             <div class="small text-black-50 mb-1 d-xl-none">
               Commit(s)
             </div>
@@ -175,7 +184,7 @@
             <div class="mt-3 mb-3 w-50 mx-auto border-bottom" />
           </div>
           <div
-            v-if="pipeline.labels && pipeline.labels.length > 0"
+            v-if="!dashboardModeActive && pipeline.labels && pipeline.labels.length > 0"
             class="mb-2 col-12 col-xl-6 col-xxl-2 text-center text-xxl-left text-truncate text-truncate-fade"
           >
             <div class="small text-black-50 mb-1 d-xxl-none">
@@ -203,7 +212,7 @@
           </div>
           <div
             v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
-            class="mb-2 col-12 col-xl-6 col-xxl-12 col-xxxl-2 text-center text-xxxl-left text-truncate text-truncate-fade"
+            :class="[dashboardModeActive ? 'mb-2 col-12 col-xl-6 col-xxl-12 col-xxxl-2 text-center text-xxxl-left' : 'mb-2 col-12 col-xl-6 col-xxl-12 col-xxxl-2 text-center text-xxxl-left text-truncate text-truncate-fade']"
           >
             <div class="small text-black-50 mb-1 d-xxxl-none">
               Releases
@@ -213,6 +222,7 @@
               :key="releaseTarget.name"
               :release-target="releaseTarget"
               :pipeline="pipeline"
+              :dashboard-mode-active="dashboardModeActive"
             />
           </div>
         </router-link>
@@ -231,7 +241,7 @@
     <pagination
       :pagination="pagination"
       :link-generator="paginationLinkGenerator"
-      v-if="pipelines.length > 0"
+      v-if="!dashboardModeActive && pipelines.length > 0"
     />
   </div>
 </template>
