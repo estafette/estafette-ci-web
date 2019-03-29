@@ -42,7 +42,7 @@
     </div>
 
     <div
-      class="text-center text-white mb-3"
+      class="h2 text-center text-white mt-5 mb-5"
       v-if="dashboardModeActive"
     >
       <font-awesome-icon

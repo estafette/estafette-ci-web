@@ -1,15 +1,18 @@
 <template>
   <div class="col-12 col-md-6 col-xxl p-0 stat">
     <div
-      class="rounded border text-center"
-      :class="status | bootstrapClass('border')"
+      :class="[
+        $options.filters.bootstrapClass(status, 'border'),
+        dashboardModeActive ? $options.filters.bootstrapClass(status, 'bg') : '',
+        'rounded border text-center'
+      ]"
     >
-      <h6 :class="status | bootstrapClass('text')">
+      <h6 :class="[dashboardModeActive ? $options.filters.bootstrapTextClass(status) : $options.filters.bootstrapClass(status, 'text')]">
         {{ status | capitalize }} pipelines
       </h6>
       <p
         class="display-1"
-        :class="status | bootstrapClass('text')"
+        :class="[dashboardModeActive ? $options.filters.bootstrapTextClass(status) : $options.filters.bootstrapClass(status, 'text')]"
       >
         {{ animatedCount | formatNumber }}
       </p>
@@ -29,6 +32,10 @@ export default {
     },
     status: {
       type: String,
+      default: null
+    },
+    dashboardModeActive: {
+      type: Boolean,
       default: null
     }
   },
