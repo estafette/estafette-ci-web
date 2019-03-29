@@ -232,6 +232,7 @@
               :key="releaseTarget.name"
               :release-target="releaseTarget"
               :pipeline="pipeline"
+              :dashboard-mode-active="dashboardModeActive"
             />
           </div>
         </router-link>
@@ -316,32 +317,70 @@ export default {
   },
 
   created () {
+    this.filterDefaults = { ...this.filter }
     this.setDataFromQueryParams(this.query)
     this.loadPipelines()
   },
 
   methods: {
     paginationLinkGenerator (pageNum) {
-      if (this.filter && this.filter.labels && this.filter.labels !== '') {
-        return { query: { status: this.filter.status, since: this.filter.since, labels: this.filter.labels, page: pageNum } }
+      var query = this.getPipelinesQueryParams()
+
+      if (pageNum > 1) {
+        query.page = pageNum
+      } else if (query.page) {
+        delete query.page
       }
-      return { query: { status: this.filter.status, since: this.filter.since, page: pageNum } }
+
+      return { query: query }
     },
 
     setDataFromQueryParams (query) {
       this.pagination.page = query && query.page ? Number.parseInt(query.page, 10) : 1
-      this.filter.status = query && query.status ? query.status : 'all'
-      this.filter.since = query && query.since ? query.since : '1d'
-      this.filter.labels = query && query.labels ? query.labels : ''
-      this.filter.search = query && query.search ? query.search : ''
+      this.filter.status = query && query.status ? query.status : this.filterDefaults.status
+      this.filter.since = query && query.since ? query.since : this.filterDefaults.since
+      this.filter.labels = query && query.labels ? query.labels : this.filterDefaults.labels
+      this.filter.search = query && query.search ? query.search : this.filterDefaults.search
+    },
+
+    getPipelinesQueryParams () {
+      var query = { ...this.$route.query }
+
+      if (this.filter && this.filter.status && this.filter.status !== this.filterDefaults.status && this.filter.status !== '') {
+        query.status = this.filter.status
+      } else if (query.status) {
+        delete query.status
+      }
+
+      if (this.filter && this.filter.since && this.filter.since !== this.filterDefaults.since && this.filter.since !== '') {
+        query.since = this.filter.since
+      } else if (query.since) {
+        delete query.since
+      }
+
+      if (this.filter && this.filter.search && this.filter.search !== this.filterDefaults.search && this.filter.search !== '') {
+        query.search = this.filter.search
+      } else if (query.search) {
+        delete query.search
+      }
+
+      if (this.filter && this.filter.labels && this.filter.labels !== this.filterDefaults.labels && this.filter.labels !== '') {
+        query.labels = this.filter.labels
+      } else if (query.labels) {
+        delete query.labels
+      }
+
+      if (this.pagination && this.pagination.page && this.pagination.page > 1) {
+        query.page = this.pagination.page
+      } else if (query.page) {
+        delete query.page
+      }
+
+      return query
     },
 
     updateQueryParams () {
-      if (this.filter && this.filter.labels && this.filter.labels !== '') {
-        this.$router.push({ query: { status: this.filter.status, since: this.filter.since, search: this.filter.search, labels: this.filter.labels, page: this.pagination.page } })
-      } else {
-        this.$router.push({ query: { status: this.filter.status, since: this.filter.since, search: this.filter.search, page: this.pagination.page } })
-      }
+      this.$router.push({ query: this.getPipelinesQueryParams() })
     },
 
     loadPipelines () {

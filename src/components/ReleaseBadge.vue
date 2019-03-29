@@ -2,7 +2,7 @@
   <span v-if="releaseTarget">
     <div
       v-if="releaseTarget.activeReleases && releaseTarget.activeReleases.length > 0"
-      :class="['btn btn-light btn-sm mr-1 mb-1']"
+      :class="[dashboardModeActive ? 'btn-dark' : 'btn-light', 'btn btn-sm mr-1 mb-1']"
     >
       {{ releaseTarget.name }}<router-link
         v-for="release in releaseTarget.activeReleases"
@@ -25,9 +25,9 @@
     </div>
     <div
       v-else
-      :class="['btn btn-light btn-sm mr-1 mb-1']"
+      :class="[dashboardModeActive ? 'btn-dark' : 'btn-light', 'btn btn-sm mr-1 mb-1']"
     >
-      {{ releaseTarget.name }}<span :class="['badge-light badge ml-1']">
+      {{ releaseTarget.name }}<span :class="['badge ml-1']">
         -
       </span>
     </div>
@@ -53,6 +53,10 @@ export default {
     },
     pipeline: {
       type: Object,
+      default: null
+    },
+    dashboardModeActive: {
+      type: Boolean,
       default: null
     }
   },
