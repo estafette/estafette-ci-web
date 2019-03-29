@@ -102,7 +102,7 @@
             :class="[dashboardModeActive ? 'col-lg-4 col-xxl-3' : 'col-xl-5 col-xxl-3 col-xxxl-2', 'mb-2 col-6 text-truncate']"
             :title="pipeline.repoSource + '/' + pipeline.repoOwner + '/' + pipeline.repoName"
           >
-            <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
+            <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50 d-xl-none', 'small  mb-1']">
               Pipeline
             </div>
             <span :class="[dashboardModeActive ? 'd-none d-md-inline' : 'text-muted d-none d-md-inline']">{{ pipeline.repoSource }}/{{ pipeline.repoOwner }}/</span><strong>{{ pipeline.repoName }}</strong>
@@ -111,7 +111,7 @@
             :class="[dashboardModeActive ? 'col-lg-4 col-xxl-2' : 'col-xl-1', 'mb-2 col-6 text-truncate']"
             :title="pipeline.buildVersion"
           >
-            <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
+            <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
               Version
             </div>
             {{ pipeline.buildVersion }}
@@ -120,7 +120,7 @@
             class="mb-2 col-12 col-md-6 col-xl-1 align-middle"
             v-if="!dashboardModeActive"
           >
-            <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
+            <div class="small text-black-50 mb-1 d-xl-none">
               Status
             </div>
             <router-link
@@ -144,7 +144,7 @@
             :class="[dashboardModeActive ? 'col-lg-4 col-xxl-2' : 'col-xl-1', 'mb-2 col-6 text-truncate']"
             :title="$options.filters.formatDuration(pipeline.duration) + ', ' + $options.filters.formatDatetime(pipeline.insertedAt)"
           >
-            <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
+            <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
               Built-at
             </div>
             <span
@@ -158,7 +158,7 @@
             :class="[dashboardModeActive ? 'col-lg-4 col-xxl-2' : 'col-md-3 col-xl-1', 'mb-2 col-6 text-truncate']"
             :title="pipeline.repoBranch"
           >
-            <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
+            <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
               Branch
             </div>
             {{ pipeline.repoBranch }}
@@ -175,7 +175,7 @@
           <div
             :class="[dashboardModeActive ? 'col-12 col-lg-8 col-xxl-3' : 'col-6 col-xl-2 col-xxxl-1', 'mb-2']"
           >
-            <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
+            <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
               Commit(s)
             </div>
             <div
@@ -224,7 +224,7 @@
             v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
             :class="[dashboardModeActive ? '' : 'col-xl-6 col-xxl-12 col-xxxl-2 text-xxxl-left text-truncate text-truncate-fade', 'mb-2 col-12 text-center']"
           >
-            <div :class="[dashboardModeActive ? '' : 'd-xxxl-none', 'small text-black-50 mb-1']">
+            <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50 d-xxxl-none', 'small mb-1']">
               Releases
             </div>
             <release-badge
