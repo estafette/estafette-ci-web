@@ -1,6 +1,9 @@
 <template>
   <div class="m-3">
-    <div class="row">
+    <div
+      class="row"
+      v-if="!dashboardModeActive"
+    >
       <div class="col-12 text-center">
         <status-filter :filter="filter" />
         <pagination-compact
@@ -11,7 +14,10 @@
       </div>
     </div>
 
-    <div class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold">
+    <div
+      class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold"
+      v-if="!dashboardModeActive"
+    >
       <div class="col-6 col-md-4 col-xl-2">
         Version
       </div>
@@ -41,6 +47,17 @@
       </div>
     </div>
 
+    <div
+      class="text-center text-white mb-3"
+      v-if="dashboardModeActive"
+    >
+      <font-awesome-icon
+        icon="tools"
+        class="mr-2"
+      />
+      Builds
+    </div>
+
     <transition-group
       name="list-complete"
       tag="div"
@@ -51,19 +68,26 @@
         :key="build.id"
         :to="{ name: 'PipelineBuildLogs', params: { repoSource: build.repoSource, repoOwner: build.repoOwner, repoName: build.repoName, id: build.id }}"
         tag="div"
-        class="row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 list-complete-item"
-        :class="build.buildStatus | bootstrapClass('border')"
+        :class="[
+          $options.filters.bootstrapClass(build.buildStatus, 'border'),
+          dashboardModeActive ? $options.filters.bootstrapClass(build.buildStatus, 'bg') : '',
+          dashboardModeActive ? $options.filters.bootstrapTextClass(build.buildStatus) : '',
+          'row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 list-complete-item'
+        ]"
       >
         <div
-          class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
+          :class="[dashboardModeActive ? 'col-lg-3 col-xxl-2' : 'col-xl-2', 'mb-2 col-6 col-md-4 text-truncate']"
           :title="build.buildVersion"
         >
-          <div class="small text-black-50 mb-1 d-xl-none">
+          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(build.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
             Version
           </div>
           {{ build.buildVersion }}
         </div>
-        <div class="mb-2 col-6 col-md-4 col-xl-1 align-middle">
+        <div
+          class="mb-2 col-6 col-md-4 col-xl-1 align-middle"
+          v-if="!dashboardModeActive"
+        >
           <div class="small text-black-50 mb-1 d-xl-none">
             Status
           </div>
@@ -81,36 +105,39 @@
           </div>
         </div>
         <div
-          class="mb-2 col-6 col-md-4 col-xl-2 col-xxl-1 text-truncate"
+          :class="[dashboardModeActive ? 'col-lg-3 col-xxl-2' : 'col-xl-2 col-xxl-1', 'mb-2 col-6 col-md-4 text-truncate']"
           :title="$options.filters.formatDuration(build.duration) + ', ' + $options.filters.formatDatetime(build.insertedAt)"
         >
-          <div class="small text-black-50 mb-1 d-xl-none">
+          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(build.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
             Built
           </div>
           <span
-            v-if="build.duration > 0"
+            v-if="!dashboardModeActive && build.duration > 0"
             :class="build.duration | colorDurationClass"
           >
             {{ build.duration | formatDuration }}
           </span> {{ build.insertedAt | formatDatetime }}
         </div>
         <div
-          class="mb-2 col-6 col-md-4 col-xl-2 col-xxl-1 text-truncate"
+          :class="[dashboardModeActive ? 'col-lg-3 col-xxl-2' : 'col-xl-2 col-xxl-1', 'mb-2 col-6 col-md-4 text-truncate']"
           :title="build.repoBranch"
         >
-          <div class="small text-black-50 mb-1 d-xl-none">
+          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(build.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
             Branch
           </div>
           {{ build.repoBranch }}
         </div>
-        <div class="mb-2 col-6 col-md-4 col-xl-2 col-xxl-1">
+        <div
+          class="mb-2 col-6 col-md-4 col-xl-2 col-xxl-1"
+          v-if="!dashboardModeActive"
+        >
           <div class="small text-black-50 mb-1 d-xl-none">
             Revision
           </div>
           <commit-link :build="build" />
         </div>
-        <div class="mb-2 col-6 col-md-4 col-xl-3 col-xxl-2">
-          <div class="small text-black-50 mb-1 d-xl-none">
+        <div :class="[dashboardModeActive ? 'col-md-12 col-lg-3 col-xxl-6' : 'col-md-4 col-xl-3 col-xxl-2', 'mb-2 col-6']">
+          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(build.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
             Commit(s)
           </div>
           <div
@@ -122,8 +149,11 @@
             {{ commit.message }} / {{ commit.author.name }}
           </div>
         </div>
-        <div class="mb-2 col-12 col-md-6 col-xxl-2 text-truncate text-truncate-fade">
-          <div class="small text-black-50 mb-1 d-xxl-none">
+        <div
+          class="mb-2 col-12 col-md-6 col-xxl-2 text-truncate text-truncate-fade"
+          v-if="!dashboardModeActive"
+        >
+          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(build.buildStatus) : 'text-black-50 d-xxl-none', 'small mb-1']">
             Releases
           </div>
           <release-badge-for-build
@@ -131,6 +161,7 @@
             :key="releaseTarget.name"
             :release-target="releaseTarget"
             :build="build"
+            :dashboard-mode-active="dashboardModeActive"
           />
           <span
             v-if="!showReleases(build)"
@@ -140,7 +171,7 @@
           </span>
         </div>
         <div
-          v-if="user && user.authenticated && build && ((build.buildStatus === 'failed' || build.buildStatus === 'running' || build.buildStatus === 'canceled') || (pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'))"
+          v-if="!dashboardModeActive && user && user.authenticated && build && ((build.buildStatus === 'failed' || build.buildStatus === 'running' || build.buildStatus === 'canceled') || (pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'))"
           class="mb-2 col-12 col-md-6 col-xxl-2"
         >
           <div class="small text-black-50 mb-1 d-xxl-none">
@@ -176,7 +207,7 @@
     <pagination
       :pagination="pagination"
       :link-generator="paginationLinkGenerator"
-      v-if="builds.length > 0"
+      v-if="!dashboardModeActive && builds.length > 0"
     />
   </div>
 </template>
@@ -192,6 +223,12 @@ import CancelButton from '@/components/CancelButton'
 import ReleaseBadgeForBuild from '@/components/ReleaseBadgeForBuild'
 import Pagination from '@/components/Pagination'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faTools } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faTools)
+
 export default {
   components: {
     Spinner,
@@ -202,7 +239,8 @@ export default {
     RebuildButton,
     CancelButton,
     ReleaseBadgeForBuild,
-    Pagination
+    Pagination,
+    FontAwesomeIcon
   },
 
   props: {
@@ -228,6 +266,10 @@ export default {
     },
     pipeline: {
       type: Object,
+      default: null
+    },
+    dashboardModeActive: {
+      type: Boolean,
       default: null
     }
   },

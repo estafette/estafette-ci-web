@@ -1,6 +1,9 @@
 <template>
   <div class="m-3">
-    <div class="row">
+    <div
+      class="row"
+      v-if="!dashboardModeActive"
+    >
       <div class="col-12 text-center">
         <status-filter :filter="filter" />
         <pagination-compact
@@ -11,7 +14,10 @@
       </div>
     </div>
 
-    <div class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold">
+    <div
+      class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold"
+      v-if="!dashboardModeActive"
+    >
       <div class="col-6 col-md-4 col-xl-2">
         Name
       </div>
@@ -35,6 +41,17 @@
       </div>
     </div>
 
+    <div
+      class="text-center text-white mb-3"
+      v-if="dashboardModeActive"
+    >
+      <font-awesome-icon
+        icon="upload"
+        class="mr-2"
+      />
+      Releases
+    </div>
+
     <transition-group
       name="list-complete"
       tag="div"
@@ -45,14 +62,19 @@
         :key="release.id"
         :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
         tag="div"
-        class="row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 list-complete-item"
-        :class="release.releaseStatus | bootstrapClass('border')"
+        :class="[
+          $options.filters.bootstrapClass(release.releaseStatus, 'border'),
+          dashboardModeActive ? $options.filters.bootstrapClass(release.releaseStatus, 'bg') : '',
+          dashboardModeActive ? $options.filters.bootstrapTextClass(release.releaseStatus) : '',
+          'row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 list-complete-item'
+        ]"
       >
         <div
-          class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
+          class=""
+          :class="[dashboardModeActive ? 'col-lg-3' : 'col-md-4 col-xl-2', 'mb-2 col-6 text-truncate']"
           :title="release.name"
         >
-          <div class="small text-black-50 mb-1 d-xl-none">
+          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(release.releaseStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
             Name
           </div>
           {{ release.name }}<span v-if="release.action">
@@ -60,15 +82,18 @@
           </span>
         </div>
         <div
-          class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
+          :class="[dashboardModeActive ? 'col-lg-3' : 'col-md-4 col-xl-2', 'mb-2 col-6 text-truncate']"
           :title="release.releaseVersion"
         >
-          <div class="small text-black-50 mb-1 d-xl-none">
+          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(release.releaseStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
             Version
           </div>
           {{ release.releaseVersion }}
         </div>
-        <div class="mb-2 col-6 col-md-4 col-xl-1 align-middle">
+        <div
+          class="mb-2 col-6 col-md-4 col-xl-1 align-middle"
+          v-if="!dashboardModeActive"
+        >
           <div class="small text-black-50 mb-1 d-xl-none">
             Status
           </div>
@@ -86,30 +111,30 @@
           </div>
         </div>
         <div
-          class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
+          :class="[dashboardModeActive ? 'col-lg-3' : 'col-md-4 col-xl-2', 'mb-2 col-6 text-truncate']"
           :title="$options.filters.formatDuration(release.duration) + ', ' + $options.filters.formatDatetime(release.insertedAt)"
         >
-          <div class="small text-black-50 mb-1 d-xl-none">
+          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(release.releaseStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
             Released
           </div>
           <span
-            v-if="release.duration > 0"
+            v-if="!dashboardModeActive && release.duration > 0"
             :class="release.duration | colorDurationClass"
           >
             {{ release.duration | formatDuration }}
           </span> {{ release.insertedAt | formatDatetime }}
         </div>
         <div
-          class="mb-2 col-6 col-md-4 col-xl-3 text-truncate"
+          :class="[dashboardModeActive ? 'col-lg-3' : 'col-md-4 col-xl-3', 'mb-2 col-6 text-truncate']"
           :title="release.triggeredBy"
         >
-          <div class="small text-black-50 mb-1 d-xl-none">
+          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(release.releaseStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
             By
           </div>
           {{ release.triggeredBy }}
         </div>
         <div
-          v-if="user && user.authenticated && release && release.releaseStatus === 'running'"
+          v-if="!dashboardModeActive && user && user.authenticated && release && release.releaseStatus === 'running'"
           class="mb-2 col-6 col-md-4 col-xl-2"
         >
           <div class="small text-black-50 mb-1 d-xl-none">
@@ -135,7 +160,7 @@
     <pagination
       :pagination="pagination"
       :link-generator="paginationLinkGenerator"
-      v-if="releases.length > 0"
+      v-if="!dashboardModeActive && releases.length > 0"
     />
   </div>
 </template>
@@ -146,12 +171,19 @@ import Pagination from '@/components/Pagination'
 import StatusFilter from '@/components/StatusFilter'
 import PaginationCompact from '@/components/PaginationCompact'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUpload } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faUpload)
+
 export default {
   components: {
     Spinner,
     Pagination,
     StatusFilter,
-    PaginationCompact
+    PaginationCompact,
+    FontAwesomeIcon
   },
   props: {
     repoSource: {
@@ -176,6 +208,10 @@ export default {
     },
     pipeline: {
       type: Object,
+      default: null
+    },
+    dashboardModeActive: {
+      type: Boolean,
       default: null
     }
   },

@@ -3,6 +3,7 @@
     <nav
       class="m-3"
       aria-label="breadcrumb"
+      v-if="!dashboardModeActive"
     >
       <ol class="breadcrumb flex-nowrap">
         <li class="breadcrumb-item text-truncate">
@@ -21,19 +22,26 @@
 
     <div
       v-if="pipeline"
-      class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-3 mb-2 ml-3"
-      :class="pipeline.buildStatus | bootstrapClass('border')"
+      :class="[
+        $options.filters.bootstrapClass(pipeline.buildStatus, 'border'),
+        dashboardModeActive ? $options.filters.bootstrapClass(pipeline.buildStatus, 'bg') : '',
+        dashboardModeActive ? $options.filters.bootstrapTextClass(pipeline.buildStatus) : '',
+        'row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-3 mb-2 ml-3'
+      ]"
     >
       <div
         class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
         :title="pipeline.buildVersion"
       >
-        <div class="small text-muted mb-1">
+        <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
           Version
         </div>
         {{ pipeline.buildVersion }}
       </div>
-      <div class="mb-2 col-6 col-md-4 col-xl-1 align-middle">
+      <div
+        class="mb-2 col-6 col-md-4 col-xl-1 align-middle"
+        v-if="!dashboardModeActive"
+      >
         <div class="small text-muted mb-1">
           Status
         </div>
@@ -58,11 +66,11 @@
         class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
         :title="$options.filters.formatDuration(pipeline.duration) + ', ' + $options.filters.formatDatetime(pipeline.insertedAt)"
       >
-        <div class="small text-muted mb-1">
+        <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
           Built
         </div>
         <span
-          v-if="pipeline.duration > 0"
+          v-if="!dashboardModeActive && pipeline.duration > 0"
           :class="pipeline.duration | colorDurationClass"
         >
           {{ pipeline.duration | formatDuration }}
@@ -72,19 +80,22 @@
         class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
         :title="pipeline.repoBranch"
       >
-        <div class="small text-muted mb-1">
+        <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
           Branch
         </div>
         {{ pipeline.repoBranch }}
       </div>
-      <div class="mb-2 col-6 col-md-4 col-xl-2">
+      <div
+        class="mb-2 col-6 col-md-4 col-xl-2"
+        v-if="!dashboardModeActive"
+      >
         <div class="small text-muted mb-1">
           Revision
         </div>
         <commit-link :build="pipeline" />
       </div>
       <div class="mb-2 col-6 col-md-4 col-xl-3">
-        <div class="small text-muted mb-1">
+        <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
           Commit(s)
         </div>
         <div
@@ -98,13 +109,13 @@
       </div>
 
       <div
-        v-if="(pipeline.labels && pipeline.labels.length > 0) || (pipeline.releaseTargets && pipeline.releaseTargets.length > 0)"
+        v-if="!dashboardModeActive && ((pipeline.labels && pipeline.labels.length > 0) || (pipeline.releaseTargets && pipeline.releaseTargets.length > 0))"
         class="col-12"
       >
         <div class="mt-3 mb-3 w-50 mx-auto border-bottom" />
       </div>
       <div
-        v-if="pipeline.labels && pipeline.labels.length > 0"
+        v-if="!dashboardModeActive && pipeline.labels && pipeline.labels.length > 0"
         class="mb-2 col-12 col-xl-6 text-center text-truncate text-truncate-fade"
       >
         <div class="small text-black-50 mb-1">
@@ -122,9 +133,9 @@
       </div>
       <div
         v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
-        class="mb-2 col-12 col-xl-6 text-center text-truncate text-truncate-fade"
+        :class="[dashboardModeActive ? '' : 'col-xl-6 text-truncate-fade', 'mb-2 col-12 text-center text-truncate']"
       >
-        <div class="small text-black-50 mb-1">
+        <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
           Releases
         </div>
         <release-badge
@@ -132,16 +143,20 @@
           :key="releaseTarget.name"
           :release-target="releaseTarget"
           :pipeline="pipeline"
+          :dashboard-mode-active="dashboardModeActive"
         />
       </div>
     </div>
 
     <pipeline-warnings
-      v-if="pipeline"
+      v-if="!dashboardModeActive && pipeline"
       :pipeline="pipeline"
     />
 
-    <ul class="nav nav-tabs m-3">
+    <ul
+      class="nav nav-tabs m-3"
+      v-if="!dashboardModeActive"
+    >
       <li class="nav-item">
         <router-link
           :to="{ name: 'PipelineBuilds', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
@@ -194,6 +209,7 @@
     <router-view
       :user="user"
       :pipeline="pipeline"
+      :dashboard-mode-active="dashboardModeActive"
       v-if="pipeline"
     />
   </div>
@@ -232,6 +248,10 @@ export default {
     },
     user: {
       type: Object,
+      default: null
+    },
+    dashboardModeActive: {
+      type: Boolean,
       default: null
     }
   },

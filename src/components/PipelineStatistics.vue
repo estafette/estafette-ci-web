@@ -1,6 +1,9 @@
 <template>
   <div class="m-3">
-    <div class="row mt-0 mr-0 ml-0">
+    <div
+      class="row mt-0 mr-0 ml-0"
+      v-if="!dashboardModeActive"
+    >
       <div class="col-12 col-sm-8 col-lg" />
       <div class="col-12 col-sm-4 col-lg-2 p-0 text-right">
         <b-input-group class="mb-3">
@@ -17,6 +20,17 @@
           />
         </b-input-group>
       </div>
+    </div>
+
+    <div
+      class="text-center text-white mb-3"
+      v-if="dashboardModeActive"
+    >
+      <font-awesome-icon
+        icon="chart-line"
+        class="mr-2"
+      />
+      Statistics
     </div>
 
     <div class="mt-0 mr-3 mb-3 ml-3 row">
@@ -50,10 +64,10 @@ import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
 import bInputGroupPrepend from 'bootstrap-vue/es/components/input-group/input-group-prepend'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHistory } from '@fortawesome/free-solid-svg-icons'
+import { faChartLine, faHistory } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faHistory)
+library.add(faChartLine, faHistory)
 
 export default {
   components: {
@@ -71,6 +85,10 @@ export default {
     },
     pipeline: {
       type: Object,
+      default: null
+    },
+    dashboardModeActive: {
+      type: Boolean,
       default: null
     }
   },
