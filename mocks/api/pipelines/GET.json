@@ -265,7 +265,7 @@
           "repoBranch":"master",
           "repoRevision":"dea7fe19973c27fd2ce449ce7d4c6c5d6e6a607a",
           "buildVersion":"0.1.44",
-          "buildStatus":"succeeded",
+          "buildStatus":"failed",
           "labels":[
              {
                 "key":"app",

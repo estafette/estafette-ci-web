@@ -99,7 +99,7 @@
           ]"
         >
           <div
-            :class="[dashboardModeActive ? 'col-lg-4' : 'col-xl-5 col-xxl-3 col-xxxl-2', 'mb-2 col-6 text-truncate']"
+            :class="[dashboardModeActive ? 'col-lg-4 col-xxl-3' : 'col-xl-5 col-xxl-3 col-xxxl-2', 'mb-2 col-6 text-truncate']"
             :title="pipeline.repoSource + '/' + pipeline.repoOwner + '/' + pipeline.repoName"
           >
             <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
@@ -108,7 +108,7 @@
             <span :class="[dashboardModeActive ? 'd-none d-md-inline' : 'text-muted d-none d-md-inline']">{{ pipeline.repoSource }}/{{ pipeline.repoOwner }}/</span><strong>{{ pipeline.repoName }}</strong>
           </div>
           <div
-            :class="[dashboardModeActive ? 'col-lg-4' : 'col-xl-1', 'mb-2 col-6 text-truncate']"
+            :class="[dashboardModeActive ? 'col-lg-4 col-xxl-2' : 'col-xl-1', 'mb-2 col-6 text-truncate']"
             :title="pipeline.buildVersion"
           >
             <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
@@ -141,7 +141,7 @@
             </router-link>
           </div>
           <div
-            :class="[dashboardModeActive ? 'col-lg-4' : 'col-xl-1', 'mb-2 col-6 text-truncate']"
+            :class="[dashboardModeActive ? 'col-lg-4 col-xxl-2' : 'col-xl-1', 'mb-2 col-6 text-truncate']"
             :title="$options.filters.formatDuration(pipeline.duration) + ', ' + $options.filters.formatDatetime(pipeline.insertedAt)"
           >
             <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
@@ -155,7 +155,7 @@
             </span> {{ pipeline.insertedAt | formatDatetime }}
           </div>
           <div
-            :class="[dashboardModeActive ? 'col-lg-4' : 'col-md-3 col-xl-1', 'mb-2 col-6 text-truncate']"
+            :class="[dashboardModeActive ? 'col-lg-4 col-xxl-2' : 'col-md-3 col-xl-1', 'mb-2 col-6 text-truncate']"
             :title="pipeline.repoBranch"
           >
             <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
@@ -173,7 +173,7 @@
             <commit-link :build="pipeline" />
           </div>
           <div
-            :class="[dashboardModeActive ? 'col-12 col-lg-8' : 'col-6 col-xl-2 col-xxxl-1', 'mb-2']"
+            :class="[dashboardModeActive ? 'col-12 col-lg-8 col-xxl-3' : 'col-6 col-xl-2 col-xxxl-1', 'mb-2']"
           >
             <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
               Commit(s)
