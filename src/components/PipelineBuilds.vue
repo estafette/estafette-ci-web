@@ -24,19 +24,19 @@
       <div class="col-6 col-md-4 col-xl-1">
         Status
       </div>
-      <div class="col-6 col-md-4 col-xl-2 col-xxl-1 d-none d-md-block">
+      <div class="col-4 col-xl-2 col-xxl-1 d-none d-md-block">
         Built
       </div>
-      <div class="col-6 col-md-4 col-xl-2 col-xxl-1 d-none d-xl-block">
+      <div class="col-2 col-xxl-1 d-none d-xl-block">
         Branch
       </div>
-      <div class="col-6 col-md-4 col-xl-2 col-xxl-1 d-none d-xl-block">
+      <div class="col-2 col-xxl-1 d-none d-xl-block">
         Revision
       </div>
-      <div class="col-6 col-md-4 col-xl-3 col-xxl-2 d-none d-xl-block">
+      <div class="col-3 col-xxl-2 d-none d-xl-block">
         Commit(s)
       </div>
-      <div class="col-xxl-2 d-none d-xxl-block">
+      <div class="col-2 d-none d-xxl-block">
         Releases
       </div>
       <div
@@ -52,7 +52,7 @@
       v-if="dashboardModeActive"
     >
       <font-awesome-icon
-        icon="tools"
+        icon="shipping-fast"
         class="mr-2"
       />
       Builds
@@ -63,136 +63,17 @@
       tag="div"
       v-if="builds.length > 0"
     >
-      <router-link
+      <build
         v-for="build in builds"
         :key="build.id"
-        :to="{ name: 'PipelineBuildLogs', params: { repoSource: build.repoSource, repoOwner: build.repoOwner, repoName: build.repoName, id: build.id }}"
-        tag="div"
-        :class="[
-          $options.filters.bootstrapClass(build.buildStatus, 'border'),
-          dashboardModeActive ? $options.filters.bootstrapClass(build.buildStatus, 'bg') : '',
-          dashboardModeActive ? $options.filters.bootstrapTextClass(build.buildStatus) : '',
-          'row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 list-complete-item'
-        ]"
-      >
-        <div
-          :class="[dashboardModeActive ? 'col-lg-3 col-xxl-2' : 'col-xl-2', 'mb-2 col-6 col-md-4 text-truncate']"
-          :title="build.buildVersion"
-        >
-          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(build.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
-            Version
-          </div>
-          {{ build.buildVersion }}
-        </div>
-        <div
-          class="mb-2 col-6 col-md-4 col-xl-1 align-middle"
-          v-if="!dashboardModeActive"
-        >
-          <div class="small text-black-50 mb-1 d-xl-none">
-            Status
-          </div>
-          <div class="progress mt-1">
-            <div
-              class="progress-bar"
-              :class="[$options.filters.bootstrapClass(build.buildStatus,'bg'), $options.filters.stripedProgressBarClass(build.buildStatus)]"
-              role="progressbar"
-              style="width: 100%"
-              aria-valuenow="100"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              :title="build.buildStatus"
-            />
-          </div>
-        </div>
-        <div
-          :class="[dashboardModeActive ? 'col-lg-3 col-xxl-2' : 'col-xl-2 col-xxl-1', 'mb-2 col-6 col-md-4 text-truncate']"
-          :title="$options.filters.formatDuration(build.duration) + ', ' + $options.filters.formatDatetime(build.insertedAt)"
-        >
-          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(build.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
-            Built
-          </div>
-          <span
-            v-if="!dashboardModeActive && build.duration > 0"
-            :class="build.duration | colorDurationClass"
-          >
-            {{ build.duration | formatDuration }}
-          </span> {{ build.insertedAt | formatDatetime }}
-        </div>
-        <div
-          :class="[dashboardModeActive ? 'col-lg-3 col-xxl-2' : 'col-xl-2 col-xxl-1', 'mb-2 col-6 col-md-4 text-truncate']"
-          :title="build.repoBranch"
-        >
-          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(build.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
-            Branch
-          </div>
-          {{ build.repoBranch }}
-        </div>
-        <div
-          class="mb-2 col-6 col-md-4 col-xl-2 col-xxl-1"
-          v-if="!dashboardModeActive"
-        >
-          <div class="small text-black-50 mb-1 d-xl-none">
-            Revision
-          </div>
-          <commit-link :build="build" />
-        </div>
-        <div :class="[dashboardModeActive ? 'col-md-12 col-lg-3 col-xxl-6' : 'col-md-4 col-xl-3 col-xxl-2', 'mb-2 col-6']">
-          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(build.buildStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
-            Commit(s)
-          </div>
-          <div
-            v-for="commit in build.commits"
-            :key="commit.message"
-            :title="commit.message + ' / ' + commit.author.name"
-            class="text-truncate"
-          >
-            {{ commit.message }} / {{ commit.author.name }}
-          </div>
-        </div>
-        <div
-          class="mb-2 col-12 col-md-6 col-xxl-2 text-truncate text-truncate-fade"
-          v-if="!dashboardModeActive"
-        >
-          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(build.buildStatus) : 'text-black-50 d-xxl-none', 'small mb-1']">
-            Releases
-          </div>
-          <release-badge-for-build
-            v-for="releaseTarget in pipeline.releaseTargets"
-            :key="releaseTarget.name"
-            :release-target="releaseTarget"
-            :build="build"
-            :dashboard-mode-active="dashboardModeActive"
-          />
-          <span
-            v-if="!showReleases(build)"
-            class="d-xxl-none"
-          >
-            -
-          </span>
-        </div>
-        <div
-          v-if="!dashboardModeActive && user && user.authenticated && build && ((build.buildStatus === 'failed' || build.buildStatus === 'running' || build.buildStatus === 'canceled') || (pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'))"
-          class="mb-2 col-12 col-md-6 col-xxl-2"
-        >
-          <div class="small text-black-50 mb-1 d-xxl-none">
-            Actions
-          </div>
-          <release-button
-            :pipeline="pipeline"
-            :build="build"
-            :user="user"
-          />
-          <rebuild-button
-            :build="build"
-            :user="user"
-            :builds="builds"
-          />
-          <cancel-button
-            :build="build"
-            :user="user"
-          />
-        </div>
-      </router-link>
+        :build="build"
+        :builds="builds"
+        :user="user"
+        :pipeline="pipeline"
+        :dashboard-mode-active="dashboardModeActive"
+        :row-item="true"
+        class="mt-2 mr-0 mb-2 ml-0 list-complete-item"
+      />
     </transition-group>
     <div
       v-else-if="loaded"
@@ -216,11 +97,7 @@
 import Spinner from '@/components/Spinner'
 import StatusFilter from '@/components/StatusFilter'
 import PaginationCompact from '@/components/PaginationCompact'
-import CommitLink from '@/components/CommitLink'
-import ReleaseButton from '@/components/ReleaseButton'
-import RebuildButton from '@/components/RebuildButton'
-import CancelButton from '@/components/CancelButton'
-import ReleaseBadgeForBuild from '@/components/ReleaseBadgeForBuild'
+import Build from '@/components/Build'
 import Pagination from '@/components/Pagination'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -234,11 +111,7 @@ export default {
     Spinner,
     StatusFilter,
     PaginationCompact,
-    CommitLink,
-    ReleaseButton,
-    RebuildButton,
-    CancelButton,
-    ReleaseBadgeForBuild,
+    Build,
     Pagination,
     FontAwesomeIcon
   },
@@ -332,20 +205,6 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadBuilds, timeoutWithJitter)
       }
-    },
-
-    showReleases (build) {
-      if (this.pipeline && this.pipeline.releaseTargets && this.pipeline.releaseTargets.length > 0) {
-        return this.pipeline.releaseTargets.some(r => r.activeReleases && r.activeReleases.some(ar => ar.releaseVersion === build.buildVersion))
-      }
-      return false
-    },
-
-    isActiveRelease (releaseTarget, build) {
-      if (releaseTarget && releaseTarget.activeReleases && releaseTarget.activeReleases.length > 0) {
-        return releaseTarget.activeReleases.some(ar => ar.releaseVersion === build.buildVersion)
-      }
-      return false
     }
   },
 
@@ -371,9 +230,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-tbody tr {
-  cursor: pointer;
-}
-</style>

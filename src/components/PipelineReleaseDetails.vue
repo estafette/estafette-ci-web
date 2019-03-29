@@ -3,6 +3,7 @@
     <nav
       class="m-3"
       aria-label="breadcrumb"
+      v-if="!dashboardModeActive"
     >
       <ol class="breadcrumb flex-nowrap">
         <li class="breadcrumb-item text-truncate">
@@ -34,14 +35,18 @@
 
     <div
       v-if="release"
-      class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-3 mb-2 ml-3"
-      :class="release.releaseStatus | bootstrapClass('border')"
+      :class="[
+        $options.filters.bootstrapClass(release.releaseStatus, 'border'),
+        dashboardModeActive ? $options.filters.bootstrapClass(release.releaseStatus, 'bg') : '',
+        dashboardModeActive ? $options.filters.bootstrapTextClass(release.releaseStatus) : '',
+        'row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-3 mb-2 ml-3'
+      ]"
     >
       <div
         class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
         :title="release.name"
       >
-        <div class="small text-muted mb-1">
+        <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(build.buildStatus) : 'text-black-50', 'small mb-1']">
           Name
         </div>
         {{ release.name }}<span v-if="release.action">
@@ -52,7 +57,7 @@
         class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
         :title="release.releaseVersion"
       >
-        <div class="small text-muted mb-1">
+        <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(build.buildStatus) : 'text-black-50', 'small mb-1']">
           Version
         </div>
         {{ release.releaseVersion }}
@@ -82,7 +87,7 @@
         class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
         :title="$options.filters.formatDuration(release.duration) + ', ' + $options.filters.formatDatetime(release.insertedAt)"
       >
-        <div class="small text-muted mb-1">
+        <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(build.buildStatus) : 'text-black-50', 'small mb-1']">
           Released
         </div>
         <span
@@ -96,7 +101,7 @@
         class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
         :title="release.triggeredBy"
       >
-        <div class="small text-muted mb-1">
+        <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(build.buildStatus) : 'text-black-50', 'small mb-1']">
           By
         </div>
         {{ release.triggeredBy }}
@@ -133,6 +138,7 @@
 
     <router-view
       :release="release"
+      :dashboard-mode-active="dashboardModeActive"
       v-if="release"
     />
   </div>
@@ -171,6 +177,10 @@ export default {
     },
     user: {
       type: Object,
+      default: null
+    },
+    dashboardModeActive: {
+      type: Boolean,
       default: null
     }
   },
