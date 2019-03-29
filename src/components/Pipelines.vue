@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mt-3 mr-3 ml-3">
+    <div :class="[dashboardModeActive ? '' : 'mt-3', 'mr-3 ml-3']">
       <div
         class="row"
         v-if="!dashboardModeActive"
@@ -22,15 +22,21 @@
         </div>
       </div>
 
-      <div
-        class="row"
-        v-if="!dashboardModeActive"
-      >
-        <div class="col-6 col-sm-8 col-md-9 col-xl-10 text-truncate text-truncate-fade">
-          <label-filter :filter="filter" />
-          <frequent-labels :filter="filter" />
+      <div class="row">
+        <div :class="[dashboardModeActive ? 'col-12' : 'col-6 col-sm-8 col-md-9 col-xl-10 text-truncate-fade', 'text-truncate']">
+          <label-filter
+            :filter="filter"
+            :dashboard-mode-active="dashboardModeActive"
+          />
+          <frequent-labels
+            :filter="filter"
+            v-if="!dashboardModeActive"
+          />
         </div>
-        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
+        <div
+          class="col-6 col-sm-4 col-md-3 col-xl-2"
+          v-if="!dashboardModeActive"
+        >
           <pagination-compact
             :pagination="pagination"
             :link-generator="paginationLinkGenerator"
@@ -45,16 +51,16 @@
         class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold"
         v-if="!dashboardModeActive"
       >
-        <div class="col-6 col-md-6 col-xl-5 col-xxl-3 col-xxxl-2">
+        <div class="col-6 col-xl-5 col-xxl-3 col-xxxl-2">
           Pipeline
         </div>
-        <div class="col-6 col-md-6 col-xl-1">
+        <div class="col-6 col-xl-1">
           Version
         </div>
         <div class="col-12 col-md-6 col-xl-1 d-none d-xl-block">
           Status
         </div>
-        <div class="col-6 col-md-6 col-xl-1 d-none d-xl-block">
+        <div class="col-6 col-xl-1 d-none d-xl-block">
           Built
         </div>
         <div class="col-6 col-md-3 col-xl-1 d-none d-xl-block">
@@ -63,7 +69,7 @@
         <div class="col-6 col-md-3 col-xl-1 d-none d-xl-block">
           Revision
         </div>
-        <div class="col-6 col-md-6 col-xl-2 col-xxxl-1 d-none d-xl-block">
+        <div class="col-6 col-xl-2 col-xxxl-1 d-none d-xl-block">
           Commit(s)
         </div>
         <div class="col-2 d-none d-xxl-block">
@@ -84,23 +90,28 @@
           :key="pipeline.repoSource+'/'+pipeline.repoOwner+'/'+pipeline.repoName"
           :to="{ name: 'PipelineBuilds', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName }}"
           tag="div"
-          class="row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 list-complete-item"
-          :class="[$options.filters.bootstrapClass(pipeline.buildStatus, 'border'), dashboardModeActive ? $options.filters.bootstrapClass(pipeline.buildStatus, 'bg') : '', dashboardModeActive ? $options.filters.bootstrapTextClass(pipeline.buildStatus) : '']"
+          :class="[
+            $options.filters.bootstrapClass(pipeline.buildStatus, 'border'),
+            dashboardModeActive ? $options.filters.bootstrapClass(pipeline.buildStatus, 'bg') : '',
+            dashboardModeActive ? $options.filters.bootstrapTextClass(pipeline.buildStatus) : '',
+            dashboardModeActive ? 'row mt-3 mr-0 mb-3 ml-0' : 'row mt-2 mr-0 mb-2 ml-0',
+            'rounded border clickable pt-3 pr-2 pb-2 pl-2  list-complete-item'
+          ]"
         >
           <div
-            class="mb-2 col-6 col-md-6 col-xl-5 col-xxl-3 col-xxxl-2 text-truncate"
+            :class="[dashboardModeActive ? 'col-lg-4' : 'col-xl-5 col-xxl-3 col-xxxl-2', 'mb-2 col-6 text-truncate']"
             :title="pipeline.repoSource + '/' + pipeline.repoOwner + '/' + pipeline.repoName"
           >
-            <div class="small text-black-50 mb-1 d-xl-none">
+            <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
               Pipeline
             </div>
             <span :class="[dashboardModeActive ? 'd-none d-md-inline' : 'text-muted d-none d-md-inline']">{{ pipeline.repoSource }}/{{ pipeline.repoOwner }}/</span><strong>{{ pipeline.repoName }}</strong>
           </div>
           <div
-            class="mb-2 col-6 col-md-6 col-xl-1 text-truncate"
+            :class="[dashboardModeActive ? 'col-lg-4' : 'col-xl-1', 'mb-2 col-6 text-truncate']"
             :title="pipeline.buildVersion"
           >
-            <div class="small text-black-50 mb-1 d-xl-none">
+            <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
               Version
             </div>
             {{ pipeline.buildVersion }}
@@ -109,7 +120,7 @@
             class="mb-2 col-12 col-md-6 col-xl-1 align-middle"
             v-if="!dashboardModeActive"
           >
-            <div class="small text-black-50 mb-1 d-xl-none">
+            <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
               Status
             </div>
             <router-link
@@ -130,10 +141,10 @@
             </router-link>
           </div>
           <div
-            class="mb-2 col-6 col-md-6 col-xl-1 text-truncate"
+            :class="[dashboardModeActive ? 'col-lg-4' : 'col-xl-1', 'mb-2 col-6 text-truncate']"
             :title="$options.filters.formatDuration(pipeline.duration) + ', ' + $options.filters.formatDatetime(pipeline.insertedAt)"
           >
-            <div class="small text-black-50 mb-1 d-xl-none">
+            <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
               Built-at
             </div>
             <span
@@ -144,10 +155,10 @@
             </span> {{ pipeline.insertedAt | formatDatetime }}
           </div>
           <div
-            class="mb-2 col-6 col-md-3 col-xl-1 text-truncate"
+            :class="[dashboardModeActive ? 'col-lg-4' : 'col-md-3 col-xl-1', 'mb-2 col-6 text-truncate']"
             :title="pipeline.repoBranch"
           >
-            <div class="small text-black-50 mb-1 d-xl-none">
+            <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
               Branch
             </div>
             {{ pipeline.repoBranch }}
@@ -162,10 +173,9 @@
             <commit-link :build="pipeline" />
           </div>
           <div
-            class="mb-2 col-6 col-md-6 col-xl-2 col-xxxl-1"
-            v-if="!dashboardModeActive"
+            :class="[dashboardModeActive ? 'col-12 col-lg-8' : 'col-6 col-xl-2 col-xxxl-1', 'mb-2']"
           >
-            <div class="small text-black-50 mb-1 d-xl-none">
+            <div :class="[dashboardModeActive ? '' : 'd-xl-none', 'small text-black-50 mb-1']">
               Commit(s)
             </div>
             <div
@@ -178,7 +188,7 @@
             </div>
           </div>
           <div
-            v-if="(pipeline.labels && pipeline.labels.length > 0) || (pipeline.releaseTargets && pipeline.releaseTargets.length > 0)"
+            v-if="!dashboardModeActive && ((pipeline.labels && pipeline.labels.length > 0) || (pipeline.releaseTargets && pipeline.releaseTargets.length > 0))"
             class="col-12 d-xxl-none"
           >
             <div class="mt-3 mb-3 w-50 mx-auto border-bottom" />
@@ -187,7 +197,7 @@
             v-if="!dashboardModeActive && pipeline.labels && pipeline.labels.length > 0"
             class="mb-2 col-12 col-xl-6 col-xxl-2 text-center text-xxl-left text-truncate text-truncate-fade"
           >
-            <div class="small text-black-50 mb-1 d-xxl-none">
+            <div :class="[dashboardModeActive ? '' : 'd-xxl-none', 'small text-black-50 mb-1']">
               Labels
             </div>
             <router-link
@@ -205,16 +215,16 @@
             class="mb-2 col-12 col-xl-6 col-xxl-2 text-center text-xxl-left"
           />
           <div
-            v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
+            v-if="!dashboardModeActive && pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
             class="col-12 d-none d-xxl-flex d-xxxl-none"
           >
             <div class="mt-3 mb-3 w-50 mx-auto border-bottom" />
           </div>
           <div
             v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
-            :class="[dashboardModeActive ? 'mb-2 col-12 col-xl-6 col-xxl-12 col-xxxl-2 text-center text-xxxl-left' : 'mb-2 col-12 col-xl-6 col-xxl-12 col-xxxl-2 text-center text-xxxl-left text-truncate text-truncate-fade']"
+            :class="[dashboardModeActive ? '' : 'col-xl-6 col-xxl-12 col-xxxl-2 text-xxxl-left text-truncate text-truncate-fade', 'mb-2 col-12 text-center']"
           >
-            <div class="small text-black-50 mb-1 d-xxxl-none">
+            <div :class="[dashboardModeActive ? '' : 'd-xxxl-none', 'small text-black-50 mb-1']">
               Releases
             </div>
             <release-badge
@@ -222,7 +232,6 @@
               :key="releaseTarget.name"
               :release-target="releaseTarget"
               :pipeline="pipeline"
-              :dashboard-mode-active="dashboardModeActive"
             />
           </div>
         </router-link>

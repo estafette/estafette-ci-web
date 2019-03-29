@@ -1,20 +1,21 @@
 <template>
   <div
-    class="btn-group mb-3 mr-2"
+    :class="[dashboardModeActive ? '' : 'mb-3', 'btn-group mr-2']"
     v-if="splitLabels.length > 0"
   >
-    <a class="btn btn-outline-light bg-btn-group-prepend icon-container">
+    <span :class="[dashboardModeActive ? 'btn-primary' : 'btn-outline-light bg-btn-group-prepend', 'btn icon-container']">
       <font-awesome-icon icon="tag" />
-    </a>
+    </span>
     <span
       v-for="label in splitLabels"
       :key="label"
-      class="btn btn-outline-primary border-btn-group"
+      :class="[dashboardModeActive ? 'btn-primary' : 'btn-outline-primary border-btn-group', 'btn']"
     >
       {{ label }} <router-link
         :to="{ query: { status: filter.status, since: filter.since, labels: labelLinkGenerator(label), page: 1 } }"
         active-class="router-link-active"
         class="badge badge-primary"
+        v-if="!dashboardModeActive"
       >
         &times;
       </router-link>
@@ -37,6 +38,10 @@ export default {
   props: {
     filter: {
       type: Object,
+      default: null
+    },
+    dashboardModeActive: {
+      type: Boolean,
       default: null
     }
   },

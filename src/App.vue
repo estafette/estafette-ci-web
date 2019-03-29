@@ -5,7 +5,10 @@
         :user="user"
         :dashboard-mode-active="dashboardModeActive"
       />
-      <div id="main">
+      <div
+        id="main"
+        :class="[dashboardModeActive ? 'bg-dark p-0' : '']"
+      >
         <router-view
           :user="user"
           :dashboard-mode-active="dashboardModeActive"
@@ -31,6 +34,7 @@ export default {
     SessionRefreshModal,
     HelpModal
   },
+
   data: function () {
     return {
       user: null,
@@ -46,6 +50,7 @@ export default {
 
   created () {
     this.loadUser()
+    this.setDataFromQueryParams(this.$route.query)
   },
 
   methods: {
@@ -74,21 +79,40 @@ export default {
       }
     },
 
+    setDataFromQueryParams (query) {
+      this.dashboardModeActive = query && query.dashboard ? query.dashboard === 'true' : false
+    },
+
+    updateQueryParams () {
+      var query = { ...this.$route.query }
+      if (this.dashboardModeActive) {
+        query.dashboard = true
+      } else {
+        delete query.dashboard
+      }
+
+      this.$router.push({ query: query })
+    },
+
     handleKeyboardShortcuts (event) {
-      switch (event.key) {
-        case 'd':
-          this.dashboardModeActive = !this.dashboardModeActive
-          console.log('toggle dashboard mode', this.dashboardModeActive)
-          break
-        case 'h':
-          this.helpModalActive = !this.helpModalActive
-          console.log('toggle keyboard shortcut help dialog', this.helpModalActive)
-          break
-        case 'Escape':
-          this.dashboardModeActive = false
-          this.helpModalActive = false
-          console.log('escape back to defaults')
-          break
+      var targetsToIgnore = ['input', 'textarea', 'select', 'button']
+      var targetNodeType = event && event.target && event.target.localName ? event.target.localName : ''
+      var ignore = targetsToIgnore.indexOf(targetNodeType) !== -1
+
+      if (!ignore) {
+        switch (event.key) {
+          case 'd':
+            this.dashboardModeActive = !this.dashboardModeActive
+            break
+          case 'h':
+            this.helpModalActive = !this.helpModalActive
+            break
+          case 'Escape':
+            this.dashboardModeActive = false
+            this.helpModalActive = false
+            break
+        }
+        this.updateQueryParams()
       }
     }
   },
