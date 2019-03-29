@@ -1,5 +1,8 @@
 <template>
-  <div id="app">
+  <div
+    id="app"
+    :class="[dashboardModeActive ? 'bg-dark' : '', 'overflow-auto']"
+  >
     <div id="header-and-main">
       <navigation-bar
         :user="user"
@@ -7,7 +10,7 @@
       />
       <div
         id="main"
-        :class="[dashboardModeActive ? 'bg-dark p-0' : '']"
+        :class="[dashboardModeActive ? 'p-0' : '']"
       >
         <router-view
           :user="user"
