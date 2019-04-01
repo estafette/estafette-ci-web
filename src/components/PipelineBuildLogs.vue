@@ -391,7 +391,7 @@ export default {
 
         this.es.addEventListener('close', event => {
           this.es.close()
-          window.scrollTo(0, 0)
+          this.$el.scrollIntoView(true)
           this.loadLogs()
         }, false)
 
