@@ -182,6 +182,8 @@
 </template>
 
 <script>
+import debounce from 'lodash.debounce'
+
 import AnsiUp from 'ansi_up'
 import bCard from 'bootstrap-vue/es/components/card/card'
 import bCardHeader from 'bootstrap-vue/es/components/card/card-header'
@@ -381,10 +383,10 @@ export default {
               if (data.logLine.line > 50) {
                 step.logLines.shift()
               }
+
+              this.scrollToLogTail()
             }
           }
-
-          this.$el.scrollIntoView(false)
         }, false)
 
         this.es.addEventListener('close', event => {
@@ -399,7 +401,15 @@ export default {
       } else {
         this.loadLogs()
       }
-    }
+    },
+
+    scrollToLogTail: debounce(
+      function () {
+        this.$el.scrollIntoView(false)
+      },
+      250,
+      { 'maxWait': 1000 }
+    )
   },
 
   beforeDestroy () {
