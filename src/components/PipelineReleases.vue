@@ -19,7 +19,7 @@
       v-if="!dashboardModeActive"
     >
       <div class="col-6 col-md-4 col-xl-2">
-        Name
+        Target
       </div>
       <div class="col-6 col-md-4 col-xl-2">
         Version

@@ -88,7 +88,7 @@
         Commit(s)
       </div>
       <div
-        v-for="commit in build.commits"
+        v-for="commit in limitCommits"
         :key="commit.message"
         :title="commit.message + ' / ' + commit.author.name"
         class="text-truncate"
@@ -200,6 +200,16 @@ export default {
   },
 
   computed: {
+    limitCommits () {
+      if (!this.build || !this.build.commits) {
+        return []
+      }
+      var limit = 3
+      if (this.build.commits.length <= limit) {
+        return this.build.commits
+      }
+      return this.build.commits.slice(0, limit)
+    },
     alwaysShowTitles () {
       return this.dashboardModeActive || !this.rowItem
     },

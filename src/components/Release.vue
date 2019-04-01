@@ -24,11 +24,11 @@
       />
     </div>
     <div
-      :class="[colClassesName, 'mb-2 text-truncate']"
+      :class="[colClassesTarget, 'mb-2 text-truncate']"
       :title="release.name"
     >
       <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(release.releaseStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xl-none', 'small mb-1']">
-        Name
+        Target <span v-if="release.action">+ action</span>
       </div>
       {{ release.name }}<span v-if="release.action">
         / {{ release.action }}
@@ -139,7 +139,7 @@ export default {
     showPipelineName () {
       return !this.rowItem
     },
-    colClassesName () {
+    colClassesTarget () {
       if (this.dashboardModeActive) {
         return 'col-6 col-lg-3'
       }

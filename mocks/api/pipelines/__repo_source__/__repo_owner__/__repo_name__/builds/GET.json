@@ -34,13 +34,45 @@
         ],
         "commits":[
            {
-              "message":"serialize action name to lowercase in json",
+              "message":"1 serialize action name to lowercase in json",
               "author":{
                  "email":"jsalverda@travix.com",
                  "name":"Jorrit Salverda",
                  "username":"JorritSalverda"
               }
-           }
+           },
+           {
+            "message":"2 serialize action name to lowercase in json",
+            "author":{
+               "email":"jsalverda@travix.com",
+               "name":"Jorrit Salverda",
+               "username":"JorritSalverda"
+            }
+         },
+         {
+            "message":"3 serialize action name to lowercase in json",
+            "author":{
+               "email":"jsalverda@travix.com",
+               "name":"Jorrit Salverda",
+               "username":"JorritSalverda"
+            }
+         },
+         {
+            "message":"4 serialize action name to lowercase in json",
+            "author":{
+               "email":"jsalverda@travix.com",
+               "name":"Jorrit Salverda",
+               "username":"JorritSalverda"
+            }
+         },
+         {
+            "message":"5 serialize action name to lowercase in json",
+            "author":{
+               "email":"jsalverda@travix.com",
+               "name":"Jorrit Salverda",
+               "username":"JorritSalverda"
+            }
+         }
         ],
         "insertedAt":"2018-11-20T15:55:49.266744Z",
         "updatedAt":"2018-11-20T15:55:49.266744Z",
