@@ -24,7 +24,7 @@
       <div class="col-6 col-md-4 col-xl-1">
         Status
       </div>
-      <div class="col-4 col-xl-2 col-xxl-1 d-none d-md-block">
+      <div class="col-4 col-xl-2 col-xxxl-1 d-none d-md-block">
         Built
       </div>
       <div class="col-2 col-xxl-1 d-none d-xl-block">
@@ -36,12 +36,12 @@
       <div class="col-3 col-xxl-2 d-none d-xl-block">
         Commit(s)
       </div>
-      <div class="col-2 d-none d-xxl-block">
+      <div class="col-2 d-none d-xxxl-block">
         Releases
       </div>
       <div
         v-if="user && user.authenticated"
-        class="col-xxl-2 d-none d-xxl-block"
+        class="col-xxl-2 d-none d-xxxl-block"
       >
         Actions
       </div>

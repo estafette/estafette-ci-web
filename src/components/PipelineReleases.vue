@@ -24,13 +24,13 @@
       <div class="col-6 col-md-4 col-xl-2">
         Version
       </div>
-      <div class="col-6 col-md-4 col-xl-1">
+      <div class="col-6 col-md-4 col-xl-2">
         Status
       </div>
       <div class="col-6 col-md-4 col-xl-2 d-none d-xl-block">
         Released
       </div>
-      <div class="col-6 col-md-4 col-xl-3 d-none d-xl-block">
+      <div class="col-6 col-md-4 col-xl-2 d-none d-xl-block">
         By
       </div>
       <div
@@ -57,95 +57,15 @@
       tag="div"
       v-if="releases.length > 0"
     >
-      <router-link
+      <release
         v-for="release in releases"
         :key="release.id"
-        :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
-        tag="div"
-        :class="[
-          $options.filters.bootstrapClass(release.releaseStatus, 'border'),
-          dashboardModeActive ? $options.filters.bootstrapClass(release.releaseStatus, 'bg') : '',
-          dashboardModeActive ? $options.filters.bootstrapTextClass(release.releaseStatus) : '',
-          'row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 list-complete-item'
-        ]"
-      >
-        <div
-          class=""
-          :class="[dashboardModeActive ? 'col-lg-3' : 'col-md-4 col-xl-2', 'mb-2 col-6 text-truncate']"
-          :title="release.name"
-        >
-          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(release.releaseStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
-            Name
-          </div>
-          {{ release.name }}<span v-if="release.action">
-            / {{ release.action }}
-          </span>
-        </div>
-        <div
-          :class="[dashboardModeActive ? 'col-lg-3' : 'col-md-4 col-xl-2', 'mb-2 col-6 text-truncate']"
-          :title="release.releaseVersion"
-        >
-          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(release.releaseStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
-            Version
-          </div>
-          {{ release.releaseVersion }}
-        </div>
-        <div
-          class="mb-2 col-6 col-md-4 col-xl-1 align-middle"
-          v-if="!dashboardModeActive"
-        >
-          <div class="small text-black-50 mb-1 d-xl-none">
-            Status
-          </div>
-          <div class="progress mt-1">
-            <div
-              class="progress-bar"
-              :class="[$options.filters.bootstrapClass(release.releaseStatus,'bg'), $options.filters.stripedProgressBarClass(release.releaseStatus)]"
-              role="progressbar"
-              style="width: 100%"
-              aria-valuenow="100"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              :title="release.releaseStatus"
-            />
-          </div>
-        </div>
-        <div
-          :class="[dashboardModeActive ? 'col-lg-3' : 'col-md-4 col-xl-2', 'mb-2 col-6 text-truncate']"
-          :title="$options.filters.formatDuration(release.duration) + ', ' + $options.filters.formatDatetime(release.insertedAt)"
-        >
-          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(release.releaseStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
-            Released
-          </div>
-          <span
-            v-if="!dashboardModeActive && release.duration > 0"
-            :class="release.duration | colorDurationClass"
-          >
-            {{ release.duration | formatDuration }}
-          </span> {{ release.insertedAt | formatDatetime }}
-        </div>
-        <div
-          :class="[dashboardModeActive ? 'col-lg-3' : 'col-md-4 col-xl-3', 'mb-2 col-6 text-truncate']"
-          :title="release.triggeredBy"
-        >
-          <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(release.releaseStatus) : 'text-black-50 d-xl-none', 'small mb-1']">
-            By
-          </div>
-          {{ release.triggeredBy }}
-        </div>
-        <div
-          v-if="!dashboardModeActive && user && user.authenticated && release && release.releaseStatus === 'running'"
-          class="mb-2 col-6 col-md-4 col-xl-2"
-        >
-          <div class="small text-black-50 mb-1 d-xl-none">
-            Actions
-          </div>
-          <cancel-button
-            :release="release"
-            :user="user"
-          />
-        </div>
-      </router-link>
+        :release="release"
+        :user="user"
+        :dashboard-mode-active="dashboardModeActive"
+        :row-item="true"
+        class="mt-2 mr-0 mb-2 ml-0 list-complete-item"
+      />
     </transition-group>
     <div
       v-else-if="loaded"
@@ -169,6 +89,7 @@
 import Spinner from '@/components/Spinner'
 import Pagination from '@/components/Pagination'
 import StatusFilter from '@/components/StatusFilter'
+import Release from '@/components/Release'
 import PaginationCompact from '@/components/PaginationCompact'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -182,6 +103,7 @@ export default {
     Spinner,
     Pagination,
     StatusFilter,
+    Release,
     PaginationCompact,
     FontAwesomeIcon
   },

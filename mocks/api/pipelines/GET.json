@@ -458,24 +458,6 @@
           "repoRevision":"216942b980faa7dd980698d423d22bef91b33408",
           "buildVersion":"0.1.126",
           "buildStatus":"succeeded",
-          "labels":[
-             {
-                "key":"app",
-                "value":"estafette-extension-gke"
-             },
-             {
-                "key":"app-group",
-                "value":"estafette-ci-extensions"
-             },
-             {
-                "key":"language",
-                "value":"golang"
-             },
-             {
-                "key":"team",
-                "value":"estafette-team"
-             }
-          ],
           "releaseTargets":[
              {
                 "name":"beta",
@@ -616,24 +598,6 @@
           "repoRevision":"77fd0fa6907316515db0bf00816f0f455d11058b",
           "buildVersion":"1.0.24",
           "buildStatus":"succeeded",
-          "labels":[
-             {
-                "key":"app",
-                "value":"estafette-gcloud-quota-exporter"
-             },
-             {
-                "key":"app-group",
-                "value":"estafette-various"
-             },
-             {
-                "key":"language",
-                "value":"golang"
-             },
-             {
-                "key":"team",
-                "value":"estafette-team"
-             }
-          ],
           "commits":[
              {
                 "message":"upgrade golang; use docker extension; notify to slack on success and failure",

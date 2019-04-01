@@ -2,6 +2,27 @@
 
 @import "bootstrap/scss/_functions.scss";
 @import "bootstrap/scss/_variables.scss";
+
+/* set the overriding variables */
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1440px,
+  xxxl: 1920px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1380px,
+  xxxl: 1860px
+);
+
 @import "bootstrap/scss/_mixins.scss";
 @import "bootstrap/scss/_root.scss";
 @import "bootstrap/scss/_reboot.scss";
@@ -118,84 +139,6 @@ html, body, #app {
         div {
             padding: .3em;
         }
-    }
-}
-
-@media (min-width: 1440px) {
-
-    #main {
-
-        .d-xxl-block {
-            display: block!important;
-        }
-
-        .d-xxl-flex {
-            display: flex!important;
-        }
-
-        .d-xxl-none {
-            display: none!important;
-        }
-
-        .text-xxl-left {
-            text-align: left!important;
-        }
-
-        .col-xxl {
-            -ms-flex-preferred-size: 0;
-            flex-basis: 0;
-            -ms-flex-positive: 1;
-            flex-grow: 1;
-            max-width: 100%;
-        }
-
-        @for $i from 1 through 12 {
-            .col-xxl-#{$i} {
-                -ms-flex: 0 0 percentage(($i / 12));
-                flex: 0 0 percentage(($i / 12));
-                max-width: percentage(($i / 12));
-            }
-        }
-
-    }
-}
-
-@media (min-width: 1920px) {
-
-    #main {
-
-        .d-xxxl-block {
-            display: block!important;
-        }
-
-        .d-xxxl-flex {
-            display: flex!important;
-        }
-
-        .d-xxxl-none {
-            display: none!important;
-        }
-
-        .text-xxxl-left {
-            text-align: left!important;
-        }
-
-        .col-xxxl {
-            -ms-flex-preferred-size: 0;
-            flex-basis: 0;
-            -ms-flex-positive: 1;
-            flex-grow: 1;
-            max-width: 100%;
-        }
-
-        @for $i from 1 through 12 {
-            .col-xxxl-#{$i} {
-                -ms-flex: 0 0 percentage(($i / 12));
-                flex: 0 0 percentage(($i / 12));
-                max-width: percentage(($i / 12));
-            }
-        }
-
     }
 }
 

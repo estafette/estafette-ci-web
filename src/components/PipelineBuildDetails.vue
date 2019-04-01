@@ -41,11 +41,14 @@
     />
 
     <pipeline-build-warnings
-      v-if="build"
+      v-if="!dashboardModeActive && build"
       :build="build"
     />
 
-    <ul class="nav nav-tabs m-3">
+    <ul
+      class="nav nav-tabs m-3"
+      v-if="!dashboardModeActive"
+    >
       <li class="nav-item">
         <router-link
           :to="{ name: 'PipelineBuildLogs', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName, id: id }}"

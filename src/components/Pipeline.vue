@@ -10,28 +10,28 @@
     ]"
   >
     <div
-      :class="[dashboardModeActive ? 'col-lg-4 col-xxl-3' : 'col-xxxl-2', 'mb-2 col-6 text-truncate']"
+      :class="[ colClassesPipeline, 'mb-2 text-truncate']"
       :title="pipeline.repoSource + '/' + pipeline.repoOwner + '/' + pipeline.repoName"
     >
-      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', keepTitles ? '' : 'd-xxxl-none', 'small mb-1']">
+      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xxxl-none', 'small mb-1']">
         Pipeline
       </div>
       <span :class="[dashboardModeActive ? 'd-none d-md-inline' : 'text-muted d-none d-md-inline']">{{ pipeline.repoSource }}/{{ pipeline.repoOwner }}/</span><strong>{{ pipeline.repoName }}</strong>
     </div>
     <div
-      :class="[dashboardModeActive ? 'col-lg-4 col-xxl-2' : 'col-xl-3 col-xxxl-1', 'mb-2 col-6 text-truncate']"
+      :class="[ colClassesVersion, 'mb-2 text-truncate']"
       :title="pipeline.buildVersion"
     >
-      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', keepTitles ? '' : 'd-xxxl-none', 'small mb-1']">
+      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xxxl-none', 'small mb-1']">
         Version
       </div>
       {{ pipeline.buildVersion }}
     </div>
     <div
-      class="mb-2 col-12 col-md-6 col-xl-3 col-xxxl-1 align-middle"
-      v-if="!dashboardModeActive"
+      :class="[ colClassesStatus, 'mb-2 align-middle']"
+      v-if="!dashboardModeActive && rowItem"
     >
-      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', keepTitles ? '' : 'd-xxxl-none', 'small mb-1']">
+      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xxxl-none', 'small mb-1']">
         Status
       </div>
       <router-link
@@ -52,10 +52,10 @@
       </router-link>
     </div>
     <div
-      :class="[dashboardModeActive ? 'col-lg-4 col-xxl-2' : 'col-xl-2 col-xxxl-1', 'mb-2 col-6 text-truncate']"
+      :class="[ colClassesBuiltAt, 'mb-2 text-truncate']"
       :title="$options.filters.formatDuration(pipeline.duration) + ', ' + $options.filters.formatDatetime(pipeline.insertedAt)"
     >
-      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', keepTitles ? '' : 'd-xxxl-none', 'small mb-1']">
+      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xxxl-none', 'small mb-1']">
         Built-at
       </div>
       <span
@@ -66,27 +66,27 @@
       </span> {{ pipeline.insertedAt | formatDatetime }}
     </div>
     <div
-      :class="[dashboardModeActive ? 'col-lg-4 col-xxl-2' : 'col-md-3 col-xl-2 col-xxxl-1', 'mb-2 col-6 text-truncate']"
+      :class="[ colClassesBranch, 'mb-2 text-truncate']"
       :title="pipeline.repoBranch"
     >
-      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', keepTitles ? '' : 'd-xxxl-none', 'small mb-1']">
+      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xxxl-none', 'small mb-1']">
         Branch
       </div>
       {{ pipeline.repoBranch }}
     </div>
     <div
-      class="mb-2 col-6 col-md-3 col-xl-2 col-xxxl-1"
-      v-if="!dashboardModeActive"
+      :class="[ colClassesRevision, 'mb-2']"
+      v-if="!dashboardModeActive && rowItem"
     >
-      <div class="small text-black-50 mb-1 d-xxxl-none">
+      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xxxl-none', 'small mb-1']">
         Revision
       </div>
       <commit-link :build="pipeline" />
     </div>
     <div
-      :class="[dashboardModeActive ? 'col-12 col-lg-8 col-xxl-3' : 'col-6 col-xxxl-1', 'mb-2']"
+      :class="[ colClassesCommits, 'mb-2']"
     >
-      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', keepTitles ? '' : 'd-xxxl-none', 'small mb-1']">
+      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xxxl-none', 'small mb-1']">
         Commit(s)
       </div>
       <div
@@ -100,15 +100,18 @@
     </div>
     <div
       v-if="!dashboardModeActive && ((pipeline.labels && pipeline.labels.length > 0) || (pipeline.releaseTargets && pipeline.releaseTargets.length > 0))"
-      class="col-12 d-xxxl-none"
+      :class="[ { 'col-12' : !rowItem, 'col-12 d-xxxl-none' : rowItem }]"
     >
       <div class="mt-3 mb-3 w-50 mx-auto border-bottom" />
     </div>
     <div
-      v-if="!dashboardModeActive && pipeline.labels && pipeline.labels.length > 0"
-      class="mb-2 col-12 col-xxl-6 col-xxxl-2 text-center text-xxxl-left text-truncate text-truncate-fade"
+      :class="[ colClassesLabels, 'mb-2 text-center text-truncate text-truncate-fade']"
+      v-if="!dashboardModeActive"
     >
-      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', keepTitles ? '' : 'd-xxxl-none', 'small mb-1']">
+      <div
+        :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xxxl-none', 'small mb-1']"
+        v-if="pipeline.labels && pipeline.labels.length > 0"
+      >
         Labels
       </div>
       <router-link
@@ -121,15 +124,11 @@
         {{ label.key }}={{ label.value }}
       </router-link>
     </div>
-    <div
-      v-if="(!pipeline.labels || pipeline.labels.length == 0) && pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
-      class="mb-2 col-12 col-xl-6 col-xxxl-2 text-center text-xxxl-left"
-    />
-    <div
-      v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
-      :class="[dashboardModeActive ? '' : 'col-xxl-6 col-xxxl-2 text-xxxl-left text-truncate text-truncate-fade', 'mb-2 col-12 text-center']"
-    >
-      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', keepTitles ? '' : 'd-xxxl-none', 'small mb-1']">
+    <div :class="[ colClassesReleases, 'mb-2 text-center' ]">
+      <div
+        :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xxxl-none', 'small mb-1']"
+        v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
+      >
         Releases
       </div>
       <release-badge
@@ -184,8 +183,68 @@ export default {
   },
 
   computed: {
-    keepTitles () {
+    alwaysShowTitles () {
       return this.dashboardModeActive || !this.rowItem
+    },
+    colClassesPipeline () {
+      if (this.dashboardModeActive || !this.rowItem) {
+        return 'col-6 col-lg-4 col-xxl-3'
+      }
+      return 'col-6 col-xxxl-2'
+    },
+    colClassesVersion () {
+      if (this.dashboardModeActive || !this.rowItem) {
+        return 'col-6 col-lg-4 col-xxl-2'
+      }
+      return 'col-6 col-xl-3 col-xxxl-1'
+    },
+    colClassesStatus () {
+      if (this.dashboardModeActive || !this.rowItem) {
+        return ''
+      }
+      return 'col-12 col-md-6 col-xl-3 col-xxxl-1'
+    },
+    colClassesBuiltAt () {
+      if (this.dashboardModeActive || !this.rowItem) {
+        return 'col-6 col-lg-4 col-xxl-2'
+      }
+      return 'col-6 col-xl-2 col-xxxl-1'
+    },
+    colClassesBranch () {
+      if (this.dashboardModeActive || !this.rowItem) {
+        return 'col-6 col-lg-4 col-xxl-2'
+      }
+      return 'col-6 col-md-3 col-xl-2 col-xxxl-1'
+    },
+    colClassesRevision () {
+      if (this.dashboardModeActive || !this.rowItem) {
+        return ''
+      }
+      return 'col-6 col-md-3 col-xl-2 col-xxxl-1'
+    },
+    colClassesCommits () {
+      if (this.dashboardModeActive || !this.rowItem) {
+        return 'col-12 col-lg-8 col-xxl-3'
+      }
+      return 'col-6 col-xxxl-1'
+    },
+    colClassesLabels () {
+      if (this.dashboardModeActive) {
+        return ''
+      }
+      if (this.rowItem) {
+        return 'col-12 col-xxl-6 col-xxxl-2 text-xxxl-left'
+      }
+      return 'col-12 col-xxl-6'
+    },
+    colClassesReleases () {
+      if (this.dashboardModeActive) {
+        return 'col-12'
+      }
+      if (this.rowItem) {
+        return 'col-12 col-xxl-6 col-xxxl-2 text-xxxl-left text-truncate text-truncate-fade'
+      }
+      return 'col-12 col-xxl-6'
     }
   }
 }
