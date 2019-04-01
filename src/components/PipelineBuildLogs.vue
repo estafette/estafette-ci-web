@@ -407,8 +407,8 @@ export default {
       function () {
         this.$el.scrollIntoView(false)
       },
-      250,
-      { 'maxWait': 1000 }
+      125,
+      { 'maxWait': 250 }
     )
   },
 
