@@ -321,7 +321,7 @@ export default {
           if (this.release.releaseStatus !== 'running' && this.release.releaseStatus !== 'canceling') {
             // stop handling stream when release status changes
             this.es.close()
-            this.$el.scrollIntoView(true)
+            document.getElementById('header-and-main').scrollIntoView(true)
             this.loadLogs()
             return
           }
@@ -384,7 +384,7 @@ export default {
 
         this.es.addEventListener('close', event => {
           this.es.close()
-          this.$el.scrollIntoView(true)
+          document.getElementById('header-and-main').scrollIntoView(true)
           this.loadLogs()
         }, false)
 

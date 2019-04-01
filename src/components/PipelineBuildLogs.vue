@@ -328,7 +328,7 @@ export default {
           if (this.build.buildStatus !== 'running' && this.build.buildStatus !== 'canceling') {
             // stop handling stream when build status changes
             this.es.close()
-            this.$el.scrollIntoView(true)
+            document.getElementById('header-and-main').scrollIntoView(true)
             this.loadLogs()
             return
           }
@@ -391,7 +391,7 @@ export default {
 
         this.es.addEventListener('close', event => {
           this.es.close()
-          this.$el.scrollIntoView(true)
+          document.getElementById('header-and-main').scrollIntoView(true)
           this.loadLogs()
         }, false)
 
