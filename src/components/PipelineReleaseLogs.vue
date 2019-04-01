@@ -175,6 +175,8 @@
 </template>
 
 <script>
+import debounce from 'lodash.debounce'
+
 import AnsiUp from 'ansi_up'
 import bCard from 'bootstrap-vue/es/components/card/card'
 import bCardHeader from 'bootstrap-vue/es/components/card/card-header'
@@ -315,11 +317,11 @@ export default {
       if (this.release.releaseStatus === 'running' || this.release.releaseStatus === 'canceling') {
         this.es = new EventSource(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}/logs/tail`)
 
-        this.es.addEventListener('log', event => {
+        this.es.addEventListener('log', debounce(event => {
           if (this.release.releaseStatus !== 'running' && this.release.releaseStatus !== 'canceling') {
             // stop handling stream when release status changes
             this.es.close()
-            window.scrollTo(0, 0)
+            this.$el.scrollIntoView(true)
             this.loadLogs()
             return
           }
@@ -377,8 +379,8 @@ export default {
             }
           }
 
-          window.scrollTo(0, document.body.scrollHeight)
-        }, false)
+          this.$el.scrollIntoView(false)
+        }, 200), false)
 
         this.es.addEventListener('close', event => {
           this.es.close()
