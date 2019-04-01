@@ -118,7 +118,7 @@
         Labels
       </div>
       <router-link
-        :to="{ query: { status: filter && filter.status ? filter.status : '', since: filter && filter.since ? filter.since : '', labels: label.key + '=' + label.value, page: 1 } }"
+        :to="{ name: 'Pipelines', query: { status: filter && filter.status ? filter.status : '', since: filter && filter.since ? filter.since : '', labels: label.key + '=' + label.value, page: 1 } }"
         exact
         class="btn btn-light btn-sm mr-1"
         v-for="label in sortLabels(pipeline.labels)"
