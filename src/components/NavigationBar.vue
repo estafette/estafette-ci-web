@@ -6,7 +6,7 @@
   >
     <b-navbar-brand
       :to="{ name: 'Pipelines'}"
-      :class="[dashboardModeActive ? 'text-success' : '', 'text-white mr-3']"
+      class="text-white mr-3"
     >
       <font-awesome-icon
         icon="shipping-fast"
