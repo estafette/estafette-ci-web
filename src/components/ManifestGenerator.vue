@@ -142,7 +142,6 @@ export default {
           this.templatesOptions = options
         })
         .catch(e => {
-          this.errors.push(e)
           this.periodicallyRefreshTemplates(30)
         })
     },

@@ -172,7 +172,6 @@ export default {
   data: function () {
     return {
       pipelines: [],
-      errors: [],
       pagination: {
         page: 1,
         size: 12,
@@ -273,7 +272,6 @@ export default {
           this.periodicallyRefreshPipelines(5)
         })
         .catch(e => {
-          this.errors.push(e)
           this.periodicallyRefreshPipelines(30)
         })
     },

@@ -128,7 +128,6 @@ export default {
   data: function () {
     return {
       build: null,
-      errors: [],
       refresh: true
     }
   },
@@ -147,7 +146,6 @@ export default {
           }
         })
         .catch(e => {
-          this.errors.push(e)
           this.periodicallyRefreshBuild(30)
         })
     },

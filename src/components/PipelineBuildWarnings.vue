@@ -42,7 +42,6 @@ export default {
           this.warnings = response.data.warnings
         })
         .catch(e => {
-          this.errors.push(e)
           this.periodicallyRefresh(30)
         })
     },

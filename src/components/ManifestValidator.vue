@@ -92,9 +92,8 @@ export default {
           this.errors = response.data.errors
           window.scrollTo(0, document.body.scrollHeight)
         })
-        .catch(error => {
+        .catch(e => {
           this.validating = false
-          console.log(error)
         })
     }
   }

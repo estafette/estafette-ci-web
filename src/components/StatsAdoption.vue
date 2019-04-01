@@ -133,7 +133,6 @@ export default {
           this.periodicallyRefreshStat(60)
         })
         .catch(e => {
-          this.errors.push(e)
           this.periodicallyRefreshStat(120)
         })
     },

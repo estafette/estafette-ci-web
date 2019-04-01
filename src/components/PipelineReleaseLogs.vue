@@ -219,7 +219,6 @@ export default {
   data: function () {
     return {
       log: {},
-      errors: [],
       refresh: true,
       tailedSteps: [],
       lastLineNumber: 0
@@ -291,7 +290,6 @@ export default {
             this.log = response.data
           })
           .catch(e => {
-            this.errors.push(e)
             this.periodicallyRefreshLogs(15)
           })
       } else {

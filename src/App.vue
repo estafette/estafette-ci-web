@@ -63,7 +63,6 @@ export default {
           this.user = response.data
         })
         .catch(e => {
-          this.errors.push(e)
           this.periodicallyRefreshUser(60)
         })
     },

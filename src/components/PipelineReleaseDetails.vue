@@ -107,7 +107,6 @@ export default {
   data: function () {
     return {
       release: null,
-      errors: [],
       refresh: true
     }
   },
@@ -126,7 +125,6 @@ export default {
           }
         })
         .catch(e => {
-          this.errors.push(e)
           this.periodicallyRefreshRelease(30)
         })
     },

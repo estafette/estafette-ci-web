@@ -135,7 +135,6 @@ export default {
   data: function () {
     return {
       pipeline: null,
-      errors: [],
       refresh: true
     }
   },
@@ -152,7 +151,6 @@ export default {
           this.periodicallyRefreshPipeline(5)
         })
         .catch(e => {
-          this.errors.push(e)
           this.periodicallyRefreshPipeline(30)
         })
     },

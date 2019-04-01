@@ -140,7 +140,6 @@ export default {
   data: function () {
     return {
       releases: [],
-      errors: [],
       pagination: {
         page: 1,
         size: 10,
@@ -179,7 +178,6 @@ export default {
           this.loaded = true
         })
         .catch(e => {
-          this.errors.push(e)
           this.periodicallyRefreshRelease(15)
         })
     },

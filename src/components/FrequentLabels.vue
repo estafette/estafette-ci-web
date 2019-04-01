@@ -63,11 +63,9 @@ export default {
       this.axios.get(`/api/labels/frequent?filter[status]=${this.filter.status}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.labels = response.data.items
-
           this.periodicallyRefreshFrequentLabels(5)
         })
         .catch(e => {
-          this.errors.push(e)
           this.periodicallyRefreshFrequentLabels(30)
         })
     },

@@ -90,7 +90,6 @@ export default {
           this.periodicallyRefreshConfig(60)
         }))
         .catch(e => {
-          this.errors.push(e)
           this.periodicallyRefreshConfig(120)
         })
     },

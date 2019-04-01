@@ -98,7 +98,6 @@ export default {
           this.periodicallyRefreshStat(15)
         })
         .catch(e => {
-          this.errors.push(e)
           this.periodicallyRefreshStat(60)
         })
     },
