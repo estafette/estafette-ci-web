@@ -6,7 +6,7 @@
       $options.filters.bootstrapClass(pipeline.buildStatus, 'border'),
       dashboardModeActive ? $options.filters.bootstrapClass(pipeline.buildStatus, 'bg') : '',
       dashboardModeActive ? $options.filters.bootstrapTextClass(pipeline.buildStatus) : '',
-      'row rounded border clickable pt-3 pr-2 pb-2 pl-2'
+      'row rounded border align-items-center clickable pt-3 pr-2 pb-2 pl-2'
     ]"
   >
     <div
@@ -37,7 +37,7 @@
       <router-link
         :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: pipeline.id }}"
         tag="div"
-        class="progress mt-1"
+        class="progress"
       >
         <div
           class="progress-bar"
@@ -81,7 +81,10 @@
       <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xxxl-none', 'small mb-1']">
         Revision
       </div>
-      <commit-link :build="pipeline" />
+      <commit-link
+        :build="pipeline"
+        :dashboard-mode-active="dashboardModeActive"
+      />
     </div>
     <div
       :class="[ colClassesCommits, 'mb-2']"
@@ -117,7 +120,7 @@
       <router-link
         :to="{ query: { status: filter && filter.status ? filter.status : '', since: filter && filter.since ? filter.since : '', labels: label.key + '=' + label.value, page: 1 } }"
         exact
-        class="btn btn-light btn-sm mr-1 mb-1"
+        class="btn btn-light btn-sm mr-1"
         v-for="label in sortLabels(pipeline.labels)"
         :key="label.key"
       >

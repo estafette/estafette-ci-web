@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="matchingReleases.length > 0"
-    :class="[dashboardModeActive ? 'btn-dark' : 'btn-light', 'btn btn-sm mr-1 mb-1']"
+    :class="[dashboardModeActive ? 'btn-dark' : 'btn-light', 'btn btn-sm mr-1']"
   >
     {{ releaseTarget.name }}<router-link
       v-for="release in matchingReleases"

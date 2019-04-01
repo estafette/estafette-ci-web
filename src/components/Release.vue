@@ -6,7 +6,7 @@
       $options.filters.bootstrapClass(release.releaseStatus, 'border'),
       dashboardModeActive ? $options.filters.bootstrapClass(release.releaseStatus, 'bg') : '',
       dashboardModeActive ? $options.filters.bootstrapTextClass(release.releaseStatus) : '',
-      'row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 list-complete-item'
+      'row rounded border align-items-center clickable pt-3 pr-2 pb-2 pl-2'
     ]"
   >
     <div
@@ -53,7 +53,7 @@
       <router-link
         :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
         tag="div"
-        class="progress mt-2 clickable"
+        class="progress"
       >
         <div
           class="progress-bar"

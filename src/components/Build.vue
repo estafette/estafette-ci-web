@@ -6,7 +6,7 @@
       $options.filters.bootstrapClass(build.buildStatus, 'border'),
       dashboardModeActive ? $options.filters.bootstrapClass(build.buildStatus, 'bg') : '',
       dashboardModeActive ? $options.filters.bootstrapTextClass(build.buildStatus) : '',
-      'row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 list-complete-item'
+      'row rounded border align-items-center clickable pt-3 pr-2 pb-2 pl-2'
     ]"
   >
     <div
@@ -39,7 +39,7 @@
       <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xl-none', 'small mb-1']">
         Status
       </div>
-      <div class="progress mt-1">
+      <div class="progress">
         <div
           class="progress-bar"
           :class="[$options.filters.bootstrapClass(build.buildStatus,'bg'), $options.filters.stripedProgressBarClass(build.buildStatus)]"
@@ -81,7 +81,10 @@
       <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xl-none', 'small mb-1']">
         Revision
       </div>
-      <commit-link :build="build" />
+      <commit-link
+        :build="build"
+        :dashboard-mode-active="dashboardModeActive"
+      />
     </div>
     <div :class="[colClassesCommits, 'mb-2']">
       <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xl-none', 'small mb-1']">
