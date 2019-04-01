@@ -1,6 +1,9 @@
 <template>
   <div class="m-3">
-    <div class="row mt-0 mr-0 mb-3 ml-0">
+    <div
+      class="row mt-0 mr-0 mb-3 ml-0"
+      v-if="!dashboardModeActive"
+    >
       <div class="col-12 col-sm-8 col-lg" />
       <div class="col-12 col-sm-4 col-lg-3 p-0 text-right">
         <since-selector
@@ -10,12 +13,24 @@
       </div>
     </div>
 
+    <div
+      class="h2 text-center text-white mb-5"
+      v-if="dashboardModeActive"
+    >
+      <font-awesome-icon
+        icon="chart-pie"
+        class="mr-2"
+      />
+      Counters
+    </div>
+
     <div class="row m-0">
       <stats-pipelines-count
         v-for="status in statuses"
         :key="status"
         :filter="filter"
         :status="status"
+        :dashboard-mode-active="dashboardModeActive"
       />
     </div>
 
@@ -25,6 +40,7 @@
         :key="status"
         :filter="filter"
         :status="status"
+        :dashboard-mode-active="dashboardModeActive"
       />
     </div>
 
@@ -34,6 +50,7 @@
         :key="status"
         :filter="filter"
         :status="status"
+        :dashboard-mode-active="dashboardModeActive"
       />
     </div>
   </div>
@@ -42,12 +59,26 @@
 <script>
 import SinceSelector from '@/components/SinceSelector'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faChartPie } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faChartPie)
+
 export default {
   components: {
     StatsPipelinesCount: () => import(/* webpackChunkName: "tweenlite" */ '@/components/StatsPipelinesCount'),
     StatsBuildsCount: () => import(/* webpackChunkName: "tweenlite" */ '@/components/StatsBuildsCount'),
     StatsReleasesCount: () => import(/* webpackChunkName: "tweenlite" */ '@/components/StatsReleasesCount'),
-    SinceSelector
+    SinceSelector,
+    FontAwesomeIcon
+  },
+
+  props: {
+    dashboardModeActive: {
+      type: Boolean,
+      default: null
+    }
   },
 
   data: function () {

@@ -1,7 +1,21 @@
 <template>
-  <div>
-    <div class="mt-3 mr-3 ml-3">
-      <div class="row">
+  <div class="m-3">
+    <div
+      class="h2 text-center text-white mb-5"
+      v-if="dashboardModeActive"
+    >
+      <font-awesome-icon
+        icon="industry"
+        class="mr-2"
+      />
+      Pipelines
+    </div>
+
+    <div :class="[dashboardModeActive ? '' : 'mt-3', '']">
+      <div
+        class="row"
+        v-if="!dashboardModeActive"
+      >
         <div class="col-12 col-lg-6">
           <status-filter :filter="filter" />
         </div>
@@ -20,11 +34,20 @@
       </div>
 
       <div class="row">
-        <div class="col-6 col-sm-8 col-md-9 col-xl-10 text-truncate text-truncate-fade">
-          <label-filter :filter="filter" />
-          <frequent-labels :filter="filter" />
+        <div :class="[dashboardModeActive ? 'col-12' : 'col-6 col-sm-8 col-md-9 col-xl-10 text-truncate-fade', 'text-truncate']">
+          <label-filter
+            :filter="filter"
+            :dashboard-mode-active="dashboardModeActive"
+          />
+          <frequent-labels
+            :filter="filter"
+            v-if="!dashboardModeActive"
+          />
         </div>
-        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
+        <div
+          class="col-6 col-sm-4 col-md-3 col-xl-2"
+          v-if="!dashboardModeActive"
+        >
           <pagination-compact
             :pagination="pagination"
             :link-generator="paginationLinkGenerator"
@@ -34,30 +57,33 @@
       </div>
     </div>
 
-    <div class="mt-0 mr-3 mb-3 ml-3">
-      <div class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold">
-        <div class="col-6 col-md-6 col-xl-5 col-xxl-3 col-xxxl-2">
+    <div class="mb-3">
+      <div
+        class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold"
+        v-if="!dashboardModeActive"
+      >
+        <div class="col-6 col-xxxl-2">
           Pipeline
         </div>
-        <div class="col-6 col-md-6 col-xl-1">
+        <div class="col-6 col-xl-3 col-xxxl-1">
           Version
         </div>
-        <div class="col-12 col-md-6 col-xl-1 d-none d-xl-block">
+        <div class="col-3 col-xxxl-1 d-none d-xl-block">
           Status
         </div>
-        <div class="col-6 col-md-6 col-xl-1 d-none d-xl-block">
+        <div class="col-1 d-none d-xxxl-block">
           Built
         </div>
-        <div class="col-6 col-md-3 col-xl-1 d-none d-xl-block">
+        <div class="col-1 d-none d-xxxl-block">
           Branch
         </div>
-        <div class="col-6 col-md-3 col-xl-1 d-none d-xl-block">
+        <div class="col-1 d-none d-xxxl-block">
           Revision
         </div>
-        <div class="col-6 col-md-6 col-xl-2 col-xxxl-1 d-none d-xl-block">
+        <div class="col-1 d-none d-xxxl-block">
           Commit(s)
         </div>
-        <div class="col-2 d-none d-xxl-block">
+        <div class="col-2 d-none d-xxxl-block">
           Labels
         </div>
         <div class="col-2 d-none d-xxxl-block">
@@ -70,143 +96,15 @@
         tag="div"
         v-if="pipelines.length > 0"
       >
-        <router-link
+        <pipeline
           v-for="pipeline in pipelines"
           :key="pipeline.repoSource+'/'+pipeline.repoOwner+'/'+pipeline.repoName"
-          :to="{ name: 'PipelineBuilds', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName }}"
-          tag="div"
-          class="row rounded border clickable pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 list-complete-item"
-          :class="pipeline.buildStatus | bootstrapClass('border')"
-        >
-          <div
-            class="mb-2 col-6 col-md-6 col-xl-5 col-xxl-3 col-xxxl-2 text-truncate"
-            :title="pipeline.repoSource + '/' + pipeline.repoOwner + '/' + pipeline.repoName"
-          >
-            <div class="small text-black-50 mb-1 d-xl-none">
-              Pipeline
-            </div>
-            <span class="text-muted d-none d-md-inline">{{ pipeline.repoSource }}/{{ pipeline.repoOwner }}/</span><strong>{{ pipeline.repoName }}</strong>
-          </div>
-          <div
-            class="mb-2 col-6 col-md-6 col-xl-1 text-truncate"
-            :title="pipeline.buildVersion"
-          >
-            <div class="small text-black-50 mb-1 d-xl-none">
-              Version
-            </div>
-            {{ pipeline.buildVersion }}
-          </div>
-          <div class="mb-2 col-12 col-md-6 col-xl-1 align-middle">
-            <div class="small text-black-50 mb-1 d-xl-none">
-              Status
-            </div>
-            <router-link
-              :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: pipeline.id }}"
-              tag="div"
-              class="progress mt-1"
-            >
-              <div
-                class="progress-bar"
-                :class="[$options.filters.bootstrapClass(pipeline.buildStatus,'bg'), $options.filters.stripedProgressBarClass(pipeline.buildStatus)]"
-                role="progressbar"
-                style="width: 100%"
-                aria-valuenow="100"
-                aria-valuemin="0"
-                aria-valuemax="100"
-                :title="pipeline.buildStatus"
-              />
-            </router-link>
-          </div>
-          <div
-            class="mb-2 col-6 col-md-6 col-xl-1 text-truncate"
-            :title="$options.filters.formatDuration(pipeline.duration) + ', ' + $options.filters.formatDatetime(pipeline.insertedAt)"
-          >
-            <div class="small text-black-50 mb-1 d-xl-none">
-              Built-at
-            </div>
-            <span
-              v-if="pipeline.duration > 0"
-              :class="pipeline.duration | colorDurationClass"
-            >
-              {{ pipeline.duration | formatDuration }}
-            </span> {{ pipeline.insertedAt | formatDatetime }}
-          </div>
-          <div
-            class="mb-2 col-6 col-md-3 col-xl-1 text-truncate"
-            :title="pipeline.repoBranch"
-          >
-            <div class="small text-black-50 mb-1 d-xl-none">
-              Branch
-            </div>
-            {{ pipeline.repoBranch }}
-          </div>
-          <div class="mb-2 col-6 col-md-3 col-xl-1">
-            <div class="small text-black-50 mb-1 d-xl-none">
-              Revision
-            </div>
-            <commit-link :build="pipeline" />
-          </div>
-          <div class="mb-2 col-6 col-md-6 col-xl-2 col-xxxl-1">
-            <div class="small text-black-50 mb-1 d-xl-none">
-              Commit(s)
-            </div>
-            <div
-              v-for="commit in pipeline.commits"
-              :key="commit.message"
-              :title="commit.message + ' / ' + commit.author.name"
-              class="text-truncate"
-            >
-              {{ commit.message }} / {{ commit.author.name }}
-            </div>
-          </div>
-          <div
-            v-if="(pipeline.labels && pipeline.labels.length > 0) || (pipeline.releaseTargets && pipeline.releaseTargets.length > 0)"
-            class="col-12 d-xxl-none"
-          >
-            <div class="mt-3 mb-3 w-50 mx-auto border-bottom" />
-          </div>
-          <div
-            v-if="pipeline.labels && pipeline.labels.length > 0"
-            class="mb-2 col-12 col-xl-6 col-xxl-2 text-center text-xxl-left text-truncate text-truncate-fade"
-          >
-            <div class="small text-black-50 mb-1 d-xxl-none">
-              Labels
-            </div>
-            <router-link
-              :to="{ query: { status: filter.status, since: filter.since, labels: label.key + '=' + label.value, page: 1 } }"
-              exact
-              class="btn btn-light btn-sm mr-1 mb-1"
-              v-for="label in sortLabels(pipeline.labels)"
-              :key="label.key"
-            >
-              {{ label.key }}={{ label.value }}
-            </router-link>
-          </div>
-          <div
-            v-if="(!pipeline.labels || pipeline.labels.length == 0) && pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
-            class="mb-2 col-12 col-xl-6 col-xxl-2 text-center text-xxl-left"
-          />
-          <div
-            v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
-            class="col-12 d-none d-xxl-flex d-xxxl-none"
-          >
-            <div class="mt-3 mb-3 w-50 mx-auto border-bottom" />
-          </div>
-          <div
-            v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
-            class="mb-2 col-12 col-xl-6 col-xxl-12 col-xxxl-2 text-center text-xxxl-left text-truncate text-truncate-fade"
-          >
-            <div class="small text-black-50 mb-1 d-xxxl-none">
-              Releases
-            </div>
-            <release-badge
-              v-for="releaseTarget in pipeline.releaseTargets"
-              :key="releaseTarget.name"
-              :release-target="releaseTarget"
-              :pipeline="pipeline"
-            />
-          </div>
-        </router-link>
+          :pipeline="pipeline"
+          :filter="filter"
+          :dashboard-mode-active="dashboardModeActive"
+          :row-item="true"
+          class="mt-2 mb-2 ml-0 mr-0 list-complete-item"
+        />
       </transition-group>
       <div
         v-else-if="loaded"
@@ -222,7 +120,7 @@
     <pagination
       :pagination="pagination"
       :link-generator="paginationLinkGenerator"
-      v-if="pipelines.length > 0"
+      v-if="!dashboardModeActive && pipelines.length > 0"
     />
   </div>
 </template>
@@ -231,8 +129,7 @@
 import debounce from 'lodash.debounce'
 
 import Spinner from '@/components/Spinner'
-import CommitLink from '@/components/CommitLink'
-import ReleaseBadge from '@/components/ReleaseBadge'
+import Pipeline from '@/components/Pipeline'
 import StatusFilter from '@/components/StatusFilter'
 import LabelFilter from '@/components/LabelFilter'
 import FrequentLabels from '@/components/FrequentLabels'
@@ -241,23 +138,33 @@ import SinceSelector from '@/components/SinceSelector'
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faIndustry } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faIndustry)
+
 export default {
   components: {
     Spinner,
-    CommitLink,
-    ReleaseBadge,
+    Pipeline,
     StatusFilter,
     LabelFilter,
     FrequentLabels,
     PipelineFilter,
     SinceSelector,
     PaginationCompact,
-    Pagination
+    Pagination,
+    FontAwesomeIcon
   },
 
   props: {
     query: {
       type: Object,
+      default: null
+    },
+    dashboardModeActive: {
+      type: Boolean,
       default: null
     }
   },
@@ -284,32 +191,70 @@ export default {
   },
 
   created () {
+    this.filterDefaults = { ...this.filter }
     this.setDataFromQueryParams(this.query)
     this.loadPipelines()
   },
 
   methods: {
     paginationLinkGenerator (pageNum) {
-      if (this.filter && this.filter.labels && this.filter.labels !== '') {
-        return { query: { status: this.filter.status, since: this.filter.since, labels: this.filter.labels, page: pageNum } }
+      var query = this.getPipelinesQueryParams()
+
+      if (pageNum > 1) {
+        query.page = pageNum
+      } else if (query.page) {
+        delete query.page
       }
-      return { query: { status: this.filter.status, since: this.filter.since, page: pageNum } }
+
+      return { query: query }
     },
 
     setDataFromQueryParams (query) {
       this.pagination.page = query && query.page ? Number.parseInt(query.page, 10) : 1
-      this.filter.status = query && query.status ? query.status : 'all'
-      this.filter.since = query && query.since ? query.since : '1d'
-      this.filter.labels = query && query.labels ? query.labels : ''
-      this.filter.search = query && query.search ? query.search : ''
+      this.filter.status = query && query.status ? query.status : this.filterDefaults.status
+      this.filter.since = query && query.since ? query.since : this.filterDefaults.since
+      this.filter.labels = query && query.labels ? query.labels : this.filterDefaults.labels
+      this.filter.search = query && query.search ? query.search : this.filterDefaults.search
+    },
+
+    getPipelinesQueryParams () {
+      var query = { ...this.$route.query }
+
+      if (this.filter && this.filter.status && this.filter.status !== this.filterDefaults.status && this.filter.status !== '') {
+        query.status = this.filter.status
+      } else if (query.status) {
+        delete query.status
+      }
+
+      if (this.filter && this.filter.since && this.filter.since !== this.filterDefaults.since && this.filter.since !== '') {
+        query.since = this.filter.since
+      } else if (query.since) {
+        delete query.since
+      }
+
+      if (this.filter && this.filter.search && this.filter.search !== this.filterDefaults.search && this.filter.search !== '') {
+        query.search = this.filter.search
+      } else if (query.search) {
+        delete query.search
+      }
+
+      if (this.filter && this.filter.labels && this.filter.labels !== this.filterDefaults.labels && this.filter.labels !== '') {
+        query.labels = this.filter.labels
+      } else if (query.labels) {
+        delete query.labels
+      }
+
+      if (this.pagination && this.pagination.page && this.pagination.page > 1) {
+        query.page = this.pagination.page
+      } else if (query.page) {
+        delete query.page
+      }
+
+      return query
     },
 
     updateQueryParams () {
-      if (this.filter && this.filter.labels && this.filter.labels !== '') {
-        this.$router.push({ query: { status: this.filter.status, since: this.filter.since, search: this.filter.search, labels: this.filter.labels, page: this.pagination.page } })
-      } else {
-        this.$router.push({ query: { status: this.filter.status, since: this.filter.since, search: this.filter.search, page: this.pagination.page } })
-      }
+      this.$router.push({ query: this.getPipelinesQueryParams() })
     },
 
     loadPipelines () {
@@ -387,9 +332,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-tbody tr {
-  cursor: pointer;
-}
-</style>

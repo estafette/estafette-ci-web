@@ -3,7 +3,10 @@
     v-if="log && log.steps"
     class="accordion m-3"
   >
-    <div class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 font-weight-bold">
+    <div
+      class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 font-weight-bold"
+      v-if="!dashboardModeActive"
+    >
       <div class="col-4 col-md-2 col-xl-1 text-center">
         Status
       </div>
@@ -213,6 +216,10 @@ export default {
     },
     build: {
       type: Object,
+      default: null
+    },
+    dashboardModeActive: {
+      type: Boolean,
       default: null
     }
   },

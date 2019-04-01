@@ -1,5 +1,8 @@
 <template>
-  <b-input-group v-if="user.authenticated && ((build && build.buildStatus === 'running') || (release && release.releaseStatus === 'running'))">
+  <b-input-group
+    v-if="user.authenticated && ((build && build.buildStatus === 'running') || (release && release.releaseStatus === 'running'))"
+    style="width: auto;"
+  >
     <b-input-group-text
       slot="prepend"
       class="border border-danger text-danger bg-white"

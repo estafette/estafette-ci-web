@@ -1,5 +1,8 @@
 <template>
-  <b-input-group v-if="user && user.authenticated && pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'">
+  <b-input-group
+    v-if="user && user.authenticated && pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'"
+    style="width: auto;"
+  >
     <b-input-group-text
       slot="prepend"
       class="border border-secondary text-secondary bg-white"

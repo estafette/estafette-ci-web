@@ -8,7 +8,7 @@
          "repoOwner":"estafette",
          "repoName":"estafette-ci-api",
          "releaseVersion":"0.1.340",
-         "releaseStatus":"succeeded",
+         "releaseStatus":"running",
          "triggeredBy":"jsalverda@travix.com",
          "insertedAt":"2018-11-20T15:59:03.510987Z",
          "updatedAt":"2018-11-20T16:00:05.387526Z",

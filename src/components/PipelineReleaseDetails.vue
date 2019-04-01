@@ -3,6 +3,7 @@
     <nav
       class="m-3"
       aria-label="breadcrumb"
+      v-if="!dashboardModeActive"
     >
       <ol class="breadcrumb flex-nowrap">
         <li class="breadcrumb-item text-truncate">
@@ -32,89 +33,13 @@
       </ol>
     </nav>
 
-    <div
+    <release
       v-if="release"
-      class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-3 mb-2 ml-3"
-      :class="release.releaseStatus | bootstrapClass('border')"
-    >
-      <div
-        class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
-        :title="release.name"
-      >
-        <div class="small text-muted mb-1">
-          Name
-        </div>
-        {{ release.name }}<span v-if="release.action">
-          / {{ release.action }}
-        </span>
-      </div>
-      <div
-        class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
-        :title="release.releaseVersion"
-      >
-        <div class="small text-muted mb-1">
-          Version
-        </div>
-        {{ release.releaseVersion }}
-      </div>
-      <div class="mb-2 col-6 col-md-4 col-xl-2 align-middle">
-        <div class="small text-muted mb-1">
-          Status
-        </div>
-        <router-link
-          :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
-          tag="div"
-          class="progress mt-2 clickable"
-        >
-          <div
-            class="progress-bar"
-            :class="[$options.filters.bootstrapClass(release.releaseStatus,'bg'), $options.filters.stripedProgressBarClass(release.releaseStatus)]"
-            role="progressbar"
-            style="width: 100%"
-            aria-valuenow="100"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            :title="release.releaseStatus"
-          />
-        </router-link>
-      </div>
-      <div
-        class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
-        :title="$options.filters.formatDuration(release.duration) + ', ' + $options.filters.formatDatetime(release.insertedAt)"
-      >
-        <div class="small text-muted mb-1">
-          Released
-        </div>
-        <span
-          v-if="release.duration > 0"
-          :class="release.duration | colorDurationClass"
-        >
-          {{ release.duration | formatDuration }}
-        </span> {{ release.insertedAt | formatDatetime }}
-      </div>
-      <div
-        class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
-        :title="release.triggeredBy"
-      >
-        <div class="small text-muted mb-1">
-          By
-        </div>
-        {{ release.triggeredBy }}
-      </div>
-
-      <div
-        v-if="user && user.authenticated && release && release.releaseStatus === 'running'"
-        class="mb-2 col-6 col-md-4 col-xl-2"
-      >
-        <div class="small text-black-50 mb-1">
-          Actions
-        </div>
-        <cancel-button
-          :release="release"
-          :user="user"
-        />
-      </div>
-    </div>
+      :release="release"
+      :user="user"
+      :dashboard-mode-active="dashboardModeActive"
+      class="m-3"
+    />
 
     <ul class="nav nav-tabs m-3">
       <li class="nav-item">
@@ -133,13 +58,14 @@
 
     <router-view
       :release="release"
+      :dashboard-mode-active="dashboardModeActive"
       v-if="release"
     />
   </div>
 </template>
 
 <script>
-import CancelButton from '@/components/CancelButton'
+import Release from '@/components/Release'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPollH } from '@fortawesome/free-solid-svg-icons'
@@ -149,7 +75,7 @@ library.add(faPollH)
 
 export default {
   components: {
-    CancelButton,
+    Release,
     FontAwesomeIcon
   },
   props: {
@@ -171,6 +97,10 @@ export default {
     },
     user: {
       type: Object,
+      default: null
+    },
+    dashboardModeActive: {
+      type: Boolean,
       default: null
     }
   },

@@ -6,7 +6,7 @@
     >
       Most {{ type }} labels
     </h1>
-    <table class="table">
+    <table :class="[dashboardModeActive ? 'table-dark table-striped table-borderless' : '', 'table']">
       <thead>
         <tr>
           <th>#</th>
@@ -25,7 +25,7 @@
             {{ index + 1 + (pagination.page-1) * pagination.size }}
           </td>
           <td>
-            <span class="text-muted">{{ row.key }}=</span><strong>{{ row.value }}</strong>
+            <span :class="[dashboardModeActive ? '' : 'text-muted']">{{ row.key }}=</span><strong>{{ row.value }}</strong>
           </td>
           <td>
             {{ row.pipelinescount }}
@@ -41,6 +41,7 @@
       v-model="pagination.page"
       align="center"
       hide-goto-end-buttons
+      v-if="!dashboardModeActive"
     />
   </div>
 </template>
@@ -63,6 +64,10 @@ export default {
     },
     status: {
       type: String,
+      default: null
+    },
+    dashboardModeActive: {
+      type: Boolean,
       default: null
     }
   },

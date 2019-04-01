@@ -3,6 +3,7 @@
     <nav
       class="m-3"
       aria-label="breadcrumb"
+      v-if="!dashboardModeActive"
     >
       <ol class="breadcrumb flex-nowrap">
         <li class="breadcrumb-item text-truncate">
@@ -30,151 +31,24 @@
       </ol>
     </nav>
 
-    <div
+    <build
       v-if="build"
-      class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-3 mb-2 ml-3"
-      :class="build.buildStatus | bootstrapClass('border')"
-    >
-      <div
-        class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
-        :title="build.buildVersion"
-      >
-        <div class="small text-muted mb-1">
-          Version
-        </div>
-        {{ build.buildVersion }}
-      </div>
-      <div class="mb-2 col-6 col-md-4 col-xl-1 align-middle">
-        <div class="small text-muted mb-1">
-          Status
-        </div>
-        <router-link
-          :to="{ name: 'PipelineBuildLogs', params: { repoSource: build.repoSource, repoOwner: build.repoOwner, repoName: build.repoName, id: build.id }}"
-          tag="div"
-          class="progress mt-2 clickable"
-        >
-          <div
-            class="progress-bar"
-            :class="[$options.filters.bootstrapClass(build.buildStatus,'bg'), $options.filters.stripedProgressBarClass(build.buildStatus)]"
-            role="progressbar"
-            style="width: 100%"
-            aria-valuenow="100"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            :title="build.buildStatus"
-          />
-        </router-link>
-      </div>
-      <div
-        class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
-        :title="$options.filters.formatDuration(build.duration) + ', ' + $options.filters.formatDatetime(build.insertedAt)"
-      >
-        <div class="small text-muted mb-1">
-          Built
-        </div>
-        <span
-          v-if="build.duration > 0"
-          :class="build.duration | colorDurationClass"
-        >
-          {{ build.duration | formatDuration }}
-        </span> {{ build.insertedAt | formatDatetime }}
-      </div>
-      <div
-        class="mb-2 col-6 col-md-4 col-xl-2 text-truncate"
-        :title="build.repoBranch"
-      >
-        <div class="small text-muted mb-1">
-          Branch
-        </div>
-        {{ build.repoBranch }}
-      </div>
-      <div class="mb-2 col-6 col-md-4 col-xl-2">
-        <div class="small text-muted mb-1">
-          Revision
-        </div>
-        <commit-link :build="build" />
-      </div>
-      <div class="mb-2 col-6 col-md-4 col-xl-3">
-        <div class="small text-muted mb-1">
-          Commit(s)
-        </div>
-        <div
-          v-for="commit in build.commits"
-          :key="commit.message"
-          :title="commit.message + ' / ' + commit.author.name"
-          class="text-truncate"
-        >
-          {{ commit.message }} / {{ commit.author.name }}
-        </div>
-      </div>
-
-      <div
-        v-if="(build.labels && build.labels.length > 0) || (build.releaseTargets && build.releaseTargets.length > 0)"
-        class="col-12"
-      >
-        <div class="mt-3 mb-3 w-50 mx-auto border-bottom" />
-      </div>
-      <div
-        v-if="build.labels && build.labels.length > 0"
-        class="mb-2 col-12 col-md-6 col-xl-4 text-center text-truncate text-truncate-fade"
-      >
-        <div class="small text-black-50 mb-1">
-          Labels
-        </div>
-        <router-link
-          :to="{ name: 'Pipelines', query: { labels: label.key + '=' + label.value } }"
-          exact
-          class="btn btn-light btn-sm mr-1 mb-1"
-          v-for="label in sortLabels(build.labels)"
-          :key="label.key"
-        >
-          {{ label.key }}={{ label.value }}
-        </router-link>
-      </div>
-      <div
-        v-if="build.releaseTargets && build.releaseTargets.length > 0"
-        class="mb-2 col-12 col-md-6 col-xl-4 text-center text-truncate text-truncate-fade"
-      >
-        <div class="small text-black-50 mb-1">
-          Releases
-        </div>
-        <release-badge
-          v-for="releaseTarget in build.releaseTargets"
-          :key="releaseTarget.name"
-          :release-target="releaseTarget"
-          :pipeline="build"
-        />
-      </div>
-
-      <div
-        v-if="user && user.authenticated && build && ((build.buildStatus === 'failed' || build.buildStatus === 'running' || build.buildStatus === 'canceled') || (build.releaseTargets && build.releaseTargets.length > 0 && build.buildStatus === 'succeeded'))"
-        class="mb-2 col-12 col-md-6 col-xl-4 text-center"
-      >
-        <div class="small text-black-50 mb-1">
-          Actions
-        </div>
-        <release-button
-          :pipeline="build"
-          :build="build"
-          :user="user"
-        />
-        <rebuild-button
-          :build="build"
-          :user="user"
-        />
-        <cancel-button
-          :build="build"
-          :user="user"
-        />
-      </div>
-    </div>
+      :build="build"
+      :user="user"
+      :pipeline="build"
+      :dashboard-mode-active="dashboardModeActive"
+      class="m-3"
+    />
 
     <pipeline-build-warnings
-      v-if="build"
+      v-if="!dashboardModeActive && build"
       :build="build"
     />
 
-    <ul class="nav nav-tabs m-3">
+    <ul
+      class="nav nav-tabs m-3"
+      v-if="!dashboardModeActive"
+    >
       <li class="nav-item">
         <router-link
           :to="{ name: 'PipelineBuildLogs', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName, id: id }}"
@@ -203,17 +77,14 @@
 
     <router-view
       :build="build"
+      :dashboard-mode-active="dashboardModeActive"
       v-if="build"
     />
   </div>
 </template>
 
 <script>
-import CommitLink from '@/components/CommitLink'
-import ReleaseBadge from '@/components/ReleaseBadge'
-import ReleaseButton from '@/components/ReleaseButton'
-import RebuildButton from '@/components/RebuildButton'
-import CancelButton from '@/components/CancelButton'
+import Build from '@/components/Build'
 import PipelineBuildWarnings from '@/components/PipelineBuildWarnings'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -224,11 +95,7 @@ library.add(faPollH, faBook)
 
 export default {
   components: {
-    CommitLink,
-    ReleaseBadge,
-    ReleaseButton,
-    RebuildButton,
-    CancelButton,
+    Build,
     PipelineBuildWarnings,
     FontAwesomeIcon
   },
@@ -251,6 +118,10 @@ export default {
     },
     user: {
       type: Object,
+      default: null
+    },
+    dashboardModeActive: {
+      type: Boolean,
       default: null
     }
   },

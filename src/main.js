@@ -61,6 +61,64 @@ Vue.filter('bootstrapClass', function (value, prefix) {
   return prefix + '-light'
 })
 
+Vue.filter('bootstrapTextClass', function (value) {
+  if (!value) {
+    return 'text-body'
+  }
+  value = value.toString().toLowerCase()
+  if (value === 'succeeded' || value === 'success') {
+    return 'text-white'
+  }
+  if (value === 'running' || value === 'warning') {
+    return 'text-body'
+  }
+  if (value === 'failed' || value === 'danger') {
+    return 'text-white'
+  }
+  if (value === 'skipped' || value === 'secondary') {
+    return 'text-white'
+  }
+  if (value === 'canceling') {
+    return 'text-white'
+  }
+  if (value === 'canceled') {
+    return 'text-white'
+  }
+  if (value === 'all' || value === 'primary') {
+    return 'text-white'
+  }
+  return 'text-body'
+})
+
+Vue.filter('bootstrapMutedTextClass', function (value) {
+  if (!value) {
+    return 'text-black-50'
+  }
+  value = value.toString().toLowerCase()
+  if (value === 'succeeded' || value === 'success') {
+    return 'text-white-50'
+  }
+  if (value === 'running' || value === 'warning') {
+    return 'text-black-50'
+  }
+  if (value === 'failed' || value === 'danger') {
+    return 'text-white-50'
+  }
+  if (value === 'skipped' || value === 'secondary') {
+    return 'text-white-50'
+  }
+  if (value === 'canceling') {
+    return 'text-white-50'
+  }
+  if (value === 'canceled') {
+    return 'text-white-50'
+  }
+  if (value === 'all' || value === 'primary') {
+    return 'text-white-50'
+  }
+  return 'text-black-50'
+})
+
 Vue.filter('stripedProgressBarClass', function (value) {
   if (!value) {
     return ''

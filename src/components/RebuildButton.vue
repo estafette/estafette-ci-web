@@ -1,5 +1,8 @@
 <template>
-  <b-input-group v-if="allowedToRebuild()">
+  <b-input-group
+    v-if="allowedToRebuild()"
+    style="width: auto;"
+  >
     <b-input-group-text
       slot="prepend"
       class="border border-warning text-warning bg-white"

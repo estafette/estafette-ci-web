@@ -45,6 +45,15 @@ export default {
     }
   },
 
+  watch: {
+    model: {
+      handler: function (to, from) {
+        this.mutableModel = to
+      },
+      deep: true
+    }
+  },
+
   data: function () {
     return {
       mutableModel: this.model
