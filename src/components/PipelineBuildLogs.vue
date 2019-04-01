@@ -182,8 +182,6 @@
 </template>
 
 <script>
-import debounce from 'lodash.debounce'
-
 import AnsiUp from 'ansi_up'
 import bCard from 'bootstrap-vue/es/components/card/card'
 import bCardHeader from 'bootstrap-vue/es/components/card/card-header'
@@ -324,7 +322,7 @@ export default {
       if (this.build.buildStatus === 'running' || this.build.buildStatus === 'canceling') {
         this.es = new EventSource(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs/tail`)
 
-        this.es.addEventListener('log', debounce(event => {
+        this.es.addEventListener('log', event => {
           if (this.build.buildStatus !== 'running' && this.build.buildStatus !== 'canceling') {
             // stop handling stream when build status changes
             this.es.close()
@@ -387,7 +385,7 @@ export default {
           }
 
           this.$el.scrollIntoView(false)
-        }, 200), false)
+        }, false)
 
         this.es.addEventListener('close', event => {
           this.es.close()
