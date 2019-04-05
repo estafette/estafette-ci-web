@@ -10,6 +10,25 @@
       />
       Triggers
     </div>
+
+    <div
+      v-if="pipeline && pipeline.triggers && pipeline.triggers.length > 0"
+      class="alert alert-secondary text-center p-5"
+    >
+      WORK IN PROGRESS - visualize triggers
+    </div>
+
+    <div
+      v-else
+      class="alert alert-warning text-center p-5"
+    >
+      This pipeline has no triggers; if you want the pipeline to trigger on other events than a git push look at the <a
+        href="https://estafette.io/usage/manifest/#triggers"
+        target="_blank"
+      >
+        documentation
+      </a> on how to start using triggers.
+    </div>
   </div>
 </template>
 

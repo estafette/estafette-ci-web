@@ -74,7 +74,6 @@
       <li class="nav-item">
         <router-link
           :to="{ name: 'PipelineTriggers', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
-          v-if="pipeline && pipeline.triggers && pipeline.triggers.length > 0"
           class="nav-link"
         >
           <font-awesome-icon
@@ -83,16 +82,6 @@
           />
           Triggers
         </router-link>
-        <span
-          v-else
-          class="nav-link disabled"
-        >
-          <font-awesome-icon
-            icon="project-diagram"
-            class="mr-2"
-          />
-          Triggers
-        </span>
       </li>
       <li class="nav-item">
         <router-link
