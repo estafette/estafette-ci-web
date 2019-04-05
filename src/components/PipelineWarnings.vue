@@ -61,6 +61,15 @@ export default {
     }
   },
 
+  watch: {
+    pipeline: {
+      handler: function (to, from) {
+        this.loadPipelineWarnings()
+      },
+      deep: true
+    }
+  },
+
   beforeDestroy () {
     this.refresh = false
     if (this.refreshTimeout) {
