@@ -8,6 +8,7 @@ import PipelineBuildDetails from '@/components/PipelineBuildDetails'
 import PipelineBuildLogs from '@/components/PipelineBuildLogs'
 import PipelineBuildManifest from '@/components/PipelineBuildManifest'
 import PipelineReleases from '@/components/PipelineReleases'
+import PipelineTriggers from '@/components/PipelineTriggers'
 import PipelineReleaseDetails from '@/components/PipelineReleaseDetails'
 import PipelineReleaseLogs from '@/components/PipelineReleaseLogs'
 import PipelineStatistics from '@/components/PipelineStatistics'
@@ -65,6 +66,12 @@ export default new Router({
           name: 'PipelineReleases',
           props: true,
           component: PipelineReleases
+        },
+        {
+          path: 'triggers',
+          name: 'PipelineTriggers',
+          props: true,
+          component: PipelineTriggers
         }
       ]
     },

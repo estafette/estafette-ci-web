@@ -73,6 +73,18 @@
       </li>
       <li class="nav-item">
         <router-link
+          :to="{ name: 'PipelineTriggers', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
+          class="nav-link"
+        >
+          <font-awesome-icon
+            icon="project-diagram"
+            class="mr-2"
+          />
+          Triggers
+        </router-link>
+      </li>
+      <li class="nav-item">
+        <router-link
           :to="{ name: 'PipelineStatistics', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
           class="nav-link"
         >
@@ -99,10 +111,10 @@ import Pipeline from '@/components/Pipeline'
 import PipelineWarnings from '@/components/PipelineWarnings'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTools, faUpload, faChartLine } from '@fortawesome/free-solid-svg-icons'
+import { faTools, faUpload, faProjectDiagram, faChartLine } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faTools, faUpload, faChartLine)
+library.add(faTools, faUpload, faProjectDiagram, faChartLine)
 
 export default {
   components: {

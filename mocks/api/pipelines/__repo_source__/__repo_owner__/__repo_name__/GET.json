@@ -95,6 +95,19 @@
         }
      }
   ],
+  "triggers":[
+    {
+       "pipeline":{
+          "event":"finished",
+          "status":"succeeded",
+          "name":"github.com/estafette/estafette-ci-builder",
+          "branch":"master"
+      },
+      "builds":{
+         "branch":"master"
+      }
+    }
+  ],
   "insertedAt":"2018-11-20T15:55:49.266744Z",
   "updatedAt":"2018-11-20T15:55:49.266744Z",
   "duration":0
