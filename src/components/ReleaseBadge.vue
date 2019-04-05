@@ -2,7 +2,7 @@
   <span v-if="releaseTarget">
     <div
       v-if="releaseTarget.activeReleases && releaseTarget.activeReleases.length > 0"
-      :class="[dashboardModeActive ? 'btn-dark' : 'btn-light', 'btn btn-sm mr-1']"
+      :class="[dashboardModeActive ? 'btn-dark' : 'btn-light', 'btn btn-sm mr-1 mb-1']"
     >
       {{ releaseTarget.name }}<router-link
         v-for="release in releaseTarget.activeReleases"
