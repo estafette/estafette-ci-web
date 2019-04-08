@@ -116,10 +116,33 @@ export default {
   methods: {
     refreshIAPSession () {
       if (this.user && this.user.authenticated) {
-        this.iapSessionRefreshWindow = window.open('/_gcp_iap/do_session_refresh')
+        if (this.iapSessionRefreshWindow == null) {
+          this.iapSessionRefreshWindow = window.open('/_gcp_iap/do_session_refresh')
+          if (this.refresh) {
+            this.sessionRefreshTimeout = window.setTimeout(this.checkSessionRefresh, 500)
+          }
+        }
+
         this.periodicallyRefreshIAPSession(2700)
       } else {
         this.periodicallyRefreshIAPSession(2700)
+      }
+    },
+
+    checkSessionRefresh () {
+      if (this.iapSessionRefreshWindow != null && !this.iapSessionRefreshWindow.closed) {
+        fetch('/favicon.ico').then((response) => {
+          if (response.status === 401) {
+            if (this.refresh) {
+              this.sessionRefreshTimeout = window.setTimeout(this.checkSessionRefresh, 500)
+            }
+          } else {
+            this.iapSessionRefreshWindow.close()
+            this.iapSessionRefreshWindow = null
+          }
+        })
+      } else {
+        this.iapSessionRefreshWindow = null
       }
     },
 
@@ -142,6 +165,9 @@ export default {
     this.refresh = false
     if (this.refreshTimeout) {
       clearTimeout(this.refreshTimeout)
+    }
+    if (this.sessionRefreshTimeout) {
+      clearTimeout(this.sessionRefreshTimeout)
     }
   }
 }
