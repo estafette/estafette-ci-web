@@ -110,21 +110,19 @@ export default {
   },
 
   created () {
-    this.refreshIAPSession()
+    this.periodicallyRefreshIAPSession(30)
   },
 
   methods: {
     refreshIAPSession () {
       if (this.user && this.user.authenticated) {
-        this.axios.get(`/_gcp_iap/do_session_refresh`)
-          .then(response => {
-            this.periodicallyRefreshIAPSession(2700)
-          })
-          .catch(e => {
-            this.periodicallyRefreshIAPSession(300)
-          })
+        if (this.iapSessionRefreshWindow == null) {
+          this.iapSessionRefreshWindow = window.open('/_gcp_iap/do_session_refresh')
+        }
+
+        this.periodicallyRefreshIAPSession(2700)
       } else {
-        this.periodicallyRefreshIAPSession(300)
+        this.periodicallyRefreshIAPSession(2700)
       }
     },
 
@@ -140,15 +138,6 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.refreshIAPSession, timeoutWithJitter)
       }
-    }
-  },
-
-  watch: {
-    user: {
-      handler: function (to, from) {
-        this.refreshIAPSession()
-      },
-      deep: true
     }
   },
 
