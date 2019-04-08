@@ -91,7 +91,7 @@
       {{ release.triggeredBy }}
     </div>
     <div
-      v-if="!dashboardModeActive && user && user.authenticated && release && release.releaseStatus === 'running'"
+      v-if="!dashboardModeActive && user && user.authenticated && release && (release.releaseStatus === 'running' || release.releaseStatus === 'canceling')"
       :class="[colClassesActions, 'mb-2']"
     >
       <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(release.releaseStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xl-none', 'small mb-1']">

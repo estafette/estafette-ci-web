@@ -124,7 +124,7 @@
       />
     </div>
     <div
-      v-if="!dashboardModeActive && user && user.authenticated && build && ((build.buildStatus === 'failed' || build.buildStatus === 'running' || build.buildStatus === 'canceled') || (pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'))"
+      v-if="!dashboardModeActive && user && user.authenticated && build && ((build.buildStatus === 'failed' || build.buildStatus === 'running' || build.buildStatus === 'canceled' || build.buildStatus === 'canceling') || (pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'))"
       :class="[colClassesActions, 'mb-2 text-center']"
     >
       <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xxxl-none', 'small mb-1']">
