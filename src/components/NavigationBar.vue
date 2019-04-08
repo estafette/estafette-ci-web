@@ -48,18 +48,27 @@
         class="ml-auto"
         v-if="user && user.authenticated"
       >
-        <b-nav-text
+        <b-nav-item-dropdown
           right
           class="pb-1 text-white"
         >
-          <font-awesome-icon
-            icon="user-circle"
-            class="m-0 mr-2 h4"
-          />
-          <em class="align-top">
-            {{ user.email }}
-          </em>
-        </b-nav-text>
+          <template slot="button-content">
+            <font-awesome-icon
+              icon="user-circle"
+              class="m-0 mr-2 h4"
+            />
+            <em class="align-top">
+              {{ user.email }}
+            </em>
+          </template>
+          <b-dropdown-item
+            href="/_gcp_iap/session_refresher"
+            target="_blank"
+            title="Keep the session refresh tab open to prevent the Identity Aware Proxy (IAP) session from expiring"
+          >
+            Session Refresher
+          </b-dropdown-item>
+        </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
@@ -71,7 +80,8 @@ import bNavbarBrand from 'bootstrap-vue/es/components/navbar/navbar-brand'
 import bNavbarToggle from 'bootstrap-vue/es/components/navbar/navbar-toggle'
 import bNavbarNav from 'bootstrap-vue/es/components/navbar/navbar-nav'
 import bNavItem from 'bootstrap-vue/es/components/nav/nav-item'
-import bNavText from 'bootstrap-vue/es/components/nav/nav-text'
+import bNavItemDropdown from 'bootstrap-vue/es/components/nav/nav-item-dropdown'
+import bDropdownItem from 'bootstrap-vue/es/components/dropdown/dropdown-item'
 import bCollapse from 'bootstrap-vue/es/components/collapse/collapse'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -87,7 +97,8 @@ export default {
     bNavbarToggle,
     bNavbarNav,
     bNavItem,
-    bNavText,
+    bNavItemDropdown,
+    bDropdownItem,
     bCollapse,
     FontAwesomeIcon
   },
