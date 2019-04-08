@@ -91,6 +91,7 @@ export default {
     bCollapse,
     FontAwesomeIcon
   },
+
   props: {
     user: {
       type: Object,
@@ -99,6 +100,62 @@ export default {
     dashboardModeActive: {
       type: Boolean,
       default: null
+    }
+  },
+
+  data: function () {
+    return {
+      refresh: true
+    }
+  },
+
+  created () {
+    this.refreshIAPSession()
+  },
+
+  methods: {
+    refreshIAPSession () {
+      if (this.user && this.user.authenticated) {
+        this.axios.get(`/_gcp_iap/do_session_refresh`)
+          .then(response => {
+            this.periodicallyRefreshIAPSession(2700)
+          })
+          .catch(e => {
+            this.periodicallyRefreshIAPSession(300)
+          })
+      } else {
+        this.periodicallyRefreshIAPSession(300)
+      }
+    },
+
+    periodicallyRefreshIAPSession (intervalSeconds) {
+      if (this.refreshTimeout) {
+        clearTimeout(this.refreshTimeout)
+      }
+
+      var max = 1000 * intervalSeconds * 0.75
+      var min = 1000 * intervalSeconds * 1.25
+      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+
+      if (this.refresh) {
+        this.refreshTimeout = setTimeout(this.refreshIAPSession, timeoutWithJitter)
+      }
+    }
+  },
+
+  watch: {
+    user: {
+      handler: function (to, from) {
+        this.refreshIAPSession()
+      },
+      deep: true
+    }
+  },
+
+  beforeDestroy () {
+    this.refresh = false
+    if (this.refreshTimeout) {
+      clearTimeout(this.refreshTimeout)
     }
   }
 }
