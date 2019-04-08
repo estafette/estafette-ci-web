@@ -110,16 +110,13 @@ export default {
   },
 
   created () {
-    this.periodicallyRefreshIAPSession(30)
+    this.periodicallyRefreshIAPSession(2700)
   },
 
   methods: {
     refreshIAPSession () {
       if (this.user && this.user.authenticated) {
-        if (this.iapSessionRefreshWindow == null) {
-          this.iapSessionRefreshWindow = window.open('/_gcp_iap/do_session_refresh')
-        }
-
+        this.iapSessionRefreshWindow = window.open('/_gcp_iap/do_session_refresh')
         this.periodicallyRefreshIAPSession(2700)
       } else {
         this.periodicallyRefreshIAPSession(2700)
