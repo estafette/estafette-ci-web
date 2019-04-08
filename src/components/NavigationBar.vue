@@ -66,7 +66,7 @@
             target="_blank"
             title="Keep the session refresh tab open to prevent the Identity Aware Proxy (IAP) session from expiring"
           >
-            Session Refresher
+            IAP session refresh tab
           </b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
