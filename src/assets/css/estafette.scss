@@ -315,3 +315,8 @@ button.btn-clipboard {
 .icon-container {
     width: 42px;
 }
+
+.triggered-by-icon {
+    @extend .text-black-50;
+    width: 1.25em!important;
+}

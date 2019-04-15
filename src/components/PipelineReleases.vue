@@ -31,7 +31,7 @@
         Released
       </div>
       <div class="col-6 col-md-4 col-xl-2 d-none d-xl-block">
-        By
+        Triggered by
       </div>
       <div
         v-if="user && user.authenticated"

@@ -36,7 +36,7 @@
            {
               "message":"1 serialize action name to lowercase in json",
               "author":{
-                 "email":"jsalverda@travix.com",
+                 "email":"user@server.com",
                  "name":"Jorrit Salverda",
                  "username":"JorritSalverda"
               }
@@ -44,7 +44,7 @@
            {
             "message":"2 serialize action name to lowercase in json",
             "author":{
-               "email":"jsalverda@travix.com",
+               "email":"user@server.com",
                "name":"Jorrit Salverda",
                "username":"JorritSalverda"
             }
@@ -52,7 +52,7 @@
          {
             "message":"3 serialize action name to lowercase in json",
             "author":{
-               "email":"jsalverda@travix.com",
+               "email":"user@server.com",
                "name":"Jorrit Salverda",
                "username":"JorritSalverda"
             }
@@ -60,7 +60,7 @@
          {
             "message":"4 serialize action name to lowercase in json",
             "author":{
-               "email":"jsalverda@travix.com",
+               "email":"user@server.com",
                "name":"Jorrit Salverda",
                "username":"JorritSalverda"
             }
@@ -68,7 +68,7 @@
          {
             "message":"5 serialize action name to lowercase in json",
             "author":{
-               "email":"jsalverda@travix.com",
+               "email":"user@server.com",
                "name":"Jorrit Salverda",
                "username":"JorritSalverda"
             }
@@ -114,7 +114,7 @@
            {
               "message":"fix query for getting latest release",
               "author":{
-                 "email":"jsalverda@travix.com",
+                 "email":"user@server.com",
                  "name":"Jorrit Salverda",
                  "username":"JorritSalverda"
               }
@@ -160,7 +160,7 @@
          {
             "message":"fix query for getting latest release",
             "author":{
-               "email":"jsalverda@travix.com",
+               "email":"user@server.com",
                "name":"Jorrit Salverda",
                "username":"JorritSalverda"
             }
@@ -206,7 +206,7 @@
            {
               "message":"remove releases property from build and pipeline, it's replaced with releaseTargets",
               "author":{
-                 "email":"jsalverda@travix.com",
+                 "email":"user@server.com",
                  "name":"Jorrit Salverda",
                  "username":"JorritSalverda"
               }
@@ -252,7 +252,7 @@
            {
               "message":"enrich builds from GetPipelineBuildsByVersion to set releaseTargets for backwards compatibility",
               "author":{
-                 "email":"jsalverda@travix.com",
+                 "email":"user@server.com",
                  "name":"Jorrit Salverda",
                  "username":"JorritSalverda"
               }
@@ -298,7 +298,7 @@
            {
               "message":"set releaseTargets before inserting build",
               "author":{
-                 "email":"jsalverda@travix.com",
+                 "email":"user@server.com",
                  "name":"Jorrit Salverda",
                  "username":"JorritSalverda"
               }
@@ -344,7 +344,7 @@
            {
               "message":"dry up code",
               "author":{
-                 "email":"jsalverda@travix.com",
+                 "email":"user@server.com",
                  "name":"Jorrit Salverda",
                  "username":"JorritSalverda"
               }
@@ -390,7 +390,7 @@
            {
               "message":"get latest releases for a single build",
               "author":{
-                 "email":"jsalverda@travix.com",
+                 "email":"user@server.com",
                  "name":"Jorrit Salverda",
                  "username":"JorritSalverda"
               }
@@ -436,7 +436,7 @@
            {
               "message":"get releases for single pipeline and pipelines fetched by repo name",
               "author":{
-                 "email":"jsalverda@travix.com",
+                 "email":"user@server.com",
                  "name":"Jorrit Salverda",
                  "username":"JorritSalverda"
               }
@@ -482,7 +482,7 @@
            {
               "message":"set json attributes for ReleaseTarget",
               "author":{
-                 "email":"jsalverda@travix.com",
+                 "email":"user@server.com",
                  "name":"Jorrit Salverda",
                  "username":"JorritSalverda"
               }

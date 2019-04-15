@@ -32,7 +32,8 @@
           "repoName": "estafette-ci-web",
           "releaseVersion": "0.1.207",
           "releaseStatus": "succeeded",
-          "triggeredBy": "jsalverda@travix.com",
+          "triggeredBy": "user@server.com",
+          "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
           "insertedAt": "2018-10-08T15:44:22.658623Z",
           "updatedAt": "2018-10-08T15:45:12.597451Z"
         }]
@@ -47,7 +48,8 @@
           "repoName": "estafette-ci-web",
           "releaseVersion": "0.1.206",
           "releaseStatus": "failed",
-          "triggeredBy": "jsalverda@travix.com",
+          "triggeredBy": "user@server.com",
+          "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
           "insertedAt": "2018-10-08T15:44:22.658623Z",
           "updatedAt": "2018-10-08T15:45:12.597451Z"
         }]
@@ -75,7 +77,8 @@
             "repoName": "estafette-ci-web",
             "releaseVersion": "0.0.81-very-long-branch-name-to-truncate-in-order-not-to-ruin-the-layout",
             "releaseStatus": "running",
-            "triggeredBy": "jsalverda@travix.com",
+            "triggeredBy": "user@server.com",
+            "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
             "insertedAt": "2018-10-08T15:44:22.658623Z",
             "updatedAt": "2018-10-08T15:45:12.597451Z"
           },
@@ -88,7 +91,8 @@
             "repoName": "estafette-ci-web",
             "releaseVersion": "0.1.202",
             "releaseStatus": "succeeded",
-            "triggeredBy": "jsalverda@travix.com",
+            "triggeredBy": "user@server.com",
+            "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
             "insertedAt": "2018-10-08T15:44:22.658623Z",
             "updatedAt": "2018-10-08T15:45:12.597451Z"
           }

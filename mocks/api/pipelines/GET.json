@@ -40,7 +40,8 @@
                       "repoName":"estafette-ci-api",
                       "releaseVersion":"0.1.339",
                       "releaseStatus":"succeeded",
-                      "triggeredBy":"jsalverda@travix.com",
+                      "triggeredBy":"user@server.com",
+                      "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                       "insertedAt":"2018-11-20T15:37:23.365593Z",
                       "updatedAt":"2018-11-20T15:38:42.44489Z",
                       "duration":79000000000
@@ -54,7 +55,8 @@
                      "repoName":"estafette-ci-api",
                      "releaseVersion":"0.1.339",
                      "releaseStatus":"running",
-                     "triggeredBy":"jsalverda@travix.com",
+                     "triggeredBy":"user@server.com",
+                     "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                      "insertedAt":"2018-11-20T15:37:23.365593Z",
                      "updatedAt":"2018-11-20T15:38:42.44489Z",
                      "duration":79000000000
@@ -66,7 +68,7 @@
              {
                 "message":"serialize action name to lowercase in json",
                 "author":{
-                   "email":"jsalverda@travix.com",
+                   "email":"user@server.com",
                    "name":"Jorrit Salverda",
                    "username":"JorritSalverda"
                 }
@@ -115,7 +117,8 @@
                       "repoName":"estafette-ci-builder",
                       "releaseVersion":"0.0.200",
                       "releaseStatus":"succeeded",
-                      "triggeredBy":"jsalverda@travix.com",
+                      "triggeredBy":"user@server.com",
+                      "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                       "insertedAt":"2018-11-15T14:13:06.579187Z",
                       "updatedAt":"2018-11-15T14:13:47.589952Z",
                       "duration":41000000000
@@ -133,7 +136,8 @@
                       "repoName":"estafette-ci-builder",
                       "releaseVersion":"0.0.196",
                       "releaseStatus":"succeeded",
-                      "triggeredBy":"jsalverda@travix.com",
+                      "triggeredBy":"user@server.com",
+                      "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                       "insertedAt":"2018-11-15T14:13:09.090859Z",
                       "updatedAt":"2018-11-15T14:13:49.320297Z",
                       "duration":40000000000
@@ -145,7 +149,7 @@
              {
                 "message":"update contracts lib",
                 "author":{
-                   "email":"jsalverda@travix.com",
+                   "email":"user@server.com",
                    "name":"Jorrit Salverda",
                    "username":"JorritSalverda"
                 }
@@ -186,7 +190,7 @@
              {
                 "message":"serialize action name to lowercase in json",
                 "author":{
-                   "email":"jsalverda@travix.com",
+                   "email":"user@server.com",
                    "name":"Jorrit Salverda",
                    "username":"JorritSalverda"
                 }
@@ -235,7 +239,7 @@
                       "repoName":"estafette-ci-db-migrator",
                       "releaseVersion":"0.1.32",
                       "releaseStatus":"succeeded",
-                      "triggeredBy":"jsalverda@travix.com",
+                      "triggeredBy":"user@server.com",
                       "insertedAt":"2018-11-19T14:29:20.104517Z",
                       "updatedAt":"2018-11-19T14:29:38.514924Z",
                       "duration":18000000000
@@ -247,7 +251,7 @@
              {
                 "message":"add release_targets to builds table",
                 "author":{
-                   "email":"jsalverda@travix.com",
+                   "email":"user@server.com",
                    "name":"Jorrit Salverda",
                    "username":"JorritSalverda"
                 }
@@ -288,7 +292,7 @@
              {
                 "message":"serialize action name to lowercase in json",
                 "author":{
-                   "email":"jsalverda@travix.com",
+                   "email":"user@server.com",
                    "name":"Jorrit Salverda",
                    "username":"JorritSalverda"
                 }
@@ -337,7 +341,8 @@
                       "repoName":"estafette-ci-web",
                       "releaseVersion":"0.1.302",
                       "releaseStatus":"succeeded",
-                      "triggeredBy":"jsalverda@travix.com",
+                      "triggeredBy":"user@server.com",
+                      "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                       "insertedAt":"2018-11-20T14:33:03.978115Z",
                       "updatedAt":"2018-11-20T14:33:59.361751Z",
                       "duration":55000000000
@@ -349,7 +354,7 @@
              {
                 "message":"make releases badges more defensive; fix for updating release badges during release",
                 "author":{
-                   "email":"jsalverda@travix.com",
+                   "email":"user@server.com",
                    "name":"Jorrit Salverda",
                    "username":"JorritSalverda"
                 }
@@ -390,7 +395,7 @@
              {
                 "message":"only slack notify once",
                 "author":{
-                   "email":"jsalverda@travix.com",
+                   "email":"user@server.com",
                    "name":"Jorrit Salverda",
                    "username":"JorritSalverda"
                 }
@@ -470,7 +475,8 @@
                       "repoName":"estafette-extension-gke",
                       "releaseVersion":"0.1.124",
                       "releaseStatus":"succeeded",
-                      "triggeredBy":"jsalverda@travix.com",
+                      "triggeredBy":"user@server.com",
+                      "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                       "insertedAt":"2018-11-16T16:04:48.221375Z",
                       "updatedAt":"2018-11-16T16:05:13.788811Z",
                       "duration":25000000000
@@ -488,7 +494,8 @@
                       "repoName":"estafette-extension-gke",
                       "releaseVersion":"0.1.124",
                       "releaseStatus":"running",
-                      "triggeredBy":"jsalverda@travix.com",
+                      "triggeredBy":"user@server.com",
+                      "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                       "insertedAt":"2018-11-16T16:23:37.419341Z",
                       "updatedAt":"2018-11-16T16:24:06.917879Z",
                       "duration":29000000000
@@ -500,7 +507,7 @@
              {
                 "message":"reverse release name and action in flags",
                 "author":{
-                   "email":"jsalverda@travix.com",
+                   "email":"user@server.com",
                    "name":"Jorrit Salverda",
                    "username":"JorritSalverda"
                 }
@@ -549,7 +556,8 @@
                       "repoName":"estafette-extension-slack-build-status",
                       "releaseVersion":"0.1.36",
                       "releaseStatus":"succeeded",
-                      "triggeredBy":"jsalverda@travix.com",
+                      "triggeredBy":"user@server.com",
+                      "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                       "insertedAt":"2018-11-13T17:26:28.139948Z",
                       "updatedAt":"2018-11-13T17:26:44.219545Z",
                       "duration":16000000000
@@ -567,7 +575,8 @@
                       "repoName":"estafette-extension-slack-build-status",
                       "releaseVersion":"0.1.36",
                       "releaseStatus":"succeeded",
-                      "triggeredBy":"jsalverda@travix.com",
+                      "triggeredBy":"user@server.com",
+                      "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                       "insertedAt":"2018-11-13T17:26:29.335153Z",
                       "updatedAt":"2018-11-13T17:26:54.030814Z",
                       "duration":24000000000
@@ -579,7 +588,7 @@
              {
                 "message":"Revert \"don't link title\"\n\nThis reverts commit 7df08dd57e58464a2af09b5638fcc3d7e0fcd531.",
                 "author":{
-                   "email":"jsalverda@travix.com",
+                   "email":"user@server.com",
                    "name":"Jorrit Salverda",
                    "username":"JorritSalverda"
                 }
@@ -602,7 +611,7 @@
              {
                 "message":"upgrade golang; use docker extension; notify to slack on success and failure",
                 "author":{
-                   "email":"jsalverda@travix.com",
+                   "email":"user@server.com",
                    "name":"Jorrit Salverda",
                    "username":"JorritSalverda"
                 }
@@ -643,7 +652,7 @@
              {
                 "message":"upgrade golang; use docker extension; notify to slack on success and failure",
                 "author":{
-                   "email":"jsalverda@travix.com",
+                   "email":"user@server.com",
                    "name":"Jorrit Salverda",
                    "username":"JorritSalverda"
                 }
@@ -651,7 +660,7 @@
              {
                 "message":"Merge branch 'master' of github.com:estafette/estafette-gke-node-pool-shifter",
                 "author":{
-                   "email":"jsalverda@travix.com",
+                   "email":"user@server.com",
                    "name":"Jorrit Salverda",
                    "username":"JorritSalverda"
                 }

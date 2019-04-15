@@ -86,9 +86,12 @@
       :title="release.triggeredBy"
     >
       <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(release.releaseStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xl-none', 'small mb-1']">
-        By
+        Triggered by
       </div>
-      {{ release.triggeredBy }}
+      <triggered-by
+        :events="release.triggerEvents"
+        :triggered-by="release.triggeredBy"
+      />
     </div>
     <div
       v-if="!dashboardModeActive && user && user.authenticated && release && (release.releaseStatus === 'running' || release.releaseStatus === 'canceling')"
@@ -107,10 +110,12 @@
 
 <script>
 import CancelButton from '@/components/CancelButton'
+import TriggeredBy from '@/components/TriggeredBy'
 
 export default {
   components: {
-    CancelButton
+    CancelButton,
+    TriggeredBy
   },
 
   props: {
