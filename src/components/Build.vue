@@ -100,17 +100,30 @@
       </div>
     </div>
     <div
-      v-if="!dashboardModeActive && (showReleases(build) || (user && user.authenticated && build && ((build.buildStatus === 'failed' || build.buildStatus === 'running' || build.buildStatus === 'canceled') || (pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'))))"
-      :class="[ { 'col-12' : !rowItem, 'col-12 d-xxxl-none' : rowItem }]"
+      v-if="!dashboardModeActive && (showReleases(build) || (user && user.authenticated && build && ((build.buildStatus === 'failed' || build.buildStatus === 'running' || build.buildStatus === 'canceled') || (pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded') || (build.triggerEvents && build.triggerEvents.length > 0))))"
+      :class="[ { 'col-12' : !rowItem, 'col-12' : rowItem }]"
     >
       <div class="mt-3 mb-3 w-50 mx-auto border-bottom" />
+    </div>
+    <div
+      :class="[ colClassesTriggeredBy, 'mb-2 text-center']"
+    >
+      <div
+        :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(build.buildStatus) : 'text-black-50', 'small mb-1']"
+        v-if="build.triggerEvents && build.triggerEvents.length > 0"
+      >
+        Triggered by
+      </div>
+      <triggered-by
+        :events="build.triggerEvents"
+      />
     </div>
     <div
       :class="[colClassesReleases, 'mb-2 text-center']"
       v-if="!dashboardModeActive"
     >
       <div
-        :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xxxl-none', 'small mb-1']"
+        :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', 'small mb-1']"
         v-if="showReleases(build)"
       >
         Releases
@@ -127,10 +140,10 @@
       v-if="!dashboardModeActive && user && user.authenticated && build && ((build.buildStatus === 'failed' || build.buildStatus === 'running' || build.buildStatus === 'canceled' || build.buildStatus === 'canceling') || (pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'))"
       :class="[colClassesActions, 'mb-2 text-center']"
     >
-      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xxxl-none', 'small mb-1']">
+      <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', 'small mb-1']">
         Actions
       </div>
-      <div :class="[!dashboardModeActive && rowItem ? 'justify-content-xxxl-start' : '', 'd-flex justify-content-center']">
+      <div :class="[!dashboardModeActive && rowItem ? '' : '', 'd-flex justify-content-center']">
         <release-button
           :pipeline="pipeline"
           :build="build"
@@ -156,6 +169,7 @@ import ReleaseButton from '@/components/ReleaseButton'
 import RebuildButton from '@/components/RebuildButton'
 import CancelButton from '@/components/CancelButton'
 import ReleaseBadgeForBuild from '@/components/ReleaseBadgeForBuild'
+import TriggeredBy from '@/components/TriggeredBy'
 
 export default {
   components: {
@@ -163,7 +177,8 @@ export default {
     ReleaseButton,
     RebuildButton,
     CancelButton,
-    ReleaseBadgeForBuild
+    ReleaseBadgeForBuild,
+    TriggeredBy
   },
 
   props: {
@@ -242,7 +257,7 @@ export default {
         return 'col-6 col-md-4 col-lg-3 col-xxl-2'
       }
       if (this.rowItem) {
-        return 'col-6 col-md-4 col-xl-2 col-xxxl-1'
+        return 'col-6 col-md-4 col-xl-2'
       }
       return 'col-6 col-md-4 col-xxxl-2'
     },
@@ -251,7 +266,7 @@ export default {
         return 'col-6 col-md-4 col-lg-3 col-xxl-2'
       }
       if (this.rowItem) {
-        return 'col-6 col-md-4 col-xl-2 col-xxl-1'
+        return 'col-6 col-md-4 col-xl-2'
       }
       return 'col-6 col-md-4 col-xxxl-2'
     },
@@ -269,27 +284,36 @@ export default {
         return 'col-12 col-md-8 col-lg-12 col-xxl-4'
       }
       if (this.rowItem) {
-        return 'col-6 col-md-4 col-xl-3 col-xxl-5 col-xxxl-2'
+        return 'col-6 col-md-4 col-xl-3 col-xxl-4'
       }
       return 'col-6 col-md-4 col-xxxl-4'
     },
-    colClassesReleases () {
+    colClassesTriggeredBy () {
       if (this.dashboardModeActive) {
-        return 'col-12 col-xxl-6'
+        return 'col-12 col-xxl-4'
       }
       if (this.rowItem) {
-        return 'col-12 col-md-6 col-xxxl-2 text-xxxl-left text-truncate text-truncate-fade'
+        return 'col-12 col-xxl-4 text-truncate text-truncate-fade'
       }
-      return 'col-12 col-xxl-6'
+      return 'col-12 col-xxl-4'
+    },
+    colClassesReleases () {
+      if (this.dashboardModeActive) {
+        return 'col-12 col-xxl-4'
+      }
+      if (this.rowItem) {
+        return 'col-12 col-xxl-4 text-truncate text-truncate-fade'
+      }
+      return 'col-12 col-xxl-4'
     },
     colClassesActions () {
       if (this.dashboardModeActive) {
-        return ''
+        return 'col-12 col-xxl-4'
       }
       if (this.rowItem) {
-        return 'col-12 col-md-6 col-xxxl-2 text-xxxl-left'
+        return 'col-12 col-xxl-4'
       }
-      return 'col-12 col-xxl-6'
+      return 'col-12 col-xxl-4'
     }
   }
 }

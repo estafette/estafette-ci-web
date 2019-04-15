@@ -111,6 +111,7 @@
       }
     }
   ],
+  "triggerEvents":[{"git":{"branch":"master", "event": "push", "repository": "github.com/estafette/estafette-ci-api"}}],
   "insertedAt":"2018-11-20T15:55:49.266744Z",
   "updatedAt":"2018-11-20T15:55:49.266744Z",
   "duration":0
