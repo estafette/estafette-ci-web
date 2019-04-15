@@ -108,7 +108,7 @@
       <div class="mt-3 mb-3 w-50 mx-auto border-bottom" />
     </div>
     <div
-      :class="[ colClassesLabels, 'mb-2 text-center text-truncate text-truncate-fade']"
+      :class="[ colClassesLabels, 'mb-2 text-center']"
       v-if="!dashboardModeActive"
     >
       <div
@@ -126,6 +126,20 @@
       >
         {{ label.key }}={{ label.value }}
       </router-link>
+    </div>
+    <div
+      :class="[ colClassesTriggeredBy, 'mb-2 text-center']"
+      v-if="showTriggeredBy"
+    >
+      <div
+        :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : '', 'small mb-1']"
+        v-if="pipeline.triggerEvents && pipeline.triggerEvents.length > 0"
+      >
+        Triggered by
+      </div>
+      <triggered-by
+        :events="pipeline.triggerEvents"
+      />
     </div>
     <div :class="[ colClassesReleases, 'mb-2 text-center' ]">
       <div
@@ -148,11 +162,13 @@
 <script>
 import CommitLink from '@/components/CommitLink'
 import ReleaseBadge from '@/components/ReleaseBadge'
+import TriggeredBy from '@/components/TriggeredBy'
 
 export default {
   components: {
     CommitLink,
-    ReleaseBadge
+    ReleaseBadge,
+    TriggeredBy
   },
 
   props: {
@@ -188,6 +204,9 @@ export default {
   computed: {
     alwaysShowTitles () {
       return this.dashboardModeActive || !this.rowItem
+    },
+    showTriggeredBy () {
+      return !this.dashboardModeActive && !this.rowItem
     },
     colClassesPipeline () {
       if (this.dashboardModeActive || !this.rowItem) {
@@ -236,9 +255,18 @@ export default {
         return ''
       }
       if (this.rowItem) {
-        return 'col-12 col-xxl-6 col-xxxl-2 text-xxxl-left'
+        return 'col-12 col-xxl-6 col-xxxl-2 text-xxxl-left text-truncate text-truncate-fade'
       }
-      return 'col-12 col-xxl-6'
+      return 'col-12 col-xxxl-5 text-truncate text-truncate text-truncate-fade'
+    },
+    colClassesTriggeredBy () {
+      if (this.dashboardModeActive) {
+        return ''
+      }
+      if (this.rowItem) {
+        return ''
+      }
+      return 'col-12 col-xxxl-2 text-truncate text-truncate text-truncate-fade'
     },
     colClassesReleases () {
       if (this.dashboardModeActive) {
@@ -247,7 +275,7 @@ export default {
       if (this.rowItem) {
         return 'col-12 col-xxl-6 col-xxxl-2 text-xxxl-left text-truncate text-truncate-fade'
       }
-      return 'col-12 col-xxl-6'
+      return 'col-12 col-xxxl-5 text-truncate text-truncate text-truncate-fade'
     }
   }
 }

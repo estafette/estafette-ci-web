@@ -9,7 +9,10 @@
           icon="tools"
           class="triggered-by-icon"
         />
-        <router-link :to="{ name: 'PipelineBuilds', params: { repoSource: event.pipeline.repoSource, repoOwner: event.pipeline.repoOwner, repoName: event.pipeline.repoName }}">
+        <router-link
+          :to="{ name: 'PipelineBuilds', params: { repoSource: event.pipeline.repoSource, repoOwner: event.pipeline.repoOwner, repoName: event.pipeline.repoName }}"
+          class="text-body"
+        >
           {{ event.pipeline.repoSource }}/{{ event.pipeline.repoOwner }}/{{ event.pipeline.repoName }}
         </router-link>
         <!-- {{ event.pipeline.buildVersion }}
@@ -22,7 +25,10 @@
           icon="upload"
           class="triggered-by-icon"
         />
-        <router-link :to="{ name: 'PipelineReleases', params: { repoSource: event.release.repoSource, repoOwner: event.release.repoOwner, repoName: event.release.repoName }}">
+        <router-link
+          :to="{ name: 'PipelineReleases', params: { repoSource: event.release.repoSource, repoOwner: event.release.repoOwner, repoName: event.release.repoName }}"
+          class="text-body"
+        >
           {{ event.release.repoSource }}/{{ event.release.repoOwner }}/{{ event.release.repoName }}
         </router-link>
         <!-- {{ event.release.releaseVersion }}
@@ -35,7 +41,14 @@
           icon="code-branch"
           class="triggered-by-icon"
         />
-        {{ event.git.repository }}
+        <a
+          :href="'https://'+event.git.repository"
+          target="_blank"
+          class="text-body"
+          @click.stop
+        >
+          {{ event.git.repository }}
+        </a>
         <!-- {{ event.git.branch }} -->
       </div>
       <div v-if="event.docker" />

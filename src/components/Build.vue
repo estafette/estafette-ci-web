@@ -106,6 +106,20 @@
       <div class="mt-3 mb-3 w-50 mx-auto border-bottom" />
     </div>
     <div
+      :class="[ colClassesTriggeredBy, 'mb-2 text-center']"
+      v-if="showTriggeredBy"
+    >
+      <div
+        :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(build.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : '', 'small mb-1']"
+        v-if="build.triggerEvents && build.triggerEvents.length > 0"
+      >
+        Triggered by
+      </div>
+      <triggered-by
+        :events="build.triggerEvents"
+      />
+    </div>
+    <div
       :class="[colClassesReleases, 'mb-2 text-center']"
       v-if="!dashboardModeActive"
     >
@@ -156,6 +170,7 @@ import ReleaseButton from '@/components/ReleaseButton'
 import RebuildButton from '@/components/RebuildButton'
 import CancelButton from '@/components/CancelButton'
 import ReleaseBadgeForBuild from '@/components/ReleaseBadgeForBuild'
+import TriggeredBy from '@/components/TriggeredBy'
 
 export default {
   components: {
@@ -163,7 +178,8 @@ export default {
     ReleaseButton,
     RebuildButton,
     CancelButton,
-    ReleaseBadgeForBuild
+    ReleaseBadgeForBuild,
+    TriggeredBy
   },
 
   props: {
@@ -219,6 +235,9 @@ export default {
     showPipelineName () {
       return !this.rowItem
     },
+    showTriggeredBy () {
+      return !this.dashboardModeActive && !this.rowItem
+    },
     colClassesVersion () {
       if (this.dashboardModeActive) {
         return 'col-6 col-md-4 col-lg-3 col-xxl-2'
@@ -273,6 +292,15 @@ export default {
       }
       return 'col-6 col-md-4 col-xxxl-4'
     },
+    colClassesTriggeredBy () {
+      if (this.dashboardModeActive) {
+        return ''
+      }
+      if (this.rowItem) {
+        return ''
+      }
+      return 'col-12 col-xxl-3 text-truncate text-truncate-fade'
+    },
     colClassesReleases () {
       if (this.dashboardModeActive) {
         return 'col-12 col-xxl-6'
@@ -280,7 +308,7 @@ export default {
       if (this.rowItem) {
         return 'col-12 col-md-6 col-xxxl-2 text-xxxl-left text-truncate text-truncate-fade'
       }
-      return 'col-12 col-xxl-6'
+      return 'col-12 col-xxl-6 text-truncate text-truncate-fade'
     },
     colClassesActions () {
       if (this.dashboardModeActive) {
@@ -289,7 +317,7 @@ export default {
       if (this.rowItem) {
         return 'col-12 col-md-6 col-xxxl-2 text-xxxl-left'
       }
-      return 'col-12 col-xxl-6'
+      return 'col-12 col-xxl-3'
     }
   }
 }
