@@ -12,7 +12,6 @@
     </div>
 
     <div
-      v-if="pipeline && pipeline.triggers && pipeline.triggers.length > 0"
       class="container-fluid text-center p-5"
     >
       <div class="row d-flex justify-content-center">
@@ -34,17 +33,20 @@
                 class="text-body"
                 @click.stop
               >
-                {{ pipeline.repoSource }}/{{ pipeline.repoOwner }}/{{ pipeline.repoName }}
+                {{ pipeline.repoSource }}/{{ pipeline.repoOwner }}/{{ pipeline.repoName }} *
               </a>
             </h6>
             <span class="btn btn-light btn-sm mr-1">
               event
-              <span class="badge badge-secondary">
+              <span class="badge badge-warning">
                 push
               </span>
             </span>
             <span class="btn btn-light btn-sm mr-1">
-              injected
+              branch
+              <span class="badge badge-warning">
+                any
+              </span>
             </span>
           </div>
         </div>
@@ -66,19 +68,19 @@
             </h6>
             <span class="btn btn-light btn-sm mr-1">
               branch
-              <span class="badge badge-secondary">
+              <span class="badge badge-warning">
                 {{ trigger.pipeline.branch }}
               </span>
             </span>
             <span class="btn btn-light btn-sm mr-1">
               event
-              <span class="badge badge-secondary">
+              <span class="badge badge-warning">
                 {{ trigger.pipeline.event }}
               </span>
             </span>
             <span class="btn btn-light btn-sm mr-1">
               status
-              <span class="badge badge-secondary">
+              <span class="badge badge-warning">
                 {{ trigger.pipeline.status }}
               </span>
             </span>
@@ -93,19 +95,19 @@
             </h6>
             <span class="btn btn-light btn-sm mr-1">
               target
-              <span class="badge badge-secondary">
+              <span class="badge badge-warning">
                 {{ trigger.release.target }}
               </span>
             </span>
             <span class="btn btn-light btn-sm mr-1">
               event
-              <span class="badge badge-secondary">
+              <span class="badge badge-warning">
                 {{ trigger.release.event }}
               </span>
             </span>
             <span class="btn btn-light btn-sm mr-1">
               status
-              <span class="badge badge-secondary">
+              <span class="badge badge-warning">
                 {{ trigger.release.status }}
               </span>
             </span>
@@ -143,7 +145,7 @@
         <div
           :class="[
             dashboardModeActive ? 'bg-primary text-white' : '',
-            'rounded border border-primary m-3 p-4 d-inline-flex align-items-center'
+            'rounded border border-primary m-3 p-5 d-inline-flex align-items-center'
           ]"
         >
           <div>
@@ -157,18 +159,20 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <div
-      v-else
-      class="alert alert-warning text-center p-5"
-    >
-      This pipeline has no triggers; if you want the pipeline to trigger on other events than a git push look at the <a
-        href="https://estafette.io/usage/manifest/#triggers"
-        target="_blank"
+      <div
+        class="alert alert-light text-center m-5 p-4"
+        v-if="!dashboardModeActive"
       >
-        documentation
-      </a> on how to start using triggers.
+        <div>
+          * pipelines automatically trigger on git push; if you want to trigger on other events have a look at the <a
+            href="https://estafette.io/usage/manifest/#triggers"
+            target="_blank"
+          >
+            documentation
+          </a> on how to start using triggers.
+        </div>
+      </div>
     </div>
   </div>
 </template>
