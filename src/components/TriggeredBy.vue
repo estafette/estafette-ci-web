@@ -55,7 +55,7 @@
       </div>
     </div>
   </div>
-  <div v-else-if="triggeredBy">
+  <div v-else>
     {{ triggeredBy }}
   </div>
 </template>

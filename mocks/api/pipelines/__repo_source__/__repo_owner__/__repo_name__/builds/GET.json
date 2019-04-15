@@ -74,7 +74,6 @@
             }
          }
         ],
-        "triggerEvents":[{"git":{"branch":"master", "event": "push", "repository": "github.com/estafette/estafette-ci-api"}}],
         "insertedAt":"2018-11-20T15:55:49.266744Z",
         "updatedAt":"2018-11-20T15:55:49.266744Z",
         "duration":0
@@ -121,7 +120,6 @@
               }
            }
         ],
-        "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
         "insertedAt":"2018-11-20T15:35:05.658825Z",
         "updatedAt":"2018-11-20T15:36:41.244921Z",
         "duration":95000000000
@@ -168,7 +166,6 @@
             }
          }
       ],
-      "triggerEvents":[{"git":{"branch":"master", "event": "push", "repository": "github.com/estafette/estafette-ci-api"}}],
       "insertedAt":"2018-11-20T15:35:05.658825Z",
       "updatedAt":"2018-11-20T15:36:41.244921Z",
       "duration":95000000000
@@ -215,7 +212,6 @@
               }
            }
         ],
-        "triggerEvents":[{"git":{"branch":"master", "event": "push", "repository": "github.com/estafette/estafette-ci-api"}}],
         "insertedAt":"2018-11-20T15:26:42.480424Z",
         "updatedAt":"2018-11-20T15:28:27.906983Z",
         "duration":105000000000
@@ -262,7 +258,6 @@
               }
            }
         ],
-        "triggerEvents":[{"git":{"branch":"master", "event": "push", "repository": "github.com/estafette/estafette-ci-api"}}],
         "insertedAt":"2018-11-20T14:55:20.496376Z",
         "updatedAt":"2018-11-20T14:56:59.9065Z",
         "duration":99000000000
@@ -309,7 +304,6 @@
               }
            }
         ],
-        "triggerEvents":[{"git":{"branch":"master", "event": "push", "repository": "github.com/estafette/estafette-ci-api"}}],
         "insertedAt":"2018-11-20T14:50:23.424607Z",
         "updatedAt":"2018-11-20T14:52:02.502005Z",
         "duration":99000000000
@@ -356,7 +350,6 @@
               }
            }
         ],
-        "triggerEvents":[{"git":{"branch":"master", "event": "push", "repository": "github.com/estafette/estafette-ci-api"}}],
         "insertedAt":"2018-11-20T13:57:12.459871Z",
         "updatedAt":"2018-11-20T13:58:51.885926Z",
         "duration":99000000000
@@ -403,7 +396,6 @@
               }
            }
         ],
-        "triggerEvents":[{"git":{"branch":"master", "event": "push", "repository": "github.com/estafette/estafette-ci-api"}}],
         "insertedAt":"2018-11-20T13:26:08.343049Z",
         "updatedAt":"2018-11-20T13:27:48.896794Z",
         "duration":100000000000
@@ -450,7 +442,6 @@
               }
            }
         ],
-        "triggerEvents":[{"git":{"branch":"master", "event": "push", "repository": "github.com/estafette/estafette-ci-api"}}],
         "insertedAt":"2018-11-20T11:17:51.604984Z",
         "updatedAt":"2018-11-20T11:22:37.515043Z",
         "duration":285000000000
@@ -497,7 +488,6 @@
               }
            }
         ],
-        "triggerEvents":[{"git":{"branch":"master", "event": "push", "repository": "github.com/estafette/estafette-ci-api"}}],
         "insertedAt":"2018-11-19T15:44:55.31162Z",
         "updatedAt":"2018-11-19T15:46:25.320415Z",
         "duration":90000000000
