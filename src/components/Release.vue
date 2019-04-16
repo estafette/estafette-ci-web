@@ -83,14 +83,12 @@
     </div>
     <div
       :class="[colClassesTriggeredBy, 'mb-2 text-truncate']"
-      :title="release.triggeredBy"
     >
       <div :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(release.releaseStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xl-none', 'small mb-1']">
         Triggered by
       </div>
       <triggered-by
         :events="release.triggerEvents"
-        :triggered-by="release.triggeredBy"
       />
     </div>
     <div

@@ -68,9 +68,6 @@
       </div>
     </div>
   </div>
-  <div v-else>
-    {{ triggeredBy }}
-  </div>
 </template>
 
 <script>
@@ -88,10 +85,6 @@ export default {
   props: {
     events: {
       type: Array,
-      default: null
-    },
-    triggeredBy: {
-      type: String,
       default: null
     }
   }
