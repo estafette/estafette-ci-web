@@ -18,7 +18,7 @@
         <div
           :class="[
             dashboardModeActive ? 'bg-warning' : '',
-            'rounded border border-warning m-3 p-4 d-inline-flex align-items-center'
+            'rounded border border-warning m-3 p-4 d-inline-flex align-items-center trigger-block'
           ]"
         >
           <div>
@@ -55,7 +55,7 @@
           :key="i"
           :class="[
             dashboardModeActive ? 'bg-warning' : '',
-            'rounded border border-warning m-3 p-4 d-inline-flex align-items-center'
+            'rounded border border-warning m-3 p-4 d-inline-flex align-items-center trigger-block'
           ]"
         >
           <div v-if="trigger.pipeline">
@@ -145,7 +145,7 @@
         <div
           :class="[
             dashboardModeActive ? 'bg-primary text-white' : '',
-            'rounded border border-primary m-3 p-5 d-inline-flex align-items-center'
+            'rounded border border-primary m-3 p-5 d-inline-flex align-items-center pipeline-block'
           ]"
         >
           <div>
@@ -201,3 +201,13 @@ export default {
   }
 }
 </script>
+
+<style lang="sass" scoped>
+.trigger-block {
+  border-style: dashed!important;
+  border-width: 2px!important;
+}
+.pipeline-block {
+  border-width: 2px!important;
+}
+</style>
