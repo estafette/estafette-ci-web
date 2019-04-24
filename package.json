@@ -19,7 +19,7 @@
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.13",
     "gsap": "^2.0.2",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "lodash": "^4.17.11",
     "marked": "^0.6.2",
     "moment": "^2.23.0",
