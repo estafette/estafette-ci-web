@@ -78,7 +78,8 @@
     }
     ],
     "exitCode": 0,
-    "status": "SUCCEEDED"
+    "status": "SUCCEEDED",
+    "autoInjected": true
     },
     {
     "step": "build",
@@ -182,37 +183,6 @@
     "status": "SKIPPED"
     },
     {
-    "step": "set-build-status",
-    "image": {
-    "name": "extensions/github-status",
-    "tag": "dev",
-    "isPulled": true,
-    "imageSize": 0,
-    "pullDuration": 0,
-    "isTrusted": true
-    },
-    "duration": 1311413609,
-    "logLines": [
-    {
-    "timestamp": "2018-05-29T13:49:55.615967267Z",
-    "streamType": "stderr",
-    "text": "\u001b[90m2018-05-29T13:49:55Z\u001b[0m |\u001b[32mINFO\u001b[0m| \u001b[0mStarting estafette-extension-github-status...\u001b[0m \u001b[36mbranch\u001b[0m=master \u001b[36mbuildDate\u001b[0m=2017-09-12T15:47:12Z \u001b[36mgoVersion\u001b[0m=go1.9 \u001b[36mrevision\u001b[0m=70223113f82448e09380cc709495c9f921bb7d3d"
-    },
-    {
-    "timestamp": "2018-05-29T13:49:56.355225651Z",
-    "streamType": "stderr",
-    "text": "\u001b[90m2018-05-29T13:49:56Z\u001b[0m |\u001b[35mDEBU\u001b[0m| \u001b[0mReceived response for 'https://api.github.com/repos/estafette/estafette-extension-bitbucket-status/statuses/a3f0f997c0a70f6c403b048f8b8a9d49c3c77ec6' Github api call...\u001b[0m \u001b[36mrequestBody\u001b[0m=map[state:failure target_url:https://ci.estafette.io/logs/github.com/estafette/estafette-extension-bitbucket-status/master/a3f0f997c0a70f6c403b048f8b8a9d49c3c77ec6] \u001b[36mrequestHeaders\u001b[0m=map[Accept:[application/vnd.github.machine-man-preview+json] Authorization:[token v1.2756d9652ecb23622566eaf63a3dde3084a20be4]] \u001b[36mrequestMethod\u001b[0m=POST \u001b[36mresponseBody\u001b[0m=map[target_url:https://ci.estafette.io/logs/github.com/estafette/estafette-extension-bitbucket-status/master/a3f0f997c0a70f6c403b048f8b8a9d49c3c77ec6 context:default created_at:2018-05-29T13:49:56Z creator:map[following_url:https://api.github.com/users/estafette-io%5Bbot%5D/following{/other_user} html_url:https://github.com/apps/estafette-io repos_url:https://api.github.com/users/estafette-io%5Bbot%5D/repos site_admin:false login:estafette-io[bot] subscriptions_url:https://api.github.com/users/estafette-io%5Bbot%5D/subscriptions type:Bot avatar_url:https://avatars2.githubusercontent.com/u/13119702?v=4 events_url:https://api.github.com/users/estafette-io%5Bbot%5D/events{/privacy} followers_url:https://api.github.com/users/estafette-io%5Bbot%5D/followers starred_url:https://api.github.com/users/estafette-io%5Bbot%5D/starred{/owner}{/repo} url:https://api.github.com/users/estafette-io%5Bbot%5D gists_url:https://api.github.com/users/estafette-io%5Bbot%5D/gists{/gist_id} gravatar_id: id:3.0898972e+07 organizations_url:https://api.github.com/users/estafette-io%5Bbot%5D/orgs received_events_url:https://api.github.com/users/estafette-io%5Bbot%5D/received_events] description:<nil> id:5.011072858e+09 state:failure updated_at:2018-05-29T13:49:56Z url:https://api.github.com/repos/estafette/estafette-extension-bitbucket-status/statuses/a3f0f997c0a70f6c403b048f8b8a9d49c3c77ec6] \u001b[36mresponseHeaders\u001b[0m=map[Access-Control-Allow-Origin:[*] Content-Type:[application/json; charset=utf-8] Vary:[Accept, Authorization, Cookie, X-GitHub-OTP] X-Github-Request-Id:[AF64:6AAE:404D79B:7976E30:5B0D5A83] Content-Length:[1564] Content-Security-Policy:[default-src 'none'] Date:[Tue, 29 May 2018 13:49:56 GMT] Strict-Transport-Security:[max-age=31536000; includeSubdomains; preload] X-Ratelimit-Limit:[5100] X-Ratelimit-Reset:[1527604181] X-Xss-Protection:[1; mode=block] Etag:[\"936b845b5759d0bd2c9680fd3bd16c06\"] X-Content-Type-Options:[nosniff] X-Frame-Options:[deny] X-Github-Media-Type:[github.machine-man-preview; format=json] X-Ratelimit-Remaining:[5085] Status:[201 Created] X-Runtime-Rack:[0.359301] Access-Control-Expose-Headers:[ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval] Cache-Control:[private, max-age=60, s-maxage=60] Location:[https://api.github.com/repos/estafette/estafette-extension-bitbucket-status/statuses/a3f0f997c0a70f6c403b048f8b8a9d49c3c77ec6] Referrer-Policy:[origin-when-cross-origin, strict-origin-when-cross-origin] Server:[GitHub.com]] \u001b[36murl\u001b[0m=https://api.github.com/repos/estafette/estafette-extension-bitbucket-status/statuses/a3f0f997c0a70f6c403b048f8b8a9d49c3c77ec6"
-    },
-    {
-    "timestamp": "2018-05-29T13:49:56.355237565Z",
-    "streamType": "stderr",
-    "text": "\u001b[90m2018-05-29T13:49:56Z\u001b[0m |\u001b[32mINFO\u001b[0m| \u001b[0mFinished estafette-extension-github-status...\u001b[0m"
-    }
-    ],
-    "exitCode": 0,
-    "status": "SUCCEEDED"
-    },
-    {
     "step": "slack-notify",
     "image": {
     "name": "extensions/slack-build-status",
@@ -242,6 +212,38 @@
     ],
     "exitCode": 0,
     "status": "SUCCEEDED"
+    },
+    {
+        "step": "set-build-status",
+        "image": {
+        "name": "extensions/github-status",
+        "tag": "dev",
+        "isPulled": true,
+        "imageSize": 0,
+        "pullDuration": 0,
+        "isTrusted": true
+        },
+        "duration": 1311413609,
+        "logLines": [
+        {
+        "timestamp": "2018-05-29T13:49:55.615967267Z",
+        "streamType": "stderr",
+        "text": "\u001b[90m2018-05-29T13:49:55Z\u001b[0m |\u001b[32mINFO\u001b[0m| \u001b[0mStarting estafette-extension-github-status...\u001b[0m \u001b[36mbranch\u001b[0m=master \u001b[36mbuildDate\u001b[0m=2017-09-12T15:47:12Z \u001b[36mgoVersion\u001b[0m=go1.9 \u001b[36mrevision\u001b[0m=70223113f82448e09380cc709495c9f921bb7d3d"
+        },
+        {
+        "timestamp": "2018-05-29T13:49:56.355225651Z",
+        "streamType": "stderr",
+        "text": "\u001b[90m2018-05-29T13:49:56Z\u001b[0m |\u001b[35mDEBU\u001b[0m| \u001b[0mReceived response for 'https://api.github.com/repos/estafette/estafette-extension-bitbucket-status/statuses/a3f0f997c0a70f6c403b048f8b8a9d49c3c77ec6' Github api call...\u001b[0m \u001b[36mrequestBody\u001b[0m=map[state:failure target_url:https://ci.estafette.io/logs/github.com/estafette/estafette-extension-bitbucket-status/master/a3f0f997c0a70f6c403b048f8b8a9d49c3c77ec6] \u001b[36mrequestHeaders\u001b[0m=map[Accept:[application/vnd.github.machine-man-preview+json] Authorization:[token v1.2756d9652ecb23622566eaf63a3dde3084a20be4]] \u001b[36mrequestMethod\u001b[0m=POST \u001b[36mresponseBody\u001b[0m=map[target_url:https://ci.estafette.io/logs/github.com/estafette/estafette-extension-bitbucket-status/master/a3f0f997c0a70f6c403b048f8b8a9d49c3c77ec6 context:default created_at:2018-05-29T13:49:56Z creator:map[following_url:https://api.github.com/users/estafette-io%5Bbot%5D/following{/other_user} html_url:https://github.com/apps/estafette-io repos_url:https://api.github.com/users/estafette-io%5Bbot%5D/repos site_admin:false login:estafette-io[bot] subscriptions_url:https://api.github.com/users/estafette-io%5Bbot%5D/subscriptions type:Bot avatar_url:https://avatars2.githubusercontent.com/u/13119702?v=4 events_url:https://api.github.com/users/estafette-io%5Bbot%5D/events{/privacy} followers_url:https://api.github.com/users/estafette-io%5Bbot%5D/followers starred_url:https://api.github.com/users/estafette-io%5Bbot%5D/starred{/owner}{/repo} url:https://api.github.com/users/estafette-io%5Bbot%5D gists_url:https://api.github.com/users/estafette-io%5Bbot%5D/gists{/gist_id} gravatar_id: id:3.0898972e+07 organizations_url:https://api.github.com/users/estafette-io%5Bbot%5D/orgs received_events_url:https://api.github.com/users/estafette-io%5Bbot%5D/received_events] description:<nil> id:5.011072858e+09 state:failure updated_at:2018-05-29T13:49:56Z url:https://api.github.com/repos/estafette/estafette-extension-bitbucket-status/statuses/a3f0f997c0a70f6c403b048f8b8a9d49c3c77ec6] \u001b[36mresponseHeaders\u001b[0m=map[Access-Control-Allow-Origin:[*] Content-Type:[application/json; charset=utf-8] Vary:[Accept, Authorization, Cookie, X-GitHub-OTP] X-Github-Request-Id:[AF64:6AAE:404D79B:7976E30:5B0D5A83] Content-Length:[1564] Content-Security-Policy:[default-src 'none'] Date:[Tue, 29 May 2018 13:49:56 GMT] Strict-Transport-Security:[max-age=31536000; includeSubdomains; preload] X-Ratelimit-Limit:[5100] X-Ratelimit-Reset:[1527604181] X-Xss-Protection:[1; mode=block] Etag:[\"936b845b5759d0bd2c9680fd3bd16c06\"] X-Content-Type-Options:[nosniff] X-Frame-Options:[deny] X-Github-Media-Type:[github.machine-man-preview; format=json] X-Ratelimit-Remaining:[5085] Status:[201 Created] X-Runtime-Rack:[0.359301] Access-Control-Expose-Headers:[ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval] Cache-Control:[private, max-age=60, s-maxage=60] Location:[https://api.github.com/repos/estafette/estafette-extension-bitbucket-status/statuses/a3f0f997c0a70f6c403b048f8b8a9d49c3c77ec6] Referrer-Policy:[origin-when-cross-origin, strict-origin-when-cross-origin] Server:[GitHub.com]] \u001b[36murl\u001b[0m=https://api.github.com/repos/estafette/estafette-extension-bitbucket-status/statuses/a3f0f997c0a70f6c403b048f8b8a9d49c3c77ec6"
+        },
+        {
+        "timestamp": "2018-05-29T13:49:56.355237565Z",
+        "streamType": "stderr",
+        "text": "\u001b[90m2018-05-29T13:49:56Z\u001b[0m |\u001b[32mINFO\u001b[0m| \u001b[0mFinished estafette-extension-github-status...\u001b[0m"
+        }
+        ],
+        "exitCode": 0,
+        "status": "SUCCEEDED",
+        "autoInjected": true
     }
     ]
 }

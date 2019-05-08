@@ -3,6 +3,15 @@
     v-if="log && log.steps"
     class="accordion m-3"
   >
+    <b-form-group
+      description="Estafette injects stages for handling cross-cutting concerns. Check to see the injected stages."
+      class="m-3"
+    >
+      <b-form-checkbox v-model="showInjectedStages">
+        Show injected stages
+      </b-form-checkbox>
+    </b-form-group>
+
     <div
       class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 font-weight-bold"
       v-if="!dashboardModeActive"
@@ -33,8 +42,8 @@
     <div role="tablist">
       <b-card
         no-body
-        v-for="(step, index) in log.steps"
-        :key="index"
+        v-for="(step, index) in filteredSteps"
+        :key="step.step + '-' + step.runIndex"
         class="rounded border mt-2 mr-0 mb-2 ml-0 p-0"
         :class="step.status | bootstrapClass('border')"
       >
@@ -189,12 +198,16 @@ import bCard from 'bootstrap-vue/es/components/card/card'
 import bCardHeader from 'bootstrap-vue/es/components/card/card-header'
 import bCollapse from 'bootstrap-vue/es/components/collapse/collapse'
 import bToggle from 'bootstrap-vue/es/directives/toggle/toggle'
+import bFormCheckbox from 'bootstrap-vue/es/components/form-checkbox/form-checkbox'
+import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group'
 
 export default {
   components: {
     bCard,
     bCardHeader,
-    bCollapse
+    bCollapse,
+    bFormCheckbox,
+    bFormGroup
   },
   directives: {
     bToggle
@@ -230,11 +243,20 @@ export default {
       log: {},
       refresh: true,
       tailedSteps: [],
-      lastLineNumber: 0
+      lastLineNumber: 0,
+      showInjectedStages: false
     }
   },
 
   computed: {
+    filteredSteps () {
+      if (!this.log || !this.log.steps) {
+        return []
+      }
+
+      return this.log.steps.filter(step => !step.autoInjected || this.showInjectedStages || step.status === 'RUNNING' || step.status === 'FAILED')
+    },
+
     totalImageSize: function () {
       if (!this.log || !this.log.steps) {
         return 0
