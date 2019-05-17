@@ -257,7 +257,7 @@ export default {
       if (this.rowItem) {
         return 'col-12 col-xxl-6 col-xxxl-2 text-xxxl-left text-truncate text-truncate-fade'
       }
-      return 'col-12 col-xxxl-5 text-truncate text-truncate text-truncate-fade'
+      return 'col-12 col-xxxl-5'
     },
     colClassesTriggeredBy () {
       if (this.dashboardModeActive) {
@@ -266,7 +266,7 @@ export default {
       if (this.rowItem) {
         return ''
       }
-      return 'col-12 col-xxxl-2 text-truncate text-truncate text-truncate-fade'
+      return 'col-12 col-xxxl-2 text-truncate text-truncate-fade'
     },
     colClassesReleases () {
       if (this.dashboardModeActive) {
@@ -275,7 +275,7 @@ export default {
       if (this.rowItem) {
         return 'col-12 col-xxl-6 col-xxxl-2 text-xxxl-left text-truncate text-truncate-fade'
       }
-      return 'col-12 col-xxxl-5 text-truncate text-truncate text-truncate-fade'
+      return 'col-12 col-xxxl-5'
     }
   }
 }

@@ -308,7 +308,7 @@ export default {
       if (this.rowItem) {
         return 'col-12 col-md-6 col-xxxl-2 text-xxxl-left text-truncate text-truncate-fade'
       }
-      return 'col-12 col-xxl-6 text-truncate text-truncate-fade'
+      return 'col-12 col-xxl-6'
     },
     colClassesActions () {
       if (this.dashboardModeActive) {
