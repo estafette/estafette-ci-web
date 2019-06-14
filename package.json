@@ -15,7 +15,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.5",
     "ansi_up": "^3.0.0",
     "apexcharts": "^2.4.2",
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.13",
     "gsap": "^2.0.2",
