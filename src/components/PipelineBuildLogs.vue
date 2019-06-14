@@ -42,14 +42,14 @@
     <div role="tablist">
       <b-card
         no-body
-        v-for="(step, index) in filteredSteps"
+        v-for="step in filteredSteps"
         :key="step.step + '-' + step.runIndex"
         class="rounded border mt-2 mr-0 mb-2 ml-0 p-0"
         :class="step.status | bootstrapClass('border')"
       >
         <b-card-header
           class="row m-0 pt-3 pr-2 pb-3 pl-2 clickable border-0 rounded-0"
-          v-b-toggle="'accordion'+index"
+          v-b-toggle="'accordion-'+step.step + '-' + step.runIndex"
           role="tab"
         >
           <div class="col-4 col-md-2 col-xl-1 text-center">
@@ -132,7 +132,7 @@
 
         <b-collapse
           class="container-fluid text-light text-monospace collapse bg-dark m-0 p-3"
-          :id="'accordion'+index"
+          :id="'accordion-'+step.step + '-' + step.runIndex"
           :visible="step.status === 'RUNNING' || step.status === 'FAILED'"
           accordion="log-steps-accordion"
           role="tabpanel"
