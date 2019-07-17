@@ -6,7 +6,7 @@
   "repoBranch":"master",
   "repoRevision":"f88393a5e5f6ff29f239316f64689fc0c6f66499",
   "buildVersion":"0.1.340",
-  "buildStatus":"running",
+  "buildStatus":"pending",
   "labels":[
      {
         "key":"app",
