@@ -120,7 +120,7 @@ export default {
       this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}`)
         .then(response => {
           this.release = response.data
-          if (this.release.releaseStatus === 'running' || this.release.releaseStatus === 'canceling') {
+          if (this.release.releaseStatus !== 'succeeded' && this.release.releaseStatus !== 'failed') {
             this.periodicallyRefreshRelease(5)
           }
         })

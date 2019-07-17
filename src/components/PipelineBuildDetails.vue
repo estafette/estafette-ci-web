@@ -141,7 +141,7 @@ export default {
       this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}`)
         .then(response => {
           this.build = response.data
-          if (this.build.buildStatus === 'running' || this.build.buildStatus === 'canceling') {
+          if (this.build.buildStatus !== 'succeeded' && this.build.buildStatus !== 'failed') {
             this.periodicallyRefreshBuild(5)
           }
         })
