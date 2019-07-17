@@ -55,6 +55,9 @@ Vue.filter('bootstrapClass', function (value, prefix) {
   if (value === 'canceled') {
     return prefix + '-secondary'
   }
+  if (value === 'pending') {
+    return prefix + '-info'
+  }
   if (value === 'all' || value === 'primary') {
     return prefix + '-primary'
   }

@@ -343,11 +343,11 @@ export default {
     },
 
     tailLogs () {
-      if (this.build.buildStatus === 'running' || this.build.buildStatus === 'canceling') {
+      if (this.build.buildStatus === 'pending' || this.build.buildStatus === 'running' || this.build.buildStatus === 'canceling') {
         this.es = new EventSource(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs/tail`)
 
         this.es.addEventListener('log', event => {
-          if (this.build.buildStatus !== 'running' && this.build.buildStatus !== 'canceling') {
+          if (this.build.buildStatus !== 'pending' && this.build.buildStatus !== 'running' && this.build.buildStatus !== 'canceling') {
             // stop handling stream when build status changes
             this.es.close()
             document.getElementById('header-and-main').scrollIntoView(true)

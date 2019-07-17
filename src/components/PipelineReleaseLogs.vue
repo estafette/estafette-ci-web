@@ -336,11 +336,11 @@ export default {
     },
 
     tailLogs () {
-      if (this.release.releaseStatus === 'running' || this.release.releaseStatus === 'canceling') {
+      if (this.release.releaseStatus === 'pending' || this.release.releaseStatus === 'running' || this.release.releaseStatus === 'canceling') {
         this.es = new EventSource(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}/logs/tail`)
 
         this.es.addEventListener('log', event => {
-          if (this.release.releaseStatus !== 'running' && this.release.releaseStatus !== 'canceling') {
+          if (this.release.releaseStatus !== 'pending' && this.release.releaseStatus !== 'running' && this.release.releaseStatus !== 'canceling') {
             // stop handling stream when release status changes
             this.es.close()
             document.getElementById('header-and-main').scrollIntoView(true)

@@ -84,7 +84,7 @@
           "repoBranch":"master",
           "repoRevision":"cfecf70dbe359c4f553beb5776d5165599ed478f",
           "buildVersion":"0.0.200",
-          "buildStatus":"succeeded",
+          "buildStatus":"pending",
           "labels":[
              {
                 "key":"app",
@@ -113,7 +113,7 @@
                       "repoSource":"github.com",
                       "repoOwner":"estafette",
                       "repoName":"estafette-ci-builder",
-                      "releaseVersion":"0.0.200",
+                      "releaseVersion":"0.0.199",
                       "releaseStatus":"succeeded",
                       "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                       "insertedAt":"2018-11-15T14:13:06.579187Z",
@@ -153,7 +153,7 @@
           ],
           "insertedAt":"2018-11-19T15:45:41.993089Z",
           "updatedAt":"2018-11-19T15:49:10.976264Z",
-          "duration":208000000000
+          "duration":0
        },
        {
           "id":"401928453053087746",
@@ -547,7 +547,7 @@
                       "repoOwner":"estafette",
                       "repoName":"estafette-extension-slack-build-status",
                       "releaseVersion":"0.1.36",
-                      "releaseStatus":"succeeded",
+                      "releaseStatus":"pending",
                       "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                       "insertedAt":"2018-11-13T17:26:28.139948Z",
                       "updatedAt":"2018-11-13T17:26:44.219545Z",
