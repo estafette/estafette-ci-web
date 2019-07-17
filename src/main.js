@@ -127,10 +127,7 @@ Vue.filter('stripedProgressBarClass', function (value) {
     return ''
   }
   value = value.toString().toLowerCase()
-  if (value === 'running') {
-    return 'progress-bar-striped progress-bar-animated'
-  }
-  if (value === 'canceling') {
+  if (value === 'pending' || value === 'running' || value === 'canceling') {
     return 'progress-bar-striped progress-bar-animated'
   }
   return ''
