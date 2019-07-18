@@ -53,7 +53,12 @@ export default {
 
   methods: {
     loadStat () {
-      this.axios.get(`/api/stats/pipelinescount?filter[status]=${this.status}&filter[since]=${this.filter.since}`)
+      var statusFilter = `filter[status]=${this.status}`
+      if (this.filter.status === 'running') {
+        statusFilter += `&filter[status]=pending&filter[status]=canceling`
+      }
+
+      this.axios.get(`/api/stats/pipelinescount?${statusFilter}&filter[since]=${this.filter.since}`)
         .then(response => {
           TweenLite.to(this.$data, 1.0, { count: response.data.count })
           this.periodicallyRefreshStat(15)

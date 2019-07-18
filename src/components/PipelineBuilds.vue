@@ -179,7 +179,12 @@ export default {
     },
 
     loadBuilds () {
-      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds?filter[status]=${this.filter.status}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      var statusFilter = `filter[status]=${this.filter.status}`
+      if (this.filter.status === 'running') {
+        statusFilter += `&filter[status]=pending&filter[status]=canceling`
+      }
+
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds?${statusFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.builds = response.data.items
           this.pagination = response.data.pagination
