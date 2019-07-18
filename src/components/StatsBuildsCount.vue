@@ -54,7 +54,7 @@ export default {
   methods: {
     loadStat () {
       var statusFilter = `filter[status]=${this.status}`
-      if (this.filter.status === 'running') {
+      if (this.status === 'running') {
         statusFilter += `&filter[status]=pending&filter[status]=canceling`
       }
 
