@@ -12,11 +12,6 @@ version:
     minor: 1
 
 stages:
-  purge:
-    image: extensions/cloudflare-purge:dev
-    hosts:
-    - estafette.secret(wkrj5zpCEQgbohlO.f5IxvVcvYHascYQ07FuCIuGQLbLMtAKuWPWd5e6d22yyE2pA)
-
   audit:
     image: extensions/npm-audit:dev
     action: audit
@@ -108,6 +103,11 @@ releases:
         manifests:
           files:
           - gke/ingress.yaml
+
+      purge:
+        image: extensions/cloudflare-purge:dev
+        hosts:
+        - estafette.secret(z6C9Piz4EhMxWMc8.uxcITmg39HiLJuuqSyPRM06PTWNd6S1x1QxfYYeyGoBLcgkM)
 
       slack-notify:
         image: extensions/slack-build-status:dev
