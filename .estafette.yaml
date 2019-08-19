@@ -12,6 +12,11 @@ version:
     minor: 1
 
 stages:
+  purge:
+    image: extensions/cloudflare-purge:dev
+    hosts:
+    - estafette.secret(wkrj5zpCEQgbohlO.f5IxvVcvYHascYQ07FuCIuGQLbLMtAKuWPWd5e6d22yyE2pA)
+
   audit:
     image: extensions/npm-audit:dev
     action: audit
