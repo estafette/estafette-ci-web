@@ -104,6 +104,11 @@ releases:
           files:
           - gke/ingress.yaml
 
+      purge-cloudflare-cache:
+        image: extensions/cloudflare-purge:dev
+        hosts:
+        - estafette.secret(z6C9Piz4EhMxWMc8.uxcITmg39HiLJuuqSyPRM06PTWNd6S1x1QxfYYeyGoBLcgkM)
+
       slack-notify:
         image: extensions/slack-build-status:dev
         workspace: estafette
