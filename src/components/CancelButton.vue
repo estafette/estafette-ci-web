@@ -1,6 +1,6 @@
 <template>
   <b-input-group
-    v-if="user.authenticated && ((build && (build.buildStatus === 'pending' || build.buildStatus === 'running' || build.buildStatus === 'canceling')) || (release && (release.releaseStatus === 'running' || release.releaseStatus === 'canceling')))"
+    v-if="user.authenticated && ((build && (build.buildStatus === 'pending' || build.buildStatus === 'running' || build.buildStatus === 'canceling')) || (release && (release.releaseStatus === 'pending' || release.releaseStatus === 'running' || release.releaseStatus === 'canceling')))"
     style="width: auto;"
   >
     <b-input-group-text
