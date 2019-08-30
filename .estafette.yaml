@@ -20,17 +20,17 @@ stages:
     - '#npm-audit'
 
   restore:
-    image: node:12.2.0-alpine
+    image: node:12.9.1-alpine
     commands:
     - npm ci
 
   lint:
-    image: node:12.2.0-alpine
+    image: node:12.9.1-alpine
     commands:
     - npm run lint
 
   build:
-    image: node:12.2.0-alpine
+    image: node:12.9.1-alpine
     commands:
     - npm run build
 
