@@ -344,7 +344,7 @@ export default {
 
     tailLogs () {
       if (this.build.buildStatus === 'pending' || this.build.buildStatus === 'running' || this.build.buildStatus === 'canceling') {
-        this.es = new EventSource(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs/tail`)
+        this.es = new EventSource(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs.stream`)
 
         this.es.addEventListener('log', event => {
           if (this.build.buildStatus !== 'pending' && this.build.buildStatus !== 'running' && this.build.buildStatus !== 'canceling') {
