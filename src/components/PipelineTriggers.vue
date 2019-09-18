@@ -119,13 +119,22 @@
                 class="triggered-by-icon"
               />
               <a
-                :href="'https://'+event.git.repository"
+                :href="'https://'+trigger.git.repository"
                 target="_blank"
                 class="text-body"
                 @click.stop
               >
-                {{ event.git.repository }}
+                {{ trigger.git.repository }}
               </a>
+            </h6>
+          </div>
+          <div v-if="trigger.pubsub">
+            <h6>
+              <font-awesome-icon
+                icon="bezier-curve"
+                class="triggered-by-icon"
+              />
+              projects/{{ trigger.pubsub.project }}/topics/{{ trigger.pubsub.topic }}
             </h6>
           </div>
           <div v-if="trigger.docker" />
@@ -179,10 +188,10 @@
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faProjectDiagram, faTools, faUpload, faUserCircle, faClock, faCodeBranch, faIndustry } from '@fortawesome/free-solid-svg-icons'
+import { faProjectDiagram, faTools, faUpload, faUserCircle, faClock, faCodeBranch, faIndustry, faBezierCurve } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faProjectDiagram, faTools, faUpload, faUserCircle, faClock, faCodeBranch, faIndustry)
+library.add(faProjectDiagram, faTools, faUpload, faUserCircle, faClock, faCodeBranch, faIndustry, faBezierCurve)
 
 export default {
   components: {

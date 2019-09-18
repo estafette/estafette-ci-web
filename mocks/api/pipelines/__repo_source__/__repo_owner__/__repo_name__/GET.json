@@ -241,6 +241,15 @@
       "builds":{
          "branch":"master"
       }
+    },
+    {
+       "pubsub":{
+          "project":"<project id>",
+          "topic":"<topic id>"
+       },
+       "builds":{
+          "branch":"master"
+       }
     }
   ],
   "triggerEvents":[{"git":{"branch":"development", "event": "push", "repository": "github.com/estafette/estafette-ci-api"}}],
