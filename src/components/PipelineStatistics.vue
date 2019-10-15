@@ -54,11 +54,57 @@
         />
       </div>
     </div>
+
+    <div class="mt-0 mr-3 mb-3 ml-3 row">
+      <div class="col-12 col-xl-6">
+        <pipeline-stats-cpu
+          :pipeline="pipeline"
+          :filter="filter"
+          type="builds"
+          status="primary"
+          class="mb-3"
+        />
+      </div>
+      <div class="col-12 col-xl-6">
+        <pipeline-stats-cpu
+          v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
+          :pipeline="pipeline"
+          :filter="filter"
+          type="releases"
+          status="success"
+          class="mb-3"
+        />
+      </div>
+    </div>
+
+    <div class="mt-0 mr-3 mb-3 ml-3 row">
+      <div class="col-12 col-xl-6">
+        <pipeline-stats-memory
+          :pipeline="pipeline"
+          :filter="filter"
+          type="builds"
+          status="primary"
+          class="mb-3"
+        />
+      </div>
+      <div class="col-12 col-xl-6">
+        <pipeline-stats-memory
+          v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
+          :pipeline="pipeline"
+          :filter="filter"
+          type="releases"
+          status="success"
+          class="mb-3"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import PipelineStatsTimeline from '@/components/PipelineStatsTimeline'
+import PipelineStatsCpu from '@/components/PipelineStatsCpu'
+import PipelineStatsMemory from '@/components/PipelineStatsMemory'
 import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
 import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
 import bInputGroupPrepend from 'bootstrap-vue/es/components/input-group/input-group-prepend'
@@ -72,6 +118,8 @@ library.add(faChartLine, faHistory)
 export default {
   components: {
     PipelineStatsTimeline,
+    PipelineStatsCpu,
+    PipelineStatsMemory,
     bFormSelect,
     bInputGroup,
     bInputGroupPrepend,
