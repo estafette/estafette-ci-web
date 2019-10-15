@@ -188,7 +188,7 @@ export default {
       var measurementsMap = {}
       measurements.forEach(measurement => {
         // generate key
-        key = 'measurement'
+        key = 'memory'
         if (measurement.name) {
           key = measurement.name
           if (measurement.action && measurement.action !== '') {

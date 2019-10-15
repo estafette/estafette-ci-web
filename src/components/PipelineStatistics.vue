@@ -34,7 +34,7 @@
     </div>
 
     <div class="mt-0 mr-3 mb-3 ml-3 row">
-      <div class="col-12 col-xl-6">
+      <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
         <pipeline-stats-timeline
           :pipeline="pipeline"
           :filter="filter"
@@ -43,7 +43,7 @@
           class="mb-3"
         />
       </div>
-      <div class="col-12 col-xl-6">
+      <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
         <pipeline-stats-timeline
           v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
           :pipeline="pipeline"
@@ -53,10 +53,8 @@
           class="mb-3"
         />
       </div>
-    </div>
 
-    <div class="mt-0 mr-3 mb-3 ml-3 row">
-      <div class="col-12 col-xl-6">
+      <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
         <pipeline-stats-cpu
           :pipeline="pipeline"
           :filter="filter"
@@ -65,7 +63,7 @@
           class="mb-3"
         />
       </div>
-      <div class="col-12 col-xl-6">
+      <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
         <pipeline-stats-cpu
           v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
           :pipeline="pipeline"
@@ -75,10 +73,8 @@
           class="mb-3"
         />
       </div>
-    </div>
 
-    <div class="mt-0 mr-3 mb-3 ml-3 row">
-      <div class="col-12 col-xl-6">
+      <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
         <pipeline-stats-memory
           :pipeline="pipeline"
           :filter="filter"
@@ -87,7 +83,7 @@
           class="mb-3"
         />
       </div>
-      <div class="col-12 col-xl-6">
+      <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
         <pipeline-stats-memory
           v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
           :pipeline="pipeline"
