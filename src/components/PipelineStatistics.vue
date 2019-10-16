@@ -43,9 +43,11 @@
           class="mb-3"
         />
       </div>
-      <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
+      <div
+        v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
+        class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
+      >
         <pipeline-stats-timeline
-          v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
           :pipeline="pipeline"
           :filter="filter"
           type="releases"
@@ -63,9 +65,11 @@
           class="mb-3"
         />
       </div>
-      <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
+      <div
+        v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
+        class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
+      >
         <pipeline-stats-cpu
-          v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
           :pipeline="pipeline"
           :filter="filter"
           type="releases"
@@ -83,9 +87,11 @@
           class="mb-3"
         />
       </div>
-      <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
+      <div
+        v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
+        class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
+      >
         <pipeline-stats-memory
-          v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
           :pipeline="pipeline"
           :filter="filter"
           type="releases"
