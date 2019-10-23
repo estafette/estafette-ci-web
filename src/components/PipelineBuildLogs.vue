@@ -140,7 +140,7 @@
             :key="nestedStep.step"
             v-b-toggle="'accordion-'+step.step + '-' + step.runIndex + '-' +nestedStep.step"
             :variant="nestedStep.status | bootstrapVariant(true)"
-            class="mr-2"
+            class="mr-2 mb-1"
           >
             {{ nestedStep.step }}
             <span>
@@ -433,11 +433,6 @@ export default {
 
           let data = JSON.parse(event.data)
 
-          // for now ignore nested stages during tailing
-          if (data.depth && data.depth > 0) {
-            return
-          }
-
           if (!this.log) {
             this.log = {}
           }
@@ -445,49 +440,83 @@ export default {
             this.$set(this.log, 'steps', [])
           }
 
-          var stepIndex = this.tailedSteps.findIndex(s => s === data.step)
-          var step = stepIndex > -1 ? this.log.steps[stepIndex] : null
-          if (stepIndex === -1) {
-            // create new step
-            if (data.image) {
-              step = { step: data.step, image: data.image, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: data.autoInjected ? data.autoInjected : false, duration: 0 }
-            } else {
-              step = { step: data.step, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: false, duration: 0 }
-            }
-            this.tailedSteps.push(data.step)
-            this.log.steps.push(step)
-            stepIndex = this.log.steps.length - 1
-
-            // reset last line number
-            this.lastLineNumber = 0
-          }
-
-          if (stepIndex !== this.tailedSteps.length - 1) {
-            // the data is not for the last step in the array, we're dealing with an event stream restart; skip processing until we catch up with the last step
-            return
-          }
-
-          if (data.status) {
-            step.status = data.status
-          }
-          if (data.exitCode) {
-            step.exitCode = data.exitCode
-          }
-          if (data.duration) {
-            step.duration = data.duration
-          }
-
-          if (data.logLine) {
-            if (data.logLine.line > this.lastLineNumber) {
-              step.logLines.push(data.logLine)
-              this.lastLineNumber = data.logLine.line
-
-              // tail only last 50 rows per stage to keep dom light
-              if (data.logLine.line > 50) {
-                step.logLines.shift()
+          if (!!data.depth || data.depth === 0) {
+            var stepIndex = this.tailedSteps.findIndex(s => s === data.step)
+            var step = stepIndex > -1 ? this.log.steps[stepIndex] : null
+            if (stepIndex === -1) {
+              // create new step
+              if (data.image) {
+                step = { step: data.step, image: data.image, logLines: [], nestedSteps: [], exitCode: 0, status: 'RUNNING', autoInjected: data.autoInjected ? data.autoInjected : false, duration: 0 }
+              } else {
+                step = { step: data.step, logLines: [], nestedSteps: [], exitCode: 0, status: 'RUNNING', autoInjected: false, duration: 0 }
               }
+              this.tailedSteps.push(data.step)
+              this.log.steps.push(step)
+              stepIndex = this.log.steps.length - 1
 
-              this.scrollToLogTail()
+              // reset last line number
+              this.lastLineNumber = 0
+            }
+
+            if (stepIndex !== this.tailedSteps.length - 1) {
+              // the data is not for the last step in the array, we're dealing with an event stream restart; skip processing until we catch up with the last step
+              return
+            }
+
+            if (data.status) {
+              step.status = data.status
+            }
+            if (data.exitCode) {
+              step.exitCode = data.exitCode
+            }
+            if (data.duration) {
+              step.duration = data.duration
+            }
+
+            if (data.logLine) {
+              if (data.logLine.line > this.lastLineNumber) {
+                step.logLines.push(data.logLine)
+                this.lastLineNumber = data.logLine.line
+
+                // tail only last 50 rows per stage to keep dom light
+                if (data.logLine.line > 50) {
+                  step.logLines.shift()
+                }
+
+                this.scrollToLogTail()
+              }
+            }
+          } else {
+            // a nested stage, see if it exists in the last outer stage, otherwise add it (still at risk when the event stream restarts)
+            if (this.log.steps.length > 0) {
+              // get last outer step
+              var lastStep = this.log.steps[this.log.steps.length - 1]
+
+              var nestedStepIndex = lastStep.nestedSteps.findIndex(ns => ns.step === data.step)
+              var nestedStep = nestedStepIndex > -1 ? lastStep.nestedSteps[nestedStepIndex] : null
+              if (nestedStepIndex === -1) {
+                // create new nested step
+                if (data.image) {
+                  nestedStep = { step: data.step, image: data.image, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: data.autoInjected ? data.autoInjected : false, duration: 0 }
+                } else {
+                  nestedStep = { step: data.step, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: false, duration: 0 }
+                }
+                lastStep.nestedSteps.push(nestedStep)
+                nestedStepIndex = lastStep.nestedSteps.length - 1
+
+                // reset last line number
+                this.lastLineNumber = 0
+              }
+            }
+
+            if (data.status) {
+              nestedStep.status = data.status
+            }
+            if (data.exitCode) {
+              nestedStep.exitCode = data.exitCode
+            }
+            if (data.duration) {
+              nestedStep.duration = data.duration
             }
           }
         }, false)
