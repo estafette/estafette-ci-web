@@ -158,7 +158,7 @@
         >
           <div
             class="text-light text-monospace bg-dark m-0 p-3"
-            v-if="step.logLines.length > 0"
+            v-if="step.logLines && step.logLines.length > 0"
           >
             <div
               class="row no-gutters"
@@ -242,7 +242,7 @@
 
           <div
             class="text-light text-monospace bg-dark m-0 p-3"
-            v-if="nestedStep.logLines.length > 0"
+            v-if="nestedStep.logLines && nestedStep.logLines.length > 0"
           >
             <div
               class="row no-gutters"
