@@ -461,7 +461,7 @@ export default {
             this.$set(this.log, 'steps', [])
           }
 
-          if (!!data.depth || data.depth === 0) {
+          if (!data.depth || data.depth === 0) {
             var stepIndex = this.tailedSteps.findIndex(s => s === data.step)
             var step = stepIndex > -1 ? this.log.steps[stepIndex] : null
             if (stepIndex === -1) {
