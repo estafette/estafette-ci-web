@@ -482,8 +482,6 @@ export default {
                 if (data.logLine.line > 50) {
                   step.logLines.shift()
                 }
-
-                this.scrollToLogTail()
               }
             }
           } else {
@@ -519,6 +517,8 @@ export default {
               nestedStep.duration = data.duration
             }
           }
+
+          this.scrollToLogTail()
         }, false)
 
         this.es.addEventListener('close', event => {
