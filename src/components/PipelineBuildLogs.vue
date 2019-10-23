@@ -131,7 +131,7 @@
         </b-card-header>
 
         <b-card-header
-          class="row m-0 pt-3 pr-2 pb-3 pl-2 border-0 rounded-0 p-3 align-items-center text-center"
+          class="row m-0 p-2 border-0 rounded-0 justify-content-center"
           v-if="step.nestedSteps && step.nestedSteps.length > 0"
           role="tab"
         >
