@@ -261,6 +261,34 @@
         </b-collapse>
       </b-card>
     </div>
+
+    <div
+      class="row rounded border mt-2 mr-0 mb-2 ml-0 pt-3 pr-2 pb-3 pl-2 font-weight-bold"
+      :class="totalStatus | bootstrapClass('border')"
+    >
+      <div class="col-4 col-md-2 col-xl-1 text-center">
+        <span
+          class="badge"
+          :class="totalStatus | bootstrapClass('badge')"
+        >
+          {{ totalStatus }}
+        </span>
+      </div>
+      <div class="col-8 col-lg-5 col-xl-4" />
+      <div class="col-4 col-xl-3 d-none d-lg-flex" />
+      <div class="col-1 text-right d-none d-xl-flex">
+        {{ totalImageSize | formatBytes }}
+      </div>
+      <div class="col-1 text-right d-none d-xl-flex">
+        {{ totalPullDuration | formatDuration }}
+      </div>
+      <div class="col-1 text-right d-none d-xl-flex">
+        {{ totalDuration | formatDuration }}
+      </div>
+      <div class="col-2 col-lg-1 text-right d-none d-md-flex">
+        {{ totalPullDuration + totalDuration | formatDuration }}
+      </div>
+    </div>
   </div>
   <div
     v-else
