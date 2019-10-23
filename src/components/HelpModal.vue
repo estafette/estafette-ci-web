@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import bModal from 'bootstrap-vue/es/components/modal/modal'
+import { BModal } from 'bootstrap-vue'
 
 export default {
   components: {
-    bModal
+    BModal
   },
 
   props: {

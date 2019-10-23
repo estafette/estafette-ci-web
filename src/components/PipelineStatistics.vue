@@ -107,9 +107,7 @@
 import PipelineStatsTimeline from '@/components/PipelineStatsTimeline'
 import PipelineStatsCpu from '@/components/PipelineStatsCpu'
 import PipelineStatsMemory from '@/components/PipelineStatsMemory'
-import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
-import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
-import bInputGroupPrepend from 'bootstrap-vue/es/components/input-group/input-group-prepend'
+import { BFormSelect, BInputGroup, BInputGroupPrepend } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChartLine, faHistory } from '@fortawesome/free-solid-svg-icons'
@@ -122,9 +120,9 @@ export default {
     PipelineStatsTimeline,
     PipelineStatsCpu,
     PipelineStatsMemory,
-    bFormSelect,
-    bInputGroup,
-    bInputGroupPrepend,
+    BFormSelect,
+    BInputGroup,
+    BInputGroupPrepend,
     FontAwesomeIcon
   },
 

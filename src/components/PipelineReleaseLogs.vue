@@ -74,7 +74,7 @@
             </span>
           </div>
           <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">
-            <span v-if="step.image">
+            <span v-if="step.image && step.image.name">
               {{ step.image.name }}:{{ step.image.tag }}
               <span
                 v-if="step.image.isTrusted"
@@ -86,7 +86,7 @@
             </span>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
-            <span v-if="step.image && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
+            <span v-if="step.image && step.image.name && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
               <span v-if="step.image && step.image.imageSize">
                 {{ step.image.imageSize | formatBytes }}
               </span>
@@ -99,7 +99,7 @@
             </span>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
-            <span v-if="step.image && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
+            <span v-if="step.image && step.image.name && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
               <span v-if="step.image.pullDuration && step.image.pullDuration > 0">
                 {{ step.image.pullDuration | formatDuration }}
               </span>
@@ -123,25 +123,133 @@
           </div>
         </b-card-header>
 
+        <b-card-header
+          class="row m-0 pt-3 pr-2 pb-3 pl-2 border-0 rounded-0 p-3 align-items-center text-center"
+          v-if="step.nestedSteps && step.nestedSteps.length > 0"
+          role="tab"
+        >
+          <b-button
+            v-for="nestedStep in step.nestedSteps"
+            :key="nestedStep.step"
+            v-b-toggle="'accordion-'+step.step + '-' + step.runIndex + '-' +nestedStep.step"
+            :variant="nestedStep.status | bootstrapVariant(true)"
+            class="mr-2"
+          >
+            {{ nestedStep.step }}
+            <span>
+              {{ nestedStep.image.pullDuration + nestedStep.duration | formatDuration }}
+            </span>
+          </b-button>
+        </b-card-header>
+
         <b-collapse
-          class="container-fluid text-light text-monospace collapse bg-dark m-0 p-3"
+          class="container-fluid collapse p-0"
           :id="'accordion-'+step.step + '-' + step.runIndex"
           :visible="step.status === 'RUNNING' || step.status === 'FAILED'"
           accordion="log-steps-accordion"
           role="tabpanel"
         >
           <div
-            class="row no-gutters"
-            v-for="(line, lineIndex) in step.logLines"
-            :key="line.line ? line.line : lineIndex"
+            class="text-light text-monospace bg-dark m-0 p-3"
+            v-if="step.logLines.length > 0"
           >
-            <div class="col-1 log-timestamp text-white-50 d-none d-xl-flex">
-              {{ line.timestamp | moment('YYYY-MM-DD HH:mm:ss') }}
-            </div>
             <div
-              class="col log-text"
-              v-html="formatLog(line.text)"
+              class="row no-gutters"
+              v-for="(line, lineIndex) in step.logLines"
+              :key="line.line ? line.line : lineIndex"
+            >
+              <div class="col-1 log-timestamp text-white-50 d-none d-xl-flex">
+                {{ line.timestamp | moment('YYYY-MM-DD HH:mm:ss') }}
+              </div>
+              <div
+                class="col log-text"
+                v-html="formatLog(line.text)"
+              />
+            </div>
+          </div>
+        </b-collapse>
+
+        <b-collapse
+          class="container-fluid collapse p-0"
+          v-for="nestedStep in step.nestedSteps"
+          :key="nestedStep.step"
+          :id="'accordion-'+step.step + '-' + step.runIndex + '-' +nestedStep.step"
+          accordion="log-steps-accordion"
+          role="tabpanel"
+        >
+          <div class="row m-0 pt-3 pr-2 pb-3 pl-2 clickable border-0 rounded-0 bg-light">
+            <div class="col-4 col-md-2 col-xl-1 text-center" />
+            <div
+              class="col-8 col-lg-5 col-xl-4 text-truncate h4"
+              :title="nestedStep.step"
             />
+            <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">
+              <span v-if="nestedStep.image && nestedStep.image.name">
+                {{ nestedStep.image.name }}:{{ nestedStep.image.tag }}
+                <span
+                  v-if="nestedStep.image.isTrusted"
+                  class="small text-muted"
+                  title="This image is configured as trusted by Estafette CI"
+                >
+                  (trusted)
+                </span>
+              </span>
+            </div>
+            <div class="col-1 text-right d-none d-xl-flex">
+              <span v-if="nestedStep.image && nestedStep.image.name && (nestedStep.status == 'RUNNING' || nestedStep.status == 'SUCCEEDED' || nestedStep.status == 'FAILED')">
+                <span v-if="nestedStep.image && nestedStep.image.imageSize">
+                  {{ nestedStep.image.imageSize | formatBytes }}
+                </span>
+                <em
+                  v-else
+                  class="text-muted"
+                >
+                  (cached)
+                </em>
+              </span>
+            </div>
+            <div class="col-1 text-right d-none d-xl-flex">
+              <span v-if="nestedStep.image && nestedStep.image.name && (nestedStep.status == 'RUNNING' || nestedStep.status == 'SUCCEEDED' || nestedStep.status == 'FAILED')">
+                <span v-if="nestedStep.image.pullDuration && nestedStep.image.pullDuration > 0">
+                  {{ nestedStep.image.pullDuration | formatDuration }}
+                </span>
+                <em
+                  v-else
+                  class="text-muted"
+                >
+                  (cached)
+                </em>
+              </span>
+            </div>
+            <div class="col-1 text-right d-none d-xl-flex">
+              <span v-if="nestedStep.duration && (nestedStep.status == 'SUCCEEDED' || nestedStep.status == 'FAILED')">
+                {{ nestedStep.duration | formatDuration }}
+              </span>
+            </div>
+            <div class="col-2 col-lg-1 text-right d-none d-md-flex">
+              <span v-if="nestedStep.image && (nestedStep.status == 'RUNNING' || nestedStep.status == 'SUCCEEDED' || nestedStep.status == 'FAILED')">
+                {{ nestedStep.image.pullDuration + nestedStep.duration | formatDuration }}
+              </span>
+            </div>
+          </div>
+
+          <div
+            class="text-light text-monospace bg-dark m-0 p-3"
+            v-if="nestedStep.logLines.length > 0"
+          >
+            <div
+              class="row no-gutters"
+              v-for="(line, lineIndex) in nestedStep.logLines"
+              :key="line.line ? line.line : lineIndex"
+            >
+              <div class="col-1 log-timestamp text-white-50 d-none d-xl-flex">
+                {{ line.timestamp | moment('YYYY-MM-DD HH:mm:ss') }}
+              </div>
+              <div
+                class="col log-text"
+                v-html="formatLog(line.text)"
+              />
+            </div>
           </div>
         </b-collapse>
       </b-card>
@@ -187,23 +295,19 @@
 import debounce from 'lodash.debounce'
 
 import AnsiUp from 'ansi_up'
-import bCard from 'bootstrap-vue/es/components/card/card'
-import bCardHeader from 'bootstrap-vue/es/components/card/card-header'
-import bCollapse from 'bootstrap-vue/es/components/collapse/collapse'
-import bToggle from 'bootstrap-vue/es/directives/toggle/toggle'
-import bFormCheckbox from 'bootstrap-vue/es/components/form-checkbox/form-checkbox'
-import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group'
+import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BFormCheckbox, BFormGroup } from 'bootstrap-vue'
 
 export default {
   components: {
-    bCard,
-    bCardHeader,
-    bCollapse,
-    bFormCheckbox,
-    bFormGroup
+    BButton,
+    BCard,
+    BCardHeader,
+    BCollapse,
+    BFormCheckbox,
+    BFormGroup
   },
   directives: {
-    bToggle
+    'b-toggle': VBToggle
   },
   props: {
     repoSource: {
@@ -349,6 +453,11 @@ export default {
           }
 
           let data = JSON.parse(event.data)
+
+          // for now ignore nested stages during tailing
+          if (data.depth && data.depth > 0) {
+            return
+          }
 
           if (!this.log) {
             this.log = {}

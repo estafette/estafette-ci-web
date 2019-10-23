@@ -74,24 +74,19 @@
 
 <script>
 import Spinner from '@/components/Spinner'
-import bForm from 'bootstrap-vue/es/components/form/form'
-import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
-import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
-import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group'
-import bButton from 'bootstrap-vue/es/components/button/button'
-import bTooltip from 'bootstrap-vue/es/directives/tooltip/tooltip'
+import { BForm, BFormSelect, BFormInput, BFormGroup, BButton, BTooltip } from 'bootstrap-vue'
 
 export default {
   components: {
     Spinner,
-    bForm,
-    bFormSelect,
-    bFormInput,
-    bFormGroup,
-    bButton
+    BForm,
+    BFormSelect,
+    BFormInput,
+    BFormGroup,
+    BButton
   },
   directives: {
-    bTooltip
+    BTooltip
   },
   props: {
     query: {

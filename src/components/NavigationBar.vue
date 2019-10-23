@@ -75,14 +75,7 @@
 </template>
 
 <script>
-import bNavbar from 'bootstrap-vue/es/components/navbar/navbar'
-import bNavbarBrand from 'bootstrap-vue/es/components/navbar/navbar-brand'
-import bNavbarToggle from 'bootstrap-vue/es/components/navbar/navbar-toggle'
-import bNavbarNav from 'bootstrap-vue/es/components/navbar/navbar-nav'
-import bNavItem from 'bootstrap-vue/es/components/nav/nav-item'
-import bNavItemDropdown from 'bootstrap-vue/es/components/nav/nav-item-dropdown'
-import bDropdownItem from 'bootstrap-vue/es/components/dropdown/dropdown-item'
-import bCollapse from 'bootstrap-vue/es/components/collapse/collapse'
+import { BNavbar, BNavbarBrand, BNavbarToggle, BNavbarNav, BNavItem, BNavItemDropdown, BDropdownItem, BCollapse } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faShippingFast, faUserCircle } from '@fortawesome/free-solid-svg-icons'
@@ -92,14 +85,14 @@ library.add(faShippingFast, faUserCircle)
 
 export default {
   components: {
-    bNavbar,
-    bNavbarBrand,
-    bNavbarToggle,
-    bNavbarNav,
-    bNavItem,
-    bNavItemDropdown,
-    bDropdownItem,
-    bCollapse,
+    BNavbar,
+    BNavbarBrand,
+    BNavbarToggle,
+    BNavbarNav,
+    BNavItem,
+    BNavItemDropdown,
+    BDropdownItem,
+    BCollapse,
     FontAwesomeIcon
   },
 

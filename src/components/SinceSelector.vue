@@ -15,9 +15,7 @@
 </template>
 
 <script>
-import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
-import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
-import bInputGroupPrepend from 'bootstrap-vue/es/components/input-group/input-group-prepend'
+import { BFormSelect, BInputGroup, BInputGroupPrepend } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
@@ -27,9 +25,9 @@ library.add(faClock)
 
 export default {
   components: {
-    bFormSelect,
-    bInputGroup,
-    bInputGroupPrepend,
+    BFormSelect,
+    BInputGroup,
+    BInputGroupPrepend,
     FontAwesomeIcon
   },
 

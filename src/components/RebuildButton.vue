@@ -20,8 +20,7 @@
 </template>
 
 <script>
-import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
-import bInputGroupText from 'bootstrap-vue/es/components/input-group/input-group-text'
+import { BInputGroup, BInputGroupText } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faRedo } from '@fortawesome/free-solid-svg-icons'
@@ -31,8 +30,8 @@ library.add(faRedo)
 
 export default {
   components: {
-    bInputGroup,
-    bInputGroupText,
+    BInputGroup,
+    BInputGroupText,
     FontAwesomeIcon
   },
   props: {

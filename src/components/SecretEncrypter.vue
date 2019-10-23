@@ -75,24 +75,19 @@
 
 <script>
 import spinner from '@/components/Spinner'
-import bForm from 'bootstrap-vue/es/components/form/form'
-import bFormCheckbox from 'bootstrap-vue/es/components/form-checkbox/form-checkbox'
-import bFormTextarea from 'bootstrap-vue/es/components/form-textarea/form-textarea'
-import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group'
-import bButton from 'bootstrap-vue/es/components/button/button'
-import bTooltip from 'bootstrap-vue/es/directives/tooltip/tooltip'
+import { BForm, BFormCheckbox, BFormTextarea, BFormGroup, BButton, BTooltip } from 'bootstrap-vue'
 
 export default {
   components: {
     spinner,
-    bForm,
-    bFormCheckbox,
-    bFormTextarea,
-    bFormGroup,
-    bButton
+    BForm,
+    BFormCheckbox,
+    BFormTextarea,
+    BFormGroup,
+    BButton
   },
   directives: {
-    bTooltip
+    BTooltip
   },
   data: function () {
     return {
