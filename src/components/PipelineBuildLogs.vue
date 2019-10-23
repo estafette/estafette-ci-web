@@ -83,13 +83,12 @@
           <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">
             <span v-if="step.image && step.image.name">
               {{ step.image.name }}:{{ step.image.tag }}
-              <span
+              <font-awesome-icon
                 v-if="step.image.isTrusted"
+                icon="shield-alt"
                 class="small text-muted"
                 title="This image is configured as trusted by Estafette CI"
-              >
-                (trusted)
-              </span>
+              />
             </span>
           </div>
           <div class="col-1 text-right d-none d-xl-flex">
@@ -193,13 +192,12 @@
             <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">
               <span v-if="nestedStep.image && nestedStep.image.name">
                 {{ nestedStep.image.name }}:{{ nestedStep.image.tag }}
-                <span
+                <font-awesome-icon
                   v-if="nestedStep.image.isTrusted"
+                  icon="shield-alt"
                   class="small text-muted"
                   title="This image is configured as trusted by Estafette CI"
-                >
-                  (trusted)
-                </span>
+                />
               </span>
             </div>
             <div class="col-1 text-right d-none d-xl-flex">
@@ -304,6 +302,12 @@ import debounce from 'lodash.debounce'
 import AnsiUp from 'ansi_up'
 import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BFormCheckbox, BFormGroup } from 'bootstrap-vue'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faShieldAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faShieldAlt)
+
 export default {
   components: {
     BButton,
@@ -311,7 +315,8 @@ export default {
     BCardHeader,
     BCollapse,
     BFormCheckbox,
-    BFormGroup
+    BFormGroup,
+    FontAwesomeIcon
   },
   directives: {
     'b-toggle': VBToggle
