@@ -576,7 +576,12 @@ export default {
             this.$set(this.log, 'steps', [])
           }
 
-          if (!data.depth || data.depth === 0) {
+          var stageType = 'stage'
+          if (data.type) {
+            stageType = data.type
+          }
+
+          if ((!data.type && (!data.depth || data.depth === 0)) || (data.type && stageType === 'stage' && !data.parentStage)) {
             var stepIndex = this.tailedSteps.findIndex(s => s === data.step)
             var step = stepIndex > -1 ? this.log.steps[stepIndex] : null
             if (stepIndex === -1) {
@@ -626,11 +631,6 @@ export default {
           } else {
             // a nested stage, see if it exists in the last outer stage, otherwise add it (still at risk when the event stream restarts)
             if (this.log.steps.length > 0) {
-              var stageType = 'stage'
-              if (data.type) {
-                stageType = data.type
-              }
-
               // get last outer step (or by name if parentStage property exists)
               var outerStep = this.log.steps[this.log.steps.length - 1]
               if (data.parentStage) {
