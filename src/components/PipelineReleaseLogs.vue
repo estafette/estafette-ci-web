@@ -127,7 +127,7 @@
           v-if="step.services && step.services.length > 0"
           role="tab"
         >
-          <div class="bg-light pt-2 pr-3 pb-1 pl-3 rounded border">
+          <div class="pt-2 pr-3 pb-1 pl-3 rounded border">
             <font-awesome-icon
               icon="layer-group"
               class="text-muted mt-2 mr-2"
