@@ -592,7 +592,7 @@ export default {
               if (data.status) {
                 initialStatus = data.status
               }
-              step = { step: data.step, logLines: [], nestedSteps: [], services: [], exitCode: 0, status: initialStatus, autoInjected: false, duration: 0 }
+              step = { step: data.step, logLines: [], nestedSteps: [], services: [], exitCode: 0, status: initialStatus, autoInjected: data.autoInjected, duration: 0 }
               this.tailedSteps.push(data.step)
               this.log.steps.push(step)
               stepIndex = this.log.steps.length - 1
