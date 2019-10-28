@@ -117,7 +117,7 @@
           </div>
           <div class="col-2 col-lg-1 text-right d-none d-md-flex">
             <span v-if="step.image && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
-              {{ step.image.pullDuration + step.duration | formatDuration }}
+              {{ (step.image ? step.image.pullDuration : 0) + step.duration | formatDuration }}
             </span>
           </div>
         </b-card-header>
@@ -143,7 +143,7 @@
             >
               {{ service.step }}
               <span>
-                {{ service.image.pullDuration + service.duration | formatDuration }}
+                {{ (service.image ? service.image.pullDuration : 0) + service.duration | formatDuration }}
               </span>
             </b-button>
           </div>
@@ -163,7 +163,7 @@
           >
             {{ nestedStep.step }}
             <span>
-              {{ nestedStep.image.pullDuration + nestedStep.duration | formatDuration }}
+              {{ (nestedStep.image ? nestedStep.image.pullDuration : 0) + nestedStep.duration | formatDuration }}
             </span>
           </b-button>
         </b-card-header>
@@ -253,7 +253,7 @@
             </div>
             <div class="col-2 col-lg-1 text-right d-none d-md-flex">
               <span v-if="service.image && (service.status == 'RUNNING' || service.status == 'SUCCEEDED' || service.status == 'FAILED')">
-                {{ service.image.pullDuration + service.duration | formatDuration }}
+                {{ (service.image ? service.image.pullDuration : 0) + service.duration | formatDuration }}
               </span>
             </div>
           </div>
@@ -336,7 +336,7 @@
             </div>
             <div class="col-2 col-lg-1 text-right d-none d-md-flex">
               <span v-if="nestedStep.image && (nestedStep.status == 'RUNNING' || nestedStep.status == 'SUCCEEDED' || nestedStep.status == 'FAILED')">
-                {{ nestedStep.image.pullDuration + nestedStep.duration | formatDuration }}
+                {{ (nestedStep.image ? nestedStep.image.pullDuration : 0) + nestedStep.duration | formatDuration }}
               </span>
             </div>
           </div>
