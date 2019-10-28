@@ -466,7 +466,7 @@ export default {
         return []
       }
 
-      return this.log.steps.filter(step => !step.autoInjected || this.showInjectedStages || step.status === 'RUNNING' || step.status === 'FAILED')
+      return this.log.steps.filter(step => !step.autoInjected || this.showInjectedStages || step.status === 'PENDING' || step.status === 'RUNNING' || step.status === 'FAILED')
     },
 
     totalImageSize: function () {
@@ -507,7 +507,7 @@ export default {
         if (acc === 'FAILED' || step.status === 'FAILED') {
           return 'FAILED'
         }
-        if (step.status === 'RUNNING') {
+        if (step.status === 'PENDING' || step.status === 'RUNNING') {
           return 'RUNNING'
         }
         return 'SUCCEEDED'
