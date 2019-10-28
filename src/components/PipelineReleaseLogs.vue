@@ -617,8 +617,8 @@ export default {
                 step.logLines.push(data.logLine)
                 this.lastLineNumber = data.logLine.line
 
-                // tail only last 50 rows per stage to keep dom light
-                if (data.logLine.line > 50) {
+                // tail only last 10 rows per stage to keep dom light
+                if (data.logLine.line > 0) {
                   step.logLines.shift()
                 }
               }
@@ -705,8 +705,8 @@ export default {
       function () {
         this.$el.scrollIntoView(false)
       },
-      125,
-      { 'maxWait': 250 }
+      1000,
+      { 'maxWait': 5000 }
     )
   },
 
