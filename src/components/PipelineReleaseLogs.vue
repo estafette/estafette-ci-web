@@ -586,9 +586,6 @@ export default {
                 initialStatus = data.status
               }
               step = { step: data.step, logLines: [], nestedSteps: [], services: [], exitCode: 0, status: initialStatus, autoInjected: false, duration: 0 }
-              if (data.image) {
-                step.image = data.image
-              }
               this.tailedSteps.push(data.step)
               this.log.steps.push(step)
               stepIndex = this.log.steps.length - 1
@@ -602,6 +599,9 @@ export default {
               return
             }
 
+            if (data.image) {
+              step.image = data.image
+            }
             if (data.status) {
               step.status = data.status
             }
@@ -650,9 +650,6 @@ export default {
                     initialStatus = data.status
                   }
                   nestedStep = { step: data.step, logLines: [], exitCode: 0, status: initialStatus, autoInjected: false, duration: 0 }
-                  if (data.image) {
-                    nestedStep.image = data.image
-                  }
                   outerStep.services.push(nestedStep)
                 }
               } else {
@@ -665,13 +662,13 @@ export default {
                     initialStatus = data.status
                   }
                   nestedStep = { step: data.step, logLines: [], exitCode: 0, status: initialStatus, autoInjected: false, duration: 0 }
-                  if (data.image) {
-                    nestedStep.image = data.image
-                  }
                   outerStep.nestedSteps.push(nestedStep)
                 }
               }
 
+              if (data.image) {
+                nestedStep.image = data.image
+              }
               if (data.status) {
                 nestedStep.status = data.status
               }
