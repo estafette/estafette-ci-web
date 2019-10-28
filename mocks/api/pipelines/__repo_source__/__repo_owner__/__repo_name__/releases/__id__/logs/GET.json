@@ -62,6 +62,63 @@
         "logLines": [],
         "exitCode": 0,
         "status": "SUCCEEDED",
+        "services": [
+            {
+              "step": "kubernetes",
+              "image": {
+                "name": "bsycorp/kind",
+                "tag": "latest-1.15",
+                "isPulled": true,
+                "imageSize": 26411532,
+                "pullDuration": 0,
+                "isTrusted": true
+              },
+              "duration": 3207186197,
+              "logLines": [
+                {
+                  "line": 1,
+                  "timestamp": "2019-10-23T11:15:54.208079234Z",
+                  "streamType": "stderr",
+                  "text": "Cloning into '/estafette-work/generated/python'...\n"
+                },
+                {
+                    "line": 2,
+                    "timestamp": "2019-10-23T11:15:54.208148139Z",
+                    "streamType": "stdout",
+                    "text": "Starting estafette-extension-git-clone version 0.1.70...\n"
+                }
+                ],
+                "exitCode": 0,
+                "status": "SUCCEEDED"
+            },
+            {
+                "step": "database",
+                "image": {
+                "name": "cockroachdb/cockroach",
+                "tag": "v19.1.5",
+                "isPulled": true,
+                "imageSize": 26411532,
+                "pullDuration": 0
+                },
+                "duration": 3207186197,
+                "logLines": [
+                    {
+                        "line": 1,
+                        "timestamp": "2019-10-23T11:15:54.208079234Z",
+                        "streamType": "stderr",
+                        "text": "Cloning into '/estafette-work/generated/golang'...\n"
+                    },
+                    {
+                        "line": 2,
+                        "timestamp": "2019-10-23T11:15:54.208148139Z",
+                        "streamType": "stdout",
+                        "text": "Starting estafette-extension-git-clone version 0.1.70...\n"
+                    }
+                ],
+                "exitCode": 0,
+                "status": "SUCCEEDED"
+            }
+        ],
         "nestedSteps": [
             {
               "step": "clone-python",

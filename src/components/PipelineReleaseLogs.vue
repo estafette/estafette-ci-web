@@ -124,6 +124,33 @@
 
         <b-card-header
           class="row m-0 p-2 border-0 rounded-0 justify-content-center"
+          v-if="step.services && step.services.length > 0"
+          role="tab"
+        >
+          <div class="bg-light pt-2 pr-3 pb-1 pl-3 rounded border">
+            <font-awesome-icon
+              icon="layer-group"
+              class="text-muted mt-2 mr-2"
+              title="Service containers run in the background to support scenarios like e2e tests to run in the stage itself"
+            />
+
+            <b-button
+              v-for="service in step.services"
+              :key="service.step"
+              v-b-toggle="'accordion-'+step.step + '-' + step.runIndex + '-service-' +service.step"
+              :variant="service.status | bootstrapVariant(true)"
+              class="mr-2 mb-1"
+            >
+              {{ service.step }}
+              <span>
+                {{ service.image.pullDuration + service.duration | formatDuration }}
+              </span>
+            </b-button>
+          </div>
+        </b-card-header>
+
+        <b-card-header
+          class="row m-0 p-2 border-0 rounded-0 justify-content-center"
           v-if="step.nestedSteps && step.nestedSteps.length > 0"
           role="tab"
         >
@@ -170,6 +197,89 @@
 
         <b-collapse
           class="container-fluid collapse p-0"
+          v-for="service in step.services"
+          :key="service.step"
+          :id="'accordion-'+step.step + '-' + step.runIndex + '-service-' +service.step"
+          accordion="log-steps-accordion"
+          role="tabpanel"
+        >
+          <div class="row m-0 pt-3 pr-2 pb-3 pl-2 clickable border-0 rounded-0 bg-light">
+            <div class="col-4 col-md-2 col-xl-1 text-center" />
+            <div
+              class="col-8 col-lg-5 col-xl-4 text-truncate h4"
+              :title="service.step"
+            />
+            <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">
+              <span v-if="service.image && service.image.name">
+                {{ service.image.name }}:{{ service.image.tag }}
+                <font-awesome-icon
+                  v-if="service.image.isTrusted"
+                  icon="shield-alt"
+                  class="small text-muted"
+                  title="This image is configured as trusted by Estafette CI"
+                />
+              </span>
+            </div>
+            <div class="col-1 text-right d-none d-xl-flex">
+              <span v-if="service.image && service.image.name && (service.status == 'RUNNING' || service.status == 'SUCCEEDED' || service.status == 'FAILED')">
+                <span v-if="service.image && service.image.imageSize">
+                  {{ service.image.imageSize | formatBytes }}
+                </span>
+                <em
+                  v-else
+                  class="text-muted"
+                >
+                  (cached)
+                </em>
+              </span>
+            </div>
+            <div class="col-1 text-right d-none d-xl-flex">
+              <span v-if="service.image && service.image.name && (service.status == 'RUNNING' || service.status == 'SUCCEEDED' || service.status == 'FAILED')">
+                <span v-if="service.image.pullDuration && service.image.pullDuration > 0">
+                  {{ service.image.pullDuration | formatDuration }}
+                </span>
+                <em
+                  v-else
+                  class="text-muted"
+                >
+                  (cached)
+                </em>
+              </span>
+            </div>
+            <div class="col-1 text-right d-none d-xl-flex">
+              <span v-if="service.duration && (service.status == 'SUCCEEDED' || service.status == 'FAILED')">
+                {{ service.duration | formatDuration }}
+              </span>
+            </div>
+            <div class="col-2 col-lg-1 text-right d-none d-md-flex">
+              <span v-if="service.image && (service.status == 'RUNNING' || service.status == 'SUCCEEDED' || service.status == 'FAILED')">
+                {{ service.image.pullDuration + service.duration | formatDuration }}
+              </span>
+            </div>
+          </div>
+
+          <div
+            class="text-light text-monospace bg-dark m-0 p-3"
+            v-if="service.logLines && service.logLines.length > 0"
+          >
+            <div
+              class="row no-gutters"
+              v-for="(line, lineIndex) in service.logLines"
+              :key="line.line ? line.line : lineIndex"
+            >
+              <div class="col-1 log-timestamp text-white-50 d-none d-xl-flex">
+                {{ line.timestamp | moment('YYYY-MM-DD HH:mm:ss') }}
+              </div>
+              <div
+                class="col log-text"
+                v-html="formatLog(line.text)"
+              />
+            </div>
+          </div>
+        </b-collapse>
+
+        <b-collapse
+          class="container-fluid collapse p-0"
           v-for="nestedStep in step.nestedSteps"
           :key="nestedStep.step"
           :id="'accordion-'+step.step + '-' + step.runIndex + '-' +nestedStep.step"
@@ -188,7 +298,7 @@
                 <font-awesome-icon
                   v-if="nestedStep.image.isTrusted"
                   icon="shield-alt"
-                  class="small text-muted"
+                  class="small text-muted mb-1"
                   title="This image is configured as trusted by Estafette CI"
                 />
               </span>
@@ -296,10 +406,10 @@ import AnsiUp from 'ansi_up'
 import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BFormCheckbox, BFormGroup } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faShieldAlt } from '@fortawesome/free-solid-svg-icons'
+import { faShieldAlt, faLayerGroup } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faShieldAlt)
+library.add(faShieldAlt, faLayerGroup)
 
 export default {
   components: {
@@ -471,10 +581,13 @@ export default {
             var step = stepIndex > -1 ? this.log.steps[stepIndex] : null
             if (stepIndex === -1) {
               // create new step
+              var initialStatus = 'RUNNING'
+              if (data.status) {
+                initialStatus = data.status
+              }
+              step = { step: data.step, logLines: [], nestedSteps: [], services: [], exitCode: 0, status: initialStatus, autoInjected: false, duration: 0 }
               if (data.image) {
-                step = { step: data.step, image: data.image, logLines: [], nestedSteps: [], exitCode: 0, status: 'RUNNING', autoInjected: data.autoInjected ? data.autoInjected : false, duration: 0 }
-              } else {
-                step = { step: data.step, logLines: [], nestedSteps: [], exitCode: 0, status: 'RUNNING', autoInjected: false, duration: 0 }
+                step.image = data.image
               }
               this.tailedSteps.push(data.step)
               this.log.steps.push(step)
@@ -513,34 +626,61 @@ export default {
           } else {
             // a nested stage, see if it exists in the last outer stage, otherwise add it (still at risk when the event stream restarts)
             if (this.log.steps.length > 0) {
-              // get last outer step
-              var lastStep = this.log.steps[this.log.steps.length - 1]
-
-              var nestedStepIndex = lastStep.nestedSteps.findIndex(ns => ns.step === data.step)
-              var nestedStep = nestedStepIndex > -1 ? lastStep.nestedSteps[nestedStepIndex] : null
-              if (nestedStepIndex === -1) {
-                // create new nested step
-                if (data.image) {
-                  nestedStep = { step: data.step, image: data.image, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: data.autoInjected ? data.autoInjected : false, duration: 0 }
-                } else {
-                  nestedStep = { step: data.step, logLines: [], exitCode: 0, status: 'RUNNING', autoInjected: false, duration: 0 }
-                }
-                lastStep.nestedSteps.push(nestedStep)
-                nestedStepIndex = lastStep.nestedSteps.length - 1
-
-                // reset last line number
-                this.lastLineNumber = 0
+              var stageType = 'stage'
+              if (data.type) {
+                stageType = data.type
               }
-            }
 
-            if (data.status) {
-              nestedStep.status = data.status
-            }
-            if (data.exitCode) {
-              nestedStep.exitCode = data.exitCode
-            }
-            if (data.duration) {
-              nestedStep.duration = data.duration
+              // get last outer step (or by name if parentStage property exists)
+              var outerStep = this.log.steps[this.log.steps.length - 1]
+              if (data.parentStage) {
+                stepIndex = this.tailedSteps.findIndex(s => s === data.parentStage)
+                if (stepIndex > -1) {
+                  outerStep = this.log.steps[stepIndex]
+                }
+              }
+
+              if (stageType === 'service') {
+                var nestedStepIndex = outerStep.services.findIndex(ns => ns.step === data.step)
+                var nestedStep = nestedStepIndex > -1 ? outerStep.services[nestedStepIndex] : null
+                if (nestedStepIndex === -1) {
+                  // create new nested service step
+                  initialStatus = 'RUNNING'
+                  if (data.status) {
+                    initialStatus = data.status
+                  }
+                  nestedStep = { step: data.step, logLines: [], exitCode: 0, status: initialStatus, autoInjected: false, duration: 0 }
+                  if (data.image) {
+                    nestedStep.image = data.image
+                  }
+                  outerStep.services.push(nestedStep)
+                }
+              } else {
+                nestedStepIndex = outerStep.nestedSteps.findIndex(ns => ns.step === data.step)
+                nestedStep = nestedStepIndex > -1 ? outerStep.nestedSteps[nestedStepIndex] : null
+                if (nestedStepIndex === -1) {
+                  // create new nested stage step
+                  initialStatus = 'RUNNING'
+                  if (data.status) {
+                    initialStatus = data.status
+                  }
+                  nestedStep = { step: data.step, logLines: [], exitCode: 0, status: initialStatus, autoInjected: false, duration: 0 }
+                  if (data.image) {
+                    nestedStep.image = data.image
+                  }
+                  outerStep.nestedSteps.push(nestedStep)
+                }
+              }
+
+              if (data.status) {
+                nestedStep.status = data.status
+              }
+              if (data.exitCode) {
+                nestedStep.exitCode = data.exitCode
+              }
+              if (data.duration) {
+                nestedStep.duration = data.duration
+              }
             }
           }
 
