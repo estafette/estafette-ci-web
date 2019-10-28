@@ -12,17 +12,19 @@ version:
     minor: 1
 
 stages:
-  audit:
-    image: extensions/npm-audit:dev
-    action: audit
-    workspace: estafette
-    channels:
-    - '#npm-audit'
+  audit-and-restore:
+    parallelStages:
+      audit:
+        image: extensions/npm-audit:dev
+        action: audit
+        workspace: estafette
+        channels:
+        - '#npm-audit'
 
-  restore:
-    image: node:12.12.0-alpine
-    commands:
-    - npm ci
+      restore:
+        image: node:12.12.0-alpine
+        commands:
+        - npm ci
 
   lint:
     image: node:12.12.0-alpine
