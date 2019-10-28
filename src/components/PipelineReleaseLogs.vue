@@ -455,7 +455,6 @@ export default {
       log: {},
       refresh: true,
       tailedSteps: [],
-      lastLineNumber: 0,
       showInjectedStages: false
     }
   },
@@ -590,13 +589,10 @@ export default {
               if (data.status) {
                 initialStatus = data.status
               }
-              step = { step: data.step, logLines: [], nestedSteps: [], services: [], exitCode: 0, status: initialStatus, autoInjected: data.autoInjected, duration: 0 }
+              step = { step: data.step, logLines: [], nestedSteps: [], services: [], exitCode: 0, status: initialStatus, autoInjected: data.autoInjected, duration: 0, lastLineNumber: 0 }
               this.tailedSteps.push(data.step)
               this.log.steps.push(step)
               stepIndex = this.log.steps.length - 1
-
-              // reset last line number
-              this.lastLineNumber = 0
             }
 
             if (stepIndex !== this.tailedSteps.length - 1) {
@@ -618,12 +614,12 @@ export default {
             }
 
             if (data.logLine) {
-              if (data.logLine.line > this.lastLineNumber) {
+              if (data.logLine.line > step.lastLineNumber) {
                 step.logLines.push(data.logLine)
-                this.lastLineNumber = data.logLine.line
+                step.lastLineNumber = data.logLine.line
 
                 // tail only last 10 rows per stage to keep dom light
-                if (data.logLine.line > 0) {
+                if (data.logLine.line > 10) {
                   step.logLines.shift()
                 }
               }
@@ -649,7 +645,7 @@ export default {
                   if (data.status) {
                     initialStatus = data.status
                   }
-                  nestedStep = { step: data.step, logLines: [], exitCode: 0, status: initialStatus, autoInjected: false, duration: 0 }
+                  nestedStep = { step: data.step, logLines: [], exitCode: 0, status: initialStatus, autoInjected: false, duration: 0, lastLineNumber: 0 }
                   outerStep.services.push(nestedStep)
                 }
               } else {
@@ -661,7 +657,7 @@ export default {
                   if (data.status) {
                     initialStatus = data.status
                   }
-                  nestedStep = { step: data.step, logLines: [], exitCode: 0, status: initialStatus, autoInjected: false, duration: 0 }
+                  nestedStep = { step: data.step, logLines: [], exitCode: 0, status: initialStatus, autoInjected: false, duration: 0, lastLineNumber: 0 }
                   outerStep.nestedSteps.push(nestedStep)
                 }
               }
@@ -677,6 +673,18 @@ export default {
               }
               if (data.duration) {
                 nestedStep.duration = data.duration
+              }
+
+              if (data.logLine) {
+                if (data.logLine.line > nestedStep.lastLineNumber) {
+                  nestedStep.logLines.push(data.logLine)
+                  nestedStep.lastLineNumber = data.logLine.line
+
+                  // tail only last 10 rows per stage to keep dom light
+                  if (data.logLine.line > 10) {
+                    nestedStep.logLines.shift()
+                  }
+                }
               }
             }
           }
