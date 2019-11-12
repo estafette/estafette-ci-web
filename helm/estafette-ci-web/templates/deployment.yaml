@@ -128,6 +128,8 @@ spec:
               value: {{.Values.openresty.proxyBuffersNumber | quote }}
             - name: PROXY_BUFFERS_SIZE
               value: {{.Values.openresty.proxyBuffersSize | quote }}
+            - name: PROXY_BUFFER_SIZE
+              value: {{.Values.openresty.proxyBufferSize | quote }}
             - name: PROXY_CONNECT_TIMEOUT
               value: {{.Values.openresty.proxyConnectTimeout | quote }}
             - name: PROXY_READ_TIMEOUT

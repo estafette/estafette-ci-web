@@ -42,6 +42,7 @@ openresty:
   gracefulShutdownDelaySeconds: 15
   proxyBuffersNumber: 4
   proxyBuffersSize: 4k
+  proxyBufferSize: 4k
   proxyConnectTimeout: 60s
   proxyReadTimeout: 60s
   proxySendTimeout: 60s
