@@ -80,6 +80,9 @@ stages:
     image: extensions/helm:dev
     action: test
     values: |-
+      openresty:
+        image:
+          tag: a0c3138b017e310fb6b49a63d5b701936247a5b5a6dc663d49ff8258281cc0b8
       secret:
         valuesAreBase64Encoded: true
         # generated with
