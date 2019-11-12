@@ -165,3 +165,19 @@ releases:
         when:
           status == 'succeeded' ||
           status == 'failed'
+
+  helm-diff:
+    stages:
+      diff:
+        image: extensions/helm:dev
+        credentials: gke-tooling
+        action: diff
+        tillerless: true
+        namespace: estafette
+        values: |-
+          hostnames:
+          - estafette.secret(z6C9Piz4EhMxWMc8.uxcITmg39HiLJuuqSyPRM06PTWNd6S1x1QxfYYeyGoBLcgkM)
+          secret:
+            useLetsEncryptCertificateAnnotation: true
+          jaeger:
+            enable: true

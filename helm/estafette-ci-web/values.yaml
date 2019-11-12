@@ -55,9 +55,6 @@ openresty:
       cpu: 75m
       memory: 50Mi
 
-  # when using estafette-gcp-service account controller to fetch key files, set this to true and leave googleServiceAccountKeyfileJson empty
-  useGcpServiceAccountAnnotation: false
-
 secret:
   # if set to true the values are already base64 encoded when provided, otherwise the template performs the base64 encoding
   valuesAreBase64Encoded: false
