@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="steps"
+    v-if="steps && steps.length > 0"
     class="accordion m-3"
   >
     <b-form-group
