@@ -1,11 +1,4 @@
-{
-    "id": "352358891122524161",
-    "insertedAt": 1527601799,
-    "repoBranch": "estafette-extension-bitbucket-status",
-    "repoName": "estafette",
-    "repoOwner": "github.com",
-    "releaseID": "372762091039162371",
-    "steps": [
+[
     {
     "step": "git-clone",
     "image": {
@@ -245,5 +238,4 @@
     "exitCode": 0,
     "status": "SUCCEEDED"
     }
-    ]
-}
+]
