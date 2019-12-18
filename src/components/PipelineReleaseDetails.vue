@@ -122,6 +122,8 @@ export default {
           this.release = response.data
           if (this.release.releaseStatus !== 'succeeded' && this.release.releaseStatus !== 'failed') {
             this.periodicallyRefreshRelease(5)
+          } else {
+            this.periodicallyRefreshRelease(15)
           }
         })
         .catch(e => {
