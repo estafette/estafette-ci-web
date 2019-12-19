@@ -22,17 +22,17 @@ stages:
         - '#npm-audit'
 
       restore:
-        image: node:13.3.0-alpine
+        image: node:13.4.0-alpine
         commands:
         - npm ci
 
   lint:
-    image: node:13.3.0-alpine
+    image: node:13.4.0-alpine
     commands:
     - npm run lint
 
   build:
-    image: node:13.3.0-alpine
+    image: node:13.4.0-alpine
     commands:
     - npm run build
 
@@ -72,6 +72,19 @@ stages:
         action: trivy
         repositories:
         - estafette
+
+  test:
+    services:
+    - name: ci.estafette.io
+      image: estafette/estafette-ci-web:${ESTAFETTE_BUILD_VERSION}
+      readiness:
+        path: /robots.txt
+        port: 5000
+
+    image: node:13.4.0-alpine
+    commands:
+    - apk add curl
+    - curl --fail http://ci.estafette.io:5000/manifest/encrypt
 
   push-to-docker-hub:
     image: extensions/docker:dev
