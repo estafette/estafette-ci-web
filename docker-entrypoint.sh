@@ -6,22 +6,22 @@ set -e
 # SIGTERM-handler
 sigterm_handler() {
   # kubernetes sends a sigterm, where openresty needs SIGQUIT for graceful shutdown
-  echo "Gracefully shutting down openresty in ${GRACEFUL_SHUTDOWN_DELAY_SECONDS}s..."
+  echo "Received SIGTERM, allowing connections to drain for ${GRACEFUL_SHUTDOWN_DELAY_SECONDS}s..."
   sleep $GRACEFUL_SHUTDOWN_DELAY_SECONDS
+  echo "Gracefully shutting down openresty..."
   /usr/local/openresty/bin/openresty -s quit
-  echo "Finished shutting down openresty!"
+  wait $openresty_pid
+  echo "Openresty has gracefully terminated, exiting entrypoint script..."
+  exit
 }
-
-# setup handlers
-echo "Setting up signal handlers..."
-trap 'kill ${!}; sigterm_handler' 15 # SIGTERM
 
 # run openresty
 echo "Starting openresty..."
 /usr/local/openresty/bin/openresty &
+openresty_pid=${!}
 
-# wait forever until sigterm_handler stops all background processes
-while true
-do
-  tail -f /dev/null & wait ${!}
-done
+# setup handlers
+echo "Setting up signal handlers..."
+trap 'sigterm_handler' 15 # SIGTERM
+
+wait $openresty_pid
