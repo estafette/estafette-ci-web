@@ -1,11 +1,11 @@
-FROM openresty/openresty:1.15.8.2-6-alpine
+FROM openresty/openresty:1.15.8.2-6-buster
 
 LABEL maintainer="estafette.io" \
       description="The estafette-ci-web is the component that renders the Esfafette CI web interface"
 
-RUN apk update \
-    && apk add --upgrade openssl \
-    && rm -rf /var/cache/apk/*
+# RUN apk update \
+#     && apk add --upgrade openssl \
+#     && rm -rf /var/cache/apk/*
 
 COPY . /usr/local/openresty/nginx/html/
 COPY nginx.vh.default.conf /etc/nginx/conf.d/default.conf
