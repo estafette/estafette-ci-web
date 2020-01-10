@@ -17,7 +17,7 @@ sigterm_handler() {
 
 # run openresty
 echo "Starting openresty..."
-/usr/local/openresty/bin/openresty -g daemon off &
+/usr/local/openresty/bin/openresty -g 'daemon off;' &
 openresty_pid=${!}
 
 # setup handlers
