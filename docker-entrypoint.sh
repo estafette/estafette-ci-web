@@ -25,3 +25,4 @@ echo "Setting up signal handlers..."
 trap 'sigterm_handler' 15 # SIGTERM
 
 wait $openresty_pid
+echo "Openresty has gracefully terminated, exiting entrypoint script..."
