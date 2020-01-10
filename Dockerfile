@@ -9,6 +9,10 @@ COPY ./docker-entrypoint.sh /
 
 RUN chmod 500 /docker-entrypoint.sh
 
+# regain wasted space
+RUN rm -rf /var/cache/debconf \
+    && mkdir -p /var/cache/debconf
+
 EXPOSE 5000
 
 # runtime environment variables
