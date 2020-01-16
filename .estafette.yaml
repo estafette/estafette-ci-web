@@ -14,12 +14,12 @@ version:
 stages:
   audit-and-restore:
     parallelStages:
-      audit:
-        image: extensions/npm-audit:dev
-        action: audit
-        workspace: estafette
-        channels:
-        - '#npm-audit'
+      # audit:
+      #   image: extensions/npm-audit:dev
+      #   action: audit
+      #   workspace: estafette
+      #   channels:
+      #   - '#npm-audit'
 
       restore:
         image: node:13.6.0-alpine
@@ -58,6 +58,7 @@ stages:
     - favicon.ico
     - nginx.vh.default.conf
     - docker-entrypoint.sh
+    - package-lock.json
 
   check-container:
     parallelStages:

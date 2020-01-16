@@ -5,7 +5,8 @@ LABEL maintainer="estafette.io" \
 
 COPY . /usr/local/openresty/nginx/html/
 COPY nginx.vh.default.conf /etc/nginx/conf.d/default.conf
-COPY ./docker-entrypoint.sh /
+COPY docker-entrypoint.sh /
+COPY package-lock.json /
 
 RUN chmod 500 /docker-entrypoint.sh
 
