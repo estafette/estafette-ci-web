@@ -14,12 +14,12 @@ version:
 stages:
   audit-and-restore:
     parallelStages:
-      # audit:
-      #   image: extensions/npm-audit:dev
-      #   action: audit
-      #   workspace: estafette
-      #   channels:
-      #   - '#npm-audit'
+      audit:
+        image: extensions/npm-audit:dev
+        action: audit
+        workspace: estafette
+        channels:
+        - '#npm-audit'
 
       restore:
         image: node:13.6.0-alpine
@@ -35,18 +35,6 @@ stages:
     image: node:13.6.0-alpine
     commands:
     - npm run build
-
-  # upload-to-gcs-bucket:
-  #   image: extensions/gcs:dev
-  #   credentials: gke-tooling
-  #   action: copy
-  #   bucket: estafette.secret(8uUO_ASSO694bx59.R4QPJTVZYxrjZpR6f-x3MVxDfL8ggG728kOSewVEwFslM4GR3cjz)
-  #   source: 'dist/*'
-  #   destination: ${ESTAFETTE_BUILD_VERSION}/
-  #   # defaults
-  #   recursive: true
-  #   compress: true
-  #   parallel: true
 
   bake:
     image: extensions/docker:dev
