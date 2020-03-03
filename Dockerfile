@@ -3,7 +3,11 @@ FROM nginx:1.17.8-alpine
 LABEL maintainer="estafette.io" \
       description="The estafette-ci-web is the component that renders the Esfafette CI web interface"
 
-COPY . /usr/local/openresty/nginx/html/
+RUN apk update \
+    && apk add bash \
+    && rm -rf /var/cache/apk/*
+
+COPY . /usr/share/nginx/html
 COPY nginx.vh.default.conf /etc/nginx/conf.d/default.conf
 COPY docker-entrypoint.sh /
 COPY package-lock.json /
