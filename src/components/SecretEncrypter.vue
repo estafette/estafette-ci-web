@@ -1,5 +1,10 @@
 <template>
   <div class="m-3 p-3">
+    <warning
+      v-if="showPipelineRestrictWarning"
+      :warning="warning"
+    />
+
     <b-form
       @submit="onSubmit"
       autocomplete="off"
@@ -17,6 +22,7 @@
 
       <b-form-group
         description="To encrypt the secret envelope a second time for injecting it into Estafette's configmap."
+        v-if="showDoubleEncrypt"
       >
         <b-form-checkbox
           id="double"
@@ -24,6 +30,19 @@
         >
           Double encrypt
         </b-form-checkbox>
+      </b-form-group>
+
+      <b-form-group
+        label="Pipeline restriction regex"
+        label-for="pipelineWhitelist"
+        description="The pipeline to restrict decryption of the secret for."
+      >
+        <b-form-input
+          id="pipelineWhitelist"
+          v-model="form.pipelineWhitelist"
+          readonly
+          type="text"
+        />
       </b-form-group>
 
       <b-form-group
@@ -75,16 +94,33 @@
 
 <script>
 import spinner from '@/components/Spinner'
-import { BForm, BFormCheckbox, BFormTextarea, BFormGroup, BButton, BTooltip } from 'bootstrap-vue'
+import { BForm, BFormCheckbox, BFormInput, BFormTextarea, BFormGroup, BButton, BTooltip } from 'bootstrap-vue'
+import Warning from '@/components/Warning'
 
 export default {
   components: {
     spinner,
     BForm,
     BFormCheckbox,
+    BFormInput,
     BFormTextarea,
     BFormGroup,
-    BButton
+    BButton,
+    Warning
+  },
+  props: {
+    repoSource: {
+      type: String,
+      default: null
+    },
+    repoOwner: {
+      type: String,
+      default: null
+    },
+    repoName: {
+      type: String,
+      default: null
+    }
   },
   directives: {
     BTooltip
@@ -94,8 +130,15 @@ export default {
       form: {
         base64: false,
         double: false,
+        pipelineWhitelist: this.repoSource !== null && this.repoOwner !== null && this.repoName !== null ? `${this.repoSource}/${this.repoOwner}/${this.repoName}` : '.*',
         value: null
       },
+      warning: {
+        message: 'In order to restrict secrets to be used in a single pipeline navigate to the secrets tab for that pipeline.',
+        status: 'warning'
+      },
+      showDoubleEncrypt: this.repoSource === null && this.repoOwner === null && this.repoName === null,
+      showPipelineRestrictWarning: this.repoSource === null && this.repoOwner === null && this.repoName === null,
       encrypting: false,
       secret: null
     }
