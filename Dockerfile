@@ -1,4 +1,4 @@
-FROM openresty/openresty:1.15.8.2-6-buster
+FROM openresty/openresty:1.15.8.2-7-buster
 
 LABEL maintainer="estafette.io" \
       description="The estafette-ci-web is the component that renders the Esfafette CI web interface"
