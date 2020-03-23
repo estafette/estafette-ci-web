@@ -29,7 +29,7 @@
       <b-form-group
         label="Value to encrypt"
         label-for="value"
-        description="The encrypted secret works only for this Estafette CI installation."
+        description="The encrypted secret works only for this Estafette CI installation. Try to avoid newlines, this can cause errors during pipeline execution."
       >
         <b-form-textarea
           id="value"
