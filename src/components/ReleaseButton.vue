@@ -52,11 +52,7 @@
 </template>
 
 <script>
-import bDropdown from 'bootstrap-vue/es/components/dropdown/dropdown'
-import bDropdownHeader from 'bootstrap-vue/es/components/dropdown/dropdown-header'
-import bDropdownItemButton from 'bootstrap-vue/es/components/dropdown/dropdown-item-button'
-import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
-import bInputGroupText from 'bootstrap-vue/es/components/input-group/input-group-text'
+import { BDropdown, BDropdownHeader, BDropdownItemButton, BInputGroup, BInputGroupText } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUpload } from '@fortawesome/free-solid-svg-icons'
@@ -66,11 +62,11 @@ library.add(faUpload)
 
 export default {
   components: {
-    bDropdown,
-    bDropdownHeader,
-    bDropdownItemButton,
-    bInputGroup,
-    bInputGroupText,
+    BDropdown,
+    BDropdownHeader,
+    BDropdownItemButton,
+    BInputGroup,
+    BInputGroupText,
     FontAwesomeIcon
   },
   props: {

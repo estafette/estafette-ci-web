@@ -21,13 +21,12 @@
 </template>
 
 <script>
-import bFormCheckbox from 'bootstrap-vue/es/components/form-checkbox/form-checkbox'
-import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group'
+import { BFormCheckbox, BFormGroup } from 'bootstrap-vue'
 
 export default {
   components: {
-    bFormCheckbox,
-    bFormGroup
+    BFormCheckbox,
+    BFormGroup
   },
   props: {
     build: {

@@ -24,13 +24,12 @@
 </template>
 
 <script>
-import bModal from 'bootstrap-vue/es/components/modal/modal'
-import bButton from 'bootstrap-vue/es/components/button/button'
+import { BModal, BButton } from 'bootstrap-vue'
 
 export default {
   components: {
-    bModal,
-    bButton
+    BModal,
+    BButton
   },
 
   data: function () {

@@ -72,6 +72,12 @@ export default new Router({
           name: 'PipelineTriggers',
           props: true,
           component: PipelineTriggers
+        },
+        {
+          path: 'encrypt',
+          name: 'PipelineSecretEncrypter',
+          props: true,
+          component: SecretEncrypter
         }
       ]
     },

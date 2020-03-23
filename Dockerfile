@@ -1,18 +1,23 @@
-FROM openresty/openresty:1.13.6.2-alpine
+FROM nginx:1.17.8-alpine
 
 LABEL maintainer="estafette.io" \
       description="The estafette-ci-web is the component that renders the Esfafette CI web interface"
 
-COPY . /usr/local/openresty/nginx/html/
+RUN apk update \
+    && apk add bash \
+    && rm -rf /var/cache/apk/*
+
+COPY . /usr/share/nginx/html
 COPY nginx.vh.default.conf /etc/nginx/conf.d/default.conf
-COPY ./docker-entrypoint.sh /
+COPY docker-entrypoint.sh /
+COPY package-lock.json /
 
 RUN chmod 500 /docker-entrypoint.sh
 
 EXPOSE 5000
 
 # runtime environment variables
-ENV GRACEFUL_SHUTDOWN_DELAY_SECONDS="5"
+ENV GRACEFUL_SHUTDOWN_DELAY_SECONDS="15"
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 

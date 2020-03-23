@@ -95,6 +95,18 @@
           Statistics
         </router-link>
       </li>
+      <li class="nav-item">
+        <router-link
+          :to="{ name: 'PipelineSecretEncrypter', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
+          class="nav-link"
+        >
+          <font-awesome-icon
+            icon="user-secret"
+            class="mr-2"
+          />
+          Secrets
+        </router-link>
+      </li>
     </ul>
 
     <router-view
@@ -111,10 +123,10 @@ import Pipeline from '@/components/Pipeline'
 import PipelineWarnings from '@/components/PipelineWarnings'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTools, faUpload, faProjectDiagram, faChartLine } from '@fortawesome/free-solid-svg-icons'
+import { faTools, faUpload, faProjectDiagram, faChartLine, faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faTools, faUpload, faProjectDiagram, faChartLine)
+library.add(faTools, faUpload, faProjectDiagram, faChartLine, faUserSecret)
 
 export default {
   components: {

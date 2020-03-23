@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import bPaginationNav from 'bootstrap-vue/es/components/pagination-nav/pagination-nav'
+import { BPaginationNav } from 'bootstrap-vue'
 
 export default {
   components: {
-    bPaginationNav
+    BPaginationNav
   },
 
   props: {

@@ -51,6 +51,15 @@
         </a>
         <!-- {{ event.git.branch }} -->
       </div>
+      <div v-if="event.pubsub">
+        <h6>
+          <font-awesome-icon
+            icon="bezier-curve"
+            class="triggered-by-icon"
+          />
+          projects/{{ event.pubsub.project }}/topics/{{ event.pubsub.topic }}
+        </h6>
+      </div>
       <div v-if="event.docker" />
       <div v-if="event.cron">
         <font-awesome-icon
@@ -72,10 +81,10 @@
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTools, faUpload, faUserCircle, faClock, faCodeBranch } from '@fortawesome/free-solid-svg-icons'
+import { faTools, faUpload, faUserCircle, faClock, faCodeBranch, faBezierCurve } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faTools, faUpload, faUserCircle, faClock, faCodeBranch)
+library.add(faTools, faUpload, faUserCircle, faClock, faCodeBranch, faBezierCurve)
 
 export default {
   components: {

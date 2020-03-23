@@ -16,9 +16,7 @@
 </template>
 
 <script>
-import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
-import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
-import bInputGroupPrepend from 'bootstrap-vue/es/components/input-group/input-group-prepend'
+import { BFormInput, BInputGroup, BInputGroupPrepend } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFilter } from '@fortawesome/free-solid-svg-icons'
@@ -28,9 +26,9 @@ library.add(faFilter)
 
 export default {
   components: {
-    bFormInput,
-    bInputGroup,
-    bInputGroupPrepend,
+    BFormInput,
+    BInputGroup,
+    BInputGroupPrepend,
     FontAwesomeIcon
   },
 

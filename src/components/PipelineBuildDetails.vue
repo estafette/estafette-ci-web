@@ -143,6 +143,8 @@ export default {
           this.build = response.data
           if (this.build.buildStatus !== 'succeeded' && this.build.buildStatus !== 'failed') {
             this.periodicallyRefreshBuild(5)
+          } else {
+            this.periodicallyRefreshBuild(15)
           }
         })
         .catch(e => {

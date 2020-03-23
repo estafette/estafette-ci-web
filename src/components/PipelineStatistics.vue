@@ -34,7 +34,7 @@
     </div>
 
     <div class="mt-0 mr-3 mb-3 ml-3 row">
-      <div class="col-12 col-xl-6">
+      <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
         <pipeline-stats-timeline
           :pipeline="pipeline"
           :filter="filter"
@@ -43,9 +43,55 @@
           class="mb-3"
         />
       </div>
-      <div class="col-12 col-xl-6">
+      <div
+        v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
+        class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
+      >
         <pipeline-stats-timeline
-          v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
+          :pipeline="pipeline"
+          :filter="filter"
+          type="releases"
+          status="success"
+          class="mb-3"
+        />
+      </div>
+
+      <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
+        <pipeline-stats-cpu
+          :pipeline="pipeline"
+          :filter="filter"
+          type="builds"
+          status="primary"
+          class="mb-3"
+        />
+      </div>
+      <div
+        v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
+        class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
+      >
+        <pipeline-stats-cpu
+          :pipeline="pipeline"
+          :filter="filter"
+          type="releases"
+          status="success"
+          class="mb-3"
+        />
+      </div>
+
+      <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
+        <pipeline-stats-memory
+          :pipeline="pipeline"
+          :filter="filter"
+          type="builds"
+          status="primary"
+          class="mb-3"
+        />
+      </div>
+      <div
+        v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
+        class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
+      >
+        <pipeline-stats-memory
           :pipeline="pipeline"
           :filter="filter"
           type="releases"
@@ -59,9 +105,9 @@
 
 <script>
 import PipelineStatsTimeline from '@/components/PipelineStatsTimeline'
-import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select'
-import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
-import bInputGroupPrepend from 'bootstrap-vue/es/components/input-group/input-group-prepend'
+import PipelineStatsCpu from '@/components/PipelineStatsCpu'
+import PipelineStatsMemory from '@/components/PipelineStatsMemory'
+import { BFormSelect, BInputGroup, BInputGroupPrepend } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChartLine, faHistory } from '@fortawesome/free-solid-svg-icons'
@@ -72,9 +118,11 @@ library.add(faChartLine, faHistory)
 export default {
   components: {
     PipelineStatsTimeline,
-    bFormSelect,
-    bInputGroup,
-    bInputGroupPrepend,
+    PipelineStatsCpu,
+    PipelineStatsMemory,
+    BFormSelect,
+    BInputGroup,
+    BInputGroupPrepend,
     FontAwesomeIcon
   },
 

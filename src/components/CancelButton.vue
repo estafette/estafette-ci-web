@@ -1,6 +1,6 @@
 <template>
   <b-input-group
-    v-if="user.authenticated && ((build && (build.buildStatus === 'pending' || build.buildStatus === 'running' || build.buildStatus === 'canceling')) || (release && (release.releaseStatus === 'running' || release.releaseStatus === 'canceling')))"
+    v-if="user.authenticated && ((build && (build.buildStatus === 'pending' || build.buildStatus === 'running' || build.buildStatus === 'canceling')) || (release && (release.releaseStatus === 'pending' || release.releaseStatus === 'running' || release.releaseStatus === 'canceling')))"
     style="width: auto;"
   >
     <b-input-group-text
@@ -20,8 +20,7 @@
 </template>
 
 <script>
-import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group'
-import bInputGroupText from 'bootstrap-vue/es/components/input-group/input-group-text'
+import { BInputGroup, BInputGroupText } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBan } from '@fortawesome/free-solid-svg-icons'
@@ -31,8 +30,8 @@ library.add(faBan)
 
 export default {
   components: {
-    bInputGroup,
-    bInputGroupText,
+    BInputGroup,
+    BInputGroupText,
     FontAwesomeIcon
   },
   props: {

@@ -8,14 +8,14 @@
       Documentation
     </a>
     <a
-      href="https://github.com/estafette/estafette-ci-central"
+      href="https://github.com/estafette/estafette-ci"
       target="_blank"
       class="nav-link text-light"
     >
       Github
     </a>
     <a
-      href="https://github.com/estafette/estafette-ci-central/issues/new"
+      href="https://github.com/estafette/estafette-ci/issues/new"
       target="_blank"
       class="nav-link text-light"
     >
