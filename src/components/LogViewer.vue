@@ -400,7 +400,7 @@
 </template>
 
 <script>
-import debounce from 'lodash.debounce'
+import debounce from 'lodash/debounce'
 
 import AnsiUp from 'ansi_up'
 import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BFormCheckbox, BFormGroup } from 'bootstrap-vue'

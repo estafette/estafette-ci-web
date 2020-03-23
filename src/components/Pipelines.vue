@@ -126,7 +126,7 @@
 </template>
 
 <script>
-import debounce from 'lodash.debounce'
+import debounce from 'lodash/debounce'
 
 import Spinner from '@/components/Spinner'
 import Pipeline from '@/components/Pipeline'
