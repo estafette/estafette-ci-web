@@ -135,3 +135,47 @@ releases:
         when:
           status == 'succeeded' ||
           status == 'failed'
+
+  tooling-estafette:
+    clone: true
+    stages:
+      deploy:
+        image: extensions/gke:dev
+        namespace: estafette-ci
+        visibility: iap
+        iapOauthClientID: estafette.secret(iXOTyaK0CMquct2i.gHSRFMIopefYNe0bG4fANPaRaBknLwPP4qa1KiIUR_UWW6ORO5n9rLKvKGeRg5U_c_D3gQipezDEzmfaO7jsLbk8f8GpV4JFqMy3hT8g0dkdr5ndOkAwblORXBvK482HY7ihEWhEuRtyzGpK9YGALA==.qUmsBfkw3v36MosJJrfGZ9-yc09RHUjB55e4bAw5KPscGJ6eOLv-GTDQmVvuPK1x5NyJqrc=)
+        iapOauthClientSecret: estafette.secret(UwPXjVCad4ycIYJK.SSTHl16_SNYh4p0JB5o-nDdAnhQM3gKLgLmapXhj4fGQT0zgkQMLP-TVp18jyWFW.YxXxmUntMPgvyMI_JtxuzB18qEBw_gnOhImTolZTnuDveWlHDvG5nrmRJnjMd5xb1coCBsw=)
+        container:
+          repository: estafette
+          cpu:
+            request: 10m
+            limit: 200m
+          memory:
+            request: 15Mi
+            limit: 512Mi
+          liveness:
+            path: /robots.txt
+          readiness:
+            path: /robots.txt
+          metrics:
+            scrape: false
+        hosts:
+        - estafette.secret(Yckgy_NXzit9gA2t.l8LZcWPZbKkf5fMydVx6beetqZ_5sINemOrovXxfv0IbUmETD2TE.ldjZeHDeNr4Vpb8-KFxpavSwpdS1up1EbF1RNaa5S0SJ23IeCp9OQWfCjvf-ceIgFv8pwyg=)
+        chaosproof: true
+        manifests:
+          files:
+          - gke/ingress.yaml
+
+      purge-cloudflare-cache:
+        image: extensions/cloudflare-purge:dev
+        hosts:
+        - estafette.secret(Yckgy_NXzit9gA2t.l8LZcWPZbKkf5fMydVx6beetqZ_5sINemOrovXxfv0IbUmETD2TE.ldjZeHDeNr4Vpb8-KFxpavSwpdS1up1EbF1RNaa5S0SJ23IeCp9OQWfCjvf-ceIgFv8pwyg=)
+
+      slack-notify:
+        image: extensions/slack-build-status:dev
+        workspace: estafette
+        channels:
+        - '#build-status'
+        when:
+          status == 'succeeded' ||
+          status == 'failed'
