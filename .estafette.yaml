@@ -160,6 +160,7 @@ releases:
           metrics:
             scrape: false
         hosts:
+        - estafette.secret(z6C9Piz4EhMxWMc8.uxcITmg39HiLJuuqSyPRM06PTWNd6S1x1QxfYYeyGoBLcgkM)
         - estafette.secret(Yckgy_NXzit9gA2t.l8LZcWPZbKkf5fMydVx6beetqZ_5sINemOrovXxfv0IbUmETD2TE.ldjZeHDeNr4Vpb8-KFxpavSwpdS1up1EbF1RNaa5S0SJ23IeCp9OQWfCjvf-ceIgFv8pwyg=)
         chaosproof: true
         manifests:
@@ -169,6 +170,7 @@ releases:
       purge-cloudflare-cache:
         image: extensions/cloudflare-purge:dev
         hosts:
+        - estafette.secret(z6C9Piz4EhMxWMc8.uxcITmg39HiLJuuqSyPRM06PTWNd6S1x1QxfYYeyGoBLcgkM)
         - estafette.secret(Yckgy_NXzit9gA2t.l8LZcWPZbKkf5fMydVx6beetqZ_5sINemOrovXxfv0IbUmETD2TE.ldjZeHDeNr4Vpb8-KFxpavSwpdS1up1EbF1RNaa5S0SJ23IeCp9OQWfCjvf-ceIgFv8pwyg=)
 
       slack-notify:
