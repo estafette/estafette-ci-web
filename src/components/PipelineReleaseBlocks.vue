@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row justify-content-center">
     <div
       v-for="releaseTarget in pipeline.releaseTargets"
       :key="releaseTarget.name"
