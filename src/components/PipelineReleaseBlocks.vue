@@ -83,7 +83,7 @@ export default {
     },
 
     aggregatedStatus (releaseTarget) {
-      return releaseTarget.activeReleases.reduce((acc, release) => {
+      return releaseTarget && releaseTarget.activeReleases && releaseTarget.activeReleases.length > 0 ? releaseTarget.activeReleases.reduce((acc, release) => {
         const statusPriorities = [
           'pending',
           'running',
@@ -101,7 +101,7 @@ export default {
         })
 
         return acc
-      }, 'skipped')
+      }, 'skipped') : 'skipped'
     }
   }
 }
