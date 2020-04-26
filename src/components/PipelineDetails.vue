@@ -1,5 +1,5 @@
 <template>
-  <div class="m3">
+  <div>
     <nav
       class="m-3"
       aria-label="breadcrumb"
@@ -24,6 +24,13 @@
       :pipeline="pipeline"
       :dashboard-mode-active="dashboardModeActive"
       class="m-3"
+      v-if="pipeline"
+    />
+
+    <pipeline-release-blocks
+      :pipeline="pipeline"
+      :dashboard-mode-active="dashboardModeActive"
+      class="m-0 mt-3 mb-3 ml-3"
       v-if="pipeline"
     />
 
@@ -120,6 +127,7 @@
 
 <script>
 import Pipeline from '@/components/Pipeline'
+import PipelineReleaseBlocks from '@/components/PipelineReleaseBlocks'
 import PipelineWarnings from '@/components/PipelineWarnings'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -131,6 +139,7 @@ library.add(faTools, faUpload, faProjectDiagram, faChartLine, faUserSecret)
 export default {
   components: {
     Pipeline,
+    PipelineReleaseBlocks,
     PipelineWarnings,
     FontAwesomeIcon
   },

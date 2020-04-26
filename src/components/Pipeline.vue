@@ -141,7 +141,10 @@
         :events="pipeline.triggerEvents"
       />
     </div>
-    <div :class="[ colClassesReleases, 'mb-2 text-center' ]">
+    <div
+      :class="[ colClassesReleases, 'mb-2 text-center' ]"
+      v-if="rowItem"
+    >
       <div
         :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xxxl-none', 'small mb-1']"
         v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
@@ -207,6 +210,9 @@ export default {
     },
     showTriggeredBy () {
       return !this.dashboardModeActive && !this.rowItem
+    },
+    showReleases () {
+      return this.rowItem
     },
     colClassesPipeline () {
       if (this.dashboardModeActive || !this.rowItem) {
