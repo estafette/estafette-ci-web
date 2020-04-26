@@ -43,7 +43,7 @@
         </div>
         <div
           v-else
-          :class="[dashboardModeActive ? 'btn-dark' : 'btn-light', 'btn btn-sm mr-1 mb-1']"
+          :class="[dashboardModeActive ? 'btn-dark' : 'btn-light', 'btn btn-sm btn-block mr-1 mb-1']"
         >
           <span :class="['badge ml-1']">
             -

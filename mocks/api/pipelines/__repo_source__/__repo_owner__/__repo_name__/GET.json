@@ -201,22 +201,7 @@
    },
    {
       "name":"developmen7",
-      "activeReleases":[
-         {
-            "name":"development-7",
-            "action":"",
-            "id":"401925221141577735",
-            "repoSource":"github.com",
-            "repoOwner":"estafette",
-            "repoName":"estafette-ci-api",
-            "releaseVersion":"0.1.339",
-            "releaseStatus":"succeeded",
-            "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
-            "insertedAt":"2018-11-20T15:37:23.365593Z",
-            "updatedAt":"2018-11-20T15:38:42.44489Z",
-            "duration":79000000000
-         }
-      ]
+      "activeReleases":[]
    }
 
   ],
