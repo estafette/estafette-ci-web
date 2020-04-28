@@ -226,7 +226,7 @@
       "repoName":"estafette-ci-api",
       "repoBranch":"bug-16",
       "repoRevision":"f93ac58c2477e87526fe58640508838376fd0dd3",
-      "buildVersion":"0.1.337-bug-16",
+      "buildVersion":"",
       "buildStatus":"failed",
       "labels":[
          {

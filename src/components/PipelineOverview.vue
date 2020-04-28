@@ -46,7 +46,12 @@
             ]"
             tag="span"
           >
-            {{ build.buildVersion }}
+            <span v-if="build.buildVersion">
+              {{ build.buildVersion }}
+            </span>
+            <span v-else>
+              -
+            </span>
           </router-link>
         </div>
       </drag>
