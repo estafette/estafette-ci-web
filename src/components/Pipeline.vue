@@ -143,7 +143,6 @@
     </div>
     <div
       :class="[ colClassesReleases, 'mb-2 text-center' ]"
-      v-if="rowItem"
     >
       <div
         :class="[dashboardModeActive ? $options.filters.bootstrapMutedTextClass(pipeline.buildStatus) : 'text-black-50', alwaysShowTitles ? '' : 'd-xxxl-none', 'small mb-1']"
