@@ -98,34 +98,41 @@ export default {
 
     startRelease: function (releaseTarget, action, event) {
       if (this.user.authenticated) {
-        this.axios.post(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/releases`, {
+        var startedRelease = {
           name: releaseTarget.name,
           action: action ? action.name : '',
           repoSource: this.build.repoSource,
           repoOwner: this.build.repoOwner,
           repoName: this.build.repoName,
-          releaseVersion: this.build.buildVersion
-        })
+          releaseVersion: this.build.buildVersion,
+          releaseStatus: 'pending'
+        }
+        this.updateRelease(startedRelease)
+
+        this.axios.post(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/releases`, startedRelease)
           .then(response => {
             console.log(response)
-            var startedRelease = response.data
-
-            var releaseTarget = this.pipeline.releaseTargets.find(rt => rt.name === startedRelease.name)
-            if (releaseTarget) {
-              if (!releaseTarget.activeReleases) {
-                releaseTarget.activeReleases = [startedRelease]
-              } else {
-                // remove active release item if name and optional action matches the just started release
-                releaseTarget.activeReleases = releaseTarget.activeReleases.filter(r => r.action && startedRelease.action && r.action !== startedRelease.action)
-
-                // prepend newly started release
-                releaseTarget.activeReleases.unshift(startedRelease)
-              }
-            }
+            startedRelease = response.data
+            this.updateRelease(startedRelease)
           })
           .catch(error => {
             console.log(error)
           })
+      }
+    },
+
+    updateRelease (startedRelease) {
+      var releaseTarget = this.pipeline.releaseTargets.find(rt => rt.name === startedRelease.name)
+      if (releaseTarget) {
+        if (!releaseTarget.activeReleases) {
+          releaseTarget.activeReleases = [startedRelease]
+        } else {
+          // remove active release item if name and optional action matches the just started release
+          releaseTarget.activeReleases = releaseTarget.activeReleases.filter(r => r.action && startedRelease.action && r.action !== startedRelease.action)
+
+          // prepend newly started release
+          releaseTarget.activeReleases.unshift(startedRelease)
+        }
       }
     },
 

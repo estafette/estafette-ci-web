@@ -144,10 +144,18 @@
    },
    {
       "name":"development-4",
+      "actions":[
+         {
+            "name": "diff"
+         },
+         {
+            "name": "apply"
+         }
+      ],
       "activeReleases":[
          {
             "name":"development-4",
-            "action":"",
+            "action":"diff",
             "id":"401925221141577735",
             "repoSource":"github.com",
             "repoOwner":"estafette",

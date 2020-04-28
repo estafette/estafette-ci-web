@@ -93,6 +93,7 @@
         <drop
           :data="releaseTarget"
           @drop="releaseBuildToTargetDefault($event, releaseTarget)"
+          :disabled="releaseTargetDisabled(releaseTarget)"
           :class="[
             $options.filters.bootstrapClass(aggregatedStatus(releaseTarget), 'border'),
             dashboardModeActive ? $options.filters.bootstrapClass(aggregatedStatus(releaseTarget), 'bg') : 'bg-light',
@@ -104,43 +105,38 @@
             {{ releaseTarget.name }}
           </h6>
 
-          <div
-            v-if="releaseTarget.activeReleases && releaseTarget.activeReleases.length > 0"
+          <drop
+            v-for="release in mergedActionsAndActiveReleases(releaseTarget)"
+            :key="release.id"
+            @drop="releaseBuildToTargetAction($event, releaseTarget, release)"
+            :disabled="releaseTargetDisabled(releaseTarget)"
           >
-            <drop
-              v-for="release in releaseTarget.activeReleases"
-              :key="release.id"
-              @drop="releaseBuildToTargetAction($event, releaseTarget, release)"
+            <router-link
+              v-if="release && release.id && release.id > 0"
+              :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
+              exact
+              :class="[
+                $options.filters.bootstrapClass(release.releaseStatus, 'btn'),
+                'btn btn-sm btn-block mr-1 mb-1 text-truncate'
+              ]"
+              tag="span"
+              :title="release.action"
             >
-              <router-link
-                :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
-                exact
-                :class="[
-                  $options.filters.bootstrapClass(release.releaseStatus, 'btn'),
-                  'btn btn-sm btn-block mr-1 mb-1 text-truncate'
-                ]"
-                tag="span"
-                :title="release.action"
-              >
-                <span v-if="release.action">
-                  {{ release.action }}:
-                </span>{{ release.releaseVersion | defaultValue('-') }}
+              <span v-if="release.action">
+                {{ release.action }}:
+              </span>{{ release.releaseVersion | defaultValue('-') }}
 
-                <font-awesome-icon
-                  icon="fire"
-                  v-if="releaseIsUpToDate(release)"
-                />
-              </router-link>
-            </drop>
-          </div>
-          <div
-            v-else
-            :class="[dashboardModeActive ? 'btn-dark' : 'btn-light', 'btn btn-sm btn-block mr-1 mb-1']"
-          >
-            <span :class="['badge ml-1']">
-              -
-            </span>
-          </div>
+              <font-awesome-icon
+                icon="fire"
+                v-if="releaseIsUpToDate(release)"
+              />
+            </router-link>
+            <div v-else>
+              <span v-if="release.action">
+                {{ release.action }}:
+              </span>{{ release.releaseVersion | defaultValue('-') }}
+            </div>
+          </drop>
         </drop>
       </div>
     </div>
@@ -228,34 +224,41 @@ export default {
 
     startRelease: function (build, releaseTarget, actionName) {
       if (this.user.authenticated) {
-        this.axios.post(`/api/pipelines/${build.repoSource}/${build.repoOwner}/${build.repoName}/releases`, {
+        var startedRelease = {
           name: releaseTarget.name,
           action: actionName,
           repoSource: build.repoSource,
           repoOwner: build.repoOwner,
           repoName: build.repoName,
-          releaseVersion: build.buildVersion
-        })
+          releaseVersion: build.buildVersion,
+          releaseStatus: 'pending'
+        }
+        this.updateRelease(startedRelease)
+
+        this.axios.post(`/api/pipelines/${build.repoSource}/${build.repoOwner}/${build.repoName}/releases`, startedRelease)
           .then(response => {
             console.log(response)
-            var startedRelease = response.data
-
-            var releaseTarget = this.pipeline.releaseTargets.find(rt => rt.name === startedRelease.name)
-            if (releaseTarget) {
-              if (!releaseTarget.activeReleases) {
-                releaseTarget.activeReleases = [startedRelease]
-              } else {
-                // remove active release item if name and optional action matches the just started release
-                releaseTarget.activeReleases = releaseTarget.activeReleases.filter(r => r.action && startedRelease.action && r.action !== startedRelease.action)
-
-                // prepend newly started release
-                releaseTarget.activeReleases.unshift(startedRelease)
-              }
-            }
+            startedRelease = response.data
+            this.updateRelease(startedRelease)
           })
           .catch(error => {
             console.log(error)
           })
+      }
+    },
+
+    updateRelease (startedRelease) {
+      var releaseTarget = this.pipeline.releaseTargets.find(rt => rt.name === startedRelease.name)
+      if (releaseTarget) {
+        if (!releaseTarget.activeReleases) {
+          releaseTarget.activeReleases = [startedRelease]
+        } else {
+          // remove active release item if name and optional action matches the just started release
+          releaseTarget.activeReleases = releaseTarget.activeReleases.filter(r => r.action && startedRelease.action && r.action !== startedRelease.action)
+
+          // prepend newly started release
+          releaseTarget.activeReleases.unshift(startedRelease)
+        }
       }
     },
 
@@ -308,6 +311,60 @@ export default {
 
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadRecentBuilds, timeoutWithJitter)
+      }
+    },
+
+    getActiveRelease (activeReleases, actionName) {
+      if (activeReleases) {
+        return activeReleases.find(r => r.action === actionName)
+      }
+
+      return undefined
+    },
+
+    releaseTargetDisabled: function (releaseTarget) {
+      return this.pipeline &&
+             this.pipeline.releaseTargets &&
+             this.pipeline.releaseTargets.length > 0 &&
+             this.pipeline.releaseTargets.some(rt => rt.name === releaseTarget.name && rt.activeReleases && rt.activeReleases.some(ar => ar && ar.releaseStatus === 'running'))
+    }
+  },
+
+  computed: {
+    mergedActionsAndActiveReleases () {
+      return (releaseTarget) => {
+        if ((!releaseTarget.actions || releaseTarget.actions.length === 0) && (!releaseTarget.activeReleases || releaseTarget.activeReleases.length === 0)) {
+          return [{
+            name: releaseTarget.name,
+            repoSource: this.pipeline.repoSource,
+            repoOwner: this.pipeline.repoOwner,
+            repoName: this.pipeline.repoName
+          }]
+        }
+
+        if (!releaseTarget.actions || releaseTarget.actions.length === 0) {
+          return releaseTarget.activeReleases
+        }
+
+        var releaseActions = []
+
+        releaseTarget.actions.forEach(action => {
+          // check if there's an active release for name and action
+          var activeRelease = this.getActiveRelease(releaseTarget.activeReleases, action.name)
+          if (activeRelease !== undefined) {
+            releaseActions.push(activeRelease)
+          } else {
+            releaseActions.push({
+              name: releaseTarget.name,
+              action: action.name,
+              repoSource: this.pipeline.repoSource,
+              repoOwner: this.pipeline.repoOwner,
+              repoName: this.pipeline.repoName
+            })
+          }
+        })
+
+        return releaseActions
       }
     }
   },
