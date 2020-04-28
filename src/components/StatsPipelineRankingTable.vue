@@ -18,7 +18,7 @@
         <router-link
           v-for="(row, index) in rows"
           :key="index"
-          :to="{ name: 'PipelineBuilds', params: { repoSource: row.repo_source, repoOwner: row.repo_owner, repoName: row.repo_name }}"
+          :to="{ name: 'PipelineOverview', params: { repoSource: row.repo_source, repoOwner: row.repo_owner, repoName: row.repo_name }}"
           tag="tr"
         >
           <td>

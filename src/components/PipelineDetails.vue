@@ -27,13 +27,6 @@
       v-if="pipeline"
     />
 
-    <pipeline-release-blocks
-      :pipeline="pipeline"
-      :dashboard-mode-active="dashboardModeActive"
-      class="m-0 mt-3 mb-3 ml-3"
-      v-if="pipeline"
-    />
-
     <pipeline-warnings
       v-if="!dashboardModeActive && pipeline"
       :pipeline="pipeline"
@@ -43,6 +36,18 @@
       class="nav nav-tabs m-3"
       v-if="!dashboardModeActive"
     >
+      <li class="nav-item">
+        <router-link
+          :to="{ name: 'PipelineOverview', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
+          class="nav-link"
+        >
+          <font-awesome-icon
+            icon="industry"
+            class="mr-2"
+          />
+          Overview
+        </router-link>
+      </li>
       <li class="nav-item">
         <router-link
           :to="{ name: 'PipelineBuilds', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
@@ -127,19 +132,17 @@
 
 <script>
 import Pipeline from '@/components/Pipeline'
-import PipelineReleaseBlocks from '@/components/PipelineReleaseBlocks'
 import PipelineWarnings from '@/components/PipelineWarnings'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTools, faUpload, faProjectDiagram, faChartLine, faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faIndustry, faTools, faUpload, faProjectDiagram, faChartLine, faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faTools, faUpload, faProjectDiagram, faChartLine, faUserSecret)
+library.add(faIndustry, faTools, faUpload, faProjectDiagram, faChartLine, faUserSecret)
 
 export default {
   components: {
     Pipeline,
-    PipelineReleaseBlocks,
     PipelineWarnings,
     FontAwesomeIcon
   },

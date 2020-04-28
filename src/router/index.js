@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Pipelines from '@/components/Pipelines'
 import PipelineDetails from '@/components/PipelineDetails'
+import PipelineOverview from '@/components/PipelineOverview'
 import PipelineBuilds from '@/components/PipelineBuilds'
 import PipelineBuildDetails from '@/components/PipelineBuildDetails'
 import PipelineBuildLogs from '@/components/PipelineBuildLogs'
@@ -47,8 +48,14 @@ export default new Router({
       name: 'PipelineDetails',
       props: true,
       component: PipelineDetails,
-      redirect: { name: 'PipelineBuilds' },
+      redirect: { name: 'PipelineOverview' },
       children: [
+        {
+          path: 'overview',
+          name: 'PipelineOverview',
+          props: true,
+          component: PipelineOverview
+        },
         {
           path: 'builds',
           name: 'PipelineBuilds',

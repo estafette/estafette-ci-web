@@ -12,7 +12,7 @@
           </router-link>
         </li>
         <li class="breadcrumb-item text-truncate">
-          <router-link :to="{ name: 'PipelineBuilds', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}">
+          <router-link :to="{ name: 'PipelineOverview', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}">
             <span class="d-none d-md-inline">{{ repoSource }}/{{ repoOwner }}/</span>{{ repoName }}
           </router-link>
         </li>

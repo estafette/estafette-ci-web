@@ -10,7 +10,7 @@
           class="triggered-by-icon"
         />
         <router-link
-          :to="{ name: 'PipelineBuilds', params: { repoSource: event.pipeline.repoSource, repoOwner: event.pipeline.repoOwner, repoName: event.pipeline.repoName }}"
+          :to="{ name: 'PipelineOverview', params: { repoSource: event.pipeline.repoSource, repoOwner: event.pipeline.repoOwner, repoName: event.pipeline.repoName }}"
           class="text-body"
         >
           {{ event.pipeline.repoSource }}/{{ event.pipeline.repoOwner }}/{{ event.pipeline.repoName }}

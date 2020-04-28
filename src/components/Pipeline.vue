@@ -1,6 +1,6 @@
 <template>
   <router-link
-    :to="{ name: 'PipelineBuilds', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName }}"
+    :to="{ name: 'PipelineOverview', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName }}"
     tag="div"
     :class="[
       $options.filters.bootstrapClass(pipeline.buildStatus, 'border'),
