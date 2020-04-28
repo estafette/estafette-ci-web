@@ -107,7 +107,7 @@
             <drop
               v-for="release in releaseTarget.activeReleases"
               :key="release.id"
-              @drop="releaseBuildToTargetAction($event, releaseTarget, release.action)"
+              @drop="releaseBuildToTargetAction($event, releaseTarget, release)"
             >
               <router-link
                 :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
@@ -213,8 +213,11 @@ export default {
       this.startRelease(build, releaseTarget, defaultActionName)
     },
 
-    releaseBuildToTargetAction (e, releaseTarget, action) {
-      var actionName = action.name
+    releaseBuildToTargetAction (e, releaseTarget, release) {
+      var actionName = ''
+      if (release.action) {
+        actionName = release.action
+      }
       console.log('releaseBuildToTargetAction', e, releaseTarget, actionName)
       const build = e.data
       this.startRelease(build, releaseTarget, actionName)
