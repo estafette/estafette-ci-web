@@ -29,7 +29,7 @@
             'rounded border align-items-center pt-3 pr-2 pb-2 pl-2 text-center'
           ]"
         >
-          <h6>
+          <h6 class="text-truncate">
             {{ build.repoBranch }}
           </h6>
 
@@ -38,7 +38,7 @@
             exact
             :class="[
               $options.filters.bootstrapClass(build.buildStatus, 'btn'),
-              'btn btn-sm btn-block mr-1 mb-1'
+              'btn btn-sm btn-block mr-1 mb-1 text-truncate'
             ]"
             tag="span"
           >
@@ -86,7 +86,7 @@
             'rounded border align-items-center pt-3 pr-2 pb-2 pl-2 text-center'
           ]"
         >
-          <h6>
+          <h6 class="text-truncate">
             {{ releaseTarget.name }}
           </h6>
 
@@ -100,7 +100,7 @@
               exact
               :class="[
                 $options.filters.bootstrapClass(release.releaseStatus, 'btn'),
-                'btn btn-sm btn-block mr-1 mb-1'
+                'btn btn-sm btn-block mr-1 mb-1 text-truncate'
               ]"
               tag="span"
               :title="release.action"

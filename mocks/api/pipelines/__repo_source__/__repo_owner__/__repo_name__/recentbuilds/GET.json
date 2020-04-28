@@ -83,9 +83,9 @@
       "repoSource":"github.com",
       "repoOwner":"estafette",
       "repoName":"estafette-ci-api",
-      "repoBranch":"story-1",
+      "repoBranch":"dependabot/npm_and_yarn/acorn-5.7.4",
       "repoRevision":"71adb3d3b48de318224b2f39d308ac8b4f3a1a0f",
-      "buildVersion":"0.1.339-story-1",
+      "buildVersion":"0.1.339-dependabot-npm-and-yarn-acorn-5-7-4",
       "buildStatus":"succeeded",
       "labels":[
          {
