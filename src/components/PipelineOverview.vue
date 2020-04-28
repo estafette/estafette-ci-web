@@ -12,14 +12,18 @@
       </div>
     </div>
 
-    <div
+    <transition-group
+      name="list-complete"
+      tag="div"
       class="row justify-content-center m-0 mt-3 mb-3 ml-3"
       v-if="builds.length > 0"
     >
-      <div
+      <drag
         v-for="build in builds"
         :key="build.id"
-        class="col-12 col-md-6 col-xl-4 col-xxl-3 col-xxxl-2 m-0 p-0 pr-3 pb-3"
+        :disabled="!user || !user.authenticated || build.buildStatus !== 'succeeded'"
+        :data="build"
+        class="col-12 col-md-6 col-xl-4 col-xxl-3 col-xxxl-2 m-0 p-0 pr-3 pb-3 list-complete-item"
       >
         <div
           :class="[
@@ -45,8 +49,8 @@
             {{ build.buildVersion }}
           </router-link>
         </div>
-      </div>
-    </div>
+      </drag>
+    </transition-group>
     <div
       v-else-if="loaded"
       class="row m-0 mt-3 mb-3 ml-3 alert alert-warning text-center p-5"
@@ -78,7 +82,9 @@
         :key="releaseTarget.name"
         class="col-12 col-md-6 col-xl-4 col-xxl-3 col-xxxl-2 m-0 p-0 pr-3 pb-3"
       >
-        <div
+        <drop
+          :data="releaseTarget"
+          @drop="releaseBuildToTargetDefault($event, releaseTarget)"
           :class="[
             $options.filters.bootstrapClass(aggregatedStatus(releaseTarget), 'border'),
             dashboardModeActive ? $options.filters.bootstrapClass(aggregatedStatus(releaseTarget), 'bg') : 'bg-light',
@@ -93,27 +99,31 @@
           <div
             v-if="releaseTarget.activeReleases && releaseTarget.activeReleases.length > 0"
           >
-            <router-link
+            <drop
               v-for="release in releaseTarget.activeReleases"
               :key="release.id"
-              :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
-              exact
-              :class="[
-                $options.filters.bootstrapClass(release.releaseStatus, 'btn'),
-                'btn btn-sm btn-block mr-1 mb-1 text-truncate'
-              ]"
-              tag="span"
-              :title="release.action"
+              @drop="releaseBuildToTargetAction($event, releaseTarget, release.action)"
             >
-              <span v-if="release.action">
-                {{ release.action }}:
-              </span>{{ release.releaseVersion | defaultValue('-') }}
+              <router-link
+                :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
+                exact
+                :class="[
+                  $options.filters.bootstrapClass(release.releaseStatus, 'btn'),
+                  'btn btn-sm btn-block mr-1 mb-1 text-truncate'
+                ]"
+                tag="span"
+                :title="release.action"
+              >
+                <span v-if="release.action">
+                  {{ release.action }}:
+                </span>{{ release.releaseVersion | defaultValue('-') }}
 
-              <font-awesome-icon
-                icon="fire"
-                v-if="releaseIsUpToDate(release)"
-              />
-            </router-link>
+                <font-awesome-icon
+                  icon="fire"
+                  v-if="releaseIsUpToDate(release)"
+                />
+              </router-link>
+            </drop>
           </div>
           <div
             v-else
@@ -123,7 +133,7 @@
               -
             </span>
           </div>
-        </div>
+        </drop>
       </div>
     </div>
   </div>
@@ -131,6 +141,7 @@
 
 <script>
 import Spinner from '@/components/Spinner'
+import { Drag, Drop } from 'vue-easy-dnd'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFire, faShippingFast, faUpload } from '@fortawesome/free-solid-svg-icons'
@@ -141,6 +152,8 @@ library.add(faFire, faShippingFast, faUpload)
 export default {
   components: {
     Spinner,
+    Drag,
+    Drop,
     FontAwesomeIcon
   },
 
@@ -184,6 +197,57 @@ export default {
   },
 
   methods: {
+    releaseBuildToTargetDefault (e, releaseTarget) {
+      var defaultActionName = ''
+      if (releaseTarget.actions && releaseTarget.actions.length > 0) {
+        defaultActionName = releaseTarget.actions[0].name
+      }
+
+      console.log('releaseBuildToTargetDefault', e, releaseTarget, defaultActionName)
+      const build = e.data
+      this.startRelease(build, releaseTarget, defaultActionName)
+    },
+
+    releaseBuildToTargetAction (e, releaseTarget, action) {
+      var actionName = action.name
+      console.log('releaseBuildToTargetAction', e, releaseTarget, actionName)
+      const build = e.data
+      this.startRelease(build, releaseTarget, actionName)
+    },
+
+    startRelease: function (build, releaseTarget, actionName) {
+      if (this.user.authenticated) {
+        this.axios.post(`/api/pipelines/${build.repoSource}/${build.repoOwner}/${build.repoName}/releases`, {
+          name: releaseTarget.name,
+          action: actionName,
+          repoSource: build.repoSource,
+          repoOwner: build.repoOwner,
+          repoName: build.repoName,
+          releaseVersion: build.buildVersion
+        })
+          .then(response => {
+            console.log(response)
+            var startedRelease = response.data
+
+            var releaseTarget = this.pipeline.releaseTargets.find(rt => rt.name === startedRelease.name)
+            if (releaseTarget) {
+              if (!releaseTarget.activeReleases) {
+                releaseTarget.activeReleases = [startedRelease]
+              } else {
+                // remove active release item if name and optional action matches the just started release
+                releaseTarget.activeReleases = releaseTarget.activeReleases.filter(r => r.action && startedRelease.action && r.action !== startedRelease.action)
+
+                // prepend newly started release
+                releaseTarget.activeReleases.unshift(startedRelease)
+              }
+            }
+          })
+          .catch(error => {
+            console.log(error)
+          })
+      }
+    },
+
     releaseIsUpToDate (release) {
       return this.pipeline && this.pipeline.buildStatus && this.pipeline.buildStatus === 'succeeded' && this.pipeline.buildVersion && release && release.releaseStatus && release.releaseStatus === 'succeeded' && this.pipeline.buildVersion === release.releaseVersion
     },
@@ -258,3 +322,17 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.border.drop-allowed {
+  border-style: dashed !important;
+}
+
+.border.drop-forbidden {
+  border-style: solid !important;
+}
+
+.drop-in {
+  background-color: #fff3cd !important;
+}
+</style>
