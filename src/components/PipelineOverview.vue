@@ -93,7 +93,6 @@
         <drop
           :data="releaseTarget"
           @drop="releaseBuildToTargetDefault($event, releaseTarget)"
-          :disabled="releaseTargetDisabled(releaseTarget)"
           :class="[
             $options.filters.bootstrapClass(aggregatedStatus(releaseTarget), 'border'),
             dashboardModeActive ? $options.filters.bootstrapClass(aggregatedStatus(releaseTarget), 'bg') : 'bg-light',
@@ -109,7 +108,6 @@
             v-for="release in mergedActionsAndActiveReleases(releaseTarget)"
             :key="release.id"
             @drop="releaseBuildToTargetAction($event, releaseTarget, release)"
-            :disabled="releaseTargetDisabled(releaseTarget)"
           >
             <router-link
               v-if="release && release.id && release.id > 0"
@@ -202,6 +200,10 @@ export default {
 
   methods: {
     releaseBuildToTargetDefault (e, releaseTarget) {
+      if (this.releaseTargetDisabled(releaseTarget)) {
+        return
+      }
+
       var defaultActionName = ''
       if (releaseTarget.actions && releaseTarget.actions.length > 0) {
         defaultActionName = releaseTarget.actions[0].name
@@ -213,6 +215,10 @@ export default {
     },
 
     releaseBuildToTargetAction (e, releaseTarget, release) {
+      if (this.releaseTargetDisabled(releaseTarget)) {
+        return
+      }
+
       var actionName = ''
       if (release.action) {
         actionName = release.action
@@ -400,7 +406,10 @@ export default {
   border-style: solid !important;
 }
 
-.drop-in {
+.drop-in,
+.drop-in .btn {
   background-color: #fff3cd !important;
+  color: #212529 !important;
+  border-color: #fff3cd !important;
 }
 </style>
