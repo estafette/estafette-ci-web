@@ -78,6 +78,9 @@
           class="mr-2"
         />
         Releases
+        <div class="small text-muted mt-2">
+          (drag and drop a build on a release)
+        </div>
       </div>
     </div>
 
