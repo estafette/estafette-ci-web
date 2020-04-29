@@ -143,7 +143,10 @@
       v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
     >
       <div
-        :class="['text-black-50', 'small mb-1']"
+        :class="[
+          rowItem ? 'd-block d-xxxl-none' : 'd-block',
+          'text-black-50 small mb-1'
+        ]"
       >
         Releases
       </div>
