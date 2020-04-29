@@ -3,7 +3,6 @@
     <nav
       class="m-3"
       aria-label="breadcrumb"
-      v-if="!dashboardModeActive"
     >
       <ol class="breadcrumb flex-nowrap">
         <li class="breadcrumb-item text-truncate">
@@ -37,7 +36,6 @@
       v-if="release"
       :release="release"
       :user="user"
-      :dashboard-mode-active="dashboardModeActive"
       class="m-3"
     />
 
@@ -58,7 +56,6 @@
 
     <router-view
       :release="release"
-      :dashboard-mode-active="dashboardModeActive"
       v-if="release"
     />
   </div>
@@ -97,10 +94,6 @@ export default {
     },
     user: {
       type: Object,
-      default: null
-    },
-    dashboardModeActive: {
-      type: Boolean,
       default: null
     }
   },

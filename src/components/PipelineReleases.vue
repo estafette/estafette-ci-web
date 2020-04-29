@@ -2,7 +2,6 @@
   <div class="m-3">
     <div
       class="row"
-      v-if="!dashboardModeActive"
     >
       <div class="col-12 text-center">
         <status-filter :filter="filter" />
@@ -16,7 +15,6 @@
 
     <div
       class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold"
-      v-if="!dashboardModeActive"
     >
       <div class="col-6 col-md-4 col-xl-2">
         Target
@@ -41,17 +39,6 @@
       </div>
     </div>
 
-    <div
-      class="h2 text-center text-white mt-5 mb-5"
-      v-if="dashboardModeActive"
-    >
-      <font-awesome-icon
-        icon="upload"
-        class="mr-2"
-      />
-      Releases
-    </div>
-
     <transition-group
       name="list-complete"
       tag="div"
@@ -62,7 +49,6 @@
         :key="release.id"
         :release="release"
         :user="user"
-        :dashboard-mode-active="dashboardModeActive"
         :row-item="true"
         class="mt-2 mr-0 mb-2 ml-0 list-complete-item"
       />
@@ -80,7 +66,7 @@
     <pagination
       :pagination="pagination"
       :link-generator="paginationLinkGenerator"
-      v-if="!dashboardModeActive && releases.length > 0"
+      v-if="releases.length > 0"
     />
   </div>
 </template>
@@ -92,20 +78,13 @@ import StatusFilter from '@/components/StatusFilter'
 import Release from '@/components/Release'
 import PaginationCompact from '@/components/PaginationCompact'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUpload } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faUpload)
-
 export default {
   components: {
     Spinner,
     Pagination,
     StatusFilter,
     Release,
-    PaginationCompact,
-    FontAwesomeIcon
+    PaginationCompact
   },
   props: {
     repoSource: {
@@ -130,10 +109,6 @@ export default {
     },
     pipeline: {
       type: Object,
-      default: null
-    },
-    dashboardModeActive: {
-      type: Boolean,
       default: null
     }
   },

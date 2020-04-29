@@ -3,7 +3,6 @@
     <nav
       class="m-3"
       aria-label="breadcrumb"
-      v-if="!dashboardModeActive"
     >
       <ol class="breadcrumb flex-nowrap">
         <li class="breadcrumb-item text-truncate">
@@ -22,19 +21,17 @@
 
     <pipeline
       :pipeline="pipeline"
-      :dashboard-mode-active="dashboardModeActive"
       class="m-3"
       v-if="pipeline"
     />
 
     <pipeline-warnings
-      v-if="!dashboardModeActive && pipeline"
+      v-if="pipeline"
       :pipeline="pipeline"
     />
 
     <ul
       class="nav nav-tabs m-3"
-      v-if="!dashboardModeActive"
     >
       <li class="nav-item">
         <router-link
@@ -124,7 +121,6 @@
     <router-view
       :user="user"
       :pipeline="pipeline"
-      :dashboard-mode-active="dashboardModeActive"
       v-if="pipeline"
     />
   </div>
@@ -161,10 +157,6 @@ export default {
     },
     user: {
       type: Object,
-      default: null
-    },
-    dashboardModeActive: {
-      type: Boolean,
       default: null
     }
   },

@@ -1,23 +1,11 @@
 <template>
   <div class="m-3">
     <div
-      class="h2 text-center text-white mt-5 mb-5"
-      v-if="dashboardModeActive"
-    >
-      <font-awesome-icon
-        icon="chart-line"
-        class="mr-2"
-      />
-      Triggers
-    </div>
-
-    <div
       class="container-fluid text-center p-5"
     >
       <div class="row d-flex justify-content-center">
         <div
           :class="[
-            dashboardModeActive ? 'bg-warning' : '',
             'rounded border border-warning m-3 p-4 d-inline-flex align-items-center trigger-block'
           ]"
         >
@@ -54,7 +42,6 @@
           v-for="(trigger, i) in pipeline.triggers"
           :key="i"
           :class="[
-            dashboardModeActive ? 'bg-warning' : '',
             'rounded border border-warning m-3 p-4 d-inline-flex align-items-center trigger-block'
           ]"
         >
@@ -153,7 +140,6 @@
       <div class="row d-flex justify-content-center">
         <div
           :class="[
-            dashboardModeActive ? 'bg-primary text-white' : '',
             'rounded border border-primary m-3 p-5 d-inline-flex align-items-center pipeline-block'
           ]"
         >
@@ -171,7 +157,6 @@
 
       <div
         class="alert alert-light text-center m-5 p-4"
-        v-if="!dashboardModeActive"
       >
         <div>
           * pipelines automatically trigger on git push; if you want to trigger on other events have a look at the <a
@@ -201,10 +186,6 @@ export default {
   props: {
     pipeline: {
       type: Object,
-      default: null
-    },
-    dashboardModeActive: {
-      type: Boolean,
       default: null
     }
   }

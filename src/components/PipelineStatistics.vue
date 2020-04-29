@@ -2,7 +2,6 @@
   <div class="m-3">
     <div
       class="row mt-0 mr-0 ml-0"
-      v-if="!dashboardModeActive"
     >
       <div class="col-12 col-sm-8 col-lg" />
       <div class="col-12 col-sm-4 col-lg-2 p-0 text-right">
@@ -20,17 +19,6 @@
           />
         </b-input-group>
       </div>
-    </div>
-
-    <div
-      class="h2 text-center text-white mt-5 mb-5"
-      v-if="dashboardModeActive"
-    >
-      <font-awesome-icon
-        icon="chart-line"
-        class="mr-2"
-      />
-      Statistics
     </div>
 
     <div class="mt-0 mr-3 mb-3 ml-3 row">
@@ -133,10 +121,6 @@ export default {
     },
     pipeline: {
       type: Object,
-      default: null
-    },
-    dashboardModeActive: {
-      type: Boolean,
       default: null
     }
   },

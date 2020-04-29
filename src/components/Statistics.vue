@@ -2,7 +2,6 @@
   <div>
     <ul
       class="nav nav-tabs m-3"
-      v-if="!dashboardModeActive"
     >
       <li class="nav-item">
         <router-link
@@ -42,7 +41,7 @@
       </li>
     </ul>
 
-    <router-view :dashboard-mode-active="dashboardModeActive" />
+    <router-view />
   </div>
 </template>
 
@@ -56,13 +55,6 @@ library.add(faChartPie, faListOl, faChartLine)
 export default {
   components: {
     FontAwesomeIcon
-  },
-
-  props: {
-    dashboardModeActive: {
-      type: Boolean,
-      default: null
-    }
   }
 }
 </script>

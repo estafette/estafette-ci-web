@@ -3,7 +3,6 @@
     <nav
       class="m-3"
       aria-label="breadcrumb"
-      v-if="!dashboardModeActive"
     >
       <ol class="breadcrumb flex-nowrap">
         <li class="breadcrumb-item text-truncate">
@@ -36,18 +35,16 @@
       :build="build"
       :user="user"
       :pipeline="build"
-      :dashboard-mode-active="dashboardModeActive"
       class="m-3"
     />
 
     <pipeline-build-warnings
-      v-if="!dashboardModeActive && build"
+      v-if="build"
       :build="build"
     />
 
     <ul
       class="nav nav-tabs m-3"
-      v-if="!dashboardModeActive"
     >
       <li class="nav-item">
         <router-link
@@ -77,7 +74,6 @@
 
     <router-view
       :build="build"
-      :dashboard-mode-active="dashboardModeActive"
       v-if="build"
     />
   </div>
@@ -118,10 +114,6 @@ export default {
     },
     user: {
       type: Object,
-      default: null
-    },
-    dashboardModeActive: {
-      type: Boolean,
       default: null
     }
   },

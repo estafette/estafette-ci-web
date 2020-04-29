@@ -6,7 +6,7 @@
     >
       Most {{ type }}
     </h1>
-    <table :class="[dashboardModeActive ? 'table-dark table-striped table-borderless' : '', 'table']">
+    <table :class="['table']">
       <thead>
         <tr>
           <th>#</th>
@@ -25,7 +25,7 @@
             {{ index + 1 + (pagination.page-1) * pagination.size }}
           </td>
           <td>
-            <span :class="[dashboardModeActive ? '' : 'text-muted', 'd-none d-sm-inline']">{{ row.repo_source }}/{{ row.repo_owner }}/</span><strong>{{ row.repo_name }}</strong>
+            <span :class="['text-muted', 'd-none d-sm-inline']">{{ row.repo_source }}/{{ row.repo_owner }}/</span><strong>{{ row.repo_name }}</strong>
           </td>
           <td>
             {{ row.nr_records }}
@@ -41,7 +41,6 @@
       v-model="pagination.page"
       align="center"
       hide-goto-end-buttons
-      v-if="!dashboardModeActive"
     />
   </div>
 </template>
@@ -64,10 +63,6 @@ export default {
     },
     status: {
       type: String,
-      default: null
-    },
-    dashboardModeActive: {
-      type: Boolean,
       default: null
     }
   },

@@ -1,20 +1,8 @@
 <template>
   <div class="m-3">
-    <div
-      class="h2 text-center text-white mb-5"
-      v-if="dashboardModeActive"
-    >
-      <font-awesome-icon
-        icon="industry"
-        class="mr-2"
-      />
-      Pipelines
-    </div>
-
-    <div :class="[dashboardModeActive ? '' : 'mt-3', '']">
+    <div :class="['mt-3', '']">
       <div
         class="row"
-        v-if="!dashboardModeActive"
       >
         <div class="col-12 col-lg-6">
           <status-filter :filter="filter" />
@@ -34,19 +22,16 @@
       </div>
 
       <div class="row">
-        <div :class="[dashboardModeActive ? 'col-12' : 'col-6 col-sm-8 col-md-9 col-xl-10 text-truncate-fade', 'text-truncate']">
+        <div :class="['col-6 col-sm-8 col-md-9 col-xl-10 text-truncate-fade', 'text-truncate']">
           <label-filter
             :filter="filter"
-            :dashboard-mode-active="dashboardModeActive"
           />
           <frequent-labels
             :filter="filter"
-            v-if="!dashboardModeActive"
           />
         </div>
         <div
           class="col-6 col-sm-4 col-md-3 col-xl-2"
-          v-if="!dashboardModeActive"
         >
           <pagination-compact
             :pagination="pagination"
@@ -60,7 +45,6 @@
     <div class="mb-3">
       <div
         class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold"
-        v-if="!dashboardModeActive"
       >
         <div class="col-6 col-xxxl-2">
           Pipeline
@@ -101,7 +85,6 @@
           :key="pipeline.repoSource+'/'+pipeline.repoOwner+'/'+pipeline.repoName"
           :pipeline="pipeline"
           :filter="filter"
-          :dashboard-mode-active="dashboardModeActive"
           :row-item="true"
           class="mt-2 mb-2 ml-0 mr-0 list-complete-item"
         />
@@ -120,7 +103,7 @@
     <pagination
       :pagination="pagination"
       :link-generator="paginationLinkGenerator"
-      v-if="!dashboardModeActive && pipelines.length > 0"
+      v-if="pipelines.length > 0"
     />
   </div>
 </template>
@@ -138,12 +121,6 @@ import SinceSelector from '@/components/SinceSelector'
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faIndustry } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faIndustry)
-
 export default {
   components: {
     Spinner,
@@ -154,17 +131,12 @@ export default {
     PipelineFilter,
     SinceSelector,
     PaginationCompact,
-    Pagination,
-    FontAwesomeIcon
+    Pagination
   },
 
   props: {
     query: {
       type: Object,
-      default: null
-    },
-    dashboardModeActive: {
-      type: Boolean,
       default: null
     }
   },

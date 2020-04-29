@@ -3,16 +3,15 @@
     <div
       :class="[
         $options.filters.bootstrapClass(status, 'border'),
-        dashboardModeActive ? $options.filters.bootstrapClass(status, 'bg') : '',
         'rounded border text-center'
       ]"
     >
-      <h6 :class="[dashboardModeActive ? $options.filters.bootstrapTextClass(status) : $options.filters.bootstrapClass(status, 'text')]">
+      <h6 :class="[$options.filters.bootstrapClass(status, 'text')]">
         {{ status | capitalize }} builds
       </h6>
       <p
         class="display-1"
-        :class="[dashboardModeActive ? $options.filters.bootstrapTextClass(status) : $options.filters.bootstrapClass(status, 'text')]"
+        :class="[$options.filters.bootstrapClass(status, 'text')]"
       >
         {{ animatedCount | formatNumber }}
       </p>
@@ -32,10 +31,6 @@ export default {
     },
     status: {
       type: String,
-      default: null
-    },
-    dashboardModeActive: {
-      type: Boolean,
       default: null
     }
   },

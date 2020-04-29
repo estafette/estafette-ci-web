@@ -28,8 +28,7 @@
         <div
           :class="[
             $options.filters.bootstrapClass(build.buildStatus, 'border'),
-            dashboardModeActive ? $options.filters.bootstrapClass(build.buildStatus, 'bg') : 'bg-light',
-            dashboardModeActive ? $options.filters.bootstrapTextClass(build.buildStatus) : '',
+            'bg-light',
             'rounded border align-items-center pt-3 pr-2 pb-2 pl-2 text-center'
           ]"
         >
@@ -95,8 +94,7 @@
           @drop="releaseBuildToTargetDefault($event, releaseTarget)"
           :class="[
             $options.filters.bootstrapClass(aggregatedStatus(releaseTarget), 'border'),
-            dashboardModeActive ? $options.filters.bootstrapClass(aggregatedStatus(releaseTarget), 'bg') : 'bg-light',
-            dashboardModeActive ? $options.filters.bootstrapTextClass(aggregatedStatus(releaseTarget)) : '',
+            'bg-light',
             'rounded border align-items-center pt-3 pr-2 pb-2 pl-2 text-center'
           ]"
         >
@@ -178,10 +176,6 @@ export default {
     },
     pipeline: {
       type: Object,
-      default: null
-    },
-    dashboardModeActive: {
-      type: Boolean,
       default: null
     }
   },

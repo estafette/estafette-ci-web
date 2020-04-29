@@ -2,7 +2,7 @@
   <a
     :href="commitURL()"
     target="_blank"
-    :class="[dashboardModeActive ? $options.filters.bootstrapTextClass(build.buildStatus) : 'text-body']"
+    :class="['text-body']"
     @click.stop
   >
     {{ build.repoRevision | gitHash }}
@@ -14,10 +14,6 @@ export default {
   props: {
     build: {
       type: Object,
-      default: null
-    },
-    dashboardModeActive: {
-      type: Boolean,
       default: null
     }
   },

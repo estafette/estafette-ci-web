@@ -2,7 +2,6 @@
   <log-viewer
     :log-url="`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs`"
     :status="this.build.buildStatus"
-    :dashboard-mode-active="dashboardModeActive"
   />
 </template>
 
@@ -32,10 +31,6 @@ export default {
     },
     build: {
       type: Object,
-      default: null
-    },
-    dashboardModeActive: {
-      type: Boolean,
       default: null
     }
   }

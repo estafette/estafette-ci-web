@@ -2,7 +2,6 @@
   <div class="m-3">
     <div
       class="row"
-      v-if="!dashboardModeActive"
     >
       <div class="col-12 text-center">
         <status-filter :filter="filter" />
@@ -16,7 +15,6 @@
 
     <div
       class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold"
-      v-if="!dashboardModeActive"
     >
       <div class="col-6 col-md-4 col-xl-2">
         Version
@@ -49,7 +47,6 @@
 
     <div
       class="h2 text-center text-white mt-5 mb-5"
-      v-if="dashboardModeActive"
     >
       <font-awesome-icon
         icon="shipping-fast"
@@ -70,7 +67,6 @@
         :builds="builds"
         :user="user"
         :pipeline="pipeline"
-        :dashboard-mode-active="dashboardModeActive"
         :row-item="true"
         class="mt-2 mr-0 mb-2 ml-0 list-complete-item"
       />
@@ -88,7 +84,7 @@
     <pagination
       :pagination="pagination"
       :link-generator="paginationLinkGenerator"
-      v-if="!dashboardModeActive && builds.length > 0"
+      v-if="builds.length > 0"
     />
   </div>
 </template>
@@ -139,10 +135,6 @@ export default {
     },
     pipeline: {
       type: Object,
-      default: null
-    },
-    dashboardModeActive: {
-      type: Boolean,
       default: null
     }
   },

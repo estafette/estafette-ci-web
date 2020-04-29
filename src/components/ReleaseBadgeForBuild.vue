@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="matchingReleases.length > 0"
-    :class="[dashboardModeActive ? 'btn-dark' : 'btn-light', 'btn btn-sm mr-1']"
+    :class="['btn-light', 'btn btn-sm mr-1']"
   >
     {{ releaseTarget.name }}<router-link
       v-for="release in matchingReleases"
@@ -29,10 +29,6 @@ export default {
     },
     build: {
       type: Object,
-      default: null
-    },
-    dashboardModeActive: {
-      type: Boolean,
       default: null
     }
   },
