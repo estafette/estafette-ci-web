@@ -46,7 +46,7 @@
       <div
         class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold"
       >
-        <div class="col-6 col-xxxl-2">
+        <div class="col-6 col-xxxl-3">
           Pipeline
         </div>
         <div class="col-6 col-xl-3 col-xxxl-1">
@@ -55,7 +55,7 @@
         <div class="col-3 col-xxxl-1 d-none d-xl-block">
           Status
         </div>
-        <div class="col-1 d-none d-xxxl-block">
+        <div class="col-2 d-none d-xxxl-block">
           Built
         </div>
         <div class="col-1 d-none d-xxxl-block">
@@ -64,14 +64,8 @@
         <div class="col-1 d-none d-xxxl-block">
           Revision
         </div>
-        <div class="col-1 d-none d-xxxl-block">
+        <div class="col-3 d-none d-xxxl-block">
           Commit(s)
-        </div>
-        <div class="col-2 d-none d-xxxl-block">
-          Labels
-        </div>
-        <div class="col-2 d-none d-xxxl-block">
-          Releases
         </div>
       </div>
 

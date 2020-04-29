@@ -19,11 +19,12 @@
       </ol>
     </nav>
 
-    <pipeline
-      :pipeline="pipeline"
-      class="m-3"
-      v-if="pipeline"
-    />
+    <div class="m-3">
+      <pipeline
+        :pipeline="pipeline"
+        v-if="pipeline"
+      />
+    </div>
 
     <pipeline-warnings
       v-if="pipeline"

@@ -32,9 +32,17 @@
             'rounded border align-items-center pt-3 pr-2 pb-2 pl-2 text-center'
           ]"
         >
-          <h6 class="text-truncate">
-            {{ build.repoBranch }}
-          </h6>
+          <div class="row mb-2">
+            <div class="col-6 text-truncate">
+              {{ build.repoBranch }}
+            </div>
+
+            <div class="col-6">
+              <commit-link
+                :build="build"
+              />
+            </div>
+          </div>
 
           <router-link
             :to="{ name: 'PipelineBuildLogs', params: { repoSource: build.repoSource, repoOwner: build.repoOwner, repoName: build.repoName, id: build.id }}"
@@ -52,6 +60,15 @@
               -
             </span>
           </router-link>
+
+          <div class="row mt-2">
+            <div
+              v-if="build.commits && build.commits.length > 0"
+              class="col-12 text-muted text-truncate"
+            >
+              {{ build.commits[0].message }}
+            </div>
+          </div>
         </div>
       </drag>
     </transition-group>
@@ -141,6 +158,8 @@
 
 <script>
 import Spinner from '@/components/Spinner'
+import CommitLink from '@/components/CommitLink'
+
 import { Drag, Drop } from 'vue-easy-dnd'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -152,6 +171,7 @@ library.add(faFire, faShippingFast, faUpload)
 export default {
   components: {
     Spinner,
+    CommitLink,
     Drag,
     Drop,
     FontAwesomeIcon
@@ -289,9 +309,10 @@ export default {
     },
 
     loadRecentBuilds () {
-      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/recentbuilds`)
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds?page[size]=8`)
+      // this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/recentbuilds`)
         .then(response => {
-          this.builds = response.data
+          this.builds = response.data.items
 
           this.loaded = true
         })
