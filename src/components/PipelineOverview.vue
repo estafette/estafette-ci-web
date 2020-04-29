@@ -310,8 +310,7 @@ export default {
     },
 
     loadRecentBuilds () {
-      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds?page[size]=8`)
-      // this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/recentbuilds`)
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds?page[size]=6`)
         .then(response => {
           this.builds = response.data.items
 
