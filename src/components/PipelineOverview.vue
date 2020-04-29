@@ -87,6 +87,7 @@
 
     <div
       class="row m-0 mt-3 mb-3 ml-3 justify-content-center"
+      v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
     >
       <div class="h5 text-center mt-3 mb-3 text-secondary">
         <font-awesome-icon
