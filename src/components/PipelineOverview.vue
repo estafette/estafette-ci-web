@@ -122,7 +122,7 @@
 
           <drop
             v-for="release in mergedActionsAndActiveReleases(releaseTarget)"
-            :key="release.id"
+            :key="release.action ? release.action : release.id ? release.id : 'unreleased'"
             @drop="releaseBuildToTargetAction($event, releaseTarget, release)"
           >
             <router-link
@@ -269,16 +269,25 @@ export default {
     },
 
     updateRelease (startedRelease) {
+      console.log('updateRelease', startedRelease)
       var releaseTarget = this.pipeline.releaseTargets.find(rt => rt.name === startedRelease.name)
       if (releaseTarget) {
         if (!releaseTarget.activeReleases) {
+          console.log('has no active releases')
           releaseTarget.activeReleases = [startedRelease]
         } else {
+          console.log('activeReleases before', releaseTarget.activeReleases)
+
           // remove active release item if name and optional action matches the just started release
-          releaseTarget.activeReleases = releaseTarget.activeReleases.filter(r => r.action && startedRelease.action && r.action !== startedRelease.action)
+          var newActiveReleases = releaseTarget.activeReleases.filter(r => r.action && startedRelease.action && r.action !== startedRelease.action)
 
           // prepend newly started release
-          releaseTarget.activeReleases.unshift(startedRelease)
+          newActiveReleases.unshift(startedRelease)
+
+          console.log('activeReleases after', newActiveReleases)
+
+          // atomically update active releases
+          releaseTarget.activeReleases = newActiveReleases
         }
       }
     },
