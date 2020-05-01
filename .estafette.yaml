@@ -17,6 +17,7 @@ stages:
       audit:
         image: extensions/npm-audit:dev
         action: audit
+        level: moderate
         workspace: estafette
         channels:
         - '#npm-audit'
