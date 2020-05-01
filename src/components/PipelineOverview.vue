@@ -121,12 +121,12 @@
           </h6>
 
           <drop
-            v-for="release in mergedActionsAndActiveReleases(releaseTarget)"
-            :key="release.action ? release.action : release.id ? release.id : 'unreleased'"
+            v-for="(release, index) in mergedActionsAndActiveReleases(releaseTarget)"
+            :key="index"
             @drop="releaseBuildToTargetAction($event, releaseTarget, release)"
           >
             <router-link
-              v-if="release && release.id && release.id > 0"
+              v-if="release && release.id && release.id !== 0"
               :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
               exact
               :class="[
@@ -247,6 +247,7 @@ export default {
       if (this.user.authenticated) {
         var startedRelease = {
           name: releaseTarget.name,
+          id: -1,
           action: actionName,
           repoSource: build.repoSource,
           repoOwner: build.repoOwner,
