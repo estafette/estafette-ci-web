@@ -45,16 +45,6 @@
       </div>
     </div>
 
-    <div
-      class="h2 text-center text-white mt-5 mb-5"
-    >
-      <font-awesome-icon
-        icon="shipping-fast"
-        class="mr-2"
-      />
-      Builds
-    </div>
-
     <transition-group
       name="list-complete"
       tag="div"
@@ -96,20 +86,13 @@ import PaginationCompact from '@/components/PaginationCompact'
 import Build from '@/components/Build'
 import Pagination from '@/components/Pagination'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTools } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faTools)
-
 export default {
   components: {
     Spinner,
     StatusFilter,
     PaginationCompact,
     Build,
-    Pagination,
-    FontAwesomeIcon
+    Pagination
   },
 
   props: {
