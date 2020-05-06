@@ -6,7 +6,7 @@ LABEL maintainer="estafette.io" \
 RUN apk update \
     && apk add \
       bash \
-      libxml2 \
+      libxml2=2.9.10-r3 \
     && rm -rf /var/cache/apk/*
 
 COPY . /usr/share/nginx/html
