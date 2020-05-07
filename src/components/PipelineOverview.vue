@@ -51,7 +51,7 @@
               $options.filters.bootstrapClass(build.buildStatus, 'btn'),
               'btn btn-sm btn-block mr-1 mb-1 text-truncate'
             ]"
-            tag="span"
+            tag="button"
           >
             <span v-if="build.buildVersion">
               {{ build.buildVersion }}
@@ -127,13 +127,14 @@
           >
             <router-link
               v-if="release && release.id && release.id !== 0"
+              :disabled="!release || !release.id || release.id <= 0"
               :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
               exact
               :class="[
                 $options.filters.bootstrapClass(release.releaseStatus, 'btn'),
                 'btn btn-sm btn-block mr-1 mb-1 text-truncate'
               ]"
-              tag="span"
+              tag="button"
               :title="release.action"
             >
               <span v-if="release.action">
@@ -145,11 +146,15 @@
                 v-if="releaseIsUpToDate(release)"
               />
             </router-link>
-            <div v-else>
+            <button
+              v-else
+              disabled="disabled"
+              class="btn btn-sm btn-block mr-1 mb-1 text-truncate"
+            >
               <span v-if="release.action">
                 {{ release.action }}:
               </span>{{ release.releaseVersion | defaultValue('-') }}
-            </div>
+            </button>
           </drop>
         </drop>
       </div>
