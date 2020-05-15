@@ -14,6 +14,8 @@ import PipelineReleaseDetails from '@/components/PipelineReleaseDetails'
 import PipelineReleaseLogs from '@/components/PipelineReleaseLogs'
 import PipelineStatistics from '@/components/PipelineStatistics'
 
+import Catalog from '@/components/Catalog'
+
 import Manifest from '@/components/Manifest'
 import ManifestGenerator from '@/components/ManifestGenerator'
 import ManifestValidator from '@/components/ManifestValidator'
@@ -121,6 +123,12 @@ export default new Router({
           component: PipelineReleaseLogs
         }
       ]
+    },
+    {
+      path: '/catalog',
+      name: 'Catalog',
+      component: Catalog,
+      props: (route) => ({ query: route.query })
     },
     {
       path: '/config',

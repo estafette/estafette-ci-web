@@ -28,6 +28,9 @@
         <b-nav-item :to="{ name: 'Pipelines'}">
           Pipelines
         </b-nav-item>
+        <!-- <b-nav-item :to="{ name: 'Catalog'}">
+          Catalog
+        </b-nav-item> -->
         <b-nav-item :to="{ name: 'Manifest'}">
           Manifest
         </b-nav-item>
