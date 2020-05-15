@@ -5,7 +5,13 @@
     class="row rounded border border-secondary align-items-center clickable pt-3 pr-2 pb-2 pl-2"
   >
     <div
-      :class="[ 'col-6 col-xxxl-3', 'mb-2 text-truncate']"
+      class="col-6 mb-2 text-truncate"
+      :title="catalogItem.repoName"
+    >
+      {{ catalogItem.repoName }}
+    </div>
+    <div
+      class="col-6 mb-2 text-truncate"
       :title="catalogItem.repoSource + '/' + catalogItem.repoOwner + '/' + catalogItem.repoName"
     >
       <span :class="['text-muted d-none d-md-inline']">{{ catalogItem.repoSource }}/{{ catalogItem.repoOwner }}/</span><strong>{{ catalogItem.repoName }}</strong>

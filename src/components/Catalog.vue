@@ -54,6 +54,17 @@
     </div>
 
     <div class="mb-3">
+      <div
+        class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold"
+      >
+        <div class="col-6">
+          App
+        </div>
+        <div class="col-6">
+          Repository
+        </div>
+      </div>
+
       <transition-group
         name="list-complete"
         tag="div"

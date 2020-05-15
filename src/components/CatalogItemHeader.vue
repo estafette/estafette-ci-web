@@ -1,13 +1,40 @@
 <template>
-  <div class="m-3">
-    <div class="row rounded border border-secondary align-items-center clickable pt-3 pr-2 pb-2 pl-2 m-0">
-      <div
-        :class="[ 'col-6 col-xxxl-3', 'mb-2 text-truncate']"
-        :title="catalogItem.repoSource + '/' + catalogItem.repoOwner + '/' + catalogItem.repoName"
-      >
-        <span :class="['text-muted d-none d-md-inline']">{{ catalogItem.repoSource }}/{{ catalogItem.repoOwner }}/</span><strong>{{ catalogItem.repoName }}</strong>
-      </div>
-    </div>
+  <div>
+    <nav
+      class="m-3"
+      aria-label="breadcrumb"
+    >
+      <ol class="breadcrumb flex-nowrap">
+        <li class="breadcrumb-item text-truncate">
+          <router-link :to="{ name: 'Catalog'}">
+            Catalog
+          </router-link>
+        </li>
+        <li
+          class="breadcrumb-item text-truncate active"
+          aria-current="page"
+        >
+          {{ repoName }}
+        </li>
+      </ol>
+    </nav>
+
+    <ul
+      class="nav nav-tabs m-3"
+    >
+      <li class="nav-item">
+        <router-link
+          :to="{ name: 'CatalogItemOverview', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
+          class="nav-link"
+        >
+          <font-awesome-icon
+            icon="industry"
+            class="mr-2"
+          />
+          Overview
+        </router-link>
+      </li>
+    </ul>
 
     <router-view
       :catalog-item="catalogItem"

@@ -1,6 +1,6 @@
 <template>
   <div class="m-3">
-    <h1><span :class="['text-muted d-none d-md-inline']">{{ catalogItem.repoSource }}/{{ catalogItem.repoOwner }}/</span><strong>{{ catalogItem.repoName }}</strong></h1>
+    <h1>{{ catalogItem.repoName }}</h1>
   </div>
 </template>
 
