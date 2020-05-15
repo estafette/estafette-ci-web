@@ -1,10 +1,9 @@
 <template>
   <div class="m-3">
     <div
-      class="row mt-0 mr-0 mb-3 ml-0"
+      class="row m-0"
     >
-      <div class="col-12 col-sm-8 col-lg" />
-      <div class="col-12 col-sm-4 col-lg-3 p-0 text-right">
+      <div class="col-12 col-sm-6 col-lg-3 col-xxl-2 p-0">
         <b-form
           autocomplete="off"
         >
@@ -25,6 +24,13 @@
           </b-input-group>
         </b-form>
       </div>
+      <div class="col-12 col-sm-6 col-lg-9 col-xxl-10 p-0 text-right">
+        <pagination-compact
+          :pagination="pagination"
+          :link-generator="paginationLinkGenerator"
+          class="float-right"
+        />
+      </div>
     </div>
 
     <div class="row">
@@ -37,19 +43,55 @@
           class="nav-item"
         >
           <router-link
-            :to="{ name: 'Catalog' }"
-            class="nav-link"
+            :to="{ name: 'Catalog', query: { filterValue: filterValue.value } }"
+            exact
+            class="nav-link pl-5 pr-5"
           >
-            {{ filterValue.value }}
+            {{ filterValue.value }} ({{ filterValue.pipelinescount }})
           </router-link>
         </li>
       </ul>
     </div>
+
+    <div class="mb-3">
+      <transition-group
+        name="list-complete"
+        tag="div"
+        v-if="catalogItems.length > 0"
+      >
+        <catalog-item-row
+          v-for="catalogItem in catalogItems"
+          :key="catalogItem.repoSource+'/'+catalogItem.repoOwner+'/'+catalogItem.repoName"
+          :catalog-item="catalogItem"
+          :row-item="true"
+          class="mt-2 mb-2 ml-0 mr-0 list-complete-item"
+        />
+      </transition-group>
+      <div
+        v-else-if="loaded"
+        class="alert alert-warning text-center p-5"
+      >
+        There are no items for the current filter value.
+      </div>
+      <div v-else>
+        <spinner color="primary" />
+      </div>
+    </div>
+
+    <pagination
+      :pagination="pagination"
+      :link-generator="paginationLinkGenerator"
+      v-if="catalogItems.length > 0"
+    />
   </div>
 </template>
 
 <script>
 import { BForm, BFormSelect, BInputGroup, BInputGroupPrepend } from 'bootstrap-vue'
+import Spinner from '@/components/Spinner'
+import CatalogItemRow from '@/components/CatalogItemRow'
+import PaginationCompact from '@/components/PaginationCompact'
+import Pagination from '@/components/Pagination'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTags } from '@fortawesome/free-solid-svg-icons'
@@ -63,6 +105,10 @@ export default {
     BFormSelect,
     BInputGroup,
     BInputGroupPrepend,
+    Spinner,
+    CatalogItemRow,
+    PaginationCompact,
+    Pagination,
     FontAwesomeIcon
   },
 
@@ -80,7 +126,17 @@ export default {
       },
       filters: [],
       filterOptions: [],
-      filterValues: []
+      filterValues: [],
+      activeFilterValue: '',
+      catalogItems: [],
+      pagination: {
+        page: 1,
+        size: 25,
+        totalPages: 0,
+        totalItems: 0
+      },
+      loaded: false,
+      refresh: true
     }
   },
 
@@ -105,23 +161,110 @@ export default {
             this.form.filter = this.filters[0]
             this.loadFilterValues()
           }
+          this.periodicallyRefreshFilters(30)
         })
         .catch(e => {
           console.log(e)
+          this.periodicallyRefreshFilters(60)
         })
+    },
+
+    periodicallyRefreshFilters (intervalSeconds) {
+      if (this.refreshTimeout) {
+        clearTimeout(this.refreshTimeout)
+      }
+
+      var max = 1000 * intervalSeconds * 0.75
+      var min = 1000 * intervalSeconds * 1.25
+      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+
+      if (this.refresh) {
+        this.refreshTimeout = setTimeout(this.loadFilters, timeoutWithJitter)
+      }
     },
 
     loadFilterValues () {
       this.axios.get(`/api/catalog/filtervalues?filter[labels]=${this.form.filter}`)
         .then(response => {
           this.filterValues = response.data
+
+          if (this.filterValues && this.filterValues.length > 0) {
+            this.activeFilterValue = this.filterValues[0]
+          }
+          this.loadCatalogItems()
+
+          this.periodicallyRefreshFilterValues(30)
         })
         .catch(e => {
           console.log(e)
+          this.periodicallyRefreshFilterValues(60)
         })
     },
 
+    periodicallyRefreshFilterValues (intervalSeconds) {
+      if (this.refreshTimeout) {
+        clearTimeout(this.refreshTimeout)
+      }
+
+      var max = 1000 * intervalSeconds * 0.75
+      var min = 1000 * intervalSeconds * 1.25
+      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+
+      if (this.refresh) {
+        this.refreshTimeout = setTimeout(this.loadFilterValues, timeoutWithJitter)
+      }
+    },
+
+    loadCatalogItems () {
+      var labelFilterParams = `${this.form.filter}=${this.activeFilterValue}`
+
+      this.axios.get(`/api/pipelines?filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+        .then(response => {
+          this.catalogItems = response.data.items
+          this.pagination = response.data.pagination
+
+          this.loaded = true
+
+          this.periodicallyRefreshCatalogItems(5)
+        })
+        .catch(e => {
+          this.periodicallyRefreshCatalogItems(30)
+        })
+    },
+
+    periodicallyRefreshCatalogItems (intervalSeconds) {
+      if (this.refreshTimeout) {
+        clearTimeout(this.refreshTimeout)
+      }
+
+      var max = 1000 * intervalSeconds * 0.75
+      var min = 1000 * intervalSeconds * 1.25
+      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+
+      if (this.refresh) {
+        this.refreshTimeout = setTimeout(this.loadCatalogItems, timeoutWithJitter)
+      }
+    },
+
     onChange (value) {
+      this.loadFilterValues()
+    },
+
+    paginationLinkGenerator (pageNum) {
+      var query = {}
+
+      if (pageNum > 1) {
+        query.page = pageNum
+      } else if (query.page) {
+        delete query.page
+      }
+
+      return { query: query }
+    }
+  },
+
+  watch: {
+    '$route' (to, from) {
       this.loadFilterValues()
     }
   },
