@@ -1,6 +1,6 @@
 <template>
   <div
-    class="btn-group mb-3 text-truncate"
+    class="btn-group mb-3 text-truncate bg-white"
     v-if="filteredLabels.length > 0"
   >
     <a class="btn btn-outline-light bg-btn-group-prepend icon-container">

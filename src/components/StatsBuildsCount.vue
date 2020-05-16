@@ -3,7 +3,7 @@
     <div
       :class="[
         $options.filters.bootstrapClass(status, 'border'),
-        'rounded border text-center'
+        'rounded border text-center bg-white'
       ]"
     >
       <h6 :class="[$options.filters.bootstrapClass(status, 'text')]">

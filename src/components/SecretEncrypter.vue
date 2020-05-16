@@ -1,5 +1,5 @@
 <template>
-  <div class="m-3 p-3">
+  <div class="m-3">
     <warning
       v-if="showPipelineRestrictWarning"
       :warning="warning"
@@ -8,6 +8,7 @@
     <b-form
       @submit="onSubmit"
       autocomplete="off"
+      class="rounded border bg-white p-3"
     >
       <b-form-group
         description="Required for use as a Kubernetes secret."

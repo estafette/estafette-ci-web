@@ -1,8 +1,9 @@
 <template>
-  <div class="m-3 p-3">
+  <div class="m-3">
     <b-form
       @submit="onSubmit"
       autocomplete="off"
+      class="rounded border bg-white p-3"
     >
       <b-form-group
         label="Template"

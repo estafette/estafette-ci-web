@@ -4,7 +4,7 @@
     tag="div"
     :class="[
       $options.filters.bootstrapClass(build.buildStatus, 'border'),
-      'row rounded border align-items-center clickable pt-3 pr-2 pb-2 pl-2'
+      'row rounded border align-items-center clickable pt-3 pr-2 pb-2 pl-2 bg-white'
     ]"
   >
     <div

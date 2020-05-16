@@ -1,5 +1,5 @@
 <template>
-  <div class="p-0 graph">
+  <div class="p-0 graph bg-white">
     <div
       class="rounded border"
       :class="`border-${status}`"

@@ -29,7 +29,7 @@
           :class="[
             $options.filters.bootstrapClass(build.buildStatus, 'border'),
             'bg-light',
-            'rounded border align-items-center pt-3 pr-2 pb-2 pl-2 text-center'
+            'rounded border align-items-center pt-3 pr-2 pb-2 pl-2 text-center bg-white'
           ]"
         >
           <div class="row mb-2">
@@ -113,7 +113,7 @@
           :class="[
             $options.filters.bootstrapClass(aggregatedStatus(releaseTarget), 'border'),
             'bg-light',
-            'rounded border align-items-center pt-3 pr-2 pb-2 pl-2 text-center'
+            'rounded border align-items-center pt-3 pr-2 pb-2 pl-2 text-center bg-white'
           ]"
         >
           <h6 class="text-truncate">

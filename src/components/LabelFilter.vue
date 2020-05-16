@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="['mb-3', 'btn-group mr-2']"
+    :class="['mb-3', 'btn-group mr-2 bg-white']"
     v-if="splitLabels.length > 0"
   >
     <span :class="['btn-outline-light bg-btn-group-prepend', 'btn icon-container']">

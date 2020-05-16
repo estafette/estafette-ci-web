@@ -1,7 +1,7 @@
 <template>
   <div class="p-0 graph">
     <div
-      class="rounded border"
+      class="rounded border bg-white"
       :class="`border-${status}`"
     >
       <spinner

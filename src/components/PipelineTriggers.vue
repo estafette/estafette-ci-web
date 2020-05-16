@@ -6,7 +6,7 @@
       <div class="row d-flex justify-content-center">
         <div
           :class="[
-            'rounded border border-warning m-3 p-4 d-inline-flex align-items-center trigger-block'
+            'rounded border border-warning m-3 p-4 d-inline-flex align-items-center trigger-block bg-white'
           ]"
         >
           <div>
@@ -42,7 +42,7 @@
           v-for="(trigger, i) in pipeline.triggers"
           :key="i"
           :class="[
-            'rounded border border-warning m-3 p-4 d-inline-flex align-items-center trigger-block'
+            'rounded border border-warning m-3 p-4 d-inline-flex align-items-center trigger-block bg-white'
           ]"
         >
           <div v-if="trigger.pipeline">
@@ -140,7 +140,7 @@
       <div class="row d-flex justify-content-center">
         <div
           :class="[
-            'rounded border border-primary m-3 p-5 d-inline-flex align-items-center pipeline-block'
+            'rounded border border-primary m-3 p-5 d-inline-flex align-items-center pipeline-block bg-white'
           ]"
         >
           <div>

@@ -42,16 +42,16 @@
         </h3>
         <pre
           v-if="credentials"
-          class="bg-light p-3"
-        ><code>{{ credentials }}</code></pre>
+          class="rounded border bg-white p-3"
+        ><code class="bg-white">{{ credentials }}</code></pre>
 
         <h3 id="trustedimages">
           Trusted images
         </h3>
         <pre
           v-if="trustedimages"
-          class="bg-light p-3"
-        ><code>{{ trustedimages }}</code></pre>
+          class="rounded border bg-white p-3"
+        ><code class="bg-white">{{ trustedimages }}</code></pre>
       </div>
     </div>
   </div>
