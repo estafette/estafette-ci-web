@@ -43,7 +43,7 @@
           class="nav-item"
         >
           <router-link
-            :to="{ name: 'Catalog', query: { 'filter': `${form.filter}=${filterValue.value}` } }"
+            :to="{ name: 'Catalog', query: queryGenerator({ 'filter': `${form.filter}=${filterValue.value}`}) }"
             exact
             class="nav-link pl-5 pr-5"
           >
@@ -201,6 +201,7 @@ export default {
           if (this.filterValues && this.filterValues.length > 0 && !this.query.filter) {
             var query = { ...this.$route.query }
             query.filter = `${this.form.filter}=${this.filterValues[0].value}`
+            query.page = 1
             this.$router.push({ query: query })
           }
 
@@ -257,11 +258,12 @@ export default {
 
     onChange (value) {
       delete this.query.filter
+      delete this.query.page
       this.loadFilterValues()
     },
 
     paginationLinkGenerator (pageNum) {
-      var query = {}
+      var query = { ...this.$route.query }
 
       if (pageNum > 1) {
         query.page = pageNum
@@ -270,6 +272,13 @@ export default {
       }
 
       return { query: query }
+    },
+
+    queryGenerator (newQuery) {
+      return {
+        ...this.$route.query,
+        ...newQuery
+      }
     }
   },
 
