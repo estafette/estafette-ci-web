@@ -167,10 +167,11 @@ export default {
 
           this.filterOptions = options
 
-          if (this.filters && this.filters.length > 0) {
+          if (this.filters && this.filters.length > 0 && !this.query.filter) {
             this.form.filter = this.filters[0]
             this.loadFilterValues()
           }
+
           this.periodicallyRefreshFilters(30)
         })
         .catch(e => {
