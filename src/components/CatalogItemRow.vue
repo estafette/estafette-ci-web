@@ -2,7 +2,7 @@
   <router-link
     :to="{ name: 'CatalogItemOverview', params: { repoSource: catalogItem.repoSource, repoOwner: catalogItem.repoOwner, repoName: catalogItem.repoName }}"
     tag="div"
-    class="row rounded border border-secondary align-items-center clickable pt-3 pr-2 pb-2 pl-2"
+    class="row rounded border border-secondary align-items-center clickable pt-3 pr-2 pb-2 pl-2 bg-white"
   >
     <div
       class="col-6 mb-2 text-truncate"

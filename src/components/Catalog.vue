@@ -55,7 +55,7 @@
 
     <div class="mb-3">
       <div
-        class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold"
+        class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold bg-white"
       >
         <div class="col-6">
           App
