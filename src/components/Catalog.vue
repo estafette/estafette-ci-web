@@ -43,7 +43,7 @@
           class="nav-item"
         >
           <router-link
-            :to="{ name: 'Catalog', query: { filterValue: filterValue.value } }"
+            :to="{ name: 'Catalog', query: { 'filter': `${form.filter}=${filterValue.value}` } }"
             exact
             class="nav-link pl-5 pr-5"
           >
@@ -138,7 +138,6 @@ export default {
       filters: [],
       filterOptions: [],
       filterValues: [],
-      activeFilterValue: '',
       catalogItems: [],
       pagination: {
         page: 1,
@@ -181,8 +180,8 @@ export default {
     },
 
     periodicallyRefreshFilters (intervalSeconds) {
-      if (this.refreshTimeout) {
-        clearTimeout(this.refreshTimeout)
+      if (this.refreshFiltersTimeout) {
+        clearTimeout(this.refreshFiltersTimeout)
       }
 
       var max = 1000 * intervalSeconds * 0.75
@@ -190,7 +189,7 @@ export default {
       var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       if (this.refresh) {
-        this.refreshTimeout = setTimeout(this.loadFilters, timeoutWithJitter)
+        this.refreshFiltersTimeout = setTimeout(this.loadFilters, timeoutWithJitter)
       }
     },
 
@@ -199,10 +198,11 @@ export default {
         .then(response => {
           this.filterValues = response.data
 
-          if (this.filterValues && this.filterValues.length > 0) {
-            this.activeFilterValue = this.filterValues[0]
+          if (this.filterValues && this.filterValues.length > 0 && !this.query.filter) {
+            var query = { ...this.$route.query }
+            query.filter = `${this.form.filter}=${this.filterValues[0].value}`
+            this.$router.push({ query: query })
           }
-          this.loadCatalogItems()
 
           this.periodicallyRefreshFilterValues(30)
         })
@@ -213,8 +213,8 @@ export default {
     },
 
     periodicallyRefreshFilterValues (intervalSeconds) {
-      if (this.refreshTimeout) {
-        clearTimeout(this.refreshTimeout)
+      if (this.refreshFilterValuesTimeout) {
+        clearTimeout(this.refreshFilterValuesTimeout)
       }
 
       var max = 1000 * intervalSeconds * 0.75
@@ -222,14 +222,12 @@ export default {
       var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       if (this.refresh) {
-        this.refreshTimeout = setTimeout(this.loadFilterValues, timeoutWithJitter)
+        this.refreshFilterValuesTimeout = setTimeout(this.loadFilterValues, timeoutWithJitter)
       }
     },
 
     loadCatalogItems () {
-      var labelFilterParams = `${this.form.filter}=${this.activeFilterValue}`
-
-      this.axios.get(`/api/pipelines?filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/pipelines?filter[labels]=${this.query.filter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.catalogItems = response.data.items
           this.pagination = response.data.pagination
@@ -244,8 +242,8 @@ export default {
     },
 
     periodicallyRefreshCatalogItems (intervalSeconds) {
-      if (this.refreshTimeout) {
-        clearTimeout(this.refreshTimeout)
+      if (this.refreshCatalogItemsTimeout) {
+        clearTimeout(this.refreshCatalogItemsTimeout)
       }
 
       var max = 1000 * intervalSeconds * 0.75
@@ -253,11 +251,12 @@ export default {
       var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       if (this.refresh) {
-        this.refreshTimeout = setTimeout(this.loadCatalogItems, timeoutWithJitter)
+        this.refreshCatalogItemsTimeout = setTimeout(this.loadCatalogItems, timeoutWithJitter)
       }
     },
 
     onChange (value) {
+      delete this.query.filter
       this.loadFilterValues()
     },
 
@@ -276,14 +275,21 @@ export default {
 
   watch: {
     '$route' (to, from) {
-      this.loadFilterValues()
+      this.loadCatalogItems()
     }
   },
 
   beforeDestroy () {
     this.refresh = false
-    if (this.refreshTimeout) {
-      clearTimeout(this.refreshTimeout)
+
+    if (this.refreshFiltersTimeout) {
+      clearTimeout(this.refreshFiltersTimeout)
+    }
+    if (this.refreshFilterValuesTimeout) {
+      clearTimeout(this.refreshFilterValuesTimeout)
+    }
+    if (this.refreshCatalogItemsTimeout) {
+      clearTimeout(this.refreshCatalogItemsTimeout)
     }
   }
 }
