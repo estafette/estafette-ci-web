@@ -22,7 +22,7 @@
       </div>
 
       <div class="row">
-        <div :class="['col-6 col-sm-8 col-md-9 col-xl-10 text-truncate-fade', 'text-truncate']">
+        <div class="col-6 col-sm-8 col-md-9 col-xl-10">
           <label-filter
             :filter="filter"
           />
