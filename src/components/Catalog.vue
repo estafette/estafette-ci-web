@@ -275,6 +275,7 @@ export default {
 
   watch: {
     '$route' (to, from) {
+      this.setDataFromQueryParams()
       this.loadCatalogItems()
     }
   },
