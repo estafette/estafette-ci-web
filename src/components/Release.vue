@@ -3,7 +3,6 @@
     :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
     tag="div"
     :class="[
-      $options.filters.bootstrapClass(release.releaseStatus, 'border'),
       'row rounded border align-items-center clickable pt-3 pr-2 pb-2 pl-2 bg-white'
     ]"
   >

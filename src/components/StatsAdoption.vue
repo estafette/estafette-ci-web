@@ -2,7 +2,6 @@
   <div class="p-0 graph">
     <div
       class="rounded border bg-white"
-      :class="`border-${status}`"
     >
       <spinner
         v-if="series[0].data.length == 0"

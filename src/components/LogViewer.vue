@@ -13,7 +13,7 @@
     </b-form-group>
 
     <div
-      class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 font-weight-bold"
+      class="row rounded border pt-3 pr-2 pb-2 pl-2 mt-2 mr-0 mb-2 ml-0 font-weight-bold bg-white"
     >
       <div class="col-4 col-md-2 col-xl-1 text-center">
         Status
@@ -44,7 +44,6 @@
         v-for="step in filteredSteps"
         :key="step.step + '-' + step.runIndex"
         class="rounded border mt-2 mr-0 mb-2 ml-0 p-0"
-        :class="step.status | bootstrapClass('border')"
       >
         <b-card-header
           class="row m-0 pt-3 pr-2 pb-3 pl-2 clickable border-0 rounded-0"
@@ -363,8 +362,7 @@
     </div>
 
     <div
-      class="row rounded border mt-2 mr-0 mb-2 ml-0 pt-3 pr-2 pb-3 pl-2 font-weight-bold"
-      :class="totalStatus | bootstrapClass('border')"
+      class="row rounded border mt-2 mr-0 mb-2 ml-0 pt-3 pr-2 pb-3 pl-2 font-weight-bold bg-white"
     >
       <div class="col-4 col-md-2 col-xl-1 text-center">
         <span

@@ -2,7 +2,6 @@
   <div class="col-12 col-md-6 col-xxl p-0 stat">
     <div
       :class="[
-        $options.filters.bootstrapClass(status, 'border'),
         'rounded border text-center bg-white'
       ]"
     >

@@ -3,7 +3,6 @@
     :to="{ name: 'PipelineBuildLogs', params: { repoSource: build.repoSource, repoOwner: build.repoOwner, repoName: build.repoName, id: build.id }}"
     tag="div"
     :class="[
-      $options.filters.bootstrapClass(build.buildStatus, 'border'),
       'row rounded border align-items-center clickable pt-3 pr-2 pb-2 pl-2 bg-white'
     ]"
   >

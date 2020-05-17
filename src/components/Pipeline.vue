@@ -3,7 +3,6 @@
     :to="{ name: 'PipelineOverview', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName }}"
     tag="div"
     :class="[
-      $options.filters.bootstrapClass(pipeline.buildStatus, 'border'),
       'row rounded border align-items-center clickable pt-3 pr-2 pb-2 pl-2 bg-white'
     ]"
   >

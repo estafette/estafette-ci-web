@@ -27,7 +27,6 @@
       >
         <div
           :class="[
-            $options.filters.bootstrapClass(build.buildStatus, 'border'),
             'bg-light',
             'rounded border align-items-center pt-3 pr-2 pb-2 pl-2 text-center bg-white'
           ]"
@@ -111,7 +110,6 @@
           :data="releaseTarget"
           @drop="releaseBuildToTargetDefault($event, releaseTarget)"
           :class="[
-            $options.filters.bootstrapClass(aggregatedStatus(releaseTarget), 'border'),
             'bg-light',
             'rounded border align-items-center pt-3 pr-2 pb-2 pl-2 text-center bg-white'
           ]"
@@ -300,28 +298,6 @@ export default {
 
     releaseIsUpToDate (release) {
       return this.pipeline && this.pipeline.buildStatus && this.pipeline.buildStatus === 'succeeded' && this.pipeline.buildVersion && release && release.releaseStatus && release.releaseStatus === 'succeeded' && this.pipeline.buildVersion === release.releaseVersion
-    },
-
-    aggregatedStatus (releaseTarget) {
-      return releaseTarget && releaseTarget.activeReleases && releaseTarget.activeReleases.length > 0 ? releaseTarget.activeReleases.reduce((acc, release) => {
-        const statusPriorities = [
-          'pending',
-          'running',
-          'canceling',
-          'failed',
-          'canceled',
-          'succeeded'
-        ]
-
-        statusPriorities.some(statusPriority => {
-          if (acc === statusPriority || release.releaseStatus === statusPriority) {
-            acc = statusPriority
-            return true
-          }
-        })
-
-        return acc
-      }, 'skipped') : 'skipped'
     },
 
     loadRecentBuilds () {
