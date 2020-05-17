@@ -17,8 +17,8 @@
             <b-form-select
               v-if="filterOptions.length > 0"
               :id="`filter-select`"
-              v-model="form.filter"
-              :options="filterOptions"
+              v-model="activeFilter"
+              :options="filters"
               @change="onChange"
             />
           </b-input-group>
@@ -43,7 +43,7 @@
           class="nav-item"
         >
           <router-link
-            :to="{ name: 'Catalog', query: queryGenerator({ 'filter': `${form.filter}=${filterValue.value}`}) }"
+            :to="{ name: 'Catalog', query: queryGenerator({ 'filter': `${activeFilter}=${filterValue.value}`}) }"
             exact
             class="nav-link pl-5 pr-5"
           >
@@ -132,12 +132,11 @@ export default {
 
   data: function () {
     return {
-      form: {
-        filter: null
-      },
       filters: [],
       filterOptions: [],
+      activeFilter: null,
       filterValues: [],
+      activeFilterValue: null,
       catalogItems: [],
       pagination: {
         page: 1,
@@ -151,10 +150,35 @@ export default {
   },
 
   created () {
+    this.setDataFromQueryParams()
     this.loadFilters()
   },
 
   methods: {
+    setDataFromQueryParams () {
+      // init activeFilter, activeFilterValue and pagination from query params if present
+      if (this.query.filter) {
+        // split filter on =
+        var filterKeyValue = this.query.filter.split('=')
+        if (filterKeyValue.length > 0) {
+          this.activeFilter = filterKeyValue[0]
+        }
+        if (filterKeyValue.length > 1) {
+          this.activeFilterValue = filterKeyValue[1]
+        }
+      }
+      if (this.query.page) {
+        this.pagination.page = this.query.page
+      }
+    },
+
+    setQueryParams () {
+      var query = { ...this.$route.query }
+      query.filter = `${this.activeFilter}=${this.activeFilterValue.value}`
+      query.page = this.pagination.page
+      this.$router.push({ query: query })
+    },
+
     loadFilters () {
       this.axios.get(`/api/catalog/filters`)
         .then(response => {
@@ -164,15 +188,15 @@ export default {
           this.filters.forEach(filter => {
             options.push({ value: filter, text: filter })
           })
-
           this.filterOptions = options
 
-          if (this.filters && this.filters.length > 0 && !this.query.filter) {
-            this.form.filter = this.filters[0]
-            this.loadFilterValues()
+          // set activeFilter to first filter if not set or filter no longer exists
+          if (this.filters && this.filters.length > 0 && (!this.activeFilter || !this.filters.some(f => f === this.activeFilter))) {
+            this.activeFilter = this.filters[0]
           }
+          this.loadFilterValues()
 
-          this.periodicallyRefreshFilters(30)
+          this.periodicallyRefreshFilters(10)
         })
         .catch(e => {
           console.log(e)
@@ -195,37 +219,20 @@ export default {
     },
 
     loadFilterValues () {
-      this.axios.get(`/api/catalog/filtervalues?filter[labels]=${this.form.filter}`)
+      this.axios.get(`/api/catalog/filtervalues?filter[labels]=${this.activeFilter}`)
         .then(response => {
           this.filterValues = response.data
 
-          if (this.filterValues && this.filterValues.length > 0 && !this.query.filter) {
-            var query = { ...this.$route.query }
-            query.filter = `${this.form.filter}=${this.filterValues[0].value}`
-            query.page = 1
-            this.$router.push({ query: query })
+          // set activeFilterValue to first filter value if not set or filter value no longer exists
+          if (this.filterValues && this.filterValues.length > 0 && (!this.activeFilterValue || !this.filterValues.some(f => f === this.activeFilterValue))) {
+            this.activeFilterValue = this.filterValues[0]
+            this.setQueryParams()
           }
-
-          this.periodicallyRefreshFilterValues(30)
+          this.loadCatalogItems()
         })
         .catch(e => {
           console.log(e)
-          this.periodicallyRefreshFilterValues(60)
         })
-    },
-
-    periodicallyRefreshFilterValues (intervalSeconds) {
-      if (this.refreshFilterValuesTimeout) {
-        clearTimeout(this.refreshFilterValuesTimeout)
-      }
-
-      var max = 1000 * intervalSeconds * 0.75
-      var min = 1000 * intervalSeconds * 1.25
-      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
-
-      if (this.refresh) {
-        this.refreshFilterValuesTimeout = setTimeout(this.loadFilterValues, timeoutWithJitter)
-      }
     },
 
     loadCatalogItems () {
@@ -235,31 +242,14 @@ export default {
           this.pagination = response.data.pagination
 
           this.loaded = true
-
-          this.periodicallyRefreshCatalogItems(5)
         })
         .catch(e => {
-          this.periodicallyRefreshCatalogItems(30)
+          console.log(e)
         })
-    },
-
-    periodicallyRefreshCatalogItems (intervalSeconds) {
-      if (this.refreshCatalogItemsTimeout) {
-        clearTimeout(this.refreshCatalogItemsTimeout)
-      }
-
-      var max = 1000 * intervalSeconds * 0.75
-      var min = 1000 * intervalSeconds * 1.25
-      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
-
-      if (this.refresh) {
-        this.refreshCatalogItemsTimeout = setTimeout(this.loadCatalogItems, timeoutWithJitter)
-      }
     },
 
     onChange (value) {
-      delete this.query.filter
-      delete this.query.page
+      delete this.activeFilterValue
       this.loadFilterValues()
     },
 
@@ -294,12 +284,6 @@ export default {
 
     if (this.refreshFiltersTimeout) {
       clearTimeout(this.refreshFiltersTimeout)
-    }
-    if (this.refreshFilterValuesTimeout) {
-      clearTimeout(this.refreshFilterValuesTimeout)
-    }
-    if (this.refreshCatalogItemsTimeout) {
-      clearTimeout(this.refreshCatalogItemsTimeout)
     }
   }
 }
