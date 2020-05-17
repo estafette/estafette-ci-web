@@ -174,9 +174,15 @@ export default {
 
     setQueryParams () {
       var query = { ...this.$route.query }
-      query.filter = `${this.activeFilter}=${this.activeFilterValue.value}`
-      query.page = this.pagination.page
-      this.$router.push({ query: query })
+      var newQueryFilter = `${this.activeFilter}=${this.activeFilterValue.value}`
+      var newQueryPage = this.pagination.page
+
+      if (query.filter !== newQueryFilter || query.page !== newQueryPage) {
+        query.filter = newQueryFilter
+        query.page = newQueryPage
+
+        this.$router.push({ query: query })
+      }
     },
 
     loadFilters () {
