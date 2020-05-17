@@ -34,7 +34,6 @@
     </div>
 
     <div class="row">
-      
       <ul
         class="nav nav-tabs m-3"
       >
