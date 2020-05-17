@@ -174,7 +174,7 @@ export default {
 
     setQueryParams () {
       var query = { ...this.$route.query }
-      var newQueryFilter = `${this.activeFilter}=${this.activeFilterValue.value}`
+      var newQueryFilter = `${this.activeFilter}=${this.activeFilterValue}`
       var newQueryPage = this.pagination.page
 
       if (query.filter !== newQueryFilter || query.page !== newQueryPage) {
@@ -231,7 +231,7 @@ export default {
 
           // set activeFilterValue to first filter value if not set or filter value no longer exists
           if (this.filterValues && this.filterValues.length > 0 && (!this.activeFilterValue || !this.filterValues.some(f => f === this.activeFilterValue))) {
-            this.activeFilterValue = this.filterValues[0]
+            this.activeFilterValue = this.filterValues[0].value
             this.setQueryParams()
           }
           this.loadCatalogItems()
@@ -242,7 +242,7 @@ export default {
     },
 
     loadCatalogItems () {
-      this.axios.get(`/api/pipelines?filter[labels]=${this.activeFilter}=${this.activeFilterValue.value}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/pipelines?filter[labels]=${this.activeFilter}=${this.activeFilterValue}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.catalogItems = response.data.items
           this.pagination = response.data.pagination
