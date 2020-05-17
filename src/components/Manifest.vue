@@ -15,18 +15,6 @@
       </li>
       <li class="nav-item">
         <router-link
-          :to="{ name: 'ManifestValidator'}"
-          class="nav-link"
-        >
-          <font-awesome-icon
-            icon="clipboard-check"
-            class="mr-2"
-          />
-          Validate
-        </router-link>
-      </li>
-      <li class="nav-item">
-        <router-link
           :to="{ name: 'SecretEncrypter'}"
           class="nav-link"
         >
@@ -35,6 +23,18 @@
             class="mr-2"
           />
           Secrets
+        </router-link>
+      </li>
+      <li class="nav-item">
+        <router-link
+          :to="{ name: 'ManifestValidator'}"
+          class="nav-link"
+        >
+          <font-awesome-icon
+            icon="clipboard-check"
+            class="mr-2"
+          />
+          Validate
         </router-link>
       </li>
     </ul>

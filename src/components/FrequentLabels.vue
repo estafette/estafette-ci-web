@@ -1,25 +1,31 @@
 <template>
-  <div
-    class="btn-group mb-3 text-truncate bg-white"
+  <b-button-group
+    class="btn-group mb-3 bg-white"
     v-if="filteredLabels.length > 0"
   >
     <a class="btn btn-outline-light bg-btn-group-prepend icon-container">
       <font-awesome-icon icon="tags" />
     </a>
-    <router-link
-      :to="{ query: { status: filter.status, since: filter.since, labels: labelLinkGenerator(label), page: 1 } }"
-      exact
-      class="btn btn-outline-secondary border-btn-group"
-      v-for="label in filteredLabels"
-      tag="span"
-      :key="label.key+'='+label.value"
+    <b-dropdown
+      text="Frequent labels"
+      variant="outline"
+      class="border rounded-right"
     >
-      {{ label.key }}={{ label.value }} ({{ label.pipelinescount }})
-    </router-link>
-  </div>
+      <b-dropdown-item
+        :to="{ query: { status: filter.status, since: filter.since, labels: labelLinkGenerator(label), page: 1 } }"
+        exact
+        v-for="label in filteredLabels"
+        :key="label.key+'='+label.value"
+      >
+        {{ label.key }}={{ label.value }} ({{ label.pipelinescount }})
+      </b-dropdown-item>
+    </b-dropdown>
+  </b-button-group>
 </template>
 
 <script>
+import { BButtonGroup, BDropdown, BDropdownItem } from 'bootstrap-vue'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTags } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -28,6 +34,9 @@ library.add(faTags)
 
 export default {
   components: {
+    BButtonGroup,
+    BDropdown,
+    BDropdownItem,
     FontAwesomeIcon
   },
 
