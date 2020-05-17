@@ -52,7 +52,7 @@ export default {
       labels: [],
       pagination: {
         page: 1,
-        size: 7
+        size: 15
       },
       refresh: true
     }
