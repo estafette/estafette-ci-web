@@ -30,93 +30,10 @@
       :pipeline="pipeline"
     />
 
-    <ul
-      class="nav nav-tabs m-3"
-    >
-      <li class="nav-item">
-        <router-link
-          :to="{ name: 'PipelineOverview', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
-          class="nav-link"
-        >
-          <font-awesome-icon
-            icon="industry"
-            class="mr-2"
-          />
-          Overview
-        </router-link>
-      </li>
-      <li class="nav-item">
-        <router-link
-          :to="{ name: 'PipelineBuilds', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
-          class="nav-link"
-        >
-          <font-awesome-icon
-            icon="tools"
-            class="mr-2"
-          />
-          Builds
-        </router-link>
-      </li>
-      <li class="nav-item">
-        <router-link
-          :to="{ name: 'PipelineReleases', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
-          v-if="pipeline && pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
-          class="nav-link"
-        >
-          <font-awesome-icon
-            icon="upload"
-            class="mr-2"
-          />
-          Releases
-        </router-link>
-        <span
-          v-else
-          class="nav-link disabled"
-        >
-          <font-awesome-icon
-            icon="upload"
-            class="mr-2"
-          />
-          Releases
-        </span>
-      </li>
-      <li class="nav-item">
-        <router-link
-          :to="{ name: 'PipelineTriggers', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
-          class="nav-link"
-        >
-          <font-awesome-icon
-            icon="project-diagram"
-            class="mr-2"
-          />
-          Triggers
-        </router-link>
-      </li>
-      <li class="nav-item">
-        <router-link
-          :to="{ name: 'PipelineStatistics', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
-          class="nav-link"
-        >
-          <font-awesome-icon
-            icon="chart-line"
-            class="mr-2"
-          />
-          Statistics
-        </router-link>
-      </li>
-      <li class="nav-item">
-        <router-link
-          :to="{ name: 'PipelineSecretEncrypter', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
-          class="nav-link"
-        >
-          <font-awesome-icon
-            icon="user-secret"
-            class="mr-2"
-          />
-          Secrets
-        </router-link>
-      </li>
-    </ul>
+    <tabs
+      :tabs="tabs"
+      :params="{ repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }"
+    />
 
     <router-view
       :user="user"
@@ -129,18 +46,13 @@
 <script>
 import Pipeline from '@/components/Pipeline'
 import PipelineWarnings from '@/components/PipelineWarnings'
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faIndustry, faTools, faUpload, faProjectDiagram, faChartLine, faUserSecret } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faIndustry, faTools, faUpload, faProjectDiagram, faChartLine, faUserSecret)
+import Tabs from '@/components/Tabs'
 
 export default {
   components: {
     Pipeline,
     PipelineWarnings,
-    FontAwesomeIcon
+    Tabs
   },
   props: {
     repoSource: {
@@ -163,7 +75,45 @@ export default {
   data: function () {
     return {
       pipeline: null,
-      refresh: true
+      refresh: true,
+      tabs: [
+        {
+          routeName: 'PipelineOverview',
+          tabName: 'Overview',
+          icon: 'industry',
+          active: true
+        },
+        {
+          routeName: 'PipelineBuilds',
+          tabName: 'Builds',
+          icon: 'tools',
+          active: () => { return this.pipeline && this.pipeline.releaseTargets && this.pipeline.releaseTargets.length > 0 }
+        },
+        {
+          routeName: 'PipelineReleases',
+          tabName: 'Releases',
+          icon: 'upload',
+          active: true
+        },
+        {
+          routeName: 'PipelineTriggers',
+          tabName: 'Trigger',
+          icon: 'project-diagram',
+          active: true
+        },
+        {
+          routeName: 'PipelineStatistics',
+          tabName: 'Insights',
+          icon: 'lightbulb',
+          active: true
+        },
+        {
+          routeName: 'PipelineSecretEncrypter',
+          tabName: 'Insights',
+          icon: 'user-secret',
+          active: true
+        }
+      ]
     }
   },
 
