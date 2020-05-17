@@ -10,7 +10,7 @@
     >
       <font-awesome-icon
         icon="shipping-fast"
-        class="mr-2"
+        class="ml-1 mr-2"
       />
       <em class="align-top">
         Estafette
