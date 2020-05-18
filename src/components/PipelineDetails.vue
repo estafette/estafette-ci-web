@@ -108,7 +108,7 @@ export default {
           to: { name: 'PipelineStatistics', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
         },
         {
-          text: 'Insights',
+          text: 'Secrets',
           icon: 'user-secret',
           enabled: true,
           to: { name: 'PipelineSecretEncrypter', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
