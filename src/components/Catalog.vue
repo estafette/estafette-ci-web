@@ -248,7 +248,7 @@ export default {
     paginationLinkGenerator (pageNum) {
       var query = { ...this.$route.query }
 
-      if (pageNum > 1) {
+      if (pageNum > 0) {
         query.page = pageNum
       } else if (query.page) {
         delete query.page
