@@ -273,7 +273,7 @@ export default {
 
       return this.filterValues.map(f => {
         return {
-          text: `${f.value} ${f.pipelinescount}`,
+          text: `${f.value} (${f.pipelinescount})`,
           enabled: true,
           exact: true,
           to: { name: 'Catalog', query: this.queryGenerator({ 'filter': `${this.activeFilter}=${f.value}` }) }

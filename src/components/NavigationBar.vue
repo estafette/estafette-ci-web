@@ -24,48 +24,7 @@
       is-nav
       id="nav_collapse"
     >
-      <b-navbar-nav>
-        <b-nav-item
-          :to="{ name: 'Pipelines'}"
-          class="mr-3 text-nowrap"
-        >
-          <font-awesome-icon
-            icon="tools"
-            class="mr-2 d-none d-lg-inline"
-          />
-          Builds &amp; Releases
-        </b-nav-item>
-        <b-nav-item
-          :to="{ name: 'Catalog'}"
-          class="mr-3 text-nowrap"
-        >
-          <font-awesome-icon
-            icon="book-open"
-            class="mr-2 d-none d-lg-inline"
-          />
-          Catalog
-        </b-nav-item>
-        <b-nav-item
-          :to="{ name: 'Statistics'}"
-          class="mr-3 text-nowrap"
-        >
-          <font-awesome-icon
-            icon="lightbulb"
-            class="mr-2 d-none d-lg-inline"
-          />
-          Insights
-        </b-nav-item>
-        <b-nav-item
-          :to="{ name: 'Manifest'}"
-          class="mr-3 text-nowrap"
-        >
-          <font-awesome-icon
-            icon="plus-circle"
-            class="mr-2 d-none d-lg-inline"
-          />
-          Create
-        </b-nav-item>
-      </b-navbar-nav>
+      <navigation-bar-items :items="items" />
 
       <b-navbar-nav
         class="ml-auto"
@@ -111,7 +70,9 @@
 </template>
 
 <script>
-import { BNavbar, BNavbarBrand, BNavbarToggle, BNavbarNav, BNavItem, BNavItemDropdown, BDropdownItemButton, BCollapse } from 'bootstrap-vue'
+import { BNavbar, BNavbarBrand, BNavbarToggle, BNavbarNav, BNavItemDropdown, BDropdownItemButton, BCollapse } from 'bootstrap-vue'
+
+import NavigationBarItems from '@/components/NavigationBarItems'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle } from '@fortawesome/free-solid-svg-icons'
@@ -125,10 +86,10 @@ export default {
     BNavbarBrand,
     BNavbarToggle,
     BNavbarNav,
-    BNavItem,
     BNavItemDropdown,
     BDropdownItemButton,
     BCollapse,
+    NavigationBarItems,
     FontAwesomeIcon
   },
 
@@ -136,6 +97,33 @@ export default {
     user: {
       type: Object,
       default: null
+    }
+  },
+
+  data: function () {
+    return {
+      items: [
+        {
+          text: 'Builds & Releases',
+          icon: 'tools',
+          to: { name: 'Pipelines' }
+        },
+        {
+          text: 'Catalog (beta)',
+          icon: 'book-open',
+          to: { name: 'Catalog' }
+        },
+        {
+          text: 'Insights',
+          icon: 'lightbulb',
+          to: { name: 'Statistics' }
+        },
+        {
+          text: 'Create',
+          icon: 'plus-circle',
+          to: { name: 'Manifest' }
+        }
+      ]
     }
   }
 }
