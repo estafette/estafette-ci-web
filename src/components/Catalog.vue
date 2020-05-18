@@ -34,23 +34,7 @@
     </div>
 
     <div class="row">
-      <ul
-        class="nav nav-tabs m-3"
-      >
-        <li
-          v-for="filterValue in filterValues"
-          :key="filterValue.value"
-          class="nav-item"
-        >
-          <router-link
-            :to="{ name: 'Catalog', query: queryGenerator({ 'filter': `${activeFilter}=${filterValue.value}`}) }"
-            exact
-            class="nav-link pl-5 pr-5"
-          >
-            {{ filterValue.value }} ({{ filterValue.pipelinescount }})
-          </router-link>
-        </li>
-      </ul>
+      <tabs :tabs="tabs" />
     </div>
 
     <div class="mb-3">
@@ -103,6 +87,7 @@ import Spinner from '@/components/Spinner'
 import CatalogItemRow from '@/components/CatalogItemRow'
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
+import Tabs from '@/components/Tabs'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTags } from '@fortawesome/free-solid-svg-icons'
@@ -120,6 +105,7 @@ export default {
     CatalogItemRow,
     PaginationCompact,
     Pagination,
+    Tabs,
     FontAwesomeIcon
   },
 
@@ -276,6 +262,23 @@ export default {
         ...this.$route.query,
         ...newQuery
       }
+    }
+  },
+
+  computed: {
+    tabs () {
+      if (!this.filterValues) {
+        return []
+      }
+
+      return this.filterValues.map(f => {
+        return {
+          text: `${f.value} ${f.pipelinescount}`,
+          enabled: true,
+          exact: true,
+          to: { name: 'Catalog', query: this.queryGenerator({ 'filter': `${this.activeFilter}=${f.value}` }) }
+        }
+      })
     }
   },
 

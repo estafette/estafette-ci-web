@@ -19,22 +19,7 @@
       </ol>
     </nav>
 
-    <ul
-      class="nav nav-tabs m-3"
-    >
-      <li class="nav-item">
-        <router-link
-          :to="{ name: 'CatalogItemOverview', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }}"
-          class="nav-link"
-        >
-          <font-awesome-icon
-            icon="industry"
-            class="mr-2"
-          />
-          Overview
-        </router-link>
-      </li>
-    </ul>
+    <tabs :tabs="tabs" />
 
     <router-view
       :catalog-item="catalogItem"
@@ -44,7 +29,12 @@
 </template>
 
 <script>
+import Tabs from '@/components/Tabs'
+
 export default {
+  components: {
+    Tabs
+  },
   props: {
     repoSource: {
       type: String,
@@ -62,7 +52,15 @@ export default {
   data: function () {
     return {
       catalogItem: null,
-      refresh: true
+      refresh: true,
+      tabs: [
+        {
+          text: 'Overview',
+          icon: 'industry',
+          enabled: true,
+          to: { name: 'CatalogItemOverview', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
+        }
+      ]
     }
   },
 

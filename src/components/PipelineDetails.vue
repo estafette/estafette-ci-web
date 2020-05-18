@@ -30,10 +30,7 @@
       :pipeline="pipeline"
     />
 
-    <tabs
-      :tabs="tabs"
-      :params="{ repoSource: repoSource, repoOwner: repoOwner, repoName: repoName }"
-    />
+    <tabs :tabs="tabs" />
 
     <router-view
       :user="user"
@@ -78,40 +75,40 @@ export default {
       refresh: true,
       tabs: [
         {
-          routeName: 'PipelineOverview',
-          tabName: 'Overview',
+          text: 'Overview',
           icon: 'industry',
-          active: true
+          enabled: true,
+          to: { name: 'PipelineOverview', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
         },
         {
-          routeName: 'PipelineBuilds',
-          tabName: 'Builds',
+          text: 'Builds',
           icon: 'tools',
-          active: () => { return this.pipeline && this.pipeline.releaseTargets && this.pipeline.releaseTargets.length > 0 }
+          enabled: () => { return this.pipeline && this.pipeline.releaseTargets && this.pipeline.releaseTargets.length > 0 },
+          to: { name: 'PipelineBuilds', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
         },
         {
-          routeName: 'PipelineReleases',
-          tabName: 'Releases',
+          text: 'Releases',
           icon: 'upload',
-          active: true
+          enabled: true,
+          to: { name: 'PipelineReleases', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
         },
         {
-          routeName: 'PipelineTriggers',
-          tabName: 'Trigger',
+          text: 'Trigger',
           icon: 'project-diagram',
-          active: true
+          enabled: true,
+          to: { name: 'PipelineTriggers', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
         },
         {
-          routeName: 'PipelineStatistics',
-          tabName: 'Insights',
+          text: 'Insights',
           icon: 'lightbulb',
-          active: true
+          enabled: true,
+          to: { name: 'PipelineStatistics', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
         },
         {
-          routeName: 'PipelineSecretEncrypter',
-          tabName: 'Insights',
+          text: 'Insights',
           icon: 'user-secret',
-          active: true
+          enabled: true,
+          to: { name: 'PipelineSecretEncrypter', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
         }
       ]
     }

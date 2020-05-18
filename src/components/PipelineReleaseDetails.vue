@@ -39,20 +39,7 @@
       class="m-3"
     />
 
-    <ul class="nav nav-tabs m-3">
-      <li class="nav-item">
-        <router-link
-          :to="{ name: 'PipelineReleaseLogs', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName, releaseID: releaseID }}"
-          class="nav-link"
-        >
-          <font-awesome-icon
-            icon="poll-h"
-            class="mr-2"
-          />
-          Logs
-        </router-link>
-      </li>
-    </ul>
+    <tabs :tabs="tabs" />
 
     <router-view
       :release="release"
@@ -63,17 +50,12 @@
 
 <script>
 import Release from '@/components/Release'
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPollH } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faPollH)
+import Tabs from '@/components/Tabs'
 
 export default {
   components: {
     Release,
-    FontAwesomeIcon
+    Tabs
   },
   props: {
     repoSource: {
@@ -100,7 +82,15 @@ export default {
   data: function () {
     return {
       release: null,
-      refresh: true
+      refresh: true,
+      tabs: [
+        {
+          text: 'Logs',
+          icon: 'poll-h',
+          enabled: true,
+          to: { name: 'PipelineReleaseLogs', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName, releaseID: this.releaseID } }
+        }
+      ]
     }
   },
 

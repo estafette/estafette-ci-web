@@ -43,34 +43,7 @@
       :build="build"
     />
 
-    <ul
-      class="nav nav-tabs m-3"
-    >
-      <li class="nav-item">
-        <router-link
-          :to="{ name: 'PipelineBuildLogs', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName, id: id }}"
-          class="nav-link"
-        >
-          <font-awesome-icon
-            icon="poll-h"
-            class="mr-2"
-          />
-          Logs
-        </router-link>
-      </li>
-      <li class="nav-item">
-        <router-link
-          :to="{ name: 'PipelineBuildManifest', params: { repoSource: repoSource, repoOwner: repoOwner, repoName: repoName, id: id }}"
-          class="nav-link"
-        >
-          <font-awesome-icon
-            icon="book"
-            class="mr-2"
-          />
-          Manifest
-        </router-link>
-      </li>
-    </ul>
+    <tabs :tabs="tabs" />
 
     <router-view
       :build="build"
@@ -82,18 +55,13 @@
 <script>
 import Build from '@/components/Build'
 import PipelineBuildWarnings from '@/components/PipelineBuildWarnings'
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPollH, faBook } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faPollH, faBook)
+import Tabs from '@/components/Tabs'
 
 export default {
   components: {
     Build,
     PipelineBuildWarnings,
-    FontAwesomeIcon
+    Tabs
   },
   props: {
     repoSource: {
@@ -120,7 +88,21 @@ export default {
   data: function () {
     return {
       build: null,
-      refresh: true
+      refresh: true,
+      tabs: [
+        {
+          text: 'Logs',
+          icon: 'poll-h',
+          enabled: true,
+          to: { name: 'PipelineBuildLogs', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName, id: this.id } }
+        },
+        {
+          text: 'Manifest',
+          icon: 'book',
+          enabled: true,
+          to: { name: 'PipelineBuildManifest', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName, id: this.id } }
+        }
+      ]
     }
   },
 

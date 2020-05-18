@@ -4,19 +4,21 @@
   >
     <li
       v-for="tab in tabs"
-      :key="tab.routeName"
+      :key="tab.text"
       class="nav-item"
     >
       <router-link
-        :to="{ name: tab.routeName, params: params}"
-        v-if="tab.active"
+        v-if="tab.enabled"
+        :to="tab.to"
+        :exact="tab.exact ? tab.exact : false"
         class="nav-link"
       >
         <font-awesome-icon
+          v-if="tab.icon"
           :icon="tab.icon"
           class="mr-2"
         />
-        {{ tab.tabName }}
+        {{ tab.text }}
       </router-link>
       <span
         v-else
@@ -26,7 +28,7 @@
           :icon="tab.icon"
           class="mr-2"
         />
-        {{ tab.tabName }}
+        {{ tab.text }}
       </span>
     </li>
   </ul>
@@ -34,10 +36,10 @@
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faIndustry, faTools, faUpload, faProjectDiagram, faLightbulb, faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faIndustry, faTools, faUpload, faProjectDiagram, faLightbulb, faUserSecret, faHammer, faClipboardCheck, faPollH, faBook, faChartPie, faListOl, faChartLine } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faIndustry, faTools, faUpload, faProjectDiagram, faLightbulb, faUserSecret)
+library.add(faIndustry, faTools, faUpload, faProjectDiagram, faLightbulb, faUserSecret, faHammer, faClipboardCheck, faPollH, faBook, faChartPie, faListOl, faChartLine)
 
 export default {
   components: {
@@ -47,10 +49,6 @@ export default {
     tabs: {
       type: Array,
       default: function () { return [] }
-    },
-    params: {
-      type: Object,
-      default: null
     }
   }
 }
