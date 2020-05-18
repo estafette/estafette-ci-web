@@ -109,7 +109,7 @@ export default {
           to: { name: 'Pipelines' }
         },
         {
-          text: 'Catalog (beta)',
+          text: 'Catalog',
           icon: 'book-open',
           to: { name: 'Catalog' }
         },
