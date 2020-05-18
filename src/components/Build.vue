@@ -34,18 +34,11 @@
       <div :class="['text-black-50', alwaysShowTitles ? '' : 'd-xl-none', 'small mb-1']">
         Status
       </div>
-      <div class="progress">
-        <div
-          class="progress-bar"
-          :class="[$options.filters.bootstrapClass(build.buildStatus,'bg'), $options.filters.stripedProgressBarClass(build.buildStatus)]"
-          role="progressbar"
-          style="width: 100%"
-          aria-valuenow="100"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          :title="build.buildStatus"
-        />
-      </div>
+      <b-progress
+        :value="100"
+        :variant="$options.filters.bootstrapVariant(build.buildStatus)"
+        :animated="$options.filters.animatedProgressBar(build.buildStatus)"
+      />
     </div>
     <div
       :class="[colClassesBuiltAt, 'mb-2 text-truncate']"
@@ -157,6 +150,7 @@
 </template>
 
 <script>
+import { BProgress } from 'bootstrap-vue'
 import CommitLink from '@/components/CommitLink'
 import ReleaseButton from '@/components/ReleaseButton'
 import RebuildButton from '@/components/RebuildButton'
@@ -166,6 +160,7 @@ import TriggeredBy from '@/components/TriggeredBy'
 
 export default {
   components: {
+    BProgress,
     CommitLink,
     ReleaseButton,
     RebuildButton,

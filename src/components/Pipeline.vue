@@ -31,20 +31,14 @@
       <div :class="['text-black-50', alwaysShowTitles ? '' : 'd-xxxl-none', 'small mb-1']">
         Status
       </div>
+
       <router-link
         :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: pipeline.id }}"
-        tag="div"
-        class="progress"
       >
-        <div
-          class="progress-bar"
-          :class="[$options.filters.bootstrapClass(pipeline.buildStatus,'bg'), $options.filters.stripedProgressBarClass(pipeline.buildStatus)]"
-          role="progressbar"
-          style="width: 100%"
-          aria-valuenow="100"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          :title="pipeline.buildStatus"
+        <b-progress
+          :value="100"
+          :variant="$options.filters.bootstrapVariant(pipeline.buildStatus)"
+          :animated="$options.filters.animatedProgressBar(pipeline.buildStatus)"
         />
       </router-link>
     </div>
@@ -160,12 +154,14 @@
 </template>
 
 <script>
+import { BProgress } from 'bootstrap-vue'
 import CommitLink from '@/components/CommitLink'
 import ReleaseBadge from '@/components/ReleaseBadge'
 import TriggeredBy from '@/components/TriggeredBy'
 
 export default {
   components: {
+    BProgress,
     CommitLink,
     ReleaseBadge,
     TriggeredBy

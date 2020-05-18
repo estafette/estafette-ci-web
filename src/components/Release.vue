@@ -45,22 +45,11 @@
       <div :class="['text-black-50', alwaysShowTitles ? '' : 'd-xl-none', 'small mb-1']">
         Status
       </div>
-      <router-link
-        :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
-        tag="div"
-        class="progress"
-      >
-        <div
-          class="progress-bar"
-          :class="[$options.filters.bootstrapClass(release.releaseStatus,'bg'), $options.filters.stripedProgressBarClass(release.releaseStatus)]"
-          role="progressbar"
-          style="width: 100%"
-          aria-valuenow="100"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          :title="release.releaseStatus"
-        />
-      </router-link>
+      <b-progress
+        :value="100"
+        :variant="$options.filters.bootstrapVariant(release.releaseStatus)"
+        :animated="$options.filters.animatedProgressBar(release.releaseStatus)"
+      />
     </div>
     <div
       :class="[colClassesReleasedAt, 'mb-2 text-truncate']"
@@ -102,11 +91,13 @@
 </template>
 
 <script>
+import { BProgress } from 'bootstrap-vue'
 import CancelButton from '@/components/CancelButton'
 import TriggeredBy from '@/components/TriggeredBy'
 
 export default {
   components: {
+    BProgress,
     CancelButton,
     TriggeredBy
   },
