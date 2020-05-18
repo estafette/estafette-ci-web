@@ -216,7 +216,7 @@ export default {
           this.filterValues = response.data
 
           // set activeFilterValue to first filter value if not set or filter value no longer exists
-          if (this.filterValues && this.filterValues.length > 0 && (!this.activeFilterValue || !this.filterValues.some(f => f === this.activeFilterValue))) {
+          if (this.filterValues && this.filterValues.length > 0 && (!this.activeFilterValue || !this.filterValues.some(f => f.value === this.activeFilterValue))) {
             this.activeFilterValue = this.filterValues[0].value
             this.setQueryParams()
           }
