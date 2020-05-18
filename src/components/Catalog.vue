@@ -228,7 +228,7 @@ export default {
     },
 
     loadCatalogItems () {
-      this.axios.get(`/api/pipelines?filter[labels]=${this.activeFilter}=${this.activeFilterValue}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/pipelines?filter[labels]=${this.activeFilter}=${this.activeFilterValue}&filter[since]=eternity&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.catalogItems = response.data.items
           this.pagination = response.data.pagination
