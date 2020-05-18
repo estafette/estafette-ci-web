@@ -47,7 +47,7 @@ export default {
           to: { name: 'Home' }
         },
         {
-          text: 'Catalog',
+          text: 'catalog',
           to: { name: 'Catalog' }
         },
         {

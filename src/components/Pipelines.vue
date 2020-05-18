@@ -209,7 +209,7 @@ export default {
         delete query.labels
       }
 
-      if (this.pagination && this.pagination.page && this.pagination.page > 1) {
+      if (this.pagination && this.pagination.page && this.pagination.page > 0) {
         query.page = this.pagination.page
       } else if (query.page) {
         delete query.page
