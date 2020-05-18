@@ -1,36 +1,9 @@
 <template>
   <div>
-    <nav
-      class="m-3"
-      aria-label="breadcrumb"
-    >
-      <ol class="breadcrumb flex-nowrap">
-        <li class="breadcrumb-item text-truncate">
-          <router-link :to="{ name: 'Pipelines'}">
-            Pipelines
-          </router-link>
-        </li>
-        <li class="breadcrumb-item text-truncate">
-          <router-link :to="{ name: 'PipelineOverview', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}">
-            <span class="d-none d-md-inline">{{ repoSource }}/{{ repoOwner }}/</span>{{ repoName }}
-          </router-link>
-        </li>
-        <li class="breadcrumb-item text-truncate">
-          <router-link :to="{ name: 'PipelineReleases', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}">
-            releases
-          </router-link>
-        </li>
-        <li
-          class="breadcrumb-item text-truncate active"
-          aria-current="page"
-          v-if="release"
-        >
-          {{ release.releaseVersion }} to {{ release.name }}<span v-if="release.action">
-            / {{ release.action }}
-          </span>
-        </li>
-      </ol>
-    </nav>
+    <b-breadcrumb
+      :items="breadcrumbs"
+      class="m-3 rounded"
+    />
 
     <release
       v-if="release"
@@ -49,11 +22,13 @@
 </template>
 
 <script>
+import { BBreadcrumb } from 'bootstrap-vue'
 import Release from '@/components/Release'
 import Tabs from '@/components/Tabs'
 
 export default {
   components: {
+    BBreadcrumb,
     Release,
     Tabs
   },
@@ -83,6 +58,27 @@ export default {
     return {
       release: null,
       refresh: true,
+      breadcrumbs: [
+        {
+          text: 'Home',
+          to: { name: 'Home' }
+        },
+        {
+          text: 'builds & releases',
+          to: { name: 'Pipelines' }
+        },
+        {
+          text: `${this.repoSource}/${this.repoOwner}/${this.repoName}`,
+          to: { name: 'PipelineOverview', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
+        },
+        {
+          text: 'releases',
+          to: { name: 'PipelineReleases', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
+        },
+        {
+          text: '...'
+        }
+      ],
       tabs: [
         {
           text: 'Logs',
@@ -103,6 +99,13 @@ export default {
       this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}`)
         .then(response => {
           this.release = response.data
+
+          this.breadcrumbs[this.breadcrumbs.length - 1] = {
+            text: `${this.release.releaseVersion} to ${this.release.name}` + (this.release.action ? ` (${this.release.action})` : ''),
+            to: { name: 'PipelineReleaseLogs', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName, releaseID: this.releaseID } },
+            active: true
+          }
+
           if (this.release.releaseStatus !== 'succeeded' && this.release.releaseStatus !== 'failed') {
             this.periodicallyRefreshRelease(5)
           } else {

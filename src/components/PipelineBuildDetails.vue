@@ -1,34 +1,9 @@
 <template>
   <div>
-    <nav
-      class="m-3"
-      aria-label="breadcrumb"
-    >
-      <ol class="breadcrumb flex-nowrap">
-        <li class="breadcrumb-item text-truncate">
-          <router-link :to="{ name: 'Pipelines'}">
-            Pipelines
-          </router-link>
-        </li>
-        <li class="breadcrumb-item text-truncate">
-          <router-link :to="{ name: 'PipelineBuilds', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}">
-            <span class="d-none d-md-inline">{{ repoSource }}/{{ repoOwner }}/</span>{{ repoName }}
-          </router-link>
-        </li>
-        <li class="breadcrumb-item text-truncate">
-          <router-link :to="{ name: 'PipelineBuilds', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName }}">
-            builds
-          </router-link>
-        </li>
-        <li
-          class="breadcrumb-item text-truncate active"
-          aria-current="page"
-          v-if="build"
-        >
-          {{ build.buildVersion }}
-        </li>
-      </ol>
-    </nav>
+    <b-breadcrumb
+      :items="breadcrumbs"
+      class="m-3 rounded"
+    />
 
     <build
       v-if="build"
@@ -53,12 +28,14 @@
 </template>
 
 <script>
+import { BBreadcrumb } from 'bootstrap-vue'
 import Build from '@/components/Build'
 import PipelineBuildWarnings from '@/components/PipelineBuildWarnings'
 import Tabs from '@/components/Tabs'
 
 export default {
   components: {
+    BBreadcrumb,
     Build,
     PipelineBuildWarnings,
     Tabs
@@ -89,6 +66,27 @@ export default {
     return {
       build: null,
       refresh: true,
+      breadcrumbs: [
+        {
+          text: 'Home',
+          to: { name: 'Home' }
+        },
+        {
+          text: 'builds & releases',
+          to: { name: 'Pipelines' }
+        },
+        {
+          text: `${this.repoSource}/${this.repoOwner}/${this.repoName}`,
+          to: { name: 'PipelineOverview', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
+        },
+        {
+          text: 'builds',
+          to: { name: 'PipelineBuilds', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
+        },
+        {
+          text: '...'
+        }
+      ],
       tabs: [
         {
           text: 'Logs',
@@ -115,6 +113,13 @@ export default {
       this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}`)
         .then(response => {
           this.build = response.data
+
+          this.breadcrumbs[this.breadcrumbs.length - 1] = {
+            text: `${this.build.buildVersion}`,
+            to: { name: 'PipelineBuildLogs', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName, id: this.id } },
+            active: true
+          }
+
           if (this.build.buildStatus !== 'succeeded' && this.build.buildStatus !== 'failed') {
             this.periodicallyRefreshBuild(5)
           } else {

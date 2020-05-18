@@ -1,23 +1,9 @@
 <template>
   <div>
-    <nav
-      class="m-3"
-      aria-label="breadcrumb"
-    >
-      <ol class="breadcrumb flex-nowrap">
-        <li class="breadcrumb-item text-truncate">
-          <router-link :to="{ name: 'Pipelines'}">
-            Pipelines
-          </router-link>
-        </li>
-        <li
-          class="breadcrumb-item text-truncate active"
-          aria-current="page"
-        >
-          <span class="d-none d-md-inline">{{ repoSource }}/{{ repoOwner }}/</span>{{ repoName }}
-        </li>
-      </ol>
-    </nav>
+    <b-breadcrumb
+      :items="breadcrumbs"
+      class="m-3 rounded"
+    />
 
     <pipeline
       :pipeline="pipeline"
@@ -41,12 +27,14 @@
 </template>
 
 <script>
+import { BBreadcrumb } from 'bootstrap-vue'
 import Pipeline from '@/components/Pipeline'
 import PipelineWarnings from '@/components/PipelineWarnings'
 import Tabs from '@/components/Tabs'
 
 export default {
   components: {
+    BBreadcrumb,
     Pipeline,
     PipelineWarnings,
     Tabs
@@ -73,6 +61,21 @@ export default {
     return {
       pipeline: null,
       refresh: true,
+      breadcrumbs: [
+        {
+          text: 'Home',
+          to: { name: 'Home' }
+        },
+        {
+          text: 'builds & releases',
+          to: { name: 'Pipelines' }
+        },
+        {
+          text: `${this.repoSource}/${this.repoOwner}/${this.repoName}`,
+          to: { name: 'PipelineOverview', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } },
+          active: true
+        }
+      ],
       tabs: [
         {
           text: 'Overview',

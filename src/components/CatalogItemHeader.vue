@@ -1,23 +1,9 @@
 <template>
   <div>
-    <nav
-      class="m-3"
-      aria-label="breadcrumb"
-    >
-      <ol class="breadcrumb flex-nowrap">
-        <li class="breadcrumb-item text-truncate">
-          <router-link :to="{ name: 'Catalog'}">
-            Catalog
-          </router-link>
-        </li>
-        <li
-          class="breadcrumb-item text-truncate active"
-          aria-current="page"
-        >
-          {{ repoName }}
-        </li>
-      </ol>
-    </nav>
+    <b-breadcrumb
+      :items="breadcrumbs"
+      class="m-3 rounded"
+    />
 
     <tabs :tabs="tabs" />
 
@@ -29,10 +15,12 @@
 </template>
 
 <script>
+import { BBreadcrumb } from 'bootstrap-vue'
 import Tabs from '@/components/Tabs'
 
 export default {
   components: {
+    BBreadcrumb,
     Tabs
   },
   props: {
@@ -53,6 +41,21 @@ export default {
     return {
       catalogItem: null,
       refresh: true,
+      breadcrumbs: [
+        {
+          text: 'Home',
+          to: { name: 'Home' }
+        },
+        {
+          text: 'Catalog',
+          to: { name: 'Catalog' }
+        },
+        {
+          text: this.repoName,
+          to: { name: 'CatalogItemOverview', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } },
+          active: true
+        }
+      ],
       tabs: [
         {
           text: 'Overview',
