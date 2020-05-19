@@ -58,6 +58,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data: function () {
     return {
@@ -103,9 +105,9 @@ export default {
   },
 
   computed: {
-    user () {
-      return this.$store.state.user.me
-    }
+    ...mapState('user', {
+      user: 'me'
+    })
   },
 
   beforeDestroy () {

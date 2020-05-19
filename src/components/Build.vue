@@ -147,6 +147,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { BProgress } from 'bootstrap-vue'
 import CommitLink from '@/components/CommitLink'
 import ReleaseButton from '@/components/ReleaseButton'
@@ -195,9 +196,9 @@ export default {
   },
 
   computed: {
-    user () {
-      return this.$store.state.user.me
-    },
+    ...mapState('user', {
+      user: 'me'
+    }),
     limitCommits () {
       if (!this.build || !this.build.commits) {
         return []

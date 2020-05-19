@@ -158,13 +158,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { BButton } from 'bootstrap-vue'
-
 import Spinner from '@/components/Spinner'
 import CommitLink from '@/components/CommitLink'
-
 import { Drag, Drop } from 'vue-easy-dnd'
-
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFire, faShippingFast, faUpload } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -339,9 +337,9 @@ export default {
   },
 
   computed: {
-    user () {
-      return this.$store.state.user.me
-    },
+    ...mapState('user', {
+      user: 'me'
+    }),
     mergedActionsAndActiveReleases () {
       return (releaseTarget) => {
         if ((!releaseTarget.actions || releaseTarget.actions.length === 0) && (!releaseTarget.activeReleases || releaseTarget.activeReleases.length === 0)) {

@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { BBreadcrumb } from 'bootstrap-vue'
 import Pipeline from '@/components/Pipeline'
 import PipelineWarnings from '@/components/PipelineWarnings'
@@ -153,9 +154,9 @@ export default {
   },
 
   computed: {
-    user () {
-      return this.$store.state.user.me
-    }
+    ...mapState('user', {
+      user: 'me'
+    })
   },
 
   beforeDestroy () {

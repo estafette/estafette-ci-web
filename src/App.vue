@@ -22,6 +22,8 @@ import NavigationBar from '@/components/NavigationBar'
 import SiteFooter from '@/components/SiteFooter'
 import SessionRefreshModal from '@/components/SessionRefreshModal'
 
+import { mapActions } from 'vuex'
+
 export default {
   components: {
     NavigationBar,
@@ -29,47 +31,18 @@ export default {
     SessionRefreshModal
   },
 
-  data: function () {
-    return {
-      refresh: true
-    }
-  },
-
   created () {
-    this.loadUser()
+    this.load()
   },
 
   methods: {
-    loadUser () {
-      this.axios.get(`/api/users/me`)
-        .then(response => {
-          this.$store.commit('user/set', response.data)
-        })
-        .catch(e => {
-          this.periodicallyRefreshUser(60)
-        })
-    },
-
-    periodicallyRefreshUser (intervalSeconds) {
-      if (this.refreshTimeout) {
-        clearTimeout(this.refreshTimeout)
-      }
-
-      var max = 1000 * intervalSeconds * 0.75
-      var min = 1000 * intervalSeconds * 1.25
-      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
-
-      if (this.refresh) {
-        this.refreshTimeout = setTimeout(this.loadUser, timeoutWithJitter)
-      }
-    }
+    ...mapActions('user', [
+      'load'
+    ])
   },
 
   beforeDestroy () {
-    this.refresh = false
-    if (this.refreshTimeout) {
-      clearTimeout(this.refreshTimeout)
-    }
+    this.$store.dispatch('user/destroy')
   }
 }
 </script>

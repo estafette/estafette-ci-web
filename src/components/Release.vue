@@ -90,6 +90,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { BProgress } from 'bootstrap-vue'
 import CancelButton from '@/components/CancelButton'
 import TriggeredBy from '@/components/TriggeredBy'
@@ -113,9 +114,9 @@ export default {
   },
 
   computed: {
-    user () {
-      return this.$store.state.user.me
-    },
+    ...mapState('user', {
+      user: 'me'
+    }),
     alwaysShowTitles () {
       return !this.rowItem
     },

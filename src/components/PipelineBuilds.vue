@@ -79,6 +79,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Spinner from '@/components/Spinner'
 import StatusFilter from '@/components/StatusFilter'
 import PaginationCompact from '@/components/PaginationCompact'
@@ -182,9 +183,9 @@ export default {
   },
 
   computed: {
-    user () {
-      return this.$store.state.user.me
-    }
+    ...mapState('user', {
+      user: 'me'
+    })
   },
 
   watch: {

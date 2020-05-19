@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { BBreadcrumb } from 'bootstrap-vue'
 import Release from '@/components/Release'
 import Tabs from '@/components/Tabs'
@@ -137,9 +138,9 @@ export default {
   },
 
   computed: {
-    user () {
-      return this.$store.state.user.me
-    }
+    ...mapState('user', {
+      user: 'me'
+    })
   },
 
   beforeDestroy () {

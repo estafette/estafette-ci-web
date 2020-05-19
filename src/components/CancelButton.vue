@@ -23,6 +23,8 @@
 <script>
 import { BInputGroup, BInputGroupText, BButton } from 'bootstrap-vue'
 
+import { mapState } from 'vuex'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBan } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -76,10 +78,11 @@ export default {
       }
     }
   },
+
   computed: {
-    user () {
-      return this.$store.state.user.me
-    }
+    ...mapState('user', {
+      user: 'me'
+    })
   }
 }
 </script>

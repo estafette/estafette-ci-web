@@ -70,10 +70,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { BNavbar, BNavbarBrand, BNavbarToggle, BNavbarNav, BNavItemDropdown, BDropdownItem, BCollapse } from 'bootstrap-vue'
-
 import NavigationBarItems from '@/components/NavigationBarItems'
-
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -121,9 +120,9 @@ export default {
   },
 
   computed: {
-    user () {
-      return this.$store.state.user.me
-    }
+    ...mapState('user', {
+      user: 'me'
+    })
   }
 }
 </script>

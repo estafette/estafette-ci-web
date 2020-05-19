@@ -52,6 +52,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { BDropdown, BDropdownHeader, BDropdownItemButton, BInputGroup, BInputGroupText } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -140,9 +141,9 @@ export default {
   },
 
   computed: {
-    user () {
-      return this.$store.state.user.me
-    }
+    ...mapState('user', {
+      user: 'me'
+    })
   }
 }
 </script>
