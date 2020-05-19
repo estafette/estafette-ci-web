@@ -4,16 +4,12 @@
     :class="['overflow-auto']"
   >
     <div id="header-and-main">
-      <navigation-bar
-        :user="user"
-      />
+      <navigation-bar />
       <div
         id="main"
         :class="['']"
       >
-        <router-view
-          :user="user"
-        />
+        <router-view />
       </div>
     </div>
     <site-footer />
@@ -66,12 +62,6 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadUser, timeoutWithJitter)
       }
-    }
-  },
-
-  computed: {
-    user () {
-      return this.$store.state.user.user
     }
   },
 

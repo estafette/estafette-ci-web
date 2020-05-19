@@ -77,17 +77,15 @@ export default {
     build: {
       type: Object,
       default: null
-    },
-    user: {
-      type: Object,
-      default: null
     }
   },
+
   data: function () {
     return {
       clicked: false
     }
   },
+
   methods: {
     releaseTargetDisabled: function (releaseTarget) {
       return this.pipeline &&
@@ -138,6 +136,12 @@ export default {
 
     hasActions: function (releaseTarget) {
       return releaseTarget && releaseTarget.actions && releaseTarget.actions.length > 0
+    }
+  },
+
+  computed: {
+    user () {
+      return this.$store.state.user.me
     }
   }
 }

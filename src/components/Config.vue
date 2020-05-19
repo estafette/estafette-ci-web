@@ -59,13 +59,6 @@
 
 <script>
 export default {
-  props: {
-    user: {
-      type: Object,
-      default: null
-    }
-  },
-
   data: function () {
     return {
       credentials: null,
@@ -106,6 +99,12 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadConfig, timeoutWithJitter)
       }
+    }
+  },
+
+  computed: {
+    user () {
+      return this.$store.state.user.me
     }
   },
 

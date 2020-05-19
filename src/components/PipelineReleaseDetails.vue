@@ -8,7 +8,6 @@
     <release
       v-if="release"
       :release="release"
-      :user="user"
       class="m-3"
     />
 
@@ -47,10 +46,6 @@ export default {
     },
     releaseID: {
       type: String,
-      default: null
-    },
-    user: {
-      type: Object,
       default: null
     }
   },
@@ -138,6 +133,12 @@ export default {
       return labels.slice().sort(function (a, b) {
         return a.key > b.key
       })
+    }
+  },
+
+  computed: {
+    user () {
+      return this.$store.state.user.me
     }
   },
 

@@ -133,16 +133,13 @@
         <release-button
           :pipeline="pipeline"
           :build="build"
-          :user="user"
         />
         <rebuild-button
           :build="build"
-          :user="user"
           :builds="builds"
         />
         <cancel-button
           :build="build"
-          :user="user"
         />
       </div>
     </div>
@@ -178,10 +175,6 @@ export default {
       type: Array,
       default: null
     },
-    user: {
-      type: Object,
-      default: null
-    },
     pipeline: {
       type: Object,
       default: null
@@ -202,6 +195,9 @@ export default {
   },
 
   computed: {
+    user () {
+      return this.$store.state.user.me
+    },
     limitCommits () {
       if (!this.build || !this.build.commits) {
         return []

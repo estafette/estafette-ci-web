@@ -44,10 +44,6 @@ export default {
     builds: {
       type: Array,
       default: null
-    },
-    user: {
-      type: Object,
-      default: null
     }
   },
   data: function () {
@@ -81,6 +77,12 @@ export default {
             console.log(error)
           })
       }
+    }
+  },
+
+  computed: {
+    user () {
+      return this.$store.state.user.me
     }
   }
 }

@@ -19,7 +19,6 @@
     <tabs :tabs="tabs" />
 
     <router-view
-      :user="user"
       :pipeline="pipeline"
       v-if="pipeline"
     />
@@ -50,10 +49,6 @@ export default {
     },
     repoName: {
       type: String,
-      default: null
-    },
-    user: {
-      type: Object,
       default: null
     }
   },
@@ -154,6 +149,12 @@ export default {
       return labels.slice().sort(function (a, b) {
         return a.key > b.key
       })
+    }
+  },
+
+  computed: {
+    user () {
+      return this.$store.state.user.me
     }
   },
 

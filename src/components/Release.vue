@@ -84,7 +84,6 @@
       </div>
       <cancel-button
         :release="release"
-        :user="user"
       />
     </div>
   </router-link>
@@ -107,10 +106,6 @@ export default {
       type: Object,
       default: null
     },
-    user: {
-      type: Object,
-      default: null
-    },
     rowItem: {
       type: Boolean,
       default: false
@@ -118,6 +113,9 @@ export default {
   },
 
   computed: {
+    user () {
+      return this.$store.state.user.me
+    },
     alwaysShowTitles () {
       return !this.rowItem
     },

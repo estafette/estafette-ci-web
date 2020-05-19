@@ -44,10 +44,6 @@ export default {
     release: {
       type: Object,
       default: null
-    },
-    user: {
-      type: Object,
-      default: null
     }
   },
   data: function () {
@@ -78,6 +74,11 @@ export default {
             })
         }
       }
+    }
+  },
+  computed: {
+    user () {
+      return this.$store.state.user.me
     }
   }
 }

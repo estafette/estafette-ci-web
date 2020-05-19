@@ -194,10 +194,6 @@ export default {
       type: String,
       default: null
     },
-    user: {
-      type: Object,
-      default: null
-    },
     pipeline: {
       type: Object,
       default: null
@@ -343,6 +339,9 @@ export default {
   },
 
   computed: {
+    user () {
+      return this.$store.state.user.me
+    },
     mergedActionsAndActiveReleases () {
       return (releaseTarget) => {
         if ((!releaseTarget.actions || releaseTarget.actions.length === 0) && (!releaseTarget.activeReleases || releaseTarget.activeReleases.length === 0)) {

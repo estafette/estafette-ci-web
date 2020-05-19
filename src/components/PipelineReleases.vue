@@ -48,7 +48,6 @@
         v-for="release in releases"
         :key="release.id"
         :release="release"
-        :user="user"
         :row-item="true"
         class="mt-2 mr-0 mb-2 ml-0 list-complete-item"
       />
@@ -100,10 +99,6 @@ export default {
       default: null
     },
     query: {
-      type: Object,
-      default: null
-    },
-    user: {
       type: Object,
       default: null
     },
@@ -174,6 +169,12 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadReleases, timeoutWithJitter)
       }
+    }
+  },
+
+  computed: {
+    user () {
+      return this.$store.state.user.me
     }
   },
 

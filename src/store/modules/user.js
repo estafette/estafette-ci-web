@@ -1,15 +1,15 @@
 const state = () => ({
-  user: {
+  me: {
     authenticated: false
   }
 })
 
 const mutations = {
   set (state, user) {
-    state.user = user
+    state.me = user
   },
   reset (state, user) {
-    state.user = {
+    state.me = {
       authenticated: false
     }
   }

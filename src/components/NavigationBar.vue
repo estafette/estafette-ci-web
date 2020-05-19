@@ -93,13 +93,6 @@ export default {
     FontAwesomeIcon
   },
 
-  props: {
-    user: {
-      type: Object,
-      default: null
-    }
-  },
-
   data: function () {
     return {
       items: [
@@ -124,6 +117,12 @@ export default {
           to: { name: 'Manifest' }
         }
       ]
+    }
+  },
+
+  computed: {
+    user () {
+      return this.$store.state.user.me
     }
   }
 }

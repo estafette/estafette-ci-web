@@ -8,7 +8,6 @@
     <build
       v-if="build"
       :build="build"
-      :user="user"
       :pipeline="build"
       class="m-3"
     />
@@ -55,10 +54,6 @@ export default {
     },
     id: {
       type: String,
-      default: null
-    },
-    user: {
-      type: Object,
       default: null
     }
   },
@@ -152,6 +147,12 @@ export default {
       return labels.slice().sort(function (a, b) {
         return a.key > b.key
       })
+    }
+  },
+
+  computed: {
+    user () {
+      return this.$store.state.user.me
     }
   },
 
