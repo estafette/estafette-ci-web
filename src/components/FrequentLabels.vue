@@ -1,33 +1,24 @@
 <template>
-  <b-button-group
-    class="mb-3"
-    v-if="filteredLabels.length > 0"
+  <b-input-group
+    class="mb-3 d-inline-flex"
+    v-if="filteredLabels.length > 1"
   >
     <b-input-group-prepend
       is-text
     >
       <font-awesome-icon icon="tags" />
     </b-input-group-prepend>
-    <b-dropdown
-      text="Frequent labels"
-      variant="outline"
-      class="rounded-right bg-white"
-    >
-      <b-dropdown-item
-        :to="{ query: { status: filter.status, since: filter.since, labels: labelLinkGenerator(label), page: 1 } }"
-        exact
-        v-for="label in filteredLabels"
-        :key="label.key+'='+label.value"
-        tag="a"
-      >
-        {{ label.key }}={{ label.value }} ({{ label.pipelinescount }})
-      </b-dropdown-item>
-    </b-dropdown>
-  </b-button-group>
+    <b-form-select
+      v-model="mutableModel"
+      :options="filteredLabels"
+      @change="onChange"
+      class="d-inline-flex"
+    />
+  </b-input-group>
 </template>
 
 <script>
-import { BButtonGroup, BDropdown, BDropdownItem, BInputGroupPrepend } from 'bootstrap-vue'
+import { BInputGroup, BInputGroupPrepend, BFormSelect } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTags } from '@fortawesome/free-solid-svg-icons'
@@ -37,10 +28,9 @@ library.add(faTags)
 
 export default {
   components: {
-    BButtonGroup,
-    BDropdown,
-    BDropdownItem,
+    BInputGroup,
     BInputGroupPrepend,
+    BFormSelect,
     FontAwesomeIcon
   },
 
@@ -58,7 +48,8 @@ export default {
         page: 1,
         size: 15
       },
-      refresh: true
+      refresh: true,
+      mutableModel: null
     }
   },
 
@@ -104,10 +95,15 @@ export default {
 
     labelLinkGenerator (label) {
       if (!this.filter || !this.filter.labels || this.filter.labels.length === 0) {
-        return label.key + '=' + label.value
+        return label
       }
 
-      return this.filter.labels + ',' + label.key + '=' + label.value
+      return this.filter.labels + ',' + label
+    },
+
+    onChange (value) {
+      this.$router.push({ query: { status: this.filter.status, since: this.filter.since, labels: this.labelLinkGenerator(value), page: 1 } })
+      this.mutableModel = null
     }
   },
 
@@ -122,7 +118,12 @@ export default {
         selectedLabelsArray = this.filter.labels.split(',')
       }
 
-      return this.labels.filter(i => selectedLabelsArray.indexOf(`${i.key}=${i.value}`) === -1)
+      return [{ value: null, text: 'Frequent labels' }].concat(this.labels.filter(i => selectedLabelsArray.indexOf(`${i.key}=${i.value}`) === -1).map(i => {
+        return {
+          value: `${i.key}=${i.value}`,
+          text: `${i.key}=${i.value} (${i.pipelinescount})`
+        }
+      }))
     }
   },
 

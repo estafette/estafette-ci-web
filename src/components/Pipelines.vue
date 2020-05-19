@@ -22,21 +22,23 @@
       </div>
 
       <div class="row">
-        <div class="col-6 col-sm-8 col-md-9 col-xl-10">
-          <label-filter
-            :filter="filter"
-          />
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
           <frequent-labels
             :filter="filter"
           />
         </div>
-        <div
-          class="col-6 col-sm-4 col-md-3 col-xl-2"
-        >
+        <div class="col-12 col-sm-4 col-md-6 col-lg-8">
           <pagination-compact
             :pagination="pagination"
             :link-generator="paginationLinkGenerator"
             class="float-right"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label-filter
+            :filter="filter"
           />
         </div>
       </div>
