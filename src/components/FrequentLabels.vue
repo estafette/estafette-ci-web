@@ -1,6 +1,6 @@
 <template>
   <b-button-group
-    class="mb-3 bg-white"
+    class="mb-3"
     v-if="filteredLabels.length > 0"
   >
     <b-input-group-prepend
@@ -11,13 +11,14 @@
     <b-dropdown
       text="Frequent labels"
       variant="outline"
-      class="border rounded-right bg-white"
+      class="rounded-right bg-white"
     >
       <b-dropdown-item
         :to="{ query: { status: filter.status, since: filter.since, labels: labelLinkGenerator(label), page: 1 } }"
         exact
         v-for="label in filteredLabels"
         :key="label.key+'='+label.value"
+        tag="a"
       >
         {{ label.key }}={{ label.value }} ({{ label.pipelinescount }})
       </b-dropdown-item>

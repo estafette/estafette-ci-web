@@ -71,6 +71,11 @@ $container-max-widths: (
   width: 42px;
 }
 
+.btn-outline {
+  @extend .border;
+  @extend .text-dark;
+}
+
 .input-group .btn {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
