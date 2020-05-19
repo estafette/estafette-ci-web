@@ -43,14 +43,13 @@
             </div>
           </div>
 
-          <router-link
+          <b-button
             :to="{ name: 'PipelineBuildLogs', params: { repoSource: build.repoSource, repoOwner: build.repoOwner, repoName: build.repoName, id: build.id }}"
             exact
-            :class="[
-              $options.filters.bootstrapClass(build.buildStatus, 'btn'),
-              'btn btn-sm btn-block mr-1 mb-1 text-truncate'
-            ]"
-            tag="button"
+            :variant="$options.filters.bootstrapVariant(build.buildStatus)"
+            size="sm"
+            block
+            class="mr-1 mb-1 text-truncate"
           >
             <span v-if="build.buildVersion">
               {{ build.buildVersion }}
@@ -58,7 +57,7 @@
             <span v-else>
               -
             </span>
-          </router-link>
+          </b-button>
 
           <div class="row mt-2">
             <div
@@ -123,17 +122,15 @@
             :key="index"
             @drop="releaseBuildToTargetAction($event, releaseTarget, release)"
           >
-            <router-link
+            <b-button
               v-if="release && release.id && release.id !== 0"
               :disabled="!release || !release.id || release.id <= 0"
               :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
               exact
-              :class="[
-                $options.filters.bootstrapClass(release.releaseStatus, 'btn'),
-                'btn btn-sm btn-block mr-1 mb-1 text-truncate'
-              ]"
-              tag="button"
-              :title="release.action"
+              :variant="$options.filters.bootstrapVariant(release.releaseStatus)"
+              size="sm"
+              block
+              class="mr-1 mb-1 text-truncate"
             >
               <span v-if="release.action">
                 {{ release.action }}:
@@ -143,7 +140,7 @@
                 icon="fire"
                 v-if="releaseIsUpToDate(release)"
               />
-            </router-link>
+            </b-button>
             <button
               v-else
               disabled="disabled"
@@ -161,6 +158,8 @@
 </template>
 
 <script>
+import { BButton } from 'bootstrap-vue'
+
 import Spinner from '@/components/Spinner'
 import CommitLink from '@/components/CommitLink'
 
@@ -174,6 +173,7 @@ library.add(faFire, faShippingFast, faUpload)
 
 export default {
   components: {
+    BButton,
     Spinner,
     CommitLink,
     Drag,
