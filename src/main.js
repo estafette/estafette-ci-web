@@ -1,7 +1,6 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import VueAnalytics from 'vue-analytics'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import App from './App'
@@ -13,11 +12,6 @@ import 'moment/locale/en-il'
 Vue.use(VueAxios, axios)
 
 moment.locale('en-il')
-
-Vue.use(VueAnalytics, {
-  id: 'UA-464018-10',
-  router
-})
 
 // filter to trim a git commit revision to 6 chars
 Vue.filter('gitHash', function (value) {
