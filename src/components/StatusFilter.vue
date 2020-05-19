@@ -1,53 +1,59 @@
 <template>
-  <div class="btn-group mb-3">
-    <a class="btn btn-outline-light bg-btn-group-prepend icon-container">
+  <b-button-group
+    class="mb-3 bg-white"
+  >
+    <b-input-group-prepend
+      is-text
+    >
       <font-awesome-icon icon="check-circle" />
-    </a>
-    <router-link
+    </b-input-group-prepend>
+    <b-button
       :to="{ query: { status: 'all', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
       active-class="router-link-active"
-      class="btn btn-outline-primary"
+      variant="outline-primary"
       :class="[ filter.status === 'all' ? 'active' : 'border-btn-group bg-white' ]"
       @click="this.blur()"
     >
       All
-    </router-link>
-    <router-link
+    </b-button>
+    <b-button
       :to="{ query: { status: 'succeeded', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
       active-class="router-link-active"
-      class="btn btn-outline-success"
-      :class="[ filter.status === 'succeeded' ? 'active' : 'border-btn-group bg-white' ]"
+      variant="outline-success"
+      :class="[ filter.status === 'succeeded' ? 'active' : 'border-btn-group' ]"
     >
       Succeeded
-    </router-link>
-    <router-link
+    </b-button>
+    <b-button
       :to="{ query: { status: 'failed', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
       active-class="router-link-active"
-      class="btn btn-outline-danger"
-      :class="[ filter.status === 'failed' ? 'active' : 'border-btn-group bg-white' ]"
+      variant="outline-danger"
+      :class="[ filter.status === 'failed' ? 'active' : 'border-btn-group' ]"
     >
       Failed
-    </router-link>
-    <router-link
+    </b-button>
+    <b-button
       :to="{ query: { status: 'running', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
       active-class="router-link-active"
-      class="btn btn-outline-warning"
-      :class="[ filter.status === 'running' ? 'active' : 'border-btn-group bg-white' ]"
+      variant="outline-warning"
+      :class="[ filter.status === 'running' ? 'active' : 'border-btn-group' ]"
     >
       Running
-    </router-link>
-    <router-link
+    </b-button>
+    <b-button
       :to="{ query: { status: 'canceled', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
       active-class="router-link-active"
-      class="btn btn-outline-secondary"
-      :class="[ filter.status === 'canceled' ? 'active' : 'border-btn-group bg-white' ]"
+      variant="outline-secondary"
+      :class="[ filter.status === 'canceled' ? 'active' : 'border-btn-group' ]"
     >
       Canceled
-    </router-link>
-  </div>
+    </b-button>
+  </b-button-group>
 </template>
 
 <script>
+import { BButtonGroup, BButton, BInputGroupPrepend } from 'bootstrap-vue'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -56,6 +62,9 @@ library.add(faCheckCircle)
 
 export default {
   components: {
+    BButtonGroup,
+    BButton,
+    BInputGroupPrepend,
     FontAwesomeIcon
   },
 

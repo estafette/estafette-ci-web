@@ -2,7 +2,6 @@
   <b-input-group class="mb-3">
     <b-input-group-prepend
       is-text
-      class="icon-container"
     >
       <font-awesome-icon icon="filter" />
     </b-input-group-prepend>

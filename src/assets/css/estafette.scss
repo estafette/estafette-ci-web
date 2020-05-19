@@ -67,10 +67,8 @@ $container-max-widths: (
     border-color: $custom-select-border-color !important;
 }
 
-.bg-btn-group-prepend {
-    border-color: $custom-select-border-color !important;
-    color: $input-group-addon-color !important;
-    background-color: $input-group-addon-bg !important;
+.input-group-prepend {
+  width: 42px;
 }
 
 .input-group .btn {

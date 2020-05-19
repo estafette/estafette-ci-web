@@ -43,7 +43,7 @@
               {{ user.email }}
             </em>
           </template>
-          <b-dropdown-item-button
+          <b-dropdown-item
             :to="{ name: 'Config'}"
           >
             <font-awesome-icon
@@ -51,8 +51,8 @@
               class="mr-2"
             />
             Configuration
-          </b-dropdown-item-button>
-          <b-dropdown-item-button
+          </b-dropdown-item>
+          <b-dropdown-item
             href="/_gcp_iap/session_refresher"
             target="_blank"
             title="Keep the session refresh tab open to prevent the Identity Aware Proxy (IAP) session from expiring"
@@ -62,7 +62,7 @@
               class="mr-2"
             />
             IAP session refresh tab
-          </b-dropdown-item-button>
+          </b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>
@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import { BNavbar, BNavbarBrand, BNavbarToggle, BNavbarNav, BNavItemDropdown, BDropdownItemButton, BCollapse } from 'bootstrap-vue'
+import { BNavbar, BNavbarBrand, BNavbarToggle, BNavbarNav, BNavItemDropdown, BDropdownItem, BCollapse } from 'bootstrap-vue'
 
 import NavigationBarItems from '@/components/NavigationBarItems'
 
@@ -87,7 +87,7 @@ export default {
     BNavbarToggle,
     BNavbarNav,
     BNavItemDropdown,
-    BDropdownItemButton,
+    BDropdownItem,
     BCollapse,
     NavigationBarItems,
     FontAwesomeIcon

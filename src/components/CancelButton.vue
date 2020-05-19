@@ -10,17 +10,18 @@
     >
       <font-awesome-icon icon="ban" />
     </b-input-group-text>
-    <div
-      class="btn btn-outline-danger btn-sm"
+    <b-button
+      variant="outline-danger"
+      size="sm"
       @click.stop="cancel"
     >
       Cancel
-    </div>
+    </b-button>
   </b-input-group>
 </template>
 
 <script>
-import { BInputGroup, BInputGroupText } from 'bootstrap-vue'
+import { BInputGroup, BInputGroupText, BButton } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBan } from '@fortawesome/free-solid-svg-icons'
@@ -32,6 +33,7 @@ export default {
   components: {
     BInputGroup,
     BInputGroupText,
+    BButton,
     FontAwesomeIcon
   },
   props: {

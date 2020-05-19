@@ -1,15 +1,17 @@
 <template>
   <b-button-group
-    class="btn-group mb-3 bg-white"
+    class="mb-3 bg-white"
     v-if="filteredLabels.length > 0"
   >
-    <a class="btn btn-outline-light bg-btn-group-prepend icon-container">
+    <b-input-group-prepend
+      is-text
+    >
       <font-awesome-icon icon="tags" />
-    </a>
+    </b-input-group-prepend>
     <b-dropdown
       text="Frequent labels"
       variant="outline"
-      class="border rounded-right"
+      class="border rounded-right bg-white"
     >
       <b-dropdown-item
         :to="{ query: { status: filter.status, since: filter.since, labels: labelLinkGenerator(label), page: 1 } }"
@@ -24,7 +26,7 @@
 </template>
 
 <script>
-import { BButtonGroup, BDropdown, BDropdownItem } from 'bootstrap-vue'
+import { BButtonGroup, BDropdown, BDropdownItem, BInputGroupPrepend } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTags } from '@fortawesome/free-solid-svg-icons'
@@ -37,6 +39,7 @@ export default {
     BButtonGroup,
     BDropdown,
     BDropdownItem,
+    BInputGroupPrepend,
     FontAwesomeIcon
   },
 

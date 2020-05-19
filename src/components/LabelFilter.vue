@@ -1,15 +1,17 @@
 <template>
-  <div
-    :class="['mb-3', 'btn-group mr-2 bg-white']"
+  <b-button-group
+    class="mb-3 mr-2 bg-white"
     v-if="splitLabels.length > 0"
   >
-    <span :class="['btn-outline-light bg-btn-group-prepend', 'btn icon-container']">
+    <b-input-group-prepend
+      is-text
+    >
       <font-awesome-icon icon="tag" />
-    </span>
-    <span
+    </b-input-group-prepend>
+    <b-button
       v-for="label in splitLabels"
       :key="label"
-      :class="['btn-outline-primary border-btn-group', 'btn']"
+      variant="outline-primary"
     >
       {{ label }} <router-link
         :to="{ query: { status: filter.status, since: filter.since, labels: labelLinkGenerator(label), page: 1 } }"
@@ -18,11 +20,13 @@
       >
         &times;
       </router-link>
-    </span>
-  </div>
+    </b-button>
+  </b-button-group>
 </template>
 
 <script>
+import { BButtonGroup, BButton, BInputGroupPrepend } from 'bootstrap-vue'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTag } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -31,6 +35,9 @@ library.add(faTag)
 
 export default {
   components: {
+    BButtonGroup,
+    BButton,
+    BInputGroupPrepend,
     FontAwesomeIcon
   },
 

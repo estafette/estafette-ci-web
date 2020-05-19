@@ -8,7 +8,6 @@
         <b-input-group class="mb-3">
           <b-input-group-prepend
             is-text
-            class="icon-container"
           >
             <font-awesome-icon icon="history" />
           </b-input-group-prepend>
