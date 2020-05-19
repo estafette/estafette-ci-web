@@ -41,13 +41,13 @@ export default {
   computed: {
     modalVisible: {
       get: function () {
-        return this.$store.state.sessionRefreshModalActive
+        return this.$store.state.modal.visible
       },
       set: function (newValue) {
         if (newValue === true) {
-          this.$store.commit('showModal')
+          this.$store.commit('modal/show')
         } else {
-          this.$store.commit('hideModal')
+          this.$store.commit('modal/hide')
         }
       }
     }
@@ -74,12 +74,12 @@ export default {
           } else {
             this.iapSessionRefreshWindow.close()
             this.iapSessionRefreshWindow = null
-            this.$store.commit('hideModal')
+            this.$store.commit('modal/hide')
           }
         })
       } else {
         this.iapSessionRefreshWindow = null
-        this.$store.commit('hideModal')
+        this.$store.commit('modal/hide')
       }
     }
   },

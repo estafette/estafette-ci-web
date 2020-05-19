@@ -35,7 +35,6 @@ export default {
 
   data: function () {
     return {
-      user: null,
       refresh: true
     }
   },
@@ -48,7 +47,7 @@ export default {
     loadUser () {
       this.axios.get(`/api/users/me`)
         .then(response => {
-          this.user = response.data
+          this.$store.commit('user/set', response.data)
         })
         .catch(e => {
           this.periodicallyRefreshUser(60)
@@ -67,6 +66,12 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadUser, timeoutWithJitter)
       }
+    }
+  },
+
+  computed: {
+    user () {
+      return this.$store.state.user.user
     }
   },
 

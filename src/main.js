@@ -1,17 +1,16 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import Vuex from 'vuex'
 import VueAnalytics from 'vue-analytics'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import App from './App'
 import router from './router'
+import store from './store'
 import moment from 'moment'
 import 'moment/locale/en-il'
 
 Vue.use(VueAxios, axios)
-Vue.use(Vuex)
 
 moment.locale('en-il')
 
@@ -250,24 +249,6 @@ Vue.filter('splitCamelcase', function (value) {
 
 Vue.config.productionTip = false
 
-const store = new Vuex.Store({
-  state: {
-    sessionRefreshModalActive: false
-  },
-  mutations: {
-    showModal (state) {
-      if (!state.sessionRefreshModalActive) {
-        state.sessionRefreshModalActive = true
-      }
-    },
-    hideModal (state) {
-      if (state.sessionRefreshModalActive) {
-        state.sessionRefreshModalActive = false
-      }
-    }
-  }
-})
-
 // intercept api requests to add X-Requested-With: XMLHttpRequest header to have IAP return 401 instead of 302
 Vue.axios.interceptors.request.use(
   config => {
@@ -283,7 +264,7 @@ Vue.axios.interceptors.response.use((response) => {
 }, (error) => {
   if (typeof error.response !== 'undefined' && error.response.status === 401) {
     // open session refresh modal
-    store.commit('showModal')
+    store.commit('modal/show')
     return
   }
   return Promise.reject(error)
