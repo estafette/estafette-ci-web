@@ -1,19 +1,20 @@
 <template>
   <div class="m-3">
     <div :class="['mt-3', '']">
-      <div
-        class="row"
-      >
+      <div class="row">
         <div class="col-12 col-lg-6">
           <status-filter :filter="filter" />
         </div>
-        <div class="col-12 col-md-6 col-lg-3">
+        <div class="col-12 col-lg-6 col-xxl-2">
           <pipeline-filter
             :model="filter.search"
             :on-input="setSearch"
           />
         </div>
-        <div class="col-12 col-md-6 col-lg-3 text-right">
+        <div class="col-12 col-lg-6 col-xxl-2">
+          <frequent-labels :filter="filter" />
+        </div>
+        <div class="col-12 col-lg-6 col-xxl-2 text-right">
           <since-selector
             :model="filter.since"
             :on-change="setSince"
@@ -22,23 +23,16 @@
       </div>
 
       <div class="row">
-        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-          <frequent-labels
+        <div class="col-12 col-lg-9">
+          <label-filter
             :filter="filter"
           />
         </div>
-        <div class="col-12 col-sm-4 col-md-6 col-lg-8">
+        <div class="d-none d-lg-block col-12 col-lg-3 text-right">
           <pagination-compact
             :pagination="pagination"
             :link-generator="paginationLinkGenerator"
             class="float-right"
-          />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <label-filter
-            :filter="filter"
           />
         </div>
       </div>

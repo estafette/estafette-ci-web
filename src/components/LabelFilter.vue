@@ -12,7 +12,7 @@
       v-for="label in splitLabels"
       :key="label"
       variant="outline-primary"
-      class="border-btn-group bg-white"
+      class="border-btn-group bg-white text-nowrap"
     >
       {{ label }} <router-link
         :to="{ query: { status: filter.status, since: filter.since, labels: labelLinkGenerator(label), page: 1 } }"
