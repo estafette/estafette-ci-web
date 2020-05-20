@@ -13,33 +13,28 @@
       </div>
     </div>
 
-    <div
-      class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold bg-white"
-    >
-      <div class="col-6 col-md-4 col-xl-2">
+    <div class="row-header">
+      <div class="col-2">
         Version
       </div>
-      <div class="col-6 col-md-4 col-xl-1">
+      <div class="col-1">
         Status
       </div>
-      <div class="col-4 col-xl-2 col-xxxl-1 d-none d-md-block">
-        Built
+      <div class="col-2">
+        Built at
       </div>
-      <div class="col-2 col-xxl-1 d-none d-xl-block">
+      <div class="col-1">
         Branch
       </div>
-      <div class="col-2 col-xxl-1 d-none d-xl-block">
+      <div class="col-1">
         Revision
       </div>
-      <div class="col-3 col-xxl-2 d-none d-xl-block">
+      <div class="col-3">
         Commit(s)
-      </div>
-      <div class="col-2 d-none d-xxxl-block">
-        Releases
       </div>
       <div
         v-if="user && user.authenticated"
-        class="col-xxl-2 d-none d-xxxl-block"
+        class="col-2"
       >
         Actions
       </div>
@@ -50,14 +45,12 @@
       tag="div"
       v-if="builds.length > 0"
     >
-      <build
+      <build-row
         v-for="build in builds"
         :key="build.id"
         :build="build"
         :builds="builds"
         :pipeline="pipeline"
-        :row-item="true"
-        class="mt-2 mr-0 mb-2 ml-0 list-complete-item"
       />
     </transition-group>
     <div
@@ -83,7 +76,7 @@ import { mapState } from 'vuex'
 import Spinner from '@/components/Spinner'
 import StatusFilter from '@/components/StatusFilter'
 import PaginationCompact from '@/components/PaginationCompact'
-import Build from '@/components/Build'
+import BuildRow from '@/components/BuildRow'
 import Pagination from '@/components/Pagination'
 
 export default {
@@ -91,7 +84,7 @@ export default {
     Spinner,
     StatusFilter,
     PaginationCompact,
-    Build,
+    BuildRow,
     Pagination
   },
 

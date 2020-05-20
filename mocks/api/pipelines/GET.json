@@ -5,9 +5,9 @@
           "repoSource":"github.com",
           "repoOwner":"estafette",
           "repoName":"estafette-ci-api",
-          "repoBranch":"master",
-          "repoRevision":"f88393a5e5f6ff29f239316f64689fc0c6f66499",
-          "buildVersion":"0.1.340",
+          "repoBranch": "very-long-branch-name-to-truncate-in-order-not-to-ruin-the-layout",
+          "repoRevision": "e9e4a894f736591268b37a2a406cb96a9babb100",
+          "buildVersion": "0.0.81-very-long-branch-name-to-truncate-in-order-not-to-ruin-the-layout",
           "buildStatus":"running",
           "labels":[
              {
@@ -28,27 +28,24 @@
              }
           ],
           "releaseTargets":[
-             {
-                "name":"tooling",
-                "activeReleases":[
+            {
+               "name":"tooling",
+               "actions":[
                    {
-                      "name":"tooling",
-                      "action": "deploy-canary",
-                      "id":"401925221141577732",
-                      "repoSource":"github.com",
-                      "repoOwner":"estafette",
-                      "repoName":"estafette-ci-api",
-                      "releaseVersion":"0.1.339",
-                      "releaseStatus":"succeeded",
-                      "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
-                      "insertedAt":"2018-11-20T15:37:23.365593Z",
-                      "updatedAt":"2018-11-20T15:38:42.44489Z",
-                      "duration":79000000000
+                      "name": "deploy-canary"
                    },
                    {
+                      "name": "rollback-canary"
+                   },
+                   {
+                      "name": "deploy-stable"
+                   }
+                ],
+               "activeReleases":[
+                  {
                      "name":"tooling",
-                     "action": "deploy-stable",
-                     "id":"401925221241577732",
+                     "action":"deploy-canary",
+                     "id":"401925221141577732",
                      "repoSource":"github.com",
                      "repoOwner":"estafette",
                      "repoName":"estafette-ci-api",
@@ -58,20 +55,208 @@
                      "insertedAt":"2018-11-20T15:37:23.365593Z",
                      "updatedAt":"2018-11-20T15:38:42.44489Z",
                      "duration":79000000000
-                  }
-               ]
-             }
-          ],
-          "commits":[
-             {
-                "message":"serialize action name to lowercase in json",
-                "author":{
-                   "email":"user@server.com",
-                   "name":"Jorrit Salverda",
-                   "username":"JorritSalverda"
+                  },
+                  {
+                   "name":"tooling",
+                   "action":"deploy-stable",
+                   "id":"401925221141577734",
+                   "repoSource":"github.com",
+                   "repoOwner":"estafette",
+                   "repoName":"estafette-ci-api",
+                   "releaseVersion":"0.1.338",
+                   "releaseStatus":"succeeded",
+                   "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
+                   "insertedAt":"2018-11-20T15:37:23.365593Z",
+                   "updatedAt":"2018-11-20T15:38:42.44489Z",
+                   "duration":79000000000
+                },
+                {
+                   "name":"tooling",
+                   "action":"rollback-canary",
+                   "id":"401925221141577735",
+                   "repoSource":"github.com",
+                   "repoOwner":"estafette",
+                   "repoName":"estafette-ci-api",
+                   "releaseVersion":"0.1.338",
+                   "releaseStatus":"succeeded",
+                   "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
+                   "insertedAt":"2018-11-20T15:37:23.365593Z",
+                   "updatedAt":"2018-11-20T15:38:42.44489Z",
+                   "duration":79000000000
                 }
+               ]
+            },
+       
+            {
+             "name":"development",
+             "activeReleases":[
+                {
+                   "name":"development",
+                   "action":"",
+                   "id":"401925221141577735",
+                   "repoSource":"github.com",
+                   "repoOwner":"estafette",
+                   "repoName":"estafette-ci-api",
+                   "releaseVersion":"0.1.339",
+                   "releaseStatus":"succeeded",
+                   "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
+                   "insertedAt":"2018-11-20T15:37:23.365593Z",
+                   "updatedAt":"2018-11-20T15:38:42.44489Z",
+                   "duration":79000000000
+                }
+             ]
+          },
+          {
+             "name":"development-2",
+             "activeReleases":[
+                {
+                   "name":"development-2",
+                   "action":"",
+                   "id":"401925221141577735",
+                   "repoSource":"github.com",
+                   "repoOwner":"estafette",
+                   "repoName":"estafette-ci-api",
+                   "releaseVersion":"0.1.221",
+                   "releaseStatus":"succeeded",
+                   "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
+                   "insertedAt":"2018-11-20T15:37:23.365593Z",
+                   "updatedAt":"2018-11-20T15:38:42.44489Z",
+                   "duration":79000000000
+                }
+             ]
+          },
+          {
+             "name":"development-3",
+             "activeReleases":[
+                {
+                   "name":"development-3",
+                   "action":"",
+                   "id":"-1",
+                   "repoSource":"github.com",
+                   "repoOwner":"estafette",
+                   "repoName":"estafette-ci-api",
+                   "releaseVersion":"0.1.339",
+                   "releaseStatus":"pending",
+                   "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
+                   "insertedAt":"2018-11-20T15:37:23.365593Z",
+                   "updatedAt":"2018-11-20T15:38:42.44489Z",
+                   "duration":79000000000
+                }
+             ]
+          },
+          {
+             "name":"development-4",
+             "actions":[
+                {
+                   "name": "diff"
+                },
+                {
+                   "name": "apply"
+                }
+             ],
+             "activeReleases":[
+                {
+                   "name":"development-4",
+                   "action":"diff",
+                   "id":"401925221141577735",
+                   "repoSource":"github.com",
+                   "repoOwner":"estafette",
+                   "repoName":"estafette-ci-api",
+                   "releaseVersion":"0.1.227",
+                   "releaseStatus":"succeeded",
+                   "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
+                   "insertedAt":"2018-11-20T15:37:23.365593Z",
+                   "updatedAt":"2018-11-20T15:38:42.44489Z",
+                   "duration":79000000000
+                }
+             ]
+          },
+          {
+             "name":"development-5",
+             "activeReleases":[
+                {
+                   "name":"development-5",
+                   "action":"",
+                   "id":"401925221141577735",
+                   "repoSource":"github.com",
+                   "repoOwner":"estafette",
+                   "repoName":"estafette-ci-api",
+                   "releaseVersion":"0.1.339",
+                   "releaseStatus":"succeeded",
+                   "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
+                   "insertedAt":"2018-11-20T15:37:23.365593Z",
+                   "updatedAt":"2018-11-20T15:38:42.44489Z",
+                   "duration":79000000000
+                }
+             ]
+          },
+          {
+             "name":"development-6",
+             "activeReleases":[
+                {
+                   "name":"development-6",
+                   "action":"",
+                   "id":"401925221141577735",
+                   "repoSource":"github.com",
+                   "repoOwner":"estafette",
+                   "repoName":"estafette-ci-api",
+                   "releaseVersion":"0.1.339",
+                   "releaseStatus":"succeeded",
+                   "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
+                   "insertedAt":"2018-11-20T15:37:23.365593Z",
+                   "updatedAt":"2018-11-20T15:38:42.44489Z",
+                   "duration":79000000000
+                }
+             ]
+          },
+          {
+             "name":"developmen7",
+             "activeReleases":[]
+          }
+       
+         ],
+          "commits":[
+            {
+               "message":"1 serialize action name to lowercase in json",
+               "author":{
+                  "email":"user@server.com",
+                  "name":"Jorrit Salverda",
+                  "username":"JorritSalverda"
+               }
+            },
+            {
+             "message":"2 serialize action name to lowercase in json",
+             "author":{
+                "email":"user@server.com",
+                "name":"Jorrit Salverda",
+                "username":"JorritSalverda"
              }
-          ],
+          },
+          {
+             "message":"3 serialize action name to lowercase in json",
+             "author":{
+                "email":"user@server.com",
+                "name":"Jorrit Salverda",
+                "username":"JorritSalverda"
+             }
+          },
+          {
+             "message":"4 serialize action name to lowercase in json",
+             "author":{
+                "email":"user@server.com",
+                "name":"Jorrit Salverda",
+                "username":"JorritSalverda"
+             }
+          },
+          {
+             "message":"5 serialize action name to lowercase in json",
+             "author":{
+                "email":"user@server.com",
+                "name":"Jorrit Salverda",
+                "username":"JorritSalverda"
+             }
+          }
+         ],
           "insertedAt":"2018-11-20T15:55:49.266744Z",
           "updatedAt":"2018-11-20T15:55:49.266744Z",
           "duration":0

@@ -15,7 +15,7 @@ import PipelineReleaseLogs from '@/components/PipelineReleaseLogs'
 import PipelineStatistics from '@/components/PipelineStatistics'
 
 import Catalog from '@/components/Catalog'
-import CatalogItemHeader from '@/components/CatalogItemHeader'
+import CatalogItemDetails from '@/components/CatalogItemDetails'
 import CatalogItemOverview from '@/components/CatalogItemOverview'
 
 import Manifest from '@/components/Manifest'
@@ -134,8 +134,8 @@ export default new Router({
     },
     {
       path: '/catalog/:repoSource/:repoOwner/:repoName',
-      name: 'CatalogItemHeader',
-      component: CatalogItemHeader,
+      name: 'CatalogItemDetails',
+      component: CatalogItemDetails,
       props: true,
       redirect: { name: 'CatalogItemOverview' },
       children: [

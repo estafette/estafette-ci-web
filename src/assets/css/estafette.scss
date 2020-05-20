@@ -323,3 +323,112 @@ button.btn-clipboard {
     @extend .text-black-50;
     width: 1.5em!important;
 }
+
+.row-header {
+  @extend .row;
+  @extend .rounded;
+  @extend .border;
+  @extend .p-2;
+  @extend .mt-0;
+  @extend .mr-0;
+  @extend .mb-2;
+  @extend .ml-0;
+  @extend .font-weight-bold;
+  @extend .bg-white;
+
+  @extend .d-none;
+  @extend .d-xxxl-flex;
+}
+
+.row-block {
+  @extend .row;
+  @extend .rounded;
+  @extend .border;
+  @extend .align-items-center;
+  @extend .pt-3;
+  @extend .pr-2;
+  @extend .pb-2;
+  @extend .pl-2;
+  @extend .bg-white;
+
+  @extend .clickable;
+  @extend .mt-3;
+  @extend .mb-3;
+  @extend .ml-0;
+  @extend .mr-0;
+  @extend .list-complete-item;
+
+  .property-label {
+    @extend .d-xxxl-none;
+  }
+}
+
+.header-block {
+  @extend .row;
+  @extend .rounded;
+  @extend .border;
+  @extend .align-items-center;
+  @extend .m-3;
+  @extend .pt-3;
+  @extend .pr-2;
+  @extend .pb-2;
+  @extend .pl-2;
+  @extend .bg-white;
+}
+
+.property-block-core {
+  @extend .mb-2;
+  @extend .col-12;
+}
+
+.property-block-title {
+  @extend .property-block-core;
+
+  .property-value {
+    @extend .h1;
+    @extend .text-truncate;
+  }
+}
+
+.property-block {
+  @extend .property-block-core;
+
+  @extend .col-md-6;
+  @extend .col-lg-4;
+  @extend .col-xxl-3;
+
+  .property-value {
+    @extend .text-truncate;
+  }
+}
+
+.property-block-wide {
+  @extend .property-block-core;
+
+  @extend .text-xxxl-center;
+
+  .property-value {
+    @extend .d-xxxl-flex;
+    @extend .justify-content-center;
+  }
+}
+
+.property-label {
+  @extend .text-black-50;
+  @extend .small;
+  @extend .mb-1;
+}
+
+.block-divider {
+  @extend .col-12;
+  @extend .d-none;
+  @extend .d-xxxl-block;
+
+  div {
+    @extend .mt-3;
+    @extend .mb-3;
+    @extend .w-50;
+    @extend .mx-auto;
+    @extend .border-top;
+  }
+}

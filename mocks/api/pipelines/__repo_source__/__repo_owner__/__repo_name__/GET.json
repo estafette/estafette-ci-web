@@ -3,9 +3,9 @@
   "repoSource":"github.com",
   "repoOwner":"estafette",
   "repoName":"estafette-ci-api",
-  "repoBranch":"master",
-  "repoRevision":"f88393a5e5f6ff29f239316f64689fc0c6f66499",
-  "buildVersion":"0.1.340",
+  "repoBranch": "very-long-branch-name-to-truncate-in-order-not-to-ruin-the-layout",
+  "repoRevision": "e9e4a894f736591268b37a2a406cb96a9babb100",
+  "buildVersion": "0.0.81-very-long-branch-name-to-truncate-in-order-not-to-ruin-the-layout",  
   "buildStatus":"pending",
   "labels":[
      {
@@ -214,15 +214,47 @@
 
   ],
   "commits":[
-     {
-        "message":"serialize action name to lowercase in json",
-        "author":{
-           "email":"user@server.com",
-           "name":"Jorrit Salverda",
-           "username":"JorritSalverda"
-        }
+    {
+       "message":"1 serialize action name to lowercase in json",
+       "author":{
+          "email":"user@server.com",
+          "name":"Jorrit Salverda",
+          "username":"JorritSalverda"
+       }
+    },
+    {
+     "message":"2 serialize action name to lowercase in json",
+     "author":{
+        "email":"user@server.com",
+        "name":"Jorrit Salverda",
+        "username":"JorritSalverda"
      }
-  ],
+  },
+  {
+     "message":"3 serialize action name to lowercase in json",
+     "author":{
+        "email":"user@server.com",
+        "name":"Jorrit Salverda",
+        "username":"JorritSalverda"
+     }
+  },
+  {
+     "message":"4 serialize action name to lowercase in json",
+     "author":{
+        "email":"user@server.com",
+        "name":"Jorrit Salverda",
+        "username":"JorritSalverda"
+     }
+  },
+  {
+     "message":"5 serialize action name to lowercase in json",
+     "author":{
+        "email":"user@server.com",
+        "name":"Jorrit Salverda",
+        "username":"JorritSalverda"
+     }
+  }
+ ],
   "triggers":[
     {
        "pipeline":{
@@ -248,5 +280,5 @@
   "triggerEvents":[{"git":{"branch":"development", "event": "push", "repository": "github.com/estafette/estafette-ci-api"}}],
   "insertedAt":"2018-11-20T15:55:49.266744Z",
   "updatedAt":"2018-11-20T15:55:49.266744Z",
-  "duration":0
+  "duration":79000000000
 }

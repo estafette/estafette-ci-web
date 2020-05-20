@@ -2,25 +2,35 @@
   <router-link
     :to="{ name: 'CatalogItemOverview', params: { repoSource: catalogItem.repoSource, repoOwner: catalogItem.repoOwner, repoName: catalogItem.repoName }}"
     tag="div"
-    class="row rounded border align-items-center clickable pt-3 pr-2 pb-2 pl-2 bg-white"
+    class="row-block"
   >
-    <div
-      class="col-6 mb-2 text-truncate"
-      :title="catalogItem.repoName"
-    >
-      {{ catalogItem.repoName }}
+    <div class="property-block">
+      <property-label text="Catalog item" />
+      <property-value>
+        {{ catalogItem.repoName }}
+      </property-value>
     </div>
-    <div
-      class="col-6 mb-2 text-truncate"
-      :title="catalogItem.repoSource + '/' + catalogItem.repoOwner + '/' + catalogItem.repoName"
-    >
-      <span :class="['text-muted d-none d-md-inline']">{{ catalogItem.repoSource }}/{{ catalogItem.repoOwner }}/</span><strong>{{ catalogItem.repoName }}</strong>
+    <div class="property-block">
+      <property-label text="Repository" />
+      <property-value>
+        <repository-title :repo="catalogItem" />
+      </property-value>
     </div>
   </router-link>
 </template>
 
 <script>
+import PropertyLabel from '@/components/PropertyLabel'
+import PropertyValue from '@/components/PropertyValue'
+import RepositoryTitle from '@/components/RepositoryTitle'
+
 export default {
+  components: {
+    PropertyLabel,
+    PropertyValue,
+    RepositoryTitle
+  },
+
   props: {
     catalogItem: {
       type: Object,

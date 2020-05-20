@@ -13,27 +13,25 @@
       </div>
     </div>
 
-    <div
-      class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold bg-white"
-    >
-      <div class="col-6 col-md-4 col-xl-2">
+    <div class="row-header">
+      <div class="col-2">
         Target
       </div>
-      <div class="col-6 col-md-4 col-xl-2">
+      <div class="col-2">
         Version
       </div>
-      <div class="col-6 col-md-4 col-xl-2">
+      <div class="col-2">
         Status
       </div>
-      <div class="col-6 col-md-4 col-xl-2 d-none d-xl-block">
+      <div class="col-2">
         Released
       </div>
-      <div class="col-6 col-md-4 col-xl-2 d-none d-xl-block">
+      <div class="col-2">
         Triggered by
       </div>
       <div
         v-if="user && user.authenticated"
-        class="col-xl-2 d-none d-xl-block"
+        class="col-2"
       >
         Actions
       </div>
@@ -44,12 +42,10 @@
       tag="div"
       v-if="releases.length > 0"
     >
-      <release
+      <release-row
         v-for="release in releases"
         :key="release.id"
         :release="release"
-        :row-item="true"
-        class="mt-2 mr-0 mb-2 ml-0 list-complete-item"
       />
     </transition-group>
     <div
@@ -75,7 +71,7 @@ import { mapState } from 'vuex'
 import Spinner from '@/components/Spinner'
 import Pagination from '@/components/Pagination'
 import StatusFilter from '@/components/StatusFilter'
-import Release from '@/components/Release'
+import ReleaseRow from '@/components/ReleaseRow'
 import PaginationCompact from '@/components/PaginationCompact'
 
 export default {
@@ -83,7 +79,7 @@ export default {
     Spinner,
     Pagination,
     StatusFilter,
-    Release,
+    ReleaseRow,
     PaginationCompact
   },
   props: {

@@ -5,10 +5,9 @@
       class="m-3 rounded"
     />
 
-    <pipeline
+    <pipeline-header
       :pipeline="pipeline"
       v-if="pipeline"
-      class="m-3"
     />
 
     <pipeline-warnings
@@ -28,14 +27,14 @@
 <script>
 import { mapState } from 'vuex'
 import { BBreadcrumb } from 'bootstrap-vue'
-import Pipeline from '@/components/Pipeline'
+import PipelineHeader from '@/components/PipelineHeader'
 import PipelineWarnings from '@/components/PipelineWarnings'
 import Tabs from '@/components/Tabs'
 
 export default {
   components: {
     BBreadcrumb,
-    Pipeline,
+    PipelineHeader,
     PipelineWarnings,
     Tabs
   },

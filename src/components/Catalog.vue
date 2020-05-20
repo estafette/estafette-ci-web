@@ -37,9 +37,7 @@
     </div>
 
     <div class="mb-3">
-      <div
-        class="row rounded border p-2 mt-0 mr-0 mb-2 ml-0 font-weight-bold bg-white"
-      >
+      <div class="row-header">
         <div class="col-6">
           Name
         </div>
@@ -58,7 +56,6 @@
           :key="catalogItem.repoSource+'/'+catalogItem.repoOwner+'/'+catalogItem.repoName"
           :catalog-item="catalogItem"
           :row-item="true"
-          class="mt-2 mb-2 ml-0 mr-0 list-complete-item"
         />
       </transition-group>
       <div

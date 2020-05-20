@@ -5,10 +5,9 @@
       class="m-3 rounded"
     />
 
-    <release
+    <release-header
       v-if="release"
       :release="release"
-      class="m-3"
     />
 
     <tabs :tabs="tabs" />
@@ -23,13 +22,13 @@
 <script>
 import { mapState } from 'vuex'
 import { BBreadcrumb } from 'bootstrap-vue'
-import Release from '@/components/Release'
+import ReleaseHeader from '@/components/ReleaseHeader'
 import Tabs from '@/components/Tabs'
 
 export default {
   components: {
     BBreadcrumb,
-    Release,
+    ReleaseHeader,
     Tabs
   },
   props: {
