@@ -385,7 +385,7 @@ button.btn-clipboard {
   @extend .property-block-core;
 
   .property-value {
-    @extend .h1;
+    @extend .h2;
     @extend .text-truncate;
   }
 }
