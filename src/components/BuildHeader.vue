@@ -48,13 +48,10 @@
       </property-value>
     </div>
     <div
-      v-if="showTriggeredBy"
+      v-if="showTriggers"
       class="property-block"
     >
-      <property-label
-        text="Revision"
-        v-if="build.triggerEvents && build.triggerEvents.length > 0"
-      />
+      <property-label text="Revision" />
       <property-value>
         <triggered-by :events="build.triggerEvents" />
       </property-value>
@@ -165,6 +162,10 @@ export default {
 
     showActions () {
       return this.user && this.user.authenticated && this.build && ((this.build.buildStatus === 'failed' || this.build.buildStatus === 'pending' || this.build.buildStatus === 'running' || this.build.buildStatus === 'canceled' || this.build.buildStatus === 'canceling') || (this.pipeline.releaseTargets && this.pipeline.releaseTargets.length > 0 && this.build.buildStatus === 'succeeded'))
+    },
+
+    showTriggers () {
+      return this.build.triggerEvents && this.build.triggerEvents.length > 0
     }
   }
 }

@@ -1,9 +1,7 @@
 <template>
   <div class="m-3">
-    <div
-      class="row m-0"
-    >
-      <div class="col-12 col-sm-6 col-lg-3 col-xxl-2 p-0">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-lg-3 col-xxl-2">
         <b-form
           autocomplete="off"
         >
@@ -23,7 +21,7 @@
           </b-input-group>
         </b-form>
       </div>
-      <div class="col-12 col-sm-6 col-lg-9 col-xxl-10 p-0 text-right">
+      <div class="col-12 col-sm-6 col-lg-9 col-xxl-10 text-right">
         <pagination-compact
           :pagination="pagination"
           :link-generator="paginationLinkGenerator"
@@ -36,37 +34,35 @@
       <tabs :tabs="tabs" />
     </div>
 
-    <div class="mb-3">
-      <div class="row-header">
-        <div class="col-6">
-          Name
-        </div>
-        <div class="col-6">
-          Repository
-        </div>
+    <div class="row-header">
+      <div class="col-6">
+        Name
       </div>
+      <div class="col-6">
+        Repository
+      </div>
+    </div>
 
-      <transition-group
-        name="list-complete"
-        tag="div"
-        v-if="catalogItems.length > 0"
-      >
-        <catalog-item-row
-          v-for="catalogItem in catalogItems"
-          :key="catalogItem.repoSource+'/'+catalogItem.repoOwner+'/'+catalogItem.repoName"
-          :catalog-item="catalogItem"
-          :row-item="true"
-        />
-      </transition-group>
-      <div
-        v-else-if="loaded"
-        class="alert alert-warning text-center p-5"
-      >
-        There are no items for the current filter value.
-      </div>
-      <div v-else>
-        <spinner color="primary" />
-      </div>
+    <transition-group
+      name="list-complete"
+      tag="div"
+      v-if="catalogItems.length > 0"
+    >
+      <catalog-item-row
+        v-for="catalogItem in catalogItems"
+        :key="catalogItem.repoSource+'/'+catalogItem.repoOwner+'/'+catalogItem.repoName"
+        :catalog-item="catalogItem"
+        :row-item="true"
+      />
+    </transition-group>
+    <div
+      v-else-if="loaded"
+      class="alert alert-warning text-center p-5"
+    >
+      There are no items for the current filter value.
+    </div>
+    <div v-else>
+      <spinner color="primary" />
     </div>
 
     <pagination

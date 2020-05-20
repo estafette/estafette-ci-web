@@ -1,8 +1,6 @@
 <template>
   <div class="m-3">
-    <div
-      class="row"
-    >
+    <div class="row">
       <div class="col-12 text-center">
         <status-filter :filter="filter" />
         <pagination-compact
