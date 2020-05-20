@@ -324,7 +324,7 @@ button.btn-clipboard {
     width: 1.5em!important;
 }
 
-.row-header {
+.row-header-core {
   @extend .row;
   @extend .rounded;
   @extend .border;
@@ -335,9 +335,39 @@ button.btn-clipboard {
   @extend .ml-0;
   @extend .font-weight-bold;
   @extend .bg-white;
+}
+
+.row-header {
+  @extend .row-header-core;
 
   @extend .d-none;
   @extend .d-xxxl-flex;
+}
+
+.log-stage-block {
+  @extend .rounded;
+  @extend .border;
+  @extend .bg-white;
+
+  @extend .clickable;
+  @extend .mt-2;
+  @extend .mb-2;
+  @extend .ml-0;
+  @extend .mr-0;
+
+  .property-block {
+    .property-label {
+      @extend .d-xxxl-none;
+    }
+  }
+}
+
+.log-summary-block {
+  @extend .row-header-core;
+
+  .property-label {
+    @extend .d-xxxl-none;
+  }
 }
 
 .row-block {
@@ -352,8 +382,8 @@ button.btn-clipboard {
   @extend .bg-white;
 
   @extend .clickable;
-  @extend .mt-3;
-  @extend .mb-3;
+  @extend .mt-2;
+  @extend .mb-2;
   @extend .ml-0;
   @extend .mr-0;
   @extend .list-complete-item;
@@ -368,7 +398,10 @@ button.btn-clipboard {
   @extend .rounded;
   @extend .border;
   @extend .align-items-center;
-  @extend .m-3;
+  @extend .mt-3;
+  @extend .mb-2;
+  @extend .ml-3;
+  @extend .mr-3;
   @extend .pt-3;
   @extend .pr-2;
   @extend .pb-2;
