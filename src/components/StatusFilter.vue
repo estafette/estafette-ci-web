@@ -8,7 +8,7 @@
       <font-awesome-icon icon="check-circle" />
     </b-input-group-prepend>
     <b-button
-      :to="{ query: { status: 'all', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
+      :to="{ query: queryGenerator({ status: 'all', page: 1 }) }"
       active-class="router-link-active"
       variant="outline-primary"
       :class="[ filter.status === 'all' ? 'active' : 'border-btn-group bg-white' ]"
@@ -17,7 +17,7 @@
       All
     </b-button>
     <b-button
-      :to="{ query: { status: 'succeeded', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
+      :to="{ query: queryGenerator({ status: 'succeeded', page: 1 }) }"
       active-class="router-link-active"
       variant="outline-success"
       :class="[ filter.status === 'succeeded' ? 'active' : 'border-btn-group' ]"
@@ -25,7 +25,7 @@
       Succeeded
     </b-button>
     <b-button
-      :to="{ query: { status: 'failed', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
+      :to="{ query: queryGenerator({ status: 'failed', page: 1 }) }"
       active-class="router-link-active"
       variant="outline-danger"
       :class="[ filter.status === 'failed' ? 'active' : 'border-btn-group' ]"
@@ -33,7 +33,7 @@
       Failed
     </b-button>
     <b-button
-      :to="{ query: { status: 'running', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
+      :to="{ query: queryGenerator({ status: 'running', page: 1 }) }"
       active-class="router-link-active"
       variant="outline-warning"
       :class="[ filter.status === 'running' ? 'active' : 'border-btn-group' ]"
@@ -41,7 +41,7 @@
       Running
     </b-button>
     <b-button
-      :to="{ query: { status: 'canceled', since: filter.since, search: filter.search, labels: filter.labels, page: 1 } }"
+      :to="{ query: queryGenerator({ status: 'canceled', page: 1 }) }"
       active-class="router-link-active"
       variant="outline-secondary"
       :class="[ filter.status === 'canceled' ? 'active' : 'border-btn-group' ]"
@@ -53,6 +53,7 @@
 
 <script>
 import { BButtonGroup, BButton, BInputGroupPrepend } from 'bootstrap-vue'
+import queryGenerator from '@/mixins/queryGenerator'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
@@ -67,6 +68,8 @@ export default {
     BInputGroupPrepend,
     FontAwesomeIcon
   },
+
+  mixins: [queryGenerator],
 
   props: {
     filter: {

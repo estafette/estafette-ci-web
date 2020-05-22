@@ -15,7 +15,7 @@
       class="border-btn-group bg-white text-nowrap"
     >
       {{ label }} <router-link
-        :to="{ query: { status: filter.status, since: filter.since, labels: labelLinkGenerator(label), page: 1 } }"
+        :to="{ query: queryGenerator({ labels: labelLinkGenerator(label) }) }"
         active-class="router-link-active"
         class="badge badge-primary"
       >
@@ -27,6 +27,7 @@
 
 <script>
 import { BButtonGroup, BButton, BInputGroupPrepend } from 'bootstrap-vue'
+import queryGenerator from '@/mixins/queryGenerator'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTag } from '@fortawesome/free-solid-svg-icons'
@@ -41,6 +42,8 @@ export default {
     BInputGroupPrepend,
     FontAwesomeIcon
   },
+
+  mixins: [queryGenerator],
 
   props: {
     filter: {

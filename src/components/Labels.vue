@@ -3,7 +3,7 @@
     <router-link
       v-for="label in sortedLabels"
       :key="label.key"
-      :to="{ name: 'Pipelines', query: query({labels: label.key + '=' + label.value }) }"
+      :to="{ name: 'Pipelines', query: queryGenerator({labels: label.key + '=' + label.value }) }"
       exact
       class="btn btn-light btn-sm mr-1 mb-1"
     >
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import queryGenerator from '@/mixins/queryGenerator'
+
 export default {
   props: {
     labels: {
@@ -21,14 +23,7 @@ export default {
     }
   },
 
-  methods: {
-    query (newQuery) {
-      return {
-        ...this.$route.query,
-        ...newQuery
-      }
-    }
-  },
+  mixins: [queryGenerator],
 
   computed: {
     sortedLabels () {

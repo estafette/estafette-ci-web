@@ -18,7 +18,7 @@
         <router-link
           v-for="(row, index) in rows"
           :key="index"
-          :to="{ name: 'Pipelines', query: { since: filter.since, labels: row.key+'='+row.value }}"
+          :to="{ name: 'Pipelines', query: queryGenerator({ labels: row.key+'='+row.value })}"
           tag="tr"
         >
           <td>
@@ -47,6 +47,7 @@
 
 <script>
 import { BPagination } from 'bootstrap-vue'
+import queryGenerator from '@/mixins/queryGenerator'
 
 export default {
   components: {
@@ -66,6 +67,8 @@ export default {
       default: null
     }
   },
+
+  mixins: [queryGenerator],
 
   data: function () {
     return {

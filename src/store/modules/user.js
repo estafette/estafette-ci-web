@@ -5,8 +5,7 @@ const state = () => ({
   me: {
     authenticated: false
   },
-  refresh: true,
-  timeout: null
+  timeouts: []
 })
 
 const mutations = {
@@ -17,15 +16,13 @@ const mutations = {
     }
   },
   setTimeout: (state, timeout) => {
-    state.timeout = timeout
+    state.timeouts.push(timeout)
   },
-  clearTimeout: (state) => {
-    if (state.timeout) {
-      clearTimeout(state.timeout)
+  cancelTimeouts: (state) => {
+    for (var timeout of state.timeouts) {
+      clearTimeout(timeout)
     }
-  },
-  destroy: (state) => {
-    state.refresh = false
+    state.timeouts = []
   }
 }
 
@@ -33,23 +30,16 @@ const actions = {
   load ({ dispatch, commit }) {
     userService.load()
       .then(response => {
-        commit('clearTimeout')
         commit('set', response.data)
-        if (state.refresh) {
-          commit('setTimeout', refresh.setTimeoutWithJitter(() => dispatch('load'), 30))
-        }
+        refresh.setTimeoutWithJitter(commit, () => dispatch('load'), 30)
       })
       .catch(e => {
-        commit('clearTimeout')
-        commit('reset')
-        if (state.refresh) {
-          commit('setTimeout', refresh.setTimeoutWithJitter(() => dispatch('load'), 60))
-        }
+        refresh.setTimeoutWithJitter(commit, () => dispatch('load'), 60)
       })
   },
   destroy ({ commit }) {
-    commit('destroy')
-    commit('clearTimeout')
+    commit('cancelTimeouts')
+    commit('reset')
   }
 }
 

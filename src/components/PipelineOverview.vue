@@ -44,7 +44,7 @@
           </div>
 
           <b-button
-            :to="{ name: 'PipelineBuildLogs', params: { repoSource: build.repoSource, repoOwner: build.repoOwner, repoName: build.repoName, id: build.id }}"
+            :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: build.id }}"
             exact
             :variant="$options.filters.bootstrapVariant(build.buildStatus)"
             size="sm"
@@ -125,7 +125,7 @@
             <b-button
               v-if="release && release.id && release.id !== 0"
               :disabled="!release || !release.id || release.id <= 0"
-              :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
+              :to="{ name: 'PipelineReleaseLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, releaseID: release.id }}"
               exact
               :variant="$options.filters.bootstrapVariant(release.releaseStatus)"
               size="sm"

@@ -19,6 +19,7 @@
 
 <script>
 import { BInputGroup, BInputGroupPrepend, BFormSelect } from 'bootstrap-vue'
+import queryGenerator from '@/mixins/queryGenerator'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTags } from '@fortawesome/free-solid-svg-icons'
@@ -40,6 +41,8 @@ export default {
       default: null
     }
   },
+
+  mixins: [queryGenerator],
 
   data: function () {
     return {
@@ -102,7 +105,7 @@ export default {
     },
 
     onChange (value) {
-      this.$router.push({ query: { status: this.filter.status, since: this.filter.since, labels: this.labelLinkGenerator(value), page: 1 } })
+      this.$router.push({ query: this.queryGenerator({ labels: this.labelLinkGenerator(value), page: 1 }) })
       this.mutableModel = null
     }
   },

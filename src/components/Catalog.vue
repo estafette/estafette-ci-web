@@ -80,6 +80,7 @@ import CatalogItemRow from '@/components/CatalogItemRow'
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
 import Tabs from '@/components/Tabs'
+import queryGenerator from '@/mixins/queryGenerator'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTags } from '@fortawesome/free-solid-svg-icons'
@@ -100,6 +101,8 @@ export default {
     Tabs,
     FontAwesomeIcon
   },
+
+  mixins: [queryGenerator],
 
   props: {
     query: {
@@ -247,13 +250,6 @@ export default {
       }
 
       return { query: query }
-    },
-
-    queryGenerator (newQuery) {
-      return {
-        ...this.$route.query,
-        ...newQuery
-      }
     }
   },
 
