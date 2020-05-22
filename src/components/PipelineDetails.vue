@@ -10,11 +10,6 @@
       v-if="pipeline"
     />
 
-    <pipeline-warnings
-      v-if="pipeline"
-      :pipeline="pipeline"
-    />
-
     <tabs :tabs="tabs" />
 
     <router-view
@@ -28,14 +23,12 @@
 import { mapState } from 'vuex'
 import { BBreadcrumb } from 'bootstrap-vue'
 import PipelineHeader from '@/components/PipelineHeader'
-import PipelineWarnings from '@/components/PipelineWarnings'
 import Tabs from '@/components/Tabs'
 
 export default {
   components: {
     BBreadcrumb,
     PipelineHeader,
-    PipelineWarnings,
     Tabs
   },
   props: {

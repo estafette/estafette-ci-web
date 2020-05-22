@@ -1,5 +1,10 @@
 <template>
   <div class="">
+    <pipeline-warnings
+      v-if="pipeline"
+      :pipeline="pipeline"
+    />
+
     <div
       class="row m-0 mt-3 mb-3 ml-3 justify-content-center"
     >
@@ -158,6 +163,7 @@
 </template>
 
 <script>
+import PipelineWarnings from '@/components/PipelineWarnings'
 import { mapState } from 'vuex'
 import { BButton } from 'bootstrap-vue'
 import Spinner from '@/components/Spinner'
@@ -171,6 +177,7 @@ library.add(faFire, faShippingFast, faUpload)
 
 export default {
   components: {
+    PipelineWarnings,
     BButton,
     Spinner,
     CommitLink,
