@@ -51,11 +51,7 @@ export default {
       refresh: true,
       breadcrumbs: [
         {
-          text: 'Home',
-          to: { name: 'Home' }
-        },
-        {
-          text: 'builds & releases',
+          text: 'Builds & releases',
           to: { name: 'Pipelines' }
         },
         {

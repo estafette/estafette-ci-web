@@ -50,11 +50,7 @@ export default {
       refresh: true,
       breadcrumbs: [
         {
-          text: 'Home',
-          to: { name: 'Home' }
-        },
-        {
-          text: 'catalog',
+          text: 'Catalog',
           to: { name: 'Catalog' }
         },
         {
