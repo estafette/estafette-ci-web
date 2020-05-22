@@ -7,9 +7,11 @@
     <property-block
       label="Catalog"
       :value="catalogItem.repoName"
+      class="col-xxxl-6"
     />
     <property-block
       label="Repository"
+      class="col-xxxl-6"
     >
       <repository-title :repo="catalogItem" />
     </property-block>
