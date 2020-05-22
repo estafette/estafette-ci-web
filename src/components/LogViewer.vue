@@ -758,9 +758,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .card-header {
   background: none;
+
+  &:focus {
+    box-shadow: none!important;
+    outline: none;
+  }
 }
 
 .log-timestamp {

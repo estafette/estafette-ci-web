@@ -192,7 +192,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 .trigger-block {
   border-style: dashed!important;
   border-width: 2px!important;
