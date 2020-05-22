@@ -4,30 +4,25 @@
     tag="div"
     class="row-block"
   >
-    <div class="property-block">
-      <property-label text="Catalog item" />
-      <property-value>
-        {{ catalogItem.repoName }}
-      </property-value>
-    </div>
-    <div class="property-block">
-      <property-label text="Repository" />
-      <property-value>
-        <repository-title :repo="catalogItem" />
-      </property-value>
-    </div>
+    <property-block
+      label="Catalog"
+      :value="catalogItem.repoName"
+    />
+    <property-block
+      label="Repository"
+    >
+      <repository-title :repo="catalogItem" />
+    </property-block>
   </router-link>
 </template>
 
 <script>
-import PropertyLabel from '@/components/PropertyLabel'
-import PropertyValue from '@/components/PropertyValue'
+import PropertyBlock from '@/components/PropertyBlock'
 import RepositoryTitle from '@/components/RepositoryTitle'
 
 export default {
   components: {
-    PropertyLabel,
-    PropertyValue,
+    PropertyBlock,
     RepositoryTitle
   },
 

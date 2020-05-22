@@ -4,86 +4,81 @@
     tag="div"
     class="row-block"
   >
-    <div class="property-block col-xxxl-2">
-      <property-label text="Version" />
-      <property-value>
-        {{ build.buildVersion }}
-      </property-value>
-    </div>
-    <div class="property-block col-xxxl-1">
-      <property-label text="Status" />
-      <property-value>
-        <b-progress
-          :value="100"
-          :variant="$options.filters.bootstrapVariant(build.buildStatus)"
-          :animated="$options.filters.animatedProgressBar(build.buildStatus)"
-        />
-      </property-value>
-    </div>
-    <div class="property-block col-xxxl-2">
-      <property-label text="Built at" />
-      <property-value>
-        {{ build.insertedAt | formatDatetime }}
-        <duration-label :duration="build.duration" />
-      </property-value>
-    </div>
-    <div class="property-block col-xxxl-1">
-      <property-label text="Branch" />
-      <property-value>
-        {{ build.repoBranch }}
-      </property-value>
-    </div>
-    <div class="property-block col-xxxl-1">
-      <property-label text="Revision" />
-      <property-value>
-        <commit-link :build="build" />
-      </property-value>
-    </div>
-    <div class="property-block col-xxxl-3">
-      <property-label text="Commit(s)" />
-      <property-value>
-        <commits :commits="build.commits" />
-      </property-value>
-    </div>
-    <div
-      v-if="showActions"
-      class="property-block col-xxxl-2"
+    <property-block
+      label="Version"
+      :value="build.buildVersion"
+      class="col-xxxl-2"
+    />
+    <property-block
+      label="Status"
+      class="col-xxxl-1"
     >
-      <property-label text="Actions" />
-      <property-value>
-        <release-button
-          :pipeline="pipeline"
-          :build="build"
-        />
-        <rebuild-button
-          :build="build"
-          :builds="builds"
-        />
-        <cancel-button
-          :build="build"
-        />
-      </property-value>
-    </div>
+      <b-progress
+        :value="100"
+        :variant="$options.filters.bootstrapVariant(build.buildStatus)"
+        :animated="$options.filters.animatedProgressBar(build.buildStatus)"
+      />
+    </property-block>
+    <property-block
+      label="Built at"
+      class="col-xxxl-2"
+    >
+      {{ build.insertedAt | formatDatetime }}
+      <duration-label :duration="build.duration" />
+    </property-block>
+    <property-block
+      label="Branch"
+      :value="build.repoBranch"
+      class="col-xxxl-1"
+    />
+    <property-block
+      label="Revision"
+      class="col-xxxl-1"
+    >
+      <commit-link :build="build" />
+    </property-block>
+    <property-block
+      label="Commit(s)"
+      class="col-xxxl-3"
+    >
+      <commits :commits="build.commits" />
+    </property-block>
+    <property-block
+      v-if="showActions"
+      label="Actions"
+      no-truncate
+      class="col-xxxl-2"
+    >
+      <release-button
+        :pipeline="pipeline"
+        :build="build"
+      />
+      <rebuild-button
+        :build="build"
+        :builds="builds"
+      />
+      <cancel-button
+        :build="build"
+      />
+    </property-block>
     <div
       v-if="showReleases"
       class="block-divider"
     >
       <div />
     </div>
-    <div
+    <property-block
       v-if="showReleases"
-      class="property-block-wide"
+      label="Releases"
+      wide
     >
-      <property-label text="Releases" />
-      <property-value>
-        <release-badge-for-build
-          v-for="releaseTarget in pipeline.releaseTargets"
-          :key="releaseTarget.name"
-          :release-target="releaseTarget"
-          :build="build"
-        />
-      </property-value>
-    </div>
+      <release-badge-for-build
+        v-for="releaseTarget in pipeline.releaseTargets"
+        :key="releaseTarget.name"
+        :release-target="releaseTarget"
+        :build="build"
+      />
+    </property-block>
   </router-link>
 </template>
 
@@ -95,8 +90,7 @@ import ReleaseButton from '@/components/ReleaseButton'
 import RebuildButton from '@/components/RebuildButton'
 import CancelButton from '@/components/CancelButton'
 import ReleaseBadgeForBuild from '@/components/ReleaseBadgeForBuild'
-import PropertyLabel from '@/components/PropertyLabel'
-import PropertyValue from '@/components/PropertyValue'
+import PropertyBlock from '@/components/PropertyBlock'
 import DurationLabel from '@/components/DurationLabel'
 import Commits from '@/components/Commits'
 
@@ -108,8 +102,7 @@ export default {
     RebuildButton,
     CancelButton,
     ReleaseBadgeForBuild,
-    PropertyLabel,
-    PropertyValue,
+    PropertyBlock,
     DurationLabel,
     Commits
   },

@@ -1,100 +1,77 @@
 <template>
   <div class="header-block">
-    <div class="property-block-title">
-      <property-label text="Pipeline build" />
-      <property-value>
-        <repository-title :repo="pipeline" />
-      </property-value>
-    </div>
-    <div class="property-block">
-      <property-label text="Version" />
-      <property-value>
-        {{ build.buildVersion }}
-      </property-value>
-    </div>
-    <div class="property-block">
-      <property-label text="Status" />
-      <property-value>
-        <b-progress
-          :value="100"
-          :variant="$options.filters.bootstrapVariant(build.buildStatus)"
-          :animated="$options.filters.animatedProgressBar(build.buildStatus)"
-        />
-      </property-value>
-    </div>
-    <div class="property-block">
-      <property-label text="Built at" />
-      <property-value>
-        {{ build.insertedAt | formatDatetime }}
-        <duration-label :duration="build.duration" />
-      </property-value>
-    </div>
-    <div class="property-block">
-      <property-label text="Branch" />
-      <property-value>
-        {{ build.repoBranch }}
-      </property-value>
-    </div>
-    <div class="property-block">
-      <property-label text="Revision" />
-      <property-value>
-        <commit-link :build="build" />
-      </property-value>
-    </div>
-    <div class="property-block">
-      <property-label text="Commit(s)" />
-      <property-value>
-        <commits :commits="build.commits" />
-      </property-value>
-    </div>
-    <div
+    <property-block
+      label="Build"
+      title
+    >
+      <repository-title :repo="build" />
+    </property-block>
+    <property-block
+      label="Version"
+      :value="build.buildVersion"
+    />
+    <property-block label="Status">
+      <b-progress
+        :value="100"
+        :variant="$options.filters.bootstrapVariant(build.buildStatus)"
+        :animated="$options.filters.animatedProgressBar(build.buildStatus)"
+      />
+    </property-block>
+    <property-block label="Built at">
+      {{ build.insertedAt | formatDatetime }}
+      <duration-label :duration="build.duration" />
+    </property-block>
+    <property-block
+      label="Branch"
+      :value="build.repoBranch"
+    />
+    <property-block label="Revision">
+      <commit-link :build="build" />
+    </property-block>
+    <property-block label="Commit(s)">
+      <commits :commits="build.commits" />
+    </property-block>
+    <property-block
       v-if="showTriggers"
-      class="property-block"
+      label="Triggered by"
     >
-      <property-label text="Revision" />
-      <property-value>
-        <triggered-by :events="build.triggerEvents" />
-      </property-value>
-    </div>
-    <div
+      <triggered-by :events="build.triggerEvents" />
+    </property-block>
+    <property-block
       v-if="showActions"
-      class="property-block"
+      label="Actions"
+      no-truncate
     >
-      <property-label text="Actions" />
-      <property-value>
-        <release-button
-          :pipeline="pipeline"
-          :build="build"
-        />
-        <rebuild-button
-          :build="build"
-          :builds="builds"
-        />
-        <cancel-button
-          :build="build"
-        />
-      </property-value>
-    </div>
+      <release-button
+        :pipeline="pipeline"
+        :build="build"
+      />
+      <rebuild-button
+        :build="build"
+        :builds="builds"
+      />
+      <cancel-button
+        :build="build"
+      />
+    </property-block>
     <div
       v-if="showReleases"
       class="block-divider"
     >
       <div />
     </div>
-    <div
+    <property-block
       v-if="showReleases"
-      class="property-block-wide"
+      label="Releases"
+      wide
     >
-      <property-label text="Releases" />
-      <property-value>
-        <release-badge-for-build
-          v-for="releaseTarget in pipeline.releaseTargets"
-          :key="releaseTarget.name"
-          :release-target="releaseTarget"
-          :build="build"
-        />
-      </property-value>
-    </div>
+      <release-badge-for-build
+        v-for="releaseTarget in pipeline.releaseTargets"
+        :key="releaseTarget.name"
+        :release-target="releaseTarget"
+        :build="build"
+      />
+    </property-block>
   </div>
 </template>
 
@@ -107,8 +84,7 @@ import RebuildButton from '@/components/RebuildButton'
 import CancelButton from '@/components/CancelButton'
 import ReleaseBadgeForBuild from '@/components/ReleaseBadgeForBuild'
 import TriggeredBy from '@/components/TriggeredBy'
-import PropertyLabel from '@/components/PropertyLabel'
-import PropertyValue from '@/components/PropertyValue'
+import PropertyBlock from '@/components/PropertyBlock'
 import RepositoryTitle from '@/components/RepositoryTitle'
 import DurationLabel from '@/components/DurationLabel'
 import Commits from '@/components/Commits'
@@ -122,8 +98,7 @@ export default {
     CancelButton,
     ReleaseBadgeForBuild,
     TriggeredBy,
-    PropertyLabel,
-    PropertyValue,
+    PropertyBlock,
     RepositoryTitle,
     DurationLabel,
     Commits

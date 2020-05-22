@@ -48,107 +48,108 @@
           v-b-toggle="'accordion-'+step.step + '-' + step.runIndex"
           role="tab"
         >
-          <div class="property-block col-xxxl-1 text-xxxl-center">
-            <property-label text="Status" />
-            <property-value>
-              <span
-                class="badge mt-2"
-                :class="step.status | bootstrapClass('badge')"
-              >
-                {{ step.status }}
-              </span>
-            </property-value>
-          </div>
-          <div class="property-block col-xxxl-4">
-            <property-label text="Stage" />
-            <property-value class="h4">
-              {{ step.step }}
-              <span
-                v-if="step.autoInjected"
+          <property-block
+            label="Status"
+            class="col-xxxl-1 text-xxxl-center"
+          >
+            <span
+              class="badge mt-2"
+              :class="step.status | bootstrapClass('badge')"
+            >
+              {{ step.status }}
+            </span>
+          </property-block>
+          <property-block
+            label="Stage"
+            class="col-xxxl-4"
+            value-css-class="h4"
+          >
+            {{ step.step }}
+            <span
+              v-if="step.autoInjected"
+              class="small text-muted"
+              title="This step is automatically injected by Estafette CI"
+            >
+              (injected)
+            </span>
+          </property-block>
+          <property-block
+            label="Image"
+            class="col-xxxl-3"
+          >
+            <span v-if="step.image && step.image.name">
+              {{ step.image.name }}:{{ step.image.tag }}
+              <font-awesome-icon
+                v-if="step.image.isTrusted"
+                icon="shield-alt"
                 class="small text-muted"
-                title="This step is automatically injected by Estafette CI"
+                title="This image is configured as trusted by Estafette CI"
+              />
+            </span>
+            <span v-else>
+              -
+            </span>
+          </property-block>
+          <property-block
+            label="Image size"
+            class="col-xxxl-1 text-xxxl-right"
+          >
+            <span v-if="step.image && step.image.name && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
+              <span v-if="step.image && step.image.imageSize">
+                {{ step.image.imageSize | formatBytes }}
+              </span>
+              <em
+                v-else
+                class="text-muted"
               >
-                (injected)
+                (cached)
+              </em>
+            </span>
+            <span v-else>
+              -
+            </span>
+          </property-block>
+          <property-block
+            label="Pull time"
+            class="col-xxxl-1 text-xxxl-right"
+          >
+            <span v-if="step.image && step.image.name && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
+              <span v-if="step.image.pullDuration && step.image.pullDuration > 0">
+                {{ step.image.pullDuration | formatDuration }}
               </span>
-            </property-value>
-          </div>
-          <div class="property-block col-xxxl-3">
-            <property-label text="Image" />
-            <property-value>
-              <span v-if="step.image && step.image.name">
-                {{ step.image.name }}:{{ step.image.tag }}
-                <font-awesome-icon
-                  v-if="step.image.isTrusted"
-                  icon="shield-alt"
-                  class="small text-muted"
-                  title="This image is configured as trusted by Estafette CI"
-                />
-              </span>
-              <span v-else>
-                -
-              </span>
-            </property-value>
-          </div>
-          <div class="property-block col-xxxl-1 text-xxxl-right">
-            <property-label text="Image size" />
-            <property-value>
-              <span v-if="step.image && step.image.name && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
-                <span v-if="step.image && step.image.imageSize">
-                  {{ step.image.imageSize | formatBytes }}
-                </span>
-                <em
-                  v-else
-                  class="text-muted"
-                >
-                  (cached)
-                </em>
-              </span>
-              <span v-else>
-                -
-              </span>
-            </property-value>
-          </div>
-          <div class="property-block col-xxxl-1 text-xxxl-right">
-            <property-label text="Pull time" />
-            <property-value>
-              <span v-if="step.image && step.image.name && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
-                <span v-if="step.image.pullDuration && step.image.pullDuration > 0">
-                  {{ step.image.pullDuration | formatDuration }}
-                </span>
-                <em
-                  v-else
-                  class="text-muted"
-                >
-                  (cached)
-                </em>
-              </span>
-              <span v-else>
-                -
-              </span>
-            </property-value>
-          </div>
-          <div class="property-block col-xxxl-1 text-xxxl-right">
-            <property-label text="Execution time" />
-            <property-value>
-              <span v-if="step.duration && (step.status == 'SUCCEEDED' || step.status == 'FAILED')">
-                {{ step.duration | formatDuration }}
-              </span>
-              <span v-else>
-                -
-              </span>
-            </property-value>
-          </div>
-          <div class="property-block col-xxxl-1 text-xxxl-right">
-            <property-label text="Total time" />
-            <property-value>
-              <span v-if="step.image && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
-                {{ (step.image ? step.image.pullDuration : 0) + step.duration | formatDuration }}
-              </span>
-              <span v-else>
-                -
-              </span>
-            </property-value>
-          </div>
+              <em
+                v-else
+                class="text-muted"
+              >
+                (cached)
+              </em>
+            </span>
+            <span v-else>
+              -
+            </span>
+          </property-block>
+          <property-block
+            label="Execution time"
+            class="col-xxxl-1 text-xxxl-right"
+          >
+            <span v-if="step.duration && (step.status == 'SUCCEEDED' || step.status == 'FAILED')">
+              {{ step.duration | formatDuration }}
+            </span>
+            <span v-else>
+              -
+            </span>
+          </property-block>
+          <property-block
+            label="Total time"
+            class="col-xxxl-1 text-xxxl-right"
+          >
+            <span v-if="step.image && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
+              {{ (step.image ? step.image.pullDuration : 0) + step.duration | formatDuration }}
+            </span>
+            <span v-else>
+              -
+            </span>
+          </property-block>
         </b-card-header>
 
         <b-card-header
@@ -156,26 +157,24 @@
           v-if="step.services && step.services.length > 0"
           role="tab"
         >
-          <div class="property-block-wide">
-            <property-label
-              text="Service containers"
-              class="d-xxxl-block"
-            />
-            <property-value>
-              <b-button
-                v-for="service in step.services"
-                :key="service.step"
-                v-b-toggle="'accordion-'+step.step + '-' + step.runIndex + '-service-' +service.step"
-                :variant="service.status | bootstrapVariant(true)"
-                class="mr-2 mb-1"
-              >
-                {{ service.step }}
-                <span>
-                  {{ (service.image ? service.image.pullDuration : 0) + service.duration | formatDuration }}
-                </span>
-              </b-button>
-            </property-value>
-          </div>
+          <property-block
+            label="Service containers"
+            wide
+            label-css-class="d-xxxl-block"
+          >
+            <b-button
+              v-for="service in step.services"
+              :key="service.step"
+              v-b-toggle="'accordion-'+step.step + '-' + step.runIndex + '-service-' +service.step"
+              :variant="service.status | bootstrapVariant(true)"
+              class="mr-2 mb-1"
+            >
+              {{ service.step }}
+              <span>
+                {{ (service.image ? service.image.pullDuration : 0) + service.duration | formatDuration }}
+              </span>
+            </b-button>
+          </property-block>
         </b-card-header>
 
         <b-card-header
@@ -183,23 +182,24 @@
           v-if="step.nestedSteps && step.nestedSteps.length > 0"
           role="tab"
         >
-          <div class="property-block-wide">
-            <property-label text="Parallel stages" />
-            <property-value>
-              <b-button
-                v-for="nestedStep in step.nestedSteps"
-                :key="nestedStep.step"
-                v-b-toggle="'accordion-'+step.step + '-' + step.runIndex + '-' +nestedStep.step"
-                :variant="nestedStep.status | bootstrapVariant(true)"
-                class="mr-2 mb-1"
-              >
-                {{ nestedStep.step }}
-                <span>
-                  {{ (nestedStep.image ? nestedStep.image.pullDuration : 0) + nestedStep.duration | formatDuration }}
-                </span>
-              </b-button>
-            </property-value>
-          </div>
+          <property-block
+            label="Parallel stages"
+            wide
+            label-css-class="d-xxxl-block"
+          >
+            <b-button
+              v-for="nestedStep in step.nestedSteps"
+              :key="nestedStep.step"
+              v-b-toggle="'accordion-'+step.step + '-' + step.runIndex + '-' +nestedStep.step"
+              :variant="nestedStep.status | bootstrapVariant(true)"
+              class="mr-2 mb-1"
+            >
+              {{ nestedStep.step }}
+              <span>
+                {{ (nestedStep.image ? nestedStep.image.pullDuration : 0) + nestedStep.duration | formatDuration }}
+              </span>
+            </b-button>
+          </property-block>
         </b-card-header>
 
         <b-collapse
@@ -398,43 +398,43 @@
     </div>
 
     <div class="log-summary-block">
-      <div class="property-block col-xxxl-1 text-xxxl-center">
-        <property-label text="Status" />
-        <property-value>
-          <span
-            class="badge"
-            :class="totalStatus | bootstrapClass('badge')"
-          >
-            {{ totalStatus }}
-          </span>
-        </property-value>
-      </div>
+      <property-block
+        label="Status"
+        class="col-xxxl-1 text-xxxl-center"
+      >
+        <span
+          class="badge"
+          :class="totalStatus | bootstrapClass('badge')"
+        >
+          {{ totalStatus }}
+        </span>
+      </property-block>
       <div class="property-block col-xxxl-4 d-none d-xxxl-flex" />
       <div class="property-block col-xxxl-3 d-none d-xxxl-flex" />
-      <div class="property-block col-xxxl-1 text-xxxl-right">
-        <property-label text="Total image size" />
-        <property-value>
-          {{ totalImageSize | formatBytes }}
-        </property-value>
-      </div>
-      <div class="property-block col-xxxl-1 text-xxxl-right">
-        <property-label text="Total pull time" />
-        <property-value>
-          {{ totalPullDuration | formatDuration }}
-        </property-value>
-      </div>
-      <div class="property-block col-xxxl-1 text-xxxl-right">
-        <property-label text="Total execution time" />
-        <property-value>
-          {{ totalDuration | formatDuration }}
-        </property-value>
-      </div>
-      <div class="property-block col-xxxl-1 text-xxxl-right">
-        <property-label text="Total time" />
-        <property-value>
-          {{ totalPullDuration + totalDuration | formatDuration }}
-        </property-value>
-      </div>
+      <property-block
+        label="Total image size"
+        class="col-xxxl-1 text-xxxl-right"
+      >
+        {{ totalImageSize | formatBytes }}
+      </property-block>
+      <property-block
+        label="Total pull time"
+        class="col-xxxl-1 text-xxxl-right"
+      >
+        {{ totalPullDuration | formatDuration }}
+      </property-block>
+      <property-block
+        label="Total executino time"
+        class="col-xxxl-1 text-xxxl-right"
+      >
+        {{ totalDuration | formatDuration }}
+      </property-block>
+      <property-block
+        label="Total time"
+        class="col-xxxl-1 text-xxxl-right"
+      >
+        {{ totalPullDuration + totalDuration | formatDuration }}
+      </property-block>
     </div>
   </div>
   <div
@@ -451,8 +451,7 @@ import debounce from 'lodash/debounce'
 import AnsiUp from 'ansi_up'
 import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BFormCheckbox, BFormGroup } from 'bootstrap-vue'
 
-import PropertyLabel from '@/components/PropertyLabel'
-import PropertyValue from '@/components/PropertyValue'
+import PropertyBlock from '@/components/PropertyBlock'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faShieldAlt } from '@fortawesome/free-solid-svg-icons'
@@ -468,8 +467,7 @@ export default {
     BCollapse,
     BFormCheckbox,
     BFormGroup,
-    PropertyLabel,
-    PropertyValue,
+    PropertyBlock,
     FontAwesomeIcon
   },
   directives: {

@@ -4,52 +4,47 @@
     tag="div"
     class="row-block"
   >
-    <div class="property-block col-xxxl-2">
-      <property-label :text="release.action ? 'Target (action)' : 'Target'" />
-      <property-value>
-        {{ release.name }}<span v-if="release.action">
-          ({{ release.action }})
-        </span>
-      </property-value>
-    </div>
-    <div class="property-block col-xxxl-2">
-      <property-label text="Version" />
-      <property-value>
-        {{ release.releaseVersion }}
-      </property-value>
-    </div>
-    <div class="property-block col-xxxl-2">
-      <property-label text="Status" />
-      <property-value>
-        <b-progress
-          :value="100"
-          :variant="$options.filters.bootstrapVariant(release.releaseStatus)"
-          :animated="$options.filters.animatedProgressBar(release.releaseStatus)"
-        />
-      </property-value>
-    </div>
-    <div class="property-block col-xxxl-2">
-      <property-label text="Released at" />
-      <property-value>
-        {{ release.insertedAt | formatDatetime }}
-        <duration-label :duration="release.duration" />
-      </property-value>
-    </div>
-    <div class="property-block col-xxxl-2">
-      <property-label text="Triggered by" />
-      <property-value>
-        <triggered-by :events="release.triggerEvents" />
-      </property-value>
-    </div>
-    <div
-      v-if="showActions"
-      class="property-block col-xxxl-2"
+    <property-block
+      :label="release.action ? 'Target + action' : 'Target'"
+      class="col-xxxl-2"
     >
-      <property-label text="Actions" />
-      <property-value>
-        <cancel-button :release="release" />
-      </property-value>
-    </div>
+      {{ release.name }}<span v-if="release.action">
+        / {{ release.action }}
+      </span>
+    </property-block>
+    <property-block
+      label="Version"
+      :value="release.releaseVersion"
+      class="col-xxxl-2"
+    />
+    <property-block
+      label="Status"
+      class="col-xxxl-2"
+    >
+      <b-progress
+        :value="100"
+        :variant="$options.filters.bootstrapVariant(release.releaseStatus)"
+        :animated="$options.filters.animatedProgressBar(release.releaseStatus)"
+      />
+    </property-block>
+    <property-block
+      label="Released at"
+      class="col-xxxl-2"
+    >
+      {{ release.insertedAt | formatDatetime }}
+      <duration-label :duration="release.duration" />
+    </property-block>
+    <property-block label="Triggered by">
+      <triggered-by :events="release.triggerEvents" />
+    </property-block>
+    <property-block
+      v-if="showActions"
+      label="Actions"
+      no-truncate
+      class="col-xxxl-2"
+    >
+      <cancel-button :release="release" />
+    </property-block>
   </router-link>
 </template>
 
@@ -58,8 +53,7 @@ import { mapState } from 'vuex'
 import { BProgress } from 'bootstrap-vue'
 import CancelButton from '@/components/CancelButton'
 import TriggeredBy from '@/components/TriggeredBy'
-import PropertyLabel from '@/components/PropertyLabel'
-import PropertyValue from '@/components/PropertyValue'
+import PropertyBlock from '@/components/PropertyBlock'
 import DurationLabel from '@/components/DurationLabel'
 
 export default {
@@ -67,8 +61,7 @@ export default {
     BProgress,
     CancelButton,
     TriggeredBy,
-    PropertyLabel,
-    PropertyValue,
+    PropertyBlock,
     DurationLabel
   },
 
