@@ -237,7 +237,7 @@
           accordion="log-steps-accordion"
           role="tabpanel"
         >
-          <div class="row m-0 pt-3 pr-2 pb-3 pl-2 clickable border-0 rounded-0 bg-light">
+          <div class="row m-0 pt-3 pr-2 pb-3 pl-2 border-0 rounded-0 bg-light">
             <div class="col-4 col-md-2 col-xl-1 text-center" />
             <div
               class="col-8 col-lg-5 col-xl-4 text-truncate h4"
@@ -320,7 +320,7 @@
           accordion="log-steps-accordion"
           role="tabpanel"
         >
-          <div class="row m-0 pt-3 pr-2 pb-3 pl-2 clickable border-0 rounded-0 bg-light">
+          <div class="row m-0 pt-3 pr-2 pb-3 pl-2 border-0 rounded-0 bg-light">
             <div class="col-4 col-md-2 col-xl-1 text-center" />
             <div
               class="col-8 col-lg-5 col-xl-4 text-truncate h4"
@@ -759,10 +759,6 @@ export default {
 </script>
 
 <style scoped>
-.clickable {
-  cursor: pointer;
-}
-
 .card-header {
   background: none;
 }
