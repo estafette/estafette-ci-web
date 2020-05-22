@@ -1,6 +1,15 @@
 <template>
-  <div class="m-3">
-    <div class="row">
+  <div>
+    <b-jumbotron
+      header="Builds & releases"
+      lead="View and release your applications"
+      bg-variant="success"
+      text-variant="white"
+      header-level="5"
+      class="mb-3 pl-3 pt-3 pr-3 pb-1"
+    />
+
+    <div class="row m-0">
       <div class="col-12 col-lg-6">
         <status-filter :filter="filter" />
       </div>
@@ -21,7 +30,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row m-0">
       <div class="col-12 col-lg-9">
         <label-filter
           :filter="filter"
@@ -36,7 +45,7 @@
       </div>
     </div>
 
-    <div class="row-header">
+    <div class="row-header m-3">
       <div class="col-3">
         Pipeline
       </div>
@@ -64,6 +73,7 @@
       name="list-complete"
       tag="div"
       v-if="pipelines.length > 0"
+      class="m-3"
     >
       <pipeline-row
         v-for="pipeline in pipelines"
@@ -74,7 +84,7 @@
     </transition-group>
     <div
       v-else-if="loaded"
-      class="alert alert-warning text-center p-5"
+      class="alert alert-warning text-center p-5 m-3"
     >
       There are no pipelines for the current filters. Please increase the time range or remove some filters!
     </div>
@@ -91,6 +101,7 @@
 </template>
 
 <script>
+import { BJumbotron } from 'bootstrap-vue'
 import debounce from 'lodash/debounce'
 
 import Spinner from '@/components/Spinner'
@@ -105,6 +116,7 @@ import Pagination from '@/components/Pagination'
 
 export default {
   components: {
+    BJumbotron,
     Spinner,
     PipelineRow,
     StatusFilter,

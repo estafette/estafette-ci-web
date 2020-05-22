@@ -1,8 +1,6 @@
 <template>
   <div class="m-3">
-    <div
-      class="row mt-0 mr-0 mb-3 ml-0"
-    >
+    <div class="row m-0">
       <div class="col-12 col-sm-8 col-lg" />
       <div class="col-12 col-sm-4 col-lg-3 p-0 text-right">
         <since-selector
@@ -12,7 +10,7 @@
       </div>
     </div>
 
-    <div class="row m-0">
+    <div class="row ml-0">
       <stats-pipelines-count
         v-for="status in statuses"
         :key="status"
@@ -21,7 +19,7 @@
       />
     </div>
 
-    <div class="row m-0">
+    <div class="row ml-0">
       <stats-builds-count
         v-for="status in statuses"
         :key="status"
@@ -30,7 +28,7 @@
       />
     </div>
 
-    <div class="row m-0">
+    <div class="row ml-0">
       <stats-releases-count
         v-for="status in statuses"
         :key="status"
@@ -79,7 +77,14 @@ export default {
     },
 
     updateQueryParams () {
-      this.$router.push({ query: { since: this.filter.since } })
+      var query = { ...this.$route.query }
+      var newQuerySince = this.filter.since
+
+      if (query.since !== newQuerySince) {
+        query.since = newQuerySince
+
+        this.$router.push({ query: query })
+      }
     },
 
     setSince (value) {

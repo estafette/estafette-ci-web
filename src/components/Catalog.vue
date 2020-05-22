@@ -1,6 +1,15 @@
 <template>
-  <div class="m-3">
-    <div class="row">
+  <div>
+    <b-jumbotron
+      header="Catalog"
+      lead="The one-stop-shop for managing and querying your applications"
+      bg-variant="info"
+      text-variant="white"
+      header-level="5"
+      class="mb-3 pl-3 pt-3 pr-3 pb-1"
+    />
+
+    <div class="row m-0">
       <div class="col-12 col-sm-6 col-lg-3 col-xxl-2">
         <b-form
           autocomplete="off"
@@ -30,11 +39,9 @@
       </div>
     </div>
 
-    <div class="row">
-      <tabs :tabs="tabs" />
-    </div>
+    <tabs :tabs="tabs" />
 
-    <div class="row-header">
+    <div class="row-header m-3">
       <div class="col-6">
         Name
       </div>
@@ -47,6 +54,7 @@
       name="list-complete"
       tag="div"
       v-if="catalogItems.length > 0"
+      class="m-3"
     >
       <catalog-item-row
         v-for="catalogItem in catalogItems"
@@ -74,7 +82,7 @@
 </template>
 
 <script>
-import { BForm, BFormSelect, BInputGroup, BInputGroupPrepend } from 'bootstrap-vue'
+import { BForm, BFormSelect, BInputGroup, BInputGroupPrepend, BJumbotron } from 'bootstrap-vue'
 import Spinner from '@/components/Spinner'
 import CatalogItemRow from '@/components/CatalogItemRow'
 import PaginationCompact from '@/components/PaginationCompact'
@@ -99,6 +107,7 @@ export default {
     PaginationCompact,
     Pagination,
     Tabs,
+    BJumbotron,
     FontAwesomeIcon
   },
 

@@ -1,8 +1,6 @@
 <template>
   <div class="m-3">
-    <div
-      class="row mt-0 mr-0 mb-3 ml-0"
-    >
+    <div class="row m-0">
       <div class="col-12 col-sm-8 col-lg" />
       <div class="col-12 col-sm-4 col-lg-3 p-0 text-right">
         <since-selector
@@ -11,8 +9,6 @@
         />
       </div>
     </div>
-
-    <div class="row m-0" />
 
     <div class="row">
       <div class="col-12 col-xl-6 col-xxxl-4">

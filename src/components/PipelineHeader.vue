@@ -2,7 +2,7 @@
   <div class="header-block">
     <property-block
       label="Pipeline"
-      variant="primary"
+      variant="success"
       title
     >
       <repository-title :repo="pipeline" />

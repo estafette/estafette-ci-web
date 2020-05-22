@@ -1,5 +1,14 @@
 <template>
-  <div class="container-fluid">
+  <div>
+    <b-jumbotron
+      header="Configuration"
+      lead="See configured credentials and trusted images"
+      bg-variant="secondary"
+      text-variant="white"
+      header-level="5"
+      class="mb-3 pl-3 pt-3 pr-3 pb-1"
+    />
+
     <div class="row">
       <div class="col mt-4 mb-4 border-right sidebar d-none d-lg-block">
         <ul>
@@ -59,8 +68,13 @@
 
 <script>
 import { mapState } from 'vuex'
+import { BJumbotron } from 'bootstrap-vue'
 
 export default {
+  components: {
+    BJumbotron
+  },
+
   data: function () {
     return {
       credentials: null,
