@@ -3,6 +3,7 @@
     <property-block
       label="Catalog"
       :value="catalogItem.repoName"
+      variant="info"
       title
     />
     <property-block

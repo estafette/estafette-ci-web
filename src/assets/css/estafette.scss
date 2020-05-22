@@ -420,7 +420,31 @@ button.btn-clipboard {
   .property-label {
     @extend .d-inline;
     @extend .h2;
+  }
+
+  &.variant-primary .property-label {
     @extend .text-primary;
+  }
+  &.variant-secondary .property-label {
+    @extend .text-secondary;
+  }
+  &.variant-success .property-label {
+    @extend .text-success;
+  }
+  &.variant-danger .property-label {
+    @extend .text-danger;
+  }
+  &.variant-warning .property-label {
+    @extend .text-warning;
+  }
+  &.variant-info .property-label {
+    @extend .text-info;
+  }
+  &.variant-light .property-label {
+    @extend .text-light;
+  }
+  &.variant-dark .property-label {
+    @extend .text-dark;
   }
 
   .property-value {

@@ -2,6 +2,7 @@
   <div class="header-block">
     <property-block
       label="Build"
+      variant="primary"
       title
     >
       <repository-title :repo="build" />

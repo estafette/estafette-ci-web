@@ -29,6 +29,13 @@ export default {
       type: String,
       default: ''
     },
+    variant: {
+      type: String,
+      default: 'primary',
+      validator: function (value) {
+        return ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'].indexOf(value) !== -1
+      }
+    },
     labelCssClass: {
       type: String,
       default: ''
@@ -54,7 +61,7 @@ export default {
   computed: {
     cssClass () {
       if (this.title) {
-        return 'property-block-title'
+        return `property-block-title variant-${this.variant}`
       }
       if (this.wide) {
         return 'property-block-wide'
