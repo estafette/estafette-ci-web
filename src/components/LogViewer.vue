@@ -92,7 +92,7 @@
           </property-block>
           <property-block
             label="Image size"
-            class="col-xxxl-1 text-xxxl-right"
+            class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
           >
             <span v-if="step.image && step.image.name && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
               <span v-if="step.image && step.image.imageSize">
@@ -111,7 +111,7 @@
           </property-block>
           <property-block
             label="Pull time"
-            class="col-xxxl-1 text-xxxl-right"
+            class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
           >
             <span v-if="step.image && step.image.name && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
               <span v-if="step.image.pullDuration && step.image.pullDuration > 0">
@@ -130,7 +130,7 @@
           </property-block>
           <property-block
             label="Execution time"
-            class="col-xxxl-1 text-xxxl-right"
+            class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
           >
             <span v-if="step.duration && (step.status == 'SUCCEEDED' || step.status == 'FAILED')">
               {{ step.duration | formatDuration }}
@@ -409,23 +409,23 @@
           {{ totalStatus }}
         </span>
       </property-block>
-      <div class="property-block col-xxxl-4 d-none d-xxxl-flex" />
-      <div class="property-block col-xxxl-3 d-none d-xxxl-flex" />
+      <div class="property-block col-xxxl-4" />
+      <div class="property-block col-xxxl-3" />
       <property-block
         label="Total image size"
-        class="col-xxxl-1 text-xxxl-right"
+        class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
       >
         {{ totalImageSize | formatBytes }}
       </property-block>
       <property-block
         label="Total pull time"
-        class="col-xxxl-1 text-xxxl-right"
+        class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
       >
         {{ totalPullDuration | formatDuration }}
       </property-block>
       <property-block
-        label="Total executino time"
-        class="col-xxxl-1 text-xxxl-right"
+        label="Total execution time"
+        class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
       >
         {{ totalDuration | formatDuration }}
       </property-block>

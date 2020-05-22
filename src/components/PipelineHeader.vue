@@ -24,12 +24,12 @@
         :limit="1"
       />
     </property-block> -->
-    <div
+    <!-- <div
       v-if="showReleases || showLabels"
       class="block-divider"
     >
       <div />
-    </div>
+    </div> -->
     <!-- <property-block
       v-if="showTriggers"
       label="Triggered by"

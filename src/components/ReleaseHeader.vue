@@ -32,7 +32,6 @@
     <property-block
       v-if="showActions"
       label="Actions"
-      no-truncate
     >
       <cancel-button :release="release" />
     </property-block>

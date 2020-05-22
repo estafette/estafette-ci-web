@@ -34,13 +34,15 @@
       {{ release.insertedAt | formatDatetime }}
       <duration-label :duration="release.duration" />
     </property-block>
-    <property-block label="Triggered by">
+    <property-block
+      label="Triggered by"
+      class="col-xxxl-2"
+    >
       <triggered-by :events="release.triggerEvents" />
     </property-block>
     <property-block
       v-if="showActions"
       label="Actions"
-      no-truncate
       class="col-xxxl-2"
     >
       <cancel-button :release="release" />
