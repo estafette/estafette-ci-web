@@ -1,5 +1,15 @@
 <template>
   <div>
+    <b-jumbotron
+      header="Builds & releases"
+      bg-variant="success"
+      text-variant="white"
+      header-level="5"
+      container-fluid
+      fluid
+      class="mb-3 p-3"
+    />
+
     <b-breadcrumb
       :items="breadcrumbs"
       class="m-3 rounded"
@@ -21,13 +31,14 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BBreadcrumb } from 'bootstrap-vue'
+import { BBreadcrumb, BJumbotron } from 'bootstrap-vue'
 import ReleaseHeader from '@/components/ReleaseHeader'
 import Tabs from '@/components/Tabs'
 
 export default {
   components: {
     BBreadcrumb,
+    BJumbotron,
     ReleaseHeader,
     Tabs
   },

@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import Home from '@/components/Home'
+
 import Pipelines from '@/components/Pipelines'
 import PipelineDetails from '@/components/PipelineDetails'
 import PipelineOverview from '@/components/PipelineOverview'
@@ -39,7 +41,7 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      redirect: { name: 'Pipelines' }
+      component: Home
     },
     {
       path: '/pipelines',

@@ -2,11 +2,12 @@
   <div>
     <b-jumbotron
       header="Create"
-      lead="Generate Estafette manifests and secrets"
       bg-variant="warning"
       text-variant="dark"
       header-level="5"
-      class="mb-3 pl-3 pt-3 pr-3 pb-1"
+      container-fluid
+      fluid
+      class="mb-3 p-3"
     />
 
     <tabs :tabs="tabs" />

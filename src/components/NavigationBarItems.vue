@@ -4,6 +4,7 @@
       v-for="item in items"
       :key="item.text"
       :to="item.to"
+      :exact="item.exact"
       class="mr-3 text-nowrap"
     >
       <font-awesome-icon

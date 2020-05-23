@@ -2,11 +2,12 @@
   <div>
     <b-jumbotron
       header="Configuration"
-      lead="See configured credentials and trusted images"
       bg-variant="secondary"
       text-variant="white"
       header-level="5"
-      class="mb-3 pl-3 pt-3 pr-3 pb-1"
+      container-fluid
+      fluid
+      class="mb-3 p-3"
     />
 
     <div class="row">

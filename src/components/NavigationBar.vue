@@ -5,7 +5,7 @@
     variant="dark"
   >
     <b-navbar-brand
-      :to="{ name: 'Pipelines'}"
+      :to="{ name: 'Home'}"
       class="text-white mr-5 text-nowrap"
     >
       <font-awesome-icon
@@ -74,10 +74,10 @@ import { mapState } from 'vuex'
 import { BNavbar, BNavbarBrand, BNavbarToggle, BNavbarNav, BNavItemDropdown, BDropdownItem, BCollapse } from 'bootstrap-vue'
 import NavigationBarItems from '@/components/NavigationBarItems'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle)
+library.add(faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome)
 
 export default {
   components: {
@@ -96,24 +96,34 @@ export default {
     return {
       items: [
         {
+          text: 'Home',
+          icon: 'home',
+          to: { name: 'Home' },
+          exact: true
+        },
+        {
           text: 'Builds & Releases',
           icon: 'tools',
-          to: { name: 'Pipelines' }
+          to: { name: 'Pipelines' },
+          exact: false
         },
         {
           text: 'Catalog',
           icon: 'book-open',
-          to: { name: 'Catalog' }
+          to: { name: 'Catalog' },
+          exact: false
         },
         {
           text: 'Insights',
           icon: 'lightbulb',
-          to: { name: 'Statistics' }
+          to: { name: 'Statistics' },
+          exact: false
         },
         {
           text: 'Create',
           icon: 'plus-circle',
-          to: { name: 'Manifest' }
+          to: { name: 'Manifest' },
+          exact: false
         }
       ]
     }

@@ -1,5 +1,15 @@
 <template>
   <div>
+    <b-jumbotron
+      header="Catalog"
+      bg-variant="info"
+      text-variant="white"
+      header-level="5"
+      container-fluid
+      fluid
+      class="mb-3 p-3"
+    />
+
     <b-breadcrumb
       :items="breadcrumbs"
       class="m-3 rounded"
@@ -20,13 +30,14 @@
 </template>
 
 <script>
-import { BBreadcrumb } from 'bootstrap-vue'
+import { BBreadcrumb, BJumbotron } from 'bootstrap-vue'
 import CatalogItemHeader from '@/components/CatalogItemHeader'
 import Tabs from '@/components/Tabs'
 
 export default {
   components: {
     BBreadcrumb,
+    BJumbotron,
     CatalogItemHeader,
     Tabs
   },
