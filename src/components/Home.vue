@@ -9,7 +9,7 @@
           header-level="1"
           container-fluid
           fluid
-          class="mb-3 p-3 rounded border"
+          class="mb-3 pl-4 pt-4 pr-4 pb-5 rounded border"
         >
           <template
             v-slot:header
@@ -18,6 +18,16 @@
               Estafette
             </span>
           </template>
+
+          <p>For more information visit the public website.</p>
+
+          <b-button
+            variant="success"
+            href="https://estafette.io/"
+            target="_blank"
+          >
+            Learn more
+          </b-button>
         </b-jumbotron>
       </div>
 
