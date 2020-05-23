@@ -10,7 +10,7 @@
     >
       <div class="h5 text-center mt-3 mb-3 text-secondary">
         <font-awesome-icon
-          icon="shipping-fast"
+          icon="tools"
           class="mr-2"
         />
         Recent builds
@@ -170,10 +170,10 @@ import Spinner from '@/components/Spinner'
 import CommitLink from '@/components/CommitLink'
 import { Drag, Drop } from 'vue-easy-dnd'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faFire, faShippingFast, faUpload } from '@fortawesome/free-solid-svg-icons'
+import { faFire, faTools, faUpload } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faFire, faShippingFast, faUpload)
+library.add(faFire, faTools, faUpload)
 
 export default {
   components: {
