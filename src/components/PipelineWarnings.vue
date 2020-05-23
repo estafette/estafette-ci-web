@@ -3,6 +3,18 @@
     class="col m-0 mt-3"
     v-if="warnings && warnings.length > 0"
   >
+    <div
+      class="row m-0 mt-3 mb-3 ml-3 justify-content-center"
+    >
+      <div class="h5 text-center mt-3 mb-3 text-secondary">
+        <font-awesome-icon
+          icon="exclamation-triangle"
+          class="mr-2"
+        />
+        Warnings
+      </div>
+    </div>
+
     <warning
       v-for="(warning, index) in warnings"
       :key="index"
@@ -14,9 +26,16 @@
 <script>
 import Warning from '@/components/Warning'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faExclamationTriangle)
+
 export default {
   components: {
-    Warning
+    Warning,
+    FontAwesomeIcon
   },
   props: {
     pipeline: {
