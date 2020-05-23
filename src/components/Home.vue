@@ -6,7 +6,7 @@
           lead="Your portal to application development & management"
           bg-variant="white"
           text-variant="dark"
-          header-level="1"
+          header-level="3"
           container-fluid
           fluid
           class="mb-3 pl-4 pt-4 pr-4 pb-5 rounded border"
