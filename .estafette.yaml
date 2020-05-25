@@ -28,15 +28,17 @@ stages:
         commands:
         - npm ci
 
-  lint:
-    image: node:13.6.0-alpine
-    commands:
-    - npm run lint
+  lint-and-build:
+    parallelStages:
+      lint:
+        image: node:13.6.0-alpine
+        commands:
+        - npm run lint
 
-  build:
-    image: node:13.6.0-alpine
-    commands:
-    - npm run build
+      build:
+        image: node:13.6.0-alpine
+        commands:
+        - npm run build
 
   bake:
     image: extensions/docker:dev
