@@ -97,10 +97,10 @@ import { mapState } from 'vuex'
 import { BNav, BNavItem, BNavItemDropdown, BDropdownItem } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome } from '@fortawesome/free-solid-svg-icons'
+import { faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome)
+library.add(faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers)
 
 export default {
   components: {
@@ -138,6 +138,18 @@ export default {
           to: { name: 'Statistics' },
           exact: false
         },
+        // {
+        //   text: 'Teams',
+        //   icon: 'users',
+        //   to: { name: 'Teams' },
+        //   exact: false
+        // },
+        // {
+        //   text: 'Configuration',
+        //   icon: 'cogs',
+        //   to: { name: 'Config' },
+        //   exact: false
+        // },
         {
           text: 'Create',
           icon: 'plus-circle',
