@@ -6,11 +6,11 @@
       class="rounded border bg-white p-3"
     >
       <b-form-group
-        label="Template"
-        label-for="template"
+        label="Manifest"
+        label-for="manifest"
       >
         <b-form-textarea
-          id="template"
+          id="manifest"
           v-model="form.template"
           placeholder="Paste your manifest"
           :rows="25"
