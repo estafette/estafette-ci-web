@@ -11,7 +11,7 @@
       >
         <b-form-textarea
           id="manifest"
-          v-model="form.template"
+          v-model="form.manifest"
           placeholder="Paste your manifest"
           :rows="25"
           class="border bg-light"
@@ -70,7 +70,7 @@ export default {
   data: function () {
     return {
       form: {
-        template: null
+        manifest: null
       },
       validating: false,
       status: 'secondary',
