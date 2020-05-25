@@ -121,7 +121,7 @@ export default {
           exact: true
         },
         {
-          text: 'Builds & Releases',
+          text: 'Builds & releases',
           icon: 'tools',
           to: { name: 'Pipelines' },
           exact: false
