@@ -8,7 +8,7 @@
       :key="release.id"
       :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
       exact
-      class="badge ml-1"
+      class="badge ml-1 mb-1 d-block d-md-inline-block"
       :class="release.releaseStatus | bootstrapClass('badge')"
       tag="span"
       :title="release.action"

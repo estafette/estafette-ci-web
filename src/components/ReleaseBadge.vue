@@ -2,14 +2,14 @@
   <span v-if="releaseTarget">
     <div
       v-if="releaseTarget.activeReleases && releaseTarget.activeReleases.length > 0"
-      :class="['btn-light', 'btn btn-sm mr-1 mb-1']"
+      class="btn-light btn btn-sm mr-1 mb-1"
     >
       {{ releaseTarget.name }}<router-link
         v-for="(release, index) in mergedActionsAndActiveReleases(releaseTarget)"
         :key="index"
         :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
         exact
-        :class="[$options.filters.bootstrapClass(release.releaseStatus, 'badge'), 'badge ml-1']"
+        :class="[$options.filters.bootstrapClass(release.releaseStatus, 'badge'), 'badge ml-1 mb-1 d-block d-md-inline-block']"
         tag="span"
         :title="release.action"
       >

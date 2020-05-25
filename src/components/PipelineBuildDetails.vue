@@ -78,7 +78,7 @@ export default {
           to: { name: 'Pipelines' }
         },
         {
-          text: `${this.repoSource}/${this.repoOwner}/${this.repoName}`,
+          text: `${this.repoName}`,
           to: { name: 'PipelineOverview', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
         },
         {

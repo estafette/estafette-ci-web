@@ -33,6 +33,7 @@
     <b-nav-item-dropdown
       v-if="user && user.authenticated"
       dropright
+      offset="5em"
       boundary="viewport"
       class="mt-auto"
     >
