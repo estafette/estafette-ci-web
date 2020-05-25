@@ -438,6 +438,10 @@ button.btn-clipboard {
     }
   }
 
+  .sidebar-icon {  
+    width: 60px !important;
+  }
+  
   .dropdown-toggle {
     &:focus {
       box-shadow: none !important;
@@ -468,16 +472,18 @@ button.btn-clipboard {
   @extend .rounded;
   @extend .m-3;
   @extend .pt-4;
-  @extend .pr-3;
+  @extend .pr-1;
   @extend .pb-4;
-  @extend .pl-3;
+  @extend .pl-1;
+
+  .sidebar-icon {  
+    width: 40px !important;
+  }
 }
 
 .sidebar-icon {
   @extend .d-inline-block;
   @extend .text-center;
-
-  width: 60px !important;
 }
 
 // header at top of each section

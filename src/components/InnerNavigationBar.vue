@@ -23,10 +23,17 @@
 <script>
 import { BNav, BNavItem } from 'bootstrap-vue'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faKey, faShieldAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faKey, faShieldAlt)
+
 export default {
   components: {
     BNav,
-    BNavItem
+    BNavItem,
+    FontAwesomeIcon
   },
 
   props: {

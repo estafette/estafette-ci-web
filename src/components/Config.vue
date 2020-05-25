@@ -56,11 +56,13 @@ export default {
       items: [
         {
           text: 'Credentials',
-          href: '#credentials'
+          href: '#credentials',
+          icon: 'key'
         },
         {
           text: 'Trusted images',
-          href: '#trustedimages'
+          href: '#trustedimages',
+          icon: 'shield-alt'
         }
       ]
     }
