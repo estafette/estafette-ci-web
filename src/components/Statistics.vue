@@ -7,7 +7,7 @@
       header-level="5"
       container-fluid
       fluid
-      class="mb-3 p-3"
+      class="section-header"
     />
 
     <tabs :tabs="tabs" />

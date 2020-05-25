@@ -7,7 +7,7 @@
       header-level="5"
       container-fluid
       fluid
-      class="mb-3 p-3"
+      class="section-header"
     />
 
     <div class="row m-0">

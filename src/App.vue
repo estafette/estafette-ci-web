@@ -1,7 +1,5 @@
 <template>
-  <div
-    id="app"
-  >
+  <div id="app">
     <side-navigation-bar />
     <div id="main">
       <router-view />

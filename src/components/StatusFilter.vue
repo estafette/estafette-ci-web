@@ -11,7 +11,7 @@
       :to="{ query: queryGenerator({ status: 'all', page: 1 }) }"
       active-class="router-link-active"
       variant="outline-primary"
-      :class="[ filter.status === 'all' ? 'active' : 'border-btn-group bg-white' ]"
+      :class="[ filter.status === 'all' ? 'active' : 'border-btn-group' ]"
       @click="this.blur()"
     >
       All

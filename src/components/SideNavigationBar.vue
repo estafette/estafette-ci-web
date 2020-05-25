@@ -1,7 +1,7 @@
 <template>
   <b-nav
     vertical
-    class="sidebar-nav"
+    class="main-sidebar-nav"
   >
     <b-nav-item
       :to="{ name: 'Home'}"
@@ -12,7 +12,9 @@
         icon="shipping-fast"
         class="sidebar-icon"
       />
-      Estafette
+      <span>
+        Estafette
+      </span>
     </b-nav-item>
     <b-nav-item
       v-for="item in items"
@@ -24,11 +26,14 @@
         :icon="item.icon"
         class="sidebar-icon"
       />
-      {{ item.text }}
+      <span>
+        {{ item.text }}
+      </span>
     </b-nav-item>
     <b-nav-item-dropdown
       v-if="user && user.authenticated"
       dropright
+      boundary="viewport"
       class="mt-auto"
     >
       <template slot="button-content">
@@ -36,7 +41,9 @@
           icon="user-circle"
           class="sidebar-icon"
         />
-        {{ user.email }}
+        <span>
+          {{ user.email }}
+        </span>
       </template>
       <b-dropdown-item
         :to="{ name: 'Config'}"

@@ -7,46 +7,16 @@
       header-level="5"
       container-fluid
       fluid
-      class="mb-3 p-3"
+      class="section-header"
     />
 
-    <div class="row">
-      <div class="col mt-4 mb-4 border-right sidebar d-none d-lg-block">
-        <ul>
-          <li class="section-item">
-            <router-link
-              v-if="user && user.authenticated"
-              :to="{ name: 'Config'}"
-              class="section-item-link ancestor active"
-            >
-              Configuration
-            </router-link>
-            <ul>
-              <li class="page-item">
-                <a
-                  href="#credentials"
-                  class="page-item-link"
-                >
-                  Credentials
-                </a>
-              </li>
-              <li class="page-item">
-                <a
-                  href="#trustedimages"
-                  class="page-item-link"
-                >
-                  Trusted images
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+    <div class="row m-0">
+      <div class="col-auto d-none d-lg-block">
+        <inner-navigation-bar
+          :items="items"
+        />
       </div>
-      <div class="col mt-4 mb-4 pl-5 pt-4 content-block">
-        <h1 class="mb-4">
-          Configuration
-        </h1>
-
+      <div class="col p-3">
         <h3 id="credentials">
           Credentials
         </h3>
@@ -70,17 +40,29 @@
 <script>
 import { mapState } from 'vuex'
 import { BJumbotron } from 'bootstrap-vue'
+import InnerNavigationBar from '@/components/InnerNavigationBar'
 
 export default {
   components: {
-    BJumbotron
+    BJumbotron,
+    InnerNavigationBar
   },
 
   data: function () {
     return {
       credentials: null,
       trustedimages: null,
-      refresh: true
+      refresh: true,
+      items: [
+        {
+          text: 'Credentials',
+          href: '#credentials'
+        },
+        {
+          text: 'Trusted images',
+          href: '#trustedimages'
+        }
+      ]
     }
   },
 
