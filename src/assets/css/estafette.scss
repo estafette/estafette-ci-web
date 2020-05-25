@@ -437,6 +437,7 @@ button.btn-clipboard {
 
   .nav-item.logo a {
     @extend .h3;
+    @extend .pt-4;
 
     color: #28a745 !important;
 
