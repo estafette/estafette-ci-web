@@ -99,7 +99,7 @@ html, body, #app {
 
 #main {
   overflow: auto;
-  padding-bottom: 56px; /* this needs to be bigger than footer height*/
+  // padding-bottom: 56px; /* this needs to be bigger than footer height*/
 }
 
 .footer {
@@ -498,4 +498,89 @@ button.btn-clipboard {
     @extend .mx-auto;
     @extend .border-top;
   }
+}
+
+
+#app {
+  @extend .container-fluid;
+  @extend .p-0;
+
+  padding-left: 60px !important;
+}
+
+.sidebar-nav {
+  @extend .fixed-top;
+  @extend .fixed-bottom;
+  @extend .overflow-hidden;
+  @extend .text-nowrap;
+
+  @extend .bg-dark;
+  @extend .h5;
+
+  width: 60px !important;
+
+  &:hover {
+    @extend .d-inline-flex;
+    
+    overflow: visible !important;
+    width: 300px !important;
+  }
+
+  .nav-item a {
+    @extend .pl-0;
+    @extend .pt-3;
+    @extend .pr-3;
+    @extend .pb-3;
+
+    color: hsla(0,0%,100%,.5) !important;
+
+    &:hover,
+    &.active {
+      color: #fff !important;
+    }
+  }
+
+  .nav-item.logo a {
+    @extend .h3;
+
+    // padding-top: 30px !important;
+    // padding-bottom: 30px !important;
+
+    color: #28a745 !important;
+
+    &:hover,
+    &.active {
+      color: #28a745 !important;
+    }
+  }
+
+  .dropdown-toggle {
+    &:focus {
+      box-shadow: none !important;
+      outline: none !important;
+    }
+  }
+
+  .dropdown-menu {
+    @extend .bg-dark;
+    @extend .h5;
+
+    @extend .border-0;
+
+    &:focus {
+      box-shadow: none !important;
+      outline: none !important;
+    }
+  }
+
+  .dropdown-item:hover {
+    @extend .bg-dark;
+  }
+}
+
+.sidebar-icon {
+  @extend .d-inline-block;
+  @extend .text-center;
+
+  width: 60px !important;
 }

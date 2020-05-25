@@ -1,33 +1,24 @@
 <template>
   <div
     id="app"
-    :class="['overflow-auto']"
   >
-    <div id="header-and-main">
-      <navigation-bar />
-      <div
-        id="main"
-        :class="['']"
-      >
-        <router-view />
-      </div>
+    <side-navigation-bar />
+    <div id="main">
+      <router-view />
     </div>
-    <site-footer />
     <session-refresh-modal />
   </div>
 </template>
 
 <script>
-import NavigationBar from '@/components/NavigationBar'
-import SiteFooter from '@/components/SiteFooter'
+import SideNavigationBar from '@/components/SideNavigationBar'
 import SessionRefreshModal from '@/components/SessionRefreshModal'
 
 import { mapActions } from 'vuex'
 
 export default {
   components: {
-    NavigationBar,
-    SiteFooter,
+    SideNavigationBar,
     SessionRefreshModal
   },
 
