@@ -258,6 +258,30 @@ button.btn-clipboard {
   @extend .bg-white;
 }
 
+.compact-block {
+  @extend .rounded;
+  @extend .border;
+  @extend .align-items-center;
+  @extend .pt-3;
+  @extend .pr-2;
+  @extend .pb-2;
+  @extend .pl-2;
+  @extend .bg-white;
+
+  @extend .clickable;
+  @extend .mt-2;
+  @extend .mb-2;
+  @extend .ml-0;
+  @extend .mr-0;
+  @extend .list-complete-item;
+
+  .property-block {  
+    @extend .col-md-12;
+    @extend .col-lg-12;
+    @extend .col-xxl-12;
+  }  
+}
+
 .property-block-core {
   @extend .mb-2;
   @extend .col-12;

@@ -275,16 +275,7 @@ export default {
         this.updateQueryParams()
       },
       500
-    ),
-
-    sortLabels (labels) {
-      if (!labels) {
-        return labels
-      }
-      return labels.slice().sort(function (a, b) {
-        return a.key > b.key
-      })
-    }
+    )
   },
 
   watch: {
