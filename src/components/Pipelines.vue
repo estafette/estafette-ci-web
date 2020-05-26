@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <div class="row-header m-3">
+    <div class="row-header ml-3 mr-3">
       <div class="col-3">
         Pipeline
       </div>
@@ -75,7 +75,7 @@
       name="list-complete"
       tag="div"
       v-if="pipelines.length > 0"
-      class="m-3"
+      class="ml-3 mr-3"
     >
       <pipeline-row
         v-for="pipeline in pipelines"

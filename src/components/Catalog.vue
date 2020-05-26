@@ -42,7 +42,7 @@
 
     <tabs :tabs="tabs" />
 
-    <div class="row-header m-3">
+    <div class="row-header ml-3 mr-3">
       <div class="col-6">
         Name
       </div>
@@ -55,7 +55,7 @@
       name="list-complete"
       tag="div"
       v-if="catalogItems.length > 0"
-      class="m-3"
+      class="ml-3 mr-3"
     >
       <catalog-item-row
         v-for="catalogItem in catalogItems"
