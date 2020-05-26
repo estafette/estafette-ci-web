@@ -2,7 +2,7 @@
   <router-link
     :to="{ name: 'CatalogItemOverview', params: { repoSource: catalogItem.repoSource, repoOwner: catalogItem.repoOwner, repoName: catalogItem.repoName }}"
     tag="div"
-    class="row-block"
+    class="row-block list-complete-item"
   >
     <property-block
       label="Catalog"

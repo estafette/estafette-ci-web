@@ -2,7 +2,7 @@
   <router-link
     :to="{ name: 'PipelineOverview', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName }}"
     tag="div"
-    class="row-block"
+    class="row-block list-complete-item"
   >
     <property-block
       label="Pipeline"

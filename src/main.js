@@ -7,7 +7,9 @@ import App from './App'
 import router from './router'
 import store from './store'
 import './filters'
-
+import { VBTooltip } from 'bootstrap-vue'
+// Note: Vue automatically prefixes the directive name with 'v-'
+Vue.directive('b-tooltip', VBTooltip)
 Vue.use(VueAxios, axios)
 
 // intercept api requests to add X-Requested-With: XMLHttpRequest header to have IAP return 401 instead of 302

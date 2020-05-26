@@ -2,6 +2,8 @@
   <b-input-group class="mb-3">
     <b-input-group-prepend
       is-text
+      v-b-tooltip.hover
+      title="Search on pipeline name"
     >
       <font-awesome-icon icon="filter" />
     </b-input-group-prepend>

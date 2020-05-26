@@ -4,6 +4,8 @@
   >
     <b-input-group-prepend
       is-text
+      v-b-tooltip.hover
+      title="Filter pipelines based on it's build status"
     >
       <font-awesome-icon icon="check-circle" />
     </b-input-group-prepend>

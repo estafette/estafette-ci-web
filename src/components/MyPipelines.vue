@@ -11,7 +11,6 @@
     <transition-group
       name="list-complete"
       tag="div"
-      class="m-3"
     >
       <pipeline-compact
         v-for="pipeline in pipelines"

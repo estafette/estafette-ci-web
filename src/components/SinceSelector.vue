@@ -2,6 +2,8 @@
   <b-input-group class="mb-3">
     <b-input-group-prepend
       is-text
+      v-b-tooltip.hover
+      title="Filter pipelines based on when they're last built or released"
     >
       <font-awesome-icon icon="clock" />
     </b-input-group-prepend>

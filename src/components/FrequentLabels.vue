@@ -5,6 +5,8 @@
   >
     <b-input-group-prepend
       is-text
+      v-b-tooltip.hover
+      title="Filter pipelines on frequently used labels"
     >
       <font-awesome-icon icon="tags" />
     </b-input-group-prepend>

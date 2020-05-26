@@ -2,7 +2,7 @@
   <router-link
     :to="{ name: 'PipelineBuildLogs', params: { repoSource: build.repoSource, repoOwner: build.repoOwner, repoName: build.repoName, id: build.id }}"
     tag="div"
-    class="row-block"
+    class="row-block list-complete-item"
   >
     <property-block
       label="Version"

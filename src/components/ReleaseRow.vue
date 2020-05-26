@@ -2,7 +2,7 @@
   <router-link
     :to="{ name: 'PipelineReleaseLogs', params: { repoSource: release.repoSource, repoOwner: release.repoOwner, repoName: release.repoName, releaseID: release.id }}"
     tag="div"
-    class="row-block"
+    class="row-block list-complete-item"
   >
     <property-block
       :label="release.action ? 'Target + action' : 'Target'"

@@ -59,6 +59,8 @@ $container-max-widths: (
 @import "bootstrap/scss/_utilities.scss";
 // @import "bootstrap/scss/_print.scss";
 
+@import 'bootstrap-vue/src/index.scss';
+
 .custom-select {
   -webkit-appearance: none;
 }
@@ -223,23 +225,27 @@ button.btn-clipboard {
   @extend .d-xxxl-flex;
 }
 
-.row-block {
+.row-block-core {
   @extend .row;
   @extend .rounded;
   @extend .border;
   @extend .align-items-center;
+  @extend .bg-white;
+}
+
+.row-block {
+  @extend .row-block-core;
+
   @extend .pt-3;
   @extend .pr-2;
   @extend .pb-2;
   @extend .pl-2;
-  @extend .bg-white;
-
-  @extend .clickable;
   @extend .mt-2;
   @extend .mb-2;
   @extend .ml-0;
   @extend .mr-0;
-  @extend .list-complete-item;
+
+  @extend .clickable;
 
   .property-label {
     @extend .d-xxxl-none;
@@ -247,37 +253,28 @@ button.btn-clipboard {
 }
 
 .header-block {
-  @extend .row;
-  @extend .rounded;
-  @extend .border;
-  @extend .align-items-center;
+  @extend .row-block-core;
+
   @extend .mt-3;
   @extend .mb-2;
   @extend .ml-3;
   @extend .mr-3;
   @extend .pt-3;
-  @extend .pr-2;
-  @extend .pb-2;
-  @extend .pl-2;
-  @extend .bg-white;
 }
 
 .compact-block {
-  @extend .rounded;
-  @extend .border;
-  @extend .align-items-center;
+  @extend .row-block-core;
+
   @extend .pt-3;
   @extend .pr-2;
   @extend .pb-2;
   @extend .pl-2;
-  @extend .bg-white;
-
-  @extend .clickable;
   @extend .mt-2;
   @extend .mb-2;
   @extend .ml-0;
   @extend .mr-0;
-  @extend .list-complete-item;
+
+  @extend .clickable;
 
   .property-block {  
     @extend .col-md-12;
@@ -354,7 +351,6 @@ button.btn-clipboard {
   @extend .text-xxxl-center;
 
   .property-value {
-    @extend .d-xxxl-flex;
     @extend .justify-content-center;
   }
 }

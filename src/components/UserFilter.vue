@@ -5,6 +5,8 @@
   >
     <b-input-group-prepend
       is-text
+      v-b-tooltip.hover
+      title="Filter pipelines you recently committed to or released"
     >
       <font-awesome-icon
         icon="user"
@@ -16,6 +18,8 @@
       variant="light"
       :class="[ filter.recentCommitter === 'false' && filter.recentReleaser === 'false' ? 'active' : 'border-btn-group' ]"
       @click="(e) => e.target.blur()"
+      v-b-tooltip.hover
+      title="Everyone's pipelines"
     >
       <font-awesome-icon icon="users" />
     </b-button>
@@ -25,6 +29,8 @@
       variant="light"
       :class="[ filter.recentCommitter === 'true' ? 'active' : 'border-btn-group' ]"
       @click="(e) => e.target.blur()"
+      v-b-tooltip.hover
+      title="Pipelines you recently committed to"
     >
       <font-awesome-icon icon="tools" />
     </b-button>
@@ -34,6 +40,8 @@
       variant="light"
       :class="[ filter.recentReleaser === 'true' ? 'active' : 'border-btn-group' ]"
       @click="(e) => e.target.blur()"
+      v-b-tooltip.hover
+      title="Pipelines you recently released"
     >
       <font-awesome-icon icon="upload" />
     </b-button>
