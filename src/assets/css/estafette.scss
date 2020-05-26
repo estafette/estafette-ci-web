@@ -86,7 +86,11 @@ a.btn:focus {
 
 // ensure same width for all icons in input groups
 .input-group-prepend {
-  width: 42px;
+  .input-group-text {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    width: 42px;
+  }
 }
 
 .clickable {

@@ -12,7 +12,7 @@
       active-class="router-link-active"
       variant="outline-primary"
       :class="[ filter.status === 'all' ? 'active' : 'border-btn-group' ]"
-      @click="this.blur()"
+      @click="(e) => e.target.blur()"
     >
       All
     </b-button>
@@ -21,6 +21,7 @@
       active-class="router-link-active"
       variant="outline-success"
       :class="[ filter.status === 'succeeded' ? 'active' : 'border-btn-group' ]"
+      @click="(e) => e.target.blur()"
     >
       Succeeded
     </b-button>
@@ -29,6 +30,7 @@
       active-class="router-link-active"
       variant="outline-danger"
       :class="[ filter.status === 'failed' ? 'active' : 'border-btn-group' ]"
+      @click="(e) => e.target.blur()"
     >
       Failed
     </b-button>
@@ -37,6 +39,7 @@
       active-class="router-link-active"
       variant="outline-warning"
       :class="[ filter.status === 'running' ? 'active' : 'border-btn-group' ]"
+      @click="(e) => e.target.blur()"
     >
       Running
     </b-button>
@@ -45,6 +48,7 @@
       active-class="router-link-active"
       variant="outline-secondary"
       :class="[ filter.status === 'canceled' ? 'active' : 'border-btn-group' ]"
+      @click="(e) => e.target.blur()"
     >
       Canceled
     </b-button>

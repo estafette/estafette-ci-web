@@ -33,6 +33,7 @@
 
     <div class="row m-0">
       <div class="col-12 col-lg-9">
+        <user-filter :filter="filter" />
         <label-filter
           :filter="filter"
         />
@@ -102,12 +103,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { BJumbotron } from 'bootstrap-vue'
 import debounce from 'lodash/debounce'
 
 import Spinner from '@/components/Spinner'
 import PipelineRow from '@/components/PipelineRow'
 import StatusFilter from '@/components/StatusFilter'
+import UserFilter from '@/components/UserFilter'
 import LabelFilter from '@/components/LabelFilter'
 import FrequentLabels from '@/components/FrequentLabels'
 import PipelineFilter from '@/components/PipelineFilter'
@@ -121,6 +124,7 @@ export default {
     Spinner,
     PipelineRow,
     StatusFilter,
+    UserFilter,
     LabelFilter,
     FrequentLabels,
     PipelineFilter,
@@ -149,7 +153,9 @@ export default {
         status: 'all',
         since: '1d',
         labels: '',
-        search: ''
+        search: '',
+        recentCommitter: 'false',
+        recentReleaser: 'false'
       },
       loaded: false,
       refresh: true
@@ -181,6 +187,8 @@ export default {
       this.filter.since = query && query.since ? query.since : this.filterDefaults.since
       this.filter.labels = query && query.labels ? query.labels : this.filterDefaults.labels
       this.filter.search = query && query.search ? query.search : this.filterDefaults.search
+      this.filter.recentCommitter = query && query.recentCommitter ? query.recentCommitter : this.filterDefaults.recentCommitter
+      this.filter.recentReleaser = query && query.recentReleaser ? query.recentReleaser : this.filterDefaults.recentReleaser
     },
 
     getPipelinesQueryParams () {
@@ -216,6 +224,18 @@ export default {
         delete query.page
       }
 
+      if (this.recentCommitter && this.filter.recentCommitter && this.filter.recentCommitter !== this.filterDefaults.recentCommitter && this.filterDefaults.recentCommitter !== '') {
+        query.recentCommitter = this.filter.recentCommitter
+      } else if (query.recentCommitter) {
+        delete query.recentCommitter
+      }
+
+      if (this.recentReleaser && this.filter.recentReleaser && this.filter.recentReleaser !== this.filterDefaults.recentReleaser && this.filterDefaults.recentReleaser !== '') {
+        query.recentReleaser = this.filter.recentReleaser
+      } else if (query.recentReleaser) {
+        delete query.recentReleaser
+      }
+
       return query
     },
 
@@ -234,7 +254,17 @@ export default {
         statusFilter += `&filter[status]=pending&filter[status]=canceling`
       }
 
-      this.axios.get(`/api/pipelines?${statusFilter}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      var recentCommitterFilterParams = ''
+      if (this.user && this.user.authenticated && this.filter && this.filter.recentCommitter === 'true') {
+        recentCommitterFilterParams = `&filter[recent-committer]=${this.user.email}`
+      }
+
+      var recentReleaserFilterParams = ''
+      if (this.user && this.user.authenticated && this.filter && this.filter.recentReleaser === 'true') {
+        recentReleaserFilterParams = `&filter[recent-releaser]=${this.user.email}`
+      }
+
+      this.axios.get(`/api/pipelines?${statusFilter}${recentCommitterFilterParams}${recentReleaserFilterParams}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination
@@ -276,6 +306,12 @@ export default {
       },
       500
     )
+  },
+
+  computed: {
+    ...mapState('user', {
+      user: 'me'
+    })
   },
 
   watch: {
