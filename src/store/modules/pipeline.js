@@ -14,7 +14,6 @@ const state = () => ({
 
 const mutations = {
   set: (state, payload) => {
-    console.log(payload)
     state.pipelines = payload.pipelines
     state.pagination = payload.pagination
   },
@@ -34,7 +33,6 @@ const mutations = {
 
 const actions = {
   loadPipelines ({ dispatch, commit, state }, filter) {
-    console.log('pipelineStore.loadPipelines', filter, state.pagination)
     pipelineService.loadPipelines(filter, state.pagination)
       .then(response => {
         commit('set', { pipelines: response.data.items, pagination: response.data.pagination })

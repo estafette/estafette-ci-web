@@ -729,8 +729,8 @@ export default {
           this.loadLogs()
         }, false)
 
-        this.es.onerror = event => {
-          console.log('EventSource failed.', event)
+        this.es.onerror = e => {
+          console.warn(e)
         }
       } else {
         this.loadLogs()

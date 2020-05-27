@@ -69,13 +69,12 @@ export default {
       if (this.user.authenticated) {
         this.axios.post(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/builds`, this.build)
           .then(response => {
-            console.log(response)
             // add new build at the top
             this.builds.unshift(response.data)
             this.builds.shift()
           })
-          .catch(error => {
-            console.log(error)
+          .catch(e => {
+            console.warn(e)
           })
       }
     }

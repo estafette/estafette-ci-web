@@ -196,7 +196,7 @@ export default {
           this.periodicallyRefreshFilters(10)
         })
         .catch(e => {
-          console.log(e)
+          console.warn(e)
           this.periodicallyRefreshFilters(60)
         })
     },
@@ -228,7 +228,7 @@ export default {
           this.loadCatalogItems()
         })
         .catch(e => {
-          console.log(e)
+          console.warn(e)
         })
     },
 
@@ -241,7 +241,7 @@ export default {
           this.loaded = true
         })
         .catch(e => {
-          console.log(e)
+          console.warn(e)
         })
     },
 

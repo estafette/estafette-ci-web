@@ -110,12 +110,11 @@ export default {
 
         this.axios.post(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/releases`, startedRelease)
           .then(response => {
-            console.log(response)
             startedRelease = response.data
             this.updateRelease(startedRelease)
           })
-          .catch(error => {
-            console.log(error)
+          .catch(e => {
+            console.warn(e)
           })
       }
     },

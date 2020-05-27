@@ -2,8 +2,6 @@ import axios from 'axios'
 
 export default {
   loadPipelines (filter, pagination) {
-    console.log('pipelineService.loadPipelines', filter, pagination)
-
     var labelFilterParams = ''
     if (filter && filter.labels && filter.labels.length > 0) {
       labelFilterParams = filter.labels.split(',').join('&filter[labels]=')

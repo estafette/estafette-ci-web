@@ -156,9 +156,9 @@ export default {
           this.secret = response.data.secret
           window.scrollTo(0, document.body.scrollHeight)
         })
-        .catch(error => {
+        .catch(e => {
           this.encrypting = false
-          console.log(error)
+          console.warn(e)
         })
     },
 

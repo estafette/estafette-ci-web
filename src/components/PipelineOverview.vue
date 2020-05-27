@@ -228,7 +228,6 @@ export default {
         defaultActionName = releaseTarget.actions[0].name
       }
 
-      console.log('releaseBuildToTargetDefault', e, releaseTarget, defaultActionName)
       const build = e.data
       this.startRelease(build, releaseTarget, defaultActionName)
     },
@@ -242,7 +241,7 @@ export default {
       if (release.action) {
         actionName = release.action
       }
-      console.log('releaseBuildToTargetAction', e, releaseTarget, actionName)
+
       const build = e.data
       this.startRelease(build, releaseTarget, actionName)
     },
@@ -263,33 +262,26 @@ export default {
 
         this.axios.post(`/api/pipelines/${build.repoSource}/${build.repoOwner}/${build.repoName}/releases`, startedRelease)
           .then(response => {
-            console.log(response)
             startedRelease = response.data
             this.updateRelease(startedRelease)
           })
-          .catch(error => {
-            console.log(error)
+          .catch(e => {
+            console.warn(e)
           })
       }
     },
 
     updateRelease (startedRelease) {
-      console.log('updateRelease', startedRelease)
       var releaseTarget = this.pipeline.releaseTargets.find(rt => rt.name === startedRelease.name)
       if (releaseTarget) {
         if (!releaseTarget.activeReleases) {
-          console.log('has no active releases')
           releaseTarget.activeReleases = [startedRelease]
         } else {
-          console.log('activeReleases before', releaseTarget.activeReleases)
-
           // remove active release item if name and optional action matches the just started release
           var newActiveReleases = releaseTarget.activeReleases.filter(r => r.action && startedRelease.action && r.action !== startedRelease.action)
 
           // prepend newly started release
           newActiveReleases.unshift(startedRelease)
-
-          console.log('activeReleases after', newActiveReleases)
 
           // atomically update active releases
           releaseTarget.activeReleases = newActiveReleases

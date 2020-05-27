@@ -166,9 +166,9 @@ export default {
           this.generating = false
           this.manifest = response.data.manifest
         })
-        .catch(error => {
+        .catch(e => {
           this.generating = false
-          console.log(error)
+          console.warn(e)
         })
     }
   },
