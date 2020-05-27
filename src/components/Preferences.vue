@@ -9,6 +9,16 @@
       fluid
       class="section-header"
     />
+
+    <div class="row m-3">
+      <div class="col-12">
+        <h3>User object as stored in database</h3>
+        <pre
+          v-if="user.user"
+          class="rounded border bg-white p-3"
+        ><code class="bg-white">{{ user.user }}</code></pre>
+      </div>
+    </div>
   </div>
 </template>
 
