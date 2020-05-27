@@ -20,17 +20,18 @@ import Catalog from '@/components/Catalog'
 import CatalogItemDetails from '@/components/CatalogItemDetails'
 import CatalogItemOverview from '@/components/CatalogItemOverview'
 
-import Manifest from '@/components/Manifest'
+import Create from '@/components/Create'
 import ManifestGenerator from '@/components/ManifestGenerator'
 import ManifestValidator from '@/components/ManifestValidator'
 import SecretEncrypter from '@/components/SecretEncrypter'
 
-import StatisticsRankings from '@/components/StatisticsRankings'
-import Statistics from '@/components/Statistics'
-import StatisticsCounters from '@/components/StatisticsCounters'
-import StatisticsTrends from '@/components/StatisticsTrends'
+import InsightsRankings from '@/components/InsightsRankings'
+import Insights from '@/components/Insights'
+import InsightsCounters from '@/components/InsightsCounters'
+import InsightsTrends from '@/components/InsightsTrends'
 
-import Config from '@/components/Config'
+import Configuration from '@/components/Configuration'
+import Preferences from '@/components/Preferences'
 
 Vue.use(Router)
 
@@ -151,41 +152,87 @@ export default new Router({
     },
     {
       path: '/config',
-      name: 'Config',
+      redirect: { name: 'Configuration' }
+    },
+    {
+      path: '/configuration',
+      name: 'Configuration',
       props: true,
-      component: Config
+      component: Configuration
+    },
+    {
+      path: '/preferences',
+      name: 'Preferences',
+      props: true,
+      component: Preferences
     },
     {
       path: '/statistics',
-      name: 'Statistics',
-      component: Statistics,
-      props: true,
-      redirect: { name: 'StatisticsCounters' },
+      redirect: { name: 'Insights' },
       children: [
         {
           path: 'counters',
-          name: 'StatisticsCounters',
-          props: true,
-          component: StatisticsCounters
+          redirect: { name: 'InsightsCounters' }
         },
         {
           path: 'rankings',
-          name: 'StatisticsRankings',
-          props: true,
-          component: StatisticsRankings
+          redirect: { name: 'InsightsRankings' }
         },
         {
           path: 'trends',
-          name: 'StatisticsTrends',
+          redirect: { name: 'InsightsTrends' }
+        }
+      ]
+    },
+    {
+      path: '/insights',
+      name: 'Insights',
+      component: Insights,
+      props: true,
+      redirect: { name: 'InsightsCounters' },
+      children: [
+        {
+          path: 'counters',
+          name: 'InsightsCounters',
           props: true,
-          component: StatisticsTrends
+          component: InsightsCounters
+        },
+        {
+          path: 'rankings',
+          name: 'InsightsRankings',
+          props: true,
+          component: InsightsRankings
+        },
+        {
+          path: 'trends',
+          name: 'InsightsTrends',
+          props: true,
+          component: InsightsTrends
         }
       ]
     },
     {
       path: '/manifest',
-      name: 'Manifest',
-      component: Manifest,
+      redirect: { name: 'Create' },
+      children: [
+        {
+          path: 'generate',
+          redirect: { name: 'ManifestGenerator' }
+        },
+        {
+          path: 'validate',
+          redirect: { name: 'ManifestValidator' }
+        },
+        {
+          path: 'encrypt',
+          redirect: { name: 'SecretEncrypter' }
+        }
+      ]
+    },
+    {
+      path: '/create',
+      name: 'Create',
+      component: Create,
       props: true,
       redirect: { name: 'ManifestGenerator' },
       children: [

@@ -31,12 +31,16 @@
         </b-jumbotron>
       </div>
 
-      <div class="col-12 col-md-6 col-xxxl-3">
+      <div
+        v-for="section in sections"
+        :key="section.header"
+        class="col-12 col-md-6 col-xxxl-3"
+      >
         <b-jumbotron
-          header="Builds & releases"
-          lead="View and release applications"
-          bg-variant="success"
-          text-variant="white"
+          :header="section.header"
+          :lead="section.lead"
+          :bg-variant="section.bgVariant"
+          :text-variant="section.textVariant"
           header-level="4"
           container-fluid
           fluid
@@ -44,67 +48,7 @@
         >
           <b-button
             variant="light"
-            :to="{ name: 'Pipelines' }"
-          >
-            See more
-          </b-button>
-        </b-jumbotron>
-      </div>
-
-      <div class="col-12 col-md-6 col-xxxl-3">
-        <b-jumbotron
-          header="Catalog"
-          lead="View ownership, performance and more"
-          bg-variant="info"
-          text-variant="white"
-          header-level="4"
-          container-fluid
-          fluid
-          class="mb-3 p-3 rounded border"
-        >
-          <b-button
-            variant="light"
-            :to="{ name: 'Pipelines' }"
-          >
-            See more
-          </b-button>
-        </b-jumbotron>
-      </div>
-
-      <div class="col-12 col-md-6 col-xxxl-3">
-        <b-jumbotron
-          header="Insights"
-          lead="See stats, rankings and trends"
-          bg-variant="primary"
-          text-variant="white"
-          header-level="4"
-          container-fluid
-          fluid
-          class="mb-3 p-3 rounded border"
-        >
-          <b-button
-            variant="light"
-            :to="{ name: 'Statistics' }"
-          >
-            See more
-          </b-button>
-        </b-jumbotron>
-      </div>
-
-      <div class="col-12 col-md-6 col-xxxl-3">
-        <b-jumbotron
-          header="Create"
-          lead="Generate manifests and secrets"
-          bg-variant="warning"
-          text-variant="dark"
-          header-level="4"
-          container-fluid
-          fluid
-          class="mb-3 p-3 rounded border"
-        >
-          <b-button
-            variant="light"
-            :to="{ name: 'Manifest' }"
+            :to="section.to"
           >
             See more
           </b-button>
@@ -138,6 +82,41 @@ export default {
     BJumbotron,
     BButton,
     MyPipelines
+  },
+
+  data: function () {
+    return {
+      sections: [
+        {
+          header: 'Builds & releases',
+          lead: 'View and release applications',
+          bgVariant: 'success',
+          textVariant: 'white',
+          to: { name: 'Pipelines' }
+        },
+        {
+          header: 'Catalog',
+          lead: 'View ownership, performance and more',
+          bgVariant: 'info',
+          textVariant: 'white',
+          to: { name: 'Catalog' }
+        },
+        {
+          header: 'Insights',
+          lead: 'See stats, rankings and trends',
+          bgVariant: 'primary',
+          textVariant: 'white',
+          to: { name: 'Insights' }
+        },
+        {
+          header: 'Create',
+          lead: 'Generate manifests and secrets',
+          bgVariant: 'warning',
+          textVariant: 'dark',
+          to: { name: 'Create' }
+        }
+      ]
+    }
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="user && user.authenticated">
     <b-jumbotron
       header="Configuration"
       bg-variant="secondary"

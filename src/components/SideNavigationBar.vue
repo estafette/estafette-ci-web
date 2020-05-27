@@ -17,10 +17,11 @@
       </span>
     </b-nav-item>
     <b-nav-item
-      v-for="item in items"
+      v-for="item in permittedItems"
       :key="item.text"
       :to="item.to"
       :exact="item.exact"
+      :class="item.class"
     >
       <font-awesome-icon
         :icon="item.icon"
@@ -30,71 +31,26 @@
         {{ item.text }}
       </span>
     </b-nav-item>
-    <b-nav-item-dropdown
+    <!-- <b-nav-item
       v-if="user && user.authenticated"
-      dropright
-      offset="5em"
-      boundary="viewport"
+      :to="{ name: 'Preferences'}"
+      exact
       class="mt-auto"
     >
-      <template slot="button-content">
-        <font-awesome-icon
-          icon="user-circle"
-          class="sidebar-icon"
-        />
-        <span>
-          {{ user.email }}
-        </span>
-      </template>
-      <b-dropdown-item
-        :to="{ name: 'Config'}"
-      >
-        <font-awesome-icon
-          icon="cogs"
-          class="sidebar-icon"
-        />
-        Configuration
-      </b-dropdown-item>
-      <b-dropdown-item
-        href="/_gcp_iap/session_refresher"
-        target="_blank"
-        title="Keep the session refresh tab open to prevent the Identity Aware Proxy (IAP) session from expiring"
-      >
-        <font-awesome-icon
-          icon="external-link-alt"
-          class="sidebar-icon"
-        />
-        IAP session refresh tab
-      </b-dropdown-item>
-    </b-nav-item-dropdown>
-
-    <!-- <a
-      href="https://estafette.io/usage/"
-      target="_blank"
-      class="nav-link text-light"
-    >
-      Documentation
-    </a>
-    <a
-      href="https://github.com/estafette/estafette-ci"
-      target="_blank"
-      class="nav-link text-light"
-    >
-      Github
-    </a>
-    <a
-      href="https://github.com/estafette/estafette-ci/issues/new"
-      target="_blank"
-      class="nav-link text-light"
-    >
-      File an issue
-    </a>     -->
+      <font-awesome-icon
+        icon="user-circle"
+        class="sidebar-icon"
+      />
+      <span>
+        {{ user.email }}
+      </span>
+    </b-nav-item> -->
   </b-nav>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import { BNav, BNavItem, BNavItemDropdown, BDropdownItem } from 'bootstrap-vue'
+import { BNav, BNavItem } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers } from '@fortawesome/free-solid-svg-icons'
@@ -106,8 +62,6 @@ export default {
   components: {
     BNav,
     BNavItem,
-    BNavItemDropdown,
-    BDropdownItem,
     FontAwesomeIcon
   },
 
@@ -135,35 +89,61 @@ export default {
         {
           text: 'Insights',
           icon: 'lightbulb',
-          to: { name: 'Statistics' },
+          to: { name: 'Insights' },
           exact: false
         },
-        // {
-        //   text: 'Teams',
-        //   icon: 'users',
-        //   to: { name: 'Teams' },
-        //   exact: false
-        // },
-        // {
-        //   text: 'Configuration',
-        //   icon: 'cogs',
-        //   to: { name: 'Config' },
-        //   exact: false
-        // },
+        {
+          if: () => this.user && this.user.authenticated,
+          text: 'Configuration',
+          icon: 'cogs',
+          to: { name: 'Configuration' },
+          exact: false
+        },
         {
           text: 'Create',
           icon: 'plus-circle',
-          to: { name: 'Manifest' },
+          to: { name: 'Create' },
           exact: false
+        },
+        {
+          if: () => this.user && this.user.authenticated,
+          text: 'user',
+          textFunction: () => this.user && this.user.email ? this.user.email : '',
+          icon: 'user-circle',
+          to: { name: 'Preferences' },
+          exact: false,
+          class: 'mt-auto'
         }
       ]
+    }
+  },
+
+  methods: {
+    isFunction (functionToCheck) {
+      return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]'
     }
   },
 
   computed: {
     ...mapState('user', {
       user: 'me'
-    })
+    }),
+
+    permittedItems () {
+      return this.items.filter(i => {
+        if (this.isFunction(i.if)) {
+          return i.if()
+        }
+
+        return true
+      }).map(i => {
+        if (this.isFunction(i.textFunction)) {
+          i.text = i.textFunction()
+        }
+
+        return i
+      })
+    }
   }
 }
 </script>

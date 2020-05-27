@@ -32,19 +32,19 @@ export default {
           text: 'Counters',
           icon: 'chart-pie',
           enabled: true,
-          to: { name: 'StatisticsCounters' }
+          to: { name: 'InsightsCounters' }
         },
         {
           text: 'Rankings',
           icon: 'list-ol',
           enabled: true,
-          to: { name: 'StatisticsRankings' }
+          to: { name: 'InsightsRankings' }
         },
         {
           text: 'Trends',
           icon: 'chart-line',
           enabled: true,
-          to: { name: 'StatisticsTrends' }
+          to: { name: 'InsightsTrends' }
         }
       ]
     }
