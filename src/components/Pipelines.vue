@@ -254,17 +254,20 @@ export default {
         statusFilter += `&filter[status]=pending&filter[status]=canceling`
       }
 
+      var sortParams = ''
       var recentCommitterFilterParams = ''
       if (this.user && this.user.authenticated && this.filter && this.filter.recentCommitter === 'true') {
         recentCommitterFilterParams = `&filter[recent-committer]=${this.user.email}`
+        sortParams = '&sort=-last_updated_at,repo_source,repo_owner,repo_name'
       }
 
       var recentReleaserFilterParams = ''
       if (this.user && this.user.authenticated && this.filter && this.filter.recentReleaser === 'true') {
         recentReleaserFilterParams = `&filter[recent-releaser]=${this.user.email}`
+        sortParams = '&sort=-last_updated_at,repo_source,repo_owner,repo_name'
       }
 
-      this.axios.get(`/api/pipelines?${statusFilter}${recentCommitterFilterParams}${recentReleaserFilterParams}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/pipelines?${statusFilter}${recentCommitterFilterParams}${recentReleaserFilterParams}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}${sortParams}`)
         .then(response => {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination
