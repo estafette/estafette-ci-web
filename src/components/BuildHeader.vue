@@ -20,7 +20,10 @@
     </property-block>
     <property-block label="Built at">
       {{ build.insertedAt | formatDatetime }}
-      <duration-label :duration="build.duration" />
+      <duration-label
+        :duration="build.duration"
+        :pending-duration="build.pendingDuration"
+      />
     </property-block>
     <property-block
       label="Branch"

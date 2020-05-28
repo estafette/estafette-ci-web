@@ -25,7 +25,10 @@
     </property-block>
     <property-block label="Released at">
       {{ release.insertedAt | formatDatetime }}
-      <duration-label :duration="release.duration" />
+      <duration-label
+        :duration="release.duration"
+        :pending-duration="release.pendingDuration"
+      />
     </property-block>
     <property-block label="Triggered by">
       <triggered-by :events="release.triggerEvents" />

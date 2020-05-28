@@ -54,6 +54,7 @@
                      "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                      "insertedAt":"2018-11-20T15:37:23.365593Z",
                      "updatedAt":"2018-11-20T15:38:42.44489Z",
+                     "pendingDuration":5000000000,
                      "duration":79000000000
                   },
                   {
@@ -68,6 +69,7 @@
                    "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                    "insertedAt":"2018-11-20T15:37:23.365593Z",
                    "updatedAt":"2018-11-20T15:38:42.44489Z",
+                   "pendingDuration":5000000000,
                    "duration":79000000000
                 },
                 {
@@ -82,6 +84,7 @@
                    "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                    "insertedAt":"2018-11-20T15:37:23.365593Z",
                    "updatedAt":"2018-11-20T15:38:42.44489Z",
+                   "pendingDuration":5000000000,
                    "duration":79000000000
                 }
                ]
@@ -102,6 +105,7 @@
                    "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                    "insertedAt":"2018-11-20T15:37:23.365593Z",
                    "updatedAt":"2018-11-20T15:38:42.44489Z",
+                   "pendingDuration":5000000000,
                    "duration":79000000000
                 }
              ]
@@ -121,6 +125,7 @@
                    "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                    "insertedAt":"2018-11-20T15:37:23.365593Z",
                    "updatedAt":"2018-11-20T15:38:42.44489Z",
+                   "pendingDuration":5000000000,
                    "duration":79000000000
                 }
              ]
@@ -140,6 +145,7 @@
                    "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                    "insertedAt":"2018-11-20T15:37:23.365593Z",
                    "updatedAt":"2018-11-20T15:38:42.44489Z",
+                   "pendingDuration":5000000000,
                    "duration":79000000000
                 }
              ]
@@ -167,6 +173,7 @@
                    "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                    "insertedAt":"2018-11-20T15:37:23.365593Z",
                    "updatedAt":"2018-11-20T15:38:42.44489Z",
+                   "pendingDuration":5000000000,
                    "duration":79000000000
                 }
              ]
@@ -186,6 +193,7 @@
                    "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                    "insertedAt":"2018-11-20T15:37:23.365593Z",
                    "updatedAt":"2018-11-20T15:38:42.44489Z",
+                   "pendingDuration":5000000000,
                    "duration":79000000000
                 }
              ]
@@ -205,6 +213,7 @@
                    "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                    "insertedAt":"2018-11-20T15:37:23.365593Z",
                    "updatedAt":"2018-11-20T15:38:42.44489Z",
+                   "pendingDuration":5000000000,
                    "duration":79000000000
                 }
              ]
@@ -303,6 +312,7 @@
                       "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                       "insertedAt":"2018-11-15T14:13:06.579187Z",
                       "updatedAt":"2018-11-15T14:13:47.589952Z",
+                      "pendingDuration":5000000000,
                       "duration":41000000000
                    }
                 ]
@@ -321,6 +331,7 @@
                       "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
                       "insertedAt":"2018-11-15T14:13:09.090859Z",
                       "updatedAt":"2018-11-15T14:13:49.320297Z",
+                      "pendingDuration":5000000000,
                       "duration":40000000000
                    }
                 ]
@@ -379,6 +390,7 @@
           ],
           "insertedAt":"2018-11-20T15:53:49.666759Z",
           "updatedAt":"2018-11-20T15:55:09.77154Z",
+          "pendingDuration":5000000000,
           "duration":80000000000
        },
        {
@@ -422,6 +434,7 @@
                       "releaseStatus":"succeeded",
                       "insertedAt":"2018-11-19T14:29:20.104517Z",
                       "updatedAt":"2018-11-19T14:29:38.514924Z",
+                      "pendingDuration":5000000000,
                       "duration":18000000000
                    }
                 ]
@@ -439,7 +452,8 @@
           ],
           "insertedAt":"2018-11-19T14:27:50.65471Z",
           "updatedAt":"2018-11-19T14:28:56.555276Z",
-          "duration":65000000000
+          "duration":65000000000,
+          "pendingDuration":5000000000
        },
        {
           "id":"401928198782091269",

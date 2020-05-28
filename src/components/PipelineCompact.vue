@@ -31,7 +31,10 @@
       label="Built at"
     >
       {{ pipeline.insertedAt | formatDatetime }}
-      <duration-label :duration="pipeline.duration" />
+      <duration-label
+        :duration="pipeline.duration"
+        :pending-duration="pipeline.pendingDuration"
+      />
     </property-block>
     <property-block
       v-if="type === ''"

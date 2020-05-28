@@ -32,7 +32,10 @@
       class="col-xxxl-2"
     >
       {{ release.insertedAt | formatDatetime }}
-      <duration-label :duration="release.duration" />
+      <duration-label
+        :duration="release.duration"
+        :pending-duration="release.pendingDuration"
+      />
     </property-block>
     <property-block
       label="Triggered by"
