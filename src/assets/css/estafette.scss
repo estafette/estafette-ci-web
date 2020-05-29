@@ -522,3 +522,37 @@ button.btn-clipboard {
   @extend .mb-3;
   @extend .p-3;
 }
+
+.log-buttons {
+  @extend .position-fixed;
+  @extend .rounded;
+  @extend .bg-dark;
+  @extend .text-light;
+  @extend .text-nowrap;
+  @extend .text-center;
+
+  top: 50%;
+  right: 30px;
+  transform: translate(0, -50%);
+  width: fit-content !important;
+  box-shadow: 0 0 0.25em #f8f9fa;
+  opacity: 0.8;
+
+  .nav-item a {
+    @extend .pt-3;
+    @extend .pr-2;
+    @extend .pb-3;
+    @extend .pl-2;
+
+    color: hsla(0,0%,100%,.5) !important;
+
+    &:hover,
+    &.active {
+      color: #fff !important;
+    }
+  }
+
+  .sidebar-icon {
+    width: 40px !important;
+  }
+}

@@ -436,6 +436,36 @@
         {{ totalPullDuration + totalDuration | formatDuration }}
       </property-block>
     </div>
+
+    <div
+      class="log-buttons"
+    >
+      <b-nav
+        vertical
+      >
+        <b-nav-item @click="scrollUp">
+          <font-awesome-icon
+            icon="chevron-up"
+            class="sidebar-icon"
+          />
+        </b-nav-item>
+        <b-nav-item
+          v-if="isTailing()"
+          @click="scrollToggle"
+        >
+          <font-awesome-icon
+            :icon="scrollEnabled ? 'eye-slash' : 'eye'"
+            class="sidebar-icon"
+          />
+        </b-nav-item>
+        <b-nav-item @click="scrollDown">
+          <font-awesome-icon
+            icon="chevron-down"
+            class="sidebar-icon"
+          />
+        </b-nav-item>
+      </b-nav>
+    </div>
   </div>
   <div
     v-else
@@ -449,15 +479,15 @@
 import debounce from 'lodash/debounce'
 
 import AnsiUp from 'ansi_up'
-import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BFormCheckbox, BFormGroup } from 'bootstrap-vue'
+import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BFormCheckbox, BFormGroup, BNav, BNavItem } from 'bootstrap-vue'
 
 import PropertyBlock from '@/components/PropertyBlock'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faShieldAlt } from '@fortawesome/free-solid-svg-icons'
+import { faShieldAlt, faEye, faEyeSlash, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faShieldAlt)
+library.add(faShieldAlt, faEye, faEyeSlash, faChevronUp, faChevronDown)
 
 export default {
   components: {
@@ -468,7 +498,9 @@ export default {
     BFormCheckbox,
     BFormGroup,
     PropertyBlock,
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    BNav,
+    BNavItem
   },
   directives: {
     'b-toggle': VBToggle
@@ -488,7 +520,8 @@ export default {
       steps: [],
       refresh: true,
       tailedSteps: [],
-      showInjectedStages: false
+      showInjectedStages: false,
+      scrollEnabled: true
     }
   },
 
@@ -591,8 +624,12 @@ export default {
       }
     },
 
+    isTailing () {
+      return (this.status === 'pending' || this.status === 'running' || this.status === 'canceling')
+    },
+
     tailLogs () {
-      if (this.status === 'pending' || this.status === 'running' || this.status === 'canceling') {
+      if (this.isTailing()) {
         this.es = new EventSource(`${this.logUrl}.stream`)
 
         this.es.addEventListener('log', event => {
@@ -739,11 +776,27 @@ export default {
 
     scrollToLogTail: debounce(
       function () {
-        this.$el.scrollIntoView(false)
+        if (this.scrollEnabled) {
+          this.$el.scrollIntoView(false)
+        }
       },
       1000,
       { 'maxWait': 5000 }
-    )
+    ),
+
+    scrollToggle () {
+      this.scrollEnabled = !this.scrollEnabled
+    },
+
+    scrollUp () {
+      this.scrollEnabled = false
+      window.scrollTo(0, 0)
+    },
+
+    scrollDown () {
+      this.scrollEnabled = false
+      window.scrollTo(0, document.body.scrollHeight)
+    }
   },
 
   beforeDestroy () {
