@@ -8,10 +8,14 @@
           v-for="provider in providers"
           :key="provider.id"
           :href="provider.path"
-          type="submit"
+          variant="success"
           block
           class="mt-3 mb-3"
         >
+          <font-awesome-icon
+            :icon="['fab', provider.id]"
+            class="mr-2"
+          />
           {{ provider.name }}
         </b-button>
       </div>
@@ -22,9 +26,16 @@
 <script>
 import { BButton } from 'bootstrap-vue'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faGoogle, faMicrosoft, faFacebook, faGithub, faBitbucket, faGitlab } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faGoogle, faMicrosoft, faFacebook, faGithub, faBitbucket, faGitlab)
+
 export default {
   components: {
-    BButton
+    BButton,
+    FontAwesomeIcon
   },
 
   data: function () {
