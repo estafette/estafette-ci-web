@@ -1,6 +1,6 @@
 <template>
-  <span>
-    <span class="text-muted d-none d-lg-inline">{{ repo.repoSource }}/{{ repo.repoOwner }}/</span><strong>{{ repo.repoName }}</strong>
+  <span :title="repo.repoSource+'/'+repo.repoOwner+'/'+repo.repoName">
+    <span class="repo-source-and-owner">{{ repo.repoSource }}/{{ repo.repoOwner }}/</span><strong>{{ repo.repoName }}</strong>
   </span>
 </template>
 

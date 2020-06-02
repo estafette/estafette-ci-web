@@ -288,6 +288,12 @@ button.btn-clipboard {
   }  
 }
 
+.repo-source-and-owner {
+  @extend .text-muted;
+  @extend .d-none;
+  @extend .d-xxxl-inline;
+}
+
 .property-block-core {
   @extend .mb-2;
   @extend .col-12;
@@ -331,6 +337,10 @@ button.btn-clipboard {
     @extend .d-inline;
     @extend .h2;
     @extend .text-truncate;
+
+    .repo-source-and-owner {
+      @extend .d-lg-inline;
+    }
   }
 }
 
