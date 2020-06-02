@@ -1,14 +1,17 @@
 [
   {
     "id": "google",
-    "name": "Google"
+    "name": "Google",
+    "path": "/api/auth/login/google"
   },
   {
     "id": "microsoft",
-    "name": "Microsoft"
+    "name": "Microsoft",
+    "path": "/api/auth/login/microsoft"
   },
   {
     "id": "github",
-    "name": "Github"
+    "name": "Github",
+    "path": "/api/auth/login/github"
   }
 ]
