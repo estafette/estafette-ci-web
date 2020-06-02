@@ -31,20 +31,6 @@
         {{ item.text }}
       </span>
     </b-nav-item>
-    <!-- <b-nav-item
-      v-if="user && user.authenticated"
-      :to="{ name: 'Preferences'}"
-      exact
-      class="mt-auto"
-    >
-      <font-awesome-icon
-        icon="user-circle"
-        class="sidebar-icon"
-      />
-      <span>
-        {{ user.email }}
-      </span>
-    </b-nav-item> -->
   </b-nav>
 </template>
 
@@ -108,7 +94,16 @@ export default {
         {
           if: () => this.user && this.user.authenticated,
           text: 'user',
-          textFunction: () => this.user && this.user.email ? this.user.email : '',
+          textFunction: () => {
+            if (this.user.user && this.user.user.identities && this.user.user.identities.length > 0) {
+              var identity = this.user.user.identities.find(i => i.name)
+              if (identity && identity.name) {
+                return identity.name
+              }
+            }
+
+            return this.user && this.user.email ? this.user.email : ''
+          },
           icon: 'user-circle',
           to: { name: 'Preferences' },
           exact: false,
