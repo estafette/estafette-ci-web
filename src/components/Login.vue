@@ -7,7 +7,7 @@
         <b-button
           v-for="provider in providers"
           :key="provider.id"
-          :href="'/api/login/'+provider.id"
+          :href="'/api/auth/login/'+provider.id"
           type="submit"
           block
           class="mt-3 mb-3"
