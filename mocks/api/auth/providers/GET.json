@@ -1,0 +1,14 @@
+[
+  {
+    "id": "google",
+    "name": "Google"
+  },
+  {
+    "id": "microsoft",
+    "name": "Microsoft"
+  },
+  {
+    "id": "github",
+    "name": "Github"
+  }
+]
