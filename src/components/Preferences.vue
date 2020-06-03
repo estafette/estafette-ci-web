@@ -14,8 +14,8 @@
       <div class="col-12">
         <h4>
           <b-avatar
-            v-if="avatarSource"
-            :src="avatarSource"
+            v-if="avatar"
+            :src="avatar"
             class="mr-2"
           />
           {{ name }} ({{ email }})
@@ -23,9 +23,9 @@
 
         <h6>User object as stored in database</h6>
         <pre
-          v-if="user.user"
+          v-if="profile"
           class="rounded border bg-white p-3"
-        ><code class="bg-white">{{ user.user }}</code></pre>
+        ><code class="bg-white">{{ profile }}</code></pre>
       </div>
     </div>
   </div>
@@ -41,14 +41,53 @@ export default {
     BAvatar
   },
 
+  data: function () {
+    return {
+      profile: null,
+      refresh: true
+    }
+  },
+
+  created () {
+    this.loadProfile()
+  },
+
+  methods: {
+    loadProfile () {
+      this.axios.get(`/api/auth/profile`)
+        .then(response => {
+          this.profile = response.data
+
+          this.periodicallyRefreshProfile(30)
+        })
+        .catch(e => {
+          this.periodicallyRefreshProfile(60)
+        })
+    },
+
+    periodicallyRefreshProfile (intervalSeconds) {
+      if (this.refreshTimeout) {
+        clearTimeout(this.refreshTimeout)
+      }
+
+      var max = 1000 * intervalSeconds * 0.75
+      var min = 1000 * intervalSeconds * 1.25
+      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+
+      if (this.refresh) {
+        this.refreshTimeout = setTimeout(this.loadProfile, timeoutWithJitter)
+      }
+    }
+  },
+
   computed: {
     ...mapState('user', {
       user: 'me'
     }),
 
-    avatarSource () {
-      if (this.user && this.user.authenticated && this.user.user && this.user.user.identities && this.user.user.identities.length > 0) {
-        var identity = this.user.user.identities.find(i => i.avatar)
+    avatar () {
+      if (this.profile && this.profile.identities && this.profile.identities.length > 0) {
+        var identity = this.profile.identities.find(i => i.avatar)
         if (identity && identity.avatar) {
           return identity.avatar
         }
@@ -58,16 +97,10 @@ export default {
     },
 
     name () {
-      if (this.user && this.user.authenticated) {
-        if (this.user.user && this.user.user.identities && this.user.user.identities.length > 0) {
-          var identity = this.user.user.identities.find(i => i.name)
-          if (identity && identity.name) {
-            return identity.name
-          }
-        }
-
-        if (this.user.email) {
-          return this.user.email
+      if (this.profile && this.profile.identities && this.profile.identities.length > 0) {
+        var identity = this.profile.identities.find(i => i.name)
+        if (identity && identity.name) {
+          return identity.name
         }
       }
 
@@ -75,13 +108,21 @@ export default {
     },
 
     email () {
-      if (this.user && this.user.authenticated) {
-        if (this.user.email) {
-          return this.user.email
+      if (this.profile && this.profile.identities && this.profile.identities.length > 0) {
+        var identity = this.profile.identities.find(i => i.email)
+        if (identity && identity.email) {
+          return identity.email
         }
       }
 
       return ''
+    }
+  },
+
+  beforeDestroy () {
+    this.refresh = false
+    if (this.refreshTimeout) {
+      clearTimeout(this.refreshTimeout)
     }
   }
 }

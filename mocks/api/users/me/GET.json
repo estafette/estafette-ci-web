@@ -1,17 +1,4 @@
 {
   "authenticated": true,
-  "email":"someone@server.com",
-  "provider":"google",
-  "user":{
-    "id":"15",
-    "identities":[
-      {
-        "provider":"google",
-        "name":"Someone Special",
-        "email":"someone@server.com"
-      }
-    ],
-    "firstVisit":"2020-05-27T12:35:20.48097912Z",
-    "lastVisit":"2020-05-27T12:35:20.486437828Z"
-  }
+  "email":"someone@server.com"
 }
