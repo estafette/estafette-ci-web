@@ -7,7 +7,7 @@
         <b-button
           v-for="provider in providers"
           :key="provider.id"
-          :href="provider.path"
+          :href="path(provider)"
           variant="success"
           block
           class="mt-3 mb-3"
@@ -49,6 +49,17 @@ export default {
   },
 
   methods: {
+    path (provider) {
+      var path = provider.path
+
+      var returnURL = this.$route.query.returnURL
+      if (returnURL) {
+        path += '?returnURL=' + returnURL
+      }
+
+      return path
+    },
+
     loadProviders () {
       this.axios.get(`/api/auth/providers`)
         .then(response => {
