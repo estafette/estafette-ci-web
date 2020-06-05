@@ -29,13 +29,22 @@ Vue.axios.interceptors.response.use((response) => {
     switch (error.response.status) {
       case 401:
         store.dispatch('user/logout')
-        // redirect to login page with current page as return url
-        router.replace({ name: 'Login', query: { redirect: router.currentRoute.fullPath } })
         break
     }
   }
 
   return Promise.reject(new Error(error.response.data.error || error.message))
+})
+
+// redirect to login page when user gets logged out
+store.watch((state) => state.user.me, (to, from) => {
+  if (!to && from) {
+    if (from.currentProvider) {
+      window.location.href = '/api/auth/login/' + from.currentProvider + '?returnURL=' + router.currentRoute.fullPath
+    } else {
+      router.replace({ name: 'Login', query: { returnURL: router.currentRoute.fullPath } })
+    }
+  }
 })
 
 var handleLoginRedirect = (to, next) => {
