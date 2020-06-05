@@ -2,8 +2,8 @@ const loggedIn = true
 
 module.exports = function (request, response) {
   if (!loggedIn) {
-    response.status(401).send({});
+    response.status(401).send({})
   } else {
-    response.sendFile('GET.json', {root: __dirname});
+    response.sendFile('GET.json', { root: __dirname })
   }
 }

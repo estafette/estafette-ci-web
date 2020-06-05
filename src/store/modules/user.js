@@ -12,12 +12,11 @@ const mutations = {
   },
   reset: (state) => {
     state.me = null
-    state.loaded = false
   }
 }
 
 const actions = {
-  load ({ dispatch, commit }) {
+  load ({ commit }) {
     return userService.load()
       .then(response => {
         commit('set', response.data)

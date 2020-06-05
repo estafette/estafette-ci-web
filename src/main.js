@@ -21,15 +21,21 @@ Vue.axios.interceptors.request.use(
   error => Promise.reject(error)
 )
 
-// intercept api responses to check for 401 caused by iap session timeout and reload entire vue app
+// intercept api responses to check for 401 caused by expired jwt
 Vue.axios.interceptors.response.use((response) => {
   return response
 }, (error) => {
-  if (typeof error.response !== 'undefined' && error.response.status === 401) {
-    store.dispatch('user/logout')
-    return
+  if (error.response) {
+    switch (error.response.status) {
+      case 401:
+        store.dispatch('user/logout')
+        // redirect to login page with current page as return url
+        router.replace({ name: 'Login', query: { redirect: router.currentRoute.fullPath } })
+        break
+    }
   }
-  return Promise.reject(error)
+
+  return Promise.reject(new Error(error.response.data.error || error.message))
 })
 
 var handleLoginRedirect = (to, next) => {
@@ -46,14 +52,18 @@ var handleLoginRedirect = (to, next) => {
 
 // check if user is authenticated
 router.beforeEach((to, from, next) => {
+  // if already on login page don't try to load user
+  if (to.name === 'Login') {
+    next()
+    return
+  }
+
   // check store to see if user is logged on
   if (!store.state.user.loaded) {
-    console.log('user is not loaded yet')
     store.dispatch('user/load').then(() => {
       handleLoginRedirect(to, next)
     })
   } else {
-    console.log('user is already loaded')
     handleLoginRedirect(to, next)
   }
 })
