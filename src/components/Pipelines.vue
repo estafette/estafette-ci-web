@@ -256,13 +256,13 @@ export default {
 
       var sortParams = ''
       var recentCommitterFilterParams = ''
-      if (this.user && this.user.authenticated && this.filter && this.filter.recentCommitter === 'true') {
+      if (this.user && this.user.active && this.filter && this.filter.recentCommitter === 'true') {
         recentCommitterFilterParams = `&filter[recent-committer]=${this.user.email}`
         sortParams = '&sort=-last_updated_at,repo_source,repo_owner,repo_name'
       }
 
       var recentReleaserFilterParams = ''
-      if (this.user && this.user.authenticated && this.filter && this.filter.recentReleaser === 'true') {
+      if (this.user && this.user.active && this.filter && this.filter.recentReleaser === 'true') {
         recentReleaserFilterParams = `&filter[recent-releaser]=${this.user.email}`
         sortParams = '&sort=-last_updated_at,repo_source,repo_owner,repo_name'
       }

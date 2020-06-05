@@ -55,48 +55,53 @@ export default {
     return {
       items: [
         {
+          if: () => this.user && this.user.active,
           text: 'Home',
           icon: 'home',
           to: { name: 'Home' },
           exact: true
         },
         {
+          if: () => this.user && this.user.active,
           text: 'Builds & releases',
           icon: 'tools',
           to: { name: 'Pipelines' },
           exact: false
         },
         {
+          if: () => this.user && this.user.active,
           text: 'Catalog',
           icon: 'book-open',
           to: { name: 'Catalog' },
           exact: false
         },
         {
+          if: () => this.user && this.user.active,
           text: 'Insights',
           icon: 'lightbulb',
           to: { name: 'Insights' },
           exact: false
         },
         {
-          if: () => this.user && this.user.authenticated,
+          if: () => this.user && this.user.active,
           text: 'Configuration',
           icon: 'cogs',
           to: { name: 'Configuration' },
           exact: false
         },
         {
+          if: () => this.user && this.user.active,
           text: 'Create',
           icon: 'plus-circle',
           to: { name: 'Create' },
           exact: false
         },
         {
-          if: () => this.user && this.user.authenticated,
+          if: () => this.user && this.user.active,
           text: 'user',
           textFunction: () => {
-            if (this.user.user && this.user.user.identities && this.user.user.identities.length > 0) {
-              var identity = this.user.user.identities.find(i => i.name)
+            if (this.user && this.user.identities && this.user.identities.length > 0) {
+              var identity = this.user.identities.find(i => i.name)
               if (identity && identity.name) {
                 return identity.name
               }

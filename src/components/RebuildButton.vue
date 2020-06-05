@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     allowedToRebuild: function () {
-      if (!this.user.authenticated || !this.build || (this.build.buildStatus !== 'failed' && this.build.buildStatus !== 'canceled')) {
+      if (!this.user.active || !this.build || (this.build.buildStatus !== 'failed' && this.build.buildStatus !== 'canceled')) {
         return false
       }
 
@@ -66,7 +66,7 @@ export default {
     },
 
     rebuild: function (event) {
-      if (this.user.authenticated) {
+      if (this.user.active) {
         this.axios.post(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/builds`, this.build)
           .then(response => {
             // add new build at the top

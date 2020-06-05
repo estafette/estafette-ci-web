@@ -1,6 +1,6 @@
 <template>
   <b-button-group
-    v-if="user && user.authenticated"
+    v-if="user && user.active"
     class="mb-3 bg-white"
   >
     <b-input-group-prepend

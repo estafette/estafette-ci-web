@@ -1,44 +1,31 @@
 import userService from '../../services/userService'
-import refresh from '../../helpers/refresh'
 
 const state = () => ({
-  me: {
-    authenticated: false
-  },
-  timeouts: []
+  me: null,
+  loaded: false
 })
 
 const mutations = {
-  set: (state, user) => { state.me = user },
+  set: (state, user) => {
+    state.me = user
+    state.loaded = true
+  },
   reset: (state) => {
-    state.me = {
-      authenticated: false
-    }
-  },
-  setTimeout: (state, timeout) => {
-    state.timeouts.push(timeout)
-  },
-  cancelTimeouts: (state) => {
-    for (var timeout of state.timeouts) {
-      clearTimeout(timeout)
-    }
-    state.timeouts = []
+    state.me = null
   }
 }
 
 const actions = {
-  load ({ dispatch, commit }) {
-    userService.load()
+  load ({ commit }) {
+    return userService.load()
       .then(response => {
         commit('set', response.data)
-        refresh.setTimeoutWithJitter(commit, () => dispatch('load'), 30)
       })
       .catch(e => {
-        refresh.setTimeoutWithJitter(commit, () => dispatch('load'), 60)
+        commit('reset')
       })
   },
-  destroy ({ commit }) {
-    commit('cancelTimeouts')
+  logout ({ commit }) {
     commit('reset')
   }
 }

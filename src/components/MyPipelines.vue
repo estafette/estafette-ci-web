@@ -1,5 +1,5 @@
 <template>
-  <div v-if="user && user.authenticated && pipelines.length > 0">
+  <div v-if="user && user.active && pipelines.length > 0">
     <div
       class="row m-0 mt-3 mb-3 ml-3 justify-content-center"
     >
@@ -86,8 +86,9 @@ export default {
 
   methods: {
     loadPipelines () {
-      if (!this.user || !this.user.authenticated) {
+      if (!this.user || !this.user.active) {
         this.periodicallyRefreshPipelines(30)
+        return
       }
       this.axios.get(`/api/pipelines?filter[since]=1w&filter[since]=1w&filter[${this.filter}]=${this.user.email}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}&sort=-last_updated_at,repo_source,repo_owner,repo_name`)
         .then(response => {

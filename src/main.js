@@ -21,16 +21,51 @@ Vue.axios.interceptors.request.use(
   error => Promise.reject(error)
 )
 
-// intercept api responses to check for 401 caused by iap session timeout and reload entire vue app
+// intercept api responses to check for 401 caused by expired jwt
 Vue.axios.interceptors.response.use((response) => {
   return response
 }, (error) => {
-  if (typeof error.response !== 'undefined' && error.response.status === 401) {
-    // open session refresh modal
-    store.commit('modal/show')
+  if (error.response) {
+    switch (error.response.status) {
+      case 401:
+        store.dispatch('user/logout')
+        // redirect to login page with current page as return url
+        router.replace({ name: 'Login', query: { redirect: router.currentRoute.fullPath } })
+        break
+    }
+  }
+
+  return Promise.reject(new Error(error.response.data.error || error.message))
+})
+
+var handleLoginRedirect = (to, next) => {
+  var user = store.state.user.me
+  var isAuthenticated = user && user.active
+
+  // by default all routes need authentication unless they have meta: { allowedWithoutAuth: true }
+  if (to.matched.some(record => !record.meta.allowedWithoutAuth) && !isAuthenticated) {
+    next({ name: 'Login', query: { returnURL: to.fullPath } })
+  } else {
+    next()
+  }
+}
+
+// check if user is authenticated
+router.beforeEach((to, from, next) => {
+  // if already on login page don't try to load user
+  if (to.name === 'Login') {
+    next()
     return
   }
-  return Promise.reject(error)
+
+  // check store to see if user is logged on
+  if (!store.state.user.loaded) {
+    store.dispatch('user/load').then(() => {
+      handleLoginRedirect(to, next)
+    })
+  } else {
+    handleLoginRedirect(to, next)
+  }
 })
 
 Vue.config.productionTip = false

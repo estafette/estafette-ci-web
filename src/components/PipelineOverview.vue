@@ -26,7 +26,7 @@
       <drag
         v-for="build in builds"
         :key="build.id"
-        :disabled="!user || !user.authenticated || build.buildStatus !== 'succeeded'"
+        :disabled="!user || !user.active || build.buildStatus !== 'succeeded'"
         :data="build"
         class="col-12 col-md-6 col-xl-4 col-xxl-3 col-xxxl-2 m-0 p-0 pr-3 pb-3 list-complete-item"
       >
@@ -247,7 +247,7 @@ export default {
     },
 
     startRelease: function (build, releaseTarget, actionName) {
-      if (this.user.authenticated) {
+      if (this.user.active) {
         var startedRelease = {
           name: releaseTarget.name,
           id: -1,

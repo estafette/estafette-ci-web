@@ -1,4 +1,17 @@
 {
-  "authenticated": true,
-  "email":"someone@server.com"
+  "id":"15",
+  "active":true,
+  "email":"someone@server.com",
+  "name":"Someone Special",    
+  "identities":[
+    {
+      "provider":"google",
+      "id":"234234234",
+      "email":"someone@server.com",
+      "name":"Someone Special",
+      "avatar":"https://placekitten.com/300/300"
+    }
+  ],
+  "firstVisit":"2020-05-27T12:35:20.48097912Z",
+  "lastVisit":"2020-05-27T12:35:20.486437828Z"
 }

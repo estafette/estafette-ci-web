@@ -1,5 +1,5 @@
 <template>
-  <div v-if="user && user.authenticated">
+  <div v-if="user && user.active">
     <b-jumbotron
       header="Preferences"
       bg-variant="secondary"
@@ -23,9 +23,19 @@
 
         <h6>User object as stored in database</h6>
         <pre
-          v-if="profile"
+          v-if="user"
           class="rounded border bg-white p-3"
-        ><code class="bg-white">{{ profile }}</code></pre>
+        ><code class="bg-white">{{ user }}</code></pre>
+
+        <h4>Logout</h4>
+        <b-button
+          href="/api/auth/logout"
+          variant="danger"
+          block
+          class="mt-3 mb-3"
+        >
+          Log out
+        </b-button>
       </div>
     </div>
   </div>
@@ -33,50 +43,18 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BJumbotron, BAvatar } from 'bootstrap-vue'
+import { BJumbotron, BAvatar, BButton } from 'bootstrap-vue'
 
 export default {
   components: {
     BJumbotron,
-    BAvatar
+    BAvatar,
+    BButton
   },
 
   data: function () {
     return {
-      profile: null,
       refresh: true
-    }
-  },
-
-  created () {
-    this.loadProfile()
-  },
-
-  methods: {
-    loadProfile () {
-      this.axios.get(`/api/auth/profile`)
-        .then(response => {
-          this.profile = response.data
-
-          this.periodicallyRefreshProfile(30)
-        })
-        .catch(e => {
-          this.periodicallyRefreshProfile(60)
-        })
-    },
-
-    periodicallyRefreshProfile (intervalSeconds) {
-      if (this.refreshTimeout) {
-        clearTimeout(this.refreshTimeout)
-      }
-
-      var max = 1000 * intervalSeconds * 0.75
-      var min = 1000 * intervalSeconds * 1.25
-      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
-
-      if (this.refresh) {
-        this.refreshTimeout = setTimeout(this.loadProfile, timeoutWithJitter)
-      }
     }
   },
 
@@ -86,8 +64,8 @@ export default {
     }),
 
     avatar () {
-      if (this.profile && this.profile.identities && this.profile.identities.length > 0) {
-        var identity = this.profile.identities.find(i => i.avatar)
+      if (this.user && this.user.identities && this.user.identities.length > 0) {
+        var identity = this.user.identities.find(i => i.avatar)
         if (identity && identity.avatar) {
           return identity.avatar
         }
@@ -97,8 +75,8 @@ export default {
     },
 
     name () {
-      if (this.profile && this.profile.identities && this.profile.identities.length > 0) {
-        var identity = this.profile.identities.find(i => i.name)
+      if (this.user && this.user.identities && this.user.identities.length > 0) {
+        var identity = this.user.identities.find(i => i.name)
         if (identity && identity.name) {
           return identity.name
         }
@@ -108,21 +86,14 @@ export default {
     },
 
     email () {
-      if (this.profile && this.profile.identities && this.profile.identities.length > 0) {
-        var identity = this.profile.identities.find(i => i.email)
+      if (this.user && this.user.identities && this.user.identities.length > 0) {
+        var identity = this.user.identities.find(i => i.email)
         if (identity && identity.email) {
           return identity.email
         }
       }
 
       return ''
-    }
-  },
-
-  beforeDestroy () {
-    this.refresh = false
-    if (this.refreshTimeout) {
-      clearTimeout(this.refreshTimeout)
     }
   }
 }
