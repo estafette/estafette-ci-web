@@ -4,18 +4,15 @@
     <div id="main">
       <router-view />
     </div>
-    <session-refresh-modal />
   </div>
 </template>
 
 <script>
 import SideNavigationBar from '@/components/SideNavigationBar'
-import SessionRefreshModal from '@/components/SessionRefreshModal'
 
 export default {
   components: {
-    SideNavigationBar,
-    SessionRefreshModal
+    SideNavigationBar
   }
 }
 </script>
