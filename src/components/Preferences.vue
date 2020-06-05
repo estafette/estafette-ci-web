@@ -26,6 +26,16 @@
           v-if="user"
           class="rounded border bg-white p-3"
         ><code class="bg-white">{{ user }}</code></pre>
+
+        <h4>Logout</h4>
+        <b-button
+          href="/api/auth/logout"
+          variant="danger"
+          block
+          class="mt-3 mb-3"
+        >
+          Log out
+        </b-button>
       </div>
     </div>
   </div>
@@ -33,12 +43,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BJumbotron, BAvatar } from 'bootstrap-vue'
+import { BJumbotron, BAvatar, BButton } from 'bootstrap-vue'
 
 export default {
   components: {
     BJumbotron,
-    BAvatar
+    BAvatar,
+    BButton
   },
 
   data: function () {
