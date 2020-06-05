@@ -83,7 +83,7 @@ export default {
     }),
 
     showActions () {
-      return this.user && this.user.authenticated && this.release && (this.release.releaseStatus === 'pending' || this.release.releaseStatus === 'running' || this.release.releaseStatus === 'canceling')
+      return this.user && this.user.active && this.release && (this.release.releaseStatus === 'pending' || this.release.releaseStatus === 'running' || this.release.releaseStatus === 'canceling')
     }
   }
 }

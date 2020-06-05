@@ -31,7 +31,7 @@
         Commit(s)
       </div>
       <div
-        v-if="user && user.authenticated"
+        v-if="user && user.active"
         class="col-2"
       >
         Actions

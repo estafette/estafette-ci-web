@@ -1,6 +1,6 @@
 <template>
   <b-input-group
-    v-if="user && user.authenticated && pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'"
+    v-if="user && user.active && pipeline.releaseTargets && pipeline.releaseTargets.length > 0 && build.buildStatus === 'succeeded'"
     style="width: auto;"
   >
     <b-input-group-text
@@ -96,7 +96,7 @@ export default {
     },
 
     startRelease: function (releaseTarget, action, event) {
-      if (this.user.authenticated) {
+      if (this.user.active) {
         var startedRelease = {
           name: releaseTarget.name,
           action: action ? action.name : '',

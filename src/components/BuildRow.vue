@@ -138,7 +138,7 @@ export default {
     },
 
     showActions () {
-      return this.user && this.user.authenticated && this.build && ((this.build.buildStatus === 'failed' || this.build.buildStatus === 'pending' || this.build.buildStatus === 'running' || this.build.buildStatus === 'canceled' || this.build.buildStatus === 'canceling') || (this.pipeline.releaseTargets && this.pipeline.releaseTargets.length > 0 && this.build.buildStatus === 'succeeded'))
+      return this.user && this.user.active && this.build && ((this.build.buildStatus === 'failed' || this.build.buildStatus === 'pending' || this.build.buildStatus === 'running' || this.build.buildStatus === 'canceled' || this.build.buildStatus === 'canceling') || (this.pipeline.releaseTargets && this.pipeline.releaseTargets.length > 0 && this.build.buildStatus === 'succeeded'))
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <b-input-group
-    v-if="user.authenticated && ((build && (build.buildStatus === 'pending' || build.buildStatus === 'running' || build.buildStatus === 'canceling')) || (release && (release.releaseStatus === 'pending' || release.releaseStatus === 'running' || release.releaseStatus === 'canceling')))"
+    v-if="user.active && ((build && (build.buildStatus === 'pending' || build.buildStatus === 'running' || build.buildStatus === 'canceling')) || (release && (release.releaseStatus === 'pending' || release.releaseStatus === 'running' || release.releaseStatus === 'canceling')))"
     style="width: auto;"
   >
     <b-input-group-text
@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     cancel: function (event) {
-      if (this.user.authenticated) {
+      if (this.user.active) {
         if (this.build && (this.build.buildStatus === 'pending' || this.build.buildStatus === 'running' || this.build.buildStatus === 'canceling')) {
           this.axios.delete(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/builds/${this.build.id}`)
             .then(response => {

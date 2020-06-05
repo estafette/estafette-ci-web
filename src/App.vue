@@ -12,26 +12,10 @@
 import SideNavigationBar from '@/components/SideNavigationBar'
 import SessionRefreshModal from '@/components/SessionRefreshModal'
 
-import { mapActions } from 'vuex'
-
 export default {
   components: {
     SideNavigationBar,
     SessionRefreshModal
-  },
-
-  created () {
-    this.load()
-  },
-
-  methods: {
-    ...mapActions('user', [
-      'load'
-    ])
-  },
-
-  beforeDestroy () {
-    this.$store.dispatch('user/destroy')
   }
 }
 </script>

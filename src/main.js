@@ -26,11 +26,36 @@ Vue.axios.interceptors.response.use((response) => {
   return response
 }, (error) => {
   if (typeof error.response !== 'undefined' && error.response.status === 401) {
-    // open session refresh modal
-    store.commit('modal/show')
+    store.dispatch('user/logout')
     return
   }
   return Promise.reject(error)
+})
+
+var handleLoginRedirect = (to, next) => {
+  var user = store.state.user.me
+  var isAuthenticated = user && user.active
+
+  // by default all routes need authentication unless they have meta: { allowedWithoutAuth: true }
+  if (to.matched.some(record => !record.meta.allowedWithoutAuth) && !isAuthenticated) {
+    next({ name: 'Login', query: { returnURL: to.fullPath } })
+  } else {
+    next()
+  }
+}
+
+// check if user is authenticated
+router.beforeEach((to, from, next) => {
+  // check store to see if user is logged on
+  if (!store.state.user.loaded) {
+    console.log('user is not loaded yet')
+    store.dispatch('user/load').then(() => {
+      handleLoginRedirect(to, next)
+    })
+  } else {
+    console.log('user is already loaded')
+    handleLoginRedirect(to, next)
+  }
 })
 
 Vue.config.productionTip = false
