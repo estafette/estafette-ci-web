@@ -39,10 +39,10 @@ import { mapState } from 'vuex'
 import { BNav, BNavItem } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers, faSlidersH } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers)
+library.add(faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers, faSlidersH)
 
 export default {
   components: {
@@ -87,6 +87,13 @@ export default {
           text: 'Configuration',
           icon: 'cogs',
           to: { name: 'Configuration' },
+          exact: false
+        },
+        {
+          if: () => this.user && this.user.active && this.user.roles && this.user.roles.includes('administrator'),
+          text: 'Admin',
+          icon: 'sliders-h',
+          to: { name: 'AdminUsers' },
           exact: false
         },
         {

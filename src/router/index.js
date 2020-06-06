@@ -174,6 +174,36 @@ export default new Router({
       component: Preferences
     },
     {
+      path: '/admin',
+      name: 'Admin',
+      props: true,
+      component: () => import('../components/Admin.vue'),
+      meta: { requiredRole: 'administrator' },
+      children: [
+        {
+          path: 'users',
+          name: 'AdminUsers',
+          props: true,
+          component: () => import('../components/AdminUsers.vue'),
+          meta: { requiredRole: 'administrator' }
+        },
+        {
+          path: 'groups',
+          name: 'AdminGroups',
+          props: true,
+          component: () => import('../components/AdminGroups.vue'),
+          meta: { requiredRole: 'administrator' }
+        },
+        {
+          path: 'organizations',
+          name: 'AdminOrganizations',
+          props: true,
+          component: () => import('../components/AdminOrganizations.vue'),
+          meta: { requiredRole: 'administrator' }
+        }
+      ]
+    },
+    {
       path: '/statistics',
       redirect: { name: 'Insights' },
       children: [
