@@ -12,9 +12,7 @@
 
     <div class="row m-0">
       <div class="col-auto d-none d-lg-block">
-        <inner-navigation-bar
-          :items="items"
-        />
+        <inner-navigation-bar />
       </div>
       <div class="col p-3">
         <router-view />
@@ -32,34 +30,6 @@ export default {
   components: {
     BJumbotron,
     InnerNavigationBar
-  },
-
-  data: function () {
-    return {
-      credentials: null,
-      trustedimages: null,
-      refresh: true,
-      items: [
-        {
-          text: 'Users',
-          to: { name: 'AdminUsers' },
-          icon: 'user',
-          exact: false
-        },
-        {
-          text: 'Groups',
-          to: { name: 'AdminGroups' },
-          icon: 'users',
-          exact: false
-        },
-        {
-          text: 'Organizations',
-          to: { name: 'AdminOrganizations' },
-          icon: 'sitemap',
-          exact: false
-        }
-      ]
-    }
   },
 
   computed: {

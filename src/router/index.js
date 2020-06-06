@@ -199,7 +199,33 @@ export default new Router({
       meta: {
         sidebar: true,
         icon: 'cogs'
-      }
+      },
+      redirect: { name: 'ConfigurationCredentials' },
+      children: [
+        {
+          path: 'credentials',
+          name: 'ConfigurationCredentials',
+          props: true,
+          component: () => import(/* webpackChunkName: "configuration" */ '../components/ConfigurationCredentials.vue'),
+          meta: {
+            text: 'Credentials',
+            icon: 'key',
+            innerbar: true
+          }
+        },
+        {
+          path: 'trusted-images',
+          name: 'ConfigurationTrustedImages',
+          props: true,
+          component: () => import(/* webpackChunkName: "configuration" */ '../components/ConfigurationTrustedImages.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            text: 'Trusted Images',
+            icon: 'shield-alt',
+            innerbar: true
+          }
+        }
+      ]
     },
     {
       path: '/manifest',
@@ -268,21 +294,36 @@ export default new Router({
           name: 'AdminUsers',
           props: true,
           component: () => import(/* webpackChunkName: "admin" */ '../components/AdminUsers.vue'),
-          meta: { requiredRole: 'administrator' }
+          meta: {
+            requiredRole: 'administrator',
+            text: 'Users',
+            icon: 'user',
+            innerbar: true
+          }
         },
         {
           path: 'groups',
           name: 'AdminGroups',
           props: true,
           component: () => import(/* webpackChunkName: "admin" */ '../components/AdminGroups.vue'),
-          meta: { requiredRole: 'administrator' }
+          meta: {
+            requiredRole: 'administrator',
+            text: 'Groups',
+            icon: 'users',
+            innerbar: true
+          }
         },
         {
           path: 'organizations',
           name: 'AdminOrganizations',
           props: true,
           component: () => import(/* webpackChunkName: "admin" */ '../components/AdminOrganizations.vue'),
-          meta: { requiredRole: 'administrator' }
+          meta: {
+            requiredRole: 'administrator',
+            text: 'Organizations',
+            icon: 'sitemap',
+            innerbar: true
+          }
         }
       ]
     },

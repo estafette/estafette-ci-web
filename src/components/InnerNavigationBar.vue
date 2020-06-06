@@ -4,23 +4,26 @@
     class="inner-sidebar-nav"
   >
     <b-nav-item
-      v-for="item in items"
-      :key="item.text"
-      :to="item.to"
-      :exact="item.exact"
-      :href="item.href"
+      v-for="route in routes"
+      :key="route.name"
+      :to="{ name: route.name }"
+      :exact="route.meta ? route.meta.exact : false"
+      :class="route.meta && route.meta.class ? route.meta.class : ''"
     >
       <font-awesome-icon
-        v-if="item.icon"
-        :icon="item.icon"
+        v-if="route.meta && route.meta.icon"
+        :icon="route.meta ? route.meta.icon : ''"
         class="sidebar-icon"
       />
-      {{ item.text }}
+      <span>
+        {{ route.meta && route.meta.text ? route.meta.text : route.name }}
+      </span>
     </b-nav-item>
   </b-nav>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { BNav, BNavItem } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -40,6 +43,57 @@ export default {
     items: {
       type: Array,
       default: function () { return [] }
+    }
+  },
+
+  created () {
+    console.log('inner nav', this.$router)
+  },
+
+  methods: {
+    isFunction (functionToCheck) {
+      return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]'
+    }
+  },
+
+  computed: {
+    ...mapState('user', {
+      user: 'me'
+    }),
+
+    routes () {
+      // get name of active outer route
+      var activeOuterRouteName = this.$route.matched[0].name
+      console.log(activeOuterRouteName)
+
+      // get active outer route
+      var activeOuterRoute = this.$router.options.routes.find(r => r.name === activeOuterRouteName)
+      if (!activeOuterRoute) {
+        return []
+      }
+
+      if (!activeOuterRoute.children) {
+        return []
+      }
+
+      return activeOuterRoute.children.filter(r => {
+        // only include routes with meta.innerbar: true
+        if (!r.meta || !r.meta.innerbar) {
+          return false
+        }
+
+        // only include routes with meta.allowedWithoutAuth: true if user is not logged in
+        if ((!this.user || !this.user.active) && (!r.meta || !r.meta.allowedWithoutAuth)) {
+          return false
+        }
+
+        // filter out routes that require a role the user does not have
+        if (r.meta && r.meta.requiredRole && (!this.user || !this.user.active || !this.user.roles || !this.user.roles.includes(r.meta.requiredRole))) {
+          return false
+        }
+
+        return true
+      })
     }
   }
 }

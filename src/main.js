@@ -51,6 +51,12 @@ var handleLoginRedirect = (to, next) => {
   var user = store.state.user.me
   var isAuthenticated = user && user.active
 
+  // if user tries to navigate to a route it does not have the required role for, disallow
+  if (to.meta && to.meta.requiredRole && (!user || !user.active || !user.roles || !user.roles.includes(to.meta.requiredRole))) {
+    next(false)
+    return
+  }
+
   // by default all routes need authentication unless they have meta: { allowedWithoutAuth: true }
   if (to.matched.some(record => !record.meta.allowedWithoutAuth) && !isAuthenticated) {
     next({ name: 'Login', query: { returnURL: to.fullPath } })
@@ -64,12 +70,6 @@ router.beforeEach((to, from, next) => {
   // if already on login page don't try to load user
   if (to.name === 'Login') {
     next()
-    return
-  }
-
-  // if user tries to navigate to a route it does not have the required role for, disallow
-  if (to.meta && to.meta.requiredRole && (!store.state.user.me || !store.state.user.me.active || !store.state.user.me.roles || !store.state.user.me.roles.includes(to.meta.requiredRole))) {
-    next(false)
     return
   }
 
