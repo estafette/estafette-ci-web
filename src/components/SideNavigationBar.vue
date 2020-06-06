@@ -17,18 +17,18 @@
       </span>
     </b-nav-item>
     <b-nav-item
-      v-for="item in permittedItems"
-      :key="item.text"
-      :to="item.to"
-      :exact="item.exact"
-      :class="item.class"
+      v-for="route in routes"
+      :key="route.name"
+      :to="{ name: route.name }"
+      :exact="route.meta ? route.meta.exact : false"
+      :class="route.meta && route.meta.class ? route.meta.class : ''"
     >
       <font-awesome-icon
-        :icon="item.icon"
+        :icon="route.meta ? route.meta.icon : ''"
         class="sidebar-icon"
       />
       <span>
-        {{ item.text }}
+        {{ route.meta && route.meta.text ? route.meta.text : route.name }}
       </span>
     </b-nav-item>
   </b-nav>
@@ -51,80 +51,6 @@ export default {
     FontAwesomeIcon
   },
 
-  data: function () {
-    return {
-      items: [
-        {
-          if: () => this.user && this.user.active,
-          text: 'Home',
-          icon: 'home',
-          to: { name: 'Home' },
-          exact: true
-        },
-        {
-          if: () => this.user && this.user.active,
-          text: 'Builds & releases',
-          icon: 'tools',
-          to: { name: 'Pipelines' },
-          exact: false
-        },
-        {
-          if: () => this.user && this.user.active,
-          text: 'Catalog',
-          icon: 'book-open',
-          to: { name: 'Catalog' },
-          exact: false
-        },
-        {
-          if: () => this.user && this.user.active,
-          text: 'Insights',
-          icon: 'lightbulb',
-          to: { name: 'Insights' },
-          exact: false
-        },
-        {
-          if: () => this.user && this.user.active,
-          text: 'Configuration',
-          icon: 'cogs',
-          to: { name: 'Configuration' },
-          exact: false
-        },
-        {
-          if: () => this.user && this.user.active && this.user.roles && this.user.roles.includes('administrator'),
-          text: 'Admin',
-          icon: 'sliders-h',
-          to: { name: 'AdminUsers' },
-          exact: false
-        },
-        {
-          if: () => this.user && this.user.active,
-          text: 'Create',
-          icon: 'plus-circle',
-          to: { name: 'Create' },
-          exact: false
-        },
-        {
-          if: () => this.user && this.user.active,
-          text: 'user',
-          textFunction: () => {
-            if (this.user && this.user.identities && this.user.identities.length > 0) {
-              var identity = this.user.identities.find(i => i.name)
-              if (identity && identity.name) {
-                return identity.name
-              }
-            }
-
-            return this.user && this.user.email ? this.user.email : ''
-          },
-          icon: 'user-circle',
-          to: { name: 'Preferences' },
-          exact: false,
-          class: 'mt-auto'
-        }
-      ]
-    }
-  },
-
   methods: {
     isFunction (functionToCheck) {
       return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]'
@@ -136,19 +62,38 @@ export default {
       user: 'me'
     }),
 
-    permittedItems () {
-      return this.items.filter(i => {
-        if (this.isFunction(i.if)) {
-          return i.if()
+    routes () {
+      var seenPositionBottom = false
+      return this.$router.options.routes.filter(r => {
+        // only include routes with meta.sidebar: true
+        if (!r.meta || !r.meta.sidebar) {
+          return false
+        }
+
+        // only include routes with meta.allowedWithoutAuth: true if user is not logged in
+        if ((!this.user || !this.user.active) && (!r.meta || !r.meta.allowedWithoutAuth)) {
+          return false
+        }
+
+        // filter out routes that require a role the user does not have
+        if (r.meta && r.meta.requiredRole && (!this.user || !this.user.active || !this.user.roles || !this.user.roles.includes(r.meta.requiredRole))) {
+          return false
         }
 
         return true
-      }).map(i => {
-        if (this.isFunction(i.textFunction)) {
-          i.text = i.textFunction()
+      }).map(r => {
+        // if meta.textFunction is set use it to set text
+        if (r.meta && r.meta.textFunction && this.isFunction(r.meta.textFunction)) {
+          r.meta.text = r.meta.textFunction(this.user)
         }
 
-        return i
+        // if meta.position: 'bottom' occurs first time set class to move this and following menu items to the bottom
+        if (r.meta && r.meta.position && r.meta.position === 'bottom' && !seenPositionBottom) {
+          r.meta.class = 'mt-auto'
+          seenPositionBottom = true
+        }
+
+        return r
       })
     }
   }

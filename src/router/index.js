@@ -1,39 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Home from '@/components/Home'
-import Login from '@/components/Login'
-
-import Pipelines from '@/components/Pipelines'
-import PipelineDetails from '@/components/PipelineDetails'
-import PipelineOverview from '@/components/PipelineOverview'
-import PipelineBuilds from '@/components/PipelineBuilds'
-import PipelineBuildDetails from '@/components/PipelineBuildDetails'
-import PipelineBuildLogs from '@/components/PipelineBuildLogs'
-import PipelineBuildManifest from '@/components/PipelineBuildManifest'
-import PipelineReleases from '@/components/PipelineReleases'
-import PipelineTriggers from '@/components/PipelineTriggers'
-import PipelineReleaseDetails from '@/components/PipelineReleaseDetails'
-import PipelineReleaseLogs from '@/components/PipelineReleaseLogs'
-import PipelineStatistics from '@/components/PipelineStatistics'
-
-import Catalog from '@/components/Catalog'
-import CatalogItemDetails from '@/components/CatalogItemDetails'
-import CatalogItemOverview from '@/components/CatalogItemOverview'
-
-import Create from '@/components/Create'
-import ManifestGenerator from '@/components/ManifestGenerator'
-import ManifestValidator from '@/components/ManifestValidator'
-import SecretEncrypter from '@/components/SecretEncrypter'
-
-import InsightsRankings from '@/components/InsightsRankings'
-import Insights from '@/components/Insights'
-import InsightsCounters from '@/components/InsightsCounters'
-import InsightsTrends from '@/components/InsightsTrends'
-
-import Configuration from '@/components/Configuration'
-import Preferences from '@/components/Preferences'
-
 Vue.use(Router)
 
 export default new Router({
@@ -43,62 +10,72 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: () => import(/* webpackChunkName: "home" */ '../components/Home.vue'),
+      meta: {
+        sidebar: true,
+        icon: 'home',
+        exact: true
+      }
     },
     {
       path: '/login',
       name: 'Login',
-      component: Login,
+      component: () => import(/* webpackChunkName: "login" */ '../components/Login.vue'),
       meta: { allowedWithoutAuth: true }
     },
     {
       path: '/pipelines',
       name: 'Pipelines',
-      component: Pipelines,
-      props: (route) => ({ query: route.query })
+      component: () => import(/* webpackChunkName: "pipelines" */ '../components/Pipelines.vue'),
+      props: (route) => ({ query: route.query }),
+      meta: {
+        sidebar: true,
+        text: 'Builds & releases',
+        icon: 'tools'
+      }
     },
     {
       path: '/pipelines/:repoSource/:repoOwner/:repoName',
       name: 'PipelineDetails',
       props: true,
-      component: PipelineDetails,
+      component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineDetails.vue'),
       redirect: { name: 'PipelineOverview' },
       children: [
         {
           path: 'overview',
           name: 'PipelineOverview',
           props: true,
-          component: PipelineOverview
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineOverview.vue')
         },
         {
           path: 'builds',
           name: 'PipelineBuilds',
           props: true,
-          component: PipelineBuilds
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineBuilds.vue')
         },
         {
           path: 'statistics',
           name: 'PipelineStatistics',
           props: (route) => ({ query: route.query }),
-          component: PipelineStatistics
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineStatistics.vue')
         },
         {
           path: 'releases',
           name: 'PipelineReleases',
           props: true,
-          component: PipelineReleases
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineReleases.vue')
         },
         {
           path: 'triggers',
           name: 'PipelineTriggers',
           props: true,
-          component: PipelineTriggers
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineTriggers.vue')
         },
         {
           path: 'encrypt',
           name: 'PipelineSecretEncrypter',
           props: true,
-          component: SecretEncrypter
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/SecretEncrypter.vue')
         }
       ]
     },
@@ -106,19 +83,19 @@ export default new Router({
       path: '/pipelines/:repoSource/:repoOwner/:repoName/builds/:id',
       name: 'PipelineBuildDetails',
       props: true,
-      component: PipelineBuildDetails,
+      component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineBuildDetails.vue'),
       children: [
         {
           path: 'logs',
           name: 'PipelineBuildLogs',
           props: true,
-          component: PipelineBuildLogs
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineBuildLogs.vue')
         },
         {
           path: 'manifest',
           name: 'PipelineBuildManifest',
           props: true,
-          component: PipelineBuildManifest
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineBuildManifest.vue')
         }
       ]
     },
@@ -126,26 +103,30 @@ export default new Router({
       path: '/pipelines/:repoSource/:repoOwner/:repoName/releases/:releaseID',
       name: 'PipelineReleaseDetails',
       props: true,
-      component: PipelineReleaseDetails,
+      component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineReleaseDetails.vue'),
       children: [
         {
           path: 'logs',
           name: 'PipelineReleaseLogs',
           props: true,
-          component: PipelineReleaseLogs
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineReleaseLogs.vue')
         }
       ]
     },
     {
       path: '/catalog',
       name: 'Catalog',
-      component: Catalog,
-      props: (route) => ({ query: route.query })
+      component: () => import(/* webpackChunkName: "catalog" */ '../components/Catalog.vue'),
+      props: (route) => ({ query: route.query }),
+      meta: {
+        sidebar: true,
+        icon: 'book-open'
+      }
     },
     {
       path: '/catalog/:repoSource/:repoOwner/:repoName',
       name: 'CatalogItemDetails',
-      component: CatalogItemDetails,
+      component: () => import(/* webpackChunkName: "catalog" */ '../components/CatalogItemDetails.vue'),
       props: true,
       redirect: { name: 'CatalogItemOverview' },
       children: [
@@ -153,53 +134,7 @@ export default new Router({
           path: 'overview',
           name: 'CatalogItemOverview',
           props: true,
-          component: CatalogItemOverview
-        }
-      ]
-    },
-    {
-      path: '/config',
-      redirect: { name: 'Configuration' }
-    },
-    {
-      path: '/configuration',
-      name: 'Configuration',
-      props: true,
-      component: Configuration
-    },
-    {
-      path: '/preferences',
-      name: 'Preferences',
-      props: true,
-      component: Preferences
-    },
-    {
-      path: '/admin',
-      name: 'Admin',
-      props: true,
-      component: () => import('../components/Admin.vue'),
-      meta: { requiredRole: 'administrator' },
-      children: [
-        {
-          path: 'users',
-          name: 'AdminUsers',
-          props: true,
-          component: () => import('../components/AdminUsers.vue'),
-          meta: { requiredRole: 'administrator' }
-        },
-        {
-          path: 'groups',
-          name: 'AdminGroups',
-          props: true,
-          component: () => import('../components/AdminGroups.vue'),
-          meta: { requiredRole: 'administrator' }
-        },
-        {
-          path: 'organizations',
-          name: 'AdminOrganizations',
-          props: true,
-          component: () => import('../components/AdminOrganizations.vue'),
-          meta: { requiredRole: 'administrator' }
+          component: () => import(/* webpackChunkName: "catalog" */ '../components/CatalogItemOverview.vue')
         }
       ]
     },
@@ -224,7 +159,11 @@ export default new Router({
     {
       path: '/insights',
       name: 'Insights',
-      component: Insights,
+      component: () => import(/* webpackChunkName: "insights" */ '../components/Insights.vue'),
+      meta: {
+        sidebar: true,
+        icon: 'lightbulb'
+      },
       props: true,
       redirect: { name: 'InsightsCounters' },
       children: [
@@ -232,21 +171,35 @@ export default new Router({
           path: 'counters',
           name: 'InsightsCounters',
           props: true,
-          component: InsightsCounters
+          component: () => import(/* webpackChunkName: "insights" */ '../components/InsightsCounters.vue')
         },
         {
           path: 'rankings',
           name: 'InsightsRankings',
           props: true,
-          component: InsightsRankings
+          component: () => import(/* webpackChunkName: "insights" */ '../components/InsightsRankings.vue')
         },
         {
           path: 'trends',
           name: 'InsightsTrends',
           props: true,
-          component: InsightsTrends
+          component: () => import(/* webpackChunkName: "insights" */ '../components/InsightsTrends.vue')
         }
       ]
+    },
+    {
+      path: '/config',
+      redirect: { name: 'Configuration' }
+    },
+    {
+      path: '/configuration',
+      name: 'Configuration',
+      props: true,
+      component: () => import(/* webpackChunkName: "configuration" */ '../components/Configuration.vue'),
+      meta: {
+        sidebar: true,
+        icon: 'cogs'
+      }
     },
     {
       path: '/manifest',
@@ -269,7 +222,11 @@ export default new Router({
     {
       path: '/create',
       name: 'Create',
-      component: Create,
+      component: () => import(/* webpackChunkName: "create" */ '../components/Create.vue'),
+      meta: {
+        sidebar: true,
+        icon: 'plus-circle'
+      },
       props: true,
       redirect: { name: 'ManifestGenerator' },
       children: [
@@ -277,21 +234,78 @@ export default new Router({
           path: 'generate',
           name: 'ManifestGenerator',
           props: true,
-          component: ManifestGenerator
+          component: () => import(/* webpackChunkName: "create" */ '../components/ManifestGenerator.vue')
         },
         {
           path: 'validate',
           name: 'ManifestValidator',
           props: true,
-          component: ManifestValidator
+          component: () => import(/* webpackChunkName: "create" */ '../components/ManifestValidator.vue')
         },
         {
           path: 'encrypt',
           name: 'SecretEncrypter',
           props: true,
-          component: SecretEncrypter
+          component: () => import(/* webpackChunkName: "create" */ '../components/SecretEncrypter.vue')
         }
       ]
+    },
+    {
+      path: '/admin',
+      name: 'Admin',
+      props: true,
+      component: () => import(/* webpackChunkName: "admin" */ '../components/Admin.vue'),
+      meta: {
+        sidebar: true,
+        icon: 'sliders-h',
+        position: 'bottom',
+        requiredRole: 'administrator'
+      },
+      redirect: { name: 'AdminUsers' },
+      children: [
+        {
+          path: 'users',
+          name: 'AdminUsers',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../components/AdminUsers.vue'),
+          meta: { requiredRole: 'administrator' }
+        },
+        {
+          path: 'groups',
+          name: 'AdminGroups',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../components/AdminGroups.vue'),
+          meta: { requiredRole: 'administrator' }
+        },
+        {
+          path: 'organizations',
+          name: 'AdminOrganizations',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../components/AdminOrganizations.vue'),
+          meta: { requiredRole: 'administrator' }
+        }
+      ]
+    },
+    {
+      path: '/preferences',
+      name: 'Preferences',
+      props: true,
+      component: () => import(/* webpackChunkName: "preferences" */ '../components/Preferences.vue'),
+      meta: {
+        sidebar: true,
+        textFunction: (user) => {
+          if (user && user.identities && user.identities.length > 0) {
+            var identity = user.identities.find(i => i.name)
+            if (identity && identity.name) {
+              return identity.name
+            }
+          }
+
+          return user && user.email ? user.email : ''
+        },
+        icon: 'user-circle',
+        position: 'bottom'
+      }
     },
     {
       path: '/logs/:repoSource/:repoOwner/:repoName/:repoBranch/:id',

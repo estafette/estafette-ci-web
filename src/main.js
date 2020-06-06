@@ -67,6 +67,12 @@ router.beforeEach((to, from, next) => {
     return
   }
 
+  // if user tries to navigate to a route it does not have the required role for, disallow
+  if (to.meta && to.meta.requiredRole && (!store.state.user.me || !store.state.user.me.active || !store.state.user.me.roles || !store.state.user.me.roles.includes(to.meta.requiredRole))) {
+    next(false)
+    return
+  }
+
   // check store to see if user is logged on
   if (!store.state.user.loaded) {
     store.dispatch('user/load').then(() => {
