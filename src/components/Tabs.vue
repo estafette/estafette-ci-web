@@ -22,7 +22,7 @@
     </b-nav>
 
     <b-dropdown
-      :text="activeTabText"
+      :text="activeTabTextWithFallback"
       :variant="variant"
       block
       menu-class="w-100"
@@ -69,6 +69,10 @@ export default {
       type: Array,
       default: function () { return [] }
     },
+    activeTabText: {
+      type: String,
+      default: null
+    },
     sectionRouteName: {
       type: String,
       default: null
@@ -76,7 +80,10 @@ export default {
   },
 
   computed: {
-    activeTabText () {
+    activeTabTextWithFallback () {
+      if (this.activeTabText) {
+        return this.activeTabText
+      }
       if (this.$route.meta && this.$route.meta.text) {
         return this.$route.meta.text
       }

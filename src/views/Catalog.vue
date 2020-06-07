@@ -32,7 +32,10 @@
       </div>
     </div>
 
-    <tabs :tabs="tabs" />
+    <tabs
+      :tabs="tabs"
+      :active-tab-text="`${activeFilterValue} (${pagination.totalItems})`"
+    />
 
     <div class="row-header ml-3 mr-3">
       <div class="col-6">
