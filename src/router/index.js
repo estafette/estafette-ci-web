@@ -242,39 +242,6 @@ export default new Router({
       ]
     },
     {
-      path: '/configuration',
-      name: 'Configuration',
-      props: true,
-      component: () => import(/* webpackChunkName: "views" */ '../views/ViewWithNav.vue'),
-      meta: {
-        icon: 'cogs'
-      },
-      redirect: { name: 'ConfigurationCredentials' },
-      children: [
-        {
-          path: 'credentials',
-          name: 'ConfigurationCredentials',
-          props: true,
-          component: () => import(/* webpackChunkName: "configuration" */ '../views/ConfigurationCredentials.vue'),
-          meta: {
-            text: 'Credentials',
-            icon: 'key'
-          }
-        },
-        {
-          path: 'trusted-images',
-          name: 'ConfigurationTrustedImages',
-          props: true,
-          component: () => import(/* webpackChunkName: "configuration" */ '../views/ConfigurationTrustedImages.vue'),
-          meta: {
-            requiredRole: 'administrator',
-            text: 'Trusted Images',
-            icon: 'shield-alt'
-          }
-        }
-      ]
-    },
-    {
       path: '/create',
       name: 'Create',
       component: () => import(/* webpackChunkName: "views" */ '../views/ViewWithNav.vue'),
@@ -316,6 +283,40 @@ export default new Router({
             icon: 'user-secret'
           },
           component: () => import(/* webpackChunkName: "create" */ '../views/SecretEncrypter.vue')
+        }
+      ]
+    },
+    {
+      path: '/configuration',
+      name: 'Configuration',
+      props: true,
+      component: () => import(/* webpackChunkName: "views" */ '../views/ViewWithNav.vue'),
+      meta: {
+        icon: 'cogs',
+        position: 'bottom'
+      },
+      redirect: { name: 'ConfigurationCredentials' },
+      children: [
+        {
+          path: 'credentials',
+          name: 'ConfigurationCredentials',
+          props: true,
+          component: () => import(/* webpackChunkName: "configuration" */ '../views/ConfigurationCredentials.vue'),
+          meta: {
+            text: 'Credentials',
+            icon: 'key'
+          }
+        },
+        {
+          path: 'trusted-images',
+          name: 'ConfigurationTrustedImages',
+          props: true,
+          component: () => import(/* webpackChunkName: "configuration" */ '../views/ConfigurationTrustedImages.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            text: 'Trusted Images',
+            icon: 'shield-alt'
+          }
         }
       ]
     },
