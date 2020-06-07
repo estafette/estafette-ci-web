@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row m-3">
+    <div class="row">
       <div class="col-12">
         <h4>
           <b-avatar
