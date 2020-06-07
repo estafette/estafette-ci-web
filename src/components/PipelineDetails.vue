@@ -12,7 +12,7 @@
       v-if="pipeline"
     />
 
-    <tabs :tabs="tabs" />
+    <inner-navigation-tabs />
 
     <router-view
       :pipeline="pipeline"
@@ -27,14 +27,14 @@ import { mapState } from 'vuex'
 import { BBreadcrumb } from 'bootstrap-vue'
 import PipelineHeader from '@/components/PipelineHeader'
 import SectionHeader from '@/components/SectionHeader'
-import Tabs from '@/components/Tabs'
+import InnerNavigationTabs from '@/components/InnerNavigationTabs'
 
 export default {
   components: {
     BBreadcrumb,
     SectionHeader,
     PipelineHeader,
-    Tabs
+    InnerNavigationTabs
   },
   props: {
     repoSource: {
@@ -63,44 +63,6 @@ export default {
           text: `${this.repoName}`,
           to: { name: 'PipelineOverview', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } },
           active: true
-        }
-      ],
-      tabs: [
-        {
-          text: 'Overview',
-          icon: 'industry',
-          enabled: true,
-          to: { name: 'PipelineOverview', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
-        },
-        {
-          text: 'Builds',
-          icon: 'tools',
-          enabled: () => { return this.pipeline && this.pipeline.releaseTargets && this.pipeline.releaseTargets.length > 0 },
-          to: { name: 'PipelineBuilds', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
-        },
-        {
-          text: 'Releases',
-          icon: 'upload',
-          enabled: true,
-          to: { name: 'PipelineReleases', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
-        },
-        {
-          text: 'Trigger',
-          icon: 'project-diagram',
-          enabled: true,
-          to: { name: 'PipelineTriggers', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
-        },
-        {
-          text: 'Insights',
-          icon: 'lightbulb',
-          enabled: true,
-          to: { name: 'PipelineStatistics', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
-        },
-        {
-          text: 'Secrets',
-          icon: 'user-secret',
-          enabled: true,
-          to: { name: 'PipelineSecretEncrypter', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
         }
       ]
     }

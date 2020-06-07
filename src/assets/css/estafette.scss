@@ -426,8 +426,7 @@ button.btn-clipboard {
 }
 
 // navigation main sidebar and inner sidebar
-.main-sidebar-nav,
-.inner-sidebar-nav {
+.main-sidebar-nav {
   @extend .text-nowrap;
   @extend .bg-dark;
 
@@ -503,22 +502,6 @@ button.btn-clipboard {
 
   .dropdown-item:hover {
     @extend .bg-dark;
-  }
-}
-
-.inner-sidebar-nav {
-  @extend .h5;
-  @extend .rounded;
-  @extend .m-3;
-  @extend .pt-4;
-  @extend .pr-1;
-  @extend .pb-4;
-  @extend .pl-1;
-
-  margin-top: 100px !important;
-
-  .sidebar-icon {  
-    width: 40px !important;
   }
 }
 

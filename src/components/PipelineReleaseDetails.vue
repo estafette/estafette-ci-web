@@ -12,7 +12,7 @@
       :release="release"
     />
 
-    <tabs :tabs="tabs" />
+    <inner-navigation-tabs />
 
     <router-view
       :release="release"
@@ -27,14 +27,14 @@ import { mapState } from 'vuex'
 import { BBreadcrumb } from 'bootstrap-vue'
 import SectionHeader from '@/components/SectionHeader'
 import ReleaseHeader from '@/components/ReleaseHeader'
-import Tabs from '@/components/Tabs'
+import InnerNavigationTabs from '@/components/InnerNavigationTabs'
 
 export default {
   components: {
     BBreadcrumb,
     SectionHeader,
     ReleaseHeader,
-    Tabs
+    InnerNavigationTabs
   },
   props: {
     repoSource: {
@@ -73,14 +73,6 @@ export default {
         },
         {
           text: '...'
-        }
-      ],
-      tabs: [
-        {
-          text: 'Logs',
-          icon: 'poll-h',
-          enabled: true,
-          to: { name: 'PipelineReleaseLogs', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName, releaseID: this.releaseID } }
         }
       ]
     }

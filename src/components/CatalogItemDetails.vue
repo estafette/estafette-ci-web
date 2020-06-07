@@ -12,7 +12,7 @@
       :catalog-item="catalogItem"
     />
 
-    <tabs :tabs="tabs" />
+    <inner-navigation-tabs />
 
     <router-view
       v-if="catalogItem"
@@ -26,14 +26,14 @@
 import { BBreadcrumb } from 'bootstrap-vue'
 import CatalogItemHeader from '@/components/CatalogItemHeader'
 import SectionHeader from '@/components/SectionHeader'
-import Tabs from '@/components/Tabs'
+import InnerNavigationTabs from '@/components/InnerNavigationTabs'
 
 export default {
   components: {
     BBreadcrumb,
     SectionHeader,
     CatalogItemHeader,
-    Tabs
+    InnerNavigationTabs
   },
   props: {
     repoSource: {
@@ -62,14 +62,6 @@ export default {
           text: this.repoName,
           to: { name: 'CatalogItemOverview', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } },
           active: true
-        }
-      ],
-      tabs: [
-        {
-          text: 'Overview',
-          icon: 'industry',
-          enabled: true,
-          to: { name: 'CatalogItemOverview', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
         }
       ]
     }

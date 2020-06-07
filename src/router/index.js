@@ -52,37 +52,61 @@ export default new Router({
           path: 'overview',
           name: 'PipelineOverview',
           props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineOverview.vue')
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineOverview.vue'),
+          meta: {
+            text: 'Overview',
+            icon: 'industry'
+          }
         },
         {
           path: 'builds',
           name: 'PipelineBuilds',
           props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineBuilds.vue')
-        },
-        {
-          path: 'statistics',
-          name: 'PipelineStatistics',
-          props: (route) => ({ query: route.query }),
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineStatistics.vue')
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineBuilds.vue'),
+          meta: {
+            text: 'Builds',
+            icon: 'tools'
+          }
         },
         {
           path: 'releases',
           name: 'PipelineReleases',
           props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineReleases.vue')
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineReleases.vue'),
+          meta: {
+            text: 'Releases',
+            icon: 'upload'
+          }
         },
         {
           path: 'triggers',
           name: 'PipelineTriggers',
           props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineTriggers.vue')
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineTriggers.vue'),
+          meta: {
+            text: 'Trigger',
+            icon: 'project-diagram'
+          }
+        },
+        {
+          path: 'statistics',
+          name: 'PipelineStatistics',
+          props: (route) => ({ query: route.query }),
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineStatistics.vue'),
+          meta: {
+            text: 'Insights',
+            icon: 'lightbulb'
+          }
         },
         {
           path: 'encrypt',
           name: 'PipelineSecretEncrypter',
           props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/SecretEncrypter.vue')
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/SecretEncrypter.vue'),
+          meta: {
+            text: 'Secrets',
+            icon: 'user-secret'
+          }
         }
       ]
     },
@@ -99,13 +123,21 @@ export default new Router({
           path: 'logs',
           name: 'PipelineBuildLogs',
           props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineBuildLogs.vue')
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineBuildLogs.vue'),
+          meta: {
+            text: 'Logs',
+            icon: 'poll-h'
+          }
         },
         {
           path: 'manifest',
           name: 'PipelineBuildManifest',
           props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineBuildManifest.vue')
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineBuildManifest.vue'),
+          meta: {
+            text: 'Manifest',
+            icon: 'book'
+          }
         }
       ]
     },
@@ -122,7 +154,11 @@ export default new Router({
           path: 'logs',
           name: 'PipelineReleaseLogs',
           props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineReleaseLogs.vue')
+          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineReleaseLogs.vue'),
+          meta: {
+            text: 'Logs',
+            icon: 'poll-h'
+          }
         }
       ]
     },
@@ -152,7 +188,11 @@ export default new Router({
           path: 'overview',
           name: 'CatalogItemOverview',
           props: true,
-          component: () => import(/* webpackChunkName: "catalog" */ '../components/CatalogItemOverview.vue')
+          component: () => import(/* webpackChunkName: "catalog" */ '../components/CatalogItemOverview.vue'),
+          meta: {
+            text: 'Overview',
+            icon: 'industry'
+          }
         }
       ]
     },

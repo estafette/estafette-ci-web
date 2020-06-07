@@ -13,7 +13,7 @@
       <font-awesome-icon
         v-if="route.meta && route.meta.icon"
         :icon="route.meta ? route.meta.icon : ''"
-        class="sidebar-icon"
+        class="mr-2"
       />
       <span>
         {{ route.meta && route.meta.text ? route.meta.text : route.name }}
@@ -27,10 +27,10 @@ import { mapState } from 'vuex'
 import { BNav, BNavItem } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faKey, faShieldAlt, faUser, faUsers, faSitemap, faHammer, faUserSecret, faClipboardCheck, faChartPie, faListOl, faChartLine, faHeart, faPassport } from '@fortawesome/free-solid-svg-icons'
+import { faKey, faShieldAlt, faUser, faUsers, faSitemap, faHammer, faUserSecret, faClipboardCheck, faChartPie, faListOl, faChartLine, faHeart, faPassport, faIndustry, faTools, faUpload, faProjectDiagram, faLightbulb, faPollH, faBook } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faKey, faShieldAlt, faUser, faUsers, faSitemap, faHammer, faUserSecret, faClipboardCheck, faChartPie, faListOl, faChartLine, faHeart, faPassport)
+library.add(faKey, faShieldAlt, faUser, faUsers, faSitemap, faHammer, faUserSecret, faClipboardCheck, faChartPie, faListOl, faChartLine, faHeart, faPassport, faIndustry, faTools, faUpload, faProjectDiagram, faLightbulb, faUserSecret, faPollH, faBook)
 
 export default {
   components: {

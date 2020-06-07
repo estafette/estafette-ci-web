@@ -18,7 +18,7 @@
       :build="build"
     />
 
-    <tabs :tabs="tabs" />
+    <inner-navigation-tabs />
 
     <router-view
       :build="build"
@@ -34,7 +34,7 @@ import { BBreadcrumb } from 'bootstrap-vue'
 import SectionHeader from '@/components/SectionHeader'
 import BuildHeader from '@/components/BuildHeader'
 import PipelineBuildWarnings from '@/components/PipelineBuildWarnings'
-import Tabs from '@/components/Tabs'
+import InnerNavigationTabs from '@/components/InnerNavigationTabs'
 
 export default {
   components: {
@@ -42,7 +42,7 @@ export default {
     SectionHeader,
     BuildHeader,
     PipelineBuildWarnings,
-    Tabs
+    InnerNavigationTabs
   },
   props: {
     repoSource: {
@@ -81,20 +81,6 @@ export default {
         },
         {
           text: '...'
-        }
-      ],
-      tabs: [
-        {
-          text: 'Logs',
-          icon: 'poll-h',
-          enabled: true,
-          to: { name: 'PipelineBuildLogs', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName, id: this.id } }
-        },
-        {
-          text: 'Manifest',
-          icon: 'book',
-          enabled: true,
-          to: { name: 'PipelineBuildManifest', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName, id: this.id } }
         }
       ]
     }
