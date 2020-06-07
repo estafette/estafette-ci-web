@@ -1,14 +1,6 @@
 <template>
   <div>
-    <b-jumbotron
-      header="Builds & releases"
-      bg-variant="success"
-      text-variant="white"
-      header-level="5"
-      container-fluid
-      fluid
-      class="section-header"
-    />
+    <section-header section-route-name="Pipelines" />
 
     <b-breadcrumb
       :items="breadcrumbs"
@@ -25,20 +17,22 @@
     <router-view
       :release="release"
       v-if="release"
+      class="m-3"
     />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import { BBreadcrumb, BJumbotron } from 'bootstrap-vue'
+import { BBreadcrumb } from 'bootstrap-vue'
+import SectionHeader from '@/components/SectionHeader'
 import ReleaseHeader from '@/components/ReleaseHeader'
 import Tabs from '@/components/Tabs'
 
 export default {
   components: {
     BBreadcrumb,
-    BJumbotron,
+    SectionHeader,
     ReleaseHeader,
     Tabs
   },

@@ -31,29 +31,11 @@
         </b-jumbotron>
       </div>
 
-      <div
+      <section-banner
         v-for="section in sections"
-        :key="section.header"
-        class="col-12 col-md-6 col-xxxl-3"
-      >
-        <b-jumbotron
-          :header="section.header"
-          :lead="section.lead"
-          :bg-variant="section.bgVariant"
-          :text-variant="section.textVariant"
-          header-level="4"
-          container-fluid
-          fluid
-          class="mb-3 p-3 rounded border"
-        >
-          <b-button
-            variant="light"
-            :to="section.to"
-          >
-            See more
-          </b-button>
-        </b-jumbotron>
-      </div>
+        :key="section.name"
+        :section="section"
+      />
     </div>
 
     <div class="row">
@@ -74,48 +56,53 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { BJumbotron, BButton } from 'bootstrap-vue'
+import SectionBanner from '@/components/SectionBanner'
 import MyPipelines from '@/components/MyPipelines'
 
 export default {
   components: {
     BJumbotron,
     BButton,
+    SectionBanner,
     MyPipelines
   },
 
-  data: function () {
-    return {
-      sections: [
-        {
-          header: 'Builds & releases',
-          lead: 'View and release applications',
-          bgVariant: 'success',
-          textVariant: 'white',
-          to: { name: 'Pipelines' }
-        },
-        {
-          header: 'Catalog',
-          lead: 'View ownership, performance and more',
-          bgVariant: 'info',
-          textVariant: 'white',
-          to: { name: 'Catalog' }
-        },
-        {
-          header: 'Insights',
-          lead: 'See stats, rankings and trends',
-          bgVariant: 'primary',
-          textVariant: 'white',
-          to: { name: 'Insights' }
-        },
-        {
-          header: 'Create',
-          lead: 'Generate manifests and secrets',
-          bgVariant: 'warning',
-          textVariant: 'dark',
-          to: { name: 'Create' }
+  methods: {
+    isFunction (functionToCheck) {
+      return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]'
+    }
+  },
+
+  computed: {
+    ...mapState('user', {
+      user: 'me'
+    }),
+
+    sections () {
+      return this.$router.options.routes.filter(r => {
+        // only include routes without meta.hide: true
+        if (r.meta && r.meta.hide) {
+          return false
         }
-      ]
+
+        if (!r.meta || !r.meta.banner) {
+          return false
+        }
+
+        // only include routes with meta.allowedWithoutAuth: true if user is not logged in
+        if ((!this.user || !this.user.active) && (!r.meta || !r.meta.allowedWithoutAuth)) {
+          return false
+        }
+
+        // filter out routes that require a role the user does not have
+        if (r.meta && r.meta.requiredRole && (!this.user || !this.user.active || !this.user.roles || !this.user.roles.includes(r.meta.requiredRole))) {
+          return false
+        }
+
+        return true
+      })
     }
   }
 }

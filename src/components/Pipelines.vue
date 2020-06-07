@@ -1,14 +1,6 @@
 <template>
   <div>
-    <b-jumbotron
-      header="Builds & releases"
-      bg-variant="success"
-      text-variant="white"
-      header-level="5"
-      container-fluid
-      fluid
-      class="section-header"
-    />
+    <section-header />
 
     <div class="row m-0">
       <div class="col-12 col-lg-6">
@@ -104,9 +96,9 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BJumbotron } from 'bootstrap-vue'
 import debounce from 'lodash/debounce'
 
+import SectionHeader from '@/components/SectionHeader'
 import Spinner from '@/components/Spinner'
 import PipelineRow from '@/components/PipelineRow'
 import StatusFilter from '@/components/StatusFilter'
@@ -120,7 +112,7 @@ import Pagination from '@/components/Pagination'
 
 export default {
   components: {
-    BJumbotron,
+    SectionHeader,
     Spinner,
     PipelineRow,
     StatusFilter,

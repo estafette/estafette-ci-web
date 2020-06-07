@@ -1,14 +1,6 @@
 <template>
   <div>
-    <b-jumbotron
-      header="Catalog"
-      bg-variant="info"
-      text-variant="white"
-      header-level="5"
-      container-fluid
-      fluid
-      class="section-header"
-    />
+    <section-header />
 
     <div class="row m-0">
       <div class="col-12 col-sm-6 col-lg-3 col-xxl-2">
@@ -83,7 +75,8 @@
 </template>
 
 <script>
-import { BForm, BFormSelect, BInputGroup, BInputGroupPrepend, BJumbotron } from 'bootstrap-vue'
+import { BForm, BFormSelect, BInputGroup, BInputGroupPrepend } from 'bootstrap-vue'
+import SectionHeader from '@/components/SectionHeader'
 import Spinner from '@/components/Spinner'
 import CatalogItemRow from '@/components/CatalogItemRow'
 import PaginationCompact from '@/components/PaginationCompact'
@@ -108,7 +101,7 @@ export default {
     PaginationCompact,
     Pagination,
     Tabs,
-    BJumbotron,
+    SectionHeader,
     FontAwesomeIcon
   },
 

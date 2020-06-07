@@ -1,14 +1,6 @@
 <template>
   <div>
-    <b-jumbotron
-      header="Catalog"
-      bg-variant="info"
-      text-variant="white"
-      header-level="5"
-      container-fluid
-      fluid
-      class="section-header"
-    />
+    <section-header section-route-name="Catalog" />
 
     <b-breadcrumb
       :items="breadcrumbs"
@@ -25,19 +17,21 @@
     <router-view
       v-if="catalogItem"
       :catalog-item="catalogItem"
+      class="m-3"
     />
   </div>
 </template>
 
 <script>
-import { BBreadcrumb, BJumbotron } from 'bootstrap-vue'
+import { BBreadcrumb } from 'bootstrap-vue'
 import CatalogItemHeader from '@/components/CatalogItemHeader'
+import SectionHeader from '@/components/SectionHeader'
 import Tabs from '@/components/Tabs'
 
 export default {
   components: {
     BBreadcrumb,
-    BJumbotron,
+    SectionHeader,
     CatalogItemHeader,
     Tabs
   },

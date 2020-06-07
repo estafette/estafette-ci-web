@@ -12,7 +12,6 @@ export default new Router({
       name: 'Home',
       component: () => import(/* webpackChunkName: "home" */ '../components/Home.vue'),
       meta: {
-        sidebar: true,
         icon: 'home',
         exact: true
       }
@@ -21,7 +20,10 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: () => import(/* webpackChunkName: "login" */ '../components/Login.vue'),
-      meta: { allowedWithoutAuth: true }
+      meta: {
+        allowedWithoutAuth: true,
+        hide: true
+      }
     },
     {
       path: '/pipelines',
@@ -29,15 +31,20 @@ export default new Router({
       component: () => import(/* webpackChunkName: "pipelines" */ '../components/Pipelines.vue'),
       props: (route) => ({ query: route.query }),
       meta: {
-        sidebar: true,
         text: 'Builds & releases',
-        icon: 'tools'
+        icon: 'tools',
+        banner: true,
+        lead: 'View and release applications',
+        variant: 'success'
       }
     },
     {
       path: '/pipelines/:repoSource/:repoOwner/:repoName',
       name: 'PipelineDetails',
       props: true,
+      meta: {
+        hide: true
+      },
       component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineDetails.vue'),
       redirect: { name: 'PipelineOverview' },
       children: [
@@ -83,6 +90,9 @@ export default new Router({
       path: '/pipelines/:repoSource/:repoOwner/:repoName/builds/:id',
       name: 'PipelineBuildDetails',
       props: true,
+      meta: {
+        hide: true
+      },
       component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineBuildDetails.vue'),
       children: [
         {
@@ -103,6 +113,9 @@ export default new Router({
       path: '/pipelines/:repoSource/:repoOwner/:repoName/releases/:releaseID',
       name: 'PipelineReleaseDetails',
       props: true,
+      meta: {
+        hide: true
+      },
       component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineReleaseDetails.vue'),
       children: [
         {
@@ -119,13 +132,18 @@ export default new Router({
       component: () => import(/* webpackChunkName: "catalog" */ '../components/Catalog.vue'),
       props: (route) => ({ query: route.query }),
       meta: {
-        sidebar: true,
-        icon: 'book-open'
+        icon: 'book-open',
+        banner: true,
+        lead: 'View ownership, performance and more',
+        variant: 'info'
       }
     },
     {
       path: '/catalog/:repoSource/:repoOwner/:repoName',
       name: 'CatalogItemDetails',
+      meta: {
+        hide: true
+      },
       component: () => import(/* webpackChunkName: "catalog" */ '../components/CatalogItemDetails.vue'),
       props: true,
       redirect: { name: 'CatalogItemOverview' },
@@ -139,8 +157,233 @@ export default new Router({
       ]
     },
     {
+      path: '/insights',
+      name: 'Insights',
+      component: () => import(/* webpackChunkName: "views" */ '../components/ViewWithNav.vue'),
+      meta: {
+        icon: 'lightbulb',
+        banner: true,
+        lead: 'See stats, rankings and trends',
+        variant: 'primary'
+      },
+      props: true,
+      redirect: { name: 'InsightsCounters' },
+      children: [
+        {
+          path: 'counters',
+          name: 'InsightsCounters',
+          props: true,
+          component: () => import(/* webpackChunkName: "insights" */ '../components/InsightsCounters.vue'),
+          meta: {
+            text: 'Counters',
+            icon: 'chart-pie'
+          }
+        },
+        {
+          path: 'rankings',
+          name: 'InsightsRankings',
+          props: true,
+          component: () => import(/* webpackChunkName: "insights" */ '../components/InsightsRankings.vue'),
+          meta: {
+            text: 'Rankings',
+            icon: 'list-ol'
+          }
+        },
+        {
+          path: 'trends',
+          name: 'InsightsTrends',
+          props: true,
+          component: () => import(/* webpackChunkName: "insights" */ '../components/InsightsTrends.vue'),
+          meta: {
+            text: 'Trends',
+            icon: 'chart-line'
+          }
+        }
+      ]
+    },
+    {
+      path: '/configuration',
+      name: 'Configuration',
+      props: true,
+      component: () => import(/* webpackChunkName: "views" */ '../components/ViewWithNav.vue'),
+      meta: {
+        icon: 'cogs'
+      },
+      redirect: { name: 'ConfigurationCredentials' },
+      children: [
+        {
+          path: 'credentials',
+          name: 'ConfigurationCredentials',
+          props: true,
+          component: () => import(/* webpackChunkName: "configuration" */ '../components/ConfigurationCredentials.vue'),
+          meta: {
+            text: 'Credentials',
+            icon: 'key'
+          }
+        },
+        {
+          path: 'trusted-images',
+          name: 'ConfigurationTrustedImages',
+          props: true,
+          component: () => import(/* webpackChunkName: "configuration" */ '../components/ConfigurationTrustedImages.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            text: 'Trusted Images',
+            icon: 'shield-alt'
+          }
+        }
+      ]
+    },
+    {
+      path: '/create',
+      name: 'Create',
+      component: () => import(/* webpackChunkName: "views" */ '../components/ViewWithNav.vue'),
+      meta: {
+        icon: 'plus-circle',
+        banner: true,
+        lead: 'Generate manifests and secrets',
+        variant: 'warning'
+      },
+      props: true,
+      redirect: { name: 'ManifestGenerator' },
+      children: [
+        {
+          path: 'generate',
+          name: 'ManifestGenerator',
+          props: true,
+          meta: {
+            icon: 'hammer',
+            text: 'Generate'
+          },
+          component: () => import(/* webpackChunkName: "create" */ '../components/ManifestGenerator.vue')
+        },
+        {
+          path: 'validate',
+          name: 'ManifestValidator',
+          props: true,
+          meta: {
+            text: 'Validate',
+            icon: 'clipboard-check'
+          },
+          component: () => import(/* webpackChunkName: "create" */ '../components/ManifestValidator.vue')
+        },
+        {
+          path: 'encrypt',
+          name: 'SecretEncrypter',
+          props: true,
+          meta: {
+            text: 'Secrets',
+            icon: 'user-secret'
+          },
+          component: () => import(/* webpackChunkName: "create" */ '../components/SecretEncrypter.vue')
+        }
+      ]
+    },
+    {
+      path: '/admin',
+      name: 'Admin',
+      props: true,
+      component: () => import(/* webpackChunkName: "views" */ '../components/ViewWithNav.vue'),
+      meta: {
+        icon: 'sliders-h',
+        position: 'bottom',
+        requiredRole: 'administrator'
+      },
+      redirect: { name: 'AdminUsers' },
+      children: [
+        {
+          path: 'users',
+          name: 'AdminUsers',
+          props: true,
+          component: () => import(/* webpackChunkName: "views" */ '../components/ViewDummyPage.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            text: 'Users',
+            icon: 'user'
+          }
+        },
+        {
+          path: 'groups',
+          name: 'AdminGroups',
+          props: true,
+          component: () => import(/* webpackChunkName: "views" */ '../components/ViewDummyPage.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            text: 'Groups',
+            icon: 'users'
+          }
+        },
+        {
+          path: 'organizations',
+          name: 'AdminOrganizations',
+          props: true,
+          component: () => import(/* webpackChunkName: "views" */ '../components/ViewDummyPage.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            text: 'Organizations',
+            icon: 'sitemap'
+          }
+        }
+      ]
+    },
+    {
+      path: '/user',
+      name: 'User',
+      props: true,
+      component: () => import(/* webpackChunkName: "views" */ '../components/ViewWithNav.vue'),
+      redirect: { name: 'UserDetails' },
+      meta: {
+        textFunction: (user) => {
+          if (user && user.identities && user.identities.length > 0) {
+            var identity = user.identities.find(i => i.name)
+            if (identity && identity.name) {
+              return identity.name
+            }
+          }
+
+          return user && user.email ? user.email : ''
+        },
+        icon: 'user-circle',
+        position: 'bottom'
+      },
+      children: [
+        {
+          path: 'details',
+          name: 'UserDetails',
+          props: true,
+          component: () => import(/* webpackChunkName: "preferences" */ '../components/UserDetails.vue'),
+          meta: {
+            text: 'Details',
+            icon: 'passport'
+          }
+        },
+        {
+          path: 'preferences',
+          name: 'UserPreferences',
+          props: true,
+          component: () => import(/* webpackChunkName: "views" */ '../components/ViewDummyPage.vue'),
+          meta: {
+            text: 'Preferences',
+            icon: 'heart'
+          }
+        }
+      ]
+    },
+    // redirects
+    {
+      path: '/logs/:repoSource/:repoOwner/:repoName/:repoBranch/:id',
+      name: 'LegacyLogs',
+      redirect: { name: 'PipelineBuildLogs' },
+      meta: {
+        hide: true
+      }
+    },
+    {
       path: '/statistics',
       redirect: { name: 'Insights' },
+      meta: {
+        hide: true
+      },
       children: [
         {
           path: 'counters',
@@ -157,79 +400,18 @@ export default new Router({
       ]
     },
     {
-      path: '/insights',
-      name: 'Insights',
-      component: () => import(/* webpackChunkName: "insights" */ '../components/Insights.vue'),
-      meta: {
-        sidebar: true,
-        icon: 'lightbulb'
-      },
-      props: true,
-      redirect: { name: 'InsightsCounters' },
-      children: [
-        {
-          path: 'counters',
-          name: 'InsightsCounters',
-          props: true,
-          component: () => import(/* webpackChunkName: "insights" */ '../components/InsightsCounters.vue')
-        },
-        {
-          path: 'rankings',
-          name: 'InsightsRankings',
-          props: true,
-          component: () => import(/* webpackChunkName: "insights" */ '../components/InsightsRankings.vue')
-        },
-        {
-          path: 'trends',
-          name: 'InsightsTrends',
-          props: true,
-          component: () => import(/* webpackChunkName: "insights" */ '../components/InsightsTrends.vue')
-        }
-      ]
-    },
-    {
       path: '/config',
-      redirect: { name: 'Configuration' }
-    },
-    {
-      path: '/configuration',
-      name: 'Configuration',
-      props: true,
-      component: () => import(/* webpackChunkName: "configuration" */ '../components/Configuration.vue'),
+      redirect: { name: 'Configuration' },
       meta: {
-        sidebar: true,
-        icon: 'cogs'
-      },
-      redirect: { name: 'ConfigurationCredentials' },
-      children: [
-        {
-          path: 'credentials',
-          name: 'ConfigurationCredentials',
-          props: true,
-          component: () => import(/* webpackChunkName: "configuration" */ '../components/ConfigurationCredentials.vue'),
-          meta: {
-            text: 'Credentials',
-            icon: 'key',
-            innerbar: true
-          }
-        },
-        {
-          path: 'trusted-images',
-          name: 'ConfigurationTrustedImages',
-          props: true,
-          component: () => import(/* webpackChunkName: "configuration" */ '../components/ConfigurationTrustedImages.vue'),
-          meta: {
-            requiredRole: 'administrator',
-            text: 'Trusted Images',
-            icon: 'shield-alt',
-            innerbar: true
-          }
-        }
-      ]
+        hide: true
+      }
     },
     {
       path: '/manifest',
       redirect: { name: 'Create' },
+      meta: {
+        hide: true
+      },
       children: [
         {
           path: 'generate',
@@ -244,114 +426,6 @@ export default new Router({
           redirect: { name: 'SecretEncrypter' }
         }
       ]
-    },
-    {
-      path: '/create',
-      name: 'Create',
-      component: () => import(/* webpackChunkName: "create" */ '../components/Create.vue'),
-      meta: {
-        sidebar: true,
-        icon: 'plus-circle'
-      },
-      props: true,
-      redirect: { name: 'ManifestGenerator' },
-      children: [
-        {
-          path: 'generate',
-          name: 'ManifestGenerator',
-          props: true,
-          component: () => import(/* webpackChunkName: "create" */ '../components/ManifestGenerator.vue')
-        },
-        {
-          path: 'validate',
-          name: 'ManifestValidator',
-          props: true,
-          component: () => import(/* webpackChunkName: "create" */ '../components/ManifestValidator.vue')
-        },
-        {
-          path: 'encrypt',
-          name: 'SecretEncrypter',
-          props: true,
-          component: () => import(/* webpackChunkName: "create" */ '../components/SecretEncrypter.vue')
-        }
-      ]
-    },
-    {
-      path: '/admin',
-      name: 'Admin',
-      props: true,
-      component: () => import(/* webpackChunkName: "admin" */ '../components/Admin.vue'),
-      meta: {
-        sidebar: true,
-        icon: 'sliders-h',
-        position: 'bottom',
-        requiredRole: 'administrator'
-      },
-      redirect: { name: 'AdminUsers' },
-      children: [
-        {
-          path: 'users',
-          name: 'AdminUsers',
-          props: true,
-          component: () => import(/* webpackChunkName: "admin" */ '../components/AdminUsers.vue'),
-          meta: {
-            requiredRole: 'administrator',
-            text: 'Users',
-            icon: 'user',
-            innerbar: true
-          }
-        },
-        {
-          path: 'groups',
-          name: 'AdminGroups',
-          props: true,
-          component: () => import(/* webpackChunkName: "admin" */ '../components/AdminGroups.vue'),
-          meta: {
-            requiredRole: 'administrator',
-            text: 'Groups',
-            icon: 'users',
-            innerbar: true
-          }
-        },
-        {
-          path: 'organizations',
-          name: 'AdminOrganizations',
-          props: true,
-          component: () => import(/* webpackChunkName: "admin" */ '../components/AdminOrganizations.vue'),
-          meta: {
-            requiredRole: 'administrator',
-            text: 'Organizations',
-            icon: 'sitemap',
-            innerbar: true
-          }
-        }
-      ]
-    },
-    {
-      path: '/preferences',
-      name: 'Preferences',
-      props: true,
-      component: () => import(/* webpackChunkName: "preferences" */ '../components/Preferences.vue'),
-      meta: {
-        sidebar: true,
-        textFunction: (user) => {
-          if (user && user.identities && user.identities.length > 0) {
-            var identity = user.identities.find(i => i.name)
-            if (identity && identity.name) {
-              return identity.name
-            }
-          }
-
-          return user && user.email ? user.email : ''
-        },
-        icon: 'user-circle',
-        position: 'bottom'
-      }
-    },
-    {
-      path: '/logs/:repoSource/:repoOwner/:repoName/:repoBranch/:id',
-      name: 'LegacyLogs',
-      redirect: { name: 'PipelineBuildLogs' }
     }
   ]
 })

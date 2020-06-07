@@ -1,8 +1,5 @@
 <template>
   <div v-if="user && user.active">
-    <h3 id="trustedimages">
-      Trusted images
-    </h3>
     <pre
       v-if="trustedimages"
       class="rounded border bg-white p-3"

@@ -27,27 +27,16 @@ import { mapState } from 'vuex'
 import { BNav, BNavItem } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faKey, faShieldAlt, faUser, faUsers, faSitemap } from '@fortawesome/free-solid-svg-icons'
+import { faKey, faShieldAlt, faUser, faUsers, faSitemap, faHammer, faUserSecret, faClipboardCheck, faChartPie, faListOl, faChartLine, faHeart, faPassport } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faKey, faShieldAlt, faUser, faUsers, faSitemap)
+library.add(faKey, faShieldAlt, faUser, faUsers, faSitemap, faHammer, faUserSecret, faClipboardCheck, faChartPie, faListOl, faChartLine, faHeart, faPassport)
 
 export default {
   components: {
     BNav,
     BNavItem,
     FontAwesomeIcon
-  },
-
-  props: {
-    items: {
-      type: Array,
-      default: function () { return [] }
-    }
-  },
-
-  created () {
-    console.log('inner nav', this.$router)
   },
 
   methods: {
@@ -64,7 +53,6 @@ export default {
     routes () {
       // get name of active outer route
       var activeOuterRouteName = this.$route.matched[0].name
-      console.log(activeOuterRouteName)
 
       // get active outer route
       var activeOuterRoute = this.$router.options.routes.find(r => r.name === activeOuterRouteName)
@@ -77,8 +65,8 @@ export default {
       }
 
       return activeOuterRoute.children.filter(r => {
-        // only include routes with meta.innerbar: true
-        if (!r.meta || !r.meta.innerbar) {
+        // only include routes without meta.hide: true
+        if (r.meta && r.meta.hide) {
           return false
         }
 

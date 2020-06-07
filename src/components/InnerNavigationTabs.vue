@@ -1,21 +1,8 @@
 <template>
   <b-nav
-    vertical
-    class="main-sidebar-nav"
+    tabs
+    class="m-3"
   >
-    <b-nav-item
-      :to="{ name: 'Home'}"
-      exact
-      class="logo"
-    >
-      <font-awesome-icon
-        icon="shipping-fast"
-        class="sidebar-icon"
-      />
-      <span>
-        Estafette
-      </span>
-    </b-nav-item>
     <b-nav-item
       v-for="route in routes"
       :key="route.name"
@@ -24,6 +11,7 @@
       :class="route.meta && route.meta.class ? route.meta.class : ''"
     >
       <font-awesome-icon
+        v-if="route.meta && route.meta.icon"
         :icon="route.meta ? route.meta.icon : ''"
         class="sidebar-icon"
       />
@@ -39,10 +27,10 @@ import { mapState } from 'vuex'
 import { BNav, BNavItem } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers, faSlidersH } from '@fortawesome/free-solid-svg-icons'
+import { faKey, faShieldAlt, faUser, faUsers, faSitemap, faHammer, faUserSecret, faClipboardCheck, faChartPie, faListOl, faChartLine, faHeart, faPassport } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers, faSlidersH)
+library.add(faKey, faShieldAlt, faUser, faUsers, faSitemap, faHammer, faUserSecret, faClipboardCheck, faChartPie, faListOl, faChartLine, faHeart, faPassport)
 
 export default {
   components: {
@@ -63,8 +51,20 @@ export default {
     }),
 
     routes () {
-      var seenPositionBottom = false
-      return this.$router.options.routes.filter(r => {
+      // get name of active outer route
+      var activeOuterRouteName = this.$route.matched[0].name
+
+      // get active outer route
+      var activeOuterRoute = this.$router.options.routes.find(r => r.name === activeOuterRouteName)
+      if (!activeOuterRoute) {
+        return []
+      }
+
+      if (!activeOuterRoute.children) {
+        return []
+      }
+
+      return activeOuterRoute.children.filter(r => {
         // only include routes without meta.hide: true
         if (r.meta && r.meta.hide) {
           return false
@@ -81,19 +81,6 @@ export default {
         }
 
         return true
-      }).map(r => {
-        // if meta.textFunction is set use it to set text
-        if (r.meta && r.meta.textFunction && this.isFunction(r.meta.textFunction)) {
-          r.meta.text = r.meta.textFunction(this.user)
-        }
-
-        // if meta.position: 'bottom' occurs first time set class to move this and following menu items to the bottom
-        if (r.meta && r.meta.position && r.meta.position === 'bottom' && !seenPositionBottom) {
-          r.meta.class = 'mt-auto'
-          seenPositionBottom = true
-        }
-
-        return r
       })
     }
   }

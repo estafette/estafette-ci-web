@@ -1,5 +1,5 @@
 <template>
-  <div class="m-3">
+  <div>
     <warning
       v-if="showPipelineRestrictWarning"
       :warning="warning"

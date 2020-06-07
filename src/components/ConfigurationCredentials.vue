@@ -1,8 +1,5 @@
 <template>
   <div v-if="user && user.active">
-    <h3 id="credentials">
-      Credentials
-    </h3>
     <pre
       v-if="credentials"
       class="rounded border bg-white p-3"

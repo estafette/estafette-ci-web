@@ -1,15 +1,5 @@
 <template>
-  <div v-if="user && user.active">
-    <b-jumbotron
-      header="Preferences"
-      bg-variant="secondary"
-      text-variant="white"
-      header-level="5"
-      container-fluid
-      fluid
-      class="section-header"
-    />
-
+  <div>
     <div class="row m-3">
       <div class="col-12">
         <h4>
@@ -43,11 +33,10 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BJumbotron, BAvatar, BButton } from 'bootstrap-vue'
+import { BAvatar, BButton } from 'bootstrap-vue'
 
 export default {
   components: {
-    BJumbotron,
     BAvatar,
     BButton
   },
