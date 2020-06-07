@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <inner-navigation-tabs />
+    <tabs :tabs="tabs" />
 
     <div class="row-header ml-3 mr-3">
       <div class="col-6">
@@ -81,7 +81,7 @@ import Spinner from '@/components/Spinner'
 import CatalogItemRow from '@/components/CatalogItemRow'
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
-import InnerNavigationTabs from '@/components/InnerNavigationTabs'
+import Tabs from '@/components/Tabs'
 import queryGenerator from '@/mixins/queryGenerator'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -100,7 +100,7 @@ export default {
     CatalogItemRow,
     PaginationCompact,
     Pagination,
-    InnerNavigationTabs,
+    Tabs,
     SectionHeader,
     FontAwesomeIcon
   },
