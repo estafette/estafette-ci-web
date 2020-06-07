@@ -18,7 +18,7 @@
       :build="build"
     />
 
-    <inner-navigation-tabs />
+    <inner-navigation-tabs section-route-name="Pipelines" />
 
     <router-view
       :build="build"

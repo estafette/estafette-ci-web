@@ -12,7 +12,7 @@
       v-if="pipeline"
     />
 
-    <inner-navigation-tabs />
+    <inner-navigation-tabs section-route-name="Pipelines" />
 
     <router-view
       :pipeline="pipeline"

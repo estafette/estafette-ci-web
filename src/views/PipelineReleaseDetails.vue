@@ -12,7 +12,7 @@
       :release="release"
     />
 
-    <inner-navigation-tabs />
+    <inner-navigation-tabs section-route-name="Pipelines" />
 
     <router-view
       :release="release"

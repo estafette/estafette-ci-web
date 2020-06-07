@@ -12,7 +12,7 @@
       :catalog-item="catalogItem"
     />
 
-    <inner-navigation-tabs />
+    <inner-navigation-tabs section-route-name="Catalog" />
 
     <router-view
       v-if="catalogItem"
