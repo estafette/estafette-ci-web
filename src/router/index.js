@@ -10,7 +10,7 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: () => import(/* webpackChunkName: "home" */ '../components/Home.vue'),
+      component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
       meta: {
         icon: 'home',
         exact: true
@@ -19,7 +19,7 @@ export default new Router({
     {
       path: '/login',
       name: 'Login',
-      component: () => import(/* webpackChunkName: "login" */ '../components/Login.vue'),
+      component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
       meta: {
         allowedWithoutAuth: true,
         hide: true
@@ -28,7 +28,7 @@ export default new Router({
     {
       path: '/pipelines',
       name: 'Pipelines',
-      component: () => import(/* webpackChunkName: "pipelines" */ '../components/Pipelines.vue'),
+      component: () => import(/* webpackChunkName: "pipelines" */ '../views/Pipelines.vue'),
       props: (route) => ({ query: route.query }),
       meta: {
         text: 'Builds & releases',
@@ -45,14 +45,14 @@ export default new Router({
       meta: {
         hide: true
       },
-      component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineDetails.vue'),
+      component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineDetails.vue'),
       redirect: { name: 'PipelineOverview' },
       children: [
         {
           path: 'overview',
           name: 'PipelineOverview',
           props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineOverview.vue'),
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineOverview.vue'),
           meta: {
             text: 'Overview',
             icon: 'industry'
@@ -62,7 +62,7 @@ export default new Router({
           path: 'builds',
           name: 'PipelineBuilds',
           props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineBuilds.vue'),
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineBuilds.vue'),
           meta: {
             text: 'Builds',
             icon: 'tools'
@@ -72,7 +72,7 @@ export default new Router({
           path: 'releases',
           name: 'PipelineReleases',
           props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineReleases.vue'),
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineReleases.vue'),
           meta: {
             text: 'Releases',
             icon: 'upload'
@@ -82,7 +82,7 @@ export default new Router({
           path: 'triggers',
           name: 'PipelineTriggers',
           props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineTriggers.vue'),
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineTriggers.vue'),
           meta: {
             text: 'Trigger',
             icon: 'project-diagram'
@@ -92,7 +92,7 @@ export default new Router({
           path: 'statistics',
           name: 'PipelineStatistics',
           props: (route) => ({ query: route.query }),
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineStatistics.vue'),
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineStatistics.vue'),
           meta: {
             text: 'Insights',
             icon: 'lightbulb'
@@ -102,7 +102,7 @@ export default new Router({
           path: 'encrypt',
           name: 'PipelineSecretEncrypter',
           props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/SecretEncrypter.vue'),
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/SecretEncrypter.vue'),
           meta: {
             text: 'Secrets',
             icon: 'user-secret'
@@ -117,13 +117,13 @@ export default new Router({
       meta: {
         hide: true
       },
-      component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineBuildDetails.vue'),
+      component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineBuildDetails.vue'),
       children: [
         {
           path: 'logs',
           name: 'PipelineBuildLogs',
           props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineBuildLogs.vue'),
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineBuildLogs.vue'),
           meta: {
             text: 'Logs',
             icon: 'poll-h'
@@ -133,7 +133,7 @@ export default new Router({
           path: 'manifest',
           name: 'PipelineBuildManifest',
           props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineBuildManifest.vue'),
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineBuildManifest.vue'),
           meta: {
             text: 'Manifest',
             icon: 'book'
@@ -148,13 +148,13 @@ export default new Router({
       meta: {
         hide: true
       },
-      component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineReleaseDetails.vue'),
+      component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineReleaseDetails.vue'),
       children: [
         {
           path: 'logs',
           name: 'PipelineReleaseLogs',
           props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../components/PipelineReleaseLogs.vue'),
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineReleaseLogs.vue'),
           meta: {
             text: 'Logs',
             icon: 'poll-h'
@@ -165,7 +165,7 @@ export default new Router({
     {
       path: '/catalog',
       name: 'Catalog',
-      component: () => import(/* webpackChunkName: "catalog" */ '../components/Catalog.vue'),
+      component: () => import(/* webpackChunkName: "catalog" */ '../views/Catalog.vue'),
       props: (route) => ({ query: route.query }),
       meta: {
         icon: 'book-open',
@@ -180,7 +180,7 @@ export default new Router({
       meta: {
         hide: true
       },
-      component: () => import(/* webpackChunkName: "catalog" */ '../components/CatalogItemDetails.vue'),
+      component: () => import(/* webpackChunkName: "catalog" */ '../views/CatalogItemDetails.vue'),
       props: true,
       redirect: { name: 'CatalogItemOverview' },
       children: [
@@ -188,7 +188,7 @@ export default new Router({
           path: 'overview',
           name: 'CatalogItemOverview',
           props: true,
-          component: () => import(/* webpackChunkName: "catalog" */ '../components/CatalogItemOverview.vue'),
+          component: () => import(/* webpackChunkName: "catalog" */ '../views/CatalogItemOverview.vue'),
           meta: {
             text: 'Overview',
             icon: 'industry'
@@ -199,7 +199,7 @@ export default new Router({
     {
       path: '/insights',
       name: 'Insights',
-      component: () => import(/* webpackChunkName: "views" */ '../components/ViewWithNav.vue'),
+      component: () => import(/* webpackChunkName: "views" */ '../views/ViewWithNav.vue'),
       meta: {
         icon: 'lightbulb',
         banner: true,
@@ -213,7 +213,7 @@ export default new Router({
           path: 'counters',
           name: 'InsightsCounters',
           props: true,
-          component: () => import(/* webpackChunkName: "insights" */ '../components/InsightsCounters.vue'),
+          component: () => import(/* webpackChunkName: "insights" */ '../views/InsightsCounters.vue'),
           meta: {
             text: 'Counters',
             icon: 'chart-pie'
@@ -223,7 +223,7 @@ export default new Router({
           path: 'rankings',
           name: 'InsightsRankings',
           props: true,
-          component: () => import(/* webpackChunkName: "insights" */ '../components/InsightsRankings.vue'),
+          component: () => import(/* webpackChunkName: "insights" */ '../views/InsightsRankings.vue'),
           meta: {
             text: 'Rankings',
             icon: 'list-ol'
@@ -233,7 +233,7 @@ export default new Router({
           path: 'trends',
           name: 'InsightsTrends',
           props: true,
-          component: () => import(/* webpackChunkName: "insights" */ '../components/InsightsTrends.vue'),
+          component: () => import(/* webpackChunkName: "insights" */ '../views/InsightsTrends.vue'),
           meta: {
             text: 'Trends',
             icon: 'chart-line'
@@ -245,7 +245,7 @@ export default new Router({
       path: '/configuration',
       name: 'Configuration',
       props: true,
-      component: () => import(/* webpackChunkName: "views" */ '../components/ViewWithNav.vue'),
+      component: () => import(/* webpackChunkName: "views" */ '../views/ViewWithNav.vue'),
       meta: {
         icon: 'cogs'
       },
@@ -255,7 +255,7 @@ export default new Router({
           path: 'credentials',
           name: 'ConfigurationCredentials',
           props: true,
-          component: () => import(/* webpackChunkName: "configuration" */ '../components/ConfigurationCredentials.vue'),
+          component: () => import(/* webpackChunkName: "configuration" */ '../views/ConfigurationCredentials.vue'),
           meta: {
             text: 'Credentials',
             icon: 'key'
@@ -265,7 +265,7 @@ export default new Router({
           path: 'trusted-images',
           name: 'ConfigurationTrustedImages',
           props: true,
-          component: () => import(/* webpackChunkName: "configuration" */ '../components/ConfigurationTrustedImages.vue'),
+          component: () => import(/* webpackChunkName: "configuration" */ '../views/ConfigurationTrustedImages.vue'),
           meta: {
             requiredRole: 'administrator',
             text: 'Trusted Images',
@@ -277,7 +277,7 @@ export default new Router({
     {
       path: '/create',
       name: 'Create',
-      component: () => import(/* webpackChunkName: "views" */ '../components/ViewWithNav.vue'),
+      component: () => import(/* webpackChunkName: "views" */ '../views/ViewWithNav.vue'),
       meta: {
         icon: 'plus-circle',
         banner: true,
@@ -295,7 +295,7 @@ export default new Router({
             icon: 'hammer',
             text: 'Generate'
           },
-          component: () => import(/* webpackChunkName: "create" */ '../components/ManifestGenerator.vue')
+          component: () => import(/* webpackChunkName: "create" */ '../views/ManifestGenerator.vue')
         },
         {
           path: 'validate',
@@ -305,7 +305,7 @@ export default new Router({
             text: 'Validate',
             icon: 'clipboard-check'
           },
-          component: () => import(/* webpackChunkName: "create" */ '../components/ManifestValidator.vue')
+          component: () => import(/* webpackChunkName: "create" */ '../views/ManifestValidator.vue')
         },
         {
           path: 'encrypt',
@@ -315,7 +315,7 @@ export default new Router({
             text: 'Secrets',
             icon: 'user-secret'
           },
-          component: () => import(/* webpackChunkName: "create" */ '../components/SecretEncrypter.vue')
+          component: () => import(/* webpackChunkName: "create" */ '../views/SecretEncrypter.vue')
         }
       ]
     },
@@ -323,7 +323,7 @@ export default new Router({
       path: '/admin',
       name: 'Admin',
       props: true,
-      component: () => import(/* webpackChunkName: "views" */ '../components/ViewWithNav.vue'),
+      component: () => import(/* webpackChunkName: "views" */ '../views/ViewWithNav.vue'),
       meta: {
         icon: 'sliders-h',
         position: 'bottom',
@@ -335,7 +335,7 @@ export default new Router({
           path: 'users',
           name: 'AdminUsers',
           props: true,
-          component: () => import(/* webpackChunkName: "views" */ '../components/ViewDummyPage.vue'),
+          component: () => import(/* webpackChunkName: "views" */ '../views/ViewDummyPage.vue'),
           meta: {
             requiredRole: 'administrator',
             text: 'Users',
@@ -346,7 +346,7 @@ export default new Router({
           path: 'groups',
           name: 'AdminGroups',
           props: true,
-          component: () => import(/* webpackChunkName: "views" */ '../components/ViewDummyPage.vue'),
+          component: () => import(/* webpackChunkName: "views" */ '../views/ViewDummyPage.vue'),
           meta: {
             requiredRole: 'administrator',
             text: 'Groups',
@@ -357,7 +357,7 @@ export default new Router({
           path: 'organizations',
           name: 'AdminOrganizations',
           props: true,
-          component: () => import(/* webpackChunkName: "views" */ '../components/ViewDummyPage.vue'),
+          component: () => import(/* webpackChunkName: "views" */ '../views/ViewDummyPage.vue'),
           meta: {
             requiredRole: 'administrator',
             text: 'Organizations',
@@ -370,7 +370,7 @@ export default new Router({
       path: '/user',
       name: 'User',
       props: true,
-      component: () => import(/* webpackChunkName: "views" */ '../components/ViewWithNav.vue'),
+      component: () => import(/* webpackChunkName: "views" */ '../views/ViewWithNav.vue'),
       redirect: { name: 'UserDetails' },
       meta: {
         textFunction: (user) => {
@@ -391,7 +391,7 @@ export default new Router({
           path: 'details',
           name: 'UserDetails',
           props: true,
-          component: () => import(/* webpackChunkName: "preferences" */ '../components/UserDetails.vue'),
+          component: () => import(/* webpackChunkName: "preferences" */ '../views/UserDetails.vue'),
           meta: {
             text: 'Details',
             icon: 'passport'
@@ -401,7 +401,7 @@ export default new Router({
           path: 'preferences',
           name: 'UserPreferences',
           props: true,
-          component: () => import(/* webpackChunkName: "views" */ '../components/ViewDummyPage.vue'),
+          component: () => import(/* webpackChunkName: "views" */ '../views/ViewDummyPage.vue'),
           meta: {
             text: 'Preferences',
             icon: 'heart'
