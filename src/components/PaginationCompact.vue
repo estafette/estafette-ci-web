@@ -5,7 +5,6 @@
     </span>
     <b-pagination-nav
       v-if="linkGenerator"
-      v-model="pagination.page"
       :number-of-pages="pagination.totalItems > 0 ? pagination.totalItems : 1"
       :link-gen="linkGenerator"
       use-router
