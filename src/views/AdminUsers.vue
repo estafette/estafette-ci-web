@@ -15,6 +15,7 @@
       :per-page="pagination.size"
       :current-page="pagination.page"
       sort-icon-left
+      no-provider-sorting
       striped
       hover
       borderless
@@ -100,7 +101,7 @@ export default {
       users: [],
       pagination: {
         page: 1,
-        size: 25,
+        size: 100,
         totalPages: 0,
         totalItems: 0
       },
@@ -147,12 +148,14 @@ export default {
 
   methods: {
     usersProvider (ctx) {
+      // wait for https://github.com/cockroachdb/cockroach/issues/35706 to be implemented for sorting jsonb fields
+
       var sort = ''
-      if (ctx.sortBy) {
-        sort = `&sort=${ctx.sortBy}`
-      } else if (ctx.sortDesc) {
-        sort = `&sort=-${ctx.sortDesc}`
-      }
+      // if (ctx.sortBy) {
+      //   sort = `&sort=${ctx.sortBy}`
+      // } else if (ctx.sortDesc) {
+      //   sort = `&sort=-${ctx.sortDesc}`
+      // }
 
       return this.axios.get(`/api/users?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}${sort}`)
         .then(response => {
