@@ -1,4 +1,13 @@
-[
-  {"id":"329834298342908983","active":true,"name":"Me","email":"me@estafette.io","identities":[{"provider":"google","id":"23432432","email":"me@estafette.io","name":"Me"}],"roles":["administrator"],"firstVisit":"2020-05-27T15:51:48.790109Z","lastVisit":"2020-06-08T10:47:31.271837987Z","currentProvider":"google"},
-  {"id":"349324980438903","active":true,"name":"You","email":"you@estafette.io","identities":[{"provider":"google","id":"3240923409834","email":"you@estafette.io","name":"You"}],"firstVisit":"2020-06-05T10:51:48.790109Z","lastVisit":"2020-06-05T14:23:31.271837987Z","currentProvider":"google"}
-]
+{
+  "items":[
+    {"id":"329834298342908983","active":true,"name":"Me","email":"me@estafette.io","identities":[{"provider":"google","id":"23432432","email":"me@estafette.io","name":"Me"}],"roles":["administrator"],"firstVisit":"2020-05-27T15:51:48.790109Z","lastVisit":"2020-06-08T10:47:31.271837987Z","currentProvider":"google"},
+    {"id":"34435455445","active":false,"name":"Forgotten","email":"forgotten@estafette.io","identities":[{"provider":"google","id":"2334342","email":"forgotten@estafette.io","name":"Forgotten"}],"firstVisit":"2020-05-27T15:51:48.790109Z","lastVisit":"2020-06-08T10:47:31.271837987Z","currentProvider":"google"},
+    {"id":"349324980438903","active":true,"name":"You","email":"you@estafette.io","identities":[{"provider":"google","id":"3240923409834","email":"you@estafette.io","name":"You"}],"firstVisit":"2020-06-05T10:51:48.790109Z","lastVisit":"2020-06-05T14:23:31.271837987Z","currentProvider":"google"}
+  ],
+  "pagination":{
+      "page":1,
+      "size":25,
+      "totalPages":5,
+      "totalItems":113
+  }
+}

@@ -1,47 +1,50 @@
 <template>
-  <div class="mb-3">
-    <div class="d-inline-flex mr-2">
+  <div class="mb-3 compact-navigation">
+    <span class="mr-2">
       {{ firstPageItem }}-{{ lastPageItem }} of {{ pagination.totalItems }}
-    </div>
-
-    <nav class="d-inline-flex">
-      <ul class="pagination m-0 p-0">
-        <li
-          class="page-item"
-          :class="{ disabled: pagination.page <= 1 }"
-        >
-          <router-link
-            :to="linkGenerator(pagination.page-1)"
-            class="page-link"
-          >
-            ‹
-          </router-link>
-        </li>
-        <li
-          class="page-item"
-          :class="{ disabled: pagination.page >= pagination.totalPages }"
-        >
-          <router-link
-            :to="linkGenerator(pagination.page+1)"
-            class="page-link"
-          >
-            ›
-          </router-link>
-        </li>
-      </ul>
-    </nav>
+    </span>
+    <b-pagination-nav
+      v-if="linkGenerator"
+      v-model="pagination.page"
+      :number-of-pages="pagination.totalItems > 0 ? pagination.totalItems : 1"
+      :link-gen="linkGenerator"
+      use-router
+      limit="3"
+      size="md"
+      hide-goto-end-buttons
+      align="right"
+      class="d-inline-flex"
+    />
+    <b-pagination
+      v-else
+      v-model="pagination.page"
+      :total-rows="pagination.totalItems"
+      :per-page="pagination.size"
+      limit="3"
+      size="md"
+      hide-goto-end-buttons
+      align="right"
+      class="d-inline-flex"
+    />
   </div>
 </template>
 
 <script>
+import { BPaginationNav, BPagination } from 'bootstrap-vue'
+
 export default {
+  components: {
+    BPaginationNav,
+    BPagination
+  },
+
   props: {
-    linkGenerator: {
-      type: Function,
-      default: null
-    },
     pagination: {
       type: Object,
+      default: null
+    },
+    linkGenerator: {
+      type: Function,
       default: null
     }
   },
@@ -56,3 +59,17 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+// hide page buttons
+.compact-navigation {
+  li {
+    display: none !important;
+  }
+
+  li:first-child,
+  li:last-child {
+    display: block !important;
+  }
+}
+</style>
