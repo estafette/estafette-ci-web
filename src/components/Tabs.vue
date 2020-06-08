@@ -22,12 +22,19 @@
     </b-nav>
 
     <b-dropdown
-      :text="activeTabTextWithFallback"
       :variant="variant"
       block
       menu-class="w-100"
       class="m-3 d-lg-none"
     >
+      <template v-slot:button-content>
+        <font-awesome-icon
+          v-if="activeTabIcon"
+          :icon="activeTabIcon"
+          class="mr-2"
+        />
+        {{ activeTabTextWithFallback }}
+      </template>
       <b-dropdown-item
         v-for="tab in tabs"
         :key="tab.text"
@@ -89,6 +96,18 @@ export default {
       }
 
       return this.$route.name
+    },
+
+    activeTabIcon () {
+      if (this.tabs && this.activeTabText) {
+        // get tab by text
+        var activeTab = this.tabs.find(r => r.text === this.activeTabText)
+        if (activeTab && activeTab.icon) {
+          return activeTab.icon
+        }
+      }
+
+      return undefined
     },
 
     section () {

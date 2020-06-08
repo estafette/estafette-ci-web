@@ -23,12 +23,19 @@
     </b-nav>
 
     <b-dropdown
-      :text="activeRouteText"
       :variant="variant"
       block
       menu-class="w-100"
       class="m-3 d-lg-none"
     >
+      <template v-slot:button-content>
+        <font-awesome-icon
+          v-if="activeRouteIcon"
+          :icon="activeRouteIcon"
+          class="mr-2"
+        />
+        {{ activeRouteText }}
+      </template>
       <b-dropdown-item
         v-for="route in routes"
         :key="route.name"
@@ -126,6 +133,14 @@ export default {
       }
 
       return this.$route.name
+    },
+
+    activeRouteIcon () {
+      if (this.$route.meta && this.$route.meta.icon) {
+        return this.$route.meta.icon
+      }
+
+      return undefined
     },
 
     section () {
