@@ -336,7 +336,7 @@ export default new Router({
           path: 'users',
           name: 'AdminUsers',
           props: true,
-          component: () => import(/* webpackChunkName: "views" */ '../views/ViewDummyPage.vue'),
+          component: () => import(/* webpackChunkName: "users" */ '../views/AdminUsers.vue'),
           meta: {
             requiredRole: 'administrator',
             text: 'Users',
