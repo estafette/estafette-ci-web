@@ -1,6 +1,9 @@
 <template>
   <div class="mb-3 compact-navigation">
-    <span class="mr-2">
+    <span
+      v-if="pagination.totalItems > 0"
+      class="mr-2"
+    >
       {{ firstPageItem }}-{{ lastPageItem }} of {{ pagination.totalItems }}
     </span>
     <b-pagination-nav
