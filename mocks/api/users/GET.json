@@ -7,7 +7,7 @@
   "pagination":{
       "page":1,
       "size":25,
-      "totalPages":5,
-      "totalItems":113
+      "totalPages":1,
+      "totalItems":3
   }
 }

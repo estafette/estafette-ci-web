@@ -10,7 +10,7 @@
     </div>
 
     <b-table
-      :items="usersProvider"
+      :items="organizationsProvider"
       :fields="fields"
       :per-page="pagination.size"
       :current-page="pagination.page"
@@ -50,36 +50,19 @@
             </b-col>
             <b-col>{{ row.item.identities }}</b-col>
           </b-row>
-          <b-row
-            v-if="avatar(row.item)"
-            class="mb-2"
-          >
-            <b-col
-              sm="3"
-              class="text-sm-right"
-            >
-              <b>Avatar:</b>
-            </b-col>
-            <b-col>
-              <b-avatar
-                :src="avatar(row.item)"
-                class="mr-2"
-              />
-            </b-col>
-          </b-row>
         </b-card>
       </template>
     </b-table>
 
     <pagination
       :pagination="pagination"
-      v-if="users.length > 0"
+      v-if="organizations.length > 0"
     />
   </div>
 </template>
 
 <script>
-import { BTable, BButton, BCard, BRow, BCol, BAvatar } from 'bootstrap-vue'
+import { BTable, BButton, BCard, BRow, BCol } from 'bootstrap-vue'
 
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
@@ -91,14 +74,13 @@ export default {
     BCard,
     BRow,
     BCol,
-    BAvatar,
     PaginationCompact,
     Pagination
   },
 
   data: function () {
     return {
-      users: [],
+      organizations: [],
       pagination: {
         page: 1,
         size: 100,
@@ -111,31 +93,6 @@ export default {
           sortable: true
         },
         {
-          key: 'email',
-          sortable: true
-        },
-        {
-          key: 'roles',
-          sortable: true,
-          formatter: (value, key, item) => {
-            return value ? value.join() : ''
-          }
-        },
-        {
-          key: 'firstVisit',
-          sortable: true,
-          formatter: (value, key, item) => {
-            return this.$options.filters.formatDatetime(value)
-          }
-        },
-        {
-          key: 'lastVisit',
-          sortable: true,
-          formatter: (value, key, item) => {
-            return this.$options.filters.formatDatetime(value)
-          }
-        },
-        {
           key: 'show_details'
         }
       ]
@@ -143,27 +100,14 @@ export default {
   },
 
   methods: {
-    usersProvider (ctx) {
-      // wait for https://github.com/cockroachdb/cockroach/issues/35706 to be implemented for sorting jsonb fields
-
-      var sort = ''
-      // if (ctx.sortBy) {
-      //   sort = `&sort=${ctx.sortBy}`
-      // } else if (ctx.sortDesc) {
-      //   sort = `&sort=-${ctx.sortDesc}`
-      // }
-
-      return this.axios.get(`/api/users?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}${sort}`)
+    organizationsProvider (ctx) {
+      return this.axios.get(`/api/organizations?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}`)
         .then(response => {
-          this.users = response.data.items
+          this.organizations = response.data.items
           this.pagination = response.data.pagination
 
-          return this.users || []
+          return this.organizations || []
         })
-    },
-
-    avatar (u) {
-      return u.identities && u.identities.length > 0 && u.identities[0].avatar ? u.identities[0].avatar : undefined
     }
   }
 }

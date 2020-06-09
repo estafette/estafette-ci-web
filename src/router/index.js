@@ -336,7 +336,7 @@ export default new Router({
           path: 'users',
           name: 'AdminUsers',
           props: true,
-          component: () => import(/* webpackChunkName: "users" */ '../views/AdminUsers.vue'),
+          component: () => import(/* webpackChunkName: "admin" */ '../views/AdminUsers.vue'),
           meta: {
             requiredRole: 'administrator',
             text: 'Users',
@@ -347,7 +347,7 @@ export default new Router({
           path: 'groups',
           name: 'AdminGroups',
           props: true,
-          component: () => import(/* webpackChunkName: "views" */ '../views/ViewDummyPage.vue'),
+          component: () => import(/* webpackChunkName: "admin" */ '../views/AdminGroups.vue'),
           meta: {
             requiredRole: 'administrator',
             text: 'Groups',
@@ -358,7 +358,7 @@ export default new Router({
           path: 'organizations',
           name: 'AdminOrganizations',
           props: true,
-          component: () => import(/* webpackChunkName: "views" */ '../views/ViewDummyPage.vue'),
+          component: () => import(/* webpackChunkName: "admin" */ '../views/AdminOrganizations.vue'),
           meta: {
             requiredRole: 'administrator',
             text: 'Organizations',
