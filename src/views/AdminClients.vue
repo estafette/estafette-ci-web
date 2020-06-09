@@ -29,6 +29,7 @@
       striped
       hover
       borderless
+      responsive
     >
       <template v-slot:cell(show_details)="row">
         <b-button
