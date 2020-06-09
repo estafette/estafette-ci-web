@@ -364,6 +364,17 @@ export default new Router({
             text: 'Organizations',
             icon: 'sitemap'
           }
+        },
+        {
+          path: 'clients',
+          name: 'AdminClients',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../views/AdminClients.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            text: 'Clients',
+            icon: 'mobile-alt'
+          }
         }
       ]
     },

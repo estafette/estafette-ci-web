@@ -1,0 +1,11 @@
+{
+  "items":[
+    {"id":"329834298342908983","name":"estafette-cron-event-sender","clientID":"asdasdlkja","clientSecret":"asd09edjkne3kjnwekj","roles":["cron-trigger"]}
+  ],
+  "pagination":{
+      "page":1,
+      "size":25,
+      "totalPages":1,
+      "totalItems":1
+  }
+}
