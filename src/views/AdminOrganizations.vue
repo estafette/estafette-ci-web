@@ -1,13 +1,23 @@
 <template>
   <div>
     <div class="row m-0">
-      <div class="col-12 text-right">
+      <div class="col-6">
+        <b-button
+          :to="{ name: 'AdminOrganizationCreate' }"
+          variant="success"
+        >
+          Create organization
+        </b-button>
+      </div>
+      <div class="col-6 text-right">
         <pagination-compact
           :pagination="pagination"
           class="float-right"
         />
       </div>
     </div>
+
+    <router-view />
 
     <b-table
       :items="organizationsProvider"
@@ -27,6 +37,13 @@
           class="mr-2"
         >
           {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
+        </b-button>
+        <b-button
+          size="sm"
+          :to="{ name: 'AdminOrganizationUpdate', params: { id: row.item.id } }"
+          class="mr-2"
+        >
+          Edit
         </b-button>
       </template>
 

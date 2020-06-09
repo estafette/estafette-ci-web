@@ -355,6 +355,26 @@ export default new Router({
           }
         },
         {
+          path: 'groups/create',
+          name: 'AdminGroupCreate',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../views/AdminGroupCreate.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            hide: true
+          }
+        },
+        {
+          path: 'groups/:id/edit',
+          name: 'AdminGroupUpdate',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../views/AdminGroupUpdate.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            hide: true
+          }
+        },
+        {
           path: 'organizations',
           name: 'AdminOrganizations',
           props: true,
@@ -366,6 +386,26 @@ export default new Router({
           }
         },
         {
+          path: 'organizations/create',
+          name: 'AdminOrganizationCreate',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../views/AdminOrganizationCreate.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            hide: true
+          }
+        },
+        {
+          path: 'organizations/:id/edit',
+          name: 'AdminOrganizationUpdate',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../views/AdminOrganizationUpdate.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            hide: true
+          }
+        },
+        {
           path: 'clients',
           name: 'AdminClients',
           props: true,
@@ -374,6 +414,26 @@ export default new Router({
             requiredRole: 'administrator',
             text: 'Clients',
             icon: 'mobile-alt'
+          }
+        },
+        {
+          path: 'clients/create',
+          name: 'AdminClientCreate',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../views/AdminClientCreate.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            hide: true
+          }
+        },
+        {
+          path: 'clients/:id/edit',
+          name: 'AdminClientUpdate',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../views/AdminClientUpdate.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            hide: true
           }
         }
       ]
