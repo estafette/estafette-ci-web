@@ -8,7 +8,7 @@
     </span>
     <b-pagination-nav
       v-if="linkGenerator"
-      :number-of-pages="pagination.totalItems > 0 ? pagination.totalItems : 1"
+      :number-of-pages="pagination.totalPages > 0 ? pagination.totalPages : 1"
       :link-gen="linkGenerator"
       use-router
       limit="3"
