@@ -47,6 +47,15 @@
               sm="3"
               class="text-sm-right"
             >
+              <b>Active:</b>
+            </b-col>
+            <b-col>{{ row.item.active ? row.item.active : false }}</b-col>
+          </b-row>
+          <b-row class="mb-2">
+            <b-col
+              sm="3"
+              class="text-sm-right"
+            >
               <b>Identities:</b>
             </b-col>
             <b-col>{{ row.item.identities }}</b-col>
