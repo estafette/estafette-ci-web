@@ -29,13 +29,14 @@
       striped
       hover
       borderless
-      responsive
+      stacked="lg"
     >
       <template v-slot:cell(roles)="data">
         <b-badge
           v-for="role in data.item.roles"
           :key="role"
           variant="info"
+          class="mr-1"
         >
           {{ role }}
         </b-badge>
@@ -44,14 +45,14 @@
         <b-button
           size="sm"
           @click="row.toggleDetails"
-          class="mr-2"
+          class="mr-1"
         >
           {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
         </b-button>
         <b-button
           size="sm"
           :to="{ name: 'AdminClientUpdate', params: { id: row.item.id } }"
-          class="mr-2"
+          class="mr-1"
         >
           Edit
         </b-button>
