@@ -128,8 +128,7 @@
             @drop="releaseBuildToTargetAction($event, releaseTarget, release)"
           >
             <b-button
-              v-if="release && release.id && release.id !== 0"
-              :disabled="!release || !release.id || release.id <= 0"
+              v-if="release && release.id"
               :to="{ name: 'PipelineReleaseLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, releaseID: release.id }}"
               exact
               :variant="$options.filters.bootstrapVariant(release.releaseStatus)"
@@ -147,9 +146,12 @@
               />
             </b-button>
             <button
-              v-else
+              v-else-if="release"
               disabled="disabled"
-              class="btn btn-sm btn-block mr-1 mb-1 text-truncate"
+              :class="[
+                'btn btn-sm btn-block mr-1 mb-1 text-truncate',
+                $options.filters.bootstrapClass(release.releaseStatus, 'btn')
+              ]"
             >
               <span v-if="release.action">
                 {{ release.action }}:
@@ -224,8 +226,8 @@ export default {
       }
 
       var defaultActionName = ''
-      if (releaseTarget.actions && releaseTarget.actions.length > 0) {
-        defaultActionName = releaseTarget.actions[0].name
+      if (releaseTarget.activeReleases && releaseTarget.activeReleases.length > 0) {
+        defaultActionName = releaseTarget.activeReleases[0].action
       }
 
       const build = e.data
@@ -250,7 +252,6 @@ export default {
       if (this.user.active) {
         var startedRelease = {
           name: releaseTarget.name,
-          id: -1,
           action: actionName,
           repoSource: build.repoSource,
           repoOwner: build.repoOwner,
@@ -258,6 +259,7 @@ export default {
           releaseVersion: build.buildVersion,
           releaseStatus: 'pending'
         }
+
         this.updateRelease(startedRelease)
 
         this.axios.post(`/api/pipelines/${build.repoSource}/${build.repoOwner}/${build.repoName}/releases`, startedRelease)
@@ -277,11 +279,28 @@ export default {
         if (!releaseTarget.activeReleases) {
           releaseTarget.activeReleases = [startedRelease]
         } else {
-          // remove active release item if name and optional action matches the just started release
-          var newActiveReleases = releaseTarget.activeReleases.filter(r => r.action && startedRelease.action && r.action !== startedRelease.action)
+          // replace corresponding active release with started release
+          var hasMatchingActiveRelease = false
+          var newActiveReleases = releaseTarget.activeReleases.map(r => {
+            // if there's no actions on the active releases there's just one and it's a match, so replace it
+            if (!r.action) {
+              hasMatchingActiveRelease = true
+              return startedRelease
+            }
 
-          // prepend newly started release
-          newActiveReleases.unshift(startedRelease)
+            // otherwise it has to match the action
+            if (startedRelease.action && r.action === startedRelease.action) {
+              hasMatchingActiveRelease = true
+              return startedRelease
+            }
+
+            // any of the other release targets stay the same
+            return r
+          })
+
+          if (!hasMatchingActiveRelease) {
+            newActiveReleases.push(startedRelease)
+          }
 
           // atomically update active releases
           releaseTarget.activeReleases = newActiveReleases

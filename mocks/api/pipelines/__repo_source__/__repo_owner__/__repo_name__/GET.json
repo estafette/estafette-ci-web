@@ -87,10 +87,18 @@
 
      {
       "name":"development",
+      "actions":[
+        {
+           "name": "deploy-canary"
+        },
+        {
+           "name": "deploy-stable"
+        }
+     ],
       "activeReleases":[
          {
             "name":"development",
-            "action":"",
+            "action":"deploy-canary",
             "id":"401925221141577735",
             "repoSource":"github.com",
             "repoOwner":"estafette",
@@ -101,7 +109,21 @@
             "insertedAt":"2018-11-20T15:37:23.365593Z",
             "updatedAt":"2018-11-20T15:38:42.44489Z",
             "duration":79000000000
-         }
+         },
+         {
+          "name":"development",
+          "action":"deploy-stable",
+          "id":"342982439832498423890",
+          "repoSource":"github.com",
+          "repoOwner":"estafette",
+          "repoName":"estafette-ci-api",
+          "releaseVersion":"0.1.339",
+          "releaseStatus":"succeeded",
+          "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
+          "insertedAt":"2018-11-20T15:37:23.365593Z",
+          "updatedAt":"2018-11-20T15:38:42.44489Z",
+          "duration":79000000000
+       }
       ]
    },
    {
