@@ -21,6 +21,15 @@
       borderless
       responsive
     >
+      <template v-slot:cell(roles)="data">
+        <b-badge
+          v-for="role in data.item.roles"
+          :key="role"
+          variant="info"
+        >
+          {{ role }}
+        </b-badge>
+      </template>
       <template v-slot:cell(show_details)="row">
         <b-button
           size="sm"
@@ -30,7 +39,6 @@
           {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
         </b-button>
       </template>
-
       <template v-slot:row-details="row">
         <b-card>
           <b-row class="mb-2">
@@ -89,7 +97,7 @@
 </template>
 
 <script>
-import { BTable, BButton, BCard, BRow, BCol, BAvatar } from 'bootstrap-vue'
+import { BTable, BButton, BCard, BRow, BCol, BAvatar, BBadge } from 'bootstrap-vue'
 
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
@@ -103,7 +111,8 @@ export default {
     BCol,
     BAvatar,
     PaginationCompact,
-    Pagination
+    Pagination,
+    BBadge
   },
 
   data: function () {
@@ -126,10 +135,7 @@ export default {
         },
         {
           key: 'roles',
-          sortable: true,
-          formatter: (value, key, item) => {
-            return value ? value.join() : ''
-          }
+          sortable: true
         },
         {
           key: 'firstVisit',
