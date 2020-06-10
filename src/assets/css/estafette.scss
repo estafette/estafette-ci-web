@@ -206,7 +206,12 @@ button.btn-clipboard {
 
 .triggered-by-icon {
   @extend .text-black-50;
-  width: 1.5em!important;
+  width: 1.5em !important;
+}
+
+.dropdown-icon {
+  @extend .mr-2;
+  width: 1.5em !important;
 }
 
 // style rows of pipelines, builds, releases, catalog items and logs

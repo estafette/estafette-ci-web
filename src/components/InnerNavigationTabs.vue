@@ -46,7 +46,7 @@
         <font-awesome-icon
           v-if="route.meta && route.meta.icon"
           :icon="route.meta ? route.meta.icon : ''"
-          class="mr-2"
+          class="dropdown-icon"
         />
         <span>
           {{ route.meta && route.meta.text ? route.meta.text : route.name }}

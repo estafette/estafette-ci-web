@@ -44,7 +44,7 @@
         <font-awesome-icon
           v-if="tab.icon"
           :icon="tab.icon"
-          class="mr-2"
+          class="dropdown-icon"
         />
         <span>
           {{ tab.text }}
