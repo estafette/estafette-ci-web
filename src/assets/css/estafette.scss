@@ -457,7 +457,7 @@ button.btn-clipboard {
 
   @media (hover: hover) {
     &:hover {
-      @extend .d-inline-flex;
+      display: inline-flex !important;
 
       overflow: visible !important;
       max-width: 300px;
