@@ -455,11 +455,13 @@ button.btn-clipboard {
   max-width: 60px;
   transition: max-width .2s;
 
-  &:hover {
-    @extend .d-inline-flex;
-    
-    overflow: visible !important;
-    max-width: 300px;
+  @media (hover: hover) {
+    &:hover {
+      @extend .d-inline-flex;
+
+      overflow: visible !important;
+      max-width: 300px;
+    }
   }
 
   .nav-item a {
