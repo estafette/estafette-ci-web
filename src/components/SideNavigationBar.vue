@@ -7,6 +7,7 @@
       :to="{ name: 'Home'}"
       exact
       class="logo"
+      @click="$event.target.blur()"
     >
       <font-awesome-icon
         icon="shipping-fast"
@@ -22,6 +23,7 @@
       :to="{ name: route.name }"
       :exact="route.meta ? route.meta.exact : false"
       :class="route.meta && route.meta.class ? route.meta.class : ''"
+      @click="$event.target.blur()"
     >
       <font-awesome-icon
         :icon="route.meta ? route.meta.icon : ''"
