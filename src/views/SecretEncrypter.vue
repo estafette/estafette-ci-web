@@ -1,10 +1,5 @@
 <template>
   <div>
-    <warning
-      v-if="showPipelineRestrictWarning"
-      :warning="warning"
-    />
-
     <b-form
       @submit="onSubmit"
       autocomplete="off"
@@ -41,7 +36,7 @@
         <b-form-input
           id="pipelineWhitelist"
           v-model="form.pipelineWhitelist"
-          readonly
+          :readonly="pipelineWhitelistReadonly"
           type="text"
         />
       </b-form-group>
@@ -96,7 +91,6 @@
 <script>
 import spinner from '@/components/Spinner'
 import { BForm, BFormCheckbox, BFormInput, BFormTextarea, BFormGroup, BButton, BTooltip } from 'bootstrap-vue'
-import Warning from '@/components/Warning'
 
 export default {
   components: {
@@ -106,8 +100,7 @@ export default {
     BFormInput,
     BFormTextarea,
     BFormGroup,
-    BButton,
-    Warning
+    BButton
   },
   props: {
     repoSource: {
@@ -134,12 +127,8 @@ export default {
         pipelineWhitelist: this.repoSource !== null && this.repoOwner !== null && this.repoName !== null ? `${this.repoSource}/${this.repoOwner}/${this.repoName}` : '.*',
         value: null
       },
-      warning: {
-        message: 'In order to restrict secrets to be used in a single pipeline navigate to the secrets tab for that pipeline.',
-        status: 'warning'
-      },
-      showDoubleEncrypt: this.repoSource === null && this.repoOwner === null && this.repoName === null,
-      showPipelineRestrictWarning: this.repoSource === null && this.repoOwner === null && this.repoName === null,
+      pipelineWhitelistReadonly: this.$route.name !== 'AdminSecretEncrypter',
+      showDoubleEncrypt: this.$route.name === 'AdminSecretEncrypter',
       encrypting: false,
       secret: null
     }

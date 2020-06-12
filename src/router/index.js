@@ -273,16 +273,6 @@ export default new Router({
             icon: 'clipboard-check'
           },
           component: () => import(/* webpackChunkName: "create" */ '../views/ManifestValidator.vue')
-        },
-        {
-          path: 'encrypt',
-          name: 'SecretEncrypter',
-          props: true,
-          meta: {
-            text: 'Secrets',
-            icon: 'user-secret'
-          },
-          component: () => import(/* webpackChunkName: "create" */ '../views/SecretEncrypter.vue')
         }
       ]
     },
@@ -434,6 +424,17 @@ export default new Router({
           meta: {
             requiredRole: 'administrator',
             hide: true
+          }
+        },
+        {
+          path: 'encrypt',
+          name: 'AdminSecretEncrypter',
+          props: true,
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/SecretEncrypter.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            text: 'Secrets',
+            icon: 'user-secret'
           }
         }
       ]
