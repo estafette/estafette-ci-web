@@ -533,10 +533,6 @@ export default new Router({
         {
           path: 'validate',
           redirect: { name: 'ManifestValidator' }
-        },
-        {
-          path: 'encrypt',
-          redirect: { name: 'SecretEncrypter' }
         }
       ]
     }
