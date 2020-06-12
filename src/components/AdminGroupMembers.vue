@@ -4,7 +4,7 @@
       v-for="member in members"
       :key="member.id"
     >
-      {{ member.name }}
+      {{ member.name }} ({{ member.email }})
     </li>
   </ul>
 </template>
