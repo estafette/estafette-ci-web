@@ -68,6 +68,17 @@
             </b-col>
             <b-col>{{ row.item.identities }}</b-col>
           </b-row>
+          <b-row class="mb-2">
+            <b-col
+              sm="3"
+              class="text-sm-right"
+            >
+              <b>Members:</b>
+            </b-col>
+            <b-col>
+              <admin-group-members :id="row.item.id" />
+            </b-col>
+          </b-row>
         </b-card>
       </template>
     </b-table>
@@ -84,6 +95,7 @@ import { BTable, BButton, BCard, BRow, BCol } from 'bootstrap-vue'
 
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
+import AdminGroupMembers from '@/components/AdminGroupMembers'
 
 export default {
   components: {
@@ -93,7 +105,8 @@ export default {
     BRow,
     BCol,
     PaginationCompact,
-    Pagination
+    Pagination,
+    AdminGroupMembers
   },
 
   data: function () {
