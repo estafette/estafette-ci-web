@@ -69,6 +69,42 @@
             </b-col>
             <b-col>{{ row.item.identities }}</b-col>
           </b-row>
+          <b-row class="mb-2">
+            <b-col
+              sm="3"
+              class="text-sm-right"
+            >
+              <b>Organizations:</b>
+            </b-col>
+            <b-col>{{ row.item.organizations }}</b-col>
+          </b-row>
+          <b-row class="mb-2">
+            <b-col
+              sm="3"
+              class="text-sm-right"
+            >
+              <b>Groups:</b>
+            </b-col>
+            <b-col>{{ row.item.groups }}</b-col>
+          </b-row>
+          <b-row class="mb-2">
+            <b-col
+              sm="3"
+              class="text-sm-right"
+            >
+              <b>Preferences:</b>
+            </b-col>
+            <b-col>{{ row.item.preferences }}</b-col>
+          </b-row>
+          <b-row class="mb-2">
+            <b-col
+              sm="3"
+              class="text-sm-right"
+            >
+              <b>Current provider:</b>
+            </b-col>
+            <b-col>{{ row.item.currentProvider }}</b-col>
+          </b-row>
           <b-row
             v-if="avatar(row.item)"
             class="mb-2"
