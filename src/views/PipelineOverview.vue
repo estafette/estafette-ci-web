@@ -110,9 +110,7 @@
         :key="releaseTarget.name"
         class="col-12 col-md-6 col-xl-4 col-xxl-3 col-xxxl-2 m-0 p-0 pr-3 pb-3"
       >
-        <drop
-          :data="releaseTarget"
-          @drop="releaseBuildToTargetDefault($event, releaseTarget)"
+        <div
           :class="[
             'bg-light',
             'rounded border align-items-center pt-3 pr-2 pb-2 pl-2 text-center bg-white'
@@ -158,7 +156,7 @@
               </span>{{ release.releaseVersion | defaultValue('-') }}
             </button>
           </drop>
-        </drop>
+        </div>
       </div>
     </div>
   </div>
@@ -220,20 +218,6 @@ export default {
   },
 
   methods: {
-    releaseBuildToTargetDefault (e, releaseTarget) {
-      if (this.releaseTargetDisabled(releaseTarget)) {
-        return
-      }
-
-      var defaultActionName = ''
-      if (releaseTarget.activeReleases && releaseTarget.activeReleases.length > 0) {
-        defaultActionName = releaseTarget.activeReleases[0].action
-      }
-
-      const build = e.data
-      this.startRelease(build, releaseTarget, defaultActionName)
-    },
-
     releaseBuildToTargetAction (e, releaseTarget, release) {
       if (this.releaseTargetDisabled(releaseTarget)) {
         return
