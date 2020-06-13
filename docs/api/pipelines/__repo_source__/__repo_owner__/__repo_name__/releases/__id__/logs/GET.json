@@ -1,0 +1,241 @@
+[
+    {
+    "step": "git-clone",
+    "image": {
+    "name": "extensions/git-clone",
+    "tag": "dev",
+    "isPulled": false,
+    "imageSize": 31398692,
+    "pullDuration": 3439766775,
+    "isTrusted": true
+    },
+    "duration": 2685832708,
+    "logLines": [
+    {
+    "timestamp": "2018-05-29T13:49:40.289929516Z",
+    "streamType": "stderr",
+    "text": "\u001b[90m2018-05-29T13:49:40Z\u001b[0m |\u001b[32mINFO\u001b[0m| \u001b[0mStarting estafette-extension-git-clone...\u001b[0m \u001b[36mbranch\u001b[0m=master \u001b[36mbuildDate\u001b[0m=2017-09-12T15:48:16Z \u001b[36mgoVersion\u001b[0m=go1.9 \u001b[36mrevision\u001b[0m=dc3c62c0eb70500f095c597d6d06cba20bfc1258"
+    },
+    {
+    "timestamp": "2018-05-29T13:49:40.289987294Z",
+    "streamType": "stderr",
+    "text": "\u001b[90m2018-05-29T13:49:40Z\u001b[0m |\u001b[32mINFO\u001b[0m| \u001b[0mCloning git repository estafette/estafette-extension-bitbucket-status to branch master and revision a3f0f997c0a70f6c403b048f8b8a9d49c3c77ec6...\u001b[0m \u001b[36mbranch\u001b[0m=master \u001b[36mname\u001b[0m=estafette/estafette-extension-bitbucket-status \u001b[36mrevision\u001b[0m=a3f0f997c0a70f6c403b048f8b8a9d49c3c77ec6 \u001b[36murl\u001b[0m=https://x-access-token:v1.2756d9652ecb23622566eaf63a3dde3084a20be4@github.com/estafette/estafette-extension-bitbucket-status"
+    },
+    {
+    "timestamp": "2018-05-29T13:49:40.298045885Z",
+    "streamType": "stderr",
+    "text": "\u001b[90m2018-05-29T13:49:40Z\u001b[0m |\u001b[0m????\u001b[0m| \u001b[0mCloning into '/estafette-work'...\u001b[0m"
+    },
+    {
+    "timestamp": "2018-05-29T13:49:42.406452667Z",
+    "streamType": "stderr",
+    "text": "\u001b[90m2018-05-29T13:49:42Z\u001b[0m |\u001b[32mINFO\u001b[0m| \u001b[0mFinished cloning git repository estafette/estafette-extension-bitbucket-status to branch master and revision a3f0f997c0a70f6c403b048f8b8a9d49c3c77ec6\u001b[0m \u001b[36mbranch\u001b[0m=master \u001b[36mname\u001b[0m=estafette/estafette-extension-bitbucket-status \u001b[36mrevision\u001b[0m=dc3c62c0eb70500f095c597d6d06cba20bfc1258 \u001b[36murl\u001b[0m=https://x-access-token:v1.2756d9652ecb23622566eaf63a3dde3084a20be4@github.com/estafette/estafette-extension-bitbucket-status"
+    },
+    {
+    "timestamp": "2018-05-29T13:49:42.406460404Z",
+    "streamType": "stderr",
+    "text": "\u001b[90m2018-05-29T13:49:42Z\u001b[0m |\u001b[32mINFO\u001b[0m| \u001b[0mFinished estafette-extension-git-clone...\u001b[0m"
+    }
+    ],
+    "exitCode": 0,
+    "status": "SUCCEEDED",
+    "autoInjected": true
+    },
+    {
+        "step": "parallel-group",
+        "image": {
+            "name": "",
+            "tag": "",
+            "isPulled": false,
+            "imageSize": 0,
+            "pullDuration": 0
+        },
+        "runIndex": 0,
+        "duration": 735887098,
+        "logLines": [],
+        "exitCode": 0,
+        "status": "SUCCEEDED",
+        "services": [
+            {
+              "step": "kubernetes",
+              "image": {
+                "name": "bsycorp/kind",
+                "tag": "latest-1.15",
+                "isPulled": true,
+                "imageSize": 26411532,
+                "pullDuration": 0,
+                "isTrusted": true
+              },
+              "duration": 3207186197,
+              "logLines": [
+                {
+                  "line": 1,
+                  "timestamp": "2019-10-23T11:15:54.208079234Z",
+                  "streamType": "stderr",
+                  "text": "Cloning into '/estafette-work/generated/python'...\n"
+                },
+                {
+                    "line": 2,
+                    "timestamp": "2019-10-23T11:15:54.208148139Z",
+                    "streamType": "stdout",
+                    "text": "Starting estafette-extension-git-clone version 0.1.70...\n"
+                }
+                ],
+                "exitCode": 0,
+                "status": "SUCCEEDED"
+            },
+            {
+                "step": "database",
+                "image": {
+                "name": "cockroachdb/cockroach",
+                "tag": "v19.1.5",
+                "isPulled": true,
+                "imageSize": 26411532,
+                "pullDuration": 0
+                },
+                "duration": 3207186197,
+                "logLines": [
+                    {
+                        "line": 1,
+                        "timestamp": "2019-10-23T11:15:54.208079234Z",
+                        "streamType": "stderr",
+                        "text": "Cloning into '/estafette-work/generated/golang'...\n"
+                    },
+                    {
+                        "line": 2,
+                        "timestamp": "2019-10-23T11:15:54.208148139Z",
+                        "streamType": "stdout",
+                        "text": "Starting estafette-extension-git-clone version 0.1.70...\n"
+                    }
+                ],
+                "exitCode": 0,
+                "status": "SUCCEEDED"
+            }
+        ],
+        "nestedSteps": [
+            {
+              "step": "clone-python",
+              "depth": 1,
+              "image": {
+                "name": "extensions/git-clone",
+                "tag": "dev",
+                "isPulled": true,
+                "imageSize": 26411532,
+                "pullDuration": 0,
+                "isTrusted": true
+              },
+              "duration": 3207186197,
+              "logLines": [
+                {
+                  "line": 1,
+                  "timestamp": "2019-10-23T11:15:54.208079234Z",
+                  "streamType": "stderr",
+                  "text": "Cloning into '/estafette-work/generated/python'...\n"
+                },
+                {
+                    "line": 2,
+                    "timestamp": "2019-10-23T11:15:54.208148139Z",
+                    "streamType": "stdout",
+                    "text": "Starting estafette-extension-git-clone version 0.1.70...\n"
+                }
+                ],
+                "exitCode": 0,
+                "status": "SUCCEEDED"
+            },
+            {
+                "step": "clone-golang",
+                "depth": 1,
+                "image": {
+                "name": "extensions/git-clone",
+                "tag": "dev",
+                "isPulled": true,
+                "imageSize": 26411532,
+                "pullDuration": 0,
+                "isTrusted": true
+                },
+                "duration": 3207186197,
+                "logLines": [
+                {
+                    "line": 1,
+                    "timestamp": "2019-10-23T11:15:54.208079234Z",
+                    "streamType": "stderr",
+                    "text": "Cloning into '/estafette-work/generated/golang'...\n"
+                },
+                {
+                    "line": 2,
+                    "timestamp": "2019-10-23T11:15:54.208148139Z",
+                    "streamType": "stdout",
+                    "text": "Starting estafette-extension-git-clone version 0.1.70...\n"
+                }
+            ],
+            "exitCode": 0,
+            "status": "SUCCEEDED"
+         }
+      ]
+    },
+    {
+    "step": "deploy",
+    "image": {
+    "name": "golang",
+    "tag": "1.10.2-alpine3.7",
+    "isPulled": false,
+    "imageSize": 1375644187,
+    "pullDuration": 8745457612
+    },
+    "duration": 735887098,
+    "logLines": [
+    {
+    "timestamp": "2018-05-29T13:49:55.122160894Z",
+    "streamType": "stderr",
+    "text": "bitbucketApiClient.go:12:2: cannot find package \"github.com/rs/zerolog/log\" in any of:"
+    },
+    {
+    "timestamp": "2018-05-29T13:49:55.122226049Z",
+    "streamType": "stderr",
+    "text": "\t/go/src/github.com/estafette/estafette-extension-bitbucket-status/vendor/github.com/rs/zerolog/log (vendor tree)"
+    },
+    {
+    "timestamp": "2018-05-29T13:49:55.12225973Z",
+    "streamType": "stderr",
+    "text": "\t/usr/local/go/src/github.com/rs/zerolog/log (from $GOROOT)"
+    },
+    {
+    "timestamp": "2018-05-29T13:49:55.122298858Z",
+    "streamType": "stderr",
+    "text": "\t/go/src/github.com/rs/zerolog/log (from $GOPATH)"
+    }
+    ],
+    "exitCode": 1,
+    "status": "FAILED"
+    },
+    {
+    "step": "slack-notify",
+    "image": {
+    "name": "extensions/slack-build-status",
+    "tag": "dev",
+    "isPulled": false,
+    "imageSize": 9185123,
+    "pullDuration": 2157171676
+    },
+    "duration": 111842450599,
+    "logLines": [
+    {
+    "timestamp": "2018-05-29T13:49:59.137856798Z",
+    "streamType": "stderr",
+    "text": "\u001b[90m2018-05-29T13:49:59Z\u001b[0m |\u001b[32mINFO\u001b[0m| \u001b[0mStarting estafette-extension-slack-build-status...\u001b[0m \u001b[36mbranch\u001b[0m=master \u001b[36mbuildDate\u001b[0m=2017-09-12T15:48:13Z \u001b[36mgoVersion\u001b[0m=go1.9 \u001b[36mrevision\u001b[0m=d43a57dbd2bfa705af1fbcf6a7cc36ff7f3b9d37"
+    },
+    {
+    "timestamp": "2018-05-29T13:49:59.137869285Z",
+    "streamType": "stderr",
+    "text": "\u001b[90m2018-05-29T13:49:59Z\u001b[0m |\u001b[35mDEBU\u001b[0m| \u001b[0mOverriding slackWebhookURL with slackExtensionWebhookURL\u001b[0m"
+    },
+    {
+    "timestamp": "2018-05-29T13:49:59.378928587Z",
+    "streamType": "stderr",
+    "text": "\u001b[90m2018-05-29T13:49:59Z\u001b[0m |\u001b[32mINFO\u001b[0m| \u001b[0mFinished estafette-extension-slack-build-status...\u001b[0m"
+    }
+    ],
+    "exitCode": 0,
+    "status": "SUCCEEDED"
+    }
+]

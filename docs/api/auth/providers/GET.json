@@ -1,0 +1,32 @@
+[
+  {
+    "id": "google",
+    "name": "Google",
+    "path": "/api/auth/login/google"
+  },
+  {
+    "id": "microsoft",
+    "name": "Microsoft",
+    "path": "/api/auth/login/microsoft"
+  },
+  {
+    "id": "facebook",
+    "name": "Facebook",
+    "path": "/api/auth/login/facebook"
+  },
+  {
+    "id": "github",
+    "name": "Github",
+    "path": "/api/auth/login/github"
+  },
+  {
+    "id": "bitbucket",
+    "name": "Bitbucket",
+    "path": "/api/auth/login/bitbucket"
+  },
+  {
+    "id": "gitlab",
+    "name": "Gitlab",
+    "path": "/api/auth/login/gitlab"
+  }
+]

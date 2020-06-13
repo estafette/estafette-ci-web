@@ -1,0 +1,45 @@
+{
+    "items":[
+        {
+            "key": "language",
+            "value": "golang",
+            "pipelinescount": 7
+        },
+        {
+            "key": "app-group",
+            "value": "estafette-ci",
+            "pipelinescount": 5
+        },
+        {
+            "key": "app-group",
+            "value": "estafette-ci-extensions",
+            "pipelinescount": 3
+        },
+        {
+            "key": "app-group",
+            "value": "estafette-kube-controllers",
+            "pipelinescount": 3
+        },
+        {
+            "key": "team",
+            "value": "estafette-team",
+            "pipelinescount": 2
+        },
+        {
+            "key": "team",
+            "value": "estafette-ci-team",
+            "pipelinescount": 2
+        },
+        {
+            "key": "team",
+            "value": "estafette-extension-team",
+            "pipelinescount": 2
+        },
+        {
+            "key": "language",
+            "value": "docker",
+            "pipelinescount": 2
+        }
+    ],
+    "pagination":{"page":1,"size":20,"totalPages":4,"totalItems":68}
+}

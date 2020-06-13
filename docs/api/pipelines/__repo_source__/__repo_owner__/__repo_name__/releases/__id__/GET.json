@@ -1,0 +1,13 @@
+{
+    "name":"development",
+    "action":"deploy-stable",
+    "id":"372762091039162371",
+    "repoSource":"github.com",
+    "repoOwner":"estafette",
+    "repoName":"estafette-ci-web",
+    "releaseVersion":"0.0.77-vuejs",
+    "releaseStatus":"failed",
+    "triggerEvents":[{"manual":{"userID":"user@server.com"}}],
+    "insertedAt":"2018-08-09T15:26:02.353057Z",
+    "updatedAt":"2018-08-09T15:26:02.353057Z"
+}
