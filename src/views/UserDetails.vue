@@ -19,7 +19,7 @@
 
         <h4>Logout</h4>
         <b-button
-          href="/api/auth/logout"
+          href="/api/auth/logout/"
           variant="danger"
           block
           class="mt-3 mb-3"

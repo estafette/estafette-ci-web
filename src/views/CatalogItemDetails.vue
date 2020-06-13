@@ -73,7 +73,7 @@ export default {
 
   methods: {
     loadCatalogItem () {
-      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}`)
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/`)
         .then(response => {
           this.catalogItem = response.data
           this.periodicallyRefreshCatalogItem(5)

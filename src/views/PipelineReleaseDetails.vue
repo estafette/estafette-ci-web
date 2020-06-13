@@ -84,7 +84,7 @@ export default {
 
   methods: {
     loadRelease () {
-      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}`)
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}/`)
         .then(response => {
           this.release = response.data
 

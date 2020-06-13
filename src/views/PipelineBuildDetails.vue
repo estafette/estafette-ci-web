@@ -92,7 +92,7 @@ export default {
 
   methods: {
     loadBuild () {
-      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}`)
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/`)
         .then(response => {
           this.build = response.data
 

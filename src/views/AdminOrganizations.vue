@@ -119,7 +119,7 @@ export default {
 
   methods: {
     organizationsProvider (ctx) {
-      return this.axios.get(`/api/organizations?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}`)
+      return this.axios.get(`/api/organizations/?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}`)
         .then(response => {
           this.organizations = response.data.items
           this.pagination = response.data.pagination

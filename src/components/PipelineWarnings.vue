@@ -56,7 +56,7 @@ export default {
 
   methods: {
     loadPipelineWarnings () {
-      this.axios.get(`/api/pipelines/${this.pipeline.repoSource}/${this.pipeline.repoOwner}/${this.pipeline.repoName}/warnings`)
+      this.axios.get(`/api/pipelines/${this.pipeline.repoSource}/${this.pipeline.repoOwner}/${this.pipeline.repoName}/warnings/`)
         .then(response => {
           this.warnings = response.data.warnings
         })

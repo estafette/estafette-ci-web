@@ -90,7 +90,7 @@ export default {
         this.periodicallyRefreshPipelines(30)
         return
       }
-      this.axios.get(`/api/pipelines?filter[since]=1w&filter[since]=1w&filter[${this.filter}]=${this.user.email}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}&sort=-last_updated_at,repo_source,repo_owner,repo_name`)
+      this.axios.get(`/api/pipelines/?filter[since]=1w&filter[since]=1w&filter[${this.filter}]=${this.user.email}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}&sort=-last_updated_at,repo_source,repo_owner,repo_name`)
         .then(response => {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination

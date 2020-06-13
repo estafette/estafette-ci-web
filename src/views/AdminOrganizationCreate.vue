@@ -53,7 +53,7 @@ export default {
   methods: {
     onSubmit (evt) {
       evt.preventDefault()
-      this.axios.post(`/api/organizations`, this.form)
+      this.axios.post(`/api/organizations/`, this.form)
         .then(response => {
           this.$router.push({ name: 'AdminOrganizations' })
         })

@@ -74,7 +74,7 @@ export default {
         statusFilter += `&filter[status]=pending&filter[status]=canceling`
       }
 
-      this.axios.get(`/api/labels/frequent?${statusFilter}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/labels/frequent/?${statusFilter}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.labels = response.data.items
           this.periodicallyRefreshFrequentLabels(5)

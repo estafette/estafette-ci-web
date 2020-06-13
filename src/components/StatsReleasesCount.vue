@@ -52,7 +52,7 @@ export default {
         statusFilter += `&filter[status]=pending&filter[status]=canceling`
       }
 
-      this.axios.get(`/api/stats/releasescount?${statusFilter}&filter[since]=${this.filter.since}`)
+      this.axios.get(`/api/stats/releasescount/?${statusFilter}&filter[since]=${this.filter.since}`)
         .then(response => {
           TweenLite.to(this.$data, 1.0, { count: response.data.count })
           this.periodicallyRefreshStat(15)

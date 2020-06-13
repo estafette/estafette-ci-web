@@ -140,7 +140,7 @@ export default {
         statusFilter += `&filter[status]=pending&filter[status]=canceling`
       }
 
-      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases?${statusFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/?${statusFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.releases = response.data.items
           this.pagination = response.data.pagination

@@ -158,7 +158,7 @@ export default {
     },
 
     loadStat () {
-      this.axios.get(`/api/pipelines/${this.pipeline.repoSource}/${this.pipeline.repoOwner}/${this.pipeline.repoName}/stats/${this.type}memory?filter[last]=${this.filter.last}`)
+      this.axios.get(`/api/pipelines/${this.pipeline.repoSource}/${this.pipeline.repoOwner}/${this.pipeline.repoName}/stats/${this.type}memory/?filter[last]=${this.filter.last}`)
         .then(response => {
           this.updateSeries(response.data.measurements)
           this.periodicallyRefreshStat(60)

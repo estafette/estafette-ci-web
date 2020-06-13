@@ -173,7 +173,7 @@ export default {
     },
 
     loadFilters () {
-      this.axios.get(`/api/catalog/filters`)
+      this.axios.get(`/api/catalog/filters/`)
         .then(response => {
           this.filters = response.data
 
@@ -212,7 +212,7 @@ export default {
     },
 
     loadFilterValues () {
-      this.axios.get(`/api/catalog/filtervalues?filter[labels]=${this.activeFilter}`)
+      this.axios.get(`/api/catalog/filtervalues/?filter[labels]=${this.activeFilter}`)
         .then(response => {
           this.filterValues = response.data
 
@@ -229,7 +229,7 @@ export default {
     },
 
     loadCatalogItems () {
-      this.axios.get(`/api/pipelines?filter[labels]=${this.activeFilter}=${this.activeFilterValue}&filter[since]=eternity&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/pipelines/?filter[labels]=${this.activeFilter}=${this.activeFilterValue}&filter[since]=eternity&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.catalogItems = response.data.items
           this.pagination = response.data.pagination

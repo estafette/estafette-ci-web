@@ -37,7 +37,7 @@ export default {
 
   methods: {
     loadBuildWarnings () {
-      this.axios.get(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/builds/${this.build.id}/warnings`)
+      this.axios.get(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/builds/${this.build.id}/warnings/`)
         .then(response => {
           this.warnings = response.data.warnings
         })

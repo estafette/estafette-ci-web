@@ -139,7 +139,7 @@ export default {
       evt.preventDefault()
       this.encrypting = true
 
-      this.axios.post(`/api/manifest/encrypt`, this.form)
+      this.axios.post(`/api/manifest/encrypt/`, this.form)
         .then(response => {
           this.encrypting = false
           this.secret = response.data.secret

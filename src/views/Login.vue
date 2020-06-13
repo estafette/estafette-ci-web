@@ -61,7 +61,7 @@ export default {
     },
 
     loadProviders () {
-      this.axios.get(`/api/auth/providers`)
+      this.axios.get(`/api/auth/providers/`)
         .then(response => {
           this.providers = response.data
         })

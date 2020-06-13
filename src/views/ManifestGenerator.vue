@@ -126,7 +126,7 @@ export default {
     },
 
     loadTemplates () {
-      this.axios.get(`/api/manifest/templates`)
+      this.axios.get(`/api/manifest/templates/`)
         .then(response => {
           this.templates = response.data.templates
 
@@ -161,7 +161,7 @@ export default {
       this.generating = true
       this.manifest = null
 
-      this.axios.post(`/api/manifest/generate`, this.form)
+      this.axios.post(`/api/manifest/generate/`, this.form)
         .then(response => {
           this.generating = false
           this.manifest = response.data.manifest

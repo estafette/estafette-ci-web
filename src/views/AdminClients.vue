@@ -152,7 +152,7 @@ export default {
 
   methods: {
     clientsProvider (ctx) {
-      return this.axios.get(`/api/clients?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}`)
+      return this.axios.get(`/api/clients/?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}`)
         .then(response => {
           this.clients = response.data.items
           this.pagination = response.data.pagination

@@ -83,7 +83,7 @@ export default {
       evt.preventDefault()
       this.validating = true
 
-      this.axios.post(`/api/manifest/validate`, this.form)
+      this.axios.post(`/api/manifest/validate/`, this.form)
         .then(response => {
           this.validating = false
           this.status = response.data.status
