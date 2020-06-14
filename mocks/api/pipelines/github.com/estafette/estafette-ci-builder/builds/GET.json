@@ -351,9 +351,9 @@
         {
           "message": "update team label",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -659,9 +659,9 @@
         {
           "message": "fix logging for go.cd agent",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -734,9 +734,9 @@
         {
           "message": "use same golang image in all stages",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],

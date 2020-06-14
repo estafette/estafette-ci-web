@@ -343,9 +343,9 @@
         {
           "message": "add organizations and roles to user; add functions to check if user has a role, to add a role and to remove a role",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -499,9 +499,9 @@
         {
           "message": "add currentProvider to user",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],

@@ -244,9 +244,9 @@
         {
           "message": "fix marshalling and unmarshalling manifest with archived: true",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -346,9 +346,9 @@
         {
           "message": "set type to library",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
