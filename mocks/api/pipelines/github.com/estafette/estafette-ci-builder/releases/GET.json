@@ -1,0 +1,486 @@
+{
+  "items": [
+    {
+      "name": "dev",
+      "id": "562641488915169291",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.668",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "pipeline": {
+            "buildVersion": "0.0.668",
+            "repoSource": "github.com",
+            "repoOwner": "estafette",
+            "repoName": "estafette-ci-builder",
+            "repoBranch": "master",
+            "status": "succeeded",
+            "event": "finished"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-10T07:42:35.943039Z",
+      "startedAt": "2020-06-10T07:42:38.177806Z",
+      "updatedAt": "2020-06-10T07:43:06.468886Z",
+      "duration": 28000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "name": "stable",
+      "id": "561325742644035594",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.666",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-05T16:10:22.046739Z",
+      "startedAt": "2020-06-05T16:10:24.023813Z",
+      "updatedAt": "2020-06-05T16:10:53.824982Z",
+      "duration": 29000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "name": "beta",
+      "id": "561325733304205322",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.666",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-05T16:10:19.196566Z",
+      "startedAt": "2020-06-05T16:10:21.325729Z",
+      "updatedAt": "2020-06-05T16:10:48.641763Z",
+      "duration": 27000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "name": "dev",
+      "id": "561322688424247308",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.666",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "pipeline": {
+            "buildVersion": "0.0.666",
+            "repoSource": "github.com",
+            "repoOwner": "estafette",
+            "repoName": "estafette-ci-builder",
+            "repoBranch": "master",
+            "status": "succeeded",
+            "event": "finished"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-05T15:54:49.972827Z",
+      "startedAt": "2020-06-05T15:54:52.446976Z",
+      "updatedAt": "2020-06-05T15:55:17.08885Z",
+      "duration": 24000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "name": "dev",
+      "id": "556702834744459276",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.665",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "pipeline": {
+            "buildVersion": "0.0.665",
+            "repoSource": "github.com",
+            "repoOwner": "estafette",
+            "repoName": "estafette-ci-builder",
+            "repoBranch": "master",
+            "status": "succeeded",
+            "event": "finished"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-20T08:17:02.51692Z",
+      "updatedAt": "2020-05-20T08:17:27.795598Z",
+      "duration": 25000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "dev",
+      "id": "556701000757346314",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.664",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "pipeline": {
+            "buildVersion": "0.0.664",
+            "repoSource": "github.com",
+            "repoOwner": "estafette",
+            "repoName": "estafette-ci-builder",
+            "repoBranch": "master",
+            "status": "succeeded",
+            "event": "finished"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-20T08:07:42.828289Z",
+      "updatedAt": "2020-05-20T08:08:08.866403Z",
+      "duration": 26000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "stable",
+      "id": "556435571724058636",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.663",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-19T09:37:40.315757Z",
+      "updatedAt": "2020-05-19T09:38:12.527224Z",
+      "duration": 32000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "beta",
+      "id": "556435565113278476",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.663",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-19T09:37:38.298403Z",
+      "updatedAt": "2020-05-19T09:38:06.848431Z",
+      "duration": 28000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "dev",
+      "id": "556434539173380107",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.663",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "pipeline": {
+            "buildVersion": "0.0.663",
+            "repoSource": "github.com",
+            "repoOwner": "estafette",
+            "repoName": "estafette-ci-builder",
+            "repoBranch": "master",
+            "status": "succeeded",
+            "event": "finished"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-19T09:32:25.206402Z",
+      "updatedAt": "2020-05-19T09:32:51.145466Z",
+      "duration": 25000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "dev",
+      "id": "555350122542104586",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.662",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "pipeline": {
+            "buildVersion": "0.0.662",
+            "repoSource": "github.com",
+            "repoOwner": "estafette",
+            "repoName": "estafette-ci-builder",
+            "repoBranch": "master",
+            "status": "succeeded",
+            "event": "finished"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-15T13:36:47.513653Z",
+      "updatedAt": "2020-05-15T13:37:12.246532Z",
+      "duration": 24000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "stable",
+      "id": "554209970310250508",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.661",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-11T12:57:40.665618Z",
+      "updatedAt": "2020-05-11T12:58:11.217518Z",
+      "duration": 30000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "beta",
+      "id": "554209961499885580",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.661",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-11T12:57:37.976961Z",
+      "updatedAt": "2020-05-11T12:58:05.912344Z",
+      "duration": 27000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "dev",
+      "id": "554148842387603468",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.661",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "pipeline": {
+            "buildVersion": "0.0.661",
+            "repoSource": "github.com",
+            "repoOwner": "estafette",
+            "repoName": "estafette-ci-builder",
+            "repoBranch": "master",
+            "status": "succeeded",
+            "event": "finished"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-11T07:46:45.904108Z",
+      "updatedAt": "2020-05-11T07:47:11.2103Z",
+      "duration": 25000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "dev",
+      "id": "554143759001419786",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.660",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "pipeline": {
+            "buildVersion": "0.0.660",
+            "repoSource": "github.com",
+            "repoOwner": "estafette",
+            "repoName": "estafette-ci-builder",
+            "repoBranch": "master",
+            "status": "succeeded",
+            "event": "finished"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-11T07:20:54.577608Z",
+      "updatedAt": "2020-05-11T07:21:19.110089Z",
+      "duration": 24000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "dev",
+      "id": "554143446977609740",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.659",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "pipeline": {
+            "buildVersion": "0.0.659",
+            "repoSource": "github.com",
+            "repoOwner": "estafette",
+            "repoName": "estafette-ci-builder",
+            "repoBranch": "master",
+            "status": "succeeded",
+            "event": "finished"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-11T07:19:19.355575Z",
+      "updatedAt": "2020-05-11T07:19:44.045627Z",
+      "duration": 24000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "stable",
+      "id": "551381111409180682",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.658",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-01T13:09:21.440385Z",
+      "updatedAt": "2020-05-01T13:09:51.353087Z",
+      "duration": 29000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "beta",
+      "id": "551381107133087754",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.658",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-01T13:09:20.135474Z",
+      "updatedAt": "2020-05-01T13:09:51.372189Z",
+      "duration": 31000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "dev",
+      "id": "551380823564222476",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.658",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "pipeline": {
+            "buildVersion": "0.0.658",
+            "repoSource": "github.com",
+            "repoOwner": "estafette",
+            "repoName": "estafette-ci-builder",
+            "repoBranch": "master",
+            "status": "succeeded",
+            "event": "finished"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-01T13:07:53.597135Z",
+      "updatedAt": "2020-05-01T13:08:18.73913Z",
+      "duration": 25000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "dev",
+      "id": "551379284610351114",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.657",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "pipeline": {
+            "buildVersion": "0.0.657",
+            "repoSource": "github.com",
+            "repoOwner": "estafette",
+            "repoName": "estafette-ci-builder",
+            "repoBranch": "master",
+            "status": "succeeded",
+            "event": "finished"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-01T13:00:03.945698Z",
+      "updatedAt": "2020-05-01T13:00:34.686738Z",
+      "duration": 30000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "dev",
+      "id": "551377629194649610",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseVersion": "0.0.654",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "pipeline": {
+            "buildVersion": "0.0.654",
+            "repoSource": "github.com",
+            "repoOwner": "estafette",
+            "repoName": "estafette-ci-builder",
+            "repoBranch": "master",
+            "status": "succeeded",
+            "event": "finished"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-01T12:51:38.752566Z",
+      "updatedAt": "2020-05-01T12:52:12.570931Z",
+      "duration": 33000000000,
+      "pendingDuration": 0
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 20
+  }
+}

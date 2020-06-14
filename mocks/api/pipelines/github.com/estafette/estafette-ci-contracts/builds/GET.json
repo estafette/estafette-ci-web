@@ -1,0 +1,1042 @@
+{
+  "items": [
+    {
+      "id": "562456741080399884",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "68c70cc10da47b76fca4021bc1b87191fc9f6d21",
+      "buildVersion": "0.0.207",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "drop deprecated api key",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-09T16:02:55.378141Z",
+      "startedAt": "2020-06-09T16:03:05.250494Z",
+      "updatedAt": "2020-06-09T16:03:47.391096Z",
+      "duration": 42000000000,
+      "pendingDuration": 9000000000
+    },
+    {
+      "id": "562365255834402828",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "a7786b7752a0928403a3f3222966511b205ff6eb",
+      "buildVersion": "0.0.206",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add client for applications to authenticate to the api",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-09T08:17:36.296643Z",
+      "startedAt": "2020-06-09T08:17:38.316115Z",
+      "updatedAt": "2020-06-09T08:18:16.108587Z",
+      "duration": 37000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "id": "562360935591084044",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "65810f37cac375d01a2c652646ae7e9eaf034420",
+      "buildVersion": "0.0.205",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add organizations to group",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-09T07:55:37.863157Z",
+      "startedAt": "2020-06-09T07:55:39.062676Z",
+      "updatedAt": "2020-06-09T07:56:18.529319Z",
+      "duration": 39000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "562346152917303306",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "f6c7710afb92987d9309dcb87b2999aec84c8979",
+      "buildVersion": "0.0.204",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "rename and restructure groups and organizations",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-09T06:40:26.549102Z",
+      "startedAt": "2020-06-09T06:40:28.300494Z",
+      "updatedAt": "2020-06-09T06:41:08.219077Z",
+      "duration": 39000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "561558768885432330",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "5b05f82d6454200012bc129bd7b23cd34cf2341b",
+      "buildVersion": "0.0.203",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "fix append in AddRole",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-06T11:55:36.012025Z",
+      "startedAt": "2020-06-06T11:55:38.094945Z",
+      "updatedAt": "2020-06-06T11:56:17.516414Z",
+      "duration": 39000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "id": "561558614711762955",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "febc9a061228179e6c33ed90047bf63c177ede2a",
+      "buildVersion": "0.0.202",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "changes roles array to pointers",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-06T11:54:48.962051Z",
+      "startedAt": "2020-06-06T11:54:51.143438Z",
+      "updatedAt": "2020-06-06T11:55:35.496099Z",
+      "duration": 44000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "id": "561554150015205387",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "af77f94d465fb57f5286eec228fea3c717dee75e",
+      "buildVersion": "0.0.201",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add organizations and roles to user; add functions to check if user has a role, to add a role and to remove a role",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-06T11:32:06.444743Z",
+      "startedAt": "2020-06-06T11:32:08.525737Z",
+      "updatedAt": "2020-06-06T11:32:52.442483Z",
+      "duration": 43000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "id": "561313781560541195",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "ace2db19f013a183c8a76fa879645f6581b4e1be",
+      "buildVersion": "0.0.200",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add jwt to builder config",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-05T15:09:31.813677Z",
+      "startedAt": "2020-06-05T15:09:33.912319Z",
+      "updatedAt": "2020-06-05T15:10:14.014067Z",
+      "duration": 40000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "id": "560991147181113356",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "ca10ff13d6d40db3f3682470c6dabce8c7ba3cff",
+      "buildVersion": "0.0.199",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add 'computed' email field to user",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-04T11:48:31.614864Z",
+      "startedAt": "2020-06-04T11:48:33.31695Z",
+      "updatedAt": "2020-06-04T11:49:15.987085Z",
+      "duration": 42000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "560960533488795658",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "e2aaa15145b119637c31de64e0c6e2f8707e204d",
+      "buildVersion": "0.0.198",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add currentProvider to user",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-04T09:12:49.057479Z",
+      "startedAt": "2020-06-04T09:12:50.807149Z",
+      "updatedAt": "2020-06-04T09:13:26.562565Z",
+      "duration": 35000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "560718576943464458",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "05a1fc5d71005659932801de611f748b66825083",
+      "buildVersion": "0.0.197",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "helper functions to extract provider, name and email from user identities",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-03T12:42:09.779776Z",
+      "startedAt": "2020-06-03T12:42:12.881923Z",
+      "updatedAt": "2020-06-03T12:42:51.979287Z",
+      "duration": 39000000000,
+      "pendingDuration": 3000000000
+    },
+    {
+      "id": "560459471372746763",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "e397771bbfce0436eb6f6b5f989a2987bbb819ad",
+      "buildVersion": "0.0.196",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "update user identity and group fields",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-02T14:44:17.034824Z",
+      "startedAt": "2020-06-02T14:44:19.094634Z",
+      "updatedAt": "2020-06-02T14:44:58.462424Z",
+      "duration": 39000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "id": "558922611002212364",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "83073ce549df2fbc6e056171116edb29d2038b68",
+      "buildVersion": "0.0.195",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add StartedAt to build, pipeline and release",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-28T04:27:24.470427Z",
+      "updatedAt": "2020-05-28T04:28:03.808444Z",
+      "duration": 39000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "558919785233580044",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "0311ee0713197510abc7e962271583b79cf3f3bb",
+      "buildVersion": "0.0.194",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add nullable PendingDuration to build, pipeline and release",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-28T04:13:02.114186Z",
+      "updatedAt": "2020-05-28T04:13:42.413749Z",
+      "duration": 40000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "558916616392015882",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "448d8aec76e8e7ce40d3d18372699863edc659e0",
+      "buildVersion": "0.0.193",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "omit empty user id, first visit and last visit",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-28T03:56:55.060665Z",
+      "updatedAt": "2020-05-28T03:57:43.949033Z",
+      "duration": 48000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "558738070062858251",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "17a856caf2bfce52ae2fe84523a78c1522cd289f",
+      "buildVersion": "0.0.192",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "turn identities and groups into pointer arrays for easy updating; add preferences map",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-27T12:48:47.04517Z",
+      "updatedAt": "2020-05-27T12:49:23.830289Z",
+      "duration": 36000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "558724128399130634",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "a6d39e1f4c4a0122dd6e57b3135a4ab5d6b817a7",
+      "buildVersion": "0.0.191",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add first and last visit to user; add provider to user identity and group to replace source",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-27T11:37:52.387018Z",
+      "updatedAt": "2020-05-27T11:38:39.255242Z",
+      "duration": 46000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "558697464972312588",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "690fd279c8d0fb98b7e08d74ec68403a3382ffc6",
+      "buildVersion": "0.0.190",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add id field to user struct",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-27T09:22:15.355002Z",
+      "updatedAt": "2020-05-27T09:23:03.038862Z",
+      "duration": 47000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "558691855696592906",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "2d02fe9cd506ac58f9d6ab6d7c2e9ce1982f03a6",
+      "buildVersion": "0.0.189",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add user related structs",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-27T08:53:43.539669Z",
+      "updatedAt": "2020-05-27T08:54:57.973337Z",
+      "duration": 74000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "558206277225119755",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "master",
+      "repoRevision": "523a2ce1d8073814eec80acbbb61643ea7126e4c",
+      "buildVersion": "0.0.188",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add RecentCommitters and RecentReleasers properties to Pipeline",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-25T15:43:56.750439Z",
+      "updatedAt": "2020-05-25T15:44:40.639485Z",
+      "duration": 43000000000,
+      "pendingDuration": 0
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 20
+  }
+}

@@ -1,0 +1,430 @@
+{
+  "items": [
+    {
+      "name": "tooling-estafette",
+      "id": "563260214834593804",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.877",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-12T12:09:36.108762Z",
+      "startedAt": "2020-06-12T12:09:37.375629Z",
+      "updatedAt": "2020-06-12T12:11:01.375469Z",
+      "duration": 83000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "563258741735030794",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.875",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-12T12:02:06.554555Z",
+      "startedAt": "2020-06-12T12:02:11.17994Z",
+      "updatedAt": "2020-06-12T12:03:20.699067Z",
+      "duration": 69000000000,
+      "pendingDuration": 4000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "563234917644271627",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.874",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-12T10:00:56.019114Z",
+      "startedAt": "2020-06-12T10:01:00.34011Z",
+      "updatedAt": "2020-06-12T10:02:35.204657Z",
+      "duration": 94000000000,
+      "pendingDuration": 4000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "563221162458710027",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.871",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-12T08:50:58.269606Z",
+      "startedAt": "2020-06-12T08:51:02.411694Z",
+      "updatedAt": "2020-06-12T08:52:13.426027Z",
+      "duration": 71000000000,
+      "pendingDuration": 4000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "562978652926803978",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.870",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-11T12:17:30.233507Z",
+      "startedAt": "2020-06-11T12:17:40.045018Z",
+      "updatedAt": "2020-06-11T12:19:29.89315Z",
+      "duration": 109000000000,
+      "pendingDuration": 9000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "562964310472622091",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.868",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-11T11:04:33.263897Z",
+      "startedAt": "2020-06-11T11:04:38.591582Z",
+      "updatedAt": "2020-06-11T11:06:12.893604Z",
+      "duration": 94000000000,
+      "pendingDuration": 5000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "562703421837967371",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.867",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-10T12:57:36.371183Z",
+      "startedAt": "2020-06-10T12:57:41.231651Z",
+      "updatedAt": "2020-06-10T12:59:10.771741Z",
+      "duration": 89000000000,
+      "pendingDuration": 4000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "562660784796106764",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.866",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-10T09:20:44.578579Z",
+      "startedAt": "2020-06-10T09:20:45.794958Z",
+      "updatedAt": "2020-06-10T09:22:23.198438Z",
+      "duration": 97000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "562656305190273035",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.864",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-10T08:57:57.511402Z",
+      "startedAt": "2020-06-10T08:57:58.733041Z",
+      "updatedAt": "2020-06-10T08:59:26.501822Z",
+      "duration": 87000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "562653793282457612",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.863",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-10T08:45:10.937876Z",
+      "startedAt": "2020-06-10T08:45:14.385165Z",
+      "updatedAt": "2020-06-10T08:48:29.032329Z",
+      "duration": 194000000000,
+      "pendingDuration": 3000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "562444742013517836",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.861",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-09T15:01:53.553651Z",
+      "startedAt": "2020-06-09T15:01:54.628519Z",
+      "updatedAt": "2020-06-09T15:03:16.071014Z",
+      "duration": 81000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "562430768958406666",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.860",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-09T13:50:49.31556Z",
+      "startedAt": "2020-06-09T13:50:51.618656Z",
+      "updatedAt": "2020-06-09T13:52:16.642206Z",
+      "duration": 85000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "562412455056048139",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.857",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-09T12:17:40.355957Z",
+      "startedAt": "2020-06-09T12:17:42.750261Z",
+      "updatedAt": "2020-06-09T12:19:50.309156Z",
+      "duration": 127000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "562397279825592332",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.856",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-09T11:00:29.2432Z",
+      "startedAt": "2020-06-09T11:00:31.596497Z",
+      "updatedAt": "2020-06-09T11:01:48.06945Z",
+      "duration": 76000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "562385208885903370",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.855",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-09T09:59:05.484927Z",
+      "startedAt": "2020-06-09T09:59:07.714492Z",
+      "updatedAt": "2020-06-09T10:00:59.67293Z",
+      "duration": 111000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "562360017348788234",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.854",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-09T07:50:57.637912Z",
+      "startedAt": "2020-06-09T07:50:58.973094Z",
+      "updatedAt": "2020-06-09T07:52:05.171642Z",
+      "duration": 66000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "562168228661493770",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.853",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-08T15:35:28.375353Z",
+      "startedAt": "2020-06-08T15:35:30.92208Z",
+      "updatedAt": "2020-06-08T15:36:42.190486Z",
+      "duration": 71000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "562166174630412298",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.852",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-08T15:25:01.534908Z",
+      "startedAt": "2020-06-08T15:25:03.726253Z",
+      "updatedAt": "2020-06-08T15:26:15.276158Z",
+      "duration": 71000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "562164326561447946",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.851",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-08T15:15:37.548956Z",
+      "startedAt": "2020-06-08T15:15:39.717618Z",
+      "updatedAt": "2020-06-08T15:16:59.97905Z",
+      "duration": 80000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "id": "562162443939020810",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "releaseVersion": "0.1.850",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "jsalverda@travix.com"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-08T15:06:03.018188Z",
+      "startedAt": "2020-06-08T15:06:05.150041Z",
+      "updatedAt": "2020-06-08T15:07:24.23932Z",
+      "duration": 79000000000,
+      "pendingDuration": 2000000000
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 20
+  }
+}

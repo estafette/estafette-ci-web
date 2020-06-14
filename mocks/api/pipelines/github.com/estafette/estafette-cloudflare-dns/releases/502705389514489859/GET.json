@@ -1,0 +1,1 @@
+{"name":"release","id":"502705389514489859","repoSource":"github.com","repoOwner":"estafette","repoName":"estafette-cloudflare-dns","releaseVersion":"1.2.2","releaseStatus":"succeeded","triggerEvents":[{"manual":{"userID":"jsalverda@travix.com"}}],"insertedAt":"2019-11-11T14:51:49.983192Z","updatedAt":"2019-11-11T14:52:18.431946Z","duration":28000000000,"pendingDuration":0}

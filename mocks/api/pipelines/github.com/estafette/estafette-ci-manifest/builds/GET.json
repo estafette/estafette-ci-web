@@ -1,0 +1,987 @@
+{
+  "items": [
+    {
+      "id": "563300116385562635",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "add-metadata-with-configurable-json-schema",
+      "repoRevision": "754d2c53728d8e09eb75245d21293c1483634de0",
+      "buildVersion": "0.1.154-add-metadata-with-configurable-json-schema",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "allow a json schema to be passed via preferences to configure what the free-form metadata property needs to look like",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        },
+        {
+          "message": "add test manifest with metadata",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "add-metadata-with-configurable-json-schema"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-12T15:32:33.09581Z",
+      "startedAt": "2020-06-12T15:32:34.808437Z",
+      "updatedAt": "2020-06-12T15:33:15.055678Z",
+      "duration": 40000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "556696140398592011",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "686bc6bcd1e0278bfeb5f7e78ab8b32899c71fcf",
+      "buildVersion": "0.1.153",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add validate argument to ReadManifestFromFile and ReadManifest so old files can be unmarshalled without failing newer validation rules",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-20T07:42:59.564582Z",
+      "updatedAt": "2020-05-20T07:43:37.651Z",
+      "duration": 38000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "556694877523476491",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "54a36f9768eeaf811d75a35f64e4725fb0662cdf",
+      "buildVersion": "0.1.152",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "remove debug logs from ReadManifest (too noisy)",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-20T07:36:34.165604Z",
+      "updatedAt": "2020-05-20T07:37:21.550967Z",
+      "duration": 47000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "556433060950081546",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "256032b28cbebf5881c10c1f73e3c8b28974656b",
+      "buildVersion": "0.1.151",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add test file with archived",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-19T09:24:54.088343Z",
+      "updatedAt": "2020-05-19T09:25:39.711507Z",
+      "duration": 45000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "556432961566375947",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "79167d6cf8d27534b807a87afcf09fa853144a0e",
+      "buildVersion": "0.1.150",
+      "buildStatus": "failed",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "fix marshalling and unmarshalling manifest with archived: true",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-19T09:24:23.758845Z",
+      "updatedAt": "2020-05-19T09:25:02.789605Z",
+      "duration": 39000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "556184437071609866",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "222559a21ab0ab824fd902f5f04c3ceea9545621",
+      "buildVersion": "0.1.149",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add archived property",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-18T12:20:20.101884Z",
+      "updatedAt": "2020-05-18T12:21:01.159213Z",
+      "duration": 41000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "555776115198263306",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "4d1e8698831700f458fb4d7678dd6831d65d2f6b",
+      "buildVersion": "0.1.148",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "set type to library",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-17T01:43:30.155324Z",
+      "updatedAt": "2020-05-17T01:44:07.711461Z",
+      "duration": 37000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "555340765346889740",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "c85967c1d1f566eeca923a1a7901763ab902fbab",
+      "buildVersion": "0.1.147",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add json annotation to manifest preferences",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-15T12:49:11.924333Z",
+      "updatedAt": "2020-05-15T12:49:57.128015Z",
+      "duration": 45000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "555339452114993162",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "6b7151b0deec74c13d8cba52d805b194fc733834",
+      "buildVersion": "0.1.146",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add EstafetteManifestPreferences to configure manifest validation rules",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-15T12:42:31.157272Z",
+      "updatedAt": "2020-05-15T12:43:29.808332Z",
+      "duration": 58000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "534915760961912833",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "a31a225b9c06ed84d43e3c36aeee94c0387255e3",
+      "buildVersion": "0.1.145",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "commits": [
+        {
+          "message": "build with golang 1.14.0",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-03-04T09:22:15.254048Z",
+      "updatedAt": "2020-03-04T09:23:03.210347Z",
+      "duration": 47000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "523037641880109059",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "35a5fd2e7c9087e0f76f053ae87f8b722714f2a7",
+      "buildVersion": "0.1.144",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "commits": [
+        {
+          "message": "build with golang 1.13.6",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-01-22T10:27:00.983565Z",
+      "updatedAt": "2020-01-22T10:27:43.441938Z",
+      "duration": 42000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "511789620827095043",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "bots-support",
+      "repoRevision": "7a15dea7d79cc6a31fdab4490371eb6bd4529f61",
+      "buildVersion": "0.1.143-bots-support",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add bots definition to manifest to act on any github or bitbucket event",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "bots-support"
+          }
+        }
+      ],
+      "insertedAt": "2019-12-13T16:56:37.371127Z",
+      "updatedAt": "2019-12-13T16:57:33.121242Z",
+      "duration": 55000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "511769584014917636",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "75d6d924305da20dcc4db46671bcba7a16edef4a",
+      "buildVersion": "0.1.142",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "commits": [
+        {
+          "message": "build with golang:1.13.5-alpine",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2019-12-13T15:14:42.621308Z",
+      "updatedAt": "2019-12-13T15:15:35.825634Z",
+      "duration": 53000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "511445108642185222",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "3bee9d5aa17e8779de76f984ab620c97c67fdfb1",
+      "buildVersion": "0.1.141",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "commits": [
+        {
+          "message": "fix tests for default release action version",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2019-12-12T11:44:20.595958Z",
+      "updatedAt": "2019-12-12T11:44:57.467698Z",
+      "duration": 36000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "511444054629482502",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "ba7e2bee70a7ac6cfe132a6d00f407e7ebbb0a21",
+      "buildVersion": "0.1.140",
+      "buildStatus": "failed",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "commits": [
+        {
+          "message": "if release is triggered by same pipeline build/release run a release for the same version instead of latest",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2019-12-12T11:38:58.936711Z",
+      "updatedAt": "2019-12-12T11:39:27.447717Z",
+      "duration": 28000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "507975047864975362",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "88faa45f7b407c85d9632c8d419e43f1074556ff",
+      "buildVersion": "0.1.139",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "commits": [
+        {
+          "message": "switch log level to debug",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2019-11-30T05:34:42.087242Z",
+      "updatedAt": "2019-11-30T05:35:16.151631Z",
+      "duration": 34000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "507173494660366337",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "fb884d6469a23a0f8d4b6b7500209fa97c895b23",
+      "buildVersion": "0.1.138",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "commits": [
+        {
+          "message": "allow stage image to be left empty if it has services",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2019-11-27T09:37:47.461853Z",
+      "updatedAt": "2019-11-27T09:38:26.857672Z",
+      "duration": 39000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "507162240102137861",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "e88861f3903ef63bf16bcbbbfb48f5649edfb637",
+      "buildVersion": "0.1.137",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add multistage boolean to service, defaulting to false if parent stage has image and commands, true otherwise",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2019-11-27T08:40:32.843043Z",
+      "updatedAt": "2019-11-27T08:41:12.700335Z",
+      "duration": 39000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "506624160851460100",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "f7d6c20a600330150bdb7aab18985f417b13f3e7",
+      "buildVersion": "0.1.136",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "commits": [
+        {
+          "message": "rename CommandsNotAsJob to RunCommandsInForeground",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2019-11-25T11:03:44.087514Z",
+      "updatedAt": "2019-11-25T11:04:20.149461Z",
+      "duration": 36000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "506342181902155780",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "master",
+      "repoRevision": "985f561f09c852482f17e9189c82970604256c57",
+      "buildVersion": "0.1.135",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add commandsNotAsJob to stage and service to skip running steps in the background, but making it less cancelable as well",
+          "author": {
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2019-11-24T11:09:30.94129Z",
+      "updatedAt": "2019-11-24T11:10:10.991892Z",
+      "duration": 40000000000,
+      "pendingDuration": 0
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 20
+  }
+}

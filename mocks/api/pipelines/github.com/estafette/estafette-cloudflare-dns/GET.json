@@ -1,0 +1,78 @@
+{
+  "id": "555776830024351754",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-cloudflare-dns",
+  "repoBranch": "master",
+  "repoRevision": "72bb004456375b072355d9b63c0f3a2fab461864",
+  "buildVersion": "1.2.6-master-117",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-controllers"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette-team"
+    },
+    {
+      "key": "type",
+      "value": "service"
+    }
+  ],
+  "releaseTargets": [
+    {
+      "name": "release",
+      "activeReleases": [
+        {
+          "name": "release",
+          "id": "525584413844635650",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-cloudflare-dns",
+          "releaseVersion": "1.2.5",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "manual": {
+                "userID": "jsalverda@travix.com"
+              }
+            }
+          ],
+          "insertedAt": "2020-01-31T10:20:34.107584Z",
+          "updatedAt": "2020-01-31T10:21:00.179341Z",
+          "duration": 26000000000
+        }
+      ]
+    }
+  ],
+  "commits": [
+    {
+      "message": "set type to service",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-cloudflare-dns",
+        "branch": "master"
+      }
+    }
+  ],
+  "insertedAt": "2020-05-17T01:47:08.302912Z",
+  "updatedAt": "2020-05-17T01:50:23.480716Z",
+  "duration": 195000000000,
+  "pendingDuration": 0,
+  "lastUpdatedAt": "2020-05-17T01:50:23.480716Z"
+}
