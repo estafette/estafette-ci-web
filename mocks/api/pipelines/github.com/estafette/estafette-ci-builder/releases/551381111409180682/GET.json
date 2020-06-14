@@ -1,1 +1,0 @@
-{"name":"stable","id":"551381111409180682","repoSource":"github.com","repoOwner":"estafette","repoName":"estafette-ci-builder","releaseVersion":"0.0.658","releaseStatus":"succeeded","triggerEvents":[{"manual":{"userID":"jsalverda@travix.com"}}],"insertedAt":"2020-05-01T13:09:21.440385Z","updatedAt":"2020-05-01T13:09:51.353087Z","duration":29000000000,"pendingDuration":0}

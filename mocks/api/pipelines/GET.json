@@ -54,7 +54,7 @@
               "triggerEvents": [
                 {
                   "manual": {
-                    "userID": "jsalverda@travix.com"
+                    "userID": "me@estafette.io"
                   }
                 }
               ],
@@ -76,7 +76,7 @@
               "triggerEvents": [
                 {
                   "manual": {
-                    "userID": "jsalverda@travix.com"
+                    "userID": "me@estafette.io"
                   }
                 }
               ],
@@ -166,7 +166,7 @@
               "triggerEvents": [
                 {
                   "manual": {
-                    "userID": "jsalverda@travix.com"
+                    "userID": "me@estafette.io"
                   }
                 }
               ],
@@ -222,7 +222,7 @@
               "triggerEvents": [
                 {
                   "manual": {
-                    "userID": "jsalverda@travix.com"
+                    "userID": "me@estafette.io"
                   }
                 }
               ],
@@ -247,7 +247,7 @@
               "triggerEvents": [
                 {
                   "manual": {
-                    "userID": "jsalverda@travix.com"
+                    "userID": "me@estafette.io"
                   }
                 }
               ],
@@ -462,13 +462,13 @@
       "lastUpdatedAt": "2020-06-12T15:33:15.055678Z"
     },
     {
-      "id": "563762187942526986",
+      "id": "563919075387736075",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-web",
       "repoBranch": "master",
-      "repoRevision": "3ecaea00dfe197d6c83491711a25b229f514a18e",
-      "buildVersion": "0.1.882",
+      "repoRevision": "4a8fdfaa3c5b88f41069107b6f12fdf24a04abc4",
+      "buildVersion": "0.1.883",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -503,7 +503,7 @@
               "triggerEvents": [
                 {
                   "manual": {
-                    "userID": "jsalverda@travix.com"
+                    "userID": "me@estafette.io"
                   }
                 }
               ],
@@ -518,7 +518,7 @@
       ],
       "commits": [
         {
-          "message": "add more demo api responses",
+          "message": "estafette-ci-demo 0.0.23-source",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -535,12 +535,12 @@
           }
         }
       ],
-      "insertedAt": "2020-06-14T06:42:46.144216Z",
-      "startedAt": "2020-06-14T06:42:50.846033Z",
-      "updatedAt": "2020-06-14T06:44:56.197361Z",
-      "duration": 125000000000,
-      "pendingDuration": 4000000000,
-      "lastUpdatedAt": "2020-06-14T06:44:56.197361Z"
+      "insertedAt": "2020-06-14T20:00:44.392927Z",
+      "startedAt": "2020-06-14T20:00:46.365757Z",
+      "updatedAt": "2020-06-14T20:02:52.961957Z",
+      "duration": 126000000000,
+      "pendingDuration": 1000000000,
+      "lastUpdatedAt": "2020-06-14T20:02:52.961957Z"
     },
     {
       "id": "555776830024351754",
@@ -584,7 +584,7 @@
               "triggerEvents": [
                 {
                   "manual": {
-                    "userID": "jsalverda@travix.com"
+                    "userID": "me@estafette.io"
                   }
                 }
               ],
@@ -662,7 +662,7 @@
               "triggerEvents": [
                 {
                   "manual": {
-                    "userID": "jsalverda@travix.com"
+                    "userID": "me@estafette.io"
                   }
                 }
               ],
