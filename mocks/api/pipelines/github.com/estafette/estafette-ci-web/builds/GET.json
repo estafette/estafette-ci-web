@@ -1,6 +1,63 @@
 {
   "items": [
     {
+      "id": "564043050171301899",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "repoBranch": "master",
+      "repoRevision": "5b9cd13fddfc9fb0fc22890101e247b6f1c8a4da",
+      "buildVersion": "0.1.886",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "nodejs"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "web"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "tooling-estafette"
+        }
+      ],
+      "commits": [
+        {
+          "message": "estafette-ci-demo 0.0.27-source",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-web",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-15T06:31:18.494338Z",
+      "startedAt": "2020-06-15T06:31:23.031569Z",
+      "updatedAt": "2020-06-15T06:33:31.289882Z",
+      "duration": 128000000000,
+      "pendingDuration": 4000000000
+    },
+    {
       "id": "563922324285587467",
       "repoSource": "github.com",
       "repoOwner": "estafette",
@@ -36,9 +93,9 @@
         {
           "message": "estafette-ci-demo 0.0.26-source",
           "author": {
-            "email": "jorrit.salverda@gmail.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -93,9 +150,9 @@
         {
           "message": "estafette-ci-demo 0.0.25-source",
           "author": {
-            "email": "jorrit.salverda@gmail.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -150,9 +207,9 @@
         {
           "message": "estafette-ci-demo 0.0.23-source",
           "author": {
-            "email": "jorrit.salverda@gmail.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -207,9 +264,9 @@
         {
           "message": "add more demo api responses",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -264,9 +321,9 @@
         {
           "message": "rename GET.json to index.json for demo",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -321,9 +378,9 @@
         {
           "message": "add npm run demo",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -378,9 +435,9 @@
         {
           "message": "add docs folder for demo site",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -435,9 +492,9 @@
         {
           "message": "add trailing slash to all api urls",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -492,9 +549,9 @@
         {
           "message": "add email to group members",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -511,63 +568,6 @@
       "startedAt": "2020-06-12T12:06:14.264164Z",
       "updatedAt": "2020-06-12T12:08:15.627265Z",
       "duration": 121000000000,
-      "pendingDuration": 1000000000
-    },
-    {
-      "id": "563259422901010443",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-web",
-      "repoBranch": "master",
-      "repoRevision": "06c775b23acd7567e10952d56b230e8aa7158a71",
-      "buildVersion": "0.1.876",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "nodejs"
-        },
-        {
-          "key": "team",
-          "value": "estafette-team"
-        },
-        {
-          "key": "type",
-          "value": "web"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "tooling-estafette"
-        }
-      ],
-      "commits": [
-        {
-          "message": "fix filter query param for group members",
-          "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-web",
-            "branch": "master"
-          }
-        }
-      ],
-      "insertedAt": "2020-06-12T12:05:34.429906Z",
-      "startedAt": "2020-06-12T12:05:36.17346Z",
-      "updatedAt": "2020-06-12T12:07:44.499109Z",
-      "duration": 128000000000,
       "pendingDuration": 1000000000
     }
   ],

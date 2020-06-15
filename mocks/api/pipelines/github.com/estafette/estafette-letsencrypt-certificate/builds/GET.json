@@ -36,9 +36,9 @@
         {
           "message": "Reduce the sleep time when watching for namespaces.",
           "author": {
-            "email": "vitorarins@gmail.com",
-            "name": "Vitor Arins",
-            "username": "vitorarins"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -93,17 +93,17 @@
         {
           "message": "Add watch verb to namespaces in clusterrole.",
           "author": {
-            "email": "vitorarins@gmail.com",
-            "name": "Vitor Arins",
-            "username": "vitorarins"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         },
         {
           "message": "Add watchNamespaces function; Refactor copySecretToAllNamespaces function; Refactor main function.",
           "author": {
-            "email": "vitorarins@gmail.com",
-            "name": "Vitor Arins",
-            "username": "vitorarins"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -158,9 +158,9 @@
         {
           "message": "set type to service",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -210,9 +210,9 @@
         {
           "message": "upgrade to github.com/go-acme/lego v3.4.0",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
