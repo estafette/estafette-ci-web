@@ -1,11 +1,11 @@
 {
-  "id": "564128788639285258",
+  "id": "564129451715854347",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-demo",
   "repoBranch": "master",
-  "repoRevision": "2a69afb5c3569e5e0aa6e947bdaac143ab81f819",
-  "buildVersion": "0.0.39",
+  "repoRevision": "ac1c24ee3bf31504788beee1c3adcff7b549ee15",
+  "buildVersion": "0.0.40",
   "buildStatus": "running",
   "labels": [
     {
@@ -23,7 +23,7 @@
   ],
   "commits": [
     {
-      "message": "fix writing event type in sse file",
+      "message": "5 second delay for sse",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -40,10 +40,10 @@
       }
     }
   ],
-  "insertedAt": "2020-06-15T13:47:23.798135Z",
-  "startedAt": "2020-06-15T13:47:25.122335Z",
-  "updatedAt": "2020-06-15T13:47:25.122335Z",
+  "insertedAt": "2020-06-15T13:50:46.153126Z",
+  "startedAt": "2020-06-15T13:50:48.186116Z",
+  "updatedAt": "2020-06-15T13:50:48.186116Z",
   "duration": 0,
-  "pendingDuration": 1000000000,
-  "lastUpdatedAt": "2020-06-15T13:47:25.122335Z"
+  "pendingDuration": 2000000000,
+  "lastUpdatedAt": "2020-06-15T13:50:48.186116Z"
 }
