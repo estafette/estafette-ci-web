@@ -6,7 +6,7 @@
   "repoBranch": "master",
   "repoRevision": "8f38aee2503f2281b06b0864fe737b53be1d96b4",
   "buildVersion": "0.0.33",
-  "buildStatus": "running",
+  "buildStatus": "succeeded",
   "labels": [
     {
       "key": "app-group",
@@ -44,7 +44,7 @@
   ],
   "insertedAt": "2020-06-15T13:04:59.942646Z",
   "startedAt": "2020-06-15T13:05:01.862525Z",
-  "updatedAt": "2020-06-15T13:05:01.862525Z",
-  "duration": 0,
+  "updatedAt": "2020-06-15T13:06:00.176535Z",
+  "duration": 58000000000,
   "pendingDuration": 1000000000
 }
