@@ -31,6 +31,16 @@
       borderless
       stacked="lg"
     >
+      <template v-slot:cell(roles)="data">
+        <b-badge
+          v-for="role in data.item.roles"
+          :key="role"
+          variant="info"
+          class="mr-1"
+        >
+          {{ role }}
+        </b-badge>
+      </template>
       <template v-slot:cell(show_details)="row">
         <b-button
           size="sm"
@@ -80,7 +90,7 @@
 </template>
 
 <script>
-import { BTable, BButton, BCard, BRow, BCol } from 'bootstrap-vue'
+import { BTable, BButton, BCard, BRow, BCol, BBadge } from 'bootstrap-vue'
 
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
@@ -92,6 +102,7 @@ export default {
     BCard,
     BRow,
     BCol,
+    BBadge,
     PaginationCompact,
     Pagination
   },
@@ -108,6 +119,10 @@ export default {
       fields: [
         {
           key: 'name',
+          sortable: true
+        },
+        {
+          key: 'roles',
           sortable: true
         },
         {
