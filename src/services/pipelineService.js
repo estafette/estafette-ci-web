@@ -12,6 +12,6 @@ export default {
       statusFilter += `&filter[status]=pending&filter[status]=canceling`
     }
 
-    return axios.get(`/api/pipelines/?${statusFilter}&filter[since]=${filter.since}&filter[search]=${filter.search}&filter[labels]=${labelFilterParams}&page[number]=${pagination.page}&page[size]=${pagination.size}`)
+    return axios.get(`/api/pipelines?${statusFilter}&filter[since]=${filter.since}&filter[search]=${filter.search}&filter[labels]=${labelFilterParams}&page[number]=${pagination.page}&page[size]=${pagination.size}`)
   }
 }

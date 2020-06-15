@@ -132,7 +132,7 @@ export default {
 
   methods: {
     groupsProvider (ctx) {
-      return this.axios.get(`/api/groups/?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}`)
+      return this.axios.get(`/api/groups?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}`)
         .then(response => {
           this.groups = response.data.items
           this.pagination = response.data.pagination

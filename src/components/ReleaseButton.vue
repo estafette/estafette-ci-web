@@ -108,7 +108,7 @@ export default {
         }
         this.updateRelease(startedRelease)
 
-        this.axios.post(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/releases/`, startedRelease)
+        this.axios.post(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/releases`, startedRelease)
           .then(response => {
             startedRelease = response.data
             this.updateRelease(startedRelease)

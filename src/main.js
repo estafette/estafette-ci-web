@@ -2,21 +2,41 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import axios from 'axios'
-import VueAxios from 'vue-axios'
 import App from './App'
 import router from './router'
 import store from './store'
+import config from './config'
 import './filters'
 import { VBTooltip } from 'bootstrap-vue'
 // Note: Vue automatically prefixes the directive name with 'v-'
 Vue.directive('b-tooltip', VBTooltip)
-Vue.use(VueAxios, axios)
+
+Vue.axios = axios
+Vue.$http = axios
+Vue.prototype.axios = axios
+Vue.prototype.$http = axios
 
 // intercept api requests to add X-Requested-With: XMLHttpRequest header to have IAP return 401 instead of 302
 Vue.axios.interceptors.request.use(
-  config => {
-    config.headers = { 'X-Requested-With': 'XMLHttpRequest' }
-    return config
+  r => {
+    if (config.addTrailingSlashToApiRequests) {
+      // split url in path and query
+      var url = r.url
+      var urlParts = url.split('?')
+
+      // check if path already ends with a trailing slash
+      if (urlParts.length > 0 && urlParts[0][urlParts[0].length - 1] !== '/') {
+        // if not add a trailing slash
+        urlParts[0] += '/'
+
+        r.url = urlParts.join('?')
+      }
+    }
+
+    // add header to ensure it's treated as an XMLHttpRequest
+    r.headers = { 'X-Requested-With': 'XMLHttpRequest' }
+
+    return r
   },
   error => Promise.reject(error)
 )
@@ -40,7 +60,7 @@ Vue.axios.interceptors.response.use((response) => {
 store.watch((state) => state.user.me, (to, from) => {
   if (!to && from) {
     if (from.currentProvider) {
-      window.location.href = '/api/auth/login/' + from.currentProvider + '/?returnURL=' + router.currentRoute.fullPath
+      window.location.href = '/api/auth/login/' + from.currentProvider + '?returnURL=' + router.currentRoute.fullPath
     } else {
       router.replace({ name: 'Login', query: { returnURL: router.currentRoute.fullPath } })
     }

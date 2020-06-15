@@ -126,7 +126,7 @@ export default {
     },
 
     loadStat () {
-      this.axios.get(`/api/stats/${this.type}adoption/`)
+      this.axios.get(`/api/stats/${this.type}adoption`)
         .then(response => {
           this.updateSeries(response.data.datetimes)
           this.periodicallyRefreshStat(60)

@@ -86,7 +86,7 @@ export default {
 
   methods: {
     loadStat () {
-      this.axios.get(`/api/stats/most${this.type}/?filter[since]=${this.filter.since}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/stats/most${this.type}?filter[since]=${this.filter.since}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.rows = response.data.items
           this.pagination = response.data.pagination

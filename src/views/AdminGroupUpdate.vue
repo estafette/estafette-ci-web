@@ -63,7 +63,7 @@ export default {
 
   methods: {
     loadForm () {
-      this.axios.get(`/api/groups/${this.id}/`, this.form)
+      this.axios.get(`/api/groups/${this.id}`, this.form)
         .then(response => {
           this.form = response.data
         })
@@ -73,7 +73,7 @@ export default {
     },
     onSubmit (evt) {
       evt.preventDefault()
-      this.axios.put(`/api/groups/${this.id}/`, this.form)
+      this.axios.put(`/api/groups/${this.id}`, this.form)
         .then(response => {
           this.$router.push({ name: 'AdminGroups' })
         })

@@ -31,7 +31,7 @@ export default {
 
   methods: {
     loadMembers () {
-      return this.axios.get(`/api/users/?filter[group-id]=${this.id}&page[size]=100`)
+      return this.axios.get(`/api/users?filter[group-id]=${this.id}&page[size]=100`)
         .then(response => {
           this.members = response.data.items
         })

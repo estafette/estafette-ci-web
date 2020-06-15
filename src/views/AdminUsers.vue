@@ -206,7 +206,7 @@ export default {
       //   sort = `&sort=-${ctx.sortDesc}`
       // }
 
-      return this.axios.get(`/api/users/?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}${sort}`)
+      return this.axios.get(`/api/users?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}${sort}`)
         .then(response => {
           this.users = response.data.items
           this.pagination = response.data.pagination

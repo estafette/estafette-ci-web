@@ -43,6 +43,9 @@ module.exports = {
     children: false
   },
   plugins: [
+    new webpack.DefinePlugin({
+      ADD_TRAILING_SLASH_TO_API_REQUEST: JSON.stringify(false)
+    }),
     new CleanWebpackPlugin(['dist'], { root: path.resolve(__dirname, '..') }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({

@@ -24,7 +24,7 @@ export default {
 
   methods: {
     loadConfig () {
-      this.axios.get('/api/config/credentials/')
+      this.axios.get('/api/config/credentials')
         .then(response => {
           this.credentials = response.data.config
           this.periodicallyRefreshConfig(60)

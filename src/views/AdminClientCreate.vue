@@ -113,7 +113,7 @@ export default {
 
   methods: {
     loadRoles () {
-      this.axios.get(`/api/roles/`)
+      this.axios.get(`/api/roles`)
         .then(response => {
           this.roles = response.data
         })
@@ -124,7 +124,7 @@ export default {
 
     onSubmit (evt) {
       evt.preventDefault()
-      this.axios.post(`/api/clients/`, this.form)
+      this.axios.post(`/api/clients`, this.form)
         .then(response => {
           this.$router.push({ name: 'AdminClients' })
         })

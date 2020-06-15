@@ -259,7 +259,7 @@ export default {
         sortParams = '&sort=-last_updated_at,repo_source,repo_owner,repo_name'
       }
 
-      this.axios.get(`/api/pipelines/?${statusFilter}${recentCommitterFilterParams}${recentReleaserFilterParams}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}${sortParams}`)
+      this.axios.get(`/api/pipelines?${statusFilter}${recentCommitterFilterParams}${recentReleaserFilterParams}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}${sortParams}`)
         .then(response => {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination

@@ -246,7 +246,7 @@ export default {
 
         this.updateRelease(startedRelease)
 
-        this.axios.post(`/api/pipelines/${build.repoSource}/${build.repoOwner}/${build.repoName}/releases/`, startedRelease)
+        this.axios.post(`/api/pipelines/${build.repoSource}/${build.repoOwner}/${build.repoName}/releases`, startedRelease)
           .then(response => {
             startedRelease = response.data
             this.updateRelease(startedRelease)
@@ -297,7 +297,7 @@ export default {
     },
 
     loadRecentBuilds () {
-      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/?page[size]=6`)
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds?page[size]=6`)
         .then(response => {
           this.builds = response.data.items
 

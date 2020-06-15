@@ -24,7 +24,7 @@ export default {
 
   methods: {
     loadConfig () {
-      this.axios.get('/api/config/trustedimages/')
+      this.axios.get('/api/config/trustedimages')
         .then(response => {
           this.trustedimages = response.data.config
         })

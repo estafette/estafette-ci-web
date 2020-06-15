@@ -57,7 +57,7 @@ export default {
     cancel: function (event) {
       if (this.user.active) {
         if (this.build && (this.build.buildStatus === 'pending' || this.build.buildStatus === 'running' || this.build.buildStatus === 'canceling')) {
-          this.axios.delete(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/builds/${this.build.id}/`)
+          this.axios.delete(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/builds/${this.build.id}`)
             .then(response => {
               this.build.buildStatus = 'canceling'
             })
@@ -65,7 +65,7 @@ export default {
               console.warn(e)
             })
         } else if (this.release && (this.release.releaseStatus === 'pending' || this.release.releaseStatus === 'running' || this.release.releaseStatus === 'canceling')) {
-          this.axios.delete(`/api/pipelines/${this.release.repoSource}/${this.release.repoOwner}/${this.release.repoName}/releases/${this.release.id}/`)
+          this.axios.delete(`/api/pipelines/${this.release.repoSource}/${this.release.repoOwner}/${this.release.repoName}/releases/${this.release.id}`)
             .then(response => {
               this.release.releaseStatus = 'canceling'
             })
