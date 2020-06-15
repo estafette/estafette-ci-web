@@ -1,15 +1,11 @@
-const webpack = require('webpack')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-module.exports = merge(common, {
+var mergedConfig = merge(common, {
   mode: 'production',
   plugins: [
-    new webpack.EnvironmentPlugin({
-      ADD_TRAILING_SLASH_TO_API_REQUEST: false
-    }),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].[contenthash].css'
     })
@@ -27,3 +23,7 @@ module.exports = merge(common, {
     ]
   }
 })
+
+module.exports = mergedConfig
+
+console.log('webpack config', JSON.stringify(mergedConfig))

@@ -18,7 +18,7 @@ Vue.prototype.$http = axios
 // intercept api requests to add X-Requested-With: XMLHttpRequest header to have IAP return 401 instead of 302
 Vue.axios.interceptors.request.use(
   config => {
-    if (process.env.ADD_TRAILING_SLASH_TO_API_REQUEST === true) {
+    if (process.env.ADD_TRAILING_SLASH_TO_API_REQUEST) {
       // split url in path and query
       var url = config.url
       var urlParts = url.split('?')
