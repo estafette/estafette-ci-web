@@ -401,13 +401,13 @@
       "lastUpdatedAt": "2020-05-17T01:44:48.913019Z"
     },
     {
-      "id": "564128095339413515",
+      "id": "564128788639285258",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-demo",
       "repoBranch": "master",
-      "repoRevision": "7be585be6ac861805de0c970ffc679a95848c187",
-      "buildVersion": "0.0.38",
+      "repoRevision": "2a69afb5c3569e5e0aa6e947bdaac143ab81f819",
+      "buildVersion": "0.0.39",
       "buildStatus": "running",
       "labels": [
         {
@@ -425,7 +425,7 @@
       ],
       "commits": [
         {
-          "message": "add event type and data keyword",
+          "message": "fix writing event type in sse file",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -442,12 +442,12 @@
           }
         }
       ],
-      "insertedAt": "2020-06-15T13:43:52.219843Z",
-      "startedAt": "2020-06-15T13:43:54.3761Z",
-      "updatedAt": "2020-06-15T13:43:54.3761Z",
+      "insertedAt": "2020-06-15T13:47:23.798135Z",
+      "startedAt": "2020-06-15T13:47:25.122335Z",
+      "updatedAt": "2020-06-15T13:47:25.122335Z",
       "duration": 0,
-      "pendingDuration": 2000000000,
-      "lastUpdatedAt": "2020-06-15T13:43:54.3761Z"
+      "pendingDuration": 1000000000,
+      "lastUpdatedAt": "2020-06-15T13:47:25.122335Z"
     },
     {
       "id": "563300116385562635",
@@ -511,13 +511,13 @@
       "lastUpdatedAt": "2020-06-12T15:33:15.055678Z"
     },
     {
-      "id": "564126188770689034",
+      "id": "564128338493243403",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-web",
       "repoBranch": "master",
-      "repoRevision": "717314a7e187485f2926d140a88d7b6838b392c7",
-      "buildVersion": "0.1.904",
+      "repoRevision": "b2f7ff3e21947b2c57c8bb2b0705e86bbe9d4e62",
+      "buildVersion": "0.1.905",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -567,7 +567,7 @@
       ],
       "commits": [
         {
-          "message": "estafette-ci-demo 0.0.37",
+          "message": "estafette-ci-demo 0.0.38",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -584,12 +584,12 @@
           }
         }
       ],
-      "insertedAt": "2020-06-15T13:34:10.381218Z",
-      "startedAt": "2020-06-15T13:34:19.842275Z",
-      "updatedAt": "2020-06-15T13:36:31.952076Z",
-      "duration": 132000000000,
-      "pendingDuration": 9000000000,
-      "lastUpdatedAt": "2020-06-15T13:36:31.952076Z"
+      "insertedAt": "2020-06-15T13:45:06.424447Z",
+      "startedAt": "2020-06-15T13:45:10.927264Z",
+      "updatedAt": "2020-06-15T13:47:17.930011Z",
+      "duration": 127000000000,
+      "pendingDuration": 4000000000,
+      "lastUpdatedAt": "2020-06-15T13:47:17.930011Z"
     },
     {
       "id": "555776830024351754",
