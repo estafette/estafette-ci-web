@@ -1,6 +1,63 @@
 {
   "items": [
     {
+      "id": "564043531792318475",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "repoBranch": "master",
+      "repoRevision": "548faaf18a1e09fccc6611dab464efe652c7574a",
+      "buildVersion": "0.1.887",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "nodejs"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "web"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "tooling-estafette"
+        }
+      ],
+      "commits": [
+        {
+          "message": "estafette-ci-demo 0.0.28-source",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-web",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-15T06:33:45.473443Z",
+      "startedAt": "2020-06-15T06:33:46.69342Z",
+      "updatedAt": "2020-06-15T06:36:10.289524Z",
+      "duration": 143000000000,
+      "pendingDuration": 1000000000
+    },
+    {
       "id": "564043050171301899",
       "repoSource": "github.com",
       "repoOwner": "estafette",
@@ -512,63 +569,6 @@
       "updatedAt": "2020-06-13T17:35:09.242186Z",
       "duration": 133000000000,
       "pendingDuration": 2000000000
-    },
-    {
-      "id": "563259547310129162",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-web",
-      "repoBranch": "master",
-      "repoRevision": "0fb4202a665d453271a48599b45e58619880558a",
-      "buildVersion": "0.1.877",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "nodejs"
-        },
-        {
-          "key": "team",
-          "value": "estafette-team"
-        },
-        {
-          "key": "type",
-          "value": "web"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "tooling-estafette"
-        }
-      ],
-      "commits": [
-        {
-          "message": "add email to group members",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-web",
-            "branch": "master"
-          }
-        }
-      ],
-      "insertedAt": "2020-06-12T12:06:12.396592Z",
-      "startedAt": "2020-06-12T12:06:14.264164Z",
-      "updatedAt": "2020-06-12T12:08:15.627265Z",
-      "duration": 121000000000,
-      "pendingDuration": 1000000000
     }
   ],
   "pagination": {
