@@ -401,13 +401,13 @@
       "lastUpdatedAt": "2020-05-17T01:44:48.913019Z"
     },
     {
-      "id": "564125978757758986",
+      "id": "564128095339413515",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-demo",
       "repoBranch": "master",
-      "repoRevision": "040a6e3fab706d5c88b318c1449411c723081f0c",
-      "buildVersion": "0.0.37",
+      "repoRevision": "7be585be6ac861805de0c970ffc679a95848c187",
+      "buildVersion": "0.0.38",
       "buildStatus": "running",
       "labels": [
         {
@@ -425,7 +425,7 @@
       ],
       "commits": [
         {
-          "message": "add GET-sse.js",
+          "message": "add event type and data keyword",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -442,12 +442,12 @@
           }
         }
       ],
-      "insertedAt": "2020-06-15T13:33:06.29052Z",
-      "startedAt": "2020-06-15T13:33:08.297373Z",
-      "updatedAt": "2020-06-15T13:33:08.297373Z",
+      "insertedAt": "2020-06-15T13:43:52.219843Z",
+      "startedAt": "2020-06-15T13:43:54.3761Z",
+      "updatedAt": "2020-06-15T13:43:54.3761Z",
       "duration": 0,
       "pendingDuration": 2000000000,
-      "lastUpdatedAt": "2020-06-15T13:33:08.297373Z"
+      "lastUpdatedAt": "2020-06-15T13:43:54.3761Z"
     },
     {
       "id": "563300116385562635",
@@ -511,13 +511,13 @@
       "lastUpdatedAt": "2020-06-12T15:33:15.055678Z"
     },
     {
-      "id": "564122596902961162",
+      "id": "564126188770689034",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-web",
       "repoBranch": "master",
-      "repoRevision": "49e6d0b8c723d283d4cc524710a212a6b763078c",
-      "buildVersion": "0.1.903",
+      "repoRevision": "717314a7e187485f2926d140a88d7b6838b392c7",
+      "buildVersion": "0.1.904",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -567,7 +567,7 @@
       ],
       "commits": [
         {
-          "message": "estafette-ci-demo 0.0.35",
+          "message": "estafette-ci-demo 0.0.37",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -584,12 +584,12 @@
           }
         }
       ],
-      "insertedAt": "2020-06-15T13:15:54.230251Z",
-      "startedAt": "2020-06-15T13:15:55.722476Z",
-      "updatedAt": "2020-06-15T13:17:49.404347Z",
-      "duration": 113000000000,
-      "pendingDuration": 1000000000,
-      "lastUpdatedAt": "2020-06-15T13:17:49.404347Z"
+      "insertedAt": "2020-06-15T13:34:10.381218Z",
+      "startedAt": "2020-06-15T13:34:19.842275Z",
+      "updatedAt": "2020-06-15T13:36:31.952076Z",
+      "duration": 132000000000,
+      "pendingDuration": 9000000000,
+      "lastUpdatedAt": "2020-06-15T13:36:31.952076Z"
     },
     {
       "id": "555776830024351754",
