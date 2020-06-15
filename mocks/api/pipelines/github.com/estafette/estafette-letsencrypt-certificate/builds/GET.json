@@ -314,9 +314,9 @@
         {
           "message": "fix port for liveness endpoint",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -366,9 +366,9 @@
         {
           "message": "bump patch in version number",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -460,9 +460,9 @@
         {
           "message": "build with golang 1.13.7",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -512,9 +512,9 @@
         {
           "message": "use /liveness endpoint instead of /metrics endpoint for liveness probe",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],

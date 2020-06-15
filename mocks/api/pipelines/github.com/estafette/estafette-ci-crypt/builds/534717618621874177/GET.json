@@ -1,1 +1,49 @@
-{"id":"534717618621874177","repoSource":"github.com","repoOwner":"estafette","repoName":"estafette-ci-crypt","repoBranch":"pipeline-whitelist-regex","repoRevision":"369cb7534cb33777281ee47567b56ae1e00f9d19","buildVersion":"0.0.33-pipeline-whitelist-regex","buildStatus":"succeeded","labels":[{"key":"app-group","value":"estafette-ci"},{"key":"language","value":"golang"},{"key":"team","value":"estafette-team"}],"manifest":"builder:\n  track: stable\n\nlabels:\n  app-group: estafette-ci\n  team: estafette-team\n  language: golang\n\nversion:\n  semver:\n    major: 0\n    minor: 0\n\nstages:\n  build:\n    image: golang:1.13.6-alpine3.11\n    env:\n      CGO_ENABLED: 0\n      GOOS: linux\n    commands:\n    - go test ./...\n\n  tag-revision:\n    image: golang:1.13.6-alpine3.11\n    commands:\n    - apk add git\n    - git tag v${ESTAFETTE_BUILD_VERSION}\n    - git push origin v${ESTAFETTE_BUILD_VERSION}\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    workspace: estafette\n    channels:\n    - '#build-status'\n    when:\n      status == 'succeeded' ||\n      status == 'failed'","manifestWithDefaults":"builder:\n  track: stable\n  os: linux\nlabels:\n  app-group: estafette-ci\n  language: golang\n  team: estafette-team\nversion:\n  semver:\n    major: 0\n    minor: 0\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: master\nstages:\n  build:\n    image: golang:1.13.6-alpine3.11\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - go test ./...\n    when: status == 'succeeded'\n    env:\n      CGO_ENABLED: \"0\"\n      GOOS: linux\n  tag-revision:\n    image: golang:1.13.6-alpine3.11\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - apk add git\n    - git tag v${ESTAFETTE_BUILD_VERSION}\n    - git push origin v${ESTAFETTE_BUILD_VERSION}\n    when: status == 'succeeded'\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded' || status == 'failed'\n    channels:\n    - '#build-status'\n    workspace: estafette\n","commits":[{"message":"only decrypt if pipeline regex matches","author":{"email":"jsalverda@travix.com","name":"Jorrit Salverda","username":"JorritSalverda"}}],"triggerEvents":[{"git":{"event":"push","repository":"github.com/estafette/estafette-ci-crypt","branch":"pipeline-whitelist-regex"}}],"insertedAt":"2020-03-03T16:34:27.010248Z","updatedAt":"2020-03-03T16:35:02.170585Z","duration":35000000000,"pendingDuration":0}
+{
+  "id": "534717618621874177",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-crypt",
+  "repoBranch": "pipeline-whitelist-regex",
+  "repoRevision": "369cb7534cb33777281ee47567b56ae1e00f9d19",
+  "buildVersion": "0.0.33-pipeline-whitelist-regex",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette-team"
+    }
+  ],
+  "manifest": "builder:\n  track: stable\n\nlabels:\n  app-group: estafette-ci\n  team: estafette-team\n  language: golang\n\nversion:\n  semver:\n    major: 0\n    minor: 0\n\nstages:\n  build:\n    image: golang:1.13.6-alpine3.11\n    env:\n      CGO_ENABLED: 0\n      GOOS: linux\n    commands:\n    - go test ./...\n\n  tag-revision:\n    image: golang:1.13.6-alpine3.11\n    commands:\n    - apk add git\n    - git tag v${ESTAFETTE_BUILD_VERSION}\n    - git push origin v${ESTAFETTE_BUILD_VERSION}\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    workspace: estafette\n    channels:\n    - '#build-status'\n    when:\n      status == 'succeeded' ||\n      status == 'failed'",
+  "manifestWithDefaults": "builder:\n  track: stable\n  os: linux\nlabels:\n  app-group: estafette-ci\n  language: golang\n  team: estafette-team\nversion:\n  semver:\n    major: 0\n    minor: 0\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: master\nstages:\n  build:\n    image: golang:1.13.6-alpine3.11\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - go test ./...\n    when: status == 'succeeded'\n    env:\n      CGO_ENABLED: \"0\"\n      GOOS: linux\n  tag-revision:\n    image: golang:1.13.6-alpine3.11\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - apk add git\n    - git tag v${ESTAFETTE_BUILD_VERSION}\n    - git push origin v${ESTAFETTE_BUILD_VERSION}\n    when: status == 'succeeded'\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded' || status == 'failed'\n    channels:\n    - '#build-status'\n    workspace: estafette\n",
+  "commits": [
+    {
+      "message": "only decrypt if pipeline regex matches",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-ci-crypt",
+        "branch": "pipeline-whitelist-regex"
+      }
+    }
+  ],
+  "insertedAt": "2020-03-03T16:34:27.010248Z",
+  "updatedAt": "2020-03-03T16:35:02.170585Z",
+  "duration": 35000000000,
+  "pendingDuration": 0
+}

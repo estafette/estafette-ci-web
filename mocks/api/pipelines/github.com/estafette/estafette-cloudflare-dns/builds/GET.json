@@ -192,9 +192,9 @@
         {
           "message": "bump patch in version number",
           "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
           }
         }
       ],
@@ -338,9 +338,9 @@
         {
           "message": "build with golang 1.13.7",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],

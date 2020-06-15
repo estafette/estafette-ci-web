@@ -1,1 +1,22 @@
-{"name":"tooling-estafette","action":"deploy-stable","id":"563201176081268748","repoSource":"github.com","repoOwner":"estafette","repoName":"estafette-ci-api","releaseVersion":"0.1.1300","releaseStatus":"succeeded","triggerEvents":[{"manual":{"userID":"jsalverda@travix.com"}}],"insertedAt":"2020-06-12T07:09:18.911183Z","startedAt":"2020-06-12T07:09:22.782557Z","updatedAt":"2020-06-12T07:11:07.071208Z","duration":104000000000,"pendingDuration":3000000000}
+{
+  "name": "tooling-estafette",
+  "action": "deploy-stable",
+  "id": "563201176081268748",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-api",
+  "releaseVersion": "0.1.1300",
+  "releaseStatus": "succeeded",
+  "triggerEvents": [
+    {
+      "manual": {
+        "userID": "me@estafette.io"
+      }
+    }
+  ],
+  "insertedAt": "2020-06-12T07:09:18.911183Z",
+  "startedAt": "2020-06-12T07:09:22.782557Z",
+  "updatedAt": "2020-06-12T07:11:07.071208Z",
+  "duration": 104000000000,
+  "pendingDuration": 3000000000
+}

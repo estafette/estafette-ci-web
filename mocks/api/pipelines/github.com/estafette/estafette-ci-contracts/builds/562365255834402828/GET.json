@@ -1,1 +1,54 @@
-{"id":"562365255834402828","repoSource":"github.com","repoOwner":"estafette","repoName":"estafette-ci-contracts","repoBranch":"master","repoRevision":"a7786b7752a0928403a3f3222966511b205ff6eb","buildVersion":"0.0.206","buildStatus":"succeeded","labels":[{"key":"app-group","value":"estafette-ci"},{"key":"language","value":"golang"},{"key":"team","value":"estafette"},{"key":"type","value":"library"}],"manifest":"builder:\n  track: dev\n\nlabels:\n  app-group: estafette-ci\n  type: library\n  team: estafette\n  language: golang\n\nversion:\n  semver:\n    major: 0\n    minor: 0\n\nstages:\n  build:\n    image: golang:1.14.0-alpine3.11\n    env:\n      CGO_ENABLED: 0\n      GOOS: linux\n    commands:\n    - go test ./...\n\n  tag-revision:\n    image: golang:1.14.0-alpine3.11\n    commands:\n    - apk add git\n    - git tag v${ESTAFETTE_BUILD_VERSION}\n    - git push origin v${ESTAFETTE_BUILD_VERSION}\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    workspace: estafette\n    channels:\n    - '#build-status'\n    when:\n      status == 'succeeded' ||\n      status == 'failed'","manifestWithDefaults":"builder:\n  track: dev\n  os: linux\nlabels:\n  app-group: estafette-ci\n  language: golang\n  team: estafette\n  type: library\nversion:\n  semver:\n    major: 0\n    minor: 0\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: master\nstages:\n  build:\n    image: golang:1.14.0-alpine3.11\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - go test ./...\n    when: status == 'succeeded'\n    env:\n      CGO_ENABLED: \"0\"\n      GOOS: linux\n  tag-revision:\n    image: golang:1.14.0-alpine3.11\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - apk add git\n    - git tag v${ESTAFETTE_BUILD_VERSION}\n    - git push origin v${ESTAFETTE_BUILD_VERSION}\n    when: status == 'succeeded'\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded' || status == 'failed'\n    channels:\n    - '#build-status'\n    workspace: estafette\n","commits":[{"message":"add client for applications to authenticate to the api","author":{"email":"jsalverda@travix.com","name":"Jorrit Salverda","username":"JorritSalverda"}}],"triggerEvents":[{"git":{"event":"push","repository":"github.com/estafette/estafette-ci-contracts","branch":"master"}}],"insertedAt":"2020-06-09T08:17:36.296643Z","startedAt":"2020-06-09T08:17:38.316115Z","updatedAt":"2020-06-09T08:18:16.108587Z","duration":37000000000,"pendingDuration":2000000000}
+{
+  "id": "562365255834402828",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-contracts",
+  "repoBranch": "master",
+  "repoRevision": "a7786b7752a0928403a3f3222966511b205ff6eb",
+  "buildVersion": "0.0.206",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette"
+    },
+    {
+      "key": "type",
+      "value": "library"
+    }
+  ],
+  "manifest": "builder:\n  track: dev\n\nlabels:\n  app-group: estafette-ci\n  type: library\n  team: estafette\n  language: golang\n\nversion:\n  semver:\n    major: 0\n    minor: 0\n\nstages:\n  build:\n    image: golang:1.14.0-alpine3.11\n    env:\n      CGO_ENABLED: 0\n      GOOS: linux\n    commands:\n    - go test ./...\n\n  tag-revision:\n    image: golang:1.14.0-alpine3.11\n    commands:\n    - apk add git\n    - git tag v${ESTAFETTE_BUILD_VERSION}\n    - git push origin v${ESTAFETTE_BUILD_VERSION}\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    workspace: estafette\n    channels:\n    - '#build-status'\n    when:\n      status == 'succeeded' ||\n      status == 'failed'",
+  "manifestWithDefaults": "builder:\n  track: dev\n  os: linux\nlabels:\n  app-group: estafette-ci\n  language: golang\n  team: estafette\n  type: library\nversion:\n  semver:\n    major: 0\n    minor: 0\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: master\nstages:\n  build:\n    image: golang:1.14.0-alpine3.11\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - go test ./...\n    when: status == 'succeeded'\n    env:\n      CGO_ENABLED: \"0\"\n      GOOS: linux\n  tag-revision:\n    image: golang:1.14.0-alpine3.11\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - apk add git\n    - git tag v${ESTAFETTE_BUILD_VERSION}\n    - git push origin v${ESTAFETTE_BUILD_VERSION}\n    when: status == 'succeeded'\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded' || status == 'failed'\n    channels:\n    - '#build-status'\n    workspace: estafette\n",
+  "commits": [
+    {
+      "message": "add client for applications to authenticate to the api",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-ci-contracts",
+        "branch": "master"
+      }
+    }
+  ],
+  "insertedAt": "2020-06-09T08:17:36.296643Z",
+  "startedAt": "2020-06-09T08:17:38.316115Z",
+  "updatedAt": "2020-06-09T08:18:16.108587Z",
+  "duration": 37000000000,
+  "pendingDuration": 2000000000
+}

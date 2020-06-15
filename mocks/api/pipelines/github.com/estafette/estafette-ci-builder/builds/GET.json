@@ -275,9 +275,9 @@
         {
           "message": "use json web token from builder config as bearer token to report back to api",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -351,9 +351,9 @@
         {
           "message": "update team label",
           "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
           }
         }
       ],
@@ -501,9 +501,9 @@
         {
           "message": "update manifest to fix marshalling for archived property",
           "author": {
-            "email": "jsalverda@travix.com",
-            "name": "Jorrit Salverda",
-            "username": "JorritSalverda"
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
           }
         }
       ],
@@ -659,9 +659,9 @@
         {
           "message": "fix logging for go.cd agent",
           "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
           }
         }
       ],
@@ -734,9 +734,9 @@
         {
           "message": "use same golang image in all stages",
           "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
+            "email": "jsalverda@travix.com",
+            "name": "Jorrit Salverda",
+            "username": "JorritSalverda"
           }
         }
       ],
