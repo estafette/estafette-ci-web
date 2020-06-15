@@ -1,11 +1,11 @@
 {
-  "id": "564120941983039498",
+  "id": "564122406153027595",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-demo",
   "repoBranch": "master",
-  "repoRevision": "6321b575b26bc54b4ab4b5648ca02605e0bed9b9",
-  "buildVersion": "0.0.34",
+  "repoRevision": "138b8ca758e0f7bd31a36b4fa5f909006e3f859b",
+  "buildVersion": "0.0.35",
   "buildStatus": "running",
   "labels": [
     {
@@ -23,7 +23,7 @@
   ],
   "commits": [
     {
-      "message": "use 500ms delay",
+      "message": "fetch raw sse events",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -40,10 +40,10 @@
       }
     }
   ],
-  "insertedAt": "2020-06-15T13:07:29.188757Z",
-  "startedAt": "2020-06-15T13:07:30.284421Z",
-  "updatedAt": "2020-06-15T13:07:30.284421Z",
+  "insertedAt": "2020-06-15T13:14:56.017734Z",
+  "startedAt": "2020-06-15T13:14:57.94204Z",
+  "updatedAt": "2020-06-15T13:14:57.94204Z",
   "duration": 0,
   "pendingDuration": 1000000000,
-  "lastUpdatedAt": "2020-06-15T13:07:30.284421Z"
+  "lastUpdatedAt": "2020-06-15T13:14:57.94204Z"
 }
