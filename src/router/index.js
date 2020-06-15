@@ -248,7 +248,7 @@ export default new Router({
       meta: {
         icon: 'plus-circle',
         banner: true,
-        lead: 'Generate manifests and secrets',
+        lead: 'Generate and validate manifests',
         variant: 'warning'
       },
       props: true,

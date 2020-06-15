@@ -1,0 +1,81 @@
+{
+  "id": "564044240929128460",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-web",
+  "repoBranch": "master",
+  "repoRevision": "4d7bb690dfb6297370fcb7492779c73cedfbd56d",
+  "buildVersion": "0.1.888",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "nodejs"
+    },
+    {
+      "key": "team",
+      "value": "estafette-team"
+    },
+    {
+      "key": "type",
+      "value": "web"
+    }
+  ],
+  "releaseTargets": [
+    {
+      "name": "tooling-estafette",
+      "activeReleases": [
+        {
+          "name": "tooling-estafette",
+          "id": "563260214834593804",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-web",
+          "releaseVersion": "0.1.877",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2020-06-12T12:09:36.108762Z",
+          "startedAt": "2020-06-12T12:09:37.375629Z",
+          "updatedAt": "2020-06-12T12:11:01.375469Z",
+          "duration": 83000000000,
+          "pendingDuration": 1000000000
+        }
+      ]
+    }
+  ],
+  "commits": [
+    {
+      "message": "estafette-ci-demo 0.0.29-source",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-ci-web",
+        "branch": "master"
+      }
+    }
+  ],
+  "insertedAt": "2020-06-15T06:37:21.88474Z",
+  "startedAt": "2020-06-15T06:37:23.137974Z",
+  "updatedAt": "2020-06-15T06:39:30.937875Z",
+  "duration": 127000000000,
+  "pendingDuration": 1000000000,
+  "lastUpdatedAt": "2020-06-15T06:39:30.937875Z"
+}

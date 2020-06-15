@@ -1,0 +1,20 @@
+{
+  "name": "release",
+  "id": "506619043781836803",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-cloudflare-dns",
+  "releaseVersion": "1.2.4",
+  "releaseStatus": "succeeded",
+  "triggerEvents": [
+    {
+      "manual": {
+        "userID": "me@estafette.io"
+      }
+    }
+  ],
+  "insertedAt": "2019-11-25T10:37:42.481939Z",
+  "updatedAt": "2019-11-25T10:38:14.555636Z",
+  "duration": 32000000000,
+  "pendingDuration": 0
+}
