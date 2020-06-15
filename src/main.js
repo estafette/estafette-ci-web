@@ -5,7 +5,6 @@ import axios from 'axios'
 import App from './App'
 import router from './router'
 import store from './store'
-import config from './config'
 import './filters'
 import { VBTooltip } from 'bootstrap-vue'
 // Note: Vue automatically prefixes the directive name with 'v-'
@@ -18,10 +17,11 @@ Vue.prototype.$http = axios
 
 // intercept api requests to add X-Requested-With: XMLHttpRequest header to have IAP return 401 instead of 302
 Vue.axios.interceptors.request.use(
-  r => {
-    if (config.addTrailingSlashToApiRequests) {
+  config => {
+    if (process.env.ADD_TRAILING_SLASH_TO_API_REQUEST) {
+      console.log('adding trailing slash')
       // split url in path and query
-      var url = r.url
+      var url = config.url
       var urlParts = url.split('?')
 
       // check if path already ends with a trailing slash
@@ -29,14 +29,14 @@ Vue.axios.interceptors.request.use(
         // if not add a trailing slash
         urlParts[0] += '/'
 
-        r.url = urlParts.join('?')
+        config.url = urlParts.join('?')
       }
     }
 
     // add header to ensure it's treated as an XMLHttpRequest
-    r.headers = { 'X-Requested-With': 'XMLHttpRequest' }
+    config.headers = { 'X-Requested-With': 'XMLHttpRequest' }
 
-    return r
+    return config
   },
   error => Promise.reject(error)
 )
@@ -53,7 +53,7 @@ Vue.axios.interceptors.response.use((response) => {
     }
   }
 
-  return Promise.reject(new Error(error.response.data.error || error.message))
+  return Promise.reject(new Error(error.response && error.response.data ? error.response.data.error : error.message))
 })
 
 // redirect to login page when user gets logged out
