@@ -1,11 +1,11 @@
 {
-  "id": "564044240929128460",
+  "id": "564108826164101130",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-web",
   "repoBranch": "master",
-  "repoRevision": "4d7bb690dfb6297370fcb7492779c73cedfbd56d",
-  "buildVersion": "0.1.888",
+  "repoRevision": "574035d68cf3951b98caf6d9c7db7f36fa397651",
+  "buildVersion": "0.1.896",
   "buildStatus": "succeeded",
   "labels": [
     {
@@ -31,11 +31,11 @@
       "activeReleases": [
         {
           "name": "tooling-estafette",
-          "id": "563260214834593804",
+          "id": "564109334453813260",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-web",
-          "releaseVersion": "0.1.877",
+          "releaseVersion": "0.1.896",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
@@ -44,18 +44,18 @@
               }
             }
           ],
-          "insertedAt": "2020-06-12T12:09:36.108762Z",
-          "startedAt": "2020-06-12T12:09:37.375629Z",
-          "updatedAt": "2020-06-12T12:11:01.375469Z",
-          "duration": 83000000000,
-          "pendingDuration": 1000000000
+          "insertedAt": "2020-06-15T12:08:26.851871Z",
+          "startedAt": "2020-06-15T12:08:29.391236Z",
+          "updatedAt": "2020-06-15T12:09:40.682356Z",
+          "duration": 71000000000,
+          "pendingDuration": 2000000000
         }
       ]
     }
   ],
   "commits": [
     {
-      "message": "estafette-ci-demo 0.0.29-source",
+      "message": "remove trailing slash from logs",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -72,10 +72,10 @@
       }
     }
   ],
-  "insertedAt": "2020-06-15T06:37:21.88474Z",
-  "startedAt": "2020-06-15T06:37:23.137974Z",
-  "updatedAt": "2020-06-15T06:39:30.937875Z",
-  "duration": 127000000000,
-  "pendingDuration": 1000000000,
-  "lastUpdatedAt": "2020-06-15T06:39:30.937875Z"
+  "insertedAt": "2020-06-15T12:05:51.734216Z",
+  "startedAt": "2020-06-15T12:05:55.329913Z",
+  "updatedAt": "2020-06-15T12:07:55.562543Z",
+  "duration": 120000000000,
+  "pendingDuration": 3000000000,
+  "lastUpdatedAt": "2020-06-15T12:09:40.682356Z"
 }
