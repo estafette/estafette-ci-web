@@ -1,6 +1,6 @@
 <template>
   <log-viewer
-    :log-url="`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}/logs/`"
+    :log-url="`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}/logs`"
     :status="this.release.releaseStatus"
   />
 </template>
