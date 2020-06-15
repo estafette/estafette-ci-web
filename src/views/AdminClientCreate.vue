@@ -136,7 +136,7 @@ export default {
 
   computed: {
     availableRoles () {
-      return this.roles.filter(role => this.form.roles && this.form.roles.indexOf(role) === -1)
+      return this.roles.filter(role => !this.form || !this.form.roles || this.form.roles.indexOf(role) === -1)
     }
   }
 }
