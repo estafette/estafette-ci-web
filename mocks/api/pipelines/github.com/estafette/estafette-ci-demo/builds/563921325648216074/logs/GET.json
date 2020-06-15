@@ -1,0 +1,1 @@
+[{"step":"validate-manifest","image":null,"duration":0,"logLines":[{"line":1,"timestamp":"2020-06-14T20:12:11.123790175Z","streamType":"stderr","text":"yaml: line 36: found a tab character that violates indentation"}],"exitCode":1,"status":"FAILED","autoInjected":true}]

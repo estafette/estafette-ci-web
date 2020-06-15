@@ -401,6 +401,55 @@
       "lastUpdatedAt": "2020-05-17T01:44:48.913019Z"
     },
     {
+      "id": "564114305453654027",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-demo",
+      "repoBranch": "master",
+      "repoRevision": "2e4255394bad6b934be3b1a930c7fca94d91eb5f",
+      "buildVersion": "0.0.32",
+      "buildStatus": "running",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "commits": [
+        {
+          "message": "for pending/running builds/releases fetch logs from server sent event stream",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-demo",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-15T12:33:43.880857Z",
+      "startedAt": "2020-06-15T12:33:45.783795Z",
+      "updatedAt": "2020-06-15T12:33:45.783795Z",
+      "duration": 0,
+      "pendingDuration": 1000000000,
+      "lastUpdatedAt": "2020-06-15T12:33:45.783795Z"
+    },
+    {
       "id": "563300116385562635",
       "repoSource": "github.com",
       "repoOwner": "estafette",
@@ -462,13 +511,13 @@
       "lastUpdatedAt": "2020-06-12T15:33:15.055678Z"
     },
     {
-      "id": "564108826164101130",
+      "id": "564110019189669898",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-web",
       "repoBranch": "master",
-      "repoRevision": "574035d68cf3951b98caf6d9c7db7f36fa397651",
-      "buildVersion": "0.1.896",
+      "repoRevision": "b73d3cc07e6aaf99208c90f2008febfb20f5123c",
+      "buildVersion": "0.1.897",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -518,7 +567,7 @@
       ],
       "commits": [
         {
-          "message": "remove trailing slash from logs",
+          "message": "estafette-ci-demo 0.0.31",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -535,12 +584,12 @@
           }
         }
       ],
-      "insertedAt": "2020-06-15T12:05:51.734216Z",
-      "startedAt": "2020-06-15T12:05:55.329913Z",
-      "updatedAt": "2020-06-15T12:07:55.562543Z",
-      "duration": 120000000000,
-      "pendingDuration": 3000000000,
-      "lastUpdatedAt": "2020-06-15T12:09:40.682356Z"
+      "insertedAt": "2020-06-15T12:11:55.814682Z",
+      "startedAt": "2020-06-15T12:11:57.403898Z",
+      "updatedAt": "2020-06-15T12:13:53.746506Z",
+      "duration": 116000000000,
+      "pendingDuration": 1000000000,
+      "lastUpdatedAt": "2020-06-15T12:13:53.746506Z"
     },
     {
       "id": "555776830024351754",
@@ -705,6 +754,6 @@
     "page": 1,
     "size": 12,
     "totalPages": 1,
-    "totalItems": 8
+    "totalItems": 9
   }
 }
