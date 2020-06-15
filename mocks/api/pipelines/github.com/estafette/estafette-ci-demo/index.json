@@ -1,0 +1,49 @@
+{
+  "id": "564120452933779466",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-demo",
+  "repoBranch": "master",
+  "repoRevision": "8f38aee2503f2281b06b0864fe737b53be1d96b4",
+  "buildVersion": "0.0.33",
+  "buildStatus": "running",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette-team"
+    }
+  ],
+  "commits": [
+    {
+      "message": "extract build warnings; write json as index.json and add GET.js to return after 100ms",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-ci-demo",
+        "branch": "master"
+      }
+    }
+  ],
+  "insertedAt": "2020-06-15T13:04:59.942646Z",
+  "startedAt": "2020-06-15T13:05:01.862525Z",
+  "updatedAt": "2020-06-15T13:05:01.862525Z",
+  "duration": 0,
+  "pendingDuration": 1000000000,
+  "lastUpdatedAt": "2020-06-15T13:05:01.862525Z"
+}

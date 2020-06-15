@@ -1,0 +1,81 @@
+{
+  "id": "564120365483261963",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-web",
+  "repoBranch": "master",
+  "repoRevision": "852a1a896b992feb724a30260d560b20b7b2bdc6",
+  "buildVersion": "0.1.899",
+  "buildStatus": "running",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "nodejs"
+    },
+    {
+      "key": "team",
+      "value": "estafette-team"
+    },
+    {
+      "key": "type",
+      "value": "web"
+    }
+  ],
+  "releaseTargets": [
+    {
+      "name": "tooling-estafette",
+      "activeReleases": [
+        {
+          "name": "tooling-estafette",
+          "id": "564109334453813260",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-web",
+          "releaseVersion": "0.1.896",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2020-06-15T12:08:26.851871Z",
+          "startedAt": "2020-06-15T12:08:29.391236Z",
+          "updatedAt": "2020-06-15T12:09:40.682356Z",
+          "duration": 71000000000,
+          "pendingDuration": 2000000000
+        }
+      ]
+    }
+  ],
+  "commits": [
+    {
+      "message": "use GET.js to return index.json after 100ms delay",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-ci-web",
+        "branch": "master"
+      }
+    }
+  ],
+  "insertedAt": "2020-06-15T13:04:33.255085Z",
+  "startedAt": "2020-06-15T13:04:35.399659Z",
+  "updatedAt": "2020-06-15T13:04:35.399659Z",
+  "duration": 0,
+  "pendingDuration": 2000000000,
+  "lastUpdatedAt": "2020-06-15T13:04:35.399659Z"
+}
