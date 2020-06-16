@@ -59,7 +59,11 @@ Vue.axios.interceptors.response.use((response) => {
 store.watch((state) => state.user.me, (to, from) => {
   if (!to && from) {
     if (from.currentProvider) {
-      window.location.href = '/api/auth/login/' + from.currentProvider + '?returnURL=' + router.currentRoute.fullPath
+      var href = '/api/auth/login/' + from.currentProvider + '?returnURL=' + router.currentRoute.fullPath
+      if (from.currentOrganization) {
+        href += '&organization=' + from.currentOrganization
+      }
+      window.location.href = href
     } else {
       router.replace({ name: 'Login', query: { returnURL: router.currentRoute.fullPath } })
     }
