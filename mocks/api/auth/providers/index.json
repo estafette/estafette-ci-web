@@ -2,21 +2,25 @@
   {
     "id": "google",
     "name": "Google",
+    "organization": "Org A",
     "path": "/api/auth/login/google"
   },
   {
     "id": "microsoft",
     "name": "Microsoft",
+    "organization": "Org B",
     "path": "/api/auth/login/microsoft"
   },
   {
     "id": "facebook",
     "name": "Facebook",
+    "organization": "Org C",
     "path": "/api/auth/login/facebook"
   },
   {
     "id": "github",
     "name": "Github",
+    "organization": "Org C",
     "path": "/api/auth/login/github"
   },
   {

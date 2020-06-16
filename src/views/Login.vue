@@ -52,9 +52,20 @@ export default {
     path (provider) {
       var path = provider.path
 
+      var hasQueryParam = false
       var returnURL = this.$route.query.returnURL
       if (returnURL) {
         path += '?returnURL=' + returnURL
+        hasQueryParam = true
+      }
+
+      if (provider.organization) {
+        if (hasQueryParam) {
+          path += '&'
+        } else {
+          path += '?'
+        }
+        path += 'organization=' + provider.organization
       }
 
       return path
