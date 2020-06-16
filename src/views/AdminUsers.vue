@@ -31,6 +31,26 @@
           {{ role }}
         </b-badge>
       </template>
+      <template v-slot:cell(groups)="data">
+        <b-badge
+          v-for="group in data.item.groups"
+          :key="group.name"
+          variant="warning"
+          class="mr-1"
+        >
+          {{ group.name }}
+        </b-badge>
+      </template>
+      <template v-slot:cell(organizations)="data">
+        <b-badge
+          v-for="org in data.item.organizations"
+          :key="org.name"
+          variant="success"
+          class="mr-1"
+        >
+          {{ org.name }}
+        </b-badge>
+      </template>
       <template v-slot:cell(show_details)="row">
         <b-button
           size="sm"
@@ -38,6 +58,13 @@
           class="mr-1"
         >
           {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
+        </b-button>
+        <b-button
+          size="sm"
+          :to="{ name: 'AdminUserUpdate', params: { id: row.item.id } }"
+          class="mr-1"
+        >
+          Edit
         </b-button>
       </template>
       <template v-slot:row-details="row">
@@ -172,6 +199,14 @@ export default {
         },
         {
           key: 'roles',
+          sortable: true
+        },
+        {
+          key: 'groups',
+          sortable: true
+        },
+        {
+          key: 'organizations',
           sortable: true
         },
         {

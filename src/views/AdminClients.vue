@@ -4,7 +4,7 @@
       <div class="col-6">
         <b-button
           :to="{ name: 'AdminClientCreate' }"
-          variant="success"
+          variant="primary"
         >
           Create client
         </b-button>

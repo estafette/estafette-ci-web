@@ -4,7 +4,7 @@
       <div class="col-6">
         <b-button
           :to="{ name: 'AdminGroupCreate' }"
-          variant="success"
+          variant="warning"
         >
           Create group
         </b-button>
@@ -39,6 +39,16 @@
           class="mr-1"
         >
           {{ role }}
+        </b-badge>
+      </template>
+      <template v-slot:cell(organizations)="data">
+        <b-badge
+          v-for="org in data.item.organizations"
+          :key="org.name"
+          variant="success"
+          class="mr-1"
+        >
+          {{ org.name }}
         </b-badge>
       </template>
       <template v-slot:cell(show_details)="row">
@@ -136,6 +146,10 @@ export default {
         },
         {
           key: 'roles',
+          sortable: true
+        },
+        {
+          key: 'organizations',
           sortable: true
         },
         {

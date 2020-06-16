@@ -67,6 +67,56 @@
           </template>
         </b-form-tags>
       </b-form-group>
+      <b-form-group
+        id="organizations-group"
+        label="Organizations:"
+        label-for="organizations"
+      >
+        <b-form-tags
+          input-id="organizations"
+          v-model="selectedOrganizations"
+          add-on-change
+          no-outer-focus
+        >
+          <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
+            <ul
+              v-if="tags.length > 0"
+              class="list-inline d-inline-block mb-2"
+            >
+              <li
+                v-for="tag in tags"
+                :key="tag"
+                class="list-inline-item"
+              >
+                <b-form-tag
+                  @remove="removeTag(tag)"
+                  :title="tag"
+                  :disabled="disabled"
+                  variant="success"
+                >
+                  {{ tag }}
+                </b-form-tag>
+              </li>
+            </ul>
+            <b-form-select
+              v-bind="inputAttrs"
+              v-on="inputHandlers"
+              :disabled="disabled || availableOrganizations.length === 0"
+              :options="availableOrganizations"
+            >
+              <template v-slot:first>
+                <!-- This is required to prevent bugs with Safari -->
+                <option
+                  disabled
+                  value=""
+                >
+                  Choose an organization...
+                </option>
+              </template>
+            </b-form-select>
+          </template>
+        </b-form-tags>
+      </b-form-group>
       <b-button
         type="submit"
         variant="primary"
@@ -100,15 +150,18 @@ export default {
   data: function () {
     return {
       roles: [],
+      organizations: [],
       form: {
         name: '',
         roles: []
-      }
+      },
+      selectedOrganizations: []
     }
   },
 
   created () {
     this.loadRoles()
+    this.loadOrganizations()
   },
 
   methods: {
@@ -121,8 +174,24 @@ export default {
           console.warn(e)
         })
     },
+    loadOrganizations () {
+      this.axios.get(`/api/organizations?page[number]=1&page[size]=100`)
+        .then(response => {
+          this.organizations = response.data.items
+        })
+        .catch(e => {
+          console.warn(e)
+        })
+    },
     onSubmit (evt) {
       evt.preventDefault()
+
+      if (this.selectedOrganizations.length > 0) {
+        this.form.organizations = this.organizations.filter(org => this.selectedOrganizations.indexOf(org.name) !== -1).map(org => { return { id: org.id, name: org.name } })
+      } else {
+        this.form.organizations = []
+      }
+
       this.axios.post(`/api/groups`, this.form)
         .then(response => {
           this.$router.push({ name: 'AdminGroups' })
@@ -136,6 +205,9 @@ export default {
   computed: {
     availableRoles () {
       return this.roles.filter(role => !this.form || !this.form.roles || this.form.roles.indexOf(role) === -1)
+    },
+    availableOrganizations () {
+      return this.organizations.map(o => o.name).filter(org => !this.form || !this.selectedOrganizations || this.selectedOrganizations.indexOf(org) === -1)
     }
   }
 }

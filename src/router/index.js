@@ -334,6 +334,16 @@ export default new Router({
           }
         },
         {
+          path: 'users/:id/edit',
+          name: 'AdminUserUpdate',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../views/AdminUserUpdate.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            hide: true
+          }
+        },
+        {
           path: 'groups',
           name: 'AdminGroups',
           props: true,
