@@ -55,14 +55,14 @@
         <b-button
           size="sm"
           @click="row.toggleDetails"
-          class="mr-1"
+          class="mr-1 mb-1"
         >
-          {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
+          {{ row.detailsShowing ? 'Hide' : 'Details' }}
         </b-button>
         <b-button
           size="sm"
           :to="{ name: 'AdminGroupUpdate', params: { id: row.item.id } }"
-          class="mr-1"
+          class="mr-1 mb-1"
         >
           Edit
         </b-button>
