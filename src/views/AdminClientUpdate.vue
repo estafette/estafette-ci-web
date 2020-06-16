@@ -70,6 +70,7 @@
       <b-button
         type="submit"
         variant="primary"
+        :disabled="!ready"
       >
         Update
       </b-button>
@@ -110,6 +111,10 @@ export default {
       form: {
         name: '',
         roles: []
+      },
+      loaded: {
+        roles: false,
+        client: false
       }
     }
   },
@@ -124,6 +129,7 @@ export default {
       this.axios.get(`/api/roles`)
         .then(response => {
           this.roles = response.data
+          this.loaded.roles = true
         })
         .catch(e => {
           console.warn(e)
@@ -134,6 +140,7 @@ export default {
       this.axios.get(`/api/clients/${this.id}`, this.form)
         .then(response => {
           this.form = response.data
+          this.loaded.client = true
         })
         .catch(e => {
           console.warn(e)
@@ -155,6 +162,15 @@ export default {
   computed: {
     availableRoles () {
       return this.roles.filter(role => !this.form || !this.form.roles || this.form.roles.indexOf(role) === -1)
+    },
+    ready () {
+      for (const property in this.loaded) {
+        if (!this.loaded[property]) {
+          return false
+        }
+      }
+
+      return true
     }
   }
 }

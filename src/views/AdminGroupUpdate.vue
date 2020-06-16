@@ -120,6 +120,7 @@
       <b-button
         type="submit"
         variant="primary"
+        :disabled="!ready"
       >
         Update
       </b-button>
@@ -162,7 +163,12 @@ export default {
         name: '',
         roles: []
       },
-      selectedOrganizations: []
+      selectedOrganizations: [],
+      loaded: {
+        roles: false,
+        organizations: false,
+        group: false
+      }
     }
   },
 
@@ -177,6 +183,7 @@ export default {
       this.axios.get(`/api/roles`)
         .then(response => {
           this.roles = response.data
+          this.loaded.roles = true
         })
         .catch(e => {
           console.warn(e)
@@ -186,6 +193,7 @@ export default {
       this.axios.get(`/api/organizations?page[number]=1&page[size]=100`)
         .then(response => {
           this.organizations = response.data.items
+          this.loaded.organizations = true
         })
         .catch(e => {
           console.warn(e)
@@ -198,6 +206,7 @@ export default {
           if (this.form && this.form.organizations) {
             this.selectedOrganizations = this.form.organizations.map(o => o.name)
           }
+          this.loaded.group = true
         })
         .catch(e => {
           console.warn(e)
@@ -228,6 +237,15 @@ export default {
     },
     availableOrganizations () {
       return this.organizations.map(o => o.name).filter(org => !this.form || !this.selectedOrganizations || this.selectedOrganizations.indexOf(org) === -1)
+    },
+    ready () {
+      for (const property in this.loaded) {
+        if (!this.loaded[property]) {
+          return false
+        }
+      }
+
+      return true
     }
   }
 }
