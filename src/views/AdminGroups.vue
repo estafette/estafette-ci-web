@@ -4,7 +4,7 @@
       <div class="col-6">
         <b-button
           :to="{ name: 'AdminGroupCreate' }"
-          variant="warning"
+          variant="success"
         >
           Create group
         </b-button>
