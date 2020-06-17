@@ -165,17 +165,40 @@ export default new Router({
     {
       path: '/catalog',
       name: 'Catalog',
-      component: () => import(/* webpackChunkName: "catalog" */ '../views/Catalog.vue'),
+      component: () => import(/* webpackChunkName: "views" */ '../views/ViewWithNav.vue'),
       props: (route) => ({ query: route.query }),
       meta: {
         icon: 'book-open',
         banner: true,
         lead: 'View ownership, performance and more',
         variant: 'info'
-      }
+      },
+      redirect: { name: 'CatalogServices' },
+      children: [
+        {
+          path: 'services',
+          name: 'CatalogServices',
+          props: (route) => ({ query: route.query }),
+          component: () => import(/* webpackChunkName: "catalog" */ '../views/CatalogServices.vue'),
+          meta: {
+            text: 'Services',
+            icon: 'industry'
+          }
+        },
+        {
+          path: 'entities',
+          name: 'CatalogEntities',
+          props: (route) => ({ query: route.query }),
+          component: () => import(/* webpackChunkName: "catalog" */ '../views/CatalogEntities.vue'),
+          meta: {
+            text: 'Entities',
+            icon: 'sitemap'
+          }
+        }
+      ]
     },
     {
-      path: '/catalog/:repoSource/:repoOwner/:repoName',
+      path: '/catalog/services/:repoSource/:repoOwner/:repoName',
       name: 'CatalogItemDetails',
       meta: {
         hide: true

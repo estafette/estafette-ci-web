@@ -1,0 +1,29 @@
+{
+  "items":[
+    {
+      "id": "23423543535",
+      "parentKey": "organization",
+      "parentValue": "Estafette",
+      "key": "cloud",
+      "value": "Google Cloud",
+      "labels": [
+        {
+          "key": "organization",
+          "value": "Estafette"
+        },
+        {
+          "key": "cloud",
+          "value": "Google Cloud"
+        }
+      ],
+      "insertedAt": "2020-06-14T19:41:59.574355Z",
+      "updatedAt": "2020-06-14T19:43:02.880203Z"
+    }
+  ],
+  "pagination":{
+      "page":1,
+      "size":25,
+      "totalPages":1,
+      "totalItems":2
+  }
+}

@@ -1,8 +1,6 @@
 <template>
   <div>
-    <section-header />
-
-    <div class="row m-0">
+    <div class="row">
       <div class="col-12 col-sm-6 col-lg-3 col-xxl-2">
         <b-form
           autocomplete="off"
@@ -37,7 +35,7 @@
       :active-tab-text="`${activeFilterValue} (${pagination.totalItems})`"
     />
 
-    <div class="row-header ml-3 mr-3">
+    <div class="row-header">
       <div class="col-6">
         Name
       </div>
@@ -50,7 +48,6 @@
       name="list-complete"
       tag="div"
       v-if="catalogItems.length > 0"
-      class="ml-3 mr-3"
     >
       <catalog-item-row
         v-for="catalogItem in catalogItems"
@@ -79,7 +76,6 @@
 
 <script>
 import { BForm, BFormSelect, BInputGroup, BInputGroupPrepend } from 'bootstrap-vue'
-import SectionHeader from '@/components/SectionHeader'
 import Spinner from '@/components/Spinner'
 import CatalogItemRow from '@/components/CatalogItemRow'
 import PaginationCompact from '@/components/PaginationCompact'
@@ -104,7 +100,6 @@ export default {
     PaginationCompact,
     Pagination,
     Tabs,
-    SectionHeader,
     FontAwesomeIcon
   },
 
