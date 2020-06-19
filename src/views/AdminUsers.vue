@@ -236,10 +236,11 @@ export default {
 
       var sort = ''
       // if (ctx.sortBy) {
+      //   sort += '&sort='
       //   if (ctx.sortDesc) {
       //     sort += '-'
       //   }
-      //   sort += `&sort=${ctx.sortBy}`
+      //   sort += `${ctx.sortBy}`
       // }
 
       return this.axios.get(`/api/users?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}${sort}`)
