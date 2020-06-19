@@ -148,14 +148,16 @@ export default {
       },
       fields: [
         {
-          key: 'parent_key'
+          key: 'parent_key',
+          sortable: true
         },
         {
           key: 'parent_value',
           sortable: true
         },
         {
-          key: 'entity_key'
+          key: 'entity_key',
+          sortable: true
         },
         {
           key: 'entity_value',
