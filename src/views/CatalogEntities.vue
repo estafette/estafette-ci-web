@@ -91,14 +91,16 @@ export default {
       },
       fields: [
         {
-          key: 'parent',
+          key: 'parent_value',
+          label: 'Parent',
           sortable: true,
           formatter: (value, key, item) => {
             return item.parentKey + ' = ' + item.parentValue
           }
         },
         {
-          key: 'entity',
+          key: 'entity_value',
+          label: 'Entity',
           sortable: true,
           formatter: (value, key, item) => {
             return item.key + ' = ' + item.value
@@ -109,8 +111,7 @@ export default {
           sortable: true
         },
         {
-          key: 'labels',
-          sortable: true
+          key: 'labels'
         },
         {
           key: 'insertedAt',
