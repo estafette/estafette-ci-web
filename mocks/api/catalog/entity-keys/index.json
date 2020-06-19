@@ -1,0 +1,26 @@
+{
+  "items": [
+    {
+      "count": 1,
+      "key": "cloud"
+    },
+    {
+      "count": 80,
+      "key": "cloud-function"
+    },
+    {
+      "count": 48,
+      "key": "gke-cluster"
+    },
+    {
+      "count": 495,
+      "key": "project"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 1
+  }
+}
