@@ -81,6 +81,18 @@
       stacked="lg"
       ref="entities"
     >
+      <template v-slot:cell(parent_key)="data">
+        <span class="text-muted w-50">{{ data.item.parentKey }}</span>
+      </template>
+      <template v-slot:cell(parent_value)="data">
+        {{ data.item.parentValue }}
+      </template>
+      <template v-slot:cell(entity_key)="data">
+        <span class="text-muted w-50">{{ data.item.key }}</span>
+      </template>
+      <template v-slot:cell(entity_value)="data">
+        {{ data.item.value }}
+      </template>
       <template v-slot:cell(labels)="data">
         <labels :labels="data.item.labels" />
       </template>
@@ -136,20 +148,18 @@ export default {
       },
       fields: [
         {
+          key: 'parent_key'
+        },
+        {
           key: 'parent_value',
-          label: 'Parent',
-          sortable: true,
-          formatter: (value, key, item) => {
-            return item.parentKey + ' = ' + item.parentValue
-          }
+          sortable: true
+        },
+        {
+          key: 'entity_key'
         },
         {
           key: 'entity_value',
-          label: 'Entity',
-          sortable: true,
-          formatter: (value, key, item) => {
-            return item.key + ' = ' + item.value
-          }
+          sortable: true
         },
         {
           key: 'linkedPipeline',
