@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-3">
+      <div class="col-6 col-xl-3">
         <b-input-group
           class="mb-3 d-inline-flex"
           v-if="mappedParentKeys.length > 1"
@@ -21,7 +21,7 @@
           />
         </b-input-group>
       </div>
-      <div class="col-3">
+      <div class="col-6 col-xl-3">
         <b-input-group
           class="mb-3 d-inline-flex"
           v-if="mappedEntityKeys.length > 1"
@@ -41,7 +41,7 @@
           />
         </b-input-group>
       </div>
-      <div class="col-3">
+      <div class="col-6 col-xl-3">
         <b-input-group
           class="mb-3 d-inline-flex"
           v-if="mappedLabels.length > 1"
@@ -61,7 +61,7 @@
           />
         </b-input-group>
       </div>
-      <div class="col-3 text-right">
+      <div class="col-6 col-xl-3">
         <pagination-compact
           :pagination="pagination"
           class="float-right"
