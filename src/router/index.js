@@ -182,7 +182,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "catalog" */ '../views/CatalogServices.vue'),
           meta: {
             text: 'Services',
-            icon: 'industry'
+            icon: 'shapes'
           }
         },
         {
@@ -192,7 +192,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "catalog" */ '../views/CatalogEntities.vue'),
           meta: {
             text: 'Entities',
-            icon: 'sitemap'
+            icon: 'cubes'
           }
         }
       ]

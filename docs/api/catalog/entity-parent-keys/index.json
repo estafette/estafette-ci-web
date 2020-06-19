@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "count": 1,
+      "key": "organization"
+    },    
+    {
+      "count": 1,
+      "key": "cloud"
+    },
+    {
+      "count": 495,
+      "key": "project"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 3
+  }
+}
