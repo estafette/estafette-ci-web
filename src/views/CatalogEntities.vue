@@ -184,7 +184,17 @@ export default {
 
   methods: {
     loadParentKeys () {
-      this.axios.get(`/api/catalog/entity-parent-keys?page[number]=1&page[size]=100`)
+      var entityFilter = ''
+      if (this.entity) {
+        entityFilter = `&filter[entity]=${this.entity}`
+      }
+
+      var labelFilter = ''
+      if (this.label) {
+        labelFilter = `&filter[labels]=${this.label}`
+      }
+
+      this.axios.get(`/api/catalog/entity-parent-keys?page[number]=1&page[size]=100${entityFilter}${labelFilter}`)
         .then(response => {
           this.parentKeys = response.data.items
           // refresh.timeoutWithJitter(this.timeout, this.loadParentKeys, 30)
@@ -194,7 +204,17 @@ export default {
         })
     },
     loadEntityKeys () {
-      this.axios.get(`/api/catalog/entity-keys?page[number]=1&page[size]=100`)
+      var parentFilter = ''
+      if (this.parent) {
+        parentFilter = `&filter[parent]=${this.parent}`
+      }
+
+      var labelFilter = ''
+      if (this.label) {
+        labelFilter = `&filter[labels]=${this.label}`
+      }
+
+      this.axios.get(`/api/catalog/entity-keys?page[number]=1&page[size]=100${parentFilter}${labelFilter}`)
         .then(response => {
           this.entityKeys = response.data.items
           // refresh.timeoutWithJitter(this.timeout, this.loadEntityKeys, 30)
@@ -204,7 +224,17 @@ export default {
         })
     },
     loadLabels () {
-      this.axios.get(`/api/catalog/entity-labels?page[number]=1&page[size]=100`)
+      var parentFilter = ''
+      if (this.parent) {
+        parentFilter = `&filter[parent]=${this.parent}`
+      }
+
+      var entityFilter = ''
+      if (this.entity) {
+        entityFilter = `&filter[entity]=${this.entity}`
+      }
+
+      this.axios.get(`/api/catalog/entity-labels?page[number]=1&page[size]=100${parentFilter}${entityFilter}`)
         .then(response => {
           this.labels = response.data.items
           // refresh.timeoutWithJitter(this.timeout, this.loadKeys, 30)
@@ -247,6 +277,10 @@ export default {
         })
     },
     refreshEntities (value) {
+      this.loadParentKeys()
+      this.loadEntityKeys()
+      this.loadLabels()
+
       this.$refs.entities.refresh()
     }
   },
