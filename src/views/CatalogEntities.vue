@@ -1,67 +1,7 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-12 col-md-6 col-xl-3">
-        <b-input-group
-          class="mb-3 d-inline-flex"
-          v-if="mappedParentKeys.length > 1"
-        >
-          <b-input-group-prepend
-            is-text
-            v-b-tooltip.hover
-            title="Filter entities on key"
-          >
-            <font-awesome-icon icon="sitemap" />
-          </b-input-group-prepend>
-          <b-form-select
-            v-model="parent"
-            :options="mappedParentKeys"
-            @change="refreshEntities"
-            class="d-inline-flex"
-          />
-        </b-input-group>
-      </div>
-      <div class="col-12 col-md-6 col-xl-3">
-        <b-input-group
-          class="mb-3 d-inline-flex"
-          v-if="mappedEntityKeys.length > 1"
-        >
-          <b-input-group-prepend
-            is-text
-            v-b-tooltip.hover
-            title="Filter entities on key"
-          >
-            <font-awesome-icon icon="cube" />
-          </b-input-group-prepend>
-          <b-form-select
-            v-model="entity"
-            :options="mappedEntityKeys"
-            @change="refreshEntities"
-            class="d-inline-flex"
-          />
-        </b-input-group>
-      </div>
-      <div class="col-12 col-md-6 col-xl-3">
-        <b-input-group
-          class="mb-3 d-inline-flex"
-          v-if="mappedLabels.length > 1"
-        >
-          <b-input-group-prepend
-            is-text
-            v-b-tooltip.hover
-            title="Filter entities on labels"
-          >
-            <font-awesome-icon icon="tags" />
-          </b-input-group-prepend>
-          <b-form-select
-            v-model="label"
-            :options="mappedLabels"
-            @change="refreshEntities"
-            class="d-inline-flex"
-          />
-        </b-input-group>
-      </div>
-      <div class="col-12 col-md-6 col-xl-3">
+      <div class="col-12">
         <pagination-compact
           :pagination="pagination"
           class="float-right"
@@ -81,6 +21,35 @@
       stacked="lg"
       ref="entities"
     >
+      <template v-slot:top-row>
+        <b-td>
+          <b-form-select
+            v-model="parent"
+            :options="mappedParentKeys"
+            @change="refreshEntities"
+          />
+        </b-td>
+        <b-td />
+        <b-td>
+          <b-form-select
+            v-model="entity"
+            :options="mappedEntityKeys"
+            @change="refreshEntities"
+          />
+        </b-td>
+        <b-td />
+        <b-td />
+        <b-td>
+          <b-form-select
+            v-model="label"
+            :options="mappedLabels"
+            @change="refreshEntities"
+            class="d-inline-flex"
+          />
+        </b-td>
+        <b-td />
+        <b-td />
+      </template>
       <template v-slot:cell(parent_key)="data">
         <span class="text-muted w-50">{{ data.item.parentKey }}</span>
       </template>
@@ -106,29 +75,21 @@
 </template>
 
 <script>
-import { BTable, BInputGroup, BInputGroupPrepend, BFormSelect } from 'bootstrap-vue'
+import { BTable, BFormSelect, BTd } from 'bootstrap-vue'
 
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
 import Labels from '@/components/Labels'
 import refresh from '../helpers/refresh'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSitemap, faCube, faTags } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faSitemap, faCube, faTags)
-
 export default {
   components: {
     BTable,
-    BInputGroup,
-    BInputGroupPrepend,
+    BTd,
     BFormSelect,
     PaginationCompact,
     Pagination,
-    Labels,
-    FontAwesomeIcon
+    Labels
   },
 
   data: function () {
@@ -303,7 +264,7 @@ export default {
         return []
       }
 
-      return [{ value: null, text: 'Parent key' }].concat(this.parentKeys.map(k => {
+      return [{ value: null, text: 'Unfiltered' }].concat(this.parentKeys.map(k => {
         return {
           value: `${k.key}`,
           text: `${k.key} (${k.count})`
@@ -315,7 +276,7 @@ export default {
         return []
       }
 
-      return [{ value: null, text: 'Entity key' }].concat(this.entityKeys.map(k => {
+      return [{ value: null, text: 'Unfiltered' }].concat(this.entityKeys.map(k => {
         return {
           value: `${k.key}`,
           text: `${k.key} (${k.count})`
@@ -327,7 +288,7 @@ export default {
         return []
       }
 
-      return [{ value: null, text: 'Entity label' }].concat(this.labels.map(l => {
+      return [{ value: null, text: 'Unfiltered' }].concat(this.labels.map(l => {
         return {
           value: `${l.key}=${l.value}`,
           text: `${l.key}=${l.value} (${l.count})`
