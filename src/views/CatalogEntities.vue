@@ -199,6 +199,11 @@ export default {
         })
     },
     loadParentValues () {
+      var parentFilter = ''
+      if (this.parentKey) {
+        parentFilter = `&filter[parent]=${this.parentKey}`
+      }
+
       var entityFilter = ''
       if (this.entityKey) {
         entityFilter = `&filter[entity]=${this.entityKey}`
@@ -212,7 +217,7 @@ export default {
         labelFilter = `&filter[labels]=${this.label}`
       }
 
-      this.axios.get(`/api/catalog/entity-parent-values?page[number]=1&page[size]=100${entityFilter}${labelFilter}`)
+      this.axios.get(`/api/catalog/entity-parent-values?page[number]=1&page[size]=100${parentFilter}${entityFilter}${labelFilter}`)
         .then(response => {
           this.parentValues = response.data.items
         })
@@ -251,12 +256,17 @@ export default {
         }
       }
 
+      var entityFilter = ''
+      if (this.entityKey) {
+        entityFilter = `&filter[entity]=${this.entityKey}`
+      }
+
       var labelFilter = ''
       if (this.label) {
         labelFilter = `&filter[labels]=${this.label}`
       }
 
-      this.axios.get(`/api/catalog/entity-values?page[number]=1&page[size]=100${parentFilter}${labelFilter}`)
+      this.axios.get(`/api/catalog/entity-values?page[number]=1&page[size]=100${parentFilter}${entityFilter}${labelFilter}`)
         .then(response => {
           this.entityValues = response.data.items
         })
