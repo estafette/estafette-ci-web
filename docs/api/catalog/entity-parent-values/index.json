@@ -1,0 +1,26 @@
+{
+  "items": [
+    {
+      "count": 1,
+      "key": "Estafette"
+    },
+    {
+      "count": 1,
+      "key": "Google Cloud"
+    },
+    {
+      "count": 80,
+      "key": "my-project"
+    },
+    {
+      "count": 48,
+      "key": "your-project"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 1
+  }
+}

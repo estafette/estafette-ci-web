@@ -24,20 +24,34 @@
       <template v-slot:top-row>
         <b-td>
           <b-form-select
-            v-model="parent"
+            v-model="parentKey"
             :options="mappedParentKeys"
             @change="refreshEntities"
           />
         </b-td>
-        <b-td />
         <b-td>
           <b-form-select
-            v-model="entity"
+            v-if="parentKey"
+            v-model="parentValue"
+            :options="mappedParentValues"
+            @change="refreshEntities"
+          />
+        </b-td>
+        <b-td>
+          <b-form-select
+            v-model="entityKey"
             :options="mappedEntityKeys"
             @change="refreshEntities"
           />
         </b-td>
-        <b-td />
+        <b-td>
+          <b-form-select
+            v-if="entityKey"
+            v-model="entityValue"
+            :options="mappedEntityValues"
+            @change="refreshEntities"
+          />
+        </b-td>
         <b-td />
         <b-td>
           <b-form-select
@@ -94,10 +108,14 @@ export default {
 
   data: function () {
     return {
-      parent: null,
+      parentKey: null,
       parentKeys: [],
-      entity: null,
+      parentValue: null,
+      parentValues: [],
+      entityKey: null,
       entityKeys: [],
+      entityValue: null,
+      entityValues: [],
       label: null,
       labels: [],
       entities: [],
@@ -151,15 +169,20 @@ export default {
 
   created () {
     this.loadParentKeys()
+    this.loadParentValues()
     this.loadEntityKeys()
+    this.loadEntityValues()
     this.loadLabels()
   },
 
   methods: {
     loadParentKeys () {
       var entityFilter = ''
-      if (this.entity) {
-        entityFilter = `&filter[entity]=${this.entity}`
+      if (this.entityKey) {
+        entityFilter = `&filter[entity]=${this.entityKey}`
+        if (this.entityValue) {
+          entityFilter += `=${this.entityValue}`
+        }
       }
 
       var labelFilter = ''
@@ -170,16 +193,40 @@ export default {
       this.axios.get(`/api/catalog/entity-parent-keys?page[number]=1&page[size]=100${entityFilter}${labelFilter}`)
         .then(response => {
           this.parentKeys = response.data.items
-          // refresh.timeoutWithJitter(this.timeout, this.loadParentKeys, 30)
         })
         .catch(e => {
           refresh.timeoutWithJitter(this.timeout, this.loadParentKeys, 15)
         })
     },
+    loadParentValues () {
+      var entityFilter = ''
+      if (this.entityKey) {
+        entityFilter = `&filter[entity]=${this.entityKey}`
+        if (this.entityValue) {
+          entityFilter += `=${this.entityValue}`
+        }
+      }
+
+      var labelFilter = ''
+      if (this.label) {
+        labelFilter = `&filter[labels]=${this.label}`
+      }
+
+      this.axios.get(`/api/catalog/entity-parent-values?page[number]=1&page[size]=100${entityFilter}${labelFilter}`)
+        .then(response => {
+          this.parentValues = response.data.items
+        })
+        .catch(e => {
+          refresh.timeoutWithJitter(this.timeout, this.loadParentValues, 15)
+        })
+    },
     loadEntityKeys () {
       var parentFilter = ''
-      if (this.parent) {
-        parentFilter = `&filter[parent]=${this.parent}`
+      if (this.parentKey) {
+        parentFilter = `&filter[parent]=${this.parentKey}`
+        if (this.parentValue) {
+          parentFilter += `=${this.parentValue}`
+        }
       }
 
       var labelFilter = ''
@@ -190,27 +237,53 @@ export default {
       this.axios.get(`/api/catalog/entity-keys?page[number]=1&page[size]=100${parentFilter}${labelFilter}`)
         .then(response => {
           this.entityKeys = response.data.items
-          // refresh.timeoutWithJitter(this.timeout, this.loadEntityKeys, 30)
         })
         .catch(e => {
           refresh.timeoutWithJitter(this.timeout, this.loadEntityKeys, 15)
         })
     },
+    loadEntityValues () {
+      var parentFilter = ''
+      if (this.parentKey) {
+        parentFilter = `&filter[parent]=${this.parentKey}`
+        if (this.parentValue) {
+          parentFilter += `=${this.parentValue}`
+        }
+      }
+
+      var labelFilter = ''
+      if (this.label) {
+        labelFilter = `&filter[labels]=${this.label}`
+      }
+
+      this.axios.get(`/api/catalog/entity-values?page[number]=1&page[size]=100${parentFilter}${labelFilter}`)
+        .then(response => {
+          this.entityValues = response.data.items
+        })
+        .catch(e => {
+          refresh.timeoutWithJitter(this.timeout, this.loadEntityValues, 15)
+        })
+    },
     loadLabels () {
       var parentFilter = ''
-      if (this.parent) {
-        parentFilter = `&filter[parent]=${this.parent}`
+      if (this.parentKey) {
+        parentFilter = `&filter[parent]=${this.parentKey}`
+        if (this.parentValue) {
+          parentFilter += `=${this.parentValue}`
+        }
       }
 
       var entityFilter = ''
-      if (this.entity) {
-        entityFilter = `&filter[entity]=${this.entity}`
+      if (this.entityKey) {
+        entityFilter = `&filter[entity]=${this.entityKey}`
+        if (this.entityValue) {
+          entityFilter += `=${this.entityValue}`
+        }
       }
 
       this.axios.get(`/api/catalog/entity-labels?page[number]=1&page[size]=100${parentFilter}${entityFilter}`)
         .then(response => {
           this.labels = response.data.items
-          // refresh.timeoutWithJitter(this.timeout, this.loadKeys, 30)
         })
         .catch(e => {
           refresh.timeoutWithJitter(this.timeout, this.loadKeys, 15)
@@ -218,13 +291,19 @@ export default {
     },
     entitiesProvider (ctx) {
       var parentFilter = ''
-      if (this.parent) {
-        parentFilter = `&filter[parent]=${this.parent}`
+      if (this.parentKey) {
+        parentFilter = `&filter[parent]=${this.parentKey}`
+        if (this.parentValue) {
+          parentFilter += `=${this.parentValue}`
+        }
       }
 
       var entityFilter = ''
-      if (this.entity) {
-        entityFilter = `&filter[entity]=${this.entity}`
+      if (this.entityKey) {
+        entityFilter = `&filter[entity]=${this.entityKey}`
+        if (this.entityValue) {
+          entityFilter += `=${this.entityValue}`
+        }
       }
 
       var labelFilter = ''
@@ -251,7 +330,9 @@ export default {
     },
     refreshEntities (value) {
       this.loadParentKeys()
+      this.loadParentValues()
       this.loadEntityKeys()
+      this.loadEntityValues()
       this.loadLabels()
 
       this.$refs.entities.refresh()
@@ -264,7 +345,19 @@ export default {
         return []
       }
 
-      return [{ value: null, text: 'Unfiltered' }].concat(this.parentKeys.map(k => {
+      return [{ value: null, text: '--' }].concat(this.parentKeys.map(k => {
+        return {
+          value: `${k.key}`,
+          text: `${k.key} (${k.count})`
+        }
+      }))
+    },
+    mappedParentValues () {
+      if (!this.parentValues) {
+        return []
+      }
+
+      return [{ value: null, text: '--' }].concat(this.parentValues.map(k => {
         return {
           value: `${k.key}`,
           text: `${k.key} (${k.count})`
@@ -276,7 +369,19 @@ export default {
         return []
       }
 
-      return [{ value: null, text: 'Unfiltered' }].concat(this.entityKeys.map(k => {
+      return [{ value: null, text: '--' }].concat(this.entityKeys.map(k => {
+        return {
+          value: `${k.key}`,
+          text: `${k.key} (${k.count})`
+        }
+      }))
+    },
+    mappedEntityValues () {
+      if (!this.entityValues) {
+        return []
+      }
+
+      return [{ value: null, text: '--' }].concat(this.entityValues.map(k => {
         return {
           value: `${k.key}`,
           text: `${k.key} (${k.count})`
@@ -288,7 +393,7 @@ export default {
         return []
       }
 
-      return [{ value: null, text: 'Unfiltered' }].concat(this.labels.map(l => {
+      return [{ value: null, text: '--' }].concat(this.labels.map(l => {
         return {
           value: `${l.key}=${l.value}`,
           text: `${l.key}=${l.value} (${l.count})`
