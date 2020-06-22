@@ -143,6 +143,13 @@ export default {
     Labels
   },
 
+  props: {
+    query: {
+      type: Object,
+      default: null
+    }
+  },
+
   data: function () {
     return {
       parentKey: null,
@@ -205,6 +212,8 @@ export default {
   },
 
   created () {
+    this.setDataFromQueryParams()
+
     this.loadParentKeys()
     this.loadParentValues()
     this.loadEntityKeys()
@@ -213,6 +222,50 @@ export default {
   },
 
   methods: {
+    setDataFromQueryParams () {
+      if (this.query.parent) {
+        var parentParts = this.query.parent.split('=')
+        this.parentKey = parentParts.length > 0 ? parentParts[0] : null
+        this.parentValue = parentParts.length > 1 ? parentParts[1] : null
+      }
+      if (this.query.entity) {
+        var entityParts = this.entity.parent.split('=')
+        this.entityKey = entityParts.length > 0 ? entityParts[0] : null
+        this.entityValue = entityParts.length > 1 ? entityParts[1] : null
+      }
+      if (this.query.label) {
+        this.label = this.query.label
+      }
+    },
+    setQueryParamsFromData () {
+      var query = { ...this.$route.query }
+
+      if (this.parentKey) {
+        query.parent = this.parentKey
+        if (this.parentValue) {
+          query.parent += `=${this.parentValue}`
+        }
+      } else if (query.parent) {
+        delete query.parent
+      }
+
+      if (this.entityKey) {
+        query.entity = this.entityKey
+        if (this.entityValue) {
+          query.entity += `=${this.entityValue}`
+        }
+      } else if (query.entity) {
+        delete query.entity
+      }
+
+      if (this.label) {
+        query.label = this.label
+      } else if (query.label) {
+        delete query.label
+      }
+
+      this.$router.push({ query: query })
+    },
     loadParentKeys () {
       var entityFilter = ''
       if (this.entityKey) {
@@ -376,6 +429,8 @@ export default {
         })
     },
     refreshEntities (value) {
+      this.setQueryParamsFromData()
+
       this.loadParentKeys()
       this.loadParentValues()
       this.loadEntityKeys()
