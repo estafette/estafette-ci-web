@@ -33,7 +33,7 @@
             id="parent-key"
             v-model="parentKey"
             :options="mappedParentKeys"
-            @change="refreshEntities"
+            @change="updateParentKey"
           />
         </b-td>
         <b-td>
@@ -63,7 +63,7 @@
             id="entity-key"
             v-model="entityKey"
             :options="mappedEntityKeys"
-            @change="refreshEntities"
+            @change="updateEntityKey"
           />
         </b-td>
         <b-td>
@@ -428,7 +428,15 @@ export default {
           return this.entities || []
         })
     },
-    refreshEntities (value) {
+    updateParentKey () {
+      this.parentValue = null
+      this.refreshEntities()
+    },
+    updateEntityKey () {
+      this.entityValue = null
+      this.refreshEntities()
+    },
+    refreshEntities () {
       this.setQueryParamsFromData()
 
       this.loadParentKeys()
