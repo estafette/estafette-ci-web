@@ -23,46 +23,83 @@
     >
       <template v-slot:top-row>
         <b-td>
+          <label
+            for="parent-key"
+            class="font-weight-bold d-lg-none"
+          >
+            Parent Key
+          </label>
           <b-form-select
+            id="parent-key"
             v-model="parentKey"
             :options="mappedParentKeys"
             @change="refreshEntities"
           />
         </b-td>
         <b-td>
+          <label
+            v-if="parentKey"
+            for="parent-value"
+            class="font-weight-bold d-lg-none"
+          >
+            Parent Value
+          </label>
           <b-form-select
             v-if="parentKey"
+            id="parent-value"
             v-model="parentValue"
             :options="mappedParentValues"
             @change="refreshEntities"
           />
         </b-td>
         <b-td>
+          <label
+            for="entity-key"
+            class="font-weight-bold d-lg-none"
+          >
+            Entity Key
+          </label>
           <b-form-select
+            id="entity-key"
             v-model="entityKey"
             :options="mappedEntityKeys"
             @change="refreshEntities"
           />
         </b-td>
         <b-td>
+          <label
+            v-if="entityKey"
+            for="entity-value"
+            class="font-weight-bold d-lg-none"
+          >
+            Entity Value
+          </label>
           <b-form-select
             v-if="entityKey"
+            id="entity-value"
             v-model="entityValue"
             :options="mappedEntityValues"
             @change="refreshEntities"
           />
         </b-td>
-        <b-td />
+        <b-td class="d-none d-lg-table-cell" />
         <b-td>
+          <label
+            for="labels"
+            class="font-weight-bold d-lg-none"
+          >
+            Labels
+          </label>
           <b-form-select
+            id="labels"
             v-model="label"
             :options="mappedLabels"
             @change="refreshEntities"
             class="d-inline-flex"
           />
         </b-td>
-        <b-td />
-        <b-td />
+        <b-td class="d-none d-lg-table-cell" />
+        <b-td class="d-none d-lg-table-cell" />
       </template>
       <template v-slot:cell(parent_key)="data">
         <span class="text-muted w-50">{{ data.item.parentKey }}</span>

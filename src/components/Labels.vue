@@ -5,7 +5,7 @@
       :key="label.key"
       :to="{ name: 'Pipelines', query: queryGenerator({labels: label.key + '=' + label.value }) }"
       exact
-      class="btn btn-light btn-sm mr-1 mb-1"
+      class="label btn btn-light btn-sm mr-1 mb-1"
     >
       {{ label.key }}={{ label.value }}
     </router-link>

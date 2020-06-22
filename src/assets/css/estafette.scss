@@ -556,3 +556,7 @@ button.btn-clipboard {
     width: 40px !important;
   }
 }
+
+.table-striped tbody tr:nth-of-type(even) .label {
+  background-color: rgba(0, 0, 0, 0.05);
+}
