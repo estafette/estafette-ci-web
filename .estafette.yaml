@@ -60,11 +60,12 @@ stages:
         repositories:
         - estafette
 
-      vulnerability-scan:
-        image: extensions/docker:dev
-        action: trivy
-        repositories:
-        - estafette
+      # incorrectly flags a vulnerability (see https://github.com/nginxinc/docker-nginx/issues/429), disabling for now
+      # vulnerability-scan:
+      #   image: extensions/docker:dev
+      #   action: trivy
+      #   repositories:
+      #   - estafette
 
   test:
     services:
