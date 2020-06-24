@@ -97,6 +97,10 @@ stages:
 
 releases:
   tooling-estafette:
+    actions:
+    - name: deploy-simple
+    - name: restart-simple
+      hideBadge: true
     clone: true
     stages:
       deploy:
