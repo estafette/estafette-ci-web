@@ -38,7 +38,8 @@
               "name": "deploy-stable"
             },
             {
-              "name": "rollback-canary"
+              "name": "rollback-canary",
+              "hideBadge": true
             }
           ],
           "activeReleases": [
