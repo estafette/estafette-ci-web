@@ -7,6 +7,8 @@ RUN apk update \
     && apk add \
       bash \
       libxml2=2.9.10-r3 \
+      libjpeg-turbo=2.0.4-r1 \
+      nghttp2=1.40.0-r1 \
     && rm -rf /var/cache/apk/*
 
 COPY . /usr/share/nginx/html
