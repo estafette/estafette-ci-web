@@ -229,7 +229,7 @@ export default {
         this.parentValue = parentParts.length > 1 ? parentParts[1] : null
       }
       if (this.query.entity) {
-        var entityParts = this.entity.parent.split('=')
+        var entityParts = this.query.entity.split('=')
         this.entityKey = entityParts.length > 0 ? entityParts[0] : null
         this.entityValue = entityParts.length > 1 ? entityParts[1] : null
       }
