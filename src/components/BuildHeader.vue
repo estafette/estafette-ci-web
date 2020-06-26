@@ -141,7 +141,7 @@ export default {
   methods: {
     updateNow () {
       this.now = Date.now()
-      if (this.pipeline && (this.pipeline.buildStatus === 'pending' || this.pipeline.buildStatus === 'running')) {
+      if (this.build && (this.build.buildStatus === 'pending' || this.build.buildStatus === 'running')) {
         refresh.timeout(this.timeout, this.updateNow, 1)
       }
     }

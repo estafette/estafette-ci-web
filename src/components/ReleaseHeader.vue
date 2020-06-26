@@ -86,7 +86,7 @@ export default {
   methods: {
     updateNow () {
       this.now = Date.now()
-      if (this.pipeline && (this.pipeline.buildStatus === 'pending' || this.pipeline.buildStatus === 'running')) {
+      if (this.release && (this.release.releaseStatus === 'pending' || this.release.releaseStatus === 'running')) {
         refresh.timeout(this.timeout, this.updateNow, 1)
       }
     }
