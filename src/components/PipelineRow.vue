@@ -21,7 +21,7 @@
     >
       <router-link :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: pipeline.id }}">
         <b-progress
-          :value="100"
+          :value="$options.filters.progressBarValue(pipeline,pipeline,now)"
           :variant="$options.filters.bootstrapVariant(pipeline.buildStatus)"
           :animated="$options.filters.animatedProgressBar(pipeline.buildStatus)"
         />
@@ -86,6 +86,7 @@ import PropertyBlock from '@/components/PropertyBlock'
 import RepositoryTitle from '@/components/RepositoryTitle'
 import DurationLabel from '@/components/DurationLabel'
 import Commits from '@/components/Commits'
+import refresh from '../helpers/refresh'
 
 export default {
   components: {
@@ -103,6 +104,29 @@ export default {
       type: Object,
       default: null
     }
+  },
+
+  data () {
+    return {
+      now: Date.now()
+    }
+  },
+
+  created () {
+    this.updateNow()
+  },
+
+  methods: {
+    updateNow () {
+      this.now = Date.now()
+      if (this.pipeline && (this.pipeline.buildStatus === 'pending' || this.pipeline.buildStatus === 'running')) {
+        refresh.timeout(this.timeout, this.updateNow, 1)
+      }
+    }
+  },
+
+  beforeDestroy () {
+    clearTimeout(this.timeout)
   },
 
   computed: {

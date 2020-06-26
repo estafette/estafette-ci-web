@@ -4,6 +4,7 @@ import gitHash from './gitHash'
 import bootstrapClass from './bootstrapClass'
 import bootstrapVariant from './bootstrapVariant'
 import animatedProgressBar from './animatedProgressBar'
+import progressBarValue from './progressBarValue'
 import defaultValue from './defaultValue'
 import capitalize from './capitalize'
 import colorDurationClass from './colorDurationClass'
@@ -18,6 +19,7 @@ Vue.filter('gitHash', gitHash)
 Vue.filter('bootstrapClass', bootstrapClass)
 Vue.filter('bootstrapVariant', bootstrapVariant)
 Vue.filter('animatedProgressBar', animatedProgressBar)
+Vue.filter('progressBarValue', progressBarValue)
 Vue.filter('defaultValue', defaultValue)
 Vue.filter('capitalize', capitalize)
 Vue.filter('colorDurationClass', colorDurationClass)

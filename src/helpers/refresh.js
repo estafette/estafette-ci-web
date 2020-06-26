@@ -24,5 +24,11 @@ export default {
 
     // set the timeout
     timeout = setTimeout(callback, timeoutWithJitter)
+  },
+  timeout (timeout, callback, seconds) {
+    clearTimeout(timeout)
+
+    // set the timeout
+    timeout = setTimeout(callback, 1000 * seconds)
   }
 }

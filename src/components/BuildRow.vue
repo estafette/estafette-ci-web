@@ -14,7 +14,7 @@
       class="col-xxxl-1"
     >
       <b-progress
-        :value="100"
+        :value="$options.filters.progressBarValue(pipeline,build,now)"
         :variant="$options.filters.bootstrapVariant(build.buildStatus)"
         :animated="$options.filters.animatedProgressBar(build.buildStatus)"
       />
@@ -96,6 +96,7 @@ import ReleaseBadgeForBuild from '@/components/ReleaseBadgeForBuild'
 import PropertyBlock from '@/components/PropertyBlock'
 import DurationLabel from '@/components/DurationLabel'
 import Commits from '@/components/Commits'
+import refresh from '../helpers/refresh'
 
 export default {
   components: {
@@ -123,6 +124,29 @@ export default {
       type: Object,
       default: null
     }
+  },
+
+  data () {
+    return {
+      now: Date.now()
+    }
+  },
+
+  created () {
+    this.updateNow()
+  },
+
+  methods: {
+    updateNow () {
+      this.now = Date.now()
+      if (this.pipeline && (this.pipeline.buildStatus === 'pending' || this.pipeline.buildStatus === 'running')) {
+        refresh.timeout(this.timeout, this.updateNow, 1)
+      }
+    }
+  },
+
+  beforeDestroy () {
+    clearTimeout(this.timeout)
   },
 
   computed: {
