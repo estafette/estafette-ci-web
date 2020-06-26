@@ -10,6 +10,7 @@
     <release-header
       v-if="release"
       :release="release"
+      :pipeline="pipeline && (release.releaseStatus === 'pending' || release.releaseStatus === 'running') ? pipeline : release"
     />
 
     <inner-navigation-tabs section-route-name="Pipelines" />
@@ -57,6 +58,7 @@ export default {
   data: function () {
     return {
       release: null,
+      pipeline: null,
       refresh: true,
       breadcrumbs: [
         {
@@ -88,6 +90,11 @@ export default {
         .then(response => {
           this.release = response.data
 
+          if (this.release.releaseStatus === 'pending' || this.release.releaseStatus === 'running') {
+            // load pipeline in order to show progress bar growing (pipeline has median (pending) release time, release does not)
+            this.loadPipeline()
+          }
+
           this.breadcrumbs[this.breadcrumbs.length - 1] = {
             text: `${this.release.releaseVersion} to ${this.release.name}` + (this.release.action ? ` (${this.release.action})` : ''),
             to: { name: 'PipelineReleaseLogs', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName, releaseID: this.releaseID } },
@@ -102,6 +109,16 @@ export default {
         })
         .catch(e => {
           this.periodicallyRefreshRelease(30)
+        })
+    },
+
+    loadPipeline () {
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}`)
+        .then(response => {
+          this.pipeline = response.data
+        })
+        .catch(e => {
+          console.warn(e)
         })
     },
 

@@ -22,7 +22,7 @@
       class="col-xxxl-2"
     >
       <b-progress
-        :value="100"
+        :value="$options.filters.releaseProgressBarValue(pipeline,release,now)"
         :variant="$options.filters.bootstrapVariant(release.releaseStatus)"
         :animated="$options.filters.animatedProgressBar(release.releaseStatus)"
       />
@@ -60,6 +60,7 @@ import CancelButton from '@/components/CancelButton'
 import TriggeredBy from '@/components/TriggeredBy'
 import PropertyBlock from '@/components/PropertyBlock'
 import DurationLabel from '@/components/DurationLabel'
+import refresh from '../helpers/refresh'
 
 export default {
   components: {
@@ -74,7 +75,34 @@ export default {
     release: {
       type: Object,
       default: null
+    },
+    pipeline: {
+      type: Object,
+      default: null
     }
+  },
+
+  data () {
+    return {
+      now: Date.now()
+    }
+  },
+
+  created () {
+    this.updateNow()
+  },
+
+  methods: {
+    updateNow () {
+      this.now = Date.now()
+      if (this.pipeline && (this.pipeline.buildStatus === 'pending' || this.pipeline.buildStatus === 'running')) {
+        refresh.timeout(this.timeout, this.updateNow, 1)
+      }
+    }
+  },
+
+  beforeDestroy () {
+    clearTimeout(this.timeout)
   },
 
   computed: {

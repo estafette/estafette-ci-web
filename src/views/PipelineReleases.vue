@@ -44,6 +44,7 @@
         v-for="release in releases"
         :key="release.id"
         :release="release"
+        :pipeline="pipeline"
       />
     </transition-group>
     <div

@@ -21,7 +21,7 @@
     >
       <router-link :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: pipeline.id }}">
         <b-progress
-          :value="$options.filters.progressBarValue(pipeline,pipeline,now)"
+          :value="$options.filters.buildProgressBarValue(pipeline,pipeline,now)"
           :variant="$options.filters.bootstrapVariant(pipeline.buildStatus)"
           :animated="$options.filters.animatedProgressBar(pipeline.buildStatus)"
         />

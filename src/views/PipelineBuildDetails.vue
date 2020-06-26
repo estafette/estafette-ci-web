@@ -10,7 +10,7 @@
     <build-header
       v-if="build"
       :build="build"
-      :pipeline="pipeline ? pipeline : build"
+      :pipeline="pipeline && (build.buildStatus === 'pending' || build.buildStatus === 'running') ? pipeline : build"
     />
 
     <pipeline-build-warnings

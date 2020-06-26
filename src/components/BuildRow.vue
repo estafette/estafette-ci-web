@@ -14,7 +14,7 @@
       class="col-xxxl-1"
     >
       <b-progress
-        :value="$options.filters.progressBarValue(pipeline,build,now)"
+        :value="$options.filters.buildProgressBarValue(pipeline,build,now)"
         :variant="$options.filters.bootstrapVariant(build.buildStatus)"
         :animated="$options.filters.animatedProgressBar(build.buildStatus)"
       />
