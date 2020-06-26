@@ -1,5 +1,26 @@
 <template>
-  <b-nav
+  <vk-tabs-vertical align="left">
+    {{ routes }}
+    <!-- <vk-tabs-item
+      v-for="route in routes"
+      :key="route.name"
+      :to="{ name: route.name }"
+      :exact="route.meta ? route.meta.exact : false"
+      :class="route.meta && route.meta.class ? route.meta.class : ''"
+    >
+      {{ route.meta && route.meta.text ? route.meta.text : route.name }}
+    </vk-tabs-item> -->
+    <vk-tabs-item title="Left">
+      <!-- Hello! -->
+    </vk-tabs-item>
+    <vk-tabs-item title="Item">
+      <!-- Hello again! -->
+    </vk-tabs-item>
+    <vk-tabs-item title="Item">
+      <!-- Bazinga! -->
+    </vk-tabs-item>
+  </vk-tabs-vertical>
+  <!-- <b-nav
     vertical
     class="main-sidebar-nav"
   >
@@ -31,24 +52,27 @@
         {{ route.meta && route.meta.text ? route.meta.text : route.name }}
       </span>
     </b-nav-item>
-  </b-nav>
+  </b-nav> -->
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import { BNav, BNavItem } from 'bootstrap-vue'
+// import { BNav, BNavItem } from 'bootstrap-vue'
+import { TabsVertical, TabsItem } from 'vuikit'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers, faSlidersH } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// import { faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers, faSlidersH } from '@fortawesome/free-solid-svg-icons'
+// // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers, faSlidersH)
+// library.add(faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers, faSlidersH)
 
 export default {
   components: {
-    BNav,
-    BNavItem,
-    FontAwesomeIcon
+    // BNav,
+    // BNavItem,
+    VkTabsVertical: TabsVertical,
+    VkTabsItem: TabsItem
+    // FontAwesomeIcon
   },
 
   methods: {

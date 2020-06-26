@@ -48,7 +48,7 @@
             </div>
           </div>
 
-          <b-button
+          <vk-button
             :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: build.id }}"
             exact
             :variant="$options.filters.bootstrapVariant(build.buildStatus)"
@@ -62,7 +62,7 @@
             <span v-else>
               -
             </span>
-          </b-button>
+          </vk-button>
 
           <div class="row mt-2">
             <div
@@ -165,7 +165,7 @@
 <script>
 import PipelineWarnings from '@/components/PipelineWarnings'
 import { mapState } from 'vuex'
-import { BButton } from 'bootstrap-vue'
+import { Button } from 'vuikit'
 import Spinner from '@/components/Spinner'
 import CommitLink from '@/components/CommitLink'
 import { Drag, Drop } from 'vue-easy-dnd'
@@ -178,7 +178,7 @@ library.add(faFire, faTools, faUpload)
 export default {
   components: {
     PipelineWarnings,
-    BButton,
+    VkButton: Button,
     Spinner,
     CommitLink,
     Drag,

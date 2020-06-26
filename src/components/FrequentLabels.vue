@@ -5,7 +5,7 @@
   >
     <b-input-group-prepend
       is-text
-      v-b-tooltip.hover
+      v-vk-tooltip
       title="Filter pipelines on frequently used labels"
     >
       <font-awesome-icon icon="tags" />
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { BInputGroup, BInputGroupPrepend, BFormSelect } from 'bootstrap-vue'
+// import { BInputGroup, BInputGroupPrepend, BFormSelect } from 'bootstrap-vue'
 import queryGenerator from '@/mixins/queryGenerator'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -31,9 +31,9 @@ library.add(faTags)
 
 export default {
   components: {
-    BInputGroup,
-    BInputGroupPrepend,
-    BFormSelect,
+    // BInputGroup,
+    // BInputGroupPrepend,
+    // BFormSelect,
     FontAwesomeIcon
   },
 

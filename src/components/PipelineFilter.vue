@@ -2,7 +2,7 @@
   <b-input-group class="mb-3">
     <b-input-group-prepend
       is-text
-      v-b-tooltip.hover
+      v-vk-tooltip
       title="Search on pipeline name"
     >
       <font-awesome-icon icon="filter" />
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { BFormInput, BInputGroup, BInputGroupPrepend } from 'bootstrap-vue'
+// import { BFormInput, BInputGroup, BInputGroupPrepend } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFilter } from '@fortawesome/free-solid-svg-icons'
@@ -27,9 +27,9 @@ library.add(faFilter)
 
 export default {
   components: {
-    BFormInput,
-    BInputGroup,
-    BInputGroupPrepend,
+    // BFormInput,
+    // BInputGroup,
+    // BInputGroupPrepend,
     FontAwesomeIcon
   },
 

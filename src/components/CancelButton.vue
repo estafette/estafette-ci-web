@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { BInputGroup, BInputGroupText, BButton } from 'bootstrap-vue'
+// import { BInputGroup, BInputGroupText, BButton } from 'bootstrap-vue'
 
 import { mapState } from 'vuex'
 
@@ -33,9 +33,9 @@ library.add(faBan)
 
 export default {
   components: {
-    BInputGroup,
-    BInputGroupText,
-    BButton,
+    // BInputGroup,
+    // BInputGroupText,
+    // BButton,
     FontAwesomeIcon
   },
   props: {

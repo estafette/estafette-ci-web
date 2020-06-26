@@ -22,7 +22,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BInputGroup, BButton, BInputGroupText } from 'bootstrap-vue'
+// import { BInputGroup, BButton, BInputGroupText } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faRedo } from '@fortawesome/free-solid-svg-icons'
@@ -32,9 +32,9 @@ library.add(faRedo)
 
 export default {
   components: {
-    BInputGroup,
-    BButton,
-    BInputGroupText,
+    // BInputGroup,
+    // BButton,
+    // BInputGroupText,
     FontAwesomeIcon
   },
   props: {

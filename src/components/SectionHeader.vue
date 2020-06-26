@@ -13,11 +13,11 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BJumbotron } from 'bootstrap-vue'
+// import { BJumbotron } from 'bootstrap-vue'
 
 export default {
   components: {
-    BJumbotron
+    // BJumbotron
   },
 
   props: {

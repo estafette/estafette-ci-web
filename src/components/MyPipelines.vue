@@ -26,7 +26,7 @@
         <div class="d-inline-flex mr-2">
           {{ firstPageItem }}-{{ lastPageItem }} of {{ pagination.totalItems }}
         </div>
-        <b-pagination
+        <!-- <b-pagination
           v-model="pagination.page"
           :total-rows="pagination.totalItems"
           :per-page="pagination.size"
@@ -35,7 +35,7 @@
           hide-ellipsis
           class="d-inline-flex"
           small
-        />
+        /> -->
       </div>
     </div>
   </div>
@@ -44,12 +44,12 @@
 <script>
 import { mapState } from 'vuex'
 import PipelineCompact from '@/components/PipelineCompact'
-import { BPagination } from 'bootstrap-vue'
+// import { BPagination } from 'bootstrap-vue'
 
 export default {
   components: {
-    PipelineCompact,
-    BPagination
+    // BPagination,
+    PipelineCompact
   },
 
   props: {

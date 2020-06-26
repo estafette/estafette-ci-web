@@ -2,7 +2,7 @@
   <div>
     <section-header section-route-name="Pipelines" />
 
-    <b-breadcrumb
+    <vk-breadcrumb
       :items="breadcrumbs"
       class="m-3 rounded"
     />
@@ -24,14 +24,14 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BBreadcrumb } from 'bootstrap-vue'
+import { Breadcrumb } from 'vuikit'
 import PipelineHeader from '@/components/PipelineHeader'
 import SectionHeader from '@/components/SectionHeader'
 import InnerNavigationTabs from '@/components/InnerNavigationTabs'
 
 export default {
   components: {
-    BBreadcrumb,
+    VkBreadcrumb: Breadcrumb,
     SectionHeader,
     PipelineHeader,
     InnerNavigationTabs

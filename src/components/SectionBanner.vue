@@ -3,7 +3,7 @@
     v-if="section"
     class="col-12 col-md-6 col-xxxl-3"
   >
-    <b-jumbotron
+    <!-- <b-jumbotron
       :header="header"
       :lead="lead"
       :bg-variant="bgVariant"
@@ -19,18 +19,18 @@
       >
         See more
       </b-button>
-    </b-jumbotron>
+    </b-jumbotron> -->
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import { BJumbotron, BButton } from 'bootstrap-vue'
+// import { BJumbotron, BButton } from 'bootstrap-vue'
 
 export default {
   components: {
-    BJumbotron,
-    BButton
+    // BJumbotron,
+    // BButton
   },
 
   props: {

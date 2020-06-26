@@ -90,19 +90,19 @@
 </template>
 
 <script>
-import { BTable, BButton, BCard, BRow, BCol, BBadge } from 'bootstrap-vue'
+// import { BTable, BButton, BCard, BRow, BCol, BBadge } from 'bootstrap-vue'
 
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
 
 export default {
   components: {
-    BTable,
-    BButton,
-    BCard,
-    BRow,
-    BCol,
-    BBadge,
+    // BTable,
+    // BButton,
+    // BCard,
+    // BRow,
+    // BCol,
+    // BBadge,
     PaginationCompact,
     Pagination
   },

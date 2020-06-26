@@ -2,7 +2,7 @@
   <b-input-group class="mb-3">
     <b-input-group-prepend
       is-text
-      v-b-tooltip.hover
+      v-vk-tooltip
       title="Filter pipelines based on when they're last built or released"
     >
       <font-awesome-icon icon="clock" />
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { BFormSelect, BInputGroup, BInputGroupPrepend } from 'bootstrap-vue'
+// import { BFormSelect, BInputGroup, BInputGroupPrepend } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
@@ -26,9 +26,9 @@ library.add(faClock)
 
 export default {
   components: {
-    BFormSelect,
-    BInputGroup,
-    BInputGroupPrepend,
+    // BFormSelect,
+    // BInputGroup,
+    // BInputGroupPrepend,
     FontAwesomeIcon
   },
 

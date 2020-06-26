@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { BButtonGroup, BButton, BInputGroupPrepend } from 'bootstrap-vue'
+// import { BButtonGroup, BButton, BInputGroupPrepend } from 'bootstrap-vue'
 import queryGenerator from '@/mixins/queryGenerator'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -37,9 +37,9 @@ library.add(faTag)
 
 export default {
   components: {
-    BButtonGroup,
-    BButton,
-    BInputGroupPrepend,
+    // BButtonGroup,
+    // BButton,
+    // BInputGroupPrepend,
     FontAwesomeIcon
   },
 

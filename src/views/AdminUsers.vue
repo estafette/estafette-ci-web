@@ -161,22 +161,22 @@
 </template>
 
 <script>
-import { BTable, BButton, BCard, BRow, BCol, BAvatar, BBadge } from 'bootstrap-vue'
+// import { BTable, BButton, BCard, BRow, BCol, BAvatar, BBadge } from 'bootstrap-vue'
 
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
 
 export default {
   components: {
-    BTable,
-    BButton,
-    BCard,
-    BRow,
-    BCol,
-    BAvatar,
+    // BTable,
+    // BButton,
+    // BCard,
+    // BRow,
+    // BCol,
+    // BAvatar,
+    // BBadge,
     PaginationCompact,
-    Pagination,
-    BBadge
+    Pagination
   },
 
   data: function () {

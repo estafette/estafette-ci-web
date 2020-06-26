@@ -2,7 +2,7 @@
   <span
     v-if="duration && duration > 0"
     class="d-none d-sm-inline"
-    v-b-tooltip.hover
+    v-vk-tooltip
     :title="title"
   >
     in <span :class="$options.filters.colorDurationClass(duration)">{{ duration | formatDuration }}</span>

@@ -30,7 +30,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BBreadcrumb } from 'bootstrap-vue'
+// import { BBreadcrumb } from 'bootstrap-vue'
 import SectionHeader from '@/components/SectionHeader'
 import BuildHeader from '@/components/BuildHeader'
 import PipelineBuildWarnings from '@/components/PipelineBuildWarnings'
@@ -38,7 +38,7 @@ import InnerNavigationTabs from '@/components/InnerNavigationTabs'
 
 export default {
   components: {
-    BBreadcrumb,
+    // BBreadcrumb,
     SectionHeader,
     BuildHeader,
     PipelineBuildWarnings,

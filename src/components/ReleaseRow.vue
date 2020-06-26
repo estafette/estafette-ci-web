@@ -55,7 +55,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BProgress } from 'bootstrap-vue'
+// import { BProgress } from 'bootstrap-vue'
 import CancelButton from '@/components/CancelButton'
 import TriggeredBy from '@/components/TriggeredBy'
 import PropertyBlock from '@/components/PropertyBlock'
@@ -63,7 +63,7 @@ import DurationLabel from '@/components/DurationLabel'
 
 export default {
   components: {
-    BProgress,
+    // BProgress,
     CancelButton,
     TriggeredBy,
     PropertyBlock,

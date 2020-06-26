@@ -1,17 +1,22 @@
 <template>
-  <div id="app">
+  <vk-grid id="app">
     <side-navigation-bar />
     <div id="main">
       <router-view />
     </div>
-  </div>
+  </vk-grid>
 </template>
 
 <script>
 import SideNavigationBar from '@/components/SideNavigationBar'
 
+import '@vuikit/theme'
+
+import { Grid } from 'vuikit'
+
 export default {
   components: {
+    VkGrid: Grid,
     SideNavigationBar
   }
 }

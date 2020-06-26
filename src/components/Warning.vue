@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import { BAlert } from 'bootstrap-vue'
+// import { BAlert } from 'bootstrap-vue'
 
 export default {
   components: {
-    BAlert,
+    // BAlert,
     'MarkDown': () => import(/* webpackChunkName: "marked" */ '@/components/MarkDown')
   },
   props: {

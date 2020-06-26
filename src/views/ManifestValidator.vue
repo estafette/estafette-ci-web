@@ -57,15 +57,15 @@
 
 <script>
 import Spinner from '@/components/Spinner'
-import { BForm, BFormTextarea, BFormGroup, BButton } from 'bootstrap-vue'
+// import { BForm, BFormTextarea, BFormGroup, BButton } from 'bootstrap-vue'
 
 export default {
   components: {
-    Spinner,
-    BForm,
-    BFormTextarea,
-    BFormGroup,
-    BButton
+    // BForm,
+    // BFormTextarea,
+    // BFormGroup,
+    // BButton
+    Spinner
   },
   data: function () {
     return {

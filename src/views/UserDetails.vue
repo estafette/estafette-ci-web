@@ -33,12 +33,12 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BAvatar, BButton } from 'bootstrap-vue'
+// import { BAvatar, BButton } from 'bootstrap-vue'
 
 export default {
   components: {
-    BAvatar,
-    BButton
+    // BAvatar,
+    // BButton
   },
 
   data: function () {

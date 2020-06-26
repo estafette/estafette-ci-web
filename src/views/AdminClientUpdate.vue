@@ -85,17 +85,17 @@
 </template>
 
 <script>
-import { BForm, BFormGroup, BFormInput, BFormTags, BFormTag, BFormSelect, BButton } from 'bootstrap-vue'
+// import { BForm, BFormGroup, BFormInput, BFormTags, BFormTag, BFormSelect, BButton } from 'bootstrap-vue'
 
 export default {
   components: {
-    BForm,
-    BFormGroup,
-    BFormInput,
-    BFormTags,
-    BFormTag,
-    BFormSelect,
-    BButton
+    // BForm,
+    // BFormGroup,
+    // BFormInput,
+    // BFormTags,
+    // BFormTag,
+    // BFormSelect,
+    // BButton
   },
 
   props: {

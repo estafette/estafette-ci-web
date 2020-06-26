@@ -24,14 +24,14 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BBreadcrumb } from 'bootstrap-vue'
+// import { BBreadcrumb } from 'bootstrap-vue'
 import SectionHeader from '@/components/SectionHeader'
 import ReleaseHeader from '@/components/ReleaseHeader'
 import InnerNavigationTabs from '@/components/InnerNavigationTabs'
 
 export default {
   components: {
-    BBreadcrumb,
+    // BBreadcrumb,
     SectionHeader,
     ReleaseHeader,
     InnerNavigationTabs

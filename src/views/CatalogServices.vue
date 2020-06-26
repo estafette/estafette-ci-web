@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import { BForm, BFormSelect, BInputGroup, BInputGroupPrepend } from 'bootstrap-vue'
+// import { BForm, BFormSelect, BInputGroup, BInputGroupPrepend } from 'bootstrap-vue'
 import Spinner from '@/components/Spinner'
 import CatalogItemRow from '@/components/CatalogItemRow'
 import PaginationCompact from '@/components/PaginationCompact'
@@ -91,10 +91,10 @@ library.add(faTags)
 
 export default {
   components: {
-    BForm,
-    BFormSelect,
-    BInputGroup,
-    BInputGroupPrepend,
+    // BForm,
+    // BFormSelect,
+    // BInputGroup,
+    // BInputGroupPrepend,
     Spinner,
     CatalogItemRow,
     PaginationCompact,

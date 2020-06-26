@@ -4,7 +4,7 @@
       <div class="col-12 col-md-6 col-xl-3 text-center">
         <h1>Login</h1>
         <p>Please log in with one of the following providers:</p>
-        <b-button
+        <vk-button
           v-for="provider in providers"
           :key="provider.id"
           :href="path(provider)"
@@ -17,14 +17,15 @@
             class="mr-2"
           />
           {{ provider.name }}
-        </b-button>
+        </vk-button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { BButton } from 'bootstrap-vue'
+// import { BButton } from 'bootstrap-vue'
+import { Button } from 'vuikit'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faGoogle, faMicrosoft, faFacebook, faGithub, faBitbucket, faGitlab } from '@fortawesome/free-brands-svg-icons'
@@ -34,7 +35,8 @@ library.add(faGoogle, faMicrosoft, faFacebook, faGithub, faBitbucket, faGitlab)
 
 export default {
   components: {
-    BButton,
+    // BButton,
+    VkButton: Button,
     FontAwesomeIcon
   },
 

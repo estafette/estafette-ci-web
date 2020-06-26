@@ -1,44 +1,23 @@
 <template>
-  <div class="m-3">
-    <div class="row">
-      <div class="col-12">
-        <b-jumbotron
-          lead="Your portal to application development & management"
-          bg-variant="white"
-          text-variant="dark"
-          header-level="3"
-          container-fluid
-          fluid
-          class="mb-3 pl-4 pt-4 pr-4 pb-5 rounded border"
-        >
-          <template
-            v-slot:header
-          >
-            <span class="text-success font-italic">
-              Estafette
-            </span>
-          </template>
-
-          <p>For more information visit the public website.</p>
-
-          <b-button
-            variant="success"
-            href="https://estafette.io/"
-            target="_blank"
-          >
-            Learn more
-          </b-button>
-        </b-jumbotron>
-      </div>
-
+  <div>
+    <article class="uk-article">
+      <h1 class="uk-article-title">
+        Estafette
+      </h1>
+      <p class="uk-article-meta">
+        <vk-button-link href="https://estafette.io/">
+          Learn more
+        </vk-button-link>
+      </p>
+    </article>
+    <vk-grid>
       <section-banner
         v-for="section in sections"
         :key="section.name"
         :section="section"
       />
-    </div>
-
-    <div class="row">
+    </vk-grid>
+    <vk-grid>
       <my-pipelines
         title="Pipelines you recently committed to"
         filter="recent-committer"
@@ -51,20 +30,21 @@
         type="release"
         class="col-12 col-md-6"
       />
-    </div>
+    </vk-grid>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import { BJumbotron, BButton } from 'bootstrap-vue'
 import SectionBanner from '@/components/SectionBanner'
 import MyPipelines from '@/components/MyPipelines'
 
+import { Grid, ButtonLink } from 'vuikit'
+
 export default {
   components: {
-    BJumbotron,
-    BButton,
+    VkGrid: Grid,
+    VkButtonLink: ButtonLink,
     SectionBanner,
     MyPipelines
   },

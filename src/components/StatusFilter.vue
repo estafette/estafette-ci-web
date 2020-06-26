@@ -4,7 +4,7 @@
   >
     <b-input-group-prepend
       is-text
-      v-b-tooltip.hover
+      v-vk-tooltip
       title="Filter pipelines based on it's build status"
     >
       <font-awesome-icon icon="check-circle" />
@@ -93,7 +93,7 @@
 </template>
 
 <script>
-import { BButtonGroup, BButton, BInputGroupPrepend } from 'bootstrap-vue'
+// import { BButtonGroup, BButton, BInputGroupPrepend } from 'bootstrap-vue'
 import queryGenerator from '@/mixins/queryGenerator'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -104,9 +104,9 @@ library.add(faCheckCircle, faCheckDouble, faRunning, faHeart, faHeartBroken, faB
 
 export default {
   components: {
-    BButtonGroup,
-    BButton,
-    BInputGroupPrepend,
+    // BButtonGroup,
+    // BButton,
+    // BInputGroupPrepend,
     FontAwesomeIcon
   },
 

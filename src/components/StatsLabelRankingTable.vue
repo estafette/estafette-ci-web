@@ -46,12 +46,12 @@
 </template>
 
 <script>
-import { BPagination } from 'bootstrap-vue'
+// import { BPagination } from 'bootstrap-vue'
 import queryGenerator from '@/mixins/queryGenerator'
 
 export default {
   components: {
-    BPagination
+    // BPagination
   },
   props: {
     filter: {

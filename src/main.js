@@ -6,9 +6,18 @@ import App from './App'
 import router from './router'
 import store from './store'
 import './filters'
-import { VBTooltip } from 'bootstrap-vue'
+// import { VBTooltip } from 'bootstrap-vue'
 // Note: Vue automatically prefixes the directive name with 'v-'
-Vue.directive('b-tooltip', VBTooltip)
+// Vue.directive('b-tooltip', VBTooltip)
+import Vuikit from 'vuikit'
+import VuikitIcons from '@vuikit/icons'
+import '@vuikit/theme'
+// import { Tooltip } from 'vuikit/lib/tooltip'
+// // Note: Vue automatically prefixes the directive name with 'v-'
+// Vue.directive('vk-tooltip', Tooltip)
+
+Vue.use(Vuikit)
+Vue.use(VuikitIcons)
 
 Vue.axios = axios
 Vue.$http = axios

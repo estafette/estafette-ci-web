@@ -19,11 +19,11 @@
       label="Status"
     >
       <router-link :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: pipeline.id }}">
-        <b-progress
+        <!-- <b-progress
           :value="100"
           :variant="$options.filters.bootstrapVariant(pipeline.buildStatus)"
           :animated="$options.filters.animatedProgressBar(pipeline.buildStatus)"
-        />
+        /> -->
       </router-link>
     </property-block>
     <property-block
@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import { BProgress } from 'bootstrap-vue'
+// import { BProgress } from 'bootstrap-vue'
 import CommitLink from '@/components/CommitLink'
 import ReleaseBadge from '@/components/ReleaseBadge'
 import PropertyBlock from '@/components/PropertyBlock'
@@ -88,7 +88,7 @@ import Commits from '@/components/Commits'
 
 export default {
   components: {
-    BProgress,
+    // BProgress,
     CommitLink,
     ReleaseBadge,
     PropertyBlock,

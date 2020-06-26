@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import { BProgress } from 'bootstrap-vue'
+// import { BProgress } from 'bootstrap-vue'
 import CommitLink from '@/components/CommitLink'
 import ReleaseBadge from '@/components/ReleaseBadge'
 import PropertyBlock from '@/components/PropertyBlock'
@@ -89,7 +89,7 @@ import Commits from '@/components/Commits'
 
 export default {
   components: {
-    BProgress,
+    // BProgress,
     CommitLink,
     ReleaseBadge,
     PropertyBlock,

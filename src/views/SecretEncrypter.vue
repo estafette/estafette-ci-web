@@ -89,18 +89,18 @@
 </template>
 
 <script>
-import spinner from '@/components/Spinner'
-import { BForm, BFormCheckbox, BFormInput, BFormTextarea, BFormGroup, BButton, BTooltip } from 'bootstrap-vue'
+import Spinner from '@/components/Spinner'
+// import { BForm, BFormCheckbox, BFormInput, BFormTextarea, BFormGroup, BButton, BTooltip } from 'bootstrap-vue'
 
 export default {
   components: {
-    spinner,
-    BForm,
-    BFormCheckbox,
-    BFormInput,
-    BFormTextarea,
-    BFormGroup,
-    BButton
+    // BForm,
+    // BFormCheckbox,
+    // BFormInput,
+    // BFormTextarea,
+    // BFormGroup,
+    // BButton
+    Spinner
   },
   props: {
     repoSource: {
@@ -117,7 +117,7 @@ export default {
     }
   },
   directives: {
-    BTooltip
+    // BTooltip
   },
   data: function () {
     return {

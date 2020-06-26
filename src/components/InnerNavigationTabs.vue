@@ -58,7 +58,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BNav, BNavItem, BDropdown, BDropdownItem } from 'bootstrap-vue'
+// import { BNav, BNavItem, BDropdown, BDropdownItem } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faKey, faShieldAlt, faUser, faUsers, faSitemap, faShapes, faCubes, faHammer, faUserSecret, faClipboardCheck, faChartPie, faListOl, faChartLine, faHeart, faPassport, faIndustry, faTools, faUpload, faProjectDiagram, faLightbulb, faPollH, faBook, faMobileAlt } from '@fortawesome/free-solid-svg-icons'
@@ -68,10 +68,10 @@ library.add(faKey, faShieldAlt, faUser, faUsers, faSitemap, faShapes, faCubes, f
 
 export default {
   components: {
-    BNav,
-    BNavItem,
-    BDropdown,
-    BDropdownItem,
+    // BNav,
+    // BNavItem,
+    // BDropdown,
+    // BDropdownItem,
     FontAwesomeIcon
   },
 

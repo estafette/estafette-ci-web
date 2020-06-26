@@ -126,7 +126,7 @@
 </template>
 
 <script>
-import { BTable, BFormSelect, BTd } from 'bootstrap-vue'
+// import { BTable, BFormSelect, BTd } from 'bootstrap-vue'
 
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
@@ -135,9 +135,9 @@ import refresh from '../helpers/refresh'
 
 export default {
   components: {
-    BTable,
-    BTd,
-    BFormSelect,
+    // BTable,
+    // BTd,
+    // BFormSelect,
     PaginationCompact,
     Pagination,
     Labels

@@ -19,7 +19,7 @@
 
     <router-view />
 
-    <b-table
+    <vk-table
       :items="groupsProvider"
       :fields="fields"
       :per-page="pagination.size"
@@ -101,7 +101,7 @@
           </b-row>
         </b-card>
       </template>
-    </b-table>
+    </vk-table>
 
     <pagination
       :pagination="pagination"
@@ -111,7 +111,8 @@
 </template>
 
 <script>
-import { BTable, BButton, BCard, BRow, BCol, BBadge } from 'bootstrap-vue'
+// import { BTable, BButton, BCard, BRow, BCol, BBadge } from 'bootstrap-vue'
+import { Table } from 'vuikit'
 
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
@@ -119,12 +120,13 @@ import AdminGroupMembers from '@/components/AdminGroupMembers'
 
 export default {
   components: {
-    BTable,
-    BButton,
-    BCard,
-    BRow,
-    BCol,
-    BBadge,
+    VkTable: Table,
+    // BTable,
+    // BButton,
+    // BCard,
+    // BRow,
+    // BCol,
+    // BBadge,
     PaginationCompact,
     Pagination,
     AdminGroupMembers

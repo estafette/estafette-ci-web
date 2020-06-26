@@ -53,7 +53,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BDropdown, BDropdownHeader, BDropdownItemButton, BInputGroup, BInputGroupText } from 'bootstrap-vue'
+// import { BDropdown, BDropdownHeader, BDropdownItemButton, BInputGroup, BInputGroupText } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUpload } from '@fortawesome/free-solid-svg-icons'
@@ -63,11 +63,11 @@ library.add(faUpload)
 
 export default {
   components: {
-    BDropdown,
-    BDropdownHeader,
-    BDropdownItemButton,
-    BInputGroup,
-    BInputGroupText,
+    // BDropdown,
+    // BDropdownHeader,
+    // BDropdownItemButton,
+    // BInputGroup,
+    // BInputGroupText,
     FontAwesomeIcon
   },
   props: {

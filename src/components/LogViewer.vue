@@ -479,7 +479,7 @@
 import debounce from 'lodash/debounce'
 
 import AnsiUp from 'ansi_up'
-import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BFormCheckbox, BFormGroup, BNav, BNavItem } from 'bootstrap-vue'
+// import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BFormCheckbox, BFormGroup, BNav, BNavItem } from 'bootstrap-vue'
 
 import PropertyBlock from '@/components/PropertyBlock'
 
@@ -491,20 +491,20 @@ library.add(faShieldAlt, faEye, faEyeSlash, faChevronUp, faChevronDown)
 
 export default {
   components: {
-    BButton,
-    BCard,
-    BCardHeader,
-    BCollapse,
-    BFormCheckbox,
-    BFormGroup,
+    // BButton,
+    // BCard,
+    // BCardHeader,
+    // BCollapse,
+    // BFormCheckbox,
+    // BFormGroup,
+    // BNav,
+    // BNavItem,
     PropertyBlock,
-    FontAwesomeIcon,
-    BNav,
-    BNavItem
+    FontAwesomeIcon
   },
-  directives: {
-    'b-toggle': VBToggle
-  },
+  // directives: {
+  //   'b-toggle': VBToggle
+  // },
   props: {
     logUrl: {
       type: String,

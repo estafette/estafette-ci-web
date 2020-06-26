@@ -32,12 +32,12 @@
 </template>
 
 <script>
-import { BPaginationNav, BPagination } from 'bootstrap-vue'
+// import { BPaginationNav, BPagination } from 'bootstrap-vue'
 
 export default {
   components: {
-    BPaginationNav,
-    BPagination
+    // BPaginationNav,
+    // BPagination
   },
 
   props: {

@@ -5,7 +5,7 @@
   >
     <b-input-group-prepend
       is-text
-      v-b-tooltip.hover
+      v-vk-tooltip
       title="Filter pipelines you recently committed to or released"
     >
       <font-awesome-icon
@@ -18,7 +18,7 @@
       variant="light"
       :class="[ filter.recentCommitter === 'false' && filter.recentReleaser === 'false' ? 'active' : 'border-btn-group' ]"
       @click="(e) => e.target.blur()"
-      v-b-tooltip.hover
+      v-vk-tooltip
       title="Everyone's pipelines"
     >
       <font-awesome-icon icon="users" />
@@ -29,7 +29,7 @@
       variant="light"
       :class="[ filter.recentCommitter === 'true' ? 'active' : 'border-btn-group' ]"
       @click="(e) => e.target.blur()"
-      v-b-tooltip.hover
+      v-vk-tooltip
       title="Pipelines you recently committed to"
     >
       <font-awesome-icon icon="tools" />
@@ -40,7 +40,7 @@
       variant="light"
       :class="[ filter.recentReleaser === 'true' ? 'active' : 'border-btn-group' ]"
       @click="(e) => e.target.blur()"
-      v-b-tooltip.hover
+      v-vk-tooltip
       title="Pipelines you recently released"
     >
       <font-awesome-icon icon="upload" />
@@ -50,7 +50,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BButtonGroup, BButton, BInputGroupPrepend } from 'bootstrap-vue'
+// import { BButtonGroup, BButton, BInputGroupPrepend } from 'bootstrap-vue'
 import queryGenerator from '@/mixins/queryGenerator'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -61,9 +61,9 @@ library.add(faUser, faUsers, faTools, faUpload)
 
 export default {
   components: {
-    BButtonGroup,
-    BButton,
-    BInputGroupPrepend,
+    // BButtonGroup,
+    // BButton,
+    // BInputGroupPrepend,
     FontAwesomeIcon
   },
 

@@ -81,7 +81,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BProgress } from 'bootstrap-vue'
+// import { BProgress } from 'bootstrap-vue'
 import CommitLink from '@/components/CommitLink'
 import ReleaseButton from '@/components/ReleaseButton'
 import RebuildButton from '@/components/RebuildButton'
@@ -95,7 +95,7 @@ import Commits from '@/components/Commits'
 
 export default {
   components: {
-    BProgress,
+    // BProgress,
     CommitLink,
     ReleaseButton,
     RebuildButton,

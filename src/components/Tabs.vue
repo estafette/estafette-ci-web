@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import { BNav, BNavItem, BDropdown, BDropdownItem } from 'bootstrap-vue'
+// import { BNav, BNavItem, BDropdown, BDropdownItem } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faIndustry, faTools, faUpload, faProjectDiagram, faLightbulb, faUserSecret, faHammer, faClipboardCheck, faPollH, faBook, faChartPie, faListOl, faChartLine } from '@fortawesome/free-solid-svg-icons'
@@ -65,10 +65,10 @@ library.add(faIndustry, faTools, faUpload, faProjectDiagram, faLightbulb, faUser
 
 export default {
   components: {
-    BNav,
-    BNavItem,
-    BDropdown,
-    BDropdownItem,
+    // BNav,
+    // BNavItem,
+    // BDropdown,
+    // BDropdownItem,
     FontAwesomeIcon
   },
   props: {

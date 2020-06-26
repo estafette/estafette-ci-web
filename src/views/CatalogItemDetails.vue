@@ -23,14 +23,14 @@
 </template>
 
 <script>
-import { BBreadcrumb } from 'bootstrap-vue'
+// import { BBreadcrumb } from 'bootstrap-vue'
 import CatalogItemHeader from '@/components/CatalogItemHeader'
 import SectionHeader from '@/components/SectionHeader'
 import InnerNavigationTabs from '@/components/InnerNavigationTabs'
 
 export default {
   components: {
-    BBreadcrumb,
+    // BBreadcrumb,
     SectionHeader,
     CatalogItemHeader,
     InnerNavigationTabs
