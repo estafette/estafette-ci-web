@@ -8,7 +8,6 @@ export default function (pipeline, build, now) {
       var pendingDurationMs = now - new Date(build.insertedAt)
       var medianPendingDurationMs = pipeline.extraInfo.medianPendingDuration / Math.pow(10, 6)
       var pendingValue = Math.round(100 * pendingDurationMs / medianPendingDurationMs)
-      console.log('pending', pendingDurationMs, medianPendingDurationMs, pendingValue)
       if (pendingValue >= 0 && pendingValue <= 100) {
         return pendingValue
       }
@@ -20,7 +19,6 @@ export default function (pipeline, build, now) {
       var durationMs = now - new Date(build.startedAt)
       var medianDurationMs = pipeline.extraInfo.medianDuration / Math.pow(10, 6)
       var value = Math.round(100 * durationMs / medianDurationMs)
-      console.log('running', durationMs, medianDurationMs, value)
       if (value >= 0 && value <= 100) {
         return value
       }

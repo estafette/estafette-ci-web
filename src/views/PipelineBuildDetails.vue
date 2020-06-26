@@ -10,7 +10,7 @@
     <build-header
       v-if="build"
       :build="build"
-      :pipeline="build"
+      :pipeline="pipeline ? pipeline : build"
     />
 
     <pipeline-build-warnings
@@ -65,6 +65,7 @@ export default {
   data: function () {
     return {
       build: null,
+      pipeline: null,
       refresh: true,
       breadcrumbs: [
         {
@@ -96,6 +97,11 @@ export default {
         .then(response => {
           this.build = response.data
 
+          if (this.build.buildStatus === 'pending' || this.build.buildStatus === 'running') {
+            // load pipeline in order to show progress bar growing (pipeline has median (pending) build time, build does not)
+            this.loadPipeline()
+          }
+
           this.breadcrumbs[this.breadcrumbs.length - 1] = {
             text: `${this.build.buildVersion}`,
             to: { name: 'PipelineBuildLogs', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName, id: this.id } },
@@ -109,7 +115,18 @@ export default {
           }
         })
         .catch(e => {
+          console.warn(e)
           this.periodicallyRefreshBuild(30)
+        })
+    },
+
+    loadPipeline () {
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}`)
+        .then(response => {
+          this.pipeline = response.data
+        })
+        .catch(e => {
+          console.warn(e)
         })
     },
 
