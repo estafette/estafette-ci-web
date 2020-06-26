@@ -4,8 +4,8 @@ export default function (pipeline, build, now) {
   }
   var status = build.buildStatus.toString().toLowerCase()
   if (status === 'pending') {
-    if (pipeline.extraInfo.medianPendingDuration > 0 && build.startedAt) {
-      var pendingDuration = now - new Date(build.startedAt)
+    if (pipeline.extraInfo.medianPendingDuration > 0 && build.insertedAt) {
+      var pendingDuration = now - new Date(build.insertedAt)
       var pendingValue = Math.round(100 * pendingDuration / pipeline.extraInfo.medianPendingDuration / Math.pow(10, 6))
       if (pendingValue >= 0 && pendingValue <= 100) {
         return pendingValue
@@ -16,9 +16,6 @@ export default function (pipeline, build, now) {
   if (status === 'running') {
     if (pipeline.extraInfo.medianDuration > 0 && build.startedAt) {
       var duration = now - new Date(build.startedAt)
-      if (build.pendingDuration > 0) {
-        duration -= build.pendingDuration / Math.pow(10, 6)
-      }
       var value = Math.round(100 * duration / pipeline.extraInfo.medianDuration / Math.pow(10, 6))
       if (value >= 0 && value <= 100) {
         return value
