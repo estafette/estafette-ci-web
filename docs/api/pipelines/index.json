@@ -410,6 +410,10 @@
       "repoRevision": "ac1c24ee3bf31504788beee1c3adcff7b549ee15",
       "buildVersion": "0.0.40",
       "buildStatus": "running",
+      "extraInfo":{
+        "medianPendingDuration":1000000000,
+        "medianDuration":256000000000
+      },
       "labels": [
         {
           "key": "app-group",
