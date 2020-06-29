@@ -128,6 +128,13 @@ export default {
     },
     onSubmit (evt) {
       evt.preventDefault()
+
+      // set estafette as provider
+      this.form.identities = [{
+        provider: 'estafette',
+        name: this.form.name
+      }]
+
       this.axios.post(`/api/organizations`, this.form)
         .then(response => {
           this.$router.push({ name: 'AdminOrganizations' })

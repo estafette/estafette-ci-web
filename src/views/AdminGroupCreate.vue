@@ -199,6 +199,12 @@ export default {
         this.form.organizations = []
       }
 
+      // set estafette as provider
+      this.form.identities = [{
+        provider: 'estafette',
+        name: this.form.name
+      }]
+
       this.axios.post(`/api/groups`, this.form)
         .then(response => {
           this.$router.push({ name: 'AdminGroups' })
