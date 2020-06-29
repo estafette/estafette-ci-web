@@ -44,7 +44,7 @@
       <template v-slot:cell(show_details)="row">
         <b-button
           size="sm"
-          :to="{ name: 'AdminPipelineUpdate', params: { id: row.item.id } }"
+          :to="{ name: 'AdminPipelineUpdate', params: { repoSource: row.item.repoSource, repoOwner: row.item.repoOwner, repoName: row.item.repoName } }"
           class="mr-1 mb-1"
         >
           Edit

@@ -482,7 +482,7 @@ export default new Router({
           }
         },
         {
-          path: 'pipelines/:id/edit',
+          path: 'pipelines/:repoSource/:repoOwner/:repoName/edit',
           name: 'AdminPipelineUpdate',
           props: true,
           component: () => import(/* webpackChunkName: "admin" */ '../views/AdminPipelineUpdate.vue'),

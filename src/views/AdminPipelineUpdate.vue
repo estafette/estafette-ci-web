@@ -151,7 +151,15 @@ export default {
   },
 
   props: {
-    id: {
+    repoSource: {
+      type: String,
+      default: null
+    },
+    repoOwner: {
+      type: String,
+      default: null
+    },
+    repoName: {
       type: String,
       default: null
     }
@@ -216,7 +224,7 @@ export default {
         })
     },
     loadForm () {
-      this.axios.get(`/api/admin/pipelines/${this.id}`, this.form)
+      this.axios.get(`/api/admin/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}`, this.form)
         .then(response => {
           this.form = response.data
           if (this.form && this.form.groups) {
@@ -246,7 +254,7 @@ export default {
         this.form.organizations = []
       }
 
-      this.axios.put(`/api/admin/pipelines/${this.id}`, this.form)
+      this.axios.put(`/api/admin/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}`, this.form)
         .then(response => {
           this.$router.push({ name: 'AdminPipelines' })
         })
