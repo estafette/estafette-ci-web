@@ -469,6 +469,27 @@ export default new Router({
             text: 'Secrets',
             icon: 'user-secret'
           }
+        },
+        {
+          path: 'pipelines',
+          name: 'AdminPipelines',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../views/AdminPipelines.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            text: 'Pipelines',
+            icon: 'tools'
+          }
+        },
+        {
+          path: 'pipelines/:id/edit',
+          name: 'AdminPipelineUpdate',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../views/AdminPipelineUpdate.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            hide: true
+          }
         }
       ]
     },
