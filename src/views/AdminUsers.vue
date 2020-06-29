@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row m-0">
+    <div class="row">
       <div class="col-12 text-right">
         <pagination-compact
           :pagination="pagination"
@@ -51,7 +51,7 @@
           {{ org.name }}
         </b-badge>
       </template>
-      <template v-slot:cell(show_details)="row">
+      <template v-slot:cell(actions)="row">
         <b-button
           size="sm"
           @click="row.toggleDetails"
@@ -224,7 +224,7 @@ export default {
           }
         },
         {
-          key: 'show_details'
+          key: 'actions'
         }
       ]
     }

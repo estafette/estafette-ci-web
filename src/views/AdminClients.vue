@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row m-0">
+    <div class="row">
       <div class="col-6">
         <b-button
           :to="{ name: 'AdminClientCreate' }"
@@ -41,7 +41,7 @@
           {{ role }}
         </b-badge>
       </template>
-      <template v-slot:cell(show_details)="row">
+      <template v-slot:cell(actions)="row">
         <b-button
           size="sm"
           @click="row.toggleDetails"
@@ -144,7 +144,7 @@ export default {
           sortable: true
         },
         {
-          key: 'show_details'
+          key: 'actions'
         }
       ]
     }

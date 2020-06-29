@@ -1,7 +1,13 @@
 <template>
   <div>
-    <div class="row m-0">
-      <div class="col-12 text-right">
+    <div class="row">
+      <div class="col-6">
+        <pipeline-filter
+          :model="filter.search"
+          :on-input="setSearch"
+        />
+      </div>
+      <div class="col-6 text-right">
         <pagination-compact
           :pagination="pagination"
           class="float-right"
@@ -20,6 +26,7 @@
       hover
       borderless
       stacked="lg"
+      ref="pipelines"
     >
       <template v-slot:cell(groups)="data">
         <b-badge
@@ -41,7 +48,7 @@
           {{ org.name }}
         </b-badge>
       </template>
-      <template v-slot:cell(show_details)="row">
+      <template v-slot:cell(actions)="row">
         <b-button
           size="sm"
           :to="{ name: 'AdminPipelineUpdate', params: { repoSource: row.item.repoSource, repoOwner: row.item.repoOwner, repoName: row.item.repoName } }"
@@ -64,6 +71,9 @@ import { BTable, BButton, BBadge } from 'bootstrap-vue'
 
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
+import PipelineFilter from '@/components/PipelineFilter'
+
+import debounce from 'lodash/debounce'
 
 export default {
   components: {
@@ -71,7 +81,8 @@ export default {
     BButton,
     PaginationCompact,
     Pagination,
-    BBadge
+    BBadge,
+    PipelineFilter
   },
 
   data: function () {
@@ -82,6 +93,9 @@ export default {
         size: 100,
         totalPages: 0,
         totalItems: 0
+      },
+      filter: {
+        search: ''
       },
       fields: [
         {
@@ -104,7 +118,7 @@ export default {
           sortable: true
         },
         {
-          key: 'show_details'
+          key: 'actions'
         }
       ]
     }
@@ -121,14 +135,23 @@ export default {
         sort += `${ctx.sortBy}`
       }
 
-      return this.axios.get(`/api/admin/pipelines?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}${sort}`)
+      return this.axios.get(`/api/admin/pipelines?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}${sort}&filter[search]=${this.filter.search}`)
         .then(response => {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination
 
           return this.pipelines || []
         })
-    }
+    },
+
+    setSearch: debounce(
+      function (value) {
+        this.filter.search = value
+        this.pagination.page = 1
+        this.$refs.pipelines.refresh()
+      },
+      500
+    )
   }
 }
 </script>
