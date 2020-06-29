@@ -48,21 +48,39 @@
             </div>
           </div>
 
-          <b-button
-            :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: build.id }}"
-            exact
-            :variant="$options.filters.bootstrapVariant(build.buildStatus)"
-            size="sm"
-            block
-            class="mr-1 mb-1 text-truncate"
-          >
-            <span v-if="build.buildVersion">
-              {{ build.buildVersion }}
-            </span>
-            <span v-else>
-              -
-            </span>
-          </b-button>
+          <div class="row no-gutters">
+            <div class="col">
+              <b-button
+                :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: build.id }}"
+                exact
+                :variant="$options.filters.bootstrapVariant(build.buildStatus)"
+                size="sm"
+                block
+                class="mr-1 mb-1 text-truncate"
+              >
+                <span v-if="build.buildVersion">
+                  {{ build.buildVersion }}
+                </span>
+                <span v-else>
+                  -
+                </span>
+              </b-button>
+            </div>
+            <div
+              v-if="showActions(build)"
+              class="col-auto"
+            >
+              <rebuild-button-compact
+                :build="build"
+                :builds="builds"
+                class="mr-1 mb-1 ml-1"
+              />
+              <cancel-button-compact
+                :build="build"
+                class="mr-1 mb-1 ml-1"
+              />
+            </div>
+          </div>
 
           <div class="row mt-2">
             <div
@@ -168,6 +186,8 @@ import { mapState } from 'vuex'
 import { BButton } from 'bootstrap-vue'
 import Spinner from '@/components/Spinner'
 import CommitLink from '@/components/CommitLink'
+import RebuildButtonCompact from '@/components/RebuildButtonCompact'
+import CancelButtonCompact from '@/components/CancelButtonCompact'
 import { Drag, Drop } from 'vue-easy-dnd'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFire, faTools, faUpload } from '@fortawesome/free-solid-svg-icons'
@@ -181,6 +201,8 @@ export default {
     BButton,
     Spinner,
     CommitLink,
+    RebuildButtonCompact,
+    CancelButtonCompact,
     Drag,
     Drop,
     FontAwesomeIcon
@@ -335,6 +357,10 @@ export default {
              this.pipeline.releaseTargets &&
              this.pipeline.releaseTargets.length > 0 &&
              this.pipeline.releaseTargets.some(rt => rt.name === releaseTarget.name && rt.activeReleases && rt.activeReleases.some(ar => ar && ar.releaseStatus === 'running'))
+    },
+
+    showActions (build) {
+      return this.user && this.user.active && build && ((build.buildStatus === 'failed' || build.buildStatus === 'pending' || build.buildStatus === 'running' || build.buildStatus === 'canceled' || build.buildStatus === 'canceling'))
     }
   },
 
