@@ -1,5 +1,6 @@
 {
   "id": "563290242244509708",
+  "archived": true,
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-letsencrypt-certificate",
