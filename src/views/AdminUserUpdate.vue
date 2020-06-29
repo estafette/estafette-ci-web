@@ -1,186 +1,206 @@
 <template>
-  <div class="rounded border bg-white p-3">
-    <b-form
-      @submit="onSubmit"
-    >
-      <h4>Update user</h4>
-      <b-form-group
-        id="name-user"
-        label="Name:"
-        label-for="name"
+  <div>
+    <div class="rounded border bg-white p-3">
+      <b-form
+        @submit="onSubmit"
       >
-        <b-form-input
-          id="name"
-          v-model="form.name"
-          type="text"
-          required
-          placeholder="Enter name for the user"
-        />
-      </b-form-group>
-      <b-form-group
-        id="roles-group"
-        label="Roles:"
-        label-for="roles"
-      >
-        <b-form-tags
-          input-id="roles"
-          v-model="form.roles"
-          add-on-change
-          no-outer-focus
+        <h4>Update user</h4>
+        <b-form-group
+          id="name-user"
+          label="Name:"
+          label-for="name"
         >
-          <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
-            <ul
-              v-if="tags.length > 0"
-              class="list-inline d-inline-block mb-2"
-            >
-              <li
-                v-for="tag in tags"
-                :key="tag"
-                class="list-inline-item"
-              >
-                <b-form-tag
-                  @remove="removeTag(tag)"
-                  :title="tag"
-                  :disabled="disabled"
-                  variant="info"
-                >
-                  {{ tag }}
-                </b-form-tag>
-              </li>
-            </ul>
-            <b-form-select
-              v-bind="inputAttrs"
-              v-on="inputHandlers"
-              :disabled="disabled || availableRoles.length === 0"
-              :options="availableRoles"
-            >
-              <template v-slot:first>
-                <!-- This is required to prevent bugs with Safari -->
-                <option
-                  disabled
-                  value=""
-                >
-                  Choose a role...
-                </option>
-              </template>
-            </b-form-select>
-          </template>
-        </b-form-tags>
-      </b-form-group>
-      <b-form-group
-        id="groups-group"
-        label="Groups:"
-        label-for="groups"
-      >
-        <b-form-tags
-          input-id="groups"
-          v-model="selectedGroups"
-          add-on-change
-          no-outer-focus
+          <b-form-input
+            id="name"
+            v-model="form.name"
+            type="text"
+            required
+            placeholder="Enter name for the user"
+          />
+        </b-form-group>
+        <b-form-group
+          id="roles-group"
+          label="Roles:"
+          label-for="roles"
         >
-          <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
-            <ul
-              v-if="tags.length > 0"
-              class="list-inline d-inline-block mb-2"
-            >
-              <li
-                v-for="tag in tags"
-                :key="tag"
-                class="list-inline-item"
+          <b-form-tags
+            input-id="roles"
+            v-model="form.roles"
+            add-on-change
+            no-outer-focus
+          >
+            <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
+              <ul
+                v-if="tags.length > 0"
+                class="list-inline d-inline-block mb-2"
               >
-                <b-form-tag
-                  @remove="removeTag(tag)"
-                  :title="tag"
-                  :disabled="disabled"
-                  variant="warning"
+                <li
+                  v-for="tag in tags"
+                  :key="tag"
+                  class="list-inline-item"
                 >
-                  {{ tag }}
-                </b-form-tag>
-              </li>
-            </ul>
-            <b-form-select
-              v-bind="inputAttrs"
-              v-on="inputHandlers"
-              :disabled="disabled || availableGroups.length === 0"
-              :options="availableGroups"
-            >
-              <template v-slot:first>
-                <!-- This is required to prevent bugs with Safari -->
-                <option
-                  disabled
-                  value=""
-                >
-                  Choose a group...
-                </option>
-              </template>
-            </b-form-select>
-          </template>
-        </b-form-tags>
-      </b-form-group>
-      <b-form-group
-        id="organizations-group"
-        label="Organizations:"
-        label-for="organizations"
-      >
-        <b-form-tags
-          input-id="organizations"
-          v-model="selectedOrganizations"
-          add-on-change
-          no-outer-focus
+                  <b-form-tag
+                    @remove="removeTag(tag)"
+                    :title="tag"
+                    :disabled="disabled"
+                    variant="info"
+                  >
+                    {{ tag }}
+                  </b-form-tag>
+                </li>
+              </ul>
+              <b-form-select
+                v-bind="inputAttrs"
+                v-on="inputHandlers"
+                :disabled="disabled || availableRoles.length === 0"
+                :options="availableRoles"
+              >
+                <template v-slot:first>
+                  <!-- This is required to prevent bugs with Safari -->
+                  <option
+                    disabled
+                    value=""
+                  >
+                    Choose a role...
+                  </option>
+                </template>
+              </b-form-select>
+            </template>
+          </b-form-tags>
+        </b-form-group>
+        <b-form-group
+          id="groups-group"
+          label="Groups:"
+          label-for="groups"
         >
-          <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
-            <ul
-              v-if="tags.length > 0"
-              class="list-inline d-inline-block mb-2"
-            >
-              <li
-                v-for="tag in tags"
-                :key="tag"
-                class="list-inline-item"
+          <b-form-tags
+            input-id="groups"
+            v-model="selectedGroups"
+            add-on-change
+            no-outer-focus
+          >
+            <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
+              <ul
+                v-if="tags.length > 0"
+                class="list-inline d-inline-block mb-2"
               >
-                <b-form-tag
-                  @remove="removeTag(tag)"
-                  :title="tag"
-                  :disabled="disabled"
-                  variant="success"
+                <li
+                  v-for="tag in tags"
+                  :key="tag"
+                  class="list-inline-item"
                 >
-                  {{ tag }}
-                </b-form-tag>
-              </li>
-            </ul>
-            <b-form-select
-              v-bind="inputAttrs"
-              v-on="inputHandlers"
-              :disabled="disabled || availableOrganizations.length === 0"
-              :options="availableOrganizations"
-            >
-              <template v-slot:first>
-                <!-- This is required to prevent bugs with Safari -->
-                <option
-                  disabled
-                  value=""
+                  <b-form-tag
+                    @remove="removeTag(tag)"
+                    :title="tag"
+                    :disabled="disabled"
+                    variant="warning"
+                  >
+                    {{ tag }}
+                  </b-form-tag>
+                </li>
+              </ul>
+              <b-form-select
+                v-bind="inputAttrs"
+                v-on="inputHandlers"
+                :disabled="disabled || availableGroups.length === 0"
+                :options="availableGroups"
+              >
+                <template v-slot:first>
+                  <!-- This is required to prevent bugs with Safari -->
+                  <option
+                    disabled
+                    value=""
+                  >
+                    Choose a group...
+                  </option>
+                </template>
+              </b-form-select>
+            </template>
+          </b-form-tags>
+        </b-form-group>
+        <b-form-group
+          id="organizations-group"
+          label="Organizations:"
+          label-for="organizations"
+        >
+          <b-form-tags
+            input-id="organizations"
+            v-model="selectedOrganizations"
+            add-on-change
+            no-outer-focus
+          >
+            <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
+              <ul
+                v-if="tags.length > 0"
+                class="list-inline d-inline-block mb-2"
+              >
+                <li
+                  v-for="tag in tags"
+                  :key="tag"
+                  class="list-inline-item"
                 >
-                  Choose an organization...
-                </option>
-              </template>
-            </b-form-select>
-          </template>
-        </b-form-tags>
-      </b-form-group>
-      <b-button
-        type="submit"
-        variant="primary"
-        :disabled="!ready"
-      >
-        Update
-      </b-button>
-      <b-button
-        variant="danger"
-        :to="{ name: 'AdminUsers' }"
-      >
-        Cancel
-      </b-button>
-    </b-form>
+                  <b-form-tag
+                    @remove="removeTag(tag)"
+                    :title="tag"
+                    :disabled="disabled"
+                    variant="success"
+                  >
+                    {{ tag }}
+                  </b-form-tag>
+                </li>
+              </ul>
+              <b-form-select
+                v-bind="inputAttrs"
+                v-on="inputHandlers"
+                :disabled="disabled || availableOrganizations.length === 0"
+                :options="availableOrganizations"
+              >
+                <template v-slot:first>
+                  <!-- This is required to prevent bugs with Safari -->
+                  <option
+                    disabled
+                    value=""
+                  >
+                    Choose an organization...
+                  </option>
+                </template>
+              </b-form-select>
+            </template>
+          </b-form-tags>
+        </b-form-group>
+        <b-button
+          type="submit"
+          variant="primary"
+          :disabled="!ready"
+        >
+          Update
+        </b-button>
+        <b-button
+          variant="light"
+          :to="{ name: 'AdminUsers' }"
+        >
+          Cancel
+        </b-button>
+      </b-form>
+    </div>
+    <div class="rounded border border-danger bg-white p-3 mt-3">
+      <div class="d-flex justify-content-between">
+        <div>
+          <h6>Delete this user</h6>
+          <p class="align-self-end">
+            Once you delete an user, there is no going back. Please be certain.
+          </p>
+        </div>
+        <div class="align-self-center">
+          <b-button
+            variant="danger"
+            @click="onDelete"
+          >
+            Delete this user
+          </b-button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -295,6 +315,17 @@ export default {
       }
 
       this.axios.put(`/api/users/${this.id}`, this.form)
+        .then(response => {
+          this.$router.push({ name: 'AdminUsers' })
+        })
+        .catch(e => {
+          console.warn(e)
+        })
+    },
+
+    onDelete (evt) {
+      evt.preventDefault()
+      this.axios.delete(`/api/users/${this.id}`)
         .then(response => {
           this.$router.push({ name: 'AdminUsers' })
         })
