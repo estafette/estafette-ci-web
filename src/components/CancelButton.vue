@@ -5,7 +5,7 @@
   >
     <b-input-group-text
       slot="prepend"
-      class="border border-danger text-white bg-danger"
+      class="border border-danger text-danger bg-white"
       @click.stop=""
     >
       <font-awesome-icon icon="ban" />

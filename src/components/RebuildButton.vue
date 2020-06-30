@@ -5,7 +5,7 @@
   >
     <b-input-group-text
       slot="prepend"
-      class="border border-warning text-dark bg-warning"
+      class="border border-warning text-warning bg-white"
       @click.stop=""
     >
       <font-awesome-icon icon="redo" />
