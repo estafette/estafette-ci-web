@@ -195,6 +195,7 @@ export default {
 
   created () {
     this.filterDefaults = { ...this.filter }
+    this.setDataFromQueryParams(this.query)
     this.loadGroups()
     this.loadOrganizations()
   },
@@ -231,10 +232,14 @@ export default {
       }
       var labelFilterParams = ''
       if (this.filter && this.filter.labels && this.filter.labels.length > 0) {
-        labelFilterParams = this.filter.labels.split(',').join('&filter[labels]=')
+        labelFilterParams = '&filter[labels]=' + this.filter.labels.split(',').join('&filter[labels]=')
+      }
+      var searchFilterParams = ''
+      if (this.filter && this.filter.search && this.filter.search !== '') {
+        searchFilterParams = `&filter[search]=${this.filter.search}`
       }
 
-      return this.axios.get(`/api/admin/pipelines?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}${sort}&filter[search]=${this.filter.search}${labelFilterParams}`)
+      return this.axios.get(`/api/admin/pipelines?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}${sort}${labelFilterParams}${searchFilterParams}`)
         .then(response => {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination
