@@ -28,6 +28,43 @@
       stacked="lg"
       ref="pipelines"
     >
+      <template v-slot:head(checkbox)>
+        <b-form-checkbox
+          id="toggle-all"
+          :checked="pipelines.length > 0 && pipelines.length === selected.length"
+          :indeterminate="selected.length > 0 && selected.length < pipelines.length"
+          :disabled="!ready"
+          @change="toggleAll"
+        />
+      </template>
+
+      <template v-slot:top-row>
+        <b-td colspan="2" />
+        <b-td>
+          <b-form-select
+            v-model="group"
+            :options="mappedGroups"
+            :disabled="!ready || selected.length === 0"
+            @change="addGroup"
+          />
+        </b-td>
+        <b-td>
+          <b-form-select
+            v-model="organization"
+            :options="mappedOrganizations"
+            :disabled="!ready || selected.length === 0"
+            @change="addOrganization"
+          />
+        </b-td>
+        <b-td colspan="2" />
+      </template>
+
+      <template v-slot:cell(checkbox)="data">
+        <b-form-checkbox
+          v-model="selected"
+          :value="`${data.item.repoSource}/${data.item.repoOwner}/${data.item.repoName}`"
+        />
+      </template>
       <template v-slot:cell(groups)="data">
         <b-badge
           v-for="group in data.item.groups"
@@ -67,7 +104,7 @@
 </template>
 
 <script>
-import { BTable, BButton, BBadge } from 'bootstrap-vue'
+import { BTable, BTd, BButton, BBadge, BFormCheckbox, BFormSelect } from 'bootstrap-vue'
 
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
@@ -78,15 +115,23 @@ import debounce from 'lodash/debounce'
 export default {
   components: {
     BTable,
+    BTd,
     BButton,
     PaginationCompact,
     Pagination,
     BBadge,
+    BFormCheckbox,
+    BFormSelect,
     PipelineFilter
   },
 
   data: function () {
     return {
+      selected: [],
+      group: null,
+      groups: [],
+      organization: null,
+      organizations: [],
       pipelines: [],
       pagination: {
         page: 1,
@@ -98,6 +143,11 @@ export default {
         search: ''
       },
       fields: [
+        {
+          key: 'checkbox',
+          label: '',
+          class: 'text-center'
+        },
         {
           key: 'pipeline',
           sortable: true,
@@ -120,11 +170,41 @@ export default {
         {
           key: 'actions'
         }
-      ]
+      ],
+      loaded: {
+        groups: false,
+        organizations: false,
+        pipelines: false
+      }
     }
   },
 
+  created () {
+    this.loadGroups()
+    this.loadOrganizations()
+  },
+
   methods: {
+    loadGroups () {
+      this.axios.get(`/api/groups?page[number]=1&page[size]=100`)
+        .then(response => {
+          this.groups = response.data.items
+          this.loaded.groups = true
+        })
+        .catch(e => {
+          console.warn(e)
+        })
+    },
+    loadOrganizations () {
+      this.axios.get(`/api/organizations?page[number]=1&page[size]=100`)
+        .then(response => {
+          this.organizations = response.data.items
+          this.loaded.organizations = true
+        })
+        .catch(e => {
+          console.warn(e)
+        })
+    },
     pipelinesProvider (ctx) {
       var sort = ''
       if (ctx.sortBy) {
@@ -140,6 +220,8 @@ export default {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination
 
+          this.loaded.pipelines = true
+
           return this.pipelines || []
         })
     },
@@ -151,7 +233,81 @@ export default {
         this.$refs.pipelines.refresh()
       },
       500
-    )
+    ),
+
+    toggleAll (checked) {
+      this.selected = checked ? this.pipelines.map(p => `${p.repoSource}/${p.repoOwner}/${p.repoName}`) : []
+    },
+
+    addGroup () {
+      var body = {
+        pipelines: this.selected,
+        group: this.groups.filter(g => g.name === this.group).map(g => { return { id: g.id, name: g.name } })
+      }
+
+      this.axios.post(`/api/admin/batch/pipelines`, body)
+        .then(response => {
+          this.group = null
+          this.selected = []
+          this.$refs.pipelines.refresh()
+        })
+        .catch(e => {
+          console.warn(e)
+        })
+    },
+
+    addOrganization () {
+      var body = {
+        pipelines: this.selected,
+        organization: this.organizations.filter(o => o.name === this.organization).map(o => { return { id: o.id, name: o.name } })
+      }
+
+      this.axios.post(`/api/admin/batch/pipelines`, body)
+        .then(response => {
+          this.organization = null
+          this.selected = []
+          this.$refs.pipelines.refresh()
+        })
+        .catch(e => {
+          console.warn(e)
+        })
+    }
+  },
+
+  computed: {
+    mappedGroups () {
+      if (!this.groups) {
+        return []
+      }
+
+      return [{ value: null, text: 'Add group' }].concat(this.groups.map(g => {
+        return {
+          value: `${g.name}`,
+          text: `${g.name}`
+        }
+      }))
+    },
+    mappedOrganizations () {
+      if (!this.organizations) {
+        return []
+      }
+
+      return [{ value: null, text: 'Add organization' }].concat(this.organizations.map(o => {
+        return {
+          value: `${o.name}`,
+          text: `${o.name}`
+        }
+      }))
+    },
+    ready () {
+      for (const property in this.loaded) {
+        if (!this.loaded[property]) {
+          return false
+        }
+      }
+
+      return true
+    }
   }
 }
 </script>

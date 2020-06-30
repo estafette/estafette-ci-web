@@ -20,15 +20,61 @@
       hover
       borderless
       stacked="lg"
+      ref="users"
     >
+      <template v-slot:head(checkbox)>
+        <b-form-checkbox
+          id="toggle-all"
+          :checked="users.length > 0 && users.length === selected.length"
+          :indeterminate="selected.length > 0 && selected.length < users.length"
+          :disabled="!ready"
+          @change="toggleAll"
+        />
+      </template>
+
+      <template v-slot:top-row>
+        <b-td colspan="3" />
+        <b-td>
+          <b-form-select
+            v-model="role"
+            :options="mappedRoles"
+            :disabled="!ready || selected.length === 0"
+            @change="addRole"
+          />
+        </b-td>
+        <b-td>
+          <b-form-select
+            v-model="group"
+            :options="mappedGroups"
+            :disabled="!ready || selected.length === 0"
+            @change="addGroup"
+          />
+        </b-td>
+        <b-td>
+          <b-form-select
+            v-model="organization"
+            :options="mappedOrganizations"
+            :disabled="!ready || selected.length === 0"
+            @change="addOrganization"
+          />
+        </b-td>
+        <b-td colspan="3" />
+      </template>
+
+      <template v-slot:cell(checkbox)="data">
+        <b-form-checkbox
+          v-model="selected"
+          :value="data.item.id"
+        />
+      </template>
       <template v-slot:cell(roles)="data">
         <b-badge
-          v-for="role in data.item.roles"
-          :key="role"
+          v-for="r in data.item.roles"
+          :key="r"
           variant="info"
           class="mr-1"
         >
-          {{ role }}
+          {{ r }}
         </b-badge>
       </template>
       <template v-slot:cell(groups)="data">
@@ -161,7 +207,7 @@
 </template>
 
 <script>
-import { BTable, BButton, BCard, BRow, BCol, BAvatar, BBadge } from 'bootstrap-vue'
+import { BTable, BTd, BButton, BCard, BRow, BCol, BAvatar, BBadge, BFormCheckbox, BFormSelect } from 'bootstrap-vue'
 
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
@@ -169,6 +215,7 @@ import Pagination from '@/components/Pagination'
 export default {
   components: {
     BTable,
+    BTd,
     BButton,
     BCard,
     BRow,
@@ -176,11 +223,20 @@ export default {
     BAvatar,
     PaginationCompact,
     Pagination,
-    BBadge
+    BBadge,
+    BFormCheckbox,
+    BFormSelect
   },
 
   data: function () {
     return {
+      selected: [],
+      group: null,
+      groups: [],
+      organization: null,
+      organizations: [],
+      role: null,
+      roles: [],
       users: [],
       pagination: {
         page: 1,
@@ -189,6 +245,11 @@ export default {
         totalItems: 0
       },
       fields: [
+        {
+          key: 'checkbox',
+          label: '',
+          class: 'text-center'
+        },
         {
           key: 'name',
           sortable: true
@@ -226,11 +287,53 @@ export default {
         {
           key: 'actions'
         }
-      ]
+      ],
+      loaded: {
+        roles: false,
+        groups: false,
+        organizations: false,
+        users: false
+      }
     }
   },
 
+  created () {
+    this.loadRoles()
+    this.loadGroups()
+    this.loadOrganizations()
+  },
+
   methods: {
+    loadRoles () {
+      this.axios.get(`/api/roles`)
+        .then(response => {
+          this.roles = response.data
+          this.loaded.roles = true
+        })
+        .catch(e => {
+          console.warn(e)
+        })
+    },
+    loadGroups () {
+      this.axios.get(`/api/groups?page[number]=1&page[size]=100`)
+        .then(response => {
+          this.groups = response.data.items
+          this.loaded.groups = true
+        })
+        .catch(e => {
+          console.warn(e)
+        })
+    },
+    loadOrganizations () {
+      this.axios.get(`/api/organizations?page[number]=1&page[size]=100`)
+        .then(response => {
+          this.organizations = response.data.items
+          this.loaded.organizations = true
+        })
+        .catch(e => {
+          console.warn(e)
+        })
+    },
     usersProvider (ctx) {
       // wait for https://github.com/cockroachdb/cockroach/issues/35706 to be implemented for sorting jsonb fields
 
@@ -248,12 +351,117 @@ export default {
           this.users = response.data.items
           this.pagination = response.data.pagination
 
+          this.loaded.users = true
+
           return this.users || []
         })
     },
 
     avatar (u) {
       return u.identities && u.identities.length > 0 && u.identities[0].avatar ? u.identities[0].avatar : undefined
+    },
+
+    toggleAll (checked) {
+      this.selected = checked ? this.users.map(u => u.id) : []
+    },
+
+    addRole () {
+      var body = {
+        users: this.selected,
+        role: this.role
+      }
+
+      this.axios.post(`/api/admin/batch/users`, body)
+        .then(response => {
+          this.role = null
+          this.selected = []
+          this.$refs.users.refresh()
+        })
+        .catch(e => {
+          console.warn(e)
+        })
+    },
+
+    addGroup () {
+      var body = {
+        users: this.selected,
+        group: this.groups.filter(g => g.name === this.group).map(g => { return { id: g.id, name: g.name } })
+      }
+
+      this.axios.post(`/api/admin/batch/users`, body)
+        .then(response => {
+          this.group = null
+          this.selected = []
+          this.$refs.users.refresh()
+        })
+        .catch(e => {
+          console.warn(e)
+        })
+    },
+
+    addOrganization () {
+      var body = {
+        users: this.selected,
+        organization: this.organizations.filter(o => o.name === this.organization).map(o => { return { id: o.id, name: o.name } })
+      }
+
+      this.axios.post(`/api/admin/batch/users`, body)
+        .then(response => {
+          this.organization = null
+          this.selected = []
+          this.$refs.users.refresh()
+        })
+        .catch(e => {
+          console.warn(e)
+        })
+    }
+  },
+
+  computed: {
+    mappedRoles () {
+      if (!this.roles) {
+        return []
+      }
+
+      return [{ value: null, text: 'Add role' }].concat(this.roles.map(r => {
+        return {
+          value: `${r}`,
+          text: `${r}`
+        }
+      }))
+    },
+    mappedGroups () {
+      if (!this.groups) {
+        return []
+      }
+
+      return [{ value: null, text: 'Add group' }].concat(this.groups.map(g => {
+        return {
+          value: `${g.name}`,
+          text: `${g.name}`
+        }
+      }))
+    },
+    mappedOrganizations () {
+      if (!this.organizations) {
+        return []
+      }
+
+      return [{ value: null, text: 'Add organization' }].concat(this.organizations.map(o => {
+        return {
+          value: `${o.name}`,
+          text: `${o.name}`
+        }
+      }))
+    },
+    ready () {
+      for (const property in this.loaded) {
+        if (!this.loaded[property]) {
+          return false
+        }
+      }
+
+      return true
     }
   }
 }

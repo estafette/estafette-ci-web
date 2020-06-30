@@ -460,17 +460,6 @@ export default new Router({
           }
         },
         {
-          path: 'encrypt',
-          name: 'AdminSecretEncrypter',
-          props: true,
-          component: () => import(/* webpackChunkName: "pipelines" */ '../views/SecretEncrypter.vue'),
-          meta: {
-            requiredRole: 'administrator',
-            text: 'Secrets',
-            icon: 'user-secret'
-          }
-        },
-        {
           path: 'pipelines',
           name: 'AdminPipelines',
           props: true,
@@ -489,6 +478,17 @@ export default new Router({
           meta: {
             requiredRole: 'administrator',
             hide: true
+          }
+        },
+        {
+          path: 'encrypt',
+          name: 'AdminSecretEncrypter',
+          props: true,
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/SecretEncrypter.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            text: 'Secrets',
+            icon: 'user-secret'
           }
         }
       ]
