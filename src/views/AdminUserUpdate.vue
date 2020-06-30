@@ -284,7 +284,7 @@ export default {
         })
     },
     loadForm () {
-      this.axios.get(`/api/users/${this.id}`, this.form)
+      this.axios.get(`/api/users/${this.id}`)
         .then(response => {
           this.form = response.data
           if (this.form && this.form.groups) {

@@ -157,7 +157,7 @@ export default {
     },
 
     loadForm () {
-      this.axios.get(`/api/clients/${this.id}`, this.form)
+      this.axios.get(`/api/clients/${this.id}`)
         .then(response => {
           this.form = response.data
           this.loaded.client = true

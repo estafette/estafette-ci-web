@@ -220,7 +220,7 @@ export default {
         })
     },
     loadForm () {
-      this.axios.get(`/api/groups/${this.id}`, this.form)
+      this.axios.get(`/api/groups/${this.id}`)
         .then(response => {
           this.form = response.data
           if (this.form && this.form.organizations) {

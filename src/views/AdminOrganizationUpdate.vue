@@ -156,7 +156,7 @@ export default {
         })
     },
     loadForm () {
-      this.axios.get(`/api/organizations/${this.id}`, this.form)
+      this.axios.get(`/api/organizations/${this.id}`)
         .then(response => {
           this.form = response.data
           this.loaded.organization = true

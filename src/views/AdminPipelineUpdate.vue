@@ -125,7 +125,7 @@
         >
           <b-form-checkbox
             id="archived"
-            v-model="this.form.archived"
+            v-model="form.archived"
           >
             When archived the pipeline is not visible for regular users and no longer triggers for any triggers defined in the manifest.
           </b-form-checkbox>
@@ -185,7 +185,8 @@ export default {
       groups: [],
       form: {
         name: '',
-        roles: []
+        roles: [],
+        archived: false
       },
       selectedGroups: [],
       selectedOrganizations: [],
@@ -237,7 +238,7 @@ export default {
         })
     },
     loadForm () {
-      this.axios.get(`/api/admin/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}`, this.form)
+      this.axios.get(`/api/admin/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}`)
         .then(response => {
           this.form = response.data
           if (this.form && this.form.groups) {
@@ -245,6 +246,9 @@ export default {
           }
           if (this.form && this.form.organizations) {
             this.selectedOrganizations = this.form.organizations.map(o => o.name)
+          }
+          if (!this.form.archived) {
+            this.form.archived = false
           }
           this.loaded.pipeline = true
         })
