@@ -5,7 +5,9 @@ import bootstrapClass from './bootstrapClass'
 import bootstrapVariant from './bootstrapVariant'
 import animatedProgressBar from './animatedProgressBar'
 import buildProgressBarValue from './buildProgressBarValue'
+import buildProgressBarLabel from './buildProgressBarLabel'
 import releaseProgressBarValue from './releaseProgressBarValue'
+import releaseProgressBarLabel from './releaseProgressBarLabel'
 import defaultValue from './defaultValue'
 import capitalize from './capitalize'
 import colorDurationClass from './colorDurationClass'
@@ -21,7 +23,9 @@ Vue.filter('bootstrapClass', bootstrapClass)
 Vue.filter('bootstrapVariant', bootstrapVariant)
 Vue.filter('animatedProgressBar', animatedProgressBar)
 Vue.filter('buildProgressBarValue', buildProgressBarValue)
+Vue.filter('buildProgressBarLabel', buildProgressBarLabel)
 Vue.filter('releaseProgressBarValue', releaseProgressBarValue)
+Vue.filter('releaseProgressBarLabel', releaseProgressBarLabel)
 Vue.filter('defaultValue', defaultValue)
 Vue.filter('capitalize', capitalize)
 Vue.filter('colorDurationClass', colorDurationClass)

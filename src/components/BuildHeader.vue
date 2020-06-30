@@ -14,6 +14,7 @@
     <property-block label="Status">
       <b-progress
         :value="$options.filters.buildProgressBarValue(pipeline,build,now)"
+        :label="$options.filters.buildProgressBarLabel(pipeline,build,now)"
         :variant="$options.filters.bootstrapVariant(build.buildStatus)"
         :animated="$options.filters.animatedProgressBar(build.buildStatus)"
       />
