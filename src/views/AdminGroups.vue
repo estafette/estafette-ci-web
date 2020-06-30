@@ -270,6 +270,7 @@ export default {
           this.$refs.groups.refresh()
         })
         .catch(e => {
+          this.role = null
           console.warn(e)
         })
     },
@@ -277,7 +278,7 @@ export default {
     addOrganization () {
       var body = {
         groups: this.selected,
-        organization: this.organizations.filter(o => o.name === this.organization).map(o => { return { id: o.id, name: o.name } })
+        organization: this.organizations.map(o => { return { id: o.id, name: o.name } }).find(o => o.name === this.organization)
       }
 
       this.axios.post(`/api/admin/batch/groups`, body)
@@ -287,6 +288,7 @@ export default {
           this.$refs.groups.refresh()
         })
         .catch(e => {
+          this.organization = null
           console.warn(e)
         })
     }

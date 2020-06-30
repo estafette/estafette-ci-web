@@ -221,6 +221,7 @@ export default {
           this.$refs.organizations.refresh()
         })
         .catch(e => {
+          this.role = null
           console.warn(e)
         })
     }

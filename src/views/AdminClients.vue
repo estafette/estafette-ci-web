@@ -239,6 +239,7 @@ export default {
           this.$refs.clients.refresh()
         })
         .catch(e => {
+          this.role = null
           console.warn(e)
         })
     }

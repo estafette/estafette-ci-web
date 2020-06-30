@@ -378,6 +378,7 @@ export default {
           this.$refs.users.refresh()
         })
         .catch(e => {
+          this.role = null
           console.warn(e)
         })
     },
@@ -385,7 +386,7 @@ export default {
     addGroup () {
       var body = {
         users: this.selected,
-        group: this.groups.filter(g => g.name === this.group).map(g => { return { id: g.id, name: g.name } })
+        group: this.groups.map(g => { return { id: g.id, name: g.name } }).find(g => g.name === this.group)
       }
 
       this.axios.post(`/api/admin/batch/users`, body)
@@ -395,6 +396,7 @@ export default {
           this.$refs.users.refresh()
         })
         .catch(e => {
+          this.group = null
           console.warn(e)
         })
     },
@@ -402,7 +404,7 @@ export default {
     addOrganization () {
       var body = {
         users: this.selected,
-        organization: this.organizations.filter(o => o.name === this.organization).map(o => { return { id: o.id, name: o.name } })
+        organization: this.organizations.map(o => { return { id: o.id, name: o.name } }).find(o => o.name === this.organization)
       }
 
       this.axios.post(`/api/admin/batch/users`, body)
@@ -412,6 +414,7 @@ export default {
           this.$refs.users.refresh()
         })
         .catch(e => {
+          this.organization = null
           console.warn(e)
         })
     }
