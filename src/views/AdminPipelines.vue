@@ -307,6 +307,7 @@ export default {
   watch: {
     '$route' (to, from) {
       this.setDataFromQueryParams(to.query)
+      this.pagination.page = 1
       this.$refs.pipelines.refresh()
     }
   },
