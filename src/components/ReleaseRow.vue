@@ -21,12 +21,14 @@
       label="Status"
       class="col-xxxl-2"
     >
-      <b-progress
-        :value="$options.filters.releaseProgressBarValue(pipeline,release,now)"
-        :label="$options.filters.releaseProgressBarLabel(pipeline,release,now)"
-        :variant="$options.filters.bootstrapVariant(release.releaseStatus)"
-        :animated="$options.filters.animatedProgressBar(release.releaseStatus)"
-      />
+      <b-progress>
+        <b-progress-bar
+          :value="$options.filters.releaseProgressBarValue(pipeline,release,now)"
+          :label="$options.filters.releaseProgressBarLabel(pipeline,release,now)"
+          :variant="$options.filters.bootstrapVariant(release.releaseStatus)"
+          :animated="$options.filters.animatedProgressBar(release.releaseStatus)"
+        />
+      </b-progress>
     </property-block>
     <property-block
       label="Released at"
@@ -56,7 +58,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BProgress } from 'bootstrap-vue'
+import { BProgress, BProgressBar } from 'bootstrap-vue'
 import CancelButton from '@/components/CancelButton'
 import TriggeredBy from '@/components/TriggeredBy'
 import PropertyBlock from '@/components/PropertyBlock'
@@ -66,6 +68,7 @@ import refresh from '../helpers/refresh'
 export default {
   components: {
     BProgress,
+    BProgressBar,
     CancelButton,
     TriggeredBy,
     PropertyBlock,

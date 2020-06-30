@@ -12,12 +12,14 @@
       :value="build.buildVersion"
     />
     <property-block label="Status">
-      <b-progress
-        :value="$options.filters.buildProgressBarValue(pipeline,build,now)"
-        :label="$options.filters.buildProgressBarLabel(pipeline,build,now)"
-        :variant="$options.filters.bootstrapVariant(build.buildStatus)"
-        :animated="$options.filters.animatedProgressBar(build.buildStatus)"
-      />
+      <b-progress>
+        <b-progress-bar
+          :value="$options.filters.buildProgressBarValue(pipeline,build,now)"
+          :label="$options.filters.buildProgressBarLabel(pipeline,build,now)"
+          :variant="$options.filters.bootstrapVariant(build.buildStatus)"
+          :animated="$options.filters.animatedProgressBar(build.buildStatus)"
+        />
+      </b-progress>
     </property-block>
     <property-block label="Built at">
       {{ build.insertedAt | formatDatetime }}
@@ -82,7 +84,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BProgress } from 'bootstrap-vue'
+import { BProgress, BProgressBar } from 'bootstrap-vue'
 import CommitLink from '@/components/CommitLink'
 import ReleaseButton from '@/components/ReleaseButton'
 import RebuildButton from '@/components/RebuildButton'
@@ -98,6 +100,7 @@ import refresh from '../helpers/refresh'
 export default {
   components: {
     BProgress,
+    BProgressBar,
     CommitLink,
     ReleaseButton,
     RebuildButton,
