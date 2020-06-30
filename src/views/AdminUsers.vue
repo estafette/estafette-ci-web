@@ -79,12 +79,12 @@
       </template>
       <template v-slot:cell(groups)="data">
         <b-badge
-          v-for="group in data.item.groups"
-          :key="group.name"
+          v-for="g in data.item.groups"
+          :key="g.name"
           variant="warning"
           class="mr-1"
         >
-          {{ group.name }}
+          {{ g.name }}
         </b-badge>
       </template>
       <template v-slot:cell(organizations)="data">
