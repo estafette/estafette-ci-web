@@ -3,7 +3,7 @@
     <router-link
       v-for="label in sortedLabels"
       :key="label.key"
-      :to="{ name: 'Pipelines', query: queryGenerator({labels: label.key + '=' + label.value }) }"
+      :to="{ name: routeName ? routeName : 'Pipelines', query: queryGenerator({labels: label.key + '=' + label.value }) }"
       exact
       class="label btn btn-light btn-sm mr-1 mb-1"
     >
@@ -20,6 +20,10 @@ export default {
     labels: {
       type: Array,
       default: function () { return [] }
+    },
+    routeName: {
+      type: String,
+      default: null
     }
   },
 

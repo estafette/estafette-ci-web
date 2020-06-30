@@ -6,6 +6,9 @@
           :model="filter.search"
           :on-input="setSearch"
         />
+        <label-filter
+          :filter="filter"
+        />
       </div>
       <div class="col-6 text-right">
         <pagination-compact
@@ -75,6 +78,12 @@
           {{ g.name }}
         </b-badge>
       </template>
+      <template v-slot:cell(labels)="data">
+        <labels
+          :labels="data.item.labels"
+          route-name="AdminPipelines"
+        />
+      </template>
       <template v-slot:cell(organizations)="data">
         <b-badge
           v-for="org in data.item.organizations"
@@ -109,6 +118,8 @@ import { BTable, BTd, BButton, BBadge, BFormCheckbox, BFormSelect } from 'bootst
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
 import PipelineFilter from '@/components/PipelineFilter'
+import Labels from '@/components/Labels'
+import LabelFilter from '@/components/LabelFilter'
 
 import debounce from 'lodash/debounce'
 
@@ -122,7 +133,9 @@ export default {
     BBadge,
     BFormCheckbox,
     BFormSelect,
-    PipelineFilter
+    PipelineFilter,
+    Labels,
+    LabelFilter
   },
 
   data: function () {
@@ -140,7 +153,8 @@ export default {
         totalItems: 0
       },
       filter: {
-        search: ''
+        search: '',
+        labels: ''
       },
       fields: [
         {
@@ -164,7 +178,7 @@ export default {
           sortable: true
         },
         {
-          key: 'archived',
+          key: 'labels',
           sortable: true
         },
         {
@@ -180,6 +194,7 @@ export default {
   },
 
   created () {
+    this.filterDefaults = { ...this.filter }
     this.loadGroups()
     this.loadOrganizations()
   },
@@ -214,8 +229,12 @@ export default {
         }
         sort += `${ctx.sortBy}`
       }
+      var labelFilterParams = ''
+      if (this.filter && this.filter.labels && this.filter.labels.length > 0) {
+        labelFilterParams = this.filter.labels.split(',').join('&filter[labels]=')
+      }
 
-      return this.axios.get(`/api/admin/pipelines?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}${sort}&filter[search]=${this.filter.search}`)
+      return this.axios.get(`/api/admin/pipelines?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}${sort}&filter[search]=${this.filter.search}${labelFilterParams}`)
         .then(response => {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination
@@ -224,6 +243,10 @@ export default {
 
           return this.pipelines || []
         })
+    },
+
+    setDataFromQueryParams (query) {
+      this.filter.labels = query && query.labels ? query.labels : this.filterDefaults.labels
     },
 
     setSearch: debounce(
@@ -273,6 +296,13 @@ export default {
           this.organization = null
           console.warn(e)
         })
+    }
+  },
+
+  watch: {
+    '$route' (to, from) {
+      this.setDataFromQueryParams(to.query)
+      this.$refs.pipelines.refresh()
     }
   },
 
