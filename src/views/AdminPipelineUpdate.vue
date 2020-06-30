@@ -6,7 +6,7 @@
       >
         <h4>Update pipeline</h4>
         <b-form-group
-          id="name-pipeline"
+          id="name-group"
           label="Pipeline:"
           label-for="pipeline"
         >
@@ -118,6 +118,18 @@
             </template>
           </b-form-tags>
         </b-form-group>
+        <b-form-group
+          id="archived-group"
+          label="Archived:"
+          label-for="archived"
+        >
+          <b-form-checkbox
+            id="archived"
+            v-model="this.form.archived"
+          >
+            When archived the pipeline is not visible for regular users and no longer triggers for any triggers defined in the manifest.
+          </b-form-checkbox>
+        </b-form-group>
         <b-button
           type="submit"
           variant="primary"
@@ -133,54 +145,18 @@
         </b-button>
       </b-form>
     </div>
-    <div class="rounded border border-danger bg-white p-3 mt-3">
-      <div class="d-flex justify-content-between">
-        <div>
-          <h6 v-if="this.form.archived">
-            Unarchive this pipeline
-          </h6>
-          <h6 v-else>
-            Archive this pipeline
-          </h6>
-          <p
-            v-if="this.form.archived"
-            class="align-self-end"
-          >
-            Unarchiving this pipeline restores its visibility for regular users and allows it to be triggered through it's manifest triggers again.
-          </p>
-          <p
-            v-else
-            class="align-self-end"
-          >
-            Archiving this pipeline hides it for regular users and avoids it from being triggered.
-          </p>
-        </div>
-        <div class="align-self-center">
-          <b-button
-            variant="danger"
-            @click="onDelete"
-          >
-            <span v-if="this.form.archived">
-              Unarchive this pipeline
-            </span>
-            <span v-else>
-              Archive this pipeline
-            </span>
-          </b-button>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
-import { BForm, BFormGroup, BFormInput, BFormTags, BFormTag, BFormSelect, BButton } from 'bootstrap-vue'
+import { BForm, BFormGroup, BFormInput, BFormCheckbox, BFormTags, BFormTag, BFormSelect, BButton } from 'bootstrap-vue'
 
 export default {
   components: {
     BForm,
     BFormGroup,
     BFormInput,
+    BFormCheckbox,
     BFormTags,
     BFormTag,
     BFormSelect,
@@ -292,17 +268,6 @@ export default {
       }
 
       this.axios.put(`/api/admin/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}`, this.form)
-        .then(response => {
-          this.$router.push({ name: 'AdminPipelines' })
-        })
-        .catch(e => {
-          console.warn(e)
-        })
-    },
-
-    onDelete (evt) {
-      evt.preventDefault()
-      this.axios.delete(`/api/admin/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}`)
         .then(response => {
           this.$router.push({ name: 'AdminPipelines' })
         })
