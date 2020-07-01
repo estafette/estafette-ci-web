@@ -14,9 +14,9 @@ export default function (pipeline, build, now) {
         var remainingPendingDurationNs = medianPendingDurationNs - pendingDurationNs
         if (remainingPendingDurationNs > 0) {
           return formatDuration(remainingPendingDurationNs, 0) + ' left'
+        } else if (remainingPendingDurationNs < 0) {
+          return formatDuration(-1 * remainingPendingDurationNs, 0) + ' over'
         }
-
-        return formatDuration(-1 * remainingPendingDurationNs, 0) + ' over'
       }
     }
     return ''
@@ -30,9 +30,9 @@ export default function (pipeline, build, now) {
         var remainingDurationNs = medianDurationNs - durationNs
         if (remainingDurationNs > 0) {
           return formatDuration(remainingDurationNs, 0) + ' left'
+        } else if (remainingDurationNs < 0) {
+          return formatDuration(-1 * remainingDurationNs, 0) + ' over'
         }
-
-        return formatDuration(-1 * remainingDurationNs, 0) + ' over'
       }
     }
     return ''
