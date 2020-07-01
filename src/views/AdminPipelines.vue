@@ -68,6 +68,15 @@
           :value="`${data.item.repoSource}/${data.item.repoOwner}/${data.item.repoName}`"
         />
       </template>
+      <template v-slot:cell(pipeline)="data">
+        <span class="text-muted">{{ data.item.repoSource }}/{{ data.item.repoOwner }}/</span>{{ data.item.repoName }}
+        <b-badge
+          v-if="data.item.archived"
+          variant="secondary"
+        >
+          Archived
+        </b-badge>
+      </template>
       <template v-slot:cell(groups)="data">
         <b-badge
           v-for="g in data.item.groups"
