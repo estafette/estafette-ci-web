@@ -523,17 +523,17 @@ export default new Router({
             text: 'Details',
             icon: 'passport'
           }
-        },
-        {
-          path: 'preferences',
-          name: 'UserPreferences',
-          props: true,
-          component: () => import(/* webpackChunkName: "views" */ '../views/ViewDummyPage.vue'),
-          meta: {
-            text: 'Preferences',
-            icon: 'heart'
-          }
-        }
+        }// ,
+        // {
+        //   path: 'preferences',
+        //   name: 'UserPreferences',
+        //   props: true,
+        //   component: () => import(/* webpackChunkName: "views" */ '../views/ViewDummyPage.vue'),
+        //   meta: {
+        //     text: 'Preferences',
+        //     icon: 'heart'
+        //   }
+        // }
       ]
     },
     // redirects

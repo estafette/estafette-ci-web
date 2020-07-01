@@ -1,31 +1,55 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-12">
-        <h4>
-          <b-avatar
-            v-if="avatar"
-            :src="avatar"
-            class="mr-2"
-          />
-          {{ name }} ({{ email }})
-        </h4>
-
-        <h6>User object as stored in database</h6>
-        <pre
+      <div class="col-12 col-md-6 col-xl-4 col-xxl-3">
+        <b-table
           v-if="user"
-          class="rounded border bg-white p-3"
-        ><code class="bg-white">{{ user }}</code></pre>
-
-        <h4>Logout</h4>
-        <b-button
-          href="/api/auth/logout/"
-          variant="danger"
-          block
-          class="mt-3 mb-3"
+          :items="[user]"
+          :fields="fields"
+          sort-icon-left
+          no-provider-sorting
+          borderless
+          stacked
         >
-          Log out
-        </b-button>
+          <template v-slot:cell(roles)="data">
+            <b-badge
+              v-for="r in data.item.roles"
+              :key="r"
+              variant="info"
+              class="mr-1"
+            >
+              {{ r }}
+            </b-badge>
+          </template>
+          <template v-slot:cell(groups)="data">
+            <b-badge
+              v-for="g in data.item.groups"
+              :key="g.name"
+              variant="warning"
+              class="mr-1"
+            >
+              {{ g.name }}
+            </b-badge>
+          </template>
+          <template v-slot:cell(organizations)="data">
+            <b-badge
+              v-for="org in data.item.organizations"
+              :key="org.name"
+              variant="success"
+              class="mr-1"
+            >
+              {{ org.name }}
+            </b-badge>
+          </template>
+          <template v-slot:cell(actions)>
+            <b-button
+              href="/api/auth/logout/"
+              variant="danger"
+            >
+              Log out
+            </b-button>
+          </template>
+        </b-table>
       </div>
     </div>
   </div>
@@ -33,17 +57,50 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BAvatar, BButton } from 'bootstrap-vue'
+import { BTable, BButton, BBadge } from 'bootstrap-vue'
 
 export default {
   components: {
-    BAvatar,
-    BButton
+    BTable,
+    BButton,
+    BBadge
   },
 
   data: function () {
     return {
-      refresh: true
+      refresh: true,
+      fields: [
+        {
+          key: 'name'
+        },
+        {
+          key: 'email'
+        },
+        {
+          key: 'roles'
+        },
+        {
+          key: 'groups'
+        },
+        {
+          key: 'organizations'
+        },
+        {
+          key: 'firstVisit',
+          formatter: (value, key, item) => {
+            return this.$options.filters.formatDatetime(value)
+          }
+        },
+        {
+          key: 'lastVisit',
+          formatter: (value, key, item) => {
+            return this.$options.filters.formatDatetime(value)
+          }
+        },
+        {
+          key: 'actions'
+        }
+      ]
     }
   },
 
