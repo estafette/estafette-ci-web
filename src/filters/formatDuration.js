@@ -7,7 +7,7 @@ export default function (value, digits) {
     return ''
   }
 
-  if (!digits) {
+  if (digits === null) {
     digits = 1
   }
 
