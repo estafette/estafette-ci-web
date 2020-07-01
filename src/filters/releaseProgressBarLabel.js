@@ -19,13 +19,15 @@ export default function (pipeline, release, now) {
     if (activeRelease.extraInfo.medianPendingDuration > 0 && release.insertedAt) {
       var pendingDurationNs = Math.pow(10, 6) * (now - new Date(release.insertedAt))
       var medianPendingDurationNs = activeRelease.extraInfo.medianPendingDuration
+      var pendingRatio = pendingDurationNs / medianPendingDurationNs
+      if (pendingRatio >= 0.25) {
+        var remainingPendingDurationNs = medianPendingDurationNs - pendingDurationNs
+        if (remainingPendingDurationNs > 0) {
+          return formatDuration(remainingPendingDurationNs, 0) + ' left'
+        }
 
-      var remainingPendingDurationNs = medianPendingDurationNs - pendingDurationNs
-      if (remainingPendingDurationNs > 0) {
-        return formatDuration(remainingPendingDurationNs) + ' remaining'
+        return formatDuration(-1 * remainingPendingDurationNs, 0) + ' over'
       }
-
-      return formatDuration(-1 * remainingPendingDurationNs) + ' over time'
     }
     return ''
   }
@@ -33,13 +35,15 @@ export default function (pipeline, release, now) {
     if (activeRelease.extraInfo.medianDuration > 0 && release.startedAt) {
       var durationNs = Math.pow(10, 6) * (now - new Date(release.startedAt))
       var medianDurationNs = activeRelease.extraInfo.medianDuration
+      var ratio = durationNs / medianDurationNs
+      if (ratio >= 0.25) {
+        var remainingDurationNs = medianDurationNs - durationNs
+        if (remainingDurationNs > 0) {
+          return formatDuration(remainingDurationNs, 0) + ' left'
+        }
 
-      var remainingDurationNs = medianDurationNs - durationNs
-      if (remainingDurationNs > 0) {
-        return formatDuration(remainingDurationNs) + ' remaining'
+        return formatDuration(-1 * remainingDurationNs, 0) + ' over'
       }
-
-      return formatDuration(-1 * remainingDurationNs) + ' over time'
     }
     return ''
   }

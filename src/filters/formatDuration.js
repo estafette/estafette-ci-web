@@ -1,10 +1,14 @@
-export default function (value) {
+export default function (value, digits) {
   if (value === null) {
     return ''
   }
 
   if (value < 0) {
     return ''
+  }
+
+  if (!digits) {
+    digits = 1
   }
 
   var days = Math.floor(value / (24 * 3600 * Math.pow(10, 9)))
@@ -29,7 +33,7 @@ export default function (value) {
   if (minutes > 0 || hours > 0 || days > 0) {
     formattedString += `${minutes}m`
   }
-  if ((deciSeconds > 0 || seconds > 0) && minutes === 0 && hours === 0) {
+  if ((deciSeconds > 0 || seconds > 0) && minutes === 0 && hours === 0 && digits > 0) {
     formattedString += `${seconds}.${deciSeconds}s`
   } else if (seconds > 0 || minutes > 0 || hours > 0 || days > 0) {
     formattedString += `${seconds}s`
