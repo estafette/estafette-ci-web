@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-12 col-md-6 col-xl-4 col-xxl-3">
+      <div class="col-12 col-lg-6 col-xxxl-3">
         <b-table
           v-if="user"
           :items="[user]"
