@@ -22,9 +22,9 @@ export default function (pipeline, release, now) {
       var pendingRatio = pendingDurationNs / medianPendingDurationNs
       if (pendingRatio >= 0.25) {
         var remainingPendingDurationNs = medianPendingDurationNs - pendingDurationNs
-        if (remainingPendingDurationNs > 0) {
+        if (remainingPendingDurationNs >= Math.pow(10, 9)) {
           return formatDuration(remainingPendingDurationNs, 0) + ' left'
-        } else if (remainingPendingDurationNs < 0) {
+        } else if (remainingPendingDurationNs <= -1 * Math.pow(10, 9)) {
           return formatDuration(-1 * remainingPendingDurationNs, 0) + ' over'
         }
       }
@@ -38,9 +38,9 @@ export default function (pipeline, release, now) {
       var ratio = durationNs / medianDurationNs
       if (ratio >= 0.25) {
         var remainingDurationNs = medianDurationNs - durationNs
-        if (remainingDurationNs > 0) {
+        if (remainingDurationNs >= Math.pow(10, 9)) {
           return formatDuration(remainingDurationNs, 0) + ' left'
-        } else if (remainingDurationNs < 0) {
+        } else if (remainingDurationNs <= -1 * Math.pow(10, 9)) {
           return formatDuration(-1 * remainingDurationNs, 0) + ' over'
         }
       }
