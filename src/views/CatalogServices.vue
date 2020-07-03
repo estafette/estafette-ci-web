@@ -265,7 +265,7 @@ export default {
           text: `${f.value} (${f.pipelinescount})`,
           enabled: true,
           exact: true,
-          to: { name: 'Catalog', query: this.queryGenerator({ 'filter': `${this.activeFilter}=${f.value}` }) }
+          to: { name: 'CatalogServices', query: this.queryGenerator({ 'filter': `${this.activeFilter}=${f.value}` }) }
         }
       })
     }
