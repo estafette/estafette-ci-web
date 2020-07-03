@@ -5,7 +5,7 @@
       v-b-tooltip.hover
       title="Search on pipeline name"
     >
-      <font-awesome-icon icon="filter" />
+      <font-awesome-icon icon="search" />
     </b-input-group-prepend>
     <b-form-input
       v-model="mutableModel"
@@ -20,10 +20,10 @@
 import { BFormInput, BInputGroup, BInputGroupPrepend } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faFilter } from '@fortawesome/free-solid-svg-icons'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faFilter)
+library.add(faSearch)
 
 export default {
   components: {
