@@ -2,7 +2,7 @@
   <div>
     <b-nav
       tabs
-      class="m-3 d-none d-lg-flex"
+      class="mt-3 mb-3 d-none d-lg-flex"
     >
       <b-nav-item
         v-for="tab in tabs"
@@ -25,7 +25,7 @@
       :variant="variant"
       block
       menu-class="w-100"
-      class="m-3 d-lg-none"
+      class="mt-3 mb-3 d-lg-none"
     >
       <template v-slot:button-content>
         <font-awesome-icon

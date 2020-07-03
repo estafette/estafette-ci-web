@@ -21,6 +21,12 @@
         :filter="filter"
       />
     </transition-group>
+    <div
+      v-else-if="loaded"
+      class="border bg-white text-center mt-2 mb-2 p-5 h6 text-secondary"
+    >
+      This group has no linked pipelines; ask your administrator to link your pipelines!
+    </div>
     <b-pagination
       v-if="pagination.totalItems > 0"
       v-model="pagination.page"
@@ -70,7 +76,8 @@ export default {
         size: 12,
         totalPages: 0,
         totalItems: 0
-      }
+      },
+      loaded: false
     }
   },
 
@@ -84,6 +91,8 @@ export default {
         .then(response => {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination
+
+          this.loaded = true
 
           refresh.timeoutWithJitter(this.timeout, this.loadPipelines, 15)
         })
