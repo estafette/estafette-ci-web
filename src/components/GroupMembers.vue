@@ -15,20 +15,28 @@
           :text="initials(member)"
           class="mr-3"
         />
-        <span class="mr-auto">{{ member.name }} ({{ member.email }})</span>
+        <span class="mr-auto">
+          {{ member.name }} (<b-link
+            :href="'mailto:' + member.email"
+            target="_blank"
+          >
+            {{ member.email }}
+          </b-link>)
+        </span>
       </b-list-group-item>
     </b-list-group>
   </b-card>
 </template>
 
 <script>
-import { BCard, BListGroup, BListGroupItem, BAvatar } from 'bootstrap-vue'
+import { BCard, BListGroup, BListGroupItem, BAvatar, BLink } from 'bootstrap-vue'
 export default {
   components: {
     BCard,
     BListGroup,
     BListGroupItem,
-    BAvatar
+    BAvatar,
+    BLink
   },
 
   props: {
