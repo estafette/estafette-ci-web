@@ -16,12 +16,13 @@
           class="mr-3"
         />
         <span class="mr-auto">
-          {{ member.name }} (<b-link
+          {{ member.name }} -
+          <b-link
             :href="'mailto:' + member.email"
             target="_blank"
           >
             {{ member.email }}
-          </b-link>)
+          </b-link>
         </span>
       </b-list-group-item>
     </b-list-group>
