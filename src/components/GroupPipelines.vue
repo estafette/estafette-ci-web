@@ -22,6 +22,7 @@
       />
     </transition-group>
     <b-pagination
+      v-if="pagination.totalItems > 0"
       v-model="pagination.page"
       :total-rows="pagination.totalItems"
       :per-page="pagination.size"
