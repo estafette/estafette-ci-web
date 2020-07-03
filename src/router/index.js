@@ -173,8 +173,27 @@ export default new Router({
         lead: 'View ownership, performance and more',
         variant: 'info'
       },
-      redirect: { name: 'CatalogServices' },
+      redirect: { name: 'CatalogGroups' },
       children: [
+        {
+          path: 'groups',
+          name: 'CatalogGroups',
+          props: (route) => ({ query: route.query }),
+          component: () => import(/* webpackChunkName: "catalog" */ '../views/CatalogGroups.vue'),
+          meta: {
+            text: 'Groups',
+            icon: 'users'
+          }
+        },
+        {
+          path: 'groups/:id',
+          name: 'CatalogGroupDetails',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../views/CatalogGroupDetails.vue'),
+          meta: {
+            hide: true
+          }
+        },
         {
           path: 'services',
           name: 'CatalogServices',

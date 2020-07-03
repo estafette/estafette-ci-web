@@ -1,1 +1,1 @@
-{"id":"34545566556645546","name":"Administrators","roles":["administrator"],"identities":[{"provider":"google","id":"administrators","name":"Administrators"}]}
+{"id":"34545566556645546","name":"Administrators","description":"The people responsible for maintaining this Estafette installation","roles":["administrator"],"identities":[{"provider":"google","id":"administrators","name":"Administrators"}]}

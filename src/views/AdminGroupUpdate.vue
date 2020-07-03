@@ -19,6 +19,18 @@
           />
         </b-form-group>
         <b-form-group
+          id="description-group"
+          label="Description:"
+          label-for="description"
+        >
+          <b-form-input
+            id="description"
+            v-model="form.description"
+            type="text"
+            placeholder="Enter a description for the group"
+          />
+        </b-form-group>
+        <b-form-group
           id="roles-group"
           label="Roles:"
           label-for="roles"
