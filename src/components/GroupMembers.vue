@@ -16,7 +16,7 @@
           class="mr-3"
         />
         <span class="mr-auto">
-          {{ member.name }} -
+          {{ member.name }}<br>
           <b-link
             :href="'mailto:' + member.email"
             target="_blank"
