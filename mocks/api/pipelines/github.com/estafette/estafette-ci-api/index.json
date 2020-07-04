@@ -125,5 +125,6 @@
   "updatedAt": "2020-06-14T13:59:22.33404Z",
   "duration": 178000000000,
   "pendingDuration": 84000000000,
-  "lastUpdatedAt": "2020-06-14T19:43:02.880203Z"
+  "lastUpdatedAt": "2020-06-14T19:43:02.880203Z",
+  "groups":[{"id":"329834298342908983","name":"Team A"}]
 }
