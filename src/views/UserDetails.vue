@@ -22,14 +22,11 @@
             </b-badge>
           </template>
           <template v-slot:cell(groups)="data">
-            <b-badge
+            <group-badge
               v-for="g in data.item.groups"
-              :key="g.name"
-              variant="warning"
-              class="mr-1"
-            >
-              {{ g.name }}
-            </b-badge>
+              :key="g.id"
+              :group="g"
+            />
           </template>
           <template v-slot:cell(organizations)="data">
             <b-badge
@@ -58,12 +55,14 @@
 <script>
 import { mapState } from 'vuex'
 import { BTable, BButton, BBadge } from 'bootstrap-vue'
+import GroupBadge from '@/components/GroupBadge'
 
 export default {
   components: {
     BTable,
     BButton,
-    BBadge
+    BBadge,
+    GroupBadge
   },
 
   data: function () {
