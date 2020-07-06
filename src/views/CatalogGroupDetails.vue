@@ -1,30 +1,43 @@
 <template>
-  <div v-if="group">
-    <b-card
-      :title="group.name"
-      tag="article"
-    >
-      <b-card-text>
-        {{ group.description }}
-      </b-card-text>
-    </b-card>
+  <div>
+    <section-header section-route-name="Catalog" />
 
-    <b-card-group
-      deck
-      class="mt-2"
+    <b-breadcrumb
+      :items="breadcrumbs"
+      class="m-3 rounded"
+    />
+
+    <div
+      v-if="group"
+      class="mr-3 ml-3"
     >
-      <group-members :group="group" />
-      <group-pipelines
-        :group="group"
-        header="Pipelines"
-        type="build"
-      />
-    </b-card-group>
+      <b-card
+        :title="group.name"
+        tag="article"
+      >
+        <b-card-text>
+          {{ group.description }}
+        </b-card-text>
+      </b-card>
+
+      <b-card-group
+        deck
+        class="mt-2"
+      >
+        <group-members :group="group" />
+        <group-pipelines
+          :group="group"
+          header="Pipelines"
+          type="build"
+        />
+      </b-card-group>
+    </div>
   </div>
 </template>
 
 <script>
-import { BCard, BCardText, BCardGroup } from 'bootstrap-vue'
+import { BCard, BCardText, BCardGroup, BBreadcrumb } from 'bootstrap-vue'
+import SectionHeader from '@/components/SectionHeader'
 import GroupMembers from '@/components/GroupMembers'
 import GroupPipelines from '@/components/GroupPipelines'
 
@@ -33,6 +46,8 @@ export default {
     BCard,
     BCardText,
     BCardGroup,
+    BBreadcrumb,
+    SectionHeader,
     GroupMembers,
     GroupPipelines
   },
@@ -46,7 +61,13 @@ export default {
 
   data: function () {
     return {
-      group: null
+      group: null,
+      breadcrumbs: [
+        {
+          text: 'Catalog',
+          to: { name: 'Catalog' }
+        }
+      ]
     }
   },
 
@@ -59,6 +80,12 @@ export default {
       this.axios.get(`/api/catalog/groups/${this.id}`)
         .then(response => {
           this.group = response.data
+
+          this.breadcrumbs.push({
+            text: this.group.name,
+            to: { name: 'CatalogGroupDetails', params: { id: this.id } },
+            active: true
+          })
         })
         .catch(e => {
           console.warn(e)

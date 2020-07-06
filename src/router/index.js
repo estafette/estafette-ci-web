@@ -186,15 +186,6 @@ export default new Router({
           }
         },
         {
-          path: 'groups/:id',
-          name: 'CatalogGroupDetails',
-          props: true,
-          component: () => import(/* webpackChunkName: "admin" */ '../views/CatalogGroupDetails.vue'),
-          meta: {
-            hide: true
-          }
-        },
-        {
           path: 'services',
           name: 'CatalogServices',
           props: (route) => ({ query: route.query }),
@@ -215,6 +206,15 @@ export default new Router({
           }
         }
       ]
+    },
+    {
+      path: '/catalog/groups/:id',
+      name: 'CatalogGroupDetails',
+      props: true,
+      component: () => import(/* webpackChunkName: "admin" */ '../views/CatalogGroupDetails.vue'),
+      meta: {
+        hide: true
+      }
     },
     {
       path: '/catalog/services/:repoSource/:repoOwner/:repoName',
