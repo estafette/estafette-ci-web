@@ -13,6 +13,7 @@
         :unchecked-value="'unchecked:'+o.id"
         :indeterminate="indeterminateOrganizations[o.id]"
         @change="toggleOrganization"
+        :class="cssClass(o)"
       >
         {{ o.name }}
       </b-form-checkbox>
@@ -153,6 +154,10 @@ export default {
           this.updateOrganizationsDropdown()
           console.warn(e)
         })
+    },
+
+    cssClass (organization) {
+      return this.organizationsToAdd.includes(organization.id) || this.organizationsToRemove.includes(organization.id) ? 'text-success' : ''
     }
   },
 

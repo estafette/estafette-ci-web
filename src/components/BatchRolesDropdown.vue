@@ -13,6 +13,7 @@
         :unchecked-value="'unchecked:'+r"
         :indeterminate="indeterminateRoles[r]"
         @change="toggleRole"
+        :class="cssClass(r)"
       >
         {{ r }}
       </b-form-checkbox>
@@ -153,6 +154,10 @@ export default {
           this.updateRolesDropdown()
           console.warn(e)
         })
+    },
+
+    cssClass (role) {
+      return this.rolesToAdd.includes(role) || this.rolesToRemove.includes(role) ? 'text-info' : ''
     }
   },
 

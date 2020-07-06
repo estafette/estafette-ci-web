@@ -13,6 +13,7 @@
         :unchecked-value="'unchecked:'+g.id"
         :indeterminate="indeterminateGroups[g.id]"
         @change="toggleGroup"
+        :class="cssClass(g)"
       >
         {{ g.name }}
       </b-form-checkbox>
@@ -153,6 +154,10 @@ export default {
           this.updateGroupsDropdown()
           console.warn(e)
         })
+    },
+
+    cssClass (group) {
+      return this.groupsToAdd.includes(group.id) || this.groupsToRemove.includes(group.id) ? 'text-warning' : ''
     }
   },
 
