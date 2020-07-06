@@ -43,21 +43,6 @@
     </property-block> -->
 
     <property-block
-      v-if="pipeline.groups && pipeline.groups.length > 0"
-      label="Group(s)"
-      wide
-    >
-      <b-badge
-        v-for="g in pipeline.groups"
-        :key="g.name"
-        :to="{ name: 'CatalogGroupDetails', params: { id: g.id } }"
-        variant="warning"
-        class="mr-1"
-      >
-        {{ g.name }}
-      </b-badge>
-    </property-block>
-    <property-block
       v-if="showLabels"
       label="Labels"
       wide
@@ -76,13 +61,23 @@
         :pipeline="pipeline"
       />
     </property-block>
+    <property-block
+      v-if="pipeline.groups && pipeline.groups.length > 0"
+      label="Group(s)"
+      wide
+    >
+      <group-badge
+        v-for="g in pipeline.groups"
+        :key="g.id"
+        :group="g"
+      />
+    </property-block>
   </div>
 </template>
 
 <script>
-import { BBadge } from 'bootstrap-vue'
-
 import ReleaseBadge from '@/components/ReleaseBadge'
+import GroupBadge from '@/components/GroupBadge'
 // import TriggeredBy from '@/components/TriggeredBy'
 import PropertyBlock from '@/components/PropertyBlock'
 import RepositoryTitle from '@/components/RepositoryTitle'
@@ -92,8 +87,8 @@ import Labels from '@/components/Labels'
 
 export default {
   components: {
-    BBadge,
     ReleaseBadge,
+    GroupBadge,
     // TriggeredBy,
     PropertyBlock,
     RepositoryTitle,
