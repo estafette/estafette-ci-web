@@ -45,12 +45,39 @@
       <template v-slot:top-row>
         <b-td colspan="2" />
         <b-td>
-          <b-form-select
-            v-model="role"
-            :options="mappedRoles"
+          <b-dropdown
+            text="Update roles"
+            variant="outline-info"
             :disabled="!ready || selected.length === 0"
-            @change="addRole"
-          />
+          >
+            <b-dropdown-form>
+              <b-form-checkbox
+                v-for="r in roles"
+                :key="r"
+                v-model="checkedRoles[r]"
+                :value="'checked:'+r"
+                :unchecked-value="'unchecked:'+r"
+                :indeterminate="indeterminateRoles[r]"
+                @change="toggleRole"
+              >
+                {{ r }}
+              </b-form-checkbox>
+              <b-button
+                size="sm"
+                variant="primary"
+                @click="applyRoles"
+                :disabled="rolesToAdd.length === 0 && rolesToRemove.length === 0"
+              >
+                Apply
+              </b-button>
+              <b-button
+                size="sm"
+                @click="updateRolesDropdown"
+              >
+                Reset
+              </b-button>
+            </b-dropdown-form>
+          </b-dropdown>
         </b-td>
         <b-td colspan="1" />
       </template>
@@ -138,7 +165,7 @@
 </template>
 
 <script>
-import { BTable, BTd, BButton, BCard, BRow, BCol, BBadge, BFormCheckbox, BFormSelect } from 'bootstrap-vue'
+import { BTable, BTd, BButton, BCard, BRow, BCol, BBadge, BFormCheckbox, BDropdown, BDropdownForm } from 'bootstrap-vue'
 
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
@@ -153,7 +180,8 @@ export default {
     BCol,
     BBadge,
     BFormCheckbox,
-    BFormSelect,
+    BDropdown,
+    BDropdownForm,
     PaginationCompact,
     Pagination
   },
@@ -161,7 +189,10 @@ export default {
   data: function () {
     return {
       selected: [],
-      role: null,
+      checkedRoles: {},
+      indeterminateRoles: {},
+      rolesToAdd: [],
+      rolesToRemove: [],
       roles: [],
       clients: [],
       pagination: {
@@ -226,38 +257,65 @@ export default {
       this.selected = checked ? this.clients.map(c => c.id) : []
     },
 
-    addRole () {
+    updateRolesDropdown () {
+      this.rolesToAdd = []
+      this.rolesToRemove = []
+
+      var selectedClients = this.clients.filter(c => this.selected.includes(c.id))
+
+      this.checkedRoles = this.roles.reduce((map, r) => {
+        var checked = selectedClients.length > 0 ? selectedClients.every(c => c.roles && c.roles.some(cr => cr === r)) : false
+        map[r] = checked ? 'checked:' + r : 'unchecked:' + r
+        return map
+      }, {})
+
+      this.indeterminateRoles = this.roles.reduce((map, r) => {
+        map[r] = selectedClients.length > 0 && !selectedClients.every(c => c.roles && c.roles.some(cr => cr === r)) ? selectedClients.some(c => c.roles && c.roles.some(cr => cr === r)) : false
+        return map
+      }, {})
+    },
+
+    toggleRole (r) {
+      var prefix = ''
+      if (r.startsWith('checked:')) {
+        prefix = 'checked:'
+      } else if (r.startsWith('unchecked:')) {
+        prefix = 'unchecked:'
+      }
+      var role = r.slice(prefix.length)
+
+      // update indeterminate value (the .sync modifier doesn't seem to work)
+      this.indeterminateRoles[r] = false
+
+      if (prefix === 'checked:') {
+        this.rolesToAdd.push(role)
+        this.rolesToRemove = this.rolesToRemove.filter(ra => ra !== role)
+      } else if (prefix === 'unchecked:') {
+        this.rolesToRemove.push(role)
+        this.rolesToAdd = this.rolesToAdd.filter(ra => ra !== role)
+      }
+    },
+
+    applyRoles () {
       var body = {
         clients: this.selected,
-        role: this.role
+        rolesToAdd: this.rolesToAdd,
+        rolesToRemove: this.rolesToRemove
       }
 
       this.axios.post(`/api/admin/batch/clients`, body)
         .then(response => {
-          this.role = null
           this.selected = []
           this.$refs.clients.refresh()
         })
         .catch(e => {
-          this.role = null
+          this.updateRolesDropdown()
           console.warn(e)
         })
     }
   },
 
   computed: {
-    mappedRoles () {
-      if (!this.roles) {
-        return []
-      }
-
-      return [{ value: null, text: 'Add role' }].concat(this.roles.map(r => {
-        return {
-          value: `${r}`,
-          text: `${r}`
-        }
-      }))
-    },
     ready () {
       for (const property in this.loaded) {
         if (!this.loaded[property]) {
@@ -266,6 +324,12 @@ export default {
       }
 
       return true
+    }
+  },
+
+  watch: {
+    selected () {
+      this.updateRolesDropdown()
     }
   }
 }
