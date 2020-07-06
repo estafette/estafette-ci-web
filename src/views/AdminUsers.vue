@@ -320,6 +320,7 @@ export default {
           this.pagination = response.data.pagination
 
           this.loaded.users = true
+          this.selected = []
 
           return this.users || []
         })
@@ -334,7 +335,6 @@ export default {
     },
 
     applyDone () {
-      this.selected = []
       this.$refs.users.refresh()
     }
   },

@@ -231,6 +231,7 @@ export default {
           this.pagination = response.data.pagination
 
           this.loaded.pipelines = true
+          this.selected = []
 
           return this.pipelines || []
         })
@@ -254,7 +255,6 @@ export default {
     },
 
     applyDone () {
-      this.selected = []
       this.$refs.pipelines.refresh()
     }
   },

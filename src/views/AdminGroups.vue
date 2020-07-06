@@ -220,6 +220,7 @@ export default {
           this.pagination = response.data.pagination
 
           this.loaded.groups = true
+          this.selected = []
 
           return this.groups || []
         })
@@ -230,7 +231,6 @@ export default {
     },
 
     applyDone () {
-      this.selected = []
       this.$refs.groups.refresh()
     }
   },

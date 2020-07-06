@@ -201,6 +201,7 @@ export default {
           this.pagination = response.data.pagination
 
           this.loaded.clients = true
+          this.selected = []
 
           return this.clients || []
         })
@@ -211,7 +212,6 @@ export default {
     },
 
     applyDone () {
-      this.selected = []
       this.$refs.clients.refresh()
     }
   },

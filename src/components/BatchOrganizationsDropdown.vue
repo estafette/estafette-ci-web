@@ -19,6 +19,7 @@
       <b-button
         size="sm"
         variant="primary"
+        class="mb-1"
         @click="applyOrganizations"
         :disabled="organizationsToAdd.length === 0 && organizationsToRemove.length === 0"
       >
@@ -26,6 +27,7 @@
       </b-button>
       <b-button
         size="sm"
+        class="mb-1"
         @click="updateOrganizationsDropdown"
       >
         Reset

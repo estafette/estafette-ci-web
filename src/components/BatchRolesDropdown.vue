@@ -19,6 +19,7 @@
       <b-button
         size="sm"
         variant="primary"
+        class="mb-1"
         @click="applyRoles"
         :disabled="rolesToAdd.length === 0 && rolesToRemove.length === 0"
       >
@@ -26,6 +27,7 @@
       </b-button>
       <b-button
         size="sm"
+        class="mb-1"
         @click="updateRolesDropdown"
       >
         Reset

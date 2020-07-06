@@ -183,6 +183,7 @@ export default {
           this.pagination = response.data.pagination
 
           this.loaded.organizations = true
+          this.selected = []
 
           return this.organizations || []
         })
@@ -193,7 +194,6 @@ export default {
     },
 
     applyDone () {
-      this.selected = []
       this.$refs.organizations.refresh()
     }
   },
