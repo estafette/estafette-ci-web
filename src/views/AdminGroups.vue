@@ -45,19 +45,19 @@
       <template v-slot:top-row>
         <b-td colspan="2" />
         <b-td>
-          <b-form-select
-            v-model="role"
-            :options="mappedRoles"
-            :disabled="!ready || selected.length === 0"
-            @change="addRole"
+          <batch-roles-dropdown
+            :selected="selected"
+            :selectable-items="groups"
+            type="groups"
+            :apply-done-func="applyDone"
           />
         </b-td>
         <b-td>
-          <b-form-select
-            v-model="organization"
-            :options="mappedOrganizations"
-            :disabled="!ready || selected.length === 0"
-            @change="addOrganization"
+          <batch-organizations-dropdown
+            :selected="selected"
+            :selectable-items="groups"
+            type="groups"
+            :apply-done-func="applyDone"
           />
         </b-td>
         <b-td colspan="1" />
@@ -149,8 +149,10 @@
 </template>
 
 <script>
-import { BTable, BTd, BButton, BCard, BRow, BCol, BBadge, BFormCheckbox, BFormSelect } from 'bootstrap-vue'
+import { BTable, BTd, BButton, BCard, BRow, BCol, BBadge, BFormCheckbox } from 'bootstrap-vue'
 
+import BatchRolesDropdown from '@/components/BatchRolesDropdown'
+import BatchOrganizationsDropdown from '@/components/BatchOrganizationsDropdown'
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
 import AdminGroupMembers from '@/components/AdminGroupMembers'
@@ -165,19 +167,16 @@ export default {
     BCol,
     BBadge,
     BFormCheckbox,
-    BFormSelect,
+    BatchOrganizationsDropdown,
     PaginationCompact,
     Pagination,
-    AdminGroupMembers
+    AdminGroupMembers,
+    BatchRolesDropdown
   },
 
   data: function () {
     return {
       selected: [],
-      organization: null,
-      organizations: [],
-      role: null,
-      roles: [],
       groups: [],
       pagination: {
         page: 1,
@@ -208,39 +207,12 @@ export default {
         }
       ],
       loaded: {
-        roles: false,
-        organizations: false,
         groups: false
       }
     }
   },
 
-  created () {
-    this.loadRoles()
-    this.loadOrganizations()
-  },
-
   methods: {
-    loadRoles () {
-      this.axios.get(`/api/roles`)
-        .then(response => {
-          this.roles = response.data
-          this.loaded.roles = true
-        })
-        .catch(e => {
-          console.warn(e)
-        })
-    },
-    loadOrganizations () {
-      this.axios.get(`/api/organizations?page[number]=1&page[size]=100`)
-        .then(response => {
-          this.organizations = response.data.items
-          this.loaded.organizations = true
-        })
-        .catch(e => {
-          console.warn(e)
-        })
-    },
     groupsProvider (ctx) {
       return this.axios.get(`/api/groups?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}`)
         .then(response => {
@@ -257,68 +229,13 @@ export default {
       this.selected = checked ? this.groups.map(g => g.id) : []
     },
 
-    addRole () {
-      var body = {
-        groups: this.selected,
-        role: this.role
-      }
-
-      this.axios.post(`/api/admin/batch/groups`, body)
-        .then(response => {
-          this.role = null
-          this.selected = []
-          this.$refs.groups.refresh()
-        })
-        .catch(e => {
-          this.role = null
-          console.warn(e)
-        })
-    },
-
-    addOrganization () {
-      var body = {
-        groups: this.selected,
-        organization: this.organizations.map(o => { return { id: o.id, name: o.name } }).find(o => o.name === this.organization)
-      }
-
-      this.axios.post(`/api/admin/batch/groups`, body)
-        .then(response => {
-          this.organization = null
-          this.selected = []
-          this.$refs.groups.refresh()
-        })
-        .catch(e => {
-          this.organization = null
-          console.warn(e)
-        })
+    applyDone () {
+      this.selected = []
+      this.$refs.groups.refresh()
     }
   },
 
   computed: {
-    mappedRoles () {
-      if (!this.roles) {
-        return []
-      }
-
-      return [{ value: null, text: 'Add role' }].concat(this.roles.map(r => {
-        return {
-          value: `${r}`,
-          text: `${r}`
-        }
-      }))
-    },
-    mappedOrganizations () {
-      if (!this.organizations) {
-        return []
-      }
-
-      return [{ value: null, text: 'Add organization' }].concat(this.organizations.map(o => {
-        return {
-          value: `${o.name}`,
-          text: `${o.name}`
-        }
-      }))
-    },
     ready () {
       for (const property in this.loaded) {
         if (!this.loaded[property]) {

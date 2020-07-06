@@ -45,39 +45,12 @@
       <template v-slot:top-row>
         <b-td colspan="2" />
         <b-td>
-          <b-dropdown
-            text="Update roles"
-            variant="outline-info"
-            :disabled="!ready || selected.length === 0"
-          >
-            <b-dropdown-form>
-              <b-form-checkbox
-                v-for="r in roles"
-                :key="r"
-                v-model="checkedRoles[r]"
-                :value="'checked:'+r"
-                :unchecked-value="'unchecked:'+r"
-                :indeterminate="indeterminateRoles[r]"
-                @change="toggleRole"
-              >
-                {{ r }}
-              </b-form-checkbox>
-              <b-button
-                size="sm"
-                variant="primary"
-                @click="applyRoles"
-                :disabled="rolesToAdd.length === 0 && rolesToRemove.length === 0"
-              >
-                Apply
-              </b-button>
-              <b-button
-                size="sm"
-                @click="updateRolesDropdown"
-              >
-                Reset
-              </b-button>
-            </b-dropdown-form>
-          </b-dropdown>
+          <batch-roles-dropdown
+            :selected="selected"
+            :selectable-items="clients"
+            type="clients"
+            :apply-done-func="applyDone"
+          />
         </b-td>
         <b-td colspan="1" />
       </template>
@@ -165,8 +138,9 @@
 </template>
 
 <script>
-import { BTable, BTd, BButton, BCard, BRow, BCol, BBadge, BFormCheckbox, BDropdown, BDropdownForm } from 'bootstrap-vue'
+import { BTable, BTd, BButton, BCard, BRow, BCol, BBadge, BFormCheckbox } from 'bootstrap-vue'
 
+import BatchRolesDropdown from '@/components/BatchRolesDropdown'
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
 
@@ -180,8 +154,7 @@ export default {
     BCol,
     BBadge,
     BFormCheckbox,
-    BDropdown,
-    BDropdownForm,
+    BatchRolesDropdown,
     PaginationCompact,
     Pagination
   },
@@ -189,11 +162,6 @@ export default {
   data: function () {
     return {
       selected: [],
-      checkedRoles: {},
-      indeterminateRoles: {},
-      rolesToAdd: [],
-      rolesToRemove: [],
-      roles: [],
       clients: [],
       pagination: {
         page: 1,
@@ -220,27 +188,12 @@ export default {
         }
       ],
       loaded: {
-        roles: false,
         clients: false
       }
     }
   },
 
-  created () {
-    this.loadRoles()
-  },
-
   methods: {
-    loadRoles () {
-      this.axios.get(`/api/roles`)
-        .then(response => {
-          this.roles = response.data
-          this.loaded.roles = true
-        })
-        .catch(e => {
-          console.warn(e)
-        })
-    },
     clientsProvider (ctx) {
       return this.axios.get(`/api/clients?page[number]=${ctx.currentPage}&page[size]=${ctx.perPage}`)
         .then(response => {
@@ -257,61 +210,9 @@ export default {
       this.selected = checked ? this.clients.map(c => c.id) : []
     },
 
-    updateRolesDropdown () {
-      this.rolesToAdd = []
-      this.rolesToRemove = []
-
-      var selectedClients = this.clients.filter(c => this.selected.includes(c.id))
-
-      this.checkedRoles = this.roles.reduce((map, r) => {
-        var checked = selectedClients.length > 0 ? selectedClients.every(c => c.roles && c.roles.some(cr => cr === r)) : false
-        map[r] = checked ? 'checked:' + r : 'unchecked:' + r
-        return map
-      }, {})
-
-      this.indeterminateRoles = this.roles.reduce((map, r) => {
-        map[r] = selectedClients.length > 0 && !selectedClients.every(c => c.roles && c.roles.some(cr => cr === r)) ? selectedClients.some(c => c.roles && c.roles.some(cr => cr === r)) : false
-        return map
-      }, {})
-    },
-
-    toggleRole (r) {
-      var prefix = ''
-      if (r.startsWith('checked:')) {
-        prefix = 'checked:'
-      } else if (r.startsWith('unchecked:')) {
-        prefix = 'unchecked:'
-      }
-      var role = r.slice(prefix.length)
-
-      // update indeterminate value (the .sync modifier doesn't seem to work)
-      this.indeterminateRoles[r] = false
-
-      if (prefix === 'checked:') {
-        this.rolesToAdd.push(role)
-        this.rolesToRemove = this.rolesToRemove.filter(ra => ra !== role)
-      } else if (prefix === 'unchecked:') {
-        this.rolesToRemove.push(role)
-        this.rolesToAdd = this.rolesToAdd.filter(ra => ra !== role)
-      }
-    },
-
-    applyRoles () {
-      var body = {
-        clients: this.selected,
-        rolesToAdd: this.rolesToAdd,
-        rolesToRemove: this.rolesToRemove
-      }
-
-      this.axios.post(`/api/admin/batch/clients`, body)
-        .then(response => {
-          this.selected = []
-          this.$refs.clients.refresh()
-        })
-        .catch(e => {
-          this.updateRolesDropdown()
-          console.warn(e)
-        })
+    applyDone () {
+      this.selected = []
+      this.$refs.clients.refresh()
     }
   },
 
@@ -324,12 +225,6 @@ export default {
       }
 
       return true
-    }
-  },
-
-  watch: {
-    selected () {
-      this.updateRolesDropdown()
     }
   }
 }

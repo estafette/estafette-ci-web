@@ -44,19 +44,21 @@
       <template v-slot:top-row>
         <b-td colspan="2" />
         <b-td>
-          <b-form-select
-            v-model="group"
-            :options="mappedGroups"
-            :disabled="!ready || selected.length === 0"
-            @change="addGroup"
+          <batch-groups-dropdown
+            :selected="selected"
+            :selectable-items="pipelines"
+            type="pipelines"
+            :apply-done-func="applyDone"
+            :selectable-id-func="s => `${s.repoSource}/${s.repoOwner}/${s.repoName}`"
           />
         </b-td>
         <b-td>
-          <b-form-select
-            v-model="organization"
-            :options="mappedOrganizations"
-            :disabled="!ready || selected.length === 0"
-            @change="addOrganization"
+          <batch-organizations-dropdown
+            :selected="selected"
+            :selectable-items="pipelines"
+            type="pipelines"
+            :apply-done-func="applyDone"
+            :selectable-id-func="s => `${s.repoSource}/${s.repoOwner}/${s.repoName}`"
           />
         </b-td>
         <b-td colspan="2" />
@@ -122,8 +124,10 @@
 </template>
 
 <script>
-import { BTable, BTd, BButton, BBadge, BFormCheckbox, BFormSelect } from 'bootstrap-vue'
+import { BTable, BTd, BButton, BBadge, BFormCheckbox } from 'bootstrap-vue'
 
+import BatchGroupsDropdown from '@/components/BatchGroupsDropdown'
+import BatchOrganizationsDropdown from '@/components/BatchOrganizationsDropdown'
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
 import PipelineFilter from '@/components/PipelineFilter'
@@ -141,7 +145,8 @@ export default {
     Pagination,
     BBadge,
     BFormCheckbox,
-    BFormSelect,
+    BatchGroupsDropdown,
+    BatchOrganizationsDropdown,
     PipelineFilter,
     Labels,
     LabelFilter
@@ -150,10 +155,6 @@ export default {
   data: function () {
     return {
       selected: [],
-      group: null,
-      groups: [],
-      organization: null,
-      organizations: [],
       pipelines: [],
       pagination: {
         page: 1,
@@ -195,8 +196,6 @@ export default {
         }
       ],
       loaded: {
-        groups: false,
-        organizations: false,
         pipelines: false
       }
     }
@@ -205,31 +204,9 @@ export default {
   created () {
     this.filterDefaults = { ...this.filter }
     this.setDataFromQueryParams(this.query)
-    this.loadGroups()
-    this.loadOrganizations()
   },
 
   methods: {
-    loadGroups () {
-      this.axios.get(`/api/groups?page[number]=1&page[size]=100`)
-        .then(response => {
-          this.groups = response.data.items
-          this.loaded.groups = true
-        })
-        .catch(e => {
-          console.warn(e)
-        })
-    },
-    loadOrganizations () {
-      this.axios.get(`/api/organizations?page[number]=1&page[size]=100`)
-        .then(response => {
-          this.organizations = response.data.items
-          this.loaded.organizations = true
-        })
-        .catch(e => {
-          console.warn(e)
-        })
-    },
     pipelinesProvider (ctx) {
       var sort = ''
       if (ctx.sortBy) {
@@ -276,40 +253,9 @@ export default {
       this.selected = checked ? this.pipelines.map(p => `${p.repoSource}/${p.repoOwner}/${p.repoName}`) : []
     },
 
-    addGroup () {
-      var body = {
-        pipelines: this.selected,
-        group: this.groups.map(g => { return { id: g.id, name: g.name } }).find(g => g.name === this.group)
-      }
-
-      this.axios.post(`/api/admin/batch/pipelines`, body)
-        .then(response => {
-          this.group = null
-          this.selected = []
-          this.$refs.pipelines.refresh()
-        })
-        .catch(e => {
-          this.group = null
-          console.warn(e)
-        })
-    },
-
-    addOrganization () {
-      var body = {
-        pipelines: this.selected,
-        organization: this.organizations.map(o => { return { id: o.id, name: o.name } }).find(o => o.name === this.organization)
-      }
-
-      this.axios.post(`/api/admin/batch/pipelines`, body)
-        .then(response => {
-          this.organization = null
-          this.selected = []
-          this.$refs.pipelines.refresh()
-        })
-        .catch(e => {
-          this.organization = null
-          console.warn(e)
-        })
+    applyDone () {
+      this.selected = []
+      this.$refs.pipelines.refresh()
     }
   },
 
@@ -322,30 +268,6 @@ export default {
   },
 
   computed: {
-    mappedGroups () {
-      if (!this.groups) {
-        return []
-      }
-
-      return [{ value: null, text: 'Add group' }].concat(this.groups.map(g => {
-        return {
-          value: `${g.name}`,
-          text: `${g.name}`
-        }
-      }))
-    },
-    mappedOrganizations () {
-      if (!this.organizations) {
-        return []
-      }
-
-      return [{ value: null, text: 'Add organization' }].concat(this.organizations.map(o => {
-        return {
-          value: `${o.name}`,
-          text: `${o.name}`
-        }
-      }))
-    },
     ready () {
       for (const property in this.loaded) {
         if (!this.loaded[property]) {
