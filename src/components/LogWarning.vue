@@ -3,7 +3,7 @@
     v-if="step && step.logLines && step.logLines.length > 1000"
     class="text-danger"
     v-b-tooltip.hover
-    :title="`This stage has a total of ${step.logLines.length} log lines; please make it less verbose to keep this page responsive`"
+    :title="`This stage has a total of ${step.logLines.length} log lines; please make it less verbose to avoid it getting truncated`"
   >
     <font-awesome-icon
       icon="exclamation-triangle"
