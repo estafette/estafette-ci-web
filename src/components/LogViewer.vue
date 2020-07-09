@@ -218,7 +218,7 @@
           >
             <div
               class="row no-gutters"
-              v-for="(line, lineIndex) in step.logLines"
+              v-for="(line, lineIndex) in cappedLogLines(step.logLines)"
               :key="line.line ? line.line : lineIndex"
             >
               <div class="col-1 log-timestamp text-white-50 d-none d-xl-flex">
@@ -301,7 +301,7 @@
           >
             <div
               class="row no-gutters"
-              v-for="(line, lineIndex) in service.logLines"
+              v-for="(line, lineIndex) in cappedLogLines(service.logLines)"
               :key="line.line ? line.line : lineIndex"
             >
               <div class="col-1 log-timestamp text-white-50 d-none d-xl-flex">
@@ -384,7 +384,7 @@
           >
             <div
               class="row no-gutters"
-              v-for="(line, lineIndex) in nestedStep.logLines"
+              v-for="(line, lineIndex) in cappedLogLines(nestedStep.logLines)"
               :key="line.line ? line.line : lineIndex"
             >
               <div class="col-1 log-timestamp text-white-50 d-none d-xl-flex">
@@ -627,6 +627,28 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadLogs, timeoutWithJitter)
       }
+    },
+
+    cappedLogLines (logLines) {
+      const maxLinesToShow = 1000
+      const firstLinesToShow = 5
+      if (!logLines || logLines.length < maxLinesToShow) {
+        return logLines
+      }
+
+      var firstLines = logLines.slice(0, firstLinesToShow)
+      var truncatedLines = logLines.slice(firstLinesToShow, firstLinesToShow + 3).map((l, i) => {
+        if (i === 1) {
+          l.text = '== HIDDEN BY ESTAFETTE =='
+        } else {
+          l.text = ' '
+        }
+        return l
+      })
+      var lastLines = logLines.slice(logLines.length - maxLinesToShow + firstLinesToShow + 3)
+
+      // get first 5 lines and last 1955
+      return firstLines.concat(truncatedLines).concat(lastLines)
     },
 
     isTailing () {
