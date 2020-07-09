@@ -58,6 +58,7 @@
             >
               {{ step.status }}
             </span>
+            <log-warning :step="step" />
           </property-block>
           <property-block
             label="Stage"
@@ -173,6 +174,7 @@
               <span>
                 {{ (service.image ? service.image.pullDuration : 0) + service.duration | formatDuration }}
               </span>
+              <log-warning :step="service" />
             </b-button>
           </property-block>
         </b-card-header>
@@ -198,6 +200,7 @@
               <span>
                 {{ (nestedStep.image ? nestedStep.image.pullDuration : 0) + nestedStep.duration | formatDuration }}
               </span>
+              <log-warning :step="nestedStep" />
             </b-button>
           </property-block>
         </b-card-header>
@@ -482,6 +485,7 @@ import AnsiUp from 'ansi_up'
 import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BFormCheckbox, BFormGroup, BNav, BNavItem } from 'bootstrap-vue'
 
 import PropertyBlock from '@/components/PropertyBlock'
+import LogWarning from '@/components/LogWarning'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faShieldAlt, faEye, faEyeSlash, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
@@ -498,6 +502,7 @@ export default {
     BFormCheckbox,
     BFormGroup,
     PropertyBlock,
+    LogWarning,
     FontAwesomeIcon,
     BNav,
     BNavItem
