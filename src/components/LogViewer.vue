@@ -643,6 +643,7 @@ export default {
         } else {
           l.text = ' '
         }
+        l.timestamp = null
         return l
       })
       var lastLines = logLines.slice(logLines.length - maxLinesToShow + firstLinesToShow + 3)
