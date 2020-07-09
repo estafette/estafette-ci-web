@@ -632,7 +632,7 @@ export default {
     cappedLogLines (logLines) {
       const maxLinesToShow = 1000
       const firstLinesToShow = 5
-      if (!logLines || logLines.length < maxLinesToShow) {
+      if (!logLines || logLines.length <= maxLinesToShow) {
         return logLines
       }
 
