@@ -1,9 +1,9 @@
 <template>
   <span
     v-if="step && step.logLines && step.logLines.length > 1000"
-    class="text-danger align-bottom"
+    class="text-danger"
     v-b-tooltip.hover
-    title="This stage has a large number of log lines; please make it less verbose to keep things responsive"
+    :title="`This stage has a total of ${step.logLines.length} log lines; please make it less verbose to keep this page responsive`"
   >
     <font-awesome-icon
       icon="exclamation-triangle"
