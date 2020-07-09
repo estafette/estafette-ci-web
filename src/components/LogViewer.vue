@@ -639,7 +639,7 @@ export default {
       var firstLines = logLines.slice(0, firstLinesToShow)
       var truncatedLines = logLines.slice(firstLinesToShow, firstLinesToShow + 3).map((l, i) => {
         if (i === 1) {
-          l.text = '== HIDDEN BY ESTAFETTE =='
+          l.text = '== TOO MANY LINES; TRUNCATED BY ESTAFETTE =='
         } else {
           l.text = ' '
         }
