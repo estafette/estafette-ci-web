@@ -40,12 +40,12 @@
       <b-card
         no-body
         v-for="step in filteredSteps"
-        :key="step.step + '-' + step.runIndex"
+        :key="step.key"
         class="log-stage-block"
       >
         <b-card-header
           class="row m-0 pt-3 pr-2 pb-3 pl-2 clickable border-0 rounded-0"
-          v-b-toggle="'accordion-'+step.step + '-' + step.runIndex"
+          v-b-toggle="step.collapseID"
           role="tab"
         >
           <property-block
@@ -165,8 +165,8 @@
           >
             <b-button
               v-for="service in step.services"
-              :key="service.step"
-              v-b-toggle="'accordion-'+step.step + '-' + step.runIndex + '-service-' +service.step"
+              :key="service.key"
+              v-b-toggle="service.collapseID"
               :variant="service.status | bootstrapVariant(true)"
               class="mr-2 mb-1"
             >
@@ -191,8 +191,8 @@
           >
             <b-button
               v-for="nestedStep in step.nestedSteps"
-              :key="nestedStep.step"
-              v-b-toggle="'accordion-'+step.step + '-' + step.runIndex + '-' +nestedStep.step"
+              :key="nestedStep.key"
+              v-b-toggle="nestedStep.collapseID"
               :variant="nestedStep.status | bootstrapVariant(true)"
               class="mr-2 mb-1"
             >
@@ -207,14 +207,15 @@
 
         <b-collapse
           class="container-fluid collapse p-0 rounded-bottom"
-          :id="'accordion-'+step.step + '-' + step.runIndex"
+          :id="step.collapseID"
           :visible="step.status === 'RUNNING' || step.status === 'FAILED'"
           accordion="log-steps-accordion"
           role="tabpanel"
+          v-slot="{ visible }"
         >
           <div
+            v-if="visible && step.logLines && step.logLines.length > 0"
             class="text-light text-monospace bg-dark m-0 p-3"
-            v-if="step.logLines && step.logLines.length > 0"
           >
             <div
               class="row no-gutters"
@@ -235,12 +236,16 @@
         <b-collapse
           class="container-fluid collapse p-0 rounded-bottom"
           v-for="service in step.services"
-          :key="service.step"
-          :id="'accordion-'+step.step + '-' + step.runIndex + '-service-' +service.step"
+          :key="service.collapseID"
+          :id="service.collapseID"
           accordion="log-steps-accordion"
           role="tabpanel"
+          v-slot="{ visible }"
         >
-          <div class="row m-0 pt-3 pr-2 pb-3 pl-2 border-0 rounded-0 bg-light">
+          <div
+            v-if="visible"
+            class="row m-0 pt-3 pr-2 pb-3 pl-2 border-0 rounded-0 bg-light"
+          >
             <div class="col-4 col-md-2 col-xl-1 text-center" />
             <div
               class="col-8 col-lg-5 col-xl-4 text-truncate h4"
@@ -318,12 +323,16 @@
         <b-collapse
           class="container-fluid collapse p-0 rounded-bottom"
           v-for="nestedStep in step.nestedSteps"
-          :key="nestedStep.step"
-          :id="'accordion-'+step.step + '-' + step.runIndex + '-' +nestedStep.step"
+          :key="nestedStep.collapseID"
+          :id="nestedStep.collapseID"
           accordion="log-steps-accordion"
           role="tabpanel"
+          v-slot="{ visible }"
         >
-          <div class="row m-0 pt-3 pr-2 pb-3 pl-2 border-0 rounded-0 bg-light">
+          <div
+            v-if="visible"
+            class="row m-0 pt-3 pr-2 pb-3 pl-2 border-0 rounded-0 bg-light"
+          >
             <div class="col-4 col-md-2 col-xl-1 text-center" />
             <div
               class="col-8 col-lg-5 col-xl-4 text-truncate h4"
@@ -536,7 +545,30 @@ export default {
         return []
       }
 
-      return this.steps.filter(step => !step.autoInjected || this.showInjectedStages || step.status === 'PENDING' || step.status === 'RUNNING' || step.status === 'FAILED')
+      return this.steps.filter(step => !step.autoInjected || this.showInjectedStages || step.status === 'PENDING' || step.status === 'RUNNING' || step.status === 'FAILED').map(step => {
+        step.key = step.step + '-' + (step.runIndex ? step.runIndex : 0)
+        step.collapseID = 'accordion-' + step.key
+
+        if (step.services) {
+          step.services = step.services.map(service => {
+            service.key = step.step + '-' + (step.runIndex ? step.runIndex : 0) + '-service-' + service.step
+            service.collapseID = 'accordion-' + service.key
+
+            return service
+          })
+        }
+
+        if (step.nestedSteps) {
+          step.nestedSteps = step.nestedSteps.map(nestedStep => {
+            nestedStep.key = step.step + '-' + (step.runIndex ? step.runIndex : 0) + '-' + nestedStep.step
+            nestedStep.collapseID = 'accordion-' + nestedStep.key
+
+            return nestedStep
+          })
+        }
+
+        return step
+      })
     },
 
     totalImageSize: function () {
