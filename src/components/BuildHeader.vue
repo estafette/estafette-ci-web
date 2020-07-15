@@ -12,11 +12,14 @@
       :value="build.buildVersion"
     />
     <property-block label="Status">
-      <b-progress
-        :value="100"
-        :variant="$options.filters.bootstrapVariant(build.buildStatus)"
-        :animated="$options.filters.animatedProgressBar(build.buildStatus)"
-      />
+      <b-progress>
+        <b-progress-bar
+          :value="$options.filters.buildProgressBarValue(pipeline,build,now)"
+          :label="$options.filters.buildProgressBarLabel(pipeline,build,now)"
+          :variant="$options.filters.bootstrapVariant(build.buildStatus)"
+          :animated="$options.filters.animatedProgressBar(build.buildStatus)"
+        />
+      </b-progress>
     </property-block>
     <property-block label="Built at">
       {{ build.insertedAt | formatDatetime }}
@@ -81,7 +84,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BProgress } from 'bootstrap-vue'
+import { BProgress, BProgressBar } from 'bootstrap-vue'
 import CommitLink from '@/components/CommitLink'
 import ReleaseButton from '@/components/ReleaseButton'
 import RebuildButton from '@/components/RebuildButton'
@@ -92,10 +95,12 @@ import PropertyBlock from '@/components/PropertyBlock'
 import RepositoryTitle from '@/components/RepositoryTitle'
 import DurationLabel from '@/components/DurationLabel'
 import Commits from '@/components/Commits'
+import refresh from '../helpers/refresh'
 
 export default {
   components: {
     BProgress,
+    BProgressBar,
     CommitLink,
     ReleaseButton,
     RebuildButton,
@@ -125,6 +130,29 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+
+  data () {
+    return {
+      now: Date.now()
+    }
+  },
+
+  created () {
+    this.updateNow()
+  },
+
+  methods: {
+    updateNow () {
+      this.now = Date.now()
+      if (this.build && (this.build.buildStatus === 'pending' || this.build.buildStatus === 'running')) {
+        refresh.timeout(this.timeout, this.updateNow, 1)
+      }
+    }
+  },
+
+  beforeDestroy () {
+    clearTimeout(this.timeout)
   },
 
   computed: {

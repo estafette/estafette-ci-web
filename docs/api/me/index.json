@@ -1,0 +1,38 @@
+{
+  "id": "15",
+  "active": true,
+  "identities": [
+    {
+      "provider":"google",
+      "id":"234234234",
+      "email":"someone@server.com",
+      "name":"Someone Special",
+      "avatar":"https://placekitten.com/300/300"
+    }
+  ],
+  "groups": [
+    {
+      "id": "56808720",
+      "name": "Estafette"
+    },
+    {
+      "id": "56803499",
+      "name": "Another group"
+    }
+  ],
+  "organizations": [
+    {
+      "id": "5680300",
+      "name": "Estafette"
+    }
+  ],
+  "roles": [
+    "administrator"
+  ],
+  "firstVisit": "2020-05-27T15:51:48.790109Z",
+  "lastVisit": "2020-07-01T13:24:14.582722104Z",
+  "currentProvider": "google",
+  "currentOrganization": "Estafette",
+  "email":"someone@server.com",
+  "name":"Someone Special"
+}

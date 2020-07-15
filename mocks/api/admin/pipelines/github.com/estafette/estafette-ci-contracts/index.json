@@ -1,0 +1,52 @@
+{
+  "id": "562456741080399884",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-contracts",
+  "repoBranch": "master",
+  "repoRevision": "68c70cc10da47b76fca4021bc1b87191fc9f6d21",
+  "buildVersion": "0.0.207",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette"
+    },
+    {
+      "key": "type",
+      "value": "library"
+    }
+  ],
+  "commits": [
+    {
+      "message": "drop deprecated api key",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-ci-contracts",
+        "branch": "master"
+      }
+    }
+  ],
+  "insertedAt": "2020-06-09T16:02:55.378141Z",
+  "updatedAt": "2020-06-09T16:03:47.391096Z",
+  "duration": 52000000000,
+  "pendingDuration": 0,
+  "lastUpdatedAt": "2020-06-09T16:03:47.391096Z"
+}

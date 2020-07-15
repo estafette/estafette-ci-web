@@ -3,7 +3,7 @@ const common = require('./webpack.common.js')
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-module.exports = merge(common, {
+var mergedConfig = merge(common, {
   mode: 'production',
   plugins: [
     new MiniCssExtractPlugin({
@@ -23,3 +23,7 @@ module.exports = merge(common, {
     ]
   }
 })
+
+module.exports = mergedConfig
+
+console.log('webpack config', JSON.stringify(mergedConfig))

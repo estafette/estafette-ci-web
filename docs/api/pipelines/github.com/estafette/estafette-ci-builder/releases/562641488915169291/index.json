@@ -1,0 +1,27 @@
+{
+  "name": "dev",
+  "id": "562641488915169291",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-builder",
+  "releaseVersion": "0.0.668",
+  "releaseStatus": "succeeded",
+  "triggerEvents": [
+    {
+      "pipeline": {
+        "buildVersion": "0.0.668",
+        "repoSource": "github.com",
+        "repoOwner": "estafette",
+        "repoName": "estafette-ci-builder",
+        "repoBranch": "master",
+        "status": "succeeded",
+        "event": "finished"
+      }
+    }
+  ],
+  "insertedAt": "2020-06-10T07:42:35.943039Z",
+  "startedAt": "2020-06-10T07:42:38.177806Z",
+  "updatedAt": "2020-06-10T07:43:06.468886Z",
+  "duration": 28000000000,
+  "pendingDuration": 2000000000
+}

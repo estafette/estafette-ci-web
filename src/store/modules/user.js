@@ -22,7 +22,7 @@ const actions = {
         commit('set', response.data)
       })
       .catch(e => {
-        commit('reset')
+        console.warn(e)
       })
   },
   logout ({ commit }) {

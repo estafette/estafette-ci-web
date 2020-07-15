@@ -1,0 +1,168 @@
+{
+  "id": "562640786124210188",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-builder",
+  "repoBranch": "master",
+  "repoRevision": "ab1a5c2aff260d906d2ba4ae93e8897b83543b78",
+  "buildVersion": "0.0.668",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette"
+    }
+  ],
+  "releaseTargets": [
+    {
+      "name": "windows",
+      "activeReleases": [
+        {
+          "name": "windows",
+          "id": "489616731055620098",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-builder",
+          "releaseVersion": "0.0.396",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2019-09-26T09:19:28.412442Z",
+          "updatedAt": "2019-09-26T09:25:46.512726Z",
+          "duration": 378000000000,
+          "pendingDuration": 0
+        }
+      ]
+    },
+    {
+      "name": "dev",
+      "activeReleases": [
+        {
+          "name": "dev",
+          "id": "562641488915169291",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-builder",
+          "releaseVersion": "0.0.668",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "pipeline": {
+                "buildVersion": "0.0.668",
+                "repoSource": "github.com",
+                "repoOwner": "estafette",
+                "repoName": "estafette-ci-builder",
+                "repoBranch": "master",
+                "status": "succeeded",
+                "event": "finished"
+              }
+            }
+          ],
+          "insertedAt": "2020-06-10T07:42:35.943039Z",
+          "updatedAt": "2020-06-10T07:43:06.468886Z",
+          "duration": 30000000000,
+          "pendingDuration": 0
+        }
+      ]
+    },
+    {
+      "name": "beta",
+      "activeReleases": [
+        {
+          "name": "beta",
+          "id": "561325733304205322",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-builder",
+          "releaseVersion": "0.0.666",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2020-06-05T16:10:19.196566Z",
+          "updatedAt": "2020-06-05T16:10:48.641763Z",
+          "duration": 29000000000,
+          "pendingDuration": 0
+        }
+      ]
+    },
+    {
+      "name": "stable",
+      "activeReleases": [
+        {
+          "name": "stable",
+          "id": "561325742644035594",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-builder",
+          "releaseVersion": "0.0.666",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2020-06-05T16:10:22.046739Z",
+          "updatedAt": "2020-06-05T16:10:53.824982Z",
+          "duration": 31000000000,
+          "pendingDuration": 0
+        }
+      ]
+    }
+  ],
+  "commits": [
+    {
+      "message": "build go.cd agent from 20.4.0",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggers": [
+    {
+      "pipeline": {
+        "event": "finished",
+        "status": "succeeded",
+        "name": "github.com/estafette/estafette-ci-builder",
+        "branch": ".+"
+      },
+      "releases": {
+        "target": "dev",
+        "version": "same"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "manual": {
+        "userID": "me@estafette.io"
+      }
+    }
+  ],
+  "insertedAt": "2020-06-10T07:39:01.468045Z",
+  "updatedAt": "2020-06-10T07:42:35.072201Z",
+  "duration": 213000000000,
+  "pendingDuration": 0,
+  "lastUpdatedAt": "2020-06-10T07:43:06.468886Z"
+}

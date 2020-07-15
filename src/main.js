@@ -2,7 +2,6 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import axios from 'axios'
-import VueAxios from 'vue-axios'
 import App from './App'
 import router from './router'
 import store from './store'
@@ -10,12 +9,32 @@ import './filters'
 import { VBTooltip } from 'bootstrap-vue'
 // Note: Vue automatically prefixes the directive name with 'v-'
 Vue.directive('b-tooltip', VBTooltip)
-Vue.use(VueAxios, axios)
+
+Vue.axios = axios
+Vue.$http = axios
+Vue.prototype.axios = axios
+Vue.prototype.$http = axios
 
 // intercept api requests to add X-Requested-With: XMLHttpRequest header to have IAP return 401 instead of 302
 Vue.axios.interceptors.request.use(
   config => {
+    if (process.env.ADD_TRAILING_SLASH_TO_API_REQUEST) {
+      // split url in path and query
+      var url = config.url
+      var urlParts = url.split('?')
+
+      // check if path already ends with a trailing slash
+      if (urlParts.length > 0 && urlParts[0][urlParts[0].length - 1] !== '/') {
+        // if not add a trailing slash
+        urlParts[0] += '/'
+
+        config.url = urlParts.join('?')
+      }
+    }
+
+    // add header to ensure it's treated as an XMLHttpRequest
     config.headers = { 'X-Requested-With': 'XMLHttpRequest' }
+
     return config
   },
   error => Promise.reject(error)
@@ -33,14 +52,18 @@ Vue.axios.interceptors.response.use((response) => {
     }
   }
 
-  return Promise.reject(new Error(error.response.data.error || error.message))
+  return Promise.reject(new Error(error.response && error.response.data ? error.response.data.error : error.message))
 })
 
 // redirect to login page when user gets logged out
 store.watch((state) => state.user.me, (to, from) => {
   if (!to && from) {
     if (from.currentProvider) {
-      window.location.href = '/api/auth/login/' + from.currentProvider + '?returnURL=' + router.currentRoute.fullPath
+      var href = '/api/auth/login/' + from.currentProvider + '?returnURL=' + router.currentRoute.fullPath
+      if (from.currentOrganization) {
+        href += '&organization=' + from.currentOrganization
+      }
+      window.location.href = href
     } else {
       router.replace({ name: 'Login', query: { returnURL: router.currentRoute.fullPath } })
     }
@@ -50,6 +73,12 @@ store.watch((state) => state.user.me, (to, from) => {
 var handleLoginRedirect = (to, next) => {
   var user = store.state.user.me
   var isAuthenticated = user && user.active
+
+  // if user tries to navigate to a route it does not have the required role for, disallow
+  if (to.meta && to.meta.requiredRole && (!user || !user.active || !user.roles || !user.roles.includes(to.meta.requiredRole))) {
+    next(false)
+    return
+  }
 
   // by default all routes need authentication unless they have meta: { allowedWithoutAuth: true }
   if (to.matched.some(record => !record.meta.allowedWithoutAuth) && !isAuthenticated) {

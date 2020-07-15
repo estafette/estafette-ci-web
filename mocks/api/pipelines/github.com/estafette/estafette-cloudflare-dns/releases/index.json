@@ -1,0 +1,210 @@
+{
+  "items": [
+    {
+      "name": "release",
+      "id": "525584413844635650",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "releaseVersion": "1.2.5",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2020-01-31T10:20:34.107584Z",
+      "updatedAt": "2020-01-31T10:21:00.179341Z",
+      "duration": 26000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "release",
+      "id": "506619043781836803",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "releaseVersion": "1.2.4",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2019-11-25T10:37:42.481939Z",
+      "updatedAt": "2019-11-25T10:38:14.555636Z",
+      "duration": 32000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "release",
+      "id": "503825607474839553",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "releaseVersion": "1.2.3",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2019-11-15T13:49:33.374535Z",
+      "updatedAt": "2019-11-15T13:50:01.284548Z",
+      "duration": 27000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "release",
+      "id": "502705389514489859",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "releaseVersion": "1.2.2",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2019-11-11T14:51:49.983192Z",
+      "updatedAt": "2019-11-11T14:52:18.431946Z",
+      "duration": 28000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "release",
+      "id": "502705209236586501",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "releaseVersion": "1.2.2",
+      "releaseStatus": "failed",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2019-11-11T14:50:54.966744Z",
+      "updatedAt": "2019-11-11T14:51:18.604484Z",
+      "duration": 23000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "release",
+      "id": "502687920097722371",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "releaseVersion": "1.2.2",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2019-11-11T13:22:58.740108Z",
+      "updatedAt": "2019-11-11T13:23:28.637856Z",
+      "duration": 29000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "release",
+      "id": "502584011717869573",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "releaseVersion": "1.2.1",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2019-11-11T04:34:28.419325Z",
+      "updatedAt": "2019-11-11T04:34:56.288135Z",
+      "duration": 27000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "release",
+      "id": "501266555817066498",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "releaseVersion": "1.2.81",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2019-11-06T12:53:32.785332Z",
+      "updatedAt": "2019-11-06T12:54:07.091073Z",
+      "duration": 34000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "release",
+      "id": "501265061036392452",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "releaseVersion": "1.2.81",
+      "releaseStatus": "failed",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2019-11-06T12:45:56.614367Z",
+      "updatedAt": "2019-11-06T12:46:27.700746Z",
+      "duration": 31000000000,
+      "pendingDuration": 0
+    },
+    {
+      "name": "release",
+      "id": "501264951551590404",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "releaseVersion": "1.2.81",
+      "releaseStatus": "failed",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2019-11-06T12:45:23.202378Z",
+      "updatedAt": "2019-11-06T12:45:41.623607Z",
+      "duration": 18000000000,
+      "pendingDuration": 0
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 10,
+    "totalPages": 1,
+    "totalItems": 10
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "items": [
+    {
+      "count": 1,
+      "key": "Google Cloud"
+    },
+    {
+      "count": 80,
+      "key": "my-project"
+    },
+    {
+      "count": 48,
+      "key": "your-project"
+    },
+    {
+      "count": 495,
+      "key": "my-function"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 1
+  }
+}

@@ -41,6 +41,7 @@
     >
       <triggered-by :events="pipeline.triggerEvents" />
     </property-block> -->
+
     <property-block
       v-if="showLabels"
       label="Labels"
@@ -60,11 +61,23 @@
         :pipeline="pipeline"
       />
     </property-block>
+    <property-block
+      v-if="pipeline.groups && pipeline.groups.length > 0"
+      label="Group(s)"
+      wide
+    >
+      <group-badge
+        v-for="g in pipeline.groups"
+        :key="g.id"
+        :group="g"
+      />
+    </property-block>
   </div>
 </template>
 
 <script>
 import ReleaseBadge from '@/components/ReleaseBadge'
+import GroupBadge from '@/components/GroupBadge'
 // import TriggeredBy from '@/components/TriggeredBy'
 import PropertyBlock from '@/components/PropertyBlock'
 import RepositoryTitle from '@/components/RepositoryTitle'
@@ -75,6 +88,7 @@ import Labels from '@/components/Labels'
 export default {
   components: {
     ReleaseBadge,
+    GroupBadge,
     // TriggeredBy,
     PropertyBlock,
     RepositoryTitle,

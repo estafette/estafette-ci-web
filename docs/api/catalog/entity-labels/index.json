@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "count": 4683,
+      "key": "cloud",
+      "value": "Google Cloud"
+    },
+    {
+      "count": 4683,
+      "key": "organization",
+      "value": "Estafette"
+    },
+    {
+      "count": 1949,
+      "key": "project",
+      "value": "my-project"
+    },
+    {
+      "count": 1945,
+      "key": "dataflow-job",
+      "value": "my-dataflow-job"
+    },
+    {
+    "count": 49,
+      "key": "cloud-function",
+      "value": "us-central1/my-cloud-function"
+    },
+    {
+      "count": 3,
+      "key": "gke-cluster",
+      "value": "europe-west1/my-gke-cluster"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 6
+  }
+}

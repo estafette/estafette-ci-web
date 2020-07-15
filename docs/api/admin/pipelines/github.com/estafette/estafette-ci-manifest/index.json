@@ -1,0 +1,61 @@
+{
+  "id": "563300116385562635",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-manifest",
+  "repoBranch": "add-metadata-with-configurable-json-schema",
+  "repoRevision": "754d2c53728d8e09eb75245d21293c1483634de0",
+  "buildVersion": "0.1.154-add-metadata-with-configurable-json-schema",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette"
+    },
+    {
+      "key": "type",
+      "value": "library"
+    }
+  ],
+  "commits": [
+    {
+      "message": "allow a json schema to be passed via preferences to configure what the free-form metadata property needs to look like",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    },
+    {
+      "message": "add test manifest with metadata",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-ci-manifest",
+        "branch": "add-metadata-with-configurable-json-schema"
+      }
+    }
+  ],
+  "insertedAt": "2020-06-12T15:32:33.09581Z",
+  "startedAt": "2020-06-12T15:32:34.808437Z",
+  "updatedAt": "2020-06-12T15:33:15.055678Z",
+  "duration": 40000000000,
+  "pendingDuration": 1000000000,
+  "lastUpdatedAt": "2020-06-12T15:33:15.055678Z"
+}

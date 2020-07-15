@@ -1,0 +1,130 @@
+{
+  "id": "563847163899871243",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-api",
+  "repoBranch": "master",
+  "repoRevision": "dbd4446644b968e0d5dc3aaa1f15648974cc9fd5",
+  "buildVersion": "0.1.1305",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette"
+    },
+    {
+      "key": "type",
+      "value": "service"
+    }
+  ],
+  "releaseTargets": [
+    {
+      "name": "tooling-estafette",
+      "actions": [
+        {
+          "name": "deploy-canary"
+        },
+        {
+          "name": "deploy-stable"
+        },
+        {
+          "name": "rollback-canary",
+          "hideBadge": true
+        }
+      ],
+      "activeReleases": [
+        {
+          "name": "tooling-estafette",
+          "action": "deploy-stable",
+          "id": "563915389582311434",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-api",
+          "releaseVersion": "0.1.1305",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2020-06-14T19:41:59.574355Z",
+          "startedAt": "2020-06-14T19:42:01.792014Z",
+          "updatedAt": "2020-06-14T19:43:02.880203Z",
+          "duration": 61000000000,
+          "pendingDuration": 2000000000
+        },
+        {
+          "name": "tooling-estafette",
+          "action": "deploy-canary",
+          "id": "563913518354989066",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-api",
+          "releaseVersion": "0.1.1305",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2020-06-14T19:32:28.521168Z",
+          "startedAt": "2020-06-14T19:32:38.154729Z",
+          "updatedAt": "2020-06-14T19:33:27.791941Z",
+          "duration": 49000000000,
+          "pendingDuration": 9000000000
+        }
+      ]
+    }
+  ],
+  "commits": [
+    {
+      "message": "fix labels filter regression",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggers": [
+    {
+      "pipeline": {
+        "event": "finished",
+        "status": "succeeded",
+        "name": "github.com/estafette/estafette-ci-db-migrator",
+        "branch": "master"
+      },
+      "builds": {
+        "branch": "master"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-ci-api",
+        "branch": "master"
+      }
+    }
+  ],
+  "insertedAt": "2020-06-14T13:54:58.748379Z",
+  "startedAt": "2020-06-14T13:56:23.491989Z",
+  "updatedAt": "2020-06-14T13:59:22.33404Z",
+  "duration": 178000000000,
+  "pendingDuration": 84000000000,
+  "lastUpdatedAt": "2020-06-14T19:43:02.880203Z",
+  "groups":[{"id":"329834298342908983","name":"Team A"}]
+}

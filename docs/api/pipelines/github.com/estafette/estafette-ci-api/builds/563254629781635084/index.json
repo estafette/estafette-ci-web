@@ -1,0 +1,129 @@
+{
+  "id": "563254629781635084",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-api",
+  "repoBranch": "master",
+  "repoRevision": "41e7a9f6867cd867be23e603340f85bfd95bc6db",
+  "buildVersion": "0.1.1302",
+  "buildStatus": "failed",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette"
+    },
+    {
+      "key": "type",
+      "value": "service"
+    }
+  ],
+  "releaseTargets": [
+    {
+      "name": "tooling-estafette",
+      "actions": [
+        {
+          "name": "deploy-canary"
+        },
+        {
+          "name": "deploy-stable"
+        },
+        {
+          "name": "rollback-canary"
+        }
+      ],
+      "activeReleases": [
+        {
+          "name": "tooling-estafette",
+          "action": "deploy-stable",
+          "id": "563915389582311434",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-api",
+          "releaseVersion": "0.1.1305",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2020-06-14T19:41:59.574355Z",
+          "startedAt": "2020-06-14T19:42:01.792014Z",
+          "updatedAt": "2020-06-14T19:43:02.880203Z",
+          "duration": 61000000000,
+          "pendingDuration": 2000000000
+        },
+        {
+          "name": "tooling-estafette",
+          "action": "deploy-canary",
+          "id": "563913518354989066",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-api",
+          "releaseVersion": "0.1.1305",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2020-06-14T19:32:28.521168Z",
+          "startedAt": "2020-06-14T19:32:38.154729Z",
+          "updatedAt": "2020-06-14T19:33:27.791941Z",
+          "duration": 49000000000,
+          "pendingDuration": 9000000000
+        }
+      ]
+    }
+  ],
+  "manifest": "builder:\n  track: dev\n\nlabels:\n  type: service\n  app-group: estafette-ci\n  team: estafette\n  language: golang\n\nversion:\n  semver:\n    major: 0\n    minor: 1\n\ntriggers:\n- pipeline:\n    name: github.com/estafette/estafette-ci-db-migrator\n    branch: master\n  builds:\n    branch: master\n\nstages:\n  build:\n    image: golang:1.14.4-alpine3.12\n    env:\n      CGO_ENABLED: 0\n      GOOS: linux\n      GOGC: off\n    commands:\n    - go test -short ./...\n    - go build -a -installsuffix cgo -ldflags \"-X main.appgroup=${ESTAFETTE_LABEL_APP_GROUP} -X main.app=${ESTAFETTE_GIT_NAME} -X main.version=${ESTAFETTE_BUILD_VERSION} -X main.revision=${ESTAFETTE_GIT_REVISION} -X main.branch=${ESTAFETTE_GIT_BRANCH} -X main.buildDate=${ESTAFETTE_BUILD_DATETIME}\" -o ./publish/${ESTAFETTE_GIT_NAME} .\n\n  integration-tests-prepare:\n    services:\n    - name: cockroachdb\n      multiStage: true\n      image: cockroachdb/cockroach:v20.1.1\n      shell: /bin/bash\n      env:\n        COCKROACH_SKIP_ENABLING_DIAGNOSTIC_REPORTING: \"true\"\n      readiness:\n        path: /health?ready=1\n        port: 8080\n        timeoutSeconds: 120\n      commands:\n      - /cockroach/cockroach start-single-node --insecure --advertise-addr cockroachdb\n\n    image: estafette/estafette-ci-db-migrator:0.1\n    env:\n      COCKROACH_CONNECTION_STRING: postgresql://root@cockroachdb:26257/defaultdb?sslmode=disable\n      ESTAFETTE_LOG_FORMAT: console\n\n  integration-tests:\n    image: golang:1.14.4-alpine3.12\n    env:\n      CGO_ENABLED: 0\n      GOOS: linux\n      GOGC: off\n    commands:\n    - go test -run TestIntegration ./...\n\n  bake:\n    image: extensions/docker:dev\n    action: build\n    inline: |\n      FROM scratch\n\n      LABEL maintainer=\"estafette.io\" \\\n            description=\"The ${ESTAFETTE_GIT_NAME} is the component that handles api requests and starts build jobs using the estafette-ci-builder\"\n\n      COPY ca-certificates.crt /etc/ssl/certs/\n      COPY ${ESTAFETTE_GIT_NAME} /\n\n      ENV GRACEFUL_SHUTDOWN_DELAY_SECONDS=\"20\"\n\n      ENTRYPOINT [\"/${ESTAFETTE_GIT_NAME}\"]\n    repositories:\n    - estafette\n    path: ./publish\n    copy:\n    - /etc/ssl/certs/ca-certificates.crt\n\n  check-container:\n    parallelStages:\n      check-efficiency:\n        image: extensions/docker:dev\n        action: dive\n        repositories:\n        - estafette\n\n      vulnerability-scan:\n        image: extensions/docker:dev\n        action: trivy\n        repositories:\n        - estafette\n\n  push-to-docker-hub:\n    image: extensions/docker:dev\n    action: push\n    repositories:\n    - estafette\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    workspace: estafette\n    channels:\n    - '#build-status'\n    when:\n      status == 'succeeded' ||\n      status == 'failed'\n\nreleases:\n  tooling-estafette:\n    actions:\n    - name: deploy-canary\n    - name: deploy-stable\n    - name: rollback-canary\n    clone: true\n    stages:\n      deploy:\n        image: extensions/gke:dev\n        namespace: estafette-ci\n        visibility: iap\n        iapOauthClientID: ***\n        iapOauthClientSecret: ***\n        container:\n          repository: estafette\n          env:\n            ESTAFETTE_LOG_FORMAT: v3\n          cpu:\n            request: 158m\n            limit: 316m\n          memory:\n            request: 483Mi\n            limit: 976Mi\n          metrics:\n            port: 9001\n          lifecycle:\n            prestopsleep: false\n        sidecars:\n        - type: openresty\n          image: estafette/openresty-sidecar:1.15.8.2\n          cpu:\n            request: 43m\n            limit: 85m\n          memory:\n            request: 34Mi\n            limit: 68Mi\n        request:\n          timeout: 120s\n          maxbodysize: 128M\n          clientbodybuffersize: 1m\n          proxybuffersnumber: 64\n        hosts:\n        - ***\n        - ***\n        internalhosts:\n        - ***\n        - ***\n        basepath: /api\n        chaosproof: true\n        useGoogleCloudCredentials: true\n        manifests:\n          files:\n          - gke/ingress.yaml\n          - gke/ingress-github.yaml\n          - gke/ingress-bitbucket.yaml\n          - gke/ingress-slack.yaml\n          - gke/ingress-pubsub.yaml\n          - gke/ingress-cloudsource.yaml\n          - gke/integrations-certificate-secret.yaml\n          data:\n            IntegrationsHostname: ***\n            IntegrationsHostname2: ***\n        volumemounts:\n        # - name: client-certs\n        #   mountpath: /cockroach-certs\n        #   volume:\n        #     secret:\n        #       secretName: estafette.client.api\n        #       items:\n        #       - key: key\n        #         path: key\n        #         mode: 0600\n        #       - key: cert\n        #         path: cert\n        - name: app-secrets\n          mountpath: /secrets\n          volume:\n            secret:\n              secretName: estafette-ci-config-secrets\n        - name: app-configs\n          mountpath: /configs\n          volume:\n            configMap:\n              name: estafette-ci-config-configs\n\n      slack-notify:\n        image: extensions/slack-build-status:dev\n        workspace: estafette\n        channels:\n        - '#release-status'\n        when:\n          status == 'succeeded' ||\n          status == 'failed'",
+  "manifestWithDefaults": "builder:\n  track: dev\n  os: linux\nlabels:\n  app-group: estafette-ci\n  language: golang\n  team: estafette\n  type: service\nversion:\n  semver:\n    major: 0\n    minor: 1\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: master\ntriggers:\n- pipeline:\n    event: finished\n    status: succeeded\n    name: github.com/estafette/estafette-ci-db-migrator\n    branch: master\n  builds:\n    branch: master\nstages:\n  build:\n    image: golang:1.14.4-alpine3.12\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - go test -short ./...\n    - go build -a -installsuffix cgo -ldflags \"-X main.appgroup=${ESTAFETTE_LABEL_APP_GROUP}\n      -X main.app=${ESTAFETTE_GIT_NAME} -X main.version=${ESTAFETTE_BUILD_VERSION}\n      -X main.revision=${ESTAFETTE_GIT_REVISION} -X main.branch=${ESTAFETTE_GIT_BRANCH}\n      -X main.buildDate=${ESTAFETTE_BUILD_DATETIME}\" -o ./publish/${ESTAFETTE_GIT_NAME}\n      .\n    when: status == 'succeeded'\n    env:\n      CGO_ENABLED: \"0\"\n      GOGC: \"false\"\n      GOOS: linux\n  integration-tests-prepare:\n    image: estafette/estafette-ci-db-migrator:0.1\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded'\n    env:\n      COCKROACH_CONNECTION_STRING: postgresql://root@cockroachdb:26257/defaultdb?sslmode=disable\n      ESTAFETTE_LOG_FORMAT: console\n    services:\n    - name: cockroachdb\n      image: cockroachdb/cockroach:v20.1.1\n      shell: /bin/bash\n      commands:\n      - /cockroach/cockroach start-single-node --insecure --advertise-addr cockroachdb\n      multiStage: true\n      when: status == 'succeeded'\n      env:\n        COCKROACH_SKIP_ENABLING_DIAGNOSTIC_REPORTING: \"true\"\n      readiness:\n        path: /health?ready=1\n        timeoutSeconds: 120\n        port: 8080\n        protocol: http\n        hostname: cockroachdb\n  integration-tests:\n    image: golang:1.14.4-alpine3.12\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - go test -run TestIntegration ./...\n    when: status == 'succeeded'\n    env:\n      CGO_ENABLED: \"0\"\n      GOGC: \"false\"\n      GOOS: linux\n  bake:\n    image: extensions/docker:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded'\n    action: build\n    copy:\n    - /etc/ssl/certs/ca-certificates.crt\n    inline: |\n      FROM scratch\n\n      LABEL maintainer=\"estafette.io\" \\\n            description=\"The ${ESTAFETTE_GIT_NAME} is the component that handles api requests and starts build jobs using the estafette-ci-builder\"\n\n      COPY ca-certificates.crt /etc/ssl/certs/\n      COPY ${ESTAFETTE_GIT_NAME} /\n\n      ENV GRACEFUL_SHUTDOWN_DELAY_SECONDS=\"20\"\n\n      ENTRYPOINT [\"/${ESTAFETTE_GIT_NAME}\"]\n    path: ./publish\n    repositories:\n    - estafette\n  check-container:\n    when: status == 'succeeded'\n    parallelStages:\n    - image: extensions/docker:dev\n      shell: /bin/sh\n      workDir: /estafette-work\n      when: status == 'succeeded'\n      action: dive\n      repositories:\n      - estafette\n    - image: extensions/docker:dev\n      shell: /bin/sh\n      workDir: /estafette-work\n      when: status == 'succeeded'\n      action: trivy\n      repositories:\n      - estafette\n  push-to-docker-hub:\n    image: extensions/docker:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded'\n    action: push\n    repositories:\n    - estafette\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded' || status == 'failed'\n    channels:\n    - '#build-status'\n    workspace: estafette\nreleases:\n  tooling-estafette:\n    stages:\n      deploy:\n        image: extensions/gke:dev\n        shell: /bin/sh\n        workDir: /estafette-work\n        when: status == 'succeeded'\n        basepath: /api\n        chaosproof: true\n        container:\n          cpu:\n            limit: 316m\n            request: 158m\n          env:\n            ESTAFETTE_LOG_FORMAT: v3\n          lifecycle:\n            prestopsleep: false\n          memory:\n            limit: 976Mi\n            request: 483Mi\n          metrics:\n            port: 9001\n          repository: estafette\n        hosts:\n        - ***\n        - ***\n        iapOauthClientID: ***\n        iapOauthClientSecret: ***\n        internalhosts:\n        - ***\n        - ***\n        manifests:\n          data:\n            IntegrationsHostname: ***\n            IntegrationsHostname2: ***\n          files:\n          - gke/ingress.yaml\n          - gke/ingress-github.yaml\n          - gke/ingress-bitbucket.yaml\n          - gke/ingress-slack.yaml\n          - gke/ingress-pubsub.yaml\n          - gke/ingress-cloudsource.yaml\n          - gke/integrations-certificate-secret.yaml\n        namespace: estafette-ci\n        request:\n          clientbodybuffersize: 1m\n          maxbodysize: 128M\n          proxybuffersnumber: 64\n          timeout: 120s\n        sidecars:\n        - cpu:\n            limit: 85m\n            request: 43m\n          image: estafette/openresty-sidecar:1.15.8.2\n          memory:\n            limit: 68Mi\n            request: 34Mi\n          type: openresty\n        useGoogleCloudCredentials: true\n        visibility: iap\n        volumemounts:\n        - mountpath: /secrets\n          name: app-secrets\n          volume:\n            secret:\n              secretName: estafette-ci-config-secrets\n        - mountpath: /configs\n          name: app-configs\n          volume:\n            configMap:\n              name: estafette-ci-config-configs\n      slack-notify:\n        image: extensions/slack-build-status:dev\n        shell: /bin/sh\n        workDir: /estafette-work\n        when: status == 'succeeded' || status == 'failed'\n        channels:\n        - '#release-status'\n        workspace: estafette\n",
+  "commits": [
+    {
+      "message": "add user filters for group and organization",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggers": [
+    {
+      "pipeline": {
+        "event": "finished",
+        "status": "succeeded",
+        "name": "github.com/estafette/estafette-ci-db-migrator",
+        "branch": "master"
+      },
+      "builds": {
+        "branch": "master"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-ci-api",
+        "branch": "master"
+      }
+    }
+  ],
+  "insertedAt": "2020-06-12T11:41:11.685849Z",
+  "startedAt": "2020-06-12T11:42:32.07697Z",
+  "updatedAt": "2020-06-12T11:45:06.253137Z",
+  "duration": 154000000000,
+  "pendingDuration": 80000000000
+}

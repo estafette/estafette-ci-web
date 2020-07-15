@@ -1,0 +1,230 @@
+{
+  "items": [
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-stable",
+      "id": "563915389582311434",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-api",
+      "releaseVersion": "0.1.1305",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-14T19:41:59.574355Z",
+      "startedAt": "2020-06-14T19:42:01.792014Z",
+      "updatedAt": "2020-06-14T19:43:02.880203Z",
+      "duration": 61000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-canary",
+      "id": "563913518354989066",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-api",
+      "releaseVersion": "0.1.1305",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-14T19:32:28.521168Z",
+      "startedAt": "2020-06-14T19:32:38.154729Z",
+      "updatedAt": "2020-06-14T19:33:27.791941Z",
+      "duration": 49000000000,
+      "pendingDuration": 9000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-stable",
+      "id": "563265556387823626",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-api",
+      "releaseVersion": "0.1.1304",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-12T12:36:46.22141Z",
+      "startedAt": "2020-06-12T12:36:47.457939Z",
+      "updatedAt": "2020-06-12T12:38:03.138561Z",
+      "duration": 75000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-canary",
+      "id": "563264900738383883",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-api",
+      "releaseVersion": "0.1.1304",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-12T12:33:26.133183Z",
+      "startedAt": "2020-06-12T12:33:28.000533Z",
+      "updatedAt": "2020-06-12T12:34:12.97085Z",
+      "duration": 44000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-stable",
+      "id": "563258380588253195",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-api",
+      "releaseVersion": "0.1.1303",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-12T12:00:16.341214Z",
+      "startedAt": "2020-06-12T12:00:20.680494Z",
+      "updatedAt": "2020-06-12T12:01:53.712365Z",
+      "duration": 93000000000,
+      "pendingDuration": 4000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-canary",
+      "id": "563257744935649292",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-api",
+      "releaseVersion": "0.1.1303",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-12T11:57:02.355491Z",
+      "startedAt": "2020-06-12T11:57:04.608956Z",
+      "updatedAt": "2020-06-12T11:57:46.282998Z",
+      "duration": 41000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-stable",
+      "id": "563231082595844108",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-api",
+      "releaseVersion": "0.1.1301",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-12T09:41:25.65498Z",
+      "startedAt": "2020-06-12T09:41:30.166118Z",
+      "updatedAt": "2020-06-12T09:43:11.348749Z",
+      "duration": 101000000000,
+      "pendingDuration": 4000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-stable",
+      "id": "563201176081268748",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-api",
+      "releaseVersion": "0.1.1300",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-12T07:09:18.911183Z",
+      "startedAt": "2020-06-12T07:09:22.782557Z",
+      "updatedAt": "2020-06-12T07:11:07.071208Z",
+      "duration": 104000000000,
+      "pendingDuration": 3000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-stable",
+      "id": "562705445204426763",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-api",
+      "releaseVersion": "0.1.1299",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-10T13:07:53.853601Z",
+      "startedAt": "2020-06-10T13:07:55.325227Z",
+      "updatedAt": "2020-06-10T13:09:21.212719Z",
+      "duration": 85000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-canary",
+      "id": "562692492946145292",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-api",
+      "releaseVersion": "0.1.1299",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-10T12:02:01.13793Z",
+      "startedAt": "2020-06-10T12:02:03.380335Z",
+      "updatedAt": "2020-06-10T12:03:23.728431Z",
+      "duration": 80000000000,
+      "pendingDuration": 2000000000
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 10,
+    "totalPages": 1,
+    "totalItems": 10
+  }
+}

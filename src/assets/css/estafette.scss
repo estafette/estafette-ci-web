@@ -48,8 +48,8 @@ $container-max-widths: (
 @import "bootstrap/scss/_alert.scss";
 @import "bootstrap/scss/_progress.scss";
 // @import "bootstrap/scss/_media.scss";
-// @import "bootstrap/scss/_list-group.scss";
-// @import "bootstrap/scss/_close.scss";
+@import "bootstrap/scss/_list-group.scss";
+@import "bootstrap/scss/_close.scss";
 // @import "bootstrap/scss/_toasts.scss";
 @import "bootstrap/scss/_modal.scss";
 @import "bootstrap/scss/_tooltip.scss";
@@ -206,7 +206,12 @@ button.btn-clipboard {
 
 .triggered-by-icon {
   @extend .text-black-50;
-  width: 1.5em!important;
+  width: 1.5em !important;
+}
+
+.dropdown-icon {
+  @extend .mr-2;
+  width: 1.5em !important;
 }
 
 // style rows of pipelines, builds, releases, catalog items and logs
@@ -294,6 +299,11 @@ button.btn-clipboard {
   @extend .d-xxxl-inline;
 }
 
+.repo-name {
+  @extend .text-dark;
+  @extend .font-weight-bold;
+}
+
 .property-block-core {
   @extend .mb-2;
   @extend .col-12;
@@ -340,6 +350,10 @@ button.btn-clipboard {
 
     .repo-source-and-owner {
       @extend .d-lg-inline;
+    }
+
+    .repo-name {
+      font-weight: 500 !important;
     }
   }
 }
@@ -426,8 +440,7 @@ button.btn-clipboard {
 }
 
 // navigation main sidebar and inner sidebar
-.main-sidebar-nav,
-.inner-sidebar-nav {
+.main-sidebar-nav {
   @extend .text-nowrap;
   @extend .bg-dark;
 
@@ -451,11 +464,13 @@ button.btn-clipboard {
   max-width: 60px;
   transition: max-width .2s;
 
-  &:hover {
-    @extend .d-inline-flex;
-    
-    overflow: visible !important;
-    max-width: 300px;
+  @media (hover: hover) {
+    &:hover {
+      display: inline-flex !important;
+
+      overflow: visible !important;
+      max-width: 300px;
+    }
   }
 
   .nav-item a {
@@ -506,22 +521,6 @@ button.btn-clipboard {
   }
 }
 
-.inner-sidebar-nav {
-  @extend .h5;
-  @extend .rounded;
-  @extend .m-3;
-  @extend .pt-4;
-  @extend .pr-1;
-  @extend .pb-4;
-  @extend .pl-1;
-
-  margin-top: 100px !important;
-
-  .sidebar-icon {  
-    width: 40px !important;
-  }
-}
-
 .sidebar-icon {
   @extend .d-inline-block;
   @extend .text-center;
@@ -565,4 +564,8 @@ button.btn-clipboard {
   .sidebar-icon {
     width: 40px !important;
   }
+}
+
+.table-striped tbody tr:nth-of-type(even) .label {
+  background-color: rgba(0, 0, 0, 0.05);
 }

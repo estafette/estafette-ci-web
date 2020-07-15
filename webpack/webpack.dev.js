@@ -3,7 +3,7 @@ const common = require('./webpack.common.js')
 
 const ApiMocker = require('connect-api-mocker')
 
-module.exports = merge(common, {
+var mergedConfig = merge.smart(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
@@ -25,3 +25,7 @@ module.exports = merge(common, {
     ]
   }
 })
+
+module.exports = mergedConfig
+
+console.log('webpack config', JSON.stringify(mergedConfig))

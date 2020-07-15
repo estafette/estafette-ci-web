@@ -20,11 +20,14 @@
       class="col-xxxl-1"
     >
       <router-link :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: pipeline.id }}">
-        <b-progress
-          :value="100"
-          :variant="$options.filters.bootstrapVariant(pipeline.buildStatus)"
-          :animated="$options.filters.animatedProgressBar(pipeline.buildStatus)"
-        />
+        <b-progress>
+          <b-progress-bar
+            :value="$options.filters.buildProgressBarValue(pipeline,pipeline,now)"
+            :label="$options.filters.buildProgressBarLabel(pipeline,pipeline,now)"
+            :variant="$options.filters.bootstrapVariant(pipeline.buildStatus)"
+            :animated="$options.filters.animatedProgressBar(pipeline.buildStatus)"
+          />
+        </b-progress>
       </router-link>
     </property-block>
     <property-block
@@ -79,17 +82,19 @@
 </template>
 
 <script>
-import { BProgress } from 'bootstrap-vue'
+import { BProgress, BProgressBar } from 'bootstrap-vue'
 import CommitLink from '@/components/CommitLink'
 import ReleaseBadge from '@/components/ReleaseBadge'
 import PropertyBlock from '@/components/PropertyBlock'
 import RepositoryTitle from '@/components/RepositoryTitle'
 import DurationLabel from '@/components/DurationLabel'
 import Commits from '@/components/Commits'
+import refresh from '../helpers/refresh'
 
 export default {
   components: {
     BProgress,
+    BProgressBar,
     CommitLink,
     ReleaseBadge,
     PropertyBlock,
@@ -103,6 +108,29 @@ export default {
       type: Object,
       default: null
     }
+  },
+
+  data () {
+    return {
+      now: Date.now()
+    }
+  },
+
+  created () {
+    this.updateNow()
+  },
+
+  methods: {
+    updateNow () {
+      this.now = Date.now()
+      if (this.pipeline && (this.pipeline.buildStatus === 'pending' || this.pipeline.buildStatus === 'running')) {
+        refresh.timeout(this.timeout, this.updateNow, 1)
+      }
+    }
+  },
+
+  beforeDestroy () {
+    clearTimeout(this.timeout)
   },
 
   computed: {

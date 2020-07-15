@@ -15,8 +15,15 @@
       variant="outline-primary"
       :class="[ filter.status === 'all' ? 'active' : 'border-btn-group' ]"
       @click="(e) => e.target.blur()"
+      title="All"
     >
-      All
+      <font-awesome-icon
+        icon="check-double"
+        class="d-md-none"
+      />
+      <span class="d-none d-md-inline">
+        All
+      </span>
     </b-button>
     <b-button
       :to="{ query: queryGenerator({ status: 'succeeded', page: 1 }) }"
@@ -24,8 +31,15 @@
       variant="outline-success"
       :class="[ filter.status === 'succeeded' ? 'active' : 'border-btn-group' ]"
       @click="(e) => e.target.blur()"
+      title="Succeeded"
     >
-      Succeeded
+      <font-awesome-icon
+        icon="heart"
+        class="d-md-none"
+      />
+      <span class="d-none d-md-inline">
+        Succeeded
+      </span>
     </b-button>
     <b-button
       :to="{ query: queryGenerator({ status: 'failed', page: 1 }) }"
@@ -33,8 +47,15 @@
       variant="outline-danger"
       :class="[ filter.status === 'failed' ? 'active' : 'border-btn-group' ]"
       @click="(e) => e.target.blur()"
+      title="Failed"
     >
-      Failed
+      <font-awesome-icon
+        icon="heart-broken"
+        class="d-md-none"
+      />
+      <span class="d-none d-md-inline">
+        Failed
+      </span>
     </b-button>
     <b-button
       :to="{ query: queryGenerator({ status: 'running', page: 1 }) }"
@@ -42,8 +63,15 @@
       variant="outline-warning"
       :class="[ filter.status === 'running' ? 'active' : 'border-btn-group' ]"
       @click="(e) => e.target.blur()"
+      title="Running"
     >
-      Running
+      <font-awesome-icon
+        icon="running"
+        class="d-md-none"
+      />
+      <span class="d-none d-md-inline">
+        Running
+      </span>
     </b-button>
     <b-button
       :to="{ query: queryGenerator({ status: 'canceled', page: 1 }) }"
@@ -51,8 +79,15 @@
       variant="outline-secondary"
       :class="[ filter.status === 'canceled' ? 'active' : 'border-btn-group' ]"
       @click="(e) => e.target.blur()"
+      title="Canceled"
     >
-      Canceled
+      <font-awesome-icon
+        icon="ban"
+        class="d-md-none"
+      />
+      <span class="d-none d-md-inline">
+        Canceled
+      </span>
     </b-button>
   </b-button-group>
 </template>
@@ -62,10 +97,10 @@ import { BButtonGroup, BButton, BInputGroupPrepend } from 'bootstrap-vue'
 import queryGenerator from '@/mixins/queryGenerator'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import { faCheckCircle, faCheckDouble, faRunning, faHeartBroken, faHeart, faBan } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faCheckCircle)
+library.add(faCheckCircle, faCheckDouble, faRunning, faHeart, faHeartBroken, faBan)
 
 export default {
   components: {

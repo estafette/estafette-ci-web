@@ -125,11 +125,31 @@ export default {
         if (!releaseTarget.activeReleases) {
           releaseTarget.activeReleases = [startedRelease]
         } else {
-          // remove active release item if name and optional action matches the just started release
-          releaseTarget.activeReleases = releaseTarget.activeReleases.filter(r => r.action && startedRelease.action && r.action !== startedRelease.action)
+          // replace corresponding active release with started release
+          var hasMatchingActiveRelease = false
+          var newActiveReleases = releaseTarget.activeReleases.map(r => {
+            // if there's no actions on the active releases there's just one and it's a match, so replace it
+            if (!r.action) {
+              hasMatchingActiveRelease = true
+              return startedRelease
+            }
 
-          // prepend newly started release
-          releaseTarget.activeReleases.unshift(startedRelease)
+            // otherwise it has to match the action
+            if (startedRelease.action && r.action === startedRelease.action) {
+              hasMatchingActiveRelease = true
+              return startedRelease
+            }
+
+            // any of the other release targets stay the same
+            return r
+          })
+
+          if (!hasMatchingActiveRelease) {
+            newActiveReleases.push(startedRelease)
+          }
+
+          // atomically update active releases
+          releaseTarget.activeReleases = newActiveReleases
         }
       }
     },

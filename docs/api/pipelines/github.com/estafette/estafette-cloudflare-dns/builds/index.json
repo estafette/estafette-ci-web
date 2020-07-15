@@ -1,0 +1,514 @@
+{
+  "items": [
+    {
+      "id": "555776830024351754",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "repoBranch": "master",
+      "repoRevision": "72bb004456375b072355d9b63c0f3a2fab461864",
+      "buildVersion": "1.2.6-master-117",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "commits": [
+        {
+          "message": "set type to service",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-cloudflare-dns",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-17T01:47:08.302912Z",
+      "updatedAt": "2020-05-17T01:50:23.480716Z",
+      "duration": 195000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "534916845581631489",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "repoBranch": "master",
+      "repoRevision": "6e378a52d0d5904cb12d00c25d190fb12ab9ce85",
+      "buildVersion": "1.2.6-master-116",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "commits": [
+        {
+          "message": "build with golang 1.14.0",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-cloudflare-dns",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-03-04T09:27:46.253741Z",
+      "updatedAt": "2020-03-04T09:31:32.267578Z",
+      "duration": 226000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "525615012829134851",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "repoBranch": "1.2.5",
+      "repoRevision": "647d94dddce422f85549943aed9734aac2d69444",
+      "buildVersion": "1.2.5",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "commits": [
+        {
+          "message": "fix port for liveness endpoint",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-cloudflare-dns",
+            "branch": "1.2.5"
+          }
+        }
+      ],
+      "insertedAt": "2020-01-31T12:56:12.176519Z",
+      "updatedAt": "2020-01-31T13:03:26.926007Z",
+      "duration": 434000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "525583751730921475",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "repoBranch": "master",
+      "repoRevision": "d4789acb4b0cb692d0131c403f0fe78b9a89eb41",
+      "buildVersion": "1.2.6-master-114",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "commits": [
+        {
+          "message": "bump patch in version number",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-cloudflare-dns",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-01-31T10:17:12.046399Z",
+      "updatedAt": "2020-01-31T10:20:43.67221Z",
+      "duration": 211000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "525583684309254145",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "repoBranch": "1.2.5",
+      "repoRevision": "8ad6429511088c93e1fa0ca931bc2d616467fcc2",
+      "buildVersion": "1.2.5",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-cloudflare-dns",
+            "branch": "1.2.5"
+          }
+        }
+      ],
+      "insertedAt": "2020-01-31T10:16:51.470725Z",
+      "updatedAt": "2020-01-31T10:20:14.270192Z",
+      "duration": 202000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "525582902179430402",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "repoBranch": "master",
+      "repoRevision": "8ad6429511088c93e1fa0ca931bc2d616467fcc2",
+      "buildVersion": "1.2.5-master-112",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "commits": [
+        {
+          "message": "use /liveness endpoint instead of /metrics endpoint for liveness probe",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-cloudflare-dns",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-01-31T10:12:52.783902Z",
+      "updatedAt": "2020-01-31T10:16:21.924977Z",
+      "duration": 209000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "525581552250322948",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "repoBranch": "master",
+      "repoRevision": "1717d5c49a311f75e41db26f22b3f35c7bbe434b",
+      "buildVersion": "1.2.5-master-111",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "commits": [
+        {
+          "message": "build with golang 1.13.7",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-cloudflare-dns",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-01-31T10:06:00.818255Z",
+      "updatedAt": "2020-01-31T10:09:15.480594Z",
+      "duration": 194000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "523038498233942017",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "repoBranch": "master",
+      "repoRevision": "6f1031053246b4449b9d807f08f69a70bcc45ad0",
+      "buildVersion": "1.2.5-master-110",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "commits": [
+        {
+          "message": "build with golang 1.13.6",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-cloudflare-dns",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-01-22T10:31:22.321964Z",
+      "updatedAt": "2020-01-22T10:34:34.650363Z",
+      "duration": 192000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "513475299898982401",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "repoBranch": "master",
+      "repoRevision": "5e93c663c08c60b2d444c932bc92ce271ebcc6d8",
+      "buildVersion": "1.2.4-master-109",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add container checks",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-cloudflare-dns",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2019-12-19T15:50:25.798785Z",
+      "updatedAt": "2019-12-19T15:53:38.976363Z",
+      "duration": 193000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "506618189915619333",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "repoBranch": "1.2.4",
+      "repoRevision": "9865a058d96e00d0491e88810b3df95f4be01742",
+      "buildVersion": "1.2.4",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-cloudflare-dns",
+            "branch": "1.2.4"
+          }
+        }
+      ],
+      "insertedAt": "2019-11-25T10:33:21.902296Z",
+      "updatedAt": "2019-11-25T10:36:29.569743Z",
+      "duration": 187000000000,
+      "pendingDuration": 0
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 10,
+    "totalPages": 1,
+    "totalItems": 10
+  }
+}

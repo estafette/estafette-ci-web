@@ -1,0 +1,14 @@
+[
+  "administrator",
+  "cron.trigger",
+  "log.migrator",
+  "role.viewer",
+  "user.viewer",
+  "user.admin",
+  "group.viewer",
+  "group.admin",
+  "organization.viewer",
+  "organization.admin",
+  "client.viewer",
+  "client.admin"
+]

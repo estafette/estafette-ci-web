@@ -1,0 +1,8 @@
+[
+  {"key":"type","pipelinescount":25,"value":"api"},
+  {"key":"type","pipelinescount":7,"value":"config"},
+  {"key":"type","pipelinescount":16,"value":"container"},
+  {"key":"type","pipelinescount":3,"value":"job"},
+  {"key":"type","pipelinescount":80,"value":"library"},
+  {"key":"type","pipelinescount":5,"value":"web"}
+]

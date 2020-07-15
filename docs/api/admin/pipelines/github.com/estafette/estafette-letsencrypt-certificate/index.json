@@ -1,0 +1,81 @@
+{
+  "id": "563290242244509708",
+  "archived": true,
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-letsencrypt-certificate",
+  "repoBranch": "watch-for-namespaces",
+  "repoRevision": "938b4c3bb9339e1b8690b421c55caad67422a415",
+  "buildVersion": "1.2.6-watch-for-namespaces-174",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-controllers"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette-team"
+    },
+    {
+      "key": "type",
+      "value": "service"
+    }
+  ],
+  "releaseTargets": [
+    {
+      "name": "release",
+      "activeReleases": [
+        {
+          "name": "release",
+          "id": "525595663326806021",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-letsencrypt-certificate",
+          "releaseVersion": "1.2.5",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2020-01-31T11:17:47.177075Z",
+          "updatedAt": "2020-01-31T11:18:13.176065Z",
+          "duration": 25000000000,
+          "pendingDuration": 0
+        }
+      ]
+    }
+  ],
+  "commits": [
+    {
+      "message": "Reduce the sleep time when watching for namespaces.",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-letsencrypt-certificate",
+        "branch": "watch-for-namespaces"
+      }
+    }
+  ],
+  "insertedAt": "2020-06-12T14:42:19.747065Z",
+  "startedAt": "2020-06-12T14:42:21.926826Z",
+  "updatedAt": "2020-06-12T14:45:31.910879Z",
+  "duration": 189000000000,
+  "pendingDuration": 2000000000,
+  "lastUpdatedAt": "2020-06-12T14:45:31.910879Z"
+}

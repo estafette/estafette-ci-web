@@ -1,0 +1,1 @@
+{"templates":[{"placeholders":["Application","Team","ProjectName"],"template":"dotnet"},{"placeholders":["Application","Team"],"template":"golang"},{"placeholders":["Application","Team"],"template":"node"}]}

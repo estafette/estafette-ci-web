@@ -1,0 +1,778 @@
+{
+  "items": [
+    {
+      "id": "562640786124210188",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "repoBranch": "master",
+      "repoRevision": "ab1a5c2aff260d906d2ba4ae93e8897b83543b78",
+      "buildVersion": "0.0.668",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "windows"
+        },
+        {
+          "name": "dev"
+        },
+        {
+          "name": "beta"
+        },
+        {
+          "name": "stable"
+        }
+      ],
+      "commits": [
+        {
+          "message": "build go.cd agent from 20.4.0",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-builder",
+            "branch": ".+"
+          },
+          "releases": {
+            "target": "dev",
+            "version": "same"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-10T07:39:01.468045Z",
+      "startedAt": "2020-06-10T07:39:02.651517Z",
+      "updatedAt": "2020-06-10T07:42:35.072201Z",
+      "duration": 212000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "562631229491871755",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "repoBranch": "master",
+      "repoRevision": "ab1a5c2aff260d906d2ba4ae93e8897b83543b78",
+      "buildVersion": "0.0.668",
+      "buildStatus": "failed",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "windows"
+        },
+        {
+          "name": "dev"
+        },
+        {
+          "name": "beta"
+        },
+        {
+          "name": "stable"
+        }
+      ],
+      "commits": [
+        {
+          "message": "build go.cd agent from 20.4.0",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-builder",
+            "branch": ".+"
+          },
+          "releases": {
+            "target": "dev",
+            "version": "same"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-builder",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-10T06:50:25.015409Z",
+      "startedAt": "2020-06-10T06:50:27.335035Z",
+      "updatedAt": "2020-06-10T06:52:06.596119Z",
+      "duration": 99000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "id": "562458402887630858",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "repoBranch": "master",
+      "repoRevision": "6cebd52d53af1bced5df4e0448eb234a7806b975",
+      "buildVersion": "0.0.667",
+      "buildStatus": "failed",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "windows"
+        },
+        {
+          "name": "dev"
+        },
+        {
+          "name": "beta"
+        },
+        {
+          "name": "stable"
+        }
+      ],
+      "commits": [
+        {
+          "message": "remove api key property in config",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        },
+        {
+          "message": "build with golang:1.14.4-alpine3.12",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-builder",
+            "branch": ".+"
+          },
+          "releases": {
+            "target": "dev",
+            "version": "same"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-builder",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-09T16:11:22.521514Z",
+      "startedAt": "2020-06-09T16:11:23.591439Z",
+      "updatedAt": "2020-06-09T16:12:50.015019Z",
+      "duration": 86000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "561322020746133515",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "repoBranch": "master",
+      "repoRevision": "d0f11d5d7df427f3ecf7cf38dc42ee3a44820f13",
+      "buildVersion": "0.0.666",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "windows"
+        },
+        {
+          "name": "dev"
+        },
+        {
+          "name": "beta"
+        },
+        {
+          "name": "stable"
+        }
+      ],
+      "commits": [
+        {
+          "message": "use json web token from builder config as bearer token to report back to api",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-builder",
+            "branch": ".+"
+          },
+          "releases": {
+            "target": "dev",
+            "version": "same"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-builder",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-06-05T15:51:26.213423Z",
+      "startedAt": "2020-06-05T15:51:28.458794Z",
+      "updatedAt": "2020-06-05T15:54:49.350869Z",
+      "duration": 200000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "id": "556702206150541324",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "repoBranch": "master",
+      "repoRevision": "7d0d9892fc5f4483e9901a24971c25a627143c7c",
+      "buildVersion": "0.0.665",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "windows"
+        },
+        {
+          "name": "dev"
+        },
+        {
+          "name": "beta"
+        },
+        {
+          "name": "stable"
+        }
+      ],
+      "commits": [
+        {
+          "message": "update team label",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-builder",
+            "branch": ".+"
+          },
+          "releases": {
+            "target": "dev",
+            "version": "same"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-builder",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-20T08:13:50.685162Z",
+      "updatedAt": "2020-05-20T08:17:01.627249Z",
+      "duration": 190000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "556700225672118282",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "repoBranch": "master",
+      "repoRevision": "4fb26973c5d99f42c69f072be4f0cd60c1fbee97",
+      "buildVersion": "0.0.664",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "windows"
+        },
+        {
+          "name": "dev"
+        },
+        {
+          "name": "beta"
+        },
+        {
+          "name": "stable"
+        }
+      ],
+      "commits": [
+        {
+          "message": "pass validate true to ReadManifestFromFile",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-builder",
+            "branch": ".+"
+          },
+          "releases": {
+            "target": "dev",
+            "version": "same"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-builder",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-20T08:03:46.291014Z",
+      "updatedAt": "2020-05-20T08:07:42.145048Z",
+      "duration": 235000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "556433925348458507",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "repoBranch": "master",
+      "repoRevision": "59a88d86236a2035afb2de5f229e490843e94e9f",
+      "buildVersion": "0.0.663",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "windows"
+        },
+        {
+          "name": "dev"
+        },
+        {
+          "name": "beta"
+        },
+        {
+          "name": "stable"
+        }
+      ],
+      "commits": [
+        {
+          "message": "update manifest to fix marshalling for archived property",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-builder",
+            "branch": ".+"
+          },
+          "releases": {
+            "target": "dev",
+            "version": "same"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-builder",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-19T09:29:17.881569Z",
+      "updatedAt": "2020-05-19T09:32:22.321487Z",
+      "duration": 184000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "555349446589808650",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "repoBranch": "master",
+      "repoRevision": "be85b6d2373bcf054c5adf715896d02a5f17303b",
+      "buildVersion": "0.0.662",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "windows"
+        },
+        {
+          "name": "dev"
+        },
+        {
+          "name": "beta"
+        },
+        {
+          "name": "stable"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add manifestPreferences support",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        },
+        {
+          "message": "Merge branch 'master' of github.com:estafette/estafette-ci-builder",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-builder",
+            "branch": ".+"
+          },
+          "releases": {
+            "target": "dev",
+            "version": "same"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-builder",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-15T13:33:21.229262Z",
+      "updatedAt": "2020-05-15T13:36:46.647236Z",
+      "duration": 205000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "554148249080692746",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "repoBranch": "master",
+      "repoRevision": "b3483c1c09e1c83fc803ea6ba8ee01602afeee93",
+      "buildVersion": "0.0.661",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "windows"
+        },
+        {
+          "name": "dev"
+        },
+        {
+          "name": "beta"
+        },
+        {
+          "name": "stable"
+        }
+      ],
+      "commits": [
+        {
+          "message": "fix logging for go.cd agent",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-builder",
+            "branch": ".+"
+          },
+          "releases": {
+            "target": "dev",
+            "version": "same"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-builder",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-11T07:43:44.840922Z",
+      "updatedAt": "2020-05-11T07:46:45.312863Z",
+      "duration": 180000000000,
+      "pendingDuration": 0
+    },
+    {
+      "id": "554143144350220299",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "repoBranch": "master",
+      "repoRevision": "8c6a31ece765c512a9edfc8036642b005db0f081",
+      "buildVersion": "0.0.660",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "windows"
+        },
+        {
+          "name": "dev"
+        },
+        {
+          "name": "beta"
+        },
+        {
+          "name": "stable"
+        }
+      ],
+      "commits": [
+        {
+          "message": "use same golang image in all stages",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-builder",
+            "branch": ".+"
+          },
+          "releases": {
+            "target": "dev",
+            "version": "same"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-builder",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-05-11T07:17:47.000781Z",
+      "updatedAt": "2020-05-11T07:20:54.071182Z",
+      "duration": 187000000000,
+      "pendingDuration": 0
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 10,
+    "totalPages": 1,
+    "totalItems": 10
+  }
+}
