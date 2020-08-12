@@ -1,6 +1,6 @@
 <template>
   <span
-    v-if="step && step.logLines && step.logLines.length > 1000"
+    v-if="step && step.logLines && step.logLines.length > maxLinesToShow"
     class="text-danger"
     v-b-tooltip.hover
     :title="`This stage has a total of ${step.logLines.length} log lines; please make it less verbose to avoid it getting truncated`"
@@ -26,6 +26,10 @@ export default {
     step: {
       type: Object,
       default: null
+    },
+    maxLinesToShow: {
+      type: Number,
+      default: 1000
     }
   }
 }

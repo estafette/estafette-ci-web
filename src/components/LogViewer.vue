@@ -12,6 +12,16 @@
       </b-form-checkbox>
     </b-form-group>
 
+    <b-form-group
+      v-if="hasTruncatedLogs"
+      :description="'Estafette truncates logs when a stage has more than '+maxLinesToShow+' lines. Check to see the truncated logs.'"
+      class="m-3"
+    >
+      <b-form-checkbox v-model="showTruncatedLogs">
+        Show truncated logs
+      </b-form-checkbox>
+    </b-form-group>
+
     <div class="row-header">
       <div class="col-1 text-center">
         Status
@@ -58,7 +68,10 @@
             >
               {{ step.status }}
             </span>
-            <log-warning :step="step" />
+            <log-warning
+              :step="step"
+              :max-lines-to-show="maxLinesToShow"
+            />
           </property-block>
           <property-block
             label="Stage"
@@ -174,7 +187,10 @@
               <span>
                 {{ (service.image ? service.image.pullDuration : 0) + service.duration | formatDuration }}
               </span>
-              <log-warning :step="service" />
+              <log-warning
+                :step="service"
+                :max-lines-to-show="maxLinesToShow"
+              />
             </b-button>
           </property-block>
         </b-card-header>
@@ -200,7 +216,10 @@
               <span>
                 {{ (nestedStep.image ? nestedStep.image.pullDuration : 0) + nestedStep.duration | formatDuration }}
               </span>
-              <log-warning :step="nestedStep" />
+              <log-warning
+                :step="nestedStep"
+                :max-lines-to-show="maxLinesToShow"
+              />
             </b-button>
           </property-block>
         </b-card-header>
@@ -535,6 +554,8 @@ export default {
       refresh: true,
       tailedSteps: [],
       showInjectedStages: false,
+      maxLinesToShow: 1000,
+      showTruncatedLogs: false,
       scrollEnabled: true
     }
   },
@@ -614,6 +635,14 @@ export default {
         }
         return 'SUCCEEDED'
       }, 'SUCCEEDED')
+    },
+
+    hasTruncatedLogs () {
+      return this.filteredSteps && this.filteredSteps.some(s =>
+        (s.logLines && s.logLines.length > this.maxLinesToShow) ||
+        (s.services && s.services.some(svc => svc.logLines && svc.logLines.length > this.maxLinesToShow)) ||
+        (s.nestedSteps && s.nestedSteps.some(ns => ns.logLines && ns.logLines.length > this.maxLinesToShow))
+      )
     }
   },
 
@@ -662,23 +691,30 @@ export default {
     },
 
     cappedLogLines (logLines) {
-      const maxLinesToShow = 1000
       const firstLinesToShow = 5
-      if (!logLines || logLines.length <= maxLinesToShow) {
+      if (!logLines || logLines.length <= this.maxLinesToShow || this.showTruncatedLogs) {
         return logLines
       }
 
       var firstLines = logLines.slice(0, firstLinesToShow)
       var truncatedLines = logLines.slice(firstLinesToShow, firstLinesToShow + 3).map((l, i) => {
         if (i === 1) {
-          l.text = '== TOO MANY LINES; TRUNCATED BY ESTAFETTE =='
-        } else {
-          l.text = ' '
+          return {
+            line: l.line,
+            timestamp: null,
+            streamType: l.streamType,
+            text: '== TOO MANY LINES; TRUNCATED BY ESTAFETTE =='
+          }
         }
-        l.timestamp = null
-        return l
+
+        return {
+          line: l.line,
+          timestamp: null,
+          streamType: l.streamType,
+          text: ' '
+        }
       })
-      var lastLines = logLines.slice(logLines.length - maxLinesToShow + firstLinesToShow + 3)
+      var lastLines = logLines.slice(logLines.length - this.maxLinesToShow + firstLinesToShow + 3)
 
       // get first 5 lines and last 1955
       return firstLines.concat(truncatedLines).concat(lastLines)
