@@ -14,11 +14,11 @@
 
     <b-form-group
       v-if="hasTruncatedLogs"
-      :description="'Estafette truncates logs when a stage has more than '+maxLinesToShow+' lines. Check to see the truncated logs.'"
+      :description="'Estafette truncates logs when a stage has more than '+maxLinesToShow+' lines. Check to see the full logs.'"
       class="m-3"
     >
       <b-form-checkbox v-model="showTruncatedLogs">
-        Show truncated logs
+        Show full logs
       </b-form-checkbox>
     </b-form-group>
 
