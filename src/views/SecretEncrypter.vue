@@ -30,13 +30,13 @@
 
       <b-form-group
         label="Pipeline restriction regex"
-        label-for="pipelineWhitelist"
+        label-for="pipelineAllowList"
         description="The pipeline to restrict decryption of the secret for."
       >
         <b-form-input
-          id="pipelineWhitelist"
-          v-model="form.pipelineWhitelist"
-          :readonly="pipelineWhitelistReadonly"
+          id="pipelineAllowList"
+          v-model="form.pipelineAllowList"
+          :readonly="pipelineAllowListReadonly"
           type="text"
         />
       </b-form-group>
@@ -124,10 +124,10 @@ export default {
       form: {
         base64: false,
         double: false,
-        pipelineWhitelist: this.repoSource !== null && this.repoOwner !== null && this.repoName !== null ? `${this.repoSource}/${this.repoOwner}/${this.repoName}` : '.*',
+        pipelineAllowList: this.repoSource !== null && this.repoOwner !== null && this.repoName !== null ? `${this.repoSource}/${this.repoOwner}/${this.repoName}` : '.*',
         value: null
       },
-      pipelineWhitelistReadonly: this.$route.name !== 'AdminSecretEncrypter',
+      pipelineAllowListReadonly: this.$route.name !== 'AdminSecretEncrypter',
       showDoubleEncrypt: this.$route.name === 'AdminSecretEncrypter',
       encrypting: false,
       secret: null
