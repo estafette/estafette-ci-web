@@ -163,7 +163,6 @@
             </b-button>
             <button
               v-else-if="release"
-              disabled="disabled"
               :class="[
                 'btn btn-sm btn-block mr-1 mb-1 text-truncate',
                 $options.filters.bootstrapClass(release.releaseStatus, 'btn')
