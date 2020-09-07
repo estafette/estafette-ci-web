@@ -11,6 +11,7 @@ version:
   semver:
     major: 0
     minor: 1
+    releaseBranch: main
 
 stages:
   audit-and-restore:
