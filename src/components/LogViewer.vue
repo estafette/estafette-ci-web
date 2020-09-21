@@ -555,6 +555,7 @@ export default {
       tailedSteps: [],
       showInjectedStages: false,
       maxLinesToShow: 1000,
+      maxLinesToShowWhenTailing: 250,
       showTruncatedLogs: false,
       scrollEnabled: true
     }
@@ -782,8 +783,8 @@ export default {
                 step.logLines.push(data.logLine)
                 step.lastLineNumber = data.logLine.line
 
-                // tail only last 10 rows per stage to keep dom light
-                if (data.logLine.line > 10) {
+                // tail only last n rows per stage to keep dom light
+                if (data.logLine.line > this.maxLinesToShowWhenTailing) {
                   step.logLines.shift()
                 }
               }
@@ -844,8 +845,8 @@ export default {
                   nestedStep.logLines.push(data.logLine)
                   nestedStep.lastLineNumber = data.logLine.line
 
-                  // tail only last 10 rows per stage to keep dom light
-                  if (data.logLine.line > 10) {
+                  // tail only last n rows per stage to keep dom light
+                  if (data.logLine.line > this.maxLinesToShowWhenTailing) {
                     nestedStep.logLines.shift()
                   }
                 }
