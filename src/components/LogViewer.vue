@@ -555,7 +555,7 @@ export default {
       tailedSteps: [],
       showInjectedStages: false,
       maxLinesToShow: 1000,
-      maxLinesToShowWhenTailing: 250,
+      maxLinesToShowWhenTailing: 100,
       showTruncatedLogs: false,
       scrollEnabled: true
     }
