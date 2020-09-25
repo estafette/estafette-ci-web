@@ -1,12 +1,12 @@
 {
-  "id": "555776830024351754",
+  "id": "592926855538180108",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-cloudflare-dns",
-  "repoBranch": "master",
-  "repoRevision": "72bb004456375b072355d9b63c0f3a2fab461864",
-  "buildVersion": "1.2.6-master-117",
-  "buildStatus": "succeeded",
+  "repoBranch": "main",
+  "repoRevision": "de68c8fa229084e79514617b1636af597c5a4b67",
+  "buildVersion": "1.2.6-main-122",
+  "buildStatus": "failed",
   "labels": [
     {
       "key": "app-group",
@@ -46,19 +46,10 @@
           ],
           "insertedAt": "2020-01-31T10:20:34.107584Z",
           "updatedAt": "2020-01-31T10:21:00.179341Z",
-          "duration": 26000000000
+          "duration": 26000000000,
+          "pendingDuration": 0
         }
       ]
-    }
-  ],
-  "commits": [
-    {
-      "message": "set type to service",
-      "author": {
-        "email": "me@estafette.io",
-        "name": "Just Me",
-        "username": "JustMe"
-      }
     }
   ],
   "triggerEvents": [
@@ -66,13 +57,14 @@
       "git": {
         "event": "push",
         "repository": "github.com/estafette/estafette-cloudflare-dns",
-        "branch": "master"
+        "branch": "main"
       }
     }
   ],
-  "insertedAt": "2020-05-17T01:47:08.302912Z",
-  "updatedAt": "2020-05-17T01:50:23.480716Z",
-  "duration": 195000000000,
-  "pendingDuration": 0,
-  "lastUpdatedAt": "2020-05-17T01:50:23.480716Z"
+  "insertedAt": "2020-09-25T07:01:56.362539Z",
+  "startedAt": "2020-09-25T07:01:57.4685Z",
+  "updatedAt": "2020-09-25T07:05:37.327564Z",
+  "duration": 219000000000,
+  "pendingDuration": 1000000000,
+  "lastUpdatedAt": "2020-09-25T07:05:37.327564Z"
 }

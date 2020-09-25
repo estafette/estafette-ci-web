@@ -1,6 +1,92 @@
 {
   "items": [
     {
+      "id": "592940384866435084",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-demo",
+      "repoBranch": "main",
+      "repoRevision": "22051dca6607cb77ca4fc086e6ad340809b171e8",
+      "buildVersion": "0.0.42",
+      "buildStatus": "running",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "commits": [
+        {
+          "message": "clone and push to main branch of estafette-ci-web",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-demo",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2020-09-25T08:10:45.185793Z",
+      "startedAt": "2020-09-25T08:10:46.250302Z",
+      "updatedAt": "2020-09-25T08:10:46.250302Z",
+      "duration": 0,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "592940163985932300",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-demo",
+      "repoBranch": "main",
+      "repoRevision": "ac1c24ee3bf31504788beee1c3adcff7b549ee15",
+      "buildVersion": "0.0.41",
+      "buildStatus": "failed",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-demo",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2020-09-25T08:09:37.778509Z",
+      "startedAt": "2020-09-25T08:09:42.835465Z",
+      "updatedAt": "2020-09-25T08:10:48.74109Z",
+      "duration": 65000000000,
+      "pendingDuration": 5000000000
+    },
+    {
       "id": "564129451715854347",
       "repoSource": "github.com",
       "repoOwner": "estafette",
@@ -8,7 +94,7 @@
       "repoBranch": "master",
       "repoRevision": "ac1c24ee3bf31504788beee1c3adcff7b549ee15",
       "buildVersion": "0.0.40",
-      "buildStatus": "running",
+      "buildStatus": "succeeded",
       "labels": [
         {
           "key": "app-group",
@@ -44,8 +130,8 @@
       ],
       "insertedAt": "2020-06-15T13:50:46.153126Z",
       "startedAt": "2020-06-15T13:50:48.186116Z",
-      "updatedAt": "2020-06-15T13:50:48.186116Z",
-      "duration": 0,
+      "updatedAt": "2020-06-15T13:51:57.759173Z",
+      "duration": 69000000000,
       "pendingDuration": 2000000000
     },
     {
@@ -383,142 +469,6 @@
       "updatedAt": "2020-06-15T13:06:00.176535Z",
       "duration": 58000000000,
       "pendingDuration": 1000000000
-    },
-    {
-      "id": "564114305453654027",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-demo",
-      "repoBranch": "master",
-      "repoRevision": "2e4255394bad6b934be3b1a930c7fca94d91eb5f",
-      "buildVersion": "0.0.32",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette-team"
-        }
-      ],
-      "commits": [
-        {
-          "message": "for pending/running builds/releases fetch logs from server sent event stream",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-demo",
-            "branch": "master"
-          }
-        }
-      ],
-      "insertedAt": "2020-06-15T12:33:43.880857Z",
-      "startedAt": "2020-06-15T12:33:45.783795Z",
-      "updatedAt": "2020-06-15T12:34:45.784111Z",
-      "duration": 60000000000,
-      "pendingDuration": 1000000000
-    },
-    {
-      "id": "564109728716980235",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-demo",
-      "repoBranch": "master",
-      "repoRevision": "5d60b34c70b94ae04f73b600faca09b5192d2cdf",
-      "buildVersion": "0.0.31",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette-team"
-        }
-      ],
-      "commits": [
-        {
-          "message": "clone master branch",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        },
-        {
-          "message": "extract list of pipelines and builds and releases and save to files",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        },
-        {
-          "message": "info logging",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        },
-        {
-          "message": "console logging format",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        },
-        {
-          "message": "fetch range of subpaths of pipeline and store",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        },
-        {
-          "message": "fetch and store build and releases plus logs",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-demo",
-            "branch": "master"
-          }
-        }
-      ],
-      "insertedAt": "2020-06-15T12:10:27.171317Z",
-      "startedAt": "2020-06-15T12:10:44.787128Z",
-      "updatedAt": "2020-06-15T12:11:56.553201Z",
-      "duration": 71000000000,
-      "pendingDuration": 17000000000
     }
   ],
   "pagination": {

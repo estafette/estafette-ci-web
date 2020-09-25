@@ -1,12 +1,12 @@
 {
-  "id": "563290242244509708",
+  "id": "592931953286512650",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-letsencrypt-certificate",
-  "repoBranch": "watch-for-namespaces",
-  "repoRevision": "938b4c3bb9339e1b8690b421c55caad67422a415",
-  "buildVersion": "1.2.6-watch-for-namespaces-174",
-  "buildStatus": "succeeded",
+  "repoBranch": "main",
+  "repoRevision": "c6e0d6310a23f112c2692c0bc1caea5740ee1f0c",
+  "buildVersion": "1.2.6-main-200",
+  "buildStatus": "failed",
   "labels": [
     {
       "key": "app-group",
@@ -31,11 +31,11 @@
       "activeReleases": [
         {
           "name": "release",
-          "id": "525595663326806021",
+          "id": "567201876814495756",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-letsencrypt-certificate",
-          "releaseVersion": "1.2.5",
+          "releaseVersion": "1.2.6",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
@@ -44,22 +44,13 @@
               }
             }
           ],
-          "insertedAt": "2020-01-31T11:17:47.177075Z",
-          "updatedAt": "2020-01-31T11:18:13.176065Z",
-          "duration": 25000000000,
-          "pendingDuration": 0
+          "insertedAt": "2020-06-26T10:17:55.883089Z",
+          "startedAt": "2020-06-26T10:17:58.216387Z",
+          "updatedAt": "2020-06-26T10:18:30.980314Z",
+          "duration": 32000000000,
+          "pendingDuration": 2000000000
         }
       ]
-    }
-  ],
-  "commits": [
-    {
-      "message": "Reduce the sleep time when watching for namespaces.",
-      "author": {
-        "email": "me@estafette.io",
-        "name": "Just Me",
-        "username": "JustMe"
-      }
     }
   ],
   "triggerEvents": [
@@ -67,14 +58,14 @@
       "git": {
         "event": "push",
         "repository": "github.com/estafette/estafette-letsencrypt-certificate",
-        "branch": "watch-for-namespaces"
+        "branch": "main"
       }
     }
   ],
-  "insertedAt": "2020-06-12T14:42:19.747065Z",
-  "startedAt": "2020-06-12T14:42:21.926826Z",
-  "updatedAt": "2020-06-12T14:45:31.910879Z",
-  "duration": 189000000000,
+  "insertedAt": "2020-09-25T07:27:52.07153Z",
+  "startedAt": "2020-09-25T07:27:54.200487Z",
+  "updatedAt": "2020-09-25T07:31:47.567636Z",
+  "duration": 233000000000,
   "pendingDuration": 2000000000,
-  "lastUpdatedAt": "2020-06-12T14:45:31.910879Z"
+  "lastUpdatedAt": "2020-09-25T07:31:47.567636Z"
 }

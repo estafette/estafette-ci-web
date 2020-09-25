@@ -1,6 +1,162 @@
 {
   "items": [
     {
+      "id": "587906518126067723",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-crypt",
+      "repoBranch": "main",
+      "repoRevision": "52744ab86c30ea575c7a112ad1c5639a487fbeea",
+      "buildVersion": "0.0.40",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "change default branch to main",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-crypt",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2020-09-07T13:27:10.970548Z",
+      "startedAt": "2020-09-07T13:27:12.101802Z",
+      "updatedAt": "2020-09-07T13:27:49.240127Z",
+      "duration": 37000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "585922429021323276",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-crypt",
+      "repoBranch": "master",
+      "repoRevision": "2e77838e467758794d99841a7c64000cec6fbe89",
+      "buildVersion": "0.0.39",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "switch away from non-incluse whitelist property names to allowed...",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-crypt",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-08-31T13:15:35.028131Z",
+      "startedAt": "2020-08-31T13:15:36.86706Z",
+      "updatedAt": "2020-08-31T13:16:09.503535Z",
+      "duration": 32000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "570897790076157962",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-crypt",
+      "repoBranch": "master",
+      "repoRevision": "bad5d47bc4e6b9cb60a37a95effddc1cfc697a9a",
+      "buildVersion": "0.0.38",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "return ErrRestrictedSecret if restricted secret is not valid for this pipeline",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-crypt",
+            "branch": "master"
+          }
+        }
+      ],
+      "insertedAt": "2020-07-09T11:36:19.099989Z",
+      "startedAt": "2020-07-09T11:36:21.22075Z",
+      "updatedAt": "2020-07-09T11:38:17.082572Z",
+      "duration": 115000000000,
+      "pendingDuration": 2000000000
+    },
+    {
       "id": "555776260444815372",
       "repoSource": "github.com",
       "repoOwner": "estafette",
@@ -331,147 +487,6 @@
       "insertedAt": "2020-03-03T08:27:14.20517Z",
       "updatedAt": "2020-03-03T08:27:49.79236Z",
       "duration": 35000000000,
-      "pendingDuration": 0
-    },
-    {
-      "id": "534414930194268164",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-crypt",
-      "repoBranch": "pipeline-whitelist-regex",
-      "repoRevision": "bdd2602cffe70e1970a1d004310e4b2ea1c4dbef",
-      "buildVersion": "0.0.30-pipeline-whitelist-regex",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette-team"
-        }
-      ],
-      "commits": [
-        {
-          "message": "add pipeline whitelist in secret envelope and use when decrypting to see if pipeline is allowed to use the secret",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-crypt",
-            "branch": "pipeline-whitelist-regex"
-          }
-        }
-      ],
-      "insertedAt": "2020-03-02T14:54:53.833075Z",
-      "updatedAt": "2020-03-02T14:55:29.598104Z",
-      "duration": 35000000000,
-      "pendingDuration": 0
-    },
-    {
-      "id": "523037269785477124",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-crypt",
-      "repoBranch": "master",
-      "repoRevision": "cf18b2fb083f5812a40a96830ca6b7b59b96aff2",
-      "buildVersion": "0.0.29",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette-team"
-        }
-      ],
-      "commits": [
-        {
-          "message": "build with golang 1.13.6",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-crypt",
-            "branch": "master"
-          }
-        }
-      ],
-      "insertedAt": "2020-01-22T10:25:07.429353Z",
-      "updatedAt": "2020-01-22T10:25:47.772328Z",
-      "duration": 40000000000,
-      "pendingDuration": 0
-    },
-    {
-      "id": "511769821402791937",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-crypt",
-      "repoBranch": "master",
-      "repoRevision": "59f61c018a09870fe6913db26b1c3fe6c00b9704",
-      "buildVersion": "0.0.28",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette-team"
-        }
-      ],
-      "commits": [
-        {
-          "message": "build with golang:1.13.5-alpine",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-crypt",
-            "branch": "master"
-          }
-        }
-      ],
-      "insertedAt": "2019-12-13T15:15:55.066283Z",
-      "updatedAt": "2019-12-13T15:17:23.304933Z",
-      "duration": 88000000000,
       "pendingDuration": 0
     }
   ],

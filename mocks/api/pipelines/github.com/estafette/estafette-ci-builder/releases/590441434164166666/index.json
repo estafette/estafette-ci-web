@@ -1,0 +1,21 @@
+{
+  "name": "stable",
+  "id": "590441434164166666",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-builder",
+  "releaseVersion": "0.0.685",
+  "releaseStatus": "succeeded",
+  "triggerEvents": [
+    {
+      "manual": {
+        "userID": "me@estafette.io"
+      }
+    }
+  ],
+  "insertedAt": "2020-09-16T12:20:25.953095Z",
+  "startedAt": "2020-09-16T12:20:26.903861Z",
+  "updatedAt": "2020-09-16T12:21:10.59651Z",
+  "duration": 43000000000,
+  "pendingDuration": 0
+}
