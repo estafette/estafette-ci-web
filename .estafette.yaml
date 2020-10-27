@@ -25,19 +25,19 @@ stages:
         - '#npm-audit'
 
       restore:
-        image: node:13.6.0-alpine
+        image: node:14.14.0-alpine
         commands:
         - npm ci
 
   lint-and-build:
     parallelStages:
       lint:
-        image: node:13.6.0-alpine
+        image: node:14.14.0-alpine
         commands:
         - npm run lint
 
       build:
-        image: node:13.6.0-alpine
+        image: node:14.14.0-alpine
         commands:
         - npm run build
 
@@ -76,7 +76,7 @@ stages:
         path: /robots.txt
         port: 5000
 
-    image: node:13.6.0-alpine
+    image: node:14.14.0-alpine
     commands:
     - apk add curl
     - curl --fail http://ci.estafette.io:5000/manifest/encrypt
