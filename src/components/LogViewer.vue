@@ -554,8 +554,8 @@ export default {
       refresh: true,
       tailedSteps: [],
       showInjectedStages: false,
-      maxLinesToShow: 1000,
-      maxLinesToShowWhenTailing: 100,
+      maxLinesToShow: 500,
+      maxLinesToShowWhenTailing: 50,
       showTruncatedLogs: false,
       scrollEnabled: true
     }
@@ -704,7 +704,7 @@ export default {
             line: l.line,
             timestamp: null,
             streamType: l.streamType,
-            text: '== TOO MANY LINES; TRUNCATED BY ESTAFETTE =='
+            text: '== TOO MANY LINES; TRUNCATED BY ESTAFETTE; SHOW ALL BY CHECKING \'SHOW FULL LOGS\' =='
           }
         }
 
