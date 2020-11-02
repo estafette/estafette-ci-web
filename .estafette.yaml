@@ -111,6 +111,8 @@ releases:
         visibility: iap
         iapOauthClientID: estafette.secret(iXOTyaK0CMquct2i.gHSRFMIopefYNe0bG4fANPaRaBknLwPP4qa1KiIUR_UWW6ORO5n9rLKvKGeRg5U_c_D3gQipezDEzmfaO7jsLbk8f8GpV4JFqMy3hT8g0dkdr5ndOkAwblORXBvK482HY7ihEWhEuRtyzGpK9YGALA==.qUmsBfkw3v36MosJJrfGZ9-yc09RHUjB55e4bAw5KPscGJ6eOLv-GTDQmVvuPK1x5NyJqrc=)
         iapOauthClientSecret: estafette.secret(UwPXjVCad4ycIYJK.SSTHl16_SNYh4p0JB5o-nDdAnhQM3gKLgLmapXhj4fGQT0zgkQMLP-TVp18jyWFW.YxXxmUntMPgvyMI_JtxuzB18qEBw_gnOhImTolZTnuDveWlHDvG5nrmRJnjMd5xb1coCBsw=)
+        imagePullSecretUser: estafette.secret(iydnJgQZLGpU33At.mZSQ1dw1Sqk_YcjZuyPs4kg4Fg5h4yS1m5T36ckDrg==.io-Fy8AvB6MyeY7QrDL_Hp537Sie9BHHFhs_2wZV6AFSj9vjBV82ivLJJqhoxrvnRB-zyl8=)
+        imagePullSecretPassword: estafette.secret(uDVlBea75D_GCVdF.89h0siWMpyr6mVvHyQzKFtV6QgbipxfR8_8IjJNUimopr5RntNgLxCyTyMKguu2e.3oUzkAq_yjvFtkaa3QifF4NjUBCXsgfL2MoYsr5QnkHkpGDcxWIePRsSI8h9Ye3lK33dW4o=)
         container:
           repository: estafette
           cpu:
