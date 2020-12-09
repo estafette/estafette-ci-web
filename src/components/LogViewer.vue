@@ -546,6 +546,10 @@ export default {
     status: {
       type: String,
       default: null
+    },
+    allowTail: {
+      type: Boolean,
+      default: false
     }
   },
   data: function () {
@@ -648,7 +652,11 @@ export default {
   },
 
   created () {
-    this.tailLogs()
+    if (this.allowTail) {
+      this.tailLogs()
+    } else {
+      this.loadLogs()
+    }
   },
 
   methods: {
@@ -659,7 +667,7 @@ export default {
     },
 
     loadLogs () {
-      if (this.status === 'succeeded' || this.status === 'failed' || this.status === 'canceled') {
+      if (!this.allowTail || this.status === 'succeeded' || this.status === 'failed' || this.status === 'canceled') {
         this.tailedSteps = []
         this.axios.get(this.logUrl)
           .then(response => {
@@ -722,7 +730,7 @@ export default {
     },
 
     isTailing () {
-      return (this.status === 'pending' || this.status === 'running' || this.status === 'canceling')
+      return this.allowTail && (this.status === 'pending' || this.status === 'running' || this.status === 'canceling')
     },
 
     tailLogs () {
@@ -893,6 +901,20 @@ export default {
     scrollDown () {
       this.scrollEnabled = false
       window.scrollTo(0, document.body.scrollHeight)
+    }
+  },
+
+  watch: {
+    '$route' (to, from) {
+      if (this.es) {
+        this.es.close()
+      }
+      this.tailedSteps = []
+      if (this.allowTail) {
+        this.tailLogs()
+      } else {
+        this.loadLogs()
+      }
     }
   },
 

@@ -120,7 +120,7 @@ export default new Router({
       component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineBuildDetails.vue'),
       children: [
         {
-          path: 'logs',
+          path: 'logs/:logid?',
           name: 'PipelineBuildLogs',
           props: true,
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineBuildLogs.vue'),
@@ -151,7 +151,7 @@ export default new Router({
       component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineReleaseDetails.vue'),
       children: [
         {
-          path: 'logs',
+          path: 'logs/:logid?',
           name: 'PipelineReleaseLogs',
           props: true,
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineReleaseLogs.vue'),

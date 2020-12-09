@@ -1,15 +1,35 @@
 <template>
-  <log-viewer
-    :log-url="`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs`"
-    :status="this.build.buildStatus"
-  />
+  <div>
+    <div class="col-12 text-center">
+      <log-navigation
+        :log-url="`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/alllogs`"
+        :status="this.build.buildStatus"
+        :logid="logid"
+      />
+    </div>
+
+    <log-viewer
+      v-if="logid"
+      :log-url="`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logsbyid/${this.logid}`"
+      :status="this.build.buildStatus"
+      :allow-tail="false"
+    />
+    <log-viewer
+      v-else
+      :log-url="`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs`"
+      :status="this.build.buildStatus"
+      :allow-tail="true"
+    />
+  </div>
 </template>
 
 <script>
+import LogNavigation from '@/components/LogNavigation'
 import LogViewer from '@/components/LogViewer'
 
 export default {
   components: {
+    LogNavigation,
     LogViewer
   },
   props: {
@@ -26,6 +46,10 @@ export default {
       default: null
     },
     id: {
+      type: String,
+      default: null
+    },
+    logid: {
       type: String,
       default: null
     },
