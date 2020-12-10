@@ -55,8 +55,8 @@
         <b-td>
           <batch-organizations-dropdown
             :selected="selected"
-            :selectable-items="users"
-            type="users"
+            :selectable-items="clients"
+            type="clients"
             :apply-done-func="applyDone"
           />
         </b-td>
