@@ -68,6 +68,56 @@
             </template>
           </b-form-tags>
         </b-form-group>
+        <b-form-group
+          id="organizations-group"
+          label="Organizations:"
+          label-for="organizations"
+        >
+          <b-form-tags
+            input-id="organizations"
+            v-model="selectedOrganizations"
+            add-on-change
+            no-outer-focus
+          >
+            <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
+              <ul
+                v-if="tags.length > 0"
+                class="list-inline d-inline-block mb-2"
+              >
+                <li
+                  v-for="tag in tags"
+                  :key="tag"
+                  class="list-inline-item"
+                >
+                  <b-form-tag
+                    @remove="removeTag(tag)"
+                    :title="tag"
+                    :disabled="disabled"
+                    variant="success"
+                  >
+                    {{ tag }}
+                  </b-form-tag>
+                </li>
+              </ul>
+              <b-form-select
+                v-bind="inputAttrs"
+                v-on="inputHandlers"
+                :disabled="disabled || availableOrganizations.length === 0"
+                :options="availableOrganizations"
+              >
+                <template v-slot:first>
+                  <!-- This is required to prevent bugs with Safari -->
+                  <option
+                    disabled
+                    value=""
+                  >
+                    Choose an organization...
+                  </option>
+                </template>
+              </b-form-select>
+            </template>
+          </b-form-tags>
+        </b-form-group>
         <b-button
           type="submit"
           variant="primary"
@@ -128,12 +178,15 @@ export default {
   data: function () {
     return {
       roles: [],
+      organizations: [],
       form: {
         name: '',
         roles: []
       },
+      selectedOrganizations: [],
       loaded: {
         roles: false,
+        organizations: false,
         client: false
       }
     }
@@ -141,6 +194,7 @@ export default {
 
   created () {
     this.loadRoles()
+    this.loadOrganizations()
     this.loadForm()
   },
 
@@ -156,10 +210,24 @@ export default {
         })
     },
 
+    loadOrganizations () {
+      this.axios.get(`/api/organizations?page[number]=1&page[size]=100`)
+        .then(response => {
+          this.organizations = response.data.items
+          this.loaded.organizations = true
+        })
+        .catch(e => {
+          console.warn(e)
+        })
+    },
+
     loadForm () {
       this.axios.get(`/api/clients/${this.id}`)
         .then(response => {
           this.form = response.data
+          if (this.form && this.form.organizations) {
+            this.selectedOrganizations = this.form.organizations.map(o => o.name)
+          }
           this.loaded.client = true
         })
         .catch(e => {
@@ -169,6 +237,13 @@ export default {
 
     onSubmit (evt) {
       evt.preventDefault()
+
+      if (this.selectedOrganizations.length > 0) {
+        this.form.organizations = this.organizations.filter(org => this.selectedOrganizations.indexOf(org.name) !== -1).map(org => { return { id: org.id, name: org.name } })
+      } else {
+        this.form.organizations = []
+      }
+
       this.axios.put(`/api/clients/${this.id}`, this.form)
         .then(response => {
           this.$router.push({ name: 'AdminClients' })
@@ -193,6 +268,9 @@ export default {
   computed: {
     availableRoles () {
       return this.roles.filter(role => !this.form || !this.form.roles || this.form.roles.indexOf(role) === -1)
+    },
+    availableOrganizations () {
+      return this.organizations.map(o => o.name).filter(org => !this.form || !this.selectedOrganizations || this.selectedOrganizations.indexOf(org) === -1)
     },
     ready () {
       for (const property in this.loaded) {

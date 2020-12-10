@@ -52,6 +52,14 @@
             :apply-done-func="applyDone"
           />
         </b-td>
+        <b-td>
+          <batch-organizations-dropdown
+            :selected="selected"
+            :selectable-items="users"
+            type="users"
+            :apply-done-func="applyDone"
+          />
+        </b-td>
         <b-td colspan="1" />
       </template>
 
@@ -69,6 +77,16 @@
           class="mr-1"
         >
           {{ r }}
+        </b-badge>
+      </template>
+      <template v-slot:cell(organizations)="data">
+        <b-badge
+          v-for="org in data.item.organizations"
+          :key="org.name"
+          variant="success"
+          class="mr-1"
+        >
+          {{ org.name }}
         </b-badge>
       </template>
       <template v-slot:cell(actions)="row">
@@ -126,6 +144,15 @@
             </b-col>
             <b-col>{{ row.item.clientSecret }}</b-col>
           </b-row>
+          <b-row class="mb-2">
+            <b-col
+              sm="3"
+              class="text-sm-right"
+            >
+              <b>Organizations:</b>
+            </b-col>
+            <b-col>{{ row.item.organizations }}</b-col>
+          </b-row>
         </b-card>
       </template>
     </b-table>
@@ -141,6 +168,7 @@
 import { BTable, BTd, BButton, BCard, BRow, BCol, BBadge, BFormCheckbox } from 'bootstrap-vue'
 
 import BatchRolesDropdown from '@/components/BatchRolesDropdown'
+import BatchOrganizationsDropdown from '@/components/BatchOrganizationsDropdown'
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
 
@@ -155,6 +183,7 @@ export default {
     BBadge,
     BFormCheckbox,
     BatchRolesDropdown,
+    BatchOrganizationsDropdown,
     PaginationCompact,
     Pagination
   },
@@ -181,6 +210,10 @@ export default {
         },
         {
           key: 'roles',
+          sortable: true
+        },
+        {
+          key: 'organizations',
           sortable: true
         },
         {
