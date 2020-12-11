@@ -1,8 +1,17 @@
 <template>
   <div class="m-3">
     <div class="row">
-      <div class="col-12 text-center">
+      <div class="col-12 col-lg-3">
+        <release-target-selector
+          :model="filter.target"
+          :on-change="setTarget"
+          :pipeline="pipeline"
+        />
+      </div>
+      <div class="col-7 col-lg-6 text-lg-center">
         <status-filter :filter="filter" />
+      </div>
+      <div class="col-5 col-lg-3">
         <pagination-compact
           :pagination="pagination"
           :link-generator="paginationLinkGenerator"
@@ -72,6 +81,7 @@ import Pagination from '@/components/Pagination'
 import StatusFilter from '@/components/StatusFilter'
 import ReleaseRow from '@/components/ReleaseRow'
 import PaginationCompact from '@/components/PaginationCompact'
+import ReleaseTargetSelector from '@/components/ReleaseTargetSelector'
 
 export default {
   components: {
@@ -79,7 +89,8 @@ export default {
     Pagination,
     StatusFilter,
     ReleaseRow,
-    PaginationCompact
+    PaginationCompact,
+    ReleaseTargetSelector
   },
   props: {
     repoSource: {
@@ -113,7 +124,8 @@ export default {
         totalItems: 0
       },
       filter: {
-        status: 'all'
+        status: 'all',
+        target: 'all'
       },
       loaded: false,
       refresh: true
@@ -121,18 +133,30 @@ export default {
   },
 
   created () {
+    this.filterDefaults = { ...this.filter }
     this.setDataFromQueryParams(this.query)
     this.loadReleases()
   },
 
   methods: {
     paginationLinkGenerator (pageNum) {
-      return { query: { status: this.filter.status, page: pageNum } }
+      var query = this.getQueryParams()
+
+      if (pageNum > 1) {
+        query.page = pageNum
+      } else if (query.page) {
+        delete query.page
+      }
+
+      return { query: query }
     },
 
     setDataFromQueryParams (query) {
       this.pagination.page = query && query.page ? Number.parseInt(query.page, 10) : 1
-      this.filter.status = query && query.status ? query.status : 'all'
+      this.filter.status = query && query.status ? query.status : this.filterDefaults.status
+      this.filter.target = query && query.target ? query.target : this.filterDefaults.target
+
+      console.log('setDataFromQueryParams', this.filter)
     },
 
     loadReleases () {
@@ -140,8 +164,9 @@ export default {
       if (this.filter.status === 'running') {
         statusFilter += `&filter[status]=pending&filter[status]=canceling`
       }
+      var targetFilter = `filter[target]=${this.filter.target}`
 
-      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases?${statusFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases?${statusFilter}&${targetFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.releases = response.data.items
           this.pagination = response.data.pagination
@@ -165,6 +190,39 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadReleases, timeoutWithJitter)
       }
+    },
+
+    getQueryParams () {
+      var query = { ...this.$route.query }
+
+      if (this.filter && this.filter.status && this.filter.status !== this.filterDefaults.status && this.filter.status !== '') {
+        query.status = this.filter.status
+      } else if (query.status) {
+        delete query.status
+      }
+
+      if (this.filter && this.filter.target && this.filter.target !== this.filterDefaults.target && this.filter.target !== '') {
+        query.target = this.filter.target
+      } else if (query.target) {
+        delete query.target
+      }
+
+      if (this.pagination && this.pagination.page && this.pagination.page > 1) {
+        query.page = this.pagination.page
+      } else if (query.page) {
+        delete query.page
+      }
+
+      return query
+    },
+
+    updateQueryParams () {
+      this.$router.push({ query: this.getQueryParams() })
+    },
+
+    setTarget (value) {
+      this.filter.target = value
+      this.updateQueryParams()
     }
   },
 
