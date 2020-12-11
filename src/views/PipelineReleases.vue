@@ -155,8 +155,6 @@ export default {
       this.pagination.page = query && query.page ? Number.parseInt(query.page, 10) : 1
       this.filter.status = query && query.status ? query.status : this.filterDefaults.status
       this.filter.target = query && query.target ? query.target : this.filterDefaults.target
-
-      console.log('setDataFromQueryParams', this.filter)
     },
 
     loadReleases () {

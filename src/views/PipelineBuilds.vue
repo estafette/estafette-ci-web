@@ -126,18 +126,27 @@ export default {
   },
 
   created () {
+    this.filterDefaults = { ...this.filter }
     this.setDataFromQueryParams(this.query)
     this.loadBuilds()
   },
 
   methods: {
     paginationLinkGenerator (pageNum) {
-      return { query: { status: this.filter.status, page: pageNum } }
+      var query = this.getQueryParams()
+
+      if (pageNum > 1) {
+        query.page = pageNum
+      } else if (query.page) {
+        delete query.page
+      }
+
+      return { query: query }
     },
 
     setDataFromQueryParams (query) {
       this.pagination.page = query && query.page ? Number.parseInt(query.page, 10) : 1
-      this.filter.status = query && query.status ? query.status : 'all'
+      this.filter.status = query && query.status ? query.status : this.filterDefaults.status
     },
 
     loadBuilds () {
@@ -170,6 +179,28 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadBuilds, timeoutWithJitter)
       }
+    },
+
+    getQueryParams () {
+      var query = { ...this.$route.query }
+
+      if (this.filter && this.filter.status && this.filter.status !== this.filterDefaults.status && this.filter.status !== '') {
+        query.status = this.filter.status
+      } else if (query.status) {
+        delete query.status
+      }
+
+      if (this.pagination && this.pagination.page && this.pagination.page > 1) {
+        query.page = this.pagination.page
+      } else if (query.page) {
+        delete query.page
+      }
+
+      return query
+    },
+
+    updateQueryParams () {
+      this.$router.push({ query: this.getQueryParams() })
     }
   },
 

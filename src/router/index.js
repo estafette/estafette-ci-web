@@ -61,7 +61,7 @@ export default new Router({
         {
           path: 'builds',
           name: 'PipelineBuilds',
-          props: true,
+          props: (route) => ({ query: route.query, ...route.params }),
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineBuilds.vue'),
           meta: {
             text: 'Builds',
