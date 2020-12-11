@@ -157,20 +157,69 @@ export default {
   created () {
     this.filterDefaults = { ...this.filter }
     this.setDataFromQueryParams(this.query)
+    this.$router.replace({ query: this.getQueryParams() }).catch(() => {})
     this.loadPipelines()
   },
 
   methods: {
     paginationLinkGenerator (pageNum) {
-      var query = this.getPipelinesQueryParams()
+      var query = this.getQueryParams()
 
-      if (pageNum > 1) {
+      if (pageNum > 0) {
         query.page = pageNum
       } else if (query.page) {
         delete query.page
       }
 
       return { query: query }
+    },
+
+    getQueryParams () {
+      var query = { ...this.$route.query }
+
+      if (this.filter && this.filter.status && this.filter.status !== '') {
+        query.status = this.filter.status
+      } else if (query.status) {
+        delete query.status
+      }
+
+      if (this.filter && this.filter.since && this.filter.since !== '') {
+        query.since = this.filter.since
+      } else if (query.since) {
+        delete query.since
+      }
+
+      if (this.filter && this.filter.search && this.filter.search !== '') {
+        query.search = this.filter.search
+      } else if (query.search) {
+        delete query.search
+      }
+
+      if (this.filter && this.filter.labels && this.filter.labels !== '') {
+        query.labels = this.filter.labels
+      } else if (query.labels) {
+        delete query.labels
+      }
+
+      if (this.filter && this.filter.recentCommitter && this.filter.recentCommitter !== '') {
+        query.recentCommitter = this.filter.recentCommitter
+      } else if (query.recentCommitter) {
+        delete query.recentCommitter
+      }
+
+      if (this.filter && this.filter.recentReleaser && this.filter.recentReleaser !== '') {
+        query.recentReleaser = this.filter.recentReleaser
+      } else if (query.recentReleaser) {
+        delete query.recentReleaser
+      }
+
+      if (this.pagination && this.pagination.page && this.pagination.page > 0) {
+        query.page = this.pagination.page
+      } else if (query.page) {
+        delete query.page
+      }
+
+      return query
     },
 
     setDataFromQueryParams (query) {
@@ -183,56 +232,8 @@ export default {
       this.filter.recentReleaser = query && query.recentReleaser ? query.recentReleaser : this.filterDefaults.recentReleaser
     },
 
-    getPipelinesQueryParams () {
-      var query = { ...this.$route.query }
-
-      if (this.filter && this.filter.status && this.filter.status !== this.filterDefaults.status && this.filter.status !== '') {
-        query.status = this.filter.status
-      } else if (query.status) {
-        delete query.status
-      }
-
-      if (this.filter && this.filter.since && this.filter.since !== this.filterDefaults.since && this.filter.since !== '') {
-        query.since = this.filter.since
-      } else if (query.since) {
-        delete query.since
-      }
-
-      if (this.filter && this.filter.search && this.filter.search !== this.filterDefaults.search && this.filter.search !== '') {
-        query.search = this.filter.search
-      } else if (query.search) {
-        delete query.search
-      }
-
-      if (this.filter && this.filter.labels && this.filter.labels !== this.filterDefaults.labels && this.filter.labels !== '') {
-        query.labels = this.filter.labels
-      } else if (query.labels) {
-        delete query.labels
-      }
-
-      if (this.pagination && this.pagination.page && this.pagination.page > 1) {
-        query.page = this.pagination.page
-      } else if (query.page) {
-        delete query.page
-      }
-
-      if (this.recentCommitter && this.filter.recentCommitter && this.filter.recentCommitter !== this.filterDefaults.recentCommitter && this.filterDefaults.recentCommitter !== '') {
-        query.recentCommitter = this.filter.recentCommitter
-      } else if (query.recentCommitter) {
-        delete query.recentCommitter
-      }
-
-      if (this.recentReleaser && this.filter.recentReleaser && this.filter.recentReleaser !== this.filterDefaults.recentReleaser && this.filterDefaults.recentReleaser !== '') {
-        query.recentReleaser = this.filter.recentReleaser
-      } else if (query.recentReleaser) {
-        delete query.recentReleaser
-      }
-
-      return query
-    },
-
     updateQueryParams () {
-      this.$router.push({ query: this.getPipelinesQueryParams() })
+      this.$router.push({ query: this.getQueryParams() })
     },
 
     loadPipelines () {
