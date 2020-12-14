@@ -909,6 +909,7 @@ export default {
       if (this.es) {
         this.es.close()
       }
+      this.steps = []
       this.tailedSteps = []
       if (this.allowTail) {
         this.tailLogs()
