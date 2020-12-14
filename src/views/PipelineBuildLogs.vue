@@ -15,7 +15,7 @@
       :allow-tail="false"
     />
     <log-viewer
-      v-else
+      v-else-if="build.buildStatus === 'pending' || build.buildStatus === 'running' || build.buildStatus === 'canceling'"
       :log-url="`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}/logs`"
       :status="this.build.buildStatus"
       :allow-tail="true"

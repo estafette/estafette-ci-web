@@ -15,7 +15,7 @@
       :allow-tail="false"
     />
     <log-viewer
-      v-else
+      v-else-if="release.releaseStatus === 'pending' || release.releaseStatus === 'running' || release.releaseStatus === 'canceling'"
       :log-url="`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}/logs`"
       :status="this.release.releaseStatus"
       :allow-tail="true"

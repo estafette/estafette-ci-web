@@ -1,24 +1,8 @@
 <template>
   <b-button-group
+    v-if="logCount > 0"
     class="mb-3 bg-white"
   >
-    <b-button
-      :to="{ params: { logid: null } }"
-      active-class="router-link-active"
-      variant="outline-primary"
-      :class="[ !logid ? 'active' : 'border-btn-group' ]"
-    >
-      <span
-        v-if="status === 'pending' || status === 'running' || status === 'canceling'"
-      >
-        Tailing...
-      </span>
-      <span
-        v-else
-      >
-        Last
-      </span>
-    </b-button>
     <b-button
       v-for="(l, index) in logs"
       :key="l.id"
@@ -28,7 +12,16 @@
       :class="[ l.id === logid ? 'active' : 'border-btn-group' ]"
       :title="l.insertedAt"
     >
-      {{ index + 1 }} / {{ logs.length }}
+      {{ index + 1 }} / {{ logCount }}
+    </b-button>
+    <b-button
+      v-if="status === 'pending' || status === 'running' || status === 'canceling'"
+      :to="{ params: { logid: null } }"
+      active-class="router-link-active"
+      variant="outline-primary"
+      :class="[ !logid ? 'active' : 'border-btn-group' ]"
+    >
+      {{ logCount }} / {{ logCount }} <font-awesome-icon icon="stream" />
     </b-button>
   </b-button-group>
 </template>
@@ -37,10 +30,17 @@
 import { BButtonGroup, BButton } from 'bootstrap-vue'
 import queryGenerator from '@/mixins/queryGenerator'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faStream } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faStream)
+
 export default {
   components: {
     BButtonGroup,
-    BButton
+    BButton,
+    FontAwesomeIcon
   },
 
   mixins: [queryGenerator],
@@ -80,11 +80,28 @@ export default {
       this.axios.get(this.logUrl)
         .then(response => {
           this.logs = response.data.items
+          this.redirectIfNeeded()
           this.periodicallyRefresh(15)
         })
         .catch(e => {
           this.periodicallyRefresh(30)
         })
+    },
+
+    redirectIfNeeded () {
+      if (this.logid) {
+        return
+      }
+
+      if (this.status === 'pending' || this.status === 'running' || this.status === 'canceling') {
+        return
+      }
+
+      if (this.logs.length === 0) {
+        return
+      }
+
+      this.$router.push({ params: { logid: this.logs[this.logs.length - 1].id } })
     },
 
     periodicallyRefresh (intervalSeconds) {
@@ -99,6 +116,16 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadAllLogs, timeoutWithJitter)
       }
+    }
+  },
+
+  computed: {
+    logCount () {
+      if (this.status === 'pending' || this.status === 'running' || this.status === 'canceling') {
+        return this.logs.length + 1
+      }
+
+      return this.logs.length
     }
   },
 
