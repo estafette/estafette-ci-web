@@ -5,6 +5,13 @@
     class="row-block list-complete-item"
   >
     <property-block
+      v-if="allBuildsMode"
+      label="Pipeline"
+      class="col-xxxl-3"
+    >
+      <repository-title :repo="build" />
+    </property-block>
+    <property-block
       label="Version"
       :value="build.buildVersion"
       class="col-xxxl-2"
@@ -45,7 +52,7 @@
     </property-block>
     <property-block
       label="Commit(s)"
-      class="col-xxxl-3"
+      :class="allBuildsMode ? 'col-xxxl-2' : 'col-xxxl-3'"
     >
       <commits :commits="build.commits" />
     </property-block>
@@ -98,6 +105,7 @@ import CancelButton from '@/components/CancelButton'
 import ReleaseBadgeForBuild from '@/components/ReleaseBadgeForBuild'
 import PropertyBlock from '@/components/PropertyBlock'
 import DurationLabel from '@/components/DurationLabel'
+import RepositoryTitle from '@/components/RepositoryTitle'
 import Commits from '@/components/Commits'
 import refresh from '../helpers/refresh'
 
@@ -112,6 +120,7 @@ export default {
     ReleaseBadgeForBuild,
     PropertyBlock,
     DurationLabel,
+    RepositoryTitle,
     Commits
   },
 
@@ -127,6 +136,10 @@ export default {
     pipeline: {
       type: Object,
       default: null
+    },
+    allBuildsMode: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -166,7 +179,7 @@ export default {
     },
 
     showActions () {
-      return this.user && this.user.active && this.build && ((this.build.buildStatus === 'failed' || this.build.buildStatus === 'pending' || this.build.buildStatus === 'running' || this.build.buildStatus === 'canceled' || this.build.buildStatus === 'canceling') || (this.pipeline && this.pipeline.releaseTargets && this.pipeline.releaseTargets.length > 0 && this.build.buildStatus === 'succeeded'))
+      return !this.allBuildsMode && this.user && this.user.active && this.build && ((this.build.buildStatus === 'failed' || this.build.buildStatus === 'pending' || this.build.buildStatus === 'running' || this.build.buildStatus === 'canceled' || this.build.buildStatus === 'canceling') || (this.pipeline && this.pipeline.releaseTargets && this.pipeline.releaseTargets.length > 0 && this.build.buildStatus === 'succeeded'))
     }
   }
 }

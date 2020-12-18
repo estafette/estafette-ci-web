@@ -21,6 +21,9 @@
 
     <div class="row-header">
       <div class="col-2">
+        Pipeline
+      </div>
+      <div class="col-2">
         Target
       </div>
       <div class="col-2">
@@ -35,12 +38,6 @@
       <div class="col-2">
         Triggered by
       </div>
-      <div
-        v-if="user && user.active"
-        class="col-2"
-      >
-        Actions
-      </div>
     </div>
 
     <transition-group
@@ -52,6 +49,7 @@
         v-for="release in releases"
         :key="release.id"
         :release="release"
+        :all-releases-mode="true"
       />
     </transition-group>
     <div

@@ -5,6 +5,13 @@
     class="row-block list-complete-item"
   >
     <property-block
+      v-if="allReleasesMode"
+      label="Pipeline"
+      class="col-xxxl-2"
+    >
+      <repository-title :repo="release" />
+    </property-block>
+    <property-block
       :label="release.action ? 'Target + action' : 'Target'"
       class="col-xxxl-2"
     >
@@ -63,6 +70,7 @@ import CancelButton from '@/components/CancelButton'
 import TriggeredBy from '@/components/TriggeredBy'
 import PropertyBlock from '@/components/PropertyBlock'
 import DurationLabel from '@/components/DurationLabel'
+import RepositoryTitle from '@/components/RepositoryTitle'
 import refresh from '../helpers/refresh'
 
 export default {
@@ -72,7 +80,8 @@ export default {
     CancelButton,
     TriggeredBy,
     PropertyBlock,
-    DurationLabel
+    DurationLabel,
+    RepositoryTitle
   },
 
   props: {
@@ -83,6 +92,10 @@ export default {
     pipeline: {
       type: Object,
       default: null
+    },
+    allReleasesMode: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -115,7 +128,7 @@ export default {
     }),
 
     showActions () {
-      return this.user && this.user.active && this.release && (this.release.releaseStatus === 'pending' || this.release.releaseStatus === 'running' || this.release.releaseStatus === 'canceling')
+      return !this.allReleasesMode && this.user && this.user.active && this.release && (this.release.releaseStatus === 'pending' || this.release.releaseStatus === 'running' || this.release.releaseStatus === 'canceling')
     }
   }
 }

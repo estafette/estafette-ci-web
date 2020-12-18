@@ -12,6 +12,9 @@
     </div>
 
     <div class="row-header">
+      <div class="col-3">
+        Pipeline
+      </div>
       <div class="col-2">
         Version
       </div>
@@ -27,14 +30,8 @@
       <div class="col-1">
         Revision
       </div>
-      <div class="col-3">
+      <div class="col-2">
         Commit(s)
-      </div>
-      <div
-        v-if="user && user.active"
-        class="col-2"
-      >
-        Actions
       </div>
     </div>
 
@@ -48,6 +45,7 @@
         :key="build.id"
         :build="build"
         :builds="builds"
+        :all-builds-mode="true"
       />
     </transition-group>
     <div
