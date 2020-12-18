@@ -165,6 +165,8 @@ export default {
           this.pagination = response.data.pagination
 
           this.loaded = true
+
+          this.periodicallyRefreshBuilds(15)
         })
         .catch(e => {
           this.periodicallyRefreshBuilds(15)
