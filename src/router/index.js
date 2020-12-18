@@ -39,6 +39,24 @@ export default new Router({
       }
     },
     {
+      path: '/builds',
+      name: 'Builds',
+      component: () => import(/* webpackChunkName: "builds" */ '../views/Builds.vue'),
+      props: (route) => ({ query: route.query }),
+      meta: {
+        hide: true
+      }
+    },
+    {
+      path: '/releases',
+      name: 'Releases',
+      component: () => import(/* webpackChunkName: "releases" */ '../views/Releases.vue'),
+      props: (route) => ({ query: route.query }),
+      meta: {
+        hide: true
+      }
+    },
+    {
       path: '/pipelines/:repoSource/:repoOwner/:repoName',
       name: 'PipelineDetails',
       props: true,
