@@ -4,7 +4,10 @@
       :text="label"
       :class="labelCssClass"
     />
-    <property-value :class="valueCssClass">
+    <property-value
+      :class="valueCssClass"
+      :title="value"
+    >
       <slot>{{ value }}</slot>
     </property-value>
   </div>
@@ -26,6 +29,10 @@ export default {
       default: ''
     },
     value: {
+      type: String,
+      default: ''
+    },
+    titleValue: {
       type: String,
       default: ''
     },

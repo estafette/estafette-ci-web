@@ -4,6 +4,7 @@
     target="_blank"
     :class="['text-body']"
     @click.stop
+    :title="build.repoRevision | gitHash"
   >
     {{ build.repoRevision | gitHash }}
   </a>

@@ -11,7 +11,10 @@
       label="Version"
       :value="build.buildVersion"
     />
-    <property-block label="Status">
+    <property-block
+      label="Status"
+      :value="build.buildStatus"
+    >
       <b-progress>
         <b-progress-bar
           :value="$options.filters.buildProgressBarValue(pipeline,build,now)"
@@ -21,7 +24,10 @@
         />
       </b-progress>
     </property-block>
-    <property-block label="Built at">
+    <property-block
+      label="Built at"
+      :value="build.insertedAt | formatDatetime"
+    >
       {{ build.insertedAt | formatDatetime }}
       <duration-label
         :duration="build.duration"
@@ -32,7 +38,9 @@
       label="Branch"
       :value="build.repoBranch"
     />
-    <property-block label="Revision">
+    <property-block
+      label="Revision"
+    >
       <commit-link :build="build" />
     </property-block>
     <property-block label="Commit(s)">

@@ -17,6 +17,7 @@
     <property-block
       v-if="type === '' || type === 'build'"
       label="Status"
+      :value="pipeline.buildStatus"
     >
       <router-link :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: pipeline.id }}">
         <b-progress>
@@ -32,6 +33,7 @@
     <property-block
       v-if="type === '' || type === 'build'"
       label="Built at"
+      :value="pipeline.insertedAt | formatDatetime"
     >
       {{ pipeline.insertedAt | formatDatetime }}
       <duration-label

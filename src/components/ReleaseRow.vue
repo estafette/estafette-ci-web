@@ -14,6 +14,7 @@
     <property-block
       :label="release.action ? 'Target + action' : 'Target'"
       class="col-xxxl-2"
+      :value="release.action ? release.name + ' / ' + release.action : release.name"
     >
       {{ release.name }}<span v-if="release.action">
         / {{ release.action }}
@@ -27,6 +28,7 @@
     <property-block
       label="Status"
       class="col-xxxl-2"
+      :value="release.releaseStatus"
     >
       <b-progress>
         <b-progress-bar

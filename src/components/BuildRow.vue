@@ -19,6 +19,7 @@
     <property-block
       label="Status"
       class="col-xxxl-1"
+      :value="build.buildStatus"
     >
       <b-progress>
         <b-progress-bar
@@ -32,6 +33,7 @@
     <property-block
       label="Built at"
       class="col-xxxl-2"
+      :value="build.insertedAt | formatDatetime"
     >
       {{ build.insertedAt | formatDatetime }}
       <duration-label

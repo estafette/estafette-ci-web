@@ -4,7 +4,10 @@
       v-for="(event, i) in events"
       :key="i"
     >
-      <div v-if="event.pipeline">
+      <div
+        v-if="event.pipeline"
+        :title="event.pipeline.repoSource + ' / ' + event.pipeline.repoOwner + ' / ' + event.pipeline.repoName"
+      >
         <font-awesome-icon
           icon="tools"
           class="triggered-by-icon"
@@ -20,7 +23,10 @@
         {{ event.pipeline.status }}
         {{ event.pipeline.event }} -->
       </div>
-      <div v-if="event.release">
+      <div
+        v-if="event.release"
+        :title="event.release.repoSource + ' / ' + event.release.repoOwner + ' / ' + event.release.repoName"
+      >
         <font-awesome-icon
           icon="upload"
           class="triggered-by-icon"
@@ -36,7 +42,10 @@
         {{ event.release.status }}
         {{ event.release.event }} -->
       </div>
-      <div v-if="event.git">
+      <div
+        v-if="event.git"
+        :title="event.git.repository"
+      >
         <font-awesome-icon
           icon="code-branch"
           class="triggered-by-icon"
@@ -51,7 +60,10 @@
         </a>
         <!-- {{ event.git.branch }} -->
       </div>
-      <div v-if="event.pubsub">
+      <div
+        v-if="event.pubsub"
+        :title="'projects/'+event.pubsub.project+'/topics/'+event.pubsub.topic"
+      >
         <h6>
           <font-awesome-icon
             icon="bezier-curve"
@@ -61,14 +73,20 @@
         </h6>
       </div>
       <div v-if="event.docker" />
-      <div v-if="event.cron">
+      <div
+        v-if="event.cron"
+        :title="event.cron.time"
+      >
         <font-awesome-icon
           icon="clock"
           class="triggered-by-icon"
         />
         {{ event.cron.time }}
       </div>
-      <div v-if="event.manual">
+      <div
+        v-if="event.manual"
+        :title="event.manual.userID"
+      >
         <font-awesome-icon
           icon="user-circle"
           class="triggered-by-icon"

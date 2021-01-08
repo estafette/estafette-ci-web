@@ -61,6 +61,7 @@
           <property-block
             label="Status"
             class="col-xxxl-1 text-xxxl-center"
+            :value="step.status"
           >
             <span
               class="badge mt-2"
@@ -77,6 +78,7 @@
             label="Stage"
             class="col-xxxl-4"
             value-css-class="h4"
+            :value="step.step"
           >
             {{ step.step }}
             <span
@@ -91,7 +93,10 @@
             label="Image"
             class="col-xxxl-3"
           >
-            <span v-if="step.image && step.image.name">
+            <span
+              v-if="step.image && step.image.name"
+              :title="step.image.name+':'+step.image.tag"
+            >
               {{ step.image.name }}:{{ step.image.tag }}
               <font-awesome-icon
                 v-if="step.image.isTrusted"
@@ -109,7 +114,10 @@
             class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
           >
             <span v-if="step.image && step.image.name && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
-              <span v-if="step.image && step.image.imageSize">
+              <span
+                v-if="step.image && step.image.imageSize"
+                :title="step.image.imageSize | formatBytes"
+              >
                 {{ step.image.imageSize | formatBytes }}
               </span>
               <em
@@ -128,7 +136,10 @@
             class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
           >
             <span v-if="step.image && step.image.name && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
-              <span v-if="step.image.pullDuration && step.image.pullDuration > 0">
+              <span
+                v-if="step.image.pullDuration && step.image.pullDuration > 0"
+                :title="step.image.pullDuration | formatDuration"
+              >
                 {{ step.image.pullDuration | formatDuration }}
               </span>
               <em
@@ -145,6 +156,7 @@
           <property-block
             label="Execution time"
             class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
+            :value="step.duration | formatDuration"
           >
             <span v-if="step.duration && (step.status == 'SUCCEEDED' || step.status == 'FAILED')">
               {{ step.duration | formatDuration }}
@@ -156,6 +168,7 @@
           <property-block
             label="Total time"
             class="col-xxxl-1 text-xxxl-right"
+            :value="(step.image ? step.image.pullDuration : 0) + step.duration | formatDuration"
           >
             <span v-if="step.image && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
               {{ (step.image ? step.image.pullDuration : 0) + step.duration | formatDuration }}
@@ -182,6 +195,7 @@
               v-b-toggle="service.collapseID"
               :variant="service.status | bootstrapVariant(true)"
               class="mr-2 mb-1"
+              :title="service.step"
             >
               {{ service.step }}
               <span>
@@ -211,6 +225,7 @@
               v-b-toggle="nestedStep.collapseID"
               :variant="nestedStep.status | bootstrapVariant(true)"
               class="mr-2 mb-1"
+              :title="nestedStep.step"
             >
               {{ nestedStep.step }}
               <span>
@@ -432,6 +447,7 @@
       <property-block
         label="Status"
         class="col-xxxl-1 text-xxxl-center"
+        :value="totalStatus"
       >
         <span
           class="badge"
@@ -445,27 +461,23 @@
       <property-block
         label="Total image size"
         class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
-      >
-        {{ totalImageSize | formatBytes }}
-      </property-block>
+        :value="totalImageSize | formatBytes"
+      />
       <property-block
         label="Total pull time"
         class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
-      >
-        {{ totalPullDuration | formatDuration }}
-      </property-block>
+        :value="totalPullDuration | formatDuration"
+      />
       <property-block
         label="Total execution time"
         class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
-      >
-        {{ totalDuration | formatDuration }}
-      </property-block>
+        :value="totalDuration | formatDuration"
+      />
       <property-block
         label="Total time"
         class="col-xxxl-1 text-xxxl-right"
-      >
-        {{ totalPullDuration + totalDuration | formatDuration }}
-      </property-block>
+        :value="totalPullDuration + totalDuration | formatDuration"
+      />
     </div>
 
     <div

@@ -18,6 +18,7 @@
     <property-block
       label="Status"
       class="col-xxxl-1"
+      :value="pipeline.buildStatus"
     >
       <router-link :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: pipeline.id }}">
         <b-progress>
@@ -33,6 +34,7 @@
     <property-block
       label="Built at"
       class="col-xxxl-2"
+      :value="pipeline.insertedAt | formatDatetime"
     >
       {{ pipeline.insertedAt | formatDatetime }}
       <duration-label
