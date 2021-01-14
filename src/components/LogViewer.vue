@@ -104,6 +104,12 @@
                 class="small text-muted"
                 title="This image is configured as trusted by Estafette CI"
               />
+              <font-awesome-icon
+                v-if="step.image.hasInjectedCredentials"
+                icon="key"
+                class="small text-muted"
+                title="This image has injected credentials"
+              />
             </span>
             <span v-else>
               -
@@ -294,6 +300,12 @@
                   class="small text-muted"
                   title="This image is configured as trusted by Estafette CI"
                 />
+                <font-awesome-icon
+                  v-if="service.image.hasInjectedCredentials"
+                  icon="key"
+                  class="small text-muted"
+                  title="This image has injected credentials"
+                />
               </span>
             </div>
             <div class="col-1 text-right d-none d-xl-flex">
@@ -380,6 +392,12 @@
                   icon="shield-alt"
                   class="small text-muted mb-1"
                   title="This image is configured as trusted by Estafette CI"
+                />
+                <font-awesome-icon
+                  v-if="nestedStep.image.hasInjectedCredentials"
+                  icon="key"
+                  class="small text-muted"
+                  title="This image has injected credentials"
                 />
               </span>
             </div>
@@ -528,10 +546,10 @@ import PropertyBlock from '@/components/PropertyBlock'
 import LogWarning from '@/components/LogWarning'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faShieldAlt, faEye, faEyeSlash, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faShieldAlt, faKey, faEye, faEyeSlash, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faShieldAlt, faEye, faEyeSlash, faChevronUp, faChevronDown)
+library.add(faShieldAlt, faKey, faEye, faEyeSlash, faChevronUp, faChevronDown)
 
 export default {
   components: {

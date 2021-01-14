@@ -5,22 +5,22 @@ event:log
 data:{"step":"injected-before","type":"stage","status":"RUNNING","autoInjected":true}
 
 event:log
-data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/git-clone","tag":"stable","isPulled":false,"imageSize":0,"pullDuration":0,"isTrusted":true},"status":"PENDING","autoInjected":true}
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/git-clone","tag":"stable","isPulled":false,"imageSize":0,"pullDuration":0,"isTrusted":true,"hasInjectedCredentials":true},"status":"PENDING","autoInjected":true}
 
 event:log
 data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/envvars","tag":"stable","isPulled":false,"imageSize":0,"pullDuration":0},"status":"PENDING","autoInjected":true}
 
 event:log
-data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/github-status","tag":"stable","isPulled":false,"imageSize":0,"pullDuration":0,"isTrusted":true},"status":"PENDING","autoInjected":true}
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/github-status","tag":"stable","isPulled":false,"imageSize":0,"pullDuration":0,"isTrusted":true,"hasInjectedCredentials":true},"status":"PENDING","autoInjected":true}
 
 event:log
 data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/envvars","tag":"stable","isPulled":false,"imageSize":11158339,"pullDuration":1877596120},"status":"RUNNING","autoInjected":true}
 
 event:log
-data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/git-clone","tag":"stable","isPulled":false,"imageSize":33645729,"pullDuration":2481568082,"isTrusted":true},"status":"RUNNING","autoInjected":true}
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/git-clone","tag":"stable","isPulled":false,"imageSize":33645729,"pullDuration":2481568082,"isTrusted":true,"hasInjectedCredentials":true},"status":"RUNNING","autoInjected":true}
 
 event:log
-data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/github-status","tag":"stable","isPulled":false,"imageSize":12649209,"pullDuration":2484571919,"isTrusted":true},"status":"RUNNING","autoInjected":true}
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/github-status","tag":"stable","isPulled":false,"imageSize":12649209,"pullDuration":2484571919,"isTrusted":true,"hasInjectedCredentials":true},"status":"RUNNING","autoInjected":true}
 
 event:log
 data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":1,"timestamp":"2020-09-25T08:10:50.054993158Z","streamType":"stdout","text":"Starting \u001b[1mestafette-extension-envvars\u001b[0m version \u001b[1m0.1.15\u001b[0m... \u001b[36mbranch=\u001b[0mmaster \u001b[36mbuildDate=\u001b[0m2020-03-04T09:29:44Z \u001b[36mgoVersion=\u001b[0mgo1.14 \u001b[36mos=\u001b[0mlinux \u001b[36mrevision=\u001b[0ma1eec2828262801647117796b44ee95ed842ef2f\n"}}
