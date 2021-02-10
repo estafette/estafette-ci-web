@@ -110,6 +110,7 @@ releases:
       deploy:
         image: extensions/gke:dev
         namespace: estafette-ci
+        strategytype: AtomicUpdate
         visibility: iap
         iapOauthClientID: estafette.secret(iXOTyaK0CMquct2i.gHSRFMIopefYNe0bG4fANPaRaBknLwPP4qa1KiIUR_UWW6ORO5n9rLKvKGeRg5U_c_D3gQipezDEzmfaO7jsLbk8f8GpV4JFqMy3hT8g0dkdr5ndOkAwblORXBvK482HY7ihEWhEuRtyzGpK9YGALA==.qUmsBfkw3v36MosJJrfGZ9-yc09RHUjB55e4bAw5KPscGJ6eOLv-GTDQmVvuPK1x5NyJqrc=)
         iapOauthClientSecret: estafette.secret(UwPXjVCad4ycIYJK.SSTHl16_SNYh4p0JB5o-nDdAnhQM3gKLgLmapXhj4fGQT0zgkQMLP-TVp18jyWFW.YxXxmUntMPgvyMI_JtxuzB18qEBw_gnOhImTolZTnuDveWlHDvG5nrmRJnjMd5xb1coCBsw=)
