@@ -101,7 +101,7 @@ export default {
         return
       }
 
-      this.$router.push({ params: { logid: this.logs[this.logs.length - 1].id } })
+      this.$router.replace({ params: { logid: this.logs[this.logs.length - 1].id } })
     },
 
     periodicallyRefresh (intervalSeconds) {
