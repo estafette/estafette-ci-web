@@ -19,8 +19,7 @@
 </template>
 
 <script>
-import TweenLite from 'gsap/TweenLite'
-import 'gsap/CSSPlugin'
+import gsap from 'gsap'
 
 export default {
   props: {
@@ -54,7 +53,7 @@ export default {
 
       this.axios.get(`/api/stats/pipelinescount?${statusFilter}&filter[since]=${this.filter.since}`)
         .then(response => {
-          TweenLite.to(this.$data, 1.0, { count: response.data.count })
+          gsap.to(this.$data, { duration: 1.0, count: response.data.count })
           this.periodicallyRefreshStat(15)
         })
         .catch(e => {
