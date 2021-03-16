@@ -10,9 +10,11 @@ labels:
 
 version:
   semver:
-    major: 0
-    minor: 1
-    releaseBranch: main
+    major: 1
+    minor: 0
+    patch: 0
+    labelTemplate: '{{branch}}-{{auto}}'
+    releaseBranch: 1.0.0
 
 stages:
   audit-and-restore:
@@ -42,6 +44,14 @@ stages:
         image: node:14.14.0-alpine
         commands:
         - npm run build
+
+      lint-helm-chart:
+        image: extensions/helm:dev
+        action: lint
+
+      package-helm-chart:
+        image: extensions/helm:dev
+        action: package
 
   bake:
     image: extensions/docker:dev
@@ -89,6 +99,28 @@ stages:
     action: push
     repositories:
     - estafette
+
+  test-helm-chart:
+    services:
+    - name: kubernetes
+      image: bsycorp/kind:latest-1.19
+      readiness:
+        path: /kubernetes-ready
+        port: 10080
+        timeoutSeconds: 120
+    image: extensions/helm:dev
+    action: test
+    values: |-
+
+  clone-charts-repo:
+    image: extensions/git-clone:dev
+    repo: helm-charts
+    branch: main
+
+  publish-helm-chart:
+    image: extensions/helm:dev
+    action: publish
+    repoBranch: main
 
   slack-notify:
     image: extensions/slack-build-status:dev
