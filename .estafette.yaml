@@ -111,6 +111,40 @@ stages:
     image: extensions/helm:dev
     action: test
     values: |-
+      extraLabels:
+        team: estafette
+
+      extraSecrets:
+      - key: gcp
+        annotations: {}
+        mountPath: /gcp
+        data:
+          service-account-key.json: |
+            {}
+
+      extraConfigmaps:
+      - key: templates
+        annotations: {}
+        mountPath: /templates
+        data: |
+          manifest-docker.tmpl: |
+            labels:
+              container: {{.ContainerName}}
+              team: {{.TeamName}}
+              language: docker
+
+            stages:
+              bake:
+                image: extensions/docker:stable
+                action: build
+                repositories:
+                - estafette
+
+              push-to-docker-registry:
+                image: extensions/docker:stable
+                action: push
+                repositories:
+                - estafette
 
   clone-charts-repo:
     image: extensions/git-clone:dev

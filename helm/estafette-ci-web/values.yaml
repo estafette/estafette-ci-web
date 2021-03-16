@@ -67,6 +67,7 @@ fullnameOverride: ""
 jobNamespaceOverride: ""
 
 extraLabels: {}
+#   team: estafette
 
 extraSecrets: []
 # - key: gcp
@@ -80,7 +81,7 @@ extraConfigmaps: []
 # - key: templates
 #   annotations: {}
 #   mountPath: /templates
-#   data:
+#   data: |
 #     manifest-docker.tmpl: |
 #       labels:
 #         container: {{.ContainerName}}

@@ -1,3 +1,4 @@
+{{- $fullName := include "estafette-ci-web.fullname" . -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -87,14 +88,14 @@ spec:
       {{- if .mountPath }}
       - name: configs.{{ .key }}
         configMap: 
-          name: {{ include "estafette-ci-web.fullname" . }}.{{ .key }}
+          name: {{ $fullName }}.{{ .key }}
       {{- end }}
       {{- end }}
       {{- range .Values.extraSecrets }}
       {{- if .mountPath }}
       - name: secrets.{{ .key }}
         secret:
-          secretName: {{ include "estafette-ci-web.fullname" . }}.{{ .key }}
+          secretName: {{ $fullName }}.{{ .key }}
       {{- end }}
       {{- end }}
       {{- with .Values.deployment.extraVolumes }}
