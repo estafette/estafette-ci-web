@@ -22,20 +22,21 @@
     </transition-group>
 
     <div class="row m-0">
-      <div class="col-12 text-right">
-        <div class="d-inline-flex mr-2">
-          {{ firstPageItem }}-{{ lastPageItem }} of {{ pagination.totalItems }}
-        </div>
-        <b-pagination
-          v-model="pagination.page"
-          :total-rows="pagination.totalItems"
-          :per-page="pagination.size"
-          limit="3"
-          hide-goto-end-buttons
-          hide-ellipsis
-          class="d-inline-flex"
-          small
-        />
+      <div class="col-12 text-right pr-0">
+        <b-button
+          v-if="filter == 'recent-committer'"
+          variant="success"
+          :to="{ name: 'Pipelines', query: { recentCommitter: 'true' } }"
+        >
+          See more
+        </b-button>
+        <b-button
+          v-if="filter == 'recent-releaser'"
+          variant="success"
+          :to="{ name: 'Pipelines', query: { recentReleaser: 'true' } }"
+        >
+          See more
+        </b-button>
       </div>
     </div>
   </div>
@@ -44,12 +45,12 @@
 <script>
 import { mapState } from 'vuex'
 import PipelineCompact from '@/components/PipelineCompact'
-import { BPagination } from 'bootstrap-vue'
+import { BButton } from 'bootstrap-vue'
 
 export default {
   components: {
     PipelineCompact,
-    BPagination
+    BButton
   },
 
   props: {
