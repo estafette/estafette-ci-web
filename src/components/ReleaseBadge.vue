@@ -87,11 +87,11 @@ export default {
           return releaseTarget.activeReleases
         }
 
-        var releaseActions = []
+        const releaseActions = []
 
         releaseTarget.actions.filter(action => !action.hideBadge).forEach(action => {
           // check if there's an active release for name and action
-          var activeRelease = this.getActiveRelease(releaseTarget.activeReleases, action.name)
+          const activeRelease = this.getActiveRelease(releaseTarget.activeReleases, action.name)
           if (activeRelease !== undefined) {
             releaseActions.push(activeRelease)
           } else {

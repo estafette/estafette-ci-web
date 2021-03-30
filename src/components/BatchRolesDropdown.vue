@@ -90,7 +90,7 @@ export default {
 
   methods: {
     loadRoles () {
-      this.axios.get(`/api/roles`)
+      this.axios.get('/api/roles')
         .then(response => {
           this.roles = response.data
           this.loaded.roles = true
@@ -104,10 +104,10 @@ export default {
       this.rolesToAdd = []
       this.rolesToRemove = []
 
-      var selectedItems = this.selectableItems.filter(i => this.selected.includes(this.selectableIdFunc(i)))
+      const selectedItems = this.selectableItems.filter(i => this.selected.includes(this.selectableIdFunc(i)))
 
       this.checkedRoles = this.roles.reduce((map, r) => {
-        var checked = selectedItems.length > 0 ? selectedItems.every(i => i.roles && i.roles.some(ir => ir === r)) : false
+        const checked = selectedItems.length > 0 ? selectedItems.every(i => i.roles && i.roles.some(ir => ir === r)) : false
         map[r] = checked ? 'checked:' + r : 'unchecked:' + r
         return map
       }, {})
@@ -119,13 +119,13 @@ export default {
     },
 
     toggleRole (r) {
-      var prefix = ''
+      let prefix = ''
       if (r.startsWith('checked:')) {
         prefix = 'checked:'
       } else if (r.startsWith('unchecked:')) {
         prefix = 'unchecked:'
       }
-      var role = r.slice(prefix.length)
+      const role = r.slice(prefix.length)
 
       // update indeterminate value (the .sync modifier doesn't seem to work)
       this.indeterminateRoles[role] = false
@@ -140,7 +140,7 @@ export default {
     },
 
     applyRoles () {
-      var body = {
+      const body = {
         rolesToAdd: this.rolesToAdd,
         rolesToRemove: this.rolesToRemove
       }

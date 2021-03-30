@@ -29,7 +29,7 @@
             add-on-change
             no-outer-focus
           >
-            <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
+            <template #default="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
               <ul
                 v-if="tags.length > 0"
                 class="list-inline d-inline-block mb-2"
@@ -55,7 +55,7 @@
                 :disabled="disabled || availableRoles.length === 0"
                 :options="availableRoles"
               >
-                <template v-slot:first>
+                <template #first>
                   <!-- This is required to prevent bugs with Safari -->
                   <option
                     disabled
@@ -79,7 +79,7 @@
             add-on-change
             no-outer-focus
           >
-            <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
+            <template #default="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
               <ul
                 v-if="tags.length > 0"
                 class="list-inline d-inline-block mb-2"
@@ -105,7 +105,7 @@
                 :disabled="disabled || availableOrganizations.length === 0"
                 :options="availableOrganizations"
               >
-                <template v-slot:first>
+                <template #first>
                   <!-- This is required to prevent bugs with Safari -->
                   <option
                     disabled
@@ -200,7 +200,7 @@ export default {
 
   methods: {
     loadRoles () {
-      this.axios.get(`/api/roles`)
+      this.axios.get('/api/roles')
         .then(response => {
           this.roles = response.data
           this.loaded.roles = true
@@ -211,7 +211,7 @@ export default {
     },
 
     loadOrganizations () {
-      this.axios.get(`/api/organizations?page[number]=1&page[size]=100`)
+      this.axios.get('/api/organizations?page[number]=1&page[size]=100')
         .then(response => {
           this.organizations = response.data.items
           this.loaded.organizations = true

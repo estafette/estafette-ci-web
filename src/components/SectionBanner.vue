@@ -52,7 +52,7 @@ export default {
     }),
 
     header () {
-      var section = this.section
+      const section = this.section
       if (!section) {
         return ''
       }
@@ -65,7 +65,7 @@ export default {
     },
 
     lead () {
-      var section = this.section
+      const section = this.section
       if (!section) {
         return ''
       }
@@ -78,7 +78,7 @@ export default {
     },
 
     bgVariant () {
-      var section = this.section
+      const section = this.section
       if (!section) {
         return 'secondary'
       }
@@ -91,7 +91,7 @@ export default {
     },
 
     textVariant () {
-      var section = this.section
+      const section = this.section
       if (!section) {
         return 'white'
       }

@@ -63,7 +63,9 @@ export default {
         this.axios.post(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/builds`, this.build)
           .then(response => {
             // add new build at the top
+            // eslint-disable-next-line vue/no-mutating-props
             this.builds.unshift(response.data)
+            // eslint-disable-next-line vue/no-mutating-props
             this.builds.shift()
           })
           .catch(e => {

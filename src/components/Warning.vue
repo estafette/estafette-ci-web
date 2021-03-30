@@ -14,7 +14,7 @@ import { BAlert } from 'bootstrap-vue'
 export default {
   components: {
     BAlert,
-    'MarkDown': () => import(/* webpackChunkName: "marked" */ '@/components/MarkDown')
+    MarkDown: () => import(/* webpackChunkName: "marked" */ '@/components/MarkDown')
   },
   props: {
     warning: {

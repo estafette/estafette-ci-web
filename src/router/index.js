@@ -539,7 +539,7 @@ export default new Router({
       meta: {
         textFunction: (user) => {
           if (user && user.identities && user.identities.length > 0) {
-            var identity = user.identities.find(i => i.name)
+            const identity = user.identities.find(i => i.name)
             if (identity && identity.name) {
               return identity.name
             }

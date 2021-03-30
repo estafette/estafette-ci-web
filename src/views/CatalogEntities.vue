@@ -21,7 +21,7 @@
       stacked="lg"
       ref="entities"
     >
-      <template v-slot:top-row>
+      <template #top-row>
         <b-td>
           <label
             for="parent-key"
@@ -101,19 +101,19 @@
         <b-td class="d-none d-lg-table-cell" />
         <b-td class="d-none d-lg-table-cell" />
       </template>
-      <template v-slot:cell(parent_key)="data">
+      <template #cell(parent_key)="data">
         <span class="text-muted w-50">{{ data.item.parentKey }}</span>
       </template>
-      <template v-slot:cell(parent_value)="data">
+      <template #cell(parent_value)="data">
         {{ data.item.parentValue }}
       </template>
-      <template v-slot:cell(entity_key)="data">
+      <template #cell(entity_key)="data">
         <span class="text-muted w-50">{{ data.item.key }}</span>
       </template>
-      <template v-slot:cell(entity_value)="data">
+      <template #cell(entity_value)="data">
         {{ data.item.value }}
       </template>
-      <template v-slot:cell(labels)="data">
+      <template #cell(labels)="data">
         <labels :labels="data.item.labels" />
       </template>
     </b-table>
@@ -224,12 +224,12 @@ export default {
   methods: {
     setDataFromQueryParams () {
       if (this.query.parent) {
-        var parentParts = this.query.parent.split('=')
+        const parentParts = this.query.parent.split('=')
         this.parentKey = parentParts.length > 0 ? parentParts[0] : null
         this.parentValue = parentParts.length > 1 ? parentParts[1] : null
       }
       if (this.query.entity) {
-        var entityParts = this.query.entity.split('=')
+        const entityParts = this.query.entity.split('=')
         this.entityKey = entityParts.length > 0 ? entityParts[0] : null
         this.entityValue = entityParts.length > 1 ? entityParts[1] : null
       }
@@ -238,7 +238,7 @@ export default {
       }
     },
     setQueryParamsFromData () {
-      var query = { ...this.$route.query }
+      const query = { ...this.$route.query }
 
       if (this.parentKey) {
         query.parent = this.parentKey
@@ -267,7 +267,7 @@ export default {
       this.$router.push({ query: query })
     },
     loadParentKeys () {
-      var entityFilter = ''
+      let entityFilter = ''
       if (this.entityKey) {
         entityFilter = `&filter[entity]=${this.entityKey}`
         if (this.entityValue) {
@@ -275,7 +275,7 @@ export default {
         }
       }
 
-      var labelFilter = ''
+      let labelFilter = ''
       if (this.label) {
         labelFilter = `&filter[labels]=${this.label}`
       }
@@ -289,12 +289,12 @@ export default {
         })
     },
     loadParentValues () {
-      var parentFilter = ''
+      let parentFilter = ''
       if (this.parentKey) {
         parentFilter = `&filter[parent]=${this.parentKey}`
       }
 
-      var entityFilter = ''
+      let entityFilter = ''
       if (this.entityKey) {
         entityFilter = `&filter[entity]=${this.entityKey}`
         if (this.entityValue) {
@@ -302,7 +302,7 @@ export default {
         }
       }
 
-      var labelFilter = ''
+      let labelFilter = ''
       if (this.label) {
         labelFilter = `&filter[labels]=${this.label}`
       }
@@ -316,7 +316,7 @@ export default {
         })
     },
     loadEntityKeys () {
-      var parentFilter = ''
+      let parentFilter = ''
       if (this.parentKey) {
         parentFilter = `&filter[parent]=${this.parentKey}`
         if (this.parentValue) {
@@ -324,7 +324,7 @@ export default {
         }
       }
 
-      var labelFilter = ''
+      let labelFilter = ''
       if (this.label) {
         labelFilter = `&filter[labels]=${this.label}`
       }
@@ -338,7 +338,7 @@ export default {
         })
     },
     loadEntityValues () {
-      var parentFilter = ''
+      let parentFilter = ''
       if (this.parentKey) {
         parentFilter = `&filter[parent]=${this.parentKey}`
         if (this.parentValue) {
@@ -346,12 +346,12 @@ export default {
         }
       }
 
-      var entityFilter = ''
+      let entityFilter = ''
       if (this.entityKey) {
         entityFilter = `&filter[entity]=${this.entityKey}`
       }
 
-      var labelFilter = ''
+      let labelFilter = ''
       if (this.label) {
         labelFilter = `&filter[labels]=${this.label}`
       }
@@ -365,7 +365,7 @@ export default {
         })
     },
     loadLabels () {
-      var parentFilter = ''
+      let parentFilter = ''
       if (this.parentKey) {
         parentFilter = `&filter[parent]=${this.parentKey}`
         if (this.parentValue) {
@@ -373,7 +373,7 @@ export default {
         }
       }
 
-      var entityFilter = ''
+      let entityFilter = ''
       if (this.entityKey) {
         entityFilter = `&filter[entity]=${this.entityKey}`
         if (this.entityValue) {
@@ -390,7 +390,7 @@ export default {
         })
     },
     entitiesProvider (ctx) {
-      var parentFilter = ''
+      let parentFilter = ''
       if (this.parentKey) {
         parentFilter = `&filter[parent]=${this.parentKey}`
         if (this.parentValue) {
@@ -398,7 +398,7 @@ export default {
         }
       }
 
-      var entityFilter = ''
+      let entityFilter = ''
       if (this.entityKey) {
         entityFilter = `&filter[entity]=${this.entityKey}`
         if (this.entityValue) {
@@ -406,12 +406,12 @@ export default {
         }
       }
 
-      var labelFilter = ''
+      let labelFilter = ''
       if (this.label) {
         labelFilter = `&filter[labels]=${this.label}`
       }
 
-      var sort = ''
+      let sort = ''
       if (ctx.sortBy) {
         sort += '&sort='
         if (ctx.sortDesc) {

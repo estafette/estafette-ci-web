@@ -59,6 +59,7 @@ export default {
         if (this.build && (this.build.buildStatus === 'pending' || this.build.buildStatus === 'running' || this.build.buildStatus === 'canceling')) {
           this.axios.delete(`/api/pipelines/${this.build.repoSource}/${this.build.repoOwner}/${this.build.repoName}/builds/${this.build.id}`)
             .then(response => {
+              // eslint-disable-next-line vue/no-mutating-props
               this.build.buildStatus = 'canceling'
             })
             .catch(e => {
@@ -67,6 +68,7 @@ export default {
         } else if (this.release && (this.release.releaseStatus === 'pending' || this.release.releaseStatus === 'running' || this.release.releaseStatus === 'canceling')) {
           this.axios.delete(`/api/pipelines/${this.release.repoSource}/${this.release.repoOwner}/${this.release.repoName}/releases/${this.release.id}`)
             .then(response => {
+              // eslint-disable-next-line vue/no-mutating-props
               this.release.releaseStatus = 'canceling'
             })
             .catch(e => {

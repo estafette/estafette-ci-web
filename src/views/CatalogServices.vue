@@ -141,7 +141,7 @@ export default {
       // init activeFilter, activeFilterValue and pagination from query params if present
       if (this.query.filter) {
         // split filter on =
-        var filterKeyValue = this.query.filter.split('=')
+        const filterKeyValue = this.query.filter.split('=')
         if (filterKeyValue.length > 0) {
           this.activeFilter = filterKeyValue[0]
         }
@@ -155,9 +155,9 @@ export default {
     },
 
     setQueryParams () {
-      var query = { ...this.$route.query }
-      var newQueryFilter = `${this.activeFilter}=${this.activeFilterValue}`
-      var newQueryPage = this.pagination.page
+      const query = { ...this.$route.query }
+      const newQueryFilter = `${this.activeFilter}=${this.activeFilterValue}`
+      const newQueryPage = this.pagination.page
 
       if (query.filter !== newQueryFilter || query.page !== newQueryPage) {
         query.filter = newQueryFilter
@@ -168,11 +168,11 @@ export default {
     },
 
     loadFilters () {
-      this.axios.get(`/api/catalog/filters`)
+      this.axios.get('/api/catalog/filters')
         .then(response => {
           this.filters = response.data
 
-          var options = []
+          const options = []
           this.filters.forEach(filter => {
             options.push({ value: filter, text: filter })
           })
@@ -197,9 +197,9 @@ export default {
         clearTimeout(this.refreshFiltersTimeout)
       }
 
-      var max = 1000 * intervalSeconds * 0.75
-      var min = 1000 * intervalSeconds * 1.25
-      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+      const max = 1000 * intervalSeconds * 0.75
+      const min = 1000 * intervalSeconds * 1.25
+      const timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       if (this.refresh) {
         this.refreshFiltersTimeout = setTimeout(this.loadFilters, timeoutWithJitter)
@@ -242,7 +242,7 @@ export default {
     },
 
     paginationLinkGenerator (pageNum) {
-      var query = { ...this.$route.query }
+      const query = { ...this.$route.query }
 
       if (pageNum > 0) {
         query.page = pageNum
@@ -265,7 +265,7 @@ export default {
           text: `${f.value} (${f.pipelinescount})`,
           enabled: true,
           exact: true,
-          to: { name: 'CatalogServices', query: this.queryGenerator({ 'filter': `${this.activeFilter}=${f.value}` }) }
+          to: { name: 'CatalogServices', query: this.queryGenerator({ filter: `${this.activeFilter}=${f.value}` }) }
         }
       })
     }

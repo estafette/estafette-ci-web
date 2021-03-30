@@ -46,9 +46,9 @@ export default {
 
   methods: {
     loadStat () {
-      var statusFilter = `filter[status]=${this.status}`
+      let statusFilter = `filter[status]=${this.status}`
       if (this.status === 'running') {
-        statusFilter += `&filter[status]=pending&filter[status]=canceling`
+        statusFilter += '&filter[status]=pending&filter[status]=canceling'
       }
 
       this.axios.get(`/api/stats/buildscount?${statusFilter}&filter[since]=${this.filter.since}`)
@@ -66,9 +66,9 @@ export default {
         clearTimeout(this.refreshTimeout)
       }
 
-      var max = 1000 * intervalSeconds * 0.75
-      var min = 1000 * intervalSeconds * 1.25
-      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+      const max = 1000 * intervalSeconds * 0.75
+      const min = 1000 * intervalSeconds * 1.25
+      const timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadStat, timeoutWithJitter)

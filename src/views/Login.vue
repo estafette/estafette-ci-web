@@ -50,10 +50,10 @@ export default {
 
   methods: {
     path (provider) {
-      var path = provider.path
+      let path = provider.path
 
-      var hasQueryParam = false
-      var returnURL = this.$route.query.returnURL
+      let hasQueryParam = false
+      const returnURL = this.$route.query.returnURL
       if (returnURL) {
         path += '?returnURL=' + returnURL
         hasQueryParam = true
@@ -72,7 +72,7 @@ export default {
     },
 
     loadProviders () {
-      this.axios.get(`/api/auth/providers`)
+      this.axios.get('/api/auth/providers')
         .then(response => {
           this.providers = response.data
         })

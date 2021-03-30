@@ -22,7 +22,7 @@
       stacked="lg"
       ref="users"
     >
-      <template v-slot:head(checkbox)>
+      <template #head(checkbox)>
         <b-form-checkbox
           id="toggle-all"
           :checked="users.length > 0 && users.length === selected.length"
@@ -32,7 +32,7 @@
         />
       </template>
 
-      <template v-slot:top-row>
+      <template #top-row>
         <b-td colspan="3" />
         <b-td>
           <batch-roles-dropdown
@@ -61,13 +61,13 @@
         <b-td colspan="3" />
       </template>
 
-      <template v-slot:cell(checkbox)="data">
+      <template #cell(checkbox)="data">
         <b-form-checkbox
           v-model="selected"
           :value="data.item.id"
         />
       </template>
-      <template v-slot:cell(roles)="data">
+      <template #cell(roles)="data">
         <b-badge
           v-for="r in data.item.roles"
           :key="r"
@@ -77,7 +77,7 @@
           {{ r }}
         </b-badge>
       </template>
-      <template v-slot:cell(groups)="data">
+      <template #cell(groups)="data">
         <b-badge
           v-for="g in data.item.groups"
           :key="g.name"
@@ -87,7 +87,7 @@
           {{ g.name }}
         </b-badge>
       </template>
-      <template v-slot:cell(organizations)="data">
+      <template #cell(organizations)="data">
         <b-badge
           v-for="org in data.item.organizations"
           :key="org.name"
@@ -97,7 +97,7 @@
           {{ org.name }}
         </b-badge>
       </template>
-      <template v-slot:cell(actions)="row">
+      <template #cell(actions)="row">
         <b-button
           size="sm"
           @click="row.toggleDetails"
@@ -121,7 +121,7 @@
           Impersonate
         </b-button>
       </template>
-      <template v-slot:row-details="row">
+      <template #row-details="row">
         <b-card>
           <b-row class="mb-2">
             <b-col
@@ -305,7 +305,7 @@ export default {
     usersProvider (ctx) {
       // wait for https://github.com/cockroachdb/cockroach/issues/35706 to be implemented for sorting jsonb fields
 
-      var sort = ''
+      const sort = ''
       // if (ctx.sortBy) {
       //   sort += '&sort='
       //   if (ctx.sortDesc) {

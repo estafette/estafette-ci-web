@@ -31,7 +31,7 @@
       stacked="lg"
       ref="pipelines"
     >
-      <template v-slot:head(checkbox)>
+      <template #head(checkbox)>
         <b-form-checkbox
           id="toggle-all"
           :checked="pipelines.length > 0 && pipelines.length === selected.length"
@@ -41,7 +41,7 @@
         />
       </template>
 
-      <template v-slot:top-row>
+      <template #top-row>
         <b-td colspan="2" />
         <b-td>
           <batch-groups-dropdown
@@ -64,13 +64,13 @@
         <b-td colspan="2" />
       </template>
 
-      <template v-slot:cell(checkbox)="data">
+      <template #cell(checkbox)="data">
         <b-form-checkbox
           v-model="selected"
           :value="`${data.item.repoSource}/${data.item.repoOwner}/${data.item.repoName}`"
         />
       </template>
-      <template v-slot:cell(pipeline)="data">
+      <template #cell(pipeline)="data">
         <span class="text-muted">{{ data.item.repoSource }}/{{ data.item.repoOwner }}/</span>{{ data.item.repoName }}
         <b-badge
           v-if="data.item.archived"
@@ -79,7 +79,7 @@
           Archived
         </b-badge>
       </template>
-      <template v-slot:cell(groups)="data">
+      <template #cell(groups)="data">
         <b-badge
           v-for="g in data.item.groups"
           :key="g.name"
@@ -89,13 +89,13 @@
           {{ g.name }}
         </b-badge>
       </template>
-      <template v-slot:cell(labels)="data">
+      <template #cell(labels)="data">
         <labels
           :labels="data.item.labels"
           route-name="AdminPipelines"
         />
       </template>
-      <template v-slot:cell(organizations)="data">
+      <template #cell(organizations)="data">
         <b-badge
           v-for="org in data.item.organizations"
           :key="org.name"
@@ -105,7 +105,7 @@
           {{ org.name }}
         </b-badge>
       </template>
-      <template v-slot:cell(actions)="row">
+      <template #cell(actions)="row">
         <b-button
           size="sm"
           :to="{ name: 'AdminPipelineUpdate', params: { repoSource: row.item.repoSource, repoOwner: row.item.repoOwner, repoName: row.item.repoName } }"
@@ -208,7 +208,7 @@ export default {
 
   methods: {
     pipelinesProvider (ctx) {
-      var sort = ''
+      let sort = ''
       if (ctx.sortBy) {
         sort += '&sort='
         if (ctx.sortDesc) {
@@ -216,11 +216,11 @@ export default {
         }
         sort += `${ctx.sortBy}`
       }
-      var labelFilterParams = ''
+      let labelFilterParams = ''
       if (this.filter && this.filter.labels && this.filter.labels.length > 0) {
         labelFilterParams = '&filter[labels]=' + this.filter.labels.split(',').join('&filter[labels]=')
       }
-      var searchFilterParams = ''
+      let searchFilterParams = ''
       if (this.filter && this.filter.search && this.filter.search !== '') {
         searchFilterParams = `&filter[search]=${this.filter.search}`
       }

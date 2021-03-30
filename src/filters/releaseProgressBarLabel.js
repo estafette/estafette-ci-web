@@ -4,24 +4,24 @@ export default function (pipeline, release, now) {
   if (!pipeline || !pipeline.releaseTargets || !release || !release.releaseStatus) {
     return ''
   }
-  var status = release.releaseStatus.toString().toLowerCase()
+  const status = release.releaseStatus.toString().toLowerCase()
 
-  var releaseTarget = pipeline.releaseTargets.find(rt => rt.name === release.name)
+  const releaseTarget = pipeline.releaseTargets.find(rt => rt.name === release.name)
   if (!releaseTarget || !releaseTarget.activeReleases) {
     return ''
   }
-  var activeRelease = releaseTarget.activeReleases.find(ar => ar.action === release.action)
+  const activeRelease = releaseTarget.activeReleases.find(ar => ar.action === release.action)
   if (!activeRelease || !activeRelease.extraInfo) {
     return ''
   }
 
   if (status === 'pending') {
     if (activeRelease.extraInfo.medianPendingDuration > 0 && release.insertedAt) {
-      var pendingDurationNs = Math.pow(10, 6) * (now - new Date(release.insertedAt))
-      var medianPendingDurationNs = activeRelease.extraInfo.medianPendingDuration
-      var pendingRatio = pendingDurationNs / medianPendingDurationNs
+      const pendingDurationNs = Math.pow(10, 6) * (now - new Date(release.insertedAt))
+      const medianPendingDurationNs = activeRelease.extraInfo.medianPendingDuration
+      const pendingRatio = pendingDurationNs / medianPendingDurationNs
       if (pendingRatio >= 0.25) {
-        var remainingPendingDurationNs = medianPendingDurationNs - pendingDurationNs
+        const remainingPendingDurationNs = medianPendingDurationNs - pendingDurationNs
         if (remainingPendingDurationNs >= Math.pow(10, 9)) {
           return formatDuration(remainingPendingDurationNs, 0) + ' left'
         } else if (remainingPendingDurationNs <= -1 * Math.pow(10, 9)) {
@@ -33,11 +33,11 @@ export default function (pipeline, release, now) {
   }
   if (status === 'running') {
     if (activeRelease.extraInfo.medianDuration > 0 && release.startedAt) {
-      var durationNs = Math.pow(10, 6) * (now - new Date(release.startedAt))
-      var medianDurationNs = activeRelease.extraInfo.medianDuration
-      var ratio = durationNs / medianDurationNs
+      const durationNs = Math.pow(10, 6) * (now - new Date(release.startedAt))
+      const medianDurationNs = activeRelease.extraInfo.medianDuration
+      const ratio = durationNs / medianDurationNs
       if (ratio >= 0.25) {
-        var remainingDurationNs = medianDurationNs - durationNs
+        const remainingDurationNs = medianDurationNs - durationNs
         if (remainingDurationNs >= Math.pow(10, 9)) {
           return formatDuration(remainingDurationNs, 0) + ' left'
         } else if (remainingDurationNs <= -1 * Math.pow(10, 9)) {

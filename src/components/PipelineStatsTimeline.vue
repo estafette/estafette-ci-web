@@ -24,7 +24,7 @@ import upperFirst from 'lodash/upperFirst'
 export default {
   components: {
     Spinner,
-    'apexcharts': () => import(/* webpackChunkName: "vue-apexcharts" */ 'vue-apexcharts')
+    apexcharts: () => import(/* webpackChunkName: "vue-apexcharts" */ 'vue-apexcharts')
   },
 
   props: {
@@ -143,12 +143,12 @@ export default {
     },
 
     getColors (status) {
-      var bootstrapColors = ['#007bff', '#28a745', '#dc3545', '#ffc107', '#17a2b8']
-      var mainColor = this.getColor(this.status)
-      var colors = [mainColor]
+      const bootstrapColors = ['#007bff', '#28a745', '#dc3545', '#ffc107', '#17a2b8']
+      const mainColor = this.getColor(this.status)
+      const colors = [mainColor]
 
-      for (var index in bootstrapColors) {
-        var color = bootstrapColors[index]
+      for (const index in bootstrapColors) {
+        const color = bootstrapColors[index]
         if (color !== mainColor) {
           colors.push(color)
         }
@@ -173,9 +173,9 @@ export default {
         clearTimeout(this.refreshTimeout)
       }
 
-      var max = 1000 * intervalSeconds * 0.75
-      var min = 1000 * intervalSeconds * 1.25
-      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+      const max = 1000 * intervalSeconds * 0.75
+      const min = 1000 * intervalSeconds * 1.25
+      const timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadStat, timeoutWithJitter)
@@ -184,10 +184,10 @@ export default {
 
     updateSeries (durations) {
       // filter outliers
-      var durationsMap = {}
+      const durationsMap = {}
       durations.forEach(duration => {
         // generate key
-        key = 'duration'
+        let key = 'duration'
         if (duration.name) {
           key = duration.name
           if (duration.action && duration.action !== '') {
@@ -204,8 +204,8 @@ export default {
       })
 
       // update series from durations dictionary
-      for (var key in durationsMap) {
-        var serie = this.series.find(s => s.name === key)
+      for (const key in durationsMap) {
+        let serie = this.series.find(s => s.name === key)
         if (!serie) {
           serie = {
             name: key,
@@ -224,10 +224,10 @@ export default {
         return durations.sort((a, b) => new Date(a.x) - new Date(b.x))
       }
 
-      let values, filteredValues, q1, q3, iqr, maxValue, minValue
+      let q1, q3
 
       // copy array fast and sort
-      values = durations.slice().sort((a, b) => a.y - b.y)
+      const values = durations.slice().sort((a, b) => a.y - b.y)
 
       // find quartiles
       if ((values.length / 4) % 1 === 0) {
@@ -238,10 +238,11 @@ export default {
         q3 = values[Math.ceil(values.length * (3 / 4) + 1)].y
       }
 
-      iqr = q3 - q1
-      maxValue = q3 + iqr * 1.5
-      minValue = q1 - iqr * 1.5
+      const iqr = q3 - q1
+      const maxValue = q3 + iqr * 1.5
+      const minValue = q1 - iqr * 1.5
 
+      let filteredValues
       if (minValue >= maxValue) {
         filteredValues = values.filter((x) => (x.y >= maxValue) && (x.y <= minValue))
       } else {

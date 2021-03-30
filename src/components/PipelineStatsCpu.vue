@@ -24,7 +24,7 @@ import upperFirst from 'lodash/upperFirst'
 export default {
   components: {
     Spinner,
-    'apexcharts': () => import(/* webpackChunkName: "vue-apexcharts" */ 'vue-apexcharts')
+    apexcharts: () => import(/* webpackChunkName: "vue-apexcharts" */ 'vue-apexcharts')
   },
 
   props: {
@@ -143,12 +143,12 @@ export default {
     },
 
     getColors (status) {
-      var bootstrapColors = ['#007bff', '#28a745', '#dc3545', '#ffc107', '#17a2b8']
-      var mainColor = this.getColor(this.status)
-      var colors = [mainColor]
+      const bootstrapColors = ['#007bff', '#28a745', '#dc3545', '#ffc107', '#17a2b8']
+      const mainColor = this.getColor(this.status)
+      const colors = [mainColor]
 
-      for (var index in bootstrapColors) {
-        var color = bootstrapColors[index]
+      for (const index in bootstrapColors) {
+        const color = bootstrapColors[index]
         if (color !== mainColor) {
           colors.push(color)
         }
@@ -173,9 +173,9 @@ export default {
         clearTimeout(this.refreshTimeout)
       }
 
-      var max = 1000 * intervalSeconds * 0.75
-      var min = 1000 * intervalSeconds * 1.25
-      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+      const max = 1000 * intervalSeconds * 0.75
+      const min = 1000 * intervalSeconds * 1.25
+      const timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadStat, timeoutWithJitter)
@@ -184,10 +184,10 @@ export default {
 
     updateSeries (measurements) {
       // filter outliers
-      var measurementsMap = {}
+      const measurementsMap = {}
       measurements.forEach(measurement => {
         // generate key
-        key = 'cpu'
+        let key = 'cpu'
         if (measurement.name) {
           key = measurement.name
           if (measurement.action && measurement.action !== '') {
@@ -204,8 +204,8 @@ export default {
       })
 
       // update series from measurements dictionary
-      for (var key in measurementsMap) {
-        var serie = this.series.find(s => s.name === key)
+      for (const key in measurementsMap) {
+        let serie = this.series.find(s => s.name === key)
         if (!serie) {
           serie = {
             name: key,

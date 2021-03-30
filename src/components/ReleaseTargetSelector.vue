@@ -55,7 +55,7 @@ export default {
 
   computed: {
     sinceOptions () {
-      var sinceOptions = [
+      const sinceOptions = [
         { value: 'all', text: 'All release targets' }
       ]
 

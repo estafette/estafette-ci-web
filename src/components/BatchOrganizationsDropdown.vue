@@ -90,7 +90,7 @@ export default {
 
   methods: {
     loadOrganizations () {
-      this.axios.get(`/api/organizations?page[number]=1&page[size]=100`)
+      this.axios.get('/api/organizations?page[number]=1&page[size]=100')
         .then(response => {
           this.organizations = response.data.items
           this.loaded.organizations = true
@@ -104,10 +104,10 @@ export default {
       this.organizationsToAdd = []
       this.organizationsToRemove = []
 
-      var selectedItems = this.selectableItems.filter(i => this.selected.includes(this.selectableIdFunc(i)))
+      const selectedItems = this.selectableItems.filter(i => this.selected.includes(this.selectableIdFunc(i)))
 
       this.checkedOrganizations = this.organizations.map(o => o.id).reduce((map, o) => {
-        var checked = selectedItems.length > 0 ? selectedItems.every(i => i.organizations && i.organizations.some(io => io.id === o)) : false
+        const checked = selectedItems.length > 0 ? selectedItems.every(i => i.organizations && i.organizations.some(io => io.id === o)) : false
         map[o] = checked ? 'checked:' + o : 'unchecked:' + o
         return map
       }, {})
@@ -119,13 +119,13 @@ export default {
     },
 
     toggleOrganization (o) {
-      var prefix = ''
+      let prefix = ''
       if (o.startsWith('checked:')) {
         prefix = 'checked:'
       } else if (o.startsWith('unchecked:')) {
         prefix = 'unchecked:'
       }
-      var organization = o.slice(prefix.length)
+      const organization = o.slice(prefix.length)
 
       // update indeterminate value (the .sync modifier doesn't seem to work)
       this.indeterminateOrganizations[organization] = false
@@ -140,7 +140,7 @@ export default {
     },
 
     applyOrganizations () {
-      var body = {
+      const body = {
         organizationsToAdd: this.organizations.map(o => { return { id: o.id, name: o.name } }).filter(o => this.organizationsToAdd.includes(o.id)),
         organizationsToRemove: this.organizations.map(o => { return { id: o.id, name: o.name } }).filter(o => this.organizationsToRemove.includes(o.id))
       }

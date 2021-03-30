@@ -163,7 +163,7 @@ export default {
 
   methods: {
     paginationLinkGenerator (pageNum) {
-      var query = this.getQueryParams()
+      const query = this.getQueryParams()
 
       if (pageNum > 0) {
         query.page = pageNum
@@ -175,7 +175,7 @@ export default {
     },
 
     getQueryParams () {
-      var query = { ...this.$route.query }
+      const query = { ...this.$route.query }
 
       if (this.filter && this.filter.status && this.filter.status !== '') {
         query.status = this.filter.status
@@ -237,24 +237,24 @@ export default {
     },
 
     loadPipelines () {
-      var labelFilterParams = ''
+      let labelFilterParams = ''
       if (this.filter && this.filter.labels && this.filter.labels.length > 0) {
         labelFilterParams = this.filter.labels.split(',').join('&filter[labels]=')
       }
 
-      var statusFilter = `filter[status]=${this.filter.status}`
+      let statusFilter = `filter[status]=${this.filter.status}`
       if (this.filter.status === 'running') {
-        statusFilter += `&filter[status]=pending&filter[status]=canceling`
+        statusFilter += '&filter[status]=pending&filter[status]=canceling'
       }
 
-      var sortParams = ''
-      var recentCommitterFilterParams = ''
+      let sortParams = ''
+      let recentCommitterFilterParams = ''
       if (this.user && this.user.active && this.filter && this.filter.recentCommitter === 'true') {
         recentCommitterFilterParams = `&filter[recent-committer]=${this.user.email}`
         sortParams = '&sort=-last_updated_at,repo_source,repo_owner,repo_name'
       }
 
-      var recentReleaserFilterParams = ''
+      let recentReleaserFilterParams = ''
       if (this.user && this.user.active && this.filter && this.filter.recentReleaser === 'true') {
         recentReleaserFilterParams = `&filter[recent-releaser]=${this.user.email}`
         sortParams = '&sort=-last_updated_at,repo_source,repo_owner,repo_name'
@@ -279,9 +279,9 @@ export default {
         clearTimeout(this.refreshTimeout)
       }
 
-      var max = 1000 * intervalSeconds * 0.75
-      var min = 1000 * intervalSeconds * 1.25
-      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+      const max = 1000 * intervalSeconds * 0.75
+      const min = 1000 * intervalSeconds * 1.25
+      const timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadPipelines, timeoutWithJitter)

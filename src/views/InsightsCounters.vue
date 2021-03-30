@@ -77,8 +77,8 @@ export default {
     },
 
     updateQueryParams () {
-      var query = { ...this.$route.query }
-      var newQuerySince = this.filter.since
+      const query = { ...this.$route.query }
+      const newQuerySince = this.filter.since
 
       if (query.since !== newQuerySince) {
         query.since = newQuerySince

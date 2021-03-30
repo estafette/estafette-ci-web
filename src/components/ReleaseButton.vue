@@ -97,7 +97,7 @@ export default {
 
     startRelease: function (releaseTarget, action, event) {
       if (this.user.active) {
-        var startedRelease = {
+        let startedRelease = {
           name: releaseTarget.name,
           action: action ? action.name : '',
           repoSource: this.build.repoSource,
@@ -120,14 +120,14 @@ export default {
     },
 
     updateRelease (startedRelease) {
-      var releaseTarget = this.pipeline.releaseTargets.find(rt => rt.name === startedRelease.name)
+      const releaseTarget = this.pipeline.releaseTargets.find(rt => rt.name === startedRelease.name)
       if (releaseTarget) {
         if (!releaseTarget.activeReleases) {
           releaseTarget.activeReleases = [startedRelease]
         } else {
           // replace corresponding active release with started release
-          var hasMatchingActiveRelease = false
-          var newActiveReleases = releaseTarget.activeReleases.map(r => {
+          let hasMatchingActiveRelease = false
+          const newActiveReleases = releaseTarget.activeReleases.map(r => {
             // if there's no actions on the active releases there's just one and it's a match, so replace it
             if (!r.action) {
               hasMatchingActiveRelease = true

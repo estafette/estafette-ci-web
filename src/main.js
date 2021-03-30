@@ -20,8 +20,8 @@ Vue.axios.interceptors.request.use(
   config => {
     if (process.env.ADD_TRAILING_SLASH_TO_API_REQUEST) {
       // split url in path and query
-      var url = config.url
-      var urlParts = url.split('?')
+      const url = config.url
+      const urlParts = url.split('?')
 
       // check if path already ends with a trailing slash
       if (urlParts.length > 0 && urlParts[0][urlParts[0].length - 1] !== '/') {
@@ -59,7 +59,7 @@ Vue.axios.interceptors.response.use((response) => {
 store.watch((state) => state.user.me, (to, from) => {
   if (!to && from) {
     if (from.currentProvider) {
-      var href = '/api/auth/login/' + from.currentProvider + '?returnURL=' + router.currentRoute.fullPath
+      let href = '/api/auth/login/' + from.currentProvider + '?returnURL=' + router.currentRoute.fullPath
       if (from.currentOrganization) {
         href += '&organization=' + from.currentOrganization
       }
@@ -70,9 +70,9 @@ store.watch((state) => state.user.me, (to, from) => {
   }
 })
 
-var handleLoginRedirect = (to, next) => {
-  var user = store.state.user.me
-  var isAuthenticated = user && user.active
+const handleLoginRedirect = (to, next) => {
+  const user = store.state.user.me
+  const isAuthenticated = user && user.active
 
   // if user tries to navigate to a route it does not have the required role for, disallow
   if (to.meta && to.meta.requiredRole && (!user || !user.active || !user.roles || !user.roles.includes(to.meta.requiredRole))) {

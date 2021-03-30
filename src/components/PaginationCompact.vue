@@ -17,6 +17,7 @@
       align="right"
       class="d-inline-flex"
     />
+    <!-- eslint-disable vue/no-mutating-props -->
     <b-pagination
       v-else
       v-model="pagination.page"
@@ -28,6 +29,7 @@
       align="right"
       class="d-inline-flex"
     />
+    <!-- eslint-enable vue/no-mutating-props -->
   </div>
 </template>
 

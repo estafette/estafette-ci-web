@@ -12,7 +12,7 @@
           class="mb-3 pl-4 pt-4 pr-4 pb-5 rounded border"
         >
           <template
-            v-slot:header
+            #header
           >
             <span class="text-success font-italic">
               Estafette

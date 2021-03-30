@@ -1,9 +1,9 @@
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
 
 const ApiMocker = require('connect-api-mocker')
 
-var mergedConfig = merge.smart(common, {
+const mergedConfig = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {

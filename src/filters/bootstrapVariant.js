@@ -1,5 +1,5 @@
 export default function (value, outline = false) {
-  var prefix = outline ? 'outline-' : ''
+  const prefix = outline ? 'outline-' : ''
   if (!value) {
     return prefix + 'light'
   }

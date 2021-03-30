@@ -9,6 +9,7 @@
       hide-goto-end-buttons
       align="center"
     />
+    <!-- eslint-disable vue/no-mutating-props -->
     <b-pagination
       v-else
       v-model="pagination.page"
@@ -18,6 +19,7 @@
       hide-goto-end-buttons
       align="center"
     />
+    <!-- eslint-enable vue/no-mutating-props -->
   </div>
 </template>
 

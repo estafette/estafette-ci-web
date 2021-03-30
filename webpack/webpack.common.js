@@ -1,10 +1,10 @@
 const webpack = require('webpack')
 const path = require('path')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   context: path.resolve(__dirname, '..'),
@@ -19,15 +19,14 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
+      vue$: 'vue/dist/vue.esm.js',
       '@': path.resolve(__dirname, '..', 'src')
     }
   },
   optimization: {
     minimizer: [
       new TerserPlugin({
-        parallel: true,
-        cache: true
+        parallel: true
       }),
       new OptimizeCSSAssetsPlugin({})
     ],
@@ -35,7 +34,8 @@ module.exports = {
     runtimeChunk: 'single',
     splitChunks: {
       chunks: 'all'
-    }
+    },
+    moduleIds: 'deterministic'
   },
   stats: {
     colors: true,
@@ -46,8 +46,8 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       ADD_TRAILING_SLASH_TO_API_REQUEST: false
     }),
-    new CleanWebpackPlugin(['dist'], { root: path.resolve(__dirname, '..') }),
     new VueLoaderPlugin(),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
@@ -56,15 +56,14 @@ module.exports = {
     new webpack.IgnorePlugin(
       /^\.\/locale$/,
       /moment$/
-    ),
-    new webpack.HashedModuleIdsPlugin()
+    )
   ],
   module: {
     rules: [
       {
         enforce: 'pre',
         test: /\.(js|vue)$/,
-        include: [ path.resolve(__dirname, '..', 'src'), path.resolve(__dirname, '..', 'test') ],
+        include: [path.resolve(__dirname, '..', 'src'), path.resolve(__dirname, '..', 'test')],
         loader: 'eslint-loader'
       },
       {

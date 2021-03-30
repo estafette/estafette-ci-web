@@ -32,7 +32,7 @@
       stacked="lg"
       ref="clients"
     >
-      <template v-slot:head(checkbox)>
+      <template #head(checkbox)>
         <b-form-checkbox
           id="toggle-all"
           :checked="clients.length > 0 && clients.length === selected.length"
@@ -42,7 +42,7 @@
         />
       </template>
 
-      <template v-slot:top-row>
+      <template #top-row>
         <b-td colspan="2" />
         <b-td>
           <batch-roles-dropdown
@@ -63,13 +63,13 @@
         <b-td colspan="1" />
       </template>
 
-      <template v-slot:cell(checkbox)="data">
+      <template #cell(checkbox)="data">
         <b-form-checkbox
           v-model="selected"
           :value="data.item.id"
         />
       </template>
-      <template v-slot:cell(roles)="data">
+      <template #cell(roles)="data">
         <b-badge
           v-for="r in data.item.roles"
           :key="r"
@@ -79,7 +79,7 @@
           {{ r }}
         </b-badge>
       </template>
-      <template v-slot:cell(organizations)="data">
+      <template #cell(organizations)="data">
         <b-badge
           v-for="org in data.item.organizations"
           :key="org.name"
@@ -89,7 +89,7 @@
           {{ org.name }}
         </b-badge>
       </template>
-      <template v-slot:cell(actions)="row">
+      <template #cell(actions)="row">
         <b-button
           size="sm"
           @click="row.toggleDetails"
@@ -106,7 +106,7 @@
         </b-button>
       </template>
 
-      <template v-slot:row-details="row">
+      <template #row-details="row">
         <b-card>
           <b-row class="mb-2">
             <b-col

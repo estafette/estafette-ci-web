@@ -28,7 +28,7 @@
       menu-class="w-100"
       class="m-3 d-lg-none"
     >
-      <template v-slot:button-content>
+      <template #button-content>
         <font-awesome-icon
           v-if="activeRouteIcon"
           :icon="activeRouteIcon"
@@ -95,10 +95,10 @@ export default {
 
     routes () {
       // get name of active outer route
-      var activeOuterRouteName = this.$route.matched[0].name
+      const activeOuterRouteName = this.$route.matched[0].name
 
       // get active outer route
-      var activeOuterRoute = this.$router.options.routes.find(r => r.name === activeOuterRouteName)
+      const activeOuterRoute = this.$router.options.routes.find(r => r.name === activeOuterRouteName)
       if (!activeOuterRoute) {
         return []
       }
@@ -145,7 +145,7 @@ export default {
 
     section () {
       // get name of active outer route
-      var activeSectionRouteName = this.$route.matched[0].name
+      let activeSectionRouteName = this.$route.matched[0].name
 
       // if prop is set use that instead
       if (this.sectionRouteName) {
@@ -157,7 +157,7 @@ export default {
     },
 
     variant () {
-      var section = this.section
+      const section = this.section
       if (!section) {
         return 'secondary'
       }

@@ -50,7 +50,7 @@ export default {
 
   methods: {
     loadGroups () {
-      this.axios.get(`/api/catalog/groups`)
+      this.axios.get('/api/catalog/groups')
         .then(response => {
           this.groups = response.data.items
         })

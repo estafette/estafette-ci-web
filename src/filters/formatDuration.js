@@ -11,18 +11,18 @@ export default function (value, digits) {
     digits = 1
   }
 
-  var days = Math.floor(value / (24 * 3600 * Math.pow(10, 9)))
-  var remainderForHours = value % (24 * 3600 * Math.pow(10, 9))
-  var hours = Math.floor(remainderForHours / (3600 * Math.pow(10, 9)))
-  var remainderForMinutes = remainderForHours % (3600 * Math.pow(10, 9))
-  var minutes = Math.floor(remainderForMinutes / (60 * Math.pow(10, 9)))
-  var remainderForSeconds = remainderForMinutes % (60 * Math.pow(10, 9))
-  var seconds = Math.floor(remainderForSeconds / Math.pow(10, 9))
-  var remainderForMilliseconds = remainderForSeconds % Math.pow(10, 9)
+  const days = Math.floor(value / (24 * 3600 * Math.pow(10, 9)))
+  const remainderForHours = value % (24 * 3600 * Math.pow(10, 9))
+  const hours = Math.floor(remainderForHours / (3600 * Math.pow(10, 9)))
+  const remainderForMinutes = remainderForHours % (3600 * Math.pow(10, 9))
+  const minutes = Math.floor(remainderForMinutes / (60 * Math.pow(10, 9)))
+  const remainderForSeconds = remainderForMinutes % (60 * Math.pow(10, 9))
+  const seconds = Math.floor(remainderForSeconds / Math.pow(10, 9))
+  const remainderForMilliseconds = remainderForSeconds % Math.pow(10, 9)
 
-  var deciSeconds = Math.floor(remainderForMilliseconds / Math.pow(10, 8))
+  const deciSeconds = Math.floor(remainderForMilliseconds / Math.pow(10, 8))
 
-  var formattedString = ''
+  let formattedString = ''
 
   if (days > 0) {
     formattedString += `${days}d`

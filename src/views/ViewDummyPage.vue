@@ -24,7 +24,7 @@ export default {
     },
 
     header () {
-      var page = this.page
+      const page = this.page
       if (!page) {
         return ''
       }

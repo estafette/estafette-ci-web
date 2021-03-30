@@ -40,7 +40,7 @@ export default {
 
     section () {
       // get name of active outer route
-      var activeSectionRouteName = this.$route.matched[0].name
+      let activeSectionRouteName = this.$route.matched[0].name
 
       // if prop is set use that instead
       if (this.sectionRouteName) {
@@ -52,7 +52,7 @@ export default {
     },
 
     header () {
-      var section = this.section
+      const section = this.section
       if (!section) {
         return ''
       }
@@ -65,7 +65,7 @@ export default {
     },
 
     bgVariant () {
-      var section = this.section
+      const section = this.section
       if (!section) {
         return 'secondary'
       }
@@ -78,7 +78,7 @@ export default {
     },
 
     textVariant () {
-      var section = this.section
+      const section = this.section
       if (!section) {
         return 'white'
       }

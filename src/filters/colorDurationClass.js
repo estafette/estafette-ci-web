@@ -7,7 +7,7 @@ export default function (value) {
     return ''
   }
 
-  var seconds = Math.floor(value / Math.pow(10, 9))
+  const seconds = Math.floor(value / Math.pow(10, 9))
   if (seconds > 300) {
     return 'text-danger'
   }

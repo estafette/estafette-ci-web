@@ -90,7 +90,7 @@ export default {
 
   methods: {
     loadGroups () {
-      this.axios.get(`/api/groups?page[number]=1&page[size]=100`)
+      this.axios.get('/api/groups?page[number]=1&page[size]=100')
         .then(response => {
           this.groups = response.data.items
           this.loaded.groups = true
@@ -104,10 +104,10 @@ export default {
       this.groupsToAdd = []
       this.groupsToRemove = []
 
-      var selectedItems = this.selectableItems.filter(i => this.selected.includes(this.selectableIdFunc(i)))
+      const selectedItems = this.selectableItems.filter(i => this.selected.includes(this.selectableIdFunc(i)))
 
       this.checkedGroups = this.groups.map(g => g.id).reduce((map, g) => {
-        var checked = selectedItems.length > 0 ? selectedItems.every(i => i.groups && i.groups.some(ig => ig.id === g)) : false
+        const checked = selectedItems.length > 0 ? selectedItems.every(i => i.groups && i.groups.some(ig => ig.id === g)) : false
         map[g] = checked ? 'checked:' + g : 'unchecked:' + g
         return map
       }, {})
@@ -119,13 +119,13 @@ export default {
     },
 
     toggleGroup (g) {
-      var prefix = ''
+      let prefix = ''
       if (g.startsWith('checked:')) {
         prefix = 'checked:'
       } else if (g.startsWith('unchecked:')) {
         prefix = 'unchecked:'
       }
-      var group = g.slice(prefix.length)
+      const group = g.slice(prefix.length)
 
       // update indeterminate value (the .sync modifier doesn't seem to work)
       this.indeterminateGroups[group] = false
@@ -140,7 +140,7 @@ export default {
     },
 
     applyGroups () {
-      var body = {
+      const body = {
         groupsToAdd: this.groups.map(g => { return { id: g.id, name: g.name } }).filter(g => this.groupsToAdd.includes(g.id)),
         groupsToRemove: this.groups.map(g => { return { id: g.id, name: g.name } }).filter(g => this.groupsToRemove.includes(g.id))
       }

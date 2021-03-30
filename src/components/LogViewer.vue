@@ -692,7 +692,7 @@ export default {
   methods: {
     formatLog (value) {
       if (!value) return value
-      var ansi = new AnsiUp()
+      const ansi = new AnsiUp()
       return ansi.ansi_to_html(value)
     },
 
@@ -720,9 +720,9 @@ export default {
         clearTimeout(this.refreshTimeout)
       }
 
-      var max = 1000 * intervalSeconds * 0.75
-      var min = 1000 * intervalSeconds * 1.25
-      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+      const max = 1000 * intervalSeconds * 0.75
+      const min = 1000 * intervalSeconds * 1.25
+      const timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadLogs, timeoutWithJitter)
@@ -735,8 +735,8 @@ export default {
         return logLines
       }
 
-      var firstLines = logLines.slice(0, firstLinesToShow)
-      var truncatedLines = logLines.slice(firstLinesToShow, firstLinesToShow + 3).map((l, i) => {
+      const firstLines = logLines.slice(0, firstLinesToShow)
+      const truncatedLines = logLines.slice(firstLinesToShow, firstLinesToShow + 3).map((l, i) => {
         if (i === 1) {
           return {
             line: l.line,
@@ -753,7 +753,7 @@ export default {
           text: ' '
         }
       })
-      var lastLines = logLines.slice(logLines.length - this.maxLinesToShow + firstLinesToShow + 3)
+      const lastLines = logLines.slice(logLines.length - this.maxLinesToShow + firstLinesToShow + 3)
 
       // get first 5 lines and last 1955
       return firstLines.concat(truncatedLines).concat(lastLines)
@@ -776,19 +776,19 @@ export default {
             return
           }
 
-          let data = JSON.parse(event.data)
+          const data = JSON.parse(event.data)
 
-          var stageType = 'stage'
+          let stageType = 'stage'
           if (data.type) {
             stageType = data.type
           }
 
           if ((!data.type && (!data.depth || data.depth === 0)) || (data.type && stageType === 'stage' && !data.parentStage)) {
-            var stepIndex = this.tailedSteps.findIndex(s => s === data.step)
-            var step = stepIndex > -1 ? this.steps[stepIndex] : null
+            let stepIndex = this.tailedSteps.findIndex(s => s === data.step)
+            let step = stepIndex > -1 ? this.steps[stepIndex] : null
             if (stepIndex === -1) {
               // create new step
-              var initialStatus = 'RUNNING'
+              let initialStatus = 'RUNNING'
               if (data.status) {
                 initialStatus = data.status
               }
@@ -831,20 +831,21 @@ export default {
             // a nested stage, see if it exists in the last outer stage, otherwise add it (still at risk when the event stream restarts)
             if (this.steps.length > 0) {
               // get last outer step (or by name if parentStage property exists)
-              var outerStep = this.steps[this.steps.length - 1]
+              let outerStep = this.steps[this.steps.length - 1]
               if (data.parentStage) {
-                stepIndex = this.tailedSteps.findIndex(s => s === data.parentStage)
+                const stepIndex = this.tailedSteps.findIndex(s => s === data.parentStage)
                 if (stepIndex > -1) {
                   outerStep = this.steps[stepIndex]
                 }
               }
 
+              let nestedStepIndex, nestedStep
               if (stageType === 'service') {
-                var nestedStepIndex = outerStep.services.findIndex(ns => ns.step === data.step)
-                var nestedStep = nestedStepIndex > -1 ? outerStep.services[nestedStepIndex] : null
+                nestedStepIndex = outerStep.services.findIndex(ns => ns.step === data.step)
+                nestedStep = nestedStepIndex > -1 ? outerStep.services[nestedStepIndex] : null
                 if (nestedStepIndex === -1) {
                   // create new nested service step
-                  initialStatus = 'RUNNING'
+                  let initialStatus = 'RUNNING'
                   if (data.status) {
                     initialStatus = data.status
                   }
@@ -856,7 +857,7 @@ export default {
                 nestedStep = nestedStepIndex > -1 ? outerStep.nestedSteps[nestedStepIndex] : null
                 if (nestedStepIndex === -1) {
                   // create new nested stage step
-                  initialStatus = 'RUNNING'
+                  let initialStatus = 'RUNNING'
                   if (data.status) {
                     initialStatus = data.status
                   }
@@ -916,7 +917,7 @@ export default {
         }
       },
       1000,
-      { 'maxWait': 5000 }
+      { maxWait: 5000 }
     ),
 
     scrollToggle () {

@@ -27,7 +27,7 @@
       menu-class="w-100"
       class="mt-3 mb-3 d-lg-none"
     >
-      <template v-slot:button-content>
+      <template #button-content>
         <font-awesome-icon
           v-if="activeTabIcon"
           :icon="activeTabIcon"
@@ -101,7 +101,7 @@ export default {
     activeTabIcon () {
       if (this.tabs && this.activeTabText) {
         // get tab by text
-        var activeTab = this.tabs.find(r => r.text === this.activeTabText)
+        const activeTab = this.tabs.find(r => r.text === this.activeTabText)
         if (activeTab && activeTab.icon) {
           return activeTab.icon
         }
@@ -112,7 +112,7 @@ export default {
 
     section () {
       // get name of active outer route
-      var activeSectionRouteName = this.$route.matched[0].name
+      let activeSectionRouteName = this.$route.matched[0].name
 
       // if prop is set use that instead
       if (this.sectionRouteName) {
@@ -124,7 +124,7 @@ export default {
     },
 
     variant () {
-      var section = this.section
+      const section = this.section
       if (!section) {
         return 'secondary'
       }

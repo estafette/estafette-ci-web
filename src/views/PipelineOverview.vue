@@ -244,7 +244,7 @@ export default {
         return
       }
 
-      var actionName = ''
+      let actionName = ''
       if (release.action) {
         actionName = release.action
       }
@@ -255,7 +255,7 @@ export default {
 
     startRelease: function (build, releaseTarget, actionName) {
       if (this.user.active) {
-        var startedRelease = {
+        let startedRelease = {
           name: releaseTarget.name,
           action: actionName,
           repoSource: build.repoSource,
@@ -279,14 +279,14 @@ export default {
     },
 
     updateRelease (startedRelease) {
-      var releaseTarget = this.pipeline.releaseTargets.find(rt => rt.name === startedRelease.name)
+      const releaseTarget = this.pipeline.releaseTargets.find(rt => rt.name === startedRelease.name)
       if (releaseTarget) {
         if (!releaseTarget.activeReleases) {
           releaseTarget.activeReleases = [startedRelease]
         } else {
           // replace corresponding active release with started release
-          var hasMatchingActiveRelease = false
-          var newActiveReleases = releaseTarget.activeReleases.map(r => {
+          let hasMatchingActiveRelease = false
+          const newActiveReleases = releaseTarget.activeReleases.map(r => {
             // if there's no actions on the active releases there's just one and it's a match, so replace it
             if (!r.action) {
               hasMatchingActiveRelease = true
@@ -334,9 +334,9 @@ export default {
         clearTimeout(this.refreshTimeout)
       }
 
-      var max = 1000 * intervalSeconds * 0.75
-      var min = 1000 * intervalSeconds * 1.25
-      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+      const max = 1000 * intervalSeconds * 0.75
+      const min = 1000 * intervalSeconds * 1.25
+      const timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadRecentBuilds, timeoutWithJitter)
@@ -382,11 +382,11 @@ export default {
           return releaseTarget.activeReleases
         }
 
-        var releaseActions = []
+        const releaseActions = []
 
         releaseTarget.actions.forEach(action => {
           // check if there's an active release for name and action
-          var activeRelease = this.getActiveRelease(releaseTarget.activeReleases, action.name)
+          const activeRelease = this.getActiveRelease(releaseTarget.activeReleases, action.name)
           if (activeRelease !== undefined) {
             releaseActions.push(activeRelease)
           } else {

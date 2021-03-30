@@ -126,11 +126,11 @@ export default {
     },
 
     loadTemplates () {
-      this.axios.get(`/api/manifest/templates`)
+      this.axios.get('/api/manifest/templates')
         .then(response => {
           this.templates = response.data.templates
 
-          var options = [{ value: null, text: 'Please select a template' }]
+          const options = [{ value: null, text: 'Please select a template' }]
           this.templates.forEach(template => {
             options.push({ value: template.template, text: template.template })
           })
@@ -143,9 +143,9 @@ export default {
     },
 
     setTemplate (value) {
-      var template = this.templates.find(t => t.template === value)
+      const template = this.templates.find(t => t.template === value)
       if (template) {
-        var placeholders = []
+        const placeholders = []
         template.placeholders.forEach(placeholder => {
           placeholders.push({ name: placeholder })
         })
@@ -161,7 +161,7 @@ export default {
       this.generating = true
       this.manifest = null
 
-      this.axios.post(`/api/manifest/generate`, this.form)
+      this.axios.post('/api/manifest/generate', this.form)
         .then(response => {
           this.generating = false
           this.manifest = response.data.manifest

@@ -1,7 +1,7 @@
 export default {
   methods: {
     queryGenerator (newQuery) {
-      var query = {
+      const query = {
         ...this.$route.query,
         ...newQuery
       }

@@ -24,7 +24,7 @@ const mutations = {
     state.timeouts.push(timeout)
   },
   cancelTimeouts: (state) => {
-    for (var timeout of state.timeouts) {
+    for (const timeout of state.timeouts) {
       clearTimeout(timeout)
     }
     state.timeouts = []

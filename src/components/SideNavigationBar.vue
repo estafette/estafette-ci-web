@@ -63,7 +63,7 @@ export default {
     }),
 
     routes () {
-      var seenPositionBottom = false
+      let seenPositionBottom = false
       return this.$router.options.routes.filter(r => {
         // only include routes without meta.hide: true
         if (r.meta && r.meta.hide) {

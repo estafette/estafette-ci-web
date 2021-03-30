@@ -11,7 +11,7 @@
           borderless
           stacked
         >
-          <template v-slot:cell(roles)="data">
+          <template #cell(roles)="data">
             <b-badge
               v-for="r in data.item.roles"
               :key="r"
@@ -21,14 +21,14 @@
               {{ r }}
             </b-badge>
           </template>
-          <template v-slot:cell(groups)="data">
+          <template #cell(groups)="data">
             <group-badge
               v-for="g in data.item.groups"
               :key="g.id"
               :group="g"
             />
           </template>
-          <template v-slot:cell(organizations)="data">
+          <template #cell(organizations)="data">
             <b-badge
               v-for="org in data.item.organizations"
               :key="org.name"
@@ -38,7 +38,7 @@
               {{ org.name }}
             </b-badge>
           </template>
-          <template v-slot:cell(actions)>
+          <template #cell(actions)>
             <b-button
               href="/api/auth/logout/"
               variant="danger"
@@ -110,7 +110,7 @@ export default {
 
     avatar () {
       if (this.user && this.user.identities && this.user.identities.length > 0) {
-        var identity = this.user.identities.find(i => i.avatar)
+        const identity = this.user.identities.find(i => i.avatar)
         if (identity && identity.avatar) {
           return identity.avatar
         }
@@ -121,7 +121,7 @@ export default {
 
     name () {
       if (this.user && this.user.identities && this.user.identities.length > 0) {
-        var identity = this.user.identities.find(i => i.name)
+        const identity = this.user.identities.find(i => i.name)
         if (identity && identity.name) {
           return identity.name
         }
@@ -132,7 +132,7 @@ export default {
 
     email () {
       if (this.user && this.user.identities && this.user.identities.length > 0) {
-        var identity = this.user.identities.find(i => i.email)
+        const identity = this.user.identities.find(i => i.email)
         if (identity && identity.email) {
           return identity.email
         }

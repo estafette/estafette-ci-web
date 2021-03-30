@@ -134,7 +134,7 @@ export default {
 
   methods: {
     paginationLinkGenerator (pageNum) {
-      var query = this.getQueryParams()
+      const query = this.getQueryParams()
 
       if (pageNum > 0) {
         query.page = pageNum
@@ -146,7 +146,7 @@ export default {
     },
 
     getQueryParams () {
-      var query = { ...this.$route.query }
+      const query = { ...this.$route.query }
 
       if (this.filter && this.filter.status && this.filter.status !== '') {
         query.status = this.filter.status
@@ -173,9 +173,9 @@ export default {
     },
 
     loadBuilds () {
-      var statusFilter = `filter[status]=${this.filter.status}`
+      let statusFilter = `filter[status]=${this.filter.status}`
       if (this.filter.status === 'running') {
-        statusFilter += `&filter[status]=pending&filter[status]=canceling`
+        statusFilter += '&filter[status]=pending&filter[status]=canceling'
       }
 
       this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds?${statusFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
@@ -195,9 +195,9 @@ export default {
         clearTimeout(this.refreshTimeout)
       }
 
-      var max = 1000 * intervalSeconds * 0.75
-      var min = 1000 * intervalSeconds * 1.25
-      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+      const max = 1000 * intervalSeconds * 0.75
+      const min = 1000 * intervalSeconds * 1.25
+      const timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadBuilds, timeoutWithJitter)

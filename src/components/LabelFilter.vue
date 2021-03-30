@@ -58,7 +58,7 @@ export default {
         return ''
       }
 
-      var selectedLabelsArray = []
+      let selectedLabelsArray = []
       if (this.filter && this.filter.labels) {
         selectedLabelsArray = this.filter.labels.split(',')
       }

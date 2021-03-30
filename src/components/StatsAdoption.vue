@@ -24,7 +24,7 @@ import upperFirst from 'lodash/upperFirst'
 export default {
   components: {
     Spinner,
-    'apexcharts': () => import(/* webpackChunkName: "vue-apexcharts" */ 'vue-apexcharts')
+    apexcharts: () => import(/* webpackChunkName: "vue-apexcharts" */ 'vue-apexcharts')
   },
   props: {
     type: {
@@ -141,9 +141,9 @@ export default {
         clearTimeout(this.refreshTimeout)
       }
 
-      var max = 1000 * intervalSeconds * 0.75
-      var min = 1000 * intervalSeconds * 1.25
-      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+      const max = 1000 * intervalSeconds * 0.75
+      const min = 1000 * intervalSeconds * 1.25
+      const timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadStat, timeoutWithJitter)
@@ -151,8 +151,8 @@ export default {
     },
 
     updateSeries (times) {
-      var data = []
-      var count = 0
+      const data = []
+      let count = 0
       times.forEach(time => {
         data.push({ x: time, y: ++count })
       })

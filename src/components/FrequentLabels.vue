@@ -64,14 +64,14 @@ export default {
 
   methods: {
     loadFrequentLabels () {
-      var labelFilterParams = ''
+      let labelFilterParams = ''
       if (this.filter && this.filter.labels && this.filter.labels.length > 0) {
         labelFilterParams = this.filter.labels.split(',').join('&filter[labels]=')
       }
 
-      var statusFilter = `filter[status]=${this.filter.status}`
+      let statusFilter = `filter[status]=${this.filter.status}`
       if (this.filter.status === 'running') {
-        statusFilter += `&filter[status]=pending&filter[status]=canceling`
+        statusFilter += '&filter[status]=pending&filter[status]=canceling'
       }
 
       this.axios.get(`/api/labels/frequent?${statusFilter}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
@@ -89,9 +89,9 @@ export default {
         clearTimeout(this.refreshTimeout)
       }
 
-      var max = 1000 * intervalSeconds * 0.75
-      var min = 1000 * intervalSeconds * 1.25
-      var timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+      const max = 1000 * intervalSeconds * 0.75
+      const min = 1000 * intervalSeconds * 1.25
+      const timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
 
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadFrequentLabels, timeoutWithJitter)
@@ -118,7 +118,7 @@ export default {
         return []
       }
 
-      var selectedLabelsArray = []
+      let selectedLabelsArray = []
       if (this.filter && this.filter.labels) {
         selectedLabelsArray = this.filter.labels.split(',')
       }
