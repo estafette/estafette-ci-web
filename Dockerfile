@@ -1,4 +1,4 @@
-FROM nginx:1.19.0-alpine
+FROM nginx:1.19.8-alpine
 
 LABEL maintainer="estafette.io" \
       description="The estafette-ci-web is the component that renders the Esfafette CI web interface"
