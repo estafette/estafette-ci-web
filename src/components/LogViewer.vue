@@ -708,10 +708,10 @@ export default {
             }
           })
           .catch(e => {
-            this.periodicallyRefreshLogs(15)
+            this.periodicallyRefreshLogs(2)
           })
       } else {
-        this.periodicallyRefreshLogs(5)
+        this.periodicallyRefreshLogs(2)
       }
     },
 
