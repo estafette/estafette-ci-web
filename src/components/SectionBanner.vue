@@ -3,34 +3,39 @@
     v-if="section"
     class="col-12 col-md-6 col-xxxl-3"
   >
-    <b-jumbotron
-      :header="header"
-      :lead="lead"
-      :bg-variant="bgVariant"
-      :text-variant="textVariant"
-      header-level="4"
-      container-fluid
-      fluid
-      class="mb-3 p-3 rounded border"
+    <router-link
+      :to="{ name: section.name }"
+      tag="div"
     >
-      <b-button
-        variant="light"
-        :to="{ name: section.name }"
+      <b-jumbotron
+        :header="header"
+        :lead="lead"
+        :bg-variant="bgVariant"
+        :text-variant="textVariant"
+        header-level="4"
+        container-fluid
+        fluid
+        class="section-banner clickable"
       >
-        See more
-      </b-button>
-    </b-jumbotron>
+        <!-- <b-button
+          variant="light"
+          :to="{ name: section.name }"
+        >
+          See more
+        </b-button> -->
+      </b-jumbotron>
+    </router-link>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import { BJumbotron, BButton } from 'bootstrap-vue'
+import { BJumbotron } from 'bootstrap-vue'
 
 export default {
   components: {
-    BJumbotron,
-    BButton
+    BJumbotron// ,
+    // BButton
   },
 
   props: {
@@ -84,6 +89,10 @@ export default {
       }
 
       if (section.meta && section.meta.variant) {
+        switch (section.meta.variant) {
+          case 'light':
+            return 'dark'
+        }
         return section.meta.variant
       }
 

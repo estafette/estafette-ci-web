@@ -460,6 +460,10 @@ button.btn-clipboard {
   @extend .overflow-hidden;
   @extend .h5;
 
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.0;
+
   width: fit-content !important;
   max-width: 60px;
   transition: max-width .2s;
@@ -476,13 +480,17 @@ button.btn-clipboard {
   .nav-item a {
     @extend .pl-0;
     @extend .pt-3;
-    @extend .pr-3;
+    @extend .pr-4;
     @extend .pb-3;
   }
 
   .nav-item.logo a {
     @extend .h3;
     @extend .pt-4;
+
+    font-size: 1.75rem;
+    font-weight: 300;
+    line-height: 1.0;
 
     color: #28a745 !important;
 
@@ -530,6 +538,22 @@ button.btn-clipboard {
 .section-header {
   @extend .mb-3;
   @extend .p-3;
+
+  .display-4 {
+    font-size: 2.5rem;
+    line-height: 1.0;
+  }
+}
+
+.section-banner {
+  @extend .mb-3;
+  @extend .p-3;
+  @extend .rounded;
+
+  .display-4 {
+    font-size: 2.5rem;
+    line-height: 1.0;
+  }
 }
 
 .log-buttons {

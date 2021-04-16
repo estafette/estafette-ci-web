@@ -1,36 +1,16 @@
 <template>
-  <div class="m-3">
-    <div class="row">
-      <div class="col-12">
-        <b-jumbotron
-          lead="Your portal to application development & management"
-          bg-variant="white"
-          text-variant="dark"
-          header-level="3"
-          container-fluid
-          fluid
-          class="mb-3 pl-4 pt-4 pr-4 pb-5 rounded border"
-        >
-          <template
-            #header
-          >
-            <span class="text-success font-italic">
-              Estafette
-            </span>
-          </template>
+  <div>
+    <b-jumbotron
+      header="Estafette"
+      bg-variant="dark"
+      text-variant="success"
+      header-level="4"
+      container-fluid
+      fluid
+      class="section-header"
+    />
 
-          <p>For more information visit the public website.</p>
-
-          <b-button
-            variant="success"
-            href="https://estafette.io/"
-            target="_blank"
-          >
-            Learn more
-          </b-button>
-        </b-jumbotron>
-      </div>
-
+    <div class="row mr-0 ml-0">
       <section-banner
         v-for="section in sections"
         :key="section.name"
@@ -38,7 +18,7 @@
       />
     </div>
 
-    <div class="row">
+    <div class="row mr-0 ml-0">
       <my-pipelines
         title="Pipelines you recently committed to"
         filter="recent-committer"
@@ -57,14 +37,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BJumbotron, BButton } from 'bootstrap-vue'
+import { BJumbotron } from 'bootstrap-vue'
 import SectionBanner from '@/components/SectionBanner'
 import MyPipelines from '@/components/MyPipelines'
 
 export default {
   components: {
     BJumbotron,
-    BButton,
     SectionBanner,
     MyPipelines
   },

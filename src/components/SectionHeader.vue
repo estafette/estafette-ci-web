@@ -4,7 +4,7 @@
     :header="header"
     :bg-variant="bgVariant"
     :text-variant="textVariant"
-    header-level="5"
+    header-level="4"
     container-fluid
     fluid
     class="section-header"
