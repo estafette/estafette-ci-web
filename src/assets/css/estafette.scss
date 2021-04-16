@@ -471,9 +471,9 @@ button.btn-clipboard {
   @media (hover: hover) {
     &:hover {
       display: inline-flex !important;
-
       overflow: visible !important;
       max-width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
   }
 
@@ -485,12 +485,23 @@ button.btn-clipboard {
   }
 
   .nav-item.logo a {
-    @extend .h3;
-    @extend .pt-4;
+    @extend .h5;
+    // @extend .pt-3;
+    // @extend .pb-3;
+    @extend .m-0;
 
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 300;
     line-height: 1.0;
+
+
+    // @extend .mb-3;
+    // @extend .p-2;
+  
+    // .display-4 {
+    //   font-size: 2.0rem;
+    //   line-height: 1.0;
+    // }
 
     color: #28a745 !important;
 
@@ -537,10 +548,10 @@ button.btn-clipboard {
 // header at top of each section
 .section-header {
   @extend .mb-3;
-  @extend .p-3;
+  @extend .p-2;
 
   .display-4 {
-    font-size: 2.5rem;
+    font-size: 2.0rem;
     line-height: 1.0;
   }
 }

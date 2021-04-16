@@ -2,13 +2,15 @@
   <div>
     <div class="row m-0">
       <div class="col-12 col-lg-6">
+        <status-filter :filter="filter" />
+      </div>
+      <div class="col-12 col-xxl-4">
         <release-target-selector
           :model="filter.target"
           :on-change="setTarget"
-          :pipeline="pipeline"
+          :targets="releaseTargets"
         />
       </div>
-      <div class="col-12 col-xxl-4" />
       <div class="col-12 col-lg-6 col-xxl-2 text-right">
         <since-selector
           :model="filter.since"
@@ -92,12 +94,14 @@ import PipelineRow from '@/components/PipelineRow'
 import SinceSelector from '@/components/SinceSelector'
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
+import StatusFilter from '@/components/StatusFilter'
 import ReleaseTargetSelector from '@/components/ReleaseTargetSelector'
 
 export default {
   components: {
     Spinner,
     PipelineRow,
+    StatusFilter,
     ReleaseTargetSelector,
     SinceSelector,
     PaginationCompact,
@@ -113,6 +117,7 @@ export default {
 
   data: function () {
     return {
+      releaseTargets: [],
       pipelines: [],
       pagination: {
         page: 1,
@@ -138,7 +143,7 @@ export default {
     this.filterDefaults = { ...this.filter }
     this.setDataFromQueryParams(this.query)
     this.$router.replace({ query: this.getQueryParams() }).catch(() => {})
-    this.loadPipelines()
+    this.loadReleaseTargets()
   },
 
   methods: {
@@ -221,6 +226,27 @@ export default {
 
     updateQueryParams () {
       this.$router.push({ query: this.getQueryParams() })
+    },
+
+    loadReleaseTargets () {
+      let statusFilter = `filter[status]=${this.filter.status}`
+      if (this.filter.status === 'running') {
+        statusFilter += '&filter[status]=pending&filter[status]=canceling'
+      }
+      const targetFilter = `filter[target]=${this.filter.target}`
+
+      this.axios.get(`/api/pipelines?${statusFilter}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&${targetFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+        .then(response => {
+          this.pipelines = response.data.items
+          this.pagination = response.data.pagination
+
+          this.loaded = true
+
+          this.periodicallyRefreshPipelines(5)
+        })
+        .catch(e => {
+          this.periodicallyRefreshPipelines(30)
+        })
     },
 
     loadPipelines () {

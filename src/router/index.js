@@ -58,26 +58,30 @@ export default new Router({
             icon: 'upload',
             hide: true
           }
+        },
+        {
+          path: 'all-builds',
+          name: 'AllBuilds',
+          component: () => import(/* webpackChunkName: "builds" */ '../views/AllBuilds.vue'),
+          props: (route) => ({ query: route.query }),
+          meta: {
+            text: 'All builds',
+            icon: 'tools',
+            hide: true
+          }
+        },
+        {
+          path: 'all-releases',
+          name: 'AllReleases',
+          component: () => import(/* webpackChunkName: "releases" */ '../views/AllReleases.vue'),
+          props: (route) => ({ query: route.query }),
+          meta: {
+            text: 'All releases',
+            icon: 'upload',
+            hide: true
+          }
         }
       ]
-    },
-    {
-      path: '/builds',
-      name: 'Builds',
-      component: () => import(/* webpackChunkName: "builds" */ '../views/Builds.vue'),
-      props: (route) => ({ query: route.query }),
-      meta: {
-        hide: true
-      }
-    },
-    {
-      path: '/releases',
-      name: 'Releases',
-      component: () => import(/* webpackChunkName: "releases" */ '../views/Releases.vue'),
-      props: (route) => ({ query: route.query }),
-      meta: {
-        hide: true
-      }
     },
     {
       path: '/pipelines/:repoSource/:repoOwner/:repoName',

@@ -9,7 +9,7 @@
     </b-input-group-prepend>
     <b-form-select
       v-model="mutableModel"
-      :options="sinceOptions"
+      :options="releaseTargetOptions"
       @change="onChange"
     />
   </b-input-group>
@@ -44,6 +44,10 @@ export default {
     pipeline: {
       type: Object,
       default: null
+    },
+    targets: {
+      type: Array,
+      default: function () { return [] }
     }
   },
 
@@ -54,18 +58,23 @@ export default {
   },
 
   computed: {
-    sinceOptions () {
-      const sinceOptions = [
+    releaseTargetOptions () {
+      const releaseTargetOptions = [
         { value: 'all', text: 'All release targets' }
       ]
 
       if (this.pipeline && this.pipeline.releaseTargets) {
         this.pipeline.releaseTargets.forEach(rt => {
-          sinceOptions.push({ value: rt.name, text: rt.name })
+          releaseTargetOptions.push({ value: rt.name, text: rt.name })
+        })
+      }
+      if (this.targets) {
+        this.targets.forEach(t => {
+          releaseTargetOptions.push({ value: t.name, text: `${t.name} (${t.count})` })
         })
       }
 
-      return sinceOptions
+      return releaseTargetOptions
     }
   }
 }
