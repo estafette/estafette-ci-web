@@ -29,14 +29,37 @@ export default new Router({
       path: '/pipelines',
       name: 'Pipelines',
       component: () => import(/* webpackChunkName: "pipelines" */ '../views/Pipelines.vue'),
-      props: (route) => ({ query: route.query }),
+      redirect: { name: 'PipelinesRecent' },
       meta: {
         text: 'Builds & releases',
         icon: 'tools',
         banner: true,
         lead: 'View and release applications',
         variant: 'success'
-      }
+      },
+      children: [
+        {
+          path: 'recent',
+          name: 'PipelinesRecent',
+          props: (route) => ({ query: route.query }),
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelinesRecent.vue'),
+          meta: {
+            text: 'Recent',
+            icon: 'clock'
+          }
+        },
+        {
+          path: 'by-release',
+          name: 'PipelinesByRelease',
+          props: (route) => ({ query: route.query }),
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelinesByRelease.vue'),
+          meta: {
+            text: 'By release',
+            icon: 'upload',
+            hide: true
+          }
+        }
+      ]
     },
     {
       path: '/builds',
