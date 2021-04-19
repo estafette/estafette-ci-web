@@ -183,7 +183,7 @@ export default {
 
   created () {
     this.filterDefaults = { ...this.filter }
-    this.sortDefaults = { ...this.sort }
+    this.sortDefaults = this.sort
     this.setDataFromQueryParams(this.query)
     this.$router.replace({ query: this.getQueryParams() }).catch(() => {})
     this.loadPipelines()
