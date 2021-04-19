@@ -11,29 +11,9 @@
       </div>
     </div>
 
-    <div class="row-header">
-      <div class="col-3">
-        Pipeline
-      </div>
-      <div class="col-2">
-        Version
-      </div>
-      <div class="col-1">
-        Status
-      </div>
-      <div class="col-2">
-        Built at
-      </div>
-      <div class="col-1">
-        Branch
-      </div>
-      <div class="col-1">
-        Revision
-      </div>
-      <div class="col-2">
-        Commit(s)
-      </div>
-    </div>
+    <transition-group-header
+      :fields="fields"
+    />
 
     <transition-group
       name="list-complete"
@@ -73,6 +53,7 @@ import StatusFilter from '@/components/StatusFilter'
 import PaginationCompact from '@/components/PaginationCompact'
 import BuildRow from '@/components/BuildRow'
 import Pagination from '@/components/Pagination'
+import TransitionGroupHeader from '@/components/TransitionGroupHeader'
 
 export default {
   components: {
@@ -80,7 +61,8 @@ export default {
     StatusFilter,
     PaginationCompact,
     BuildRow,
-    Pagination
+    Pagination,
+    TransitionGroupHeader
   },
 
   props: {
@@ -101,6 +83,41 @@ export default {
       filter: {
         status: 'all'
       },
+      sort: '-updated_at',
+      fields: [
+        {
+          name: 'Pipeline',
+          class: 'col-3',
+          isSortable: true,
+          sortingQueryParams: { sort: 'repo_source,repo_owner,repo_name' }
+        },
+        {
+          name: 'Version',
+          class: 'col-2'
+        },
+        {
+          name: 'Status',
+          class: 'col-1'
+        },
+        {
+          name: 'Built',
+          class: 'col-2',
+          isSortable: true,
+          sortingQueryParams: { sort: '-updated_at' }
+        },
+        {
+          name: 'Branch',
+          class: 'col-1'
+        },
+        {
+          name: 'Revision',
+          class: 'col-1'
+        },
+        {
+          name: 'Commit(s)',
+          class: 'col-2'
+        }
+      ],
       loaded: false,
       refresh: true
     }
@@ -108,6 +125,7 @@ export default {
 
   created () {
     this.filterDefaults = { ...this.filter }
+    this.sortDefaults = { ...this.sort }
     this.setDataFromQueryParams(this.query)
     this.$router.replace({ query: this.getQueryParams() }).catch(() => {})
     this.loadBuilds()
@@ -141,12 +159,19 @@ export default {
         delete query.page
       }
 
+      if (this.sort) {
+        query.sort = this.sort
+      } else if (query.sort) {
+        delete query.sort
+      }
+
       return query
     },
 
     setDataFromQueryParams (query) {
       this.pagination.page = query && query.page ? Number.parseInt(query.page, 10) : 1
       this.filter.status = query && query.status ? query.status : this.filterDefaults.status
+      this.sort = query && query.sort ? query.sort : this.sortDefaults
     },
 
     updateQueryParams () {
@@ -159,7 +184,7 @@ export default {
         statusFilter += '&filter[status]=pending&filter[status]=canceling'
       }
 
-      this.axios.get(`/api/builds?${statusFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/builds?${statusFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}&sort=${this.sort}`)
         .then(response => {
           this.builds = response.data.items
           this.pagination = response.data.pagination

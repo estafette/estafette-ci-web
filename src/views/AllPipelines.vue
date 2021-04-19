@@ -44,29 +44,10 @@
       </div>
     </div>
 
-    <div class="row-header ml-3 mr-3">
-      <div class="col-3">
-        Pipeline
-      </div>
-      <div class="col-1">
-        Version
-      </div>
-      <div class="col-1">
-        Status
-      </div>
-      <div class="col-2">
-        Built
-      </div>
-      <div class="col-1">
-        Branch
-      </div>
-      <div class="col-1">
-        Revision
-      </div>
-      <div class="col-3">
-        Commit(s)
-      </div>
-    </div>
+    <transition-group-header
+      :fields="fields"
+      class="ml-3 mr-3"
+    />
 
     <transition-group
       name="list-complete"
@@ -103,6 +84,7 @@
 import { mapState } from 'vuex'
 import debounce from 'lodash/debounce'
 
+import queryGenerator from '@/mixins/queryGenerator'
 import Spinner from '@/components/Spinner'
 import PipelineRow from '@/components/PipelineRow'
 import StatusFilter from '@/components/StatusFilter'
@@ -114,6 +96,7 @@ import ReleaseTargetFilter from '@/components/ReleaseTargetFilter'
 import SinceSelector from '@/components/SinceSelector'
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
+import TransitionGroupHeader from '@/components/TransitionGroupHeader'
 
 export default {
   components: {
@@ -127,8 +110,11 @@ export default {
     ReleaseTargetFilter,
     SinceSelector,
     PaginationCompact,
-    Pagination
+    Pagination,
+    TransitionGroupHeader
   },
+
+  mixins: [queryGenerator],
 
   props: {
     query: {
@@ -155,6 +141,41 @@ export default {
         recentCommitter: 'false',
         recentReleaser: 'false'
       },
+      sort: 'repo_source,repo_owner,repo_name',
+      fields: [
+        {
+          name: 'Pipeline',
+          class: 'col-3',
+          isSortable: true,
+          sortingQueryParams: { sort: 'repo_source,repo_owner,repo_name' }
+        },
+        {
+          name: 'Version',
+          class: 'col-1'
+        },
+        {
+          name: 'Status',
+          class: 'col-1'
+        },
+        {
+          name: 'Built',
+          class: 'col-2',
+          isSortable: true,
+          sortingQueryParams: { sort: '-last_updated_at' }
+        },
+        {
+          name: 'Branch',
+          class: 'col-1'
+        },
+        {
+          name: 'Revision',
+          class: 'col-1'
+        },
+        {
+          name: 'Commit(s)',
+          class: 'col-3'
+        }
+      ],
       loaded: false,
       refresh: true
     }
@@ -162,6 +183,7 @@ export default {
 
   created () {
     this.filterDefaults = { ...this.filter }
+    this.sortDefaults = { ...this.sort }
     this.setDataFromQueryParams(this.query)
     this.$router.replace({ query: this.getQueryParams() }).catch(() => {})
     this.loadPipelines()
@@ -231,6 +253,12 @@ export default {
         delete query.page
       }
 
+      if (this.sort) {
+        query.sort = this.sort
+      } else if (query.sort) {
+        delete query.sort
+      }
+
       return query
     },
 
@@ -243,6 +271,7 @@ export default {
       this.filter.search = query && query.search ? query.search : this.filterDefaults.search
       this.filter.recentCommitter = query && query.recentCommitter ? query.recentCommitter : this.filterDefaults.recentCommitter
       this.filter.recentReleaser = query && query.recentReleaser ? query.recentReleaser : this.filterDefaults.recentReleaser
+      this.sort = query && query.sort ? query.sort : this.sortDefaults
     },
 
     updateQueryParams () {
@@ -260,7 +289,7 @@ export default {
         statusFilter += '&filter[status]=pending&filter[status]=canceling'
       }
 
-      let sortParams = ''
+      let sortParams = `&sort=${this.sort}`
       let recentCommitterFilterParams = ''
       if (this.user && this.user.active && this.filter && this.filter.recentCommitter === 'true') {
         recentCommitterFilterParams = `&filter[recent-committer]=${this.user.email}`

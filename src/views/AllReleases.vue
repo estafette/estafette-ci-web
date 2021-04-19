@@ -19,26 +19,9 @@
       </div>
     </div>
 
-    <div class="row-header">
-      <div class="col-2">
-        Pipeline
-      </div>
-      <div class="col-2">
-        Target
-      </div>
-      <div class="col-2">
-        Version
-      </div>
-      <div class="col-2">
-        Status
-      </div>
-      <div class="col-2">
-        Released
-      </div>
-      <div class="col-2">
-        Triggered by
-      </div>
-    </div>
+    <transition-group-header
+      :fields="fields"
+    />
 
     <transition-group
       name="list-complete"
@@ -77,7 +60,7 @@ import Pagination from '@/components/Pagination'
 import StatusFilter from '@/components/StatusFilter'
 import ReleaseRow from '@/components/ReleaseRow'
 import PaginationCompact from '@/components/PaginationCompact'
-// import ReleaseTargetSelector from '@/components/ReleaseTargetSelector'
+import TransitionGroupHeader from '@/components/TransitionGroupHeader'
 
 export default {
   components: {
@@ -85,8 +68,8 @@ export default {
     Pagination,
     StatusFilter,
     ReleaseRow,
-    PaginationCompact // ,
-    // ReleaseTargetSelector
+    PaginationCompact,
+    TransitionGroupHeader
   },
   props: {
     query: {
@@ -104,9 +87,39 @@ export default {
         totalItems: 0
       },
       filter: {
-        status: 'all',
-        target: 'all'
+        status: 'all'
       },
+      sort: '-updated_at',
+      fields: [
+        {
+          name: 'Pipeline',
+          class: 'col-2',
+          isSortable: true,
+          sortingQueryParams: { sort: 'repo_source,repo_owner,repo_name' }
+        },
+        {
+          name: 'Target',
+          class: 'col-2'
+        },
+        {
+          name: 'Version',
+          class: 'col-2'
+        },
+        {
+          name: 'Status',
+          class: 'col-2'
+        },
+        {
+          name: 'Released',
+          class: 'col-2',
+          isSortable: true,
+          sortingQueryParams: { sort: '-updated_at' }
+        },
+        {
+          name: 'Triggered by',
+          class: 'col-2'
+        }
+      ],
       loaded: false,
       refresh: true
     }
@@ -114,6 +127,7 @@ export default {
 
   created () {
     this.filterDefaults = { ...this.filter }
+    this.sortDefaults = { ...this.sort }
     this.setDataFromQueryParams(this.query)
     this.$router.replace({ query: this.getQueryParams() }).catch(() => {})
     this.loadReleases()
@@ -141,16 +155,16 @@ export default {
         delete query.status
       }
 
-      if (this.filter && this.filter.target && this.filter.target !== '') {
-        query.target = this.filter.target
-      } else if (query.target) {
-        delete query.target
-      }
-
       if (this.pagination && this.pagination.page && this.pagination.page > 0) {
         query.page = this.pagination.page
       } else if (query.page) {
         delete query.page
+      }
+
+      if (this.sort) {
+        query.sort = this.sort
+      } else if (query.sort) {
+        delete query.sort
       }
 
       return query
@@ -159,7 +173,7 @@ export default {
     setDataFromQueryParams (query) {
       this.pagination.page = query && query.page ? Number.parseInt(query.page, 10) : 1
       this.filter.status = query && query.status ? query.status : this.filterDefaults.status
-      this.filter.target = query && query.target ? query.target : this.filterDefaults.target
+      this.sort = query && query.sort ? query.sort : this.sortDefaults
     },
 
     updateQueryParams () {
@@ -171,9 +185,8 @@ export default {
       if (this.filter.status === 'running') {
         statusFilter += '&filter[status]=pending&filter[status]=canceling'
       }
-      const targetFilter = `filter[target]=${this.filter.target}`
 
-      this.axios.get(`/api/releases?${statusFilter}&${targetFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/releases?${statusFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}&sort=${this.sort}`)
         .then(response => {
           this.releases = response.data.items
           this.pagination = response.data.pagination

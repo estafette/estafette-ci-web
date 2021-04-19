@@ -233,6 +233,22 @@ button.btn-clipboard {
 
   @extend .d-none;
   @extend .d-xxxl-flex;
+
+  .fa-sort {
+    @extend .text-light;
+  }
+
+  span:hover .fa-sort,
+  .router-link-exact-active .fa-sort {
+    @extend .text-dark;
+  }
+
+
+
+  // &:hover .fa-sort,
+  // .router-link-exact-active .fa-sort {
+  //   @extend .text-dark;
+  // }
 }
 
 .row-block-core {
