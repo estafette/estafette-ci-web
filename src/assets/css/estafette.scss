@@ -238,17 +238,12 @@ button.btn-clipboard {
     @extend .text-light;
   }
 
-  span:hover .fa-sort,
+  span:hover .fa-sort {
+    @extend .text-primary;
+  }
   .router-link-exact-active .fa-sort {
     @extend .text-dark;
   }
-
-
-
-  // &:hover .fa-sort,
-  // .router-link-exact-active .fa-sort {
-  //   @extend .text-dark;
-  // }
 }
 
 .row-block-core {

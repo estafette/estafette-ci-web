@@ -1,8 +1,29 @@
 <template>
-  <div class="m-3">
-    <div class="row">
-      <div class="col-12 text-center">
+  <div>
+    <div class="row m-0">
+      <div class="col-12 col-lg-6 col-xxl-4">
         <status-filter :filter="filter" />
+      </div>
+      <div class="col-12 col-lg-6 col-xxl-2" />
+      <div class="col-12 col-lg-6 col-xxl-2" />
+      <div class="col-12 col-lg-6 col-xxl-2">
+        <frequent-labels :filter="filter" />
+      </div>
+      <div class="col-12 col-lg-6 col-xxl-2 text-right">
+        <since-selector
+          :model="filter.since"
+          :on-change="setSince"
+        />
+      </div>
+    </div>
+
+    <div class="row m-0">
+      <div class="col-12 col-lg-9">
+        <label-filter
+          :filter="filter"
+        />
+      </div>
+      <div class="d-none d-lg-block col-12 col-lg-3 text-right">
         <pagination-compact
           :pagination="pagination"
           :link-generator="paginationLinkGenerator"
@@ -13,11 +34,13 @@
 
     <transition-group-header
       :fields="fields"
+      class="ml-3 mr-3"
     />
 
     <transition-group
       name="list-complete"
       tag="div"
+      class="ml-3 mr-3"
       v-if="builds.length > 0"
     >
       <build-row
@@ -50,6 +73,9 @@
 import { mapState } from 'vuex'
 import Spinner from '@/components/Spinner'
 import StatusFilter from '@/components/StatusFilter'
+import SinceSelector from '@/components/SinceSelector'
+import LabelFilter from '@/components/LabelFilter'
+import FrequentLabels from '@/components/FrequentLabels'
 import PaginationCompact from '@/components/PaginationCompact'
 import BuildRow from '@/components/BuildRow'
 import Pagination from '@/components/Pagination'
@@ -59,6 +85,9 @@ export default {
   components: {
     Spinner,
     StatusFilter,
+    SinceSelector,
+    LabelFilter,
+    FrequentLabels,
     PaginationCompact,
     BuildRow,
     Pagination,
@@ -81,7 +110,9 @@ export default {
         totalItems: 0
       },
       filter: {
-        status: 'all'
+        status: 'all',
+        since: '1d',
+        labels: ''
       },
       sort: '-updated_at',
       fields: [
@@ -153,6 +184,18 @@ export default {
         delete query.status
       }
 
+      if (this.filter && this.filter.since && this.filter.since !== '') {
+        query.since = this.filter.since
+      } else if (query.since) {
+        delete query.since
+      }
+
+      if (this.filter && this.filter.labels && this.filter.labels !== '') {
+        query.labels = this.filter.labels
+      } else if (query.labels) {
+        delete query.labels
+      }
+
       if (this.pagination && this.pagination.page && this.pagination.page > 0) {
         query.page = this.pagination.page
       } else if (query.page) {
@@ -171,6 +214,8 @@ export default {
     setDataFromQueryParams (query) {
       this.pagination.page = query && query.page ? Number.parseInt(query.page, 10) : 1
       this.filter.status = query && query.status ? query.status : this.filterDefaults.status
+      this.filter.since = query && query.since ? query.since : this.filterDefaults.since
+      this.filter.labels = query && query.labels ? query.labels : this.filterDefaults.labels
       this.sort = query && query.sort ? query.sort : this.sortDefaults
     },
 
@@ -184,7 +229,12 @@ export default {
         statusFilter += '&filter[status]=pending&filter[status]=canceling'
       }
 
-      this.axios.get(`/api/builds?${statusFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}&sort=${this.sort}`)
+      let labelFilterParams = ''
+      if (this.filter && this.filter.labels && this.filter.labels.length > 0) {
+        labelFilterParams = this.filter.labels.split(',').join('&filter[labels]=')
+      }
+
+      this.axios.get(`/api/builds?${statusFilter}&filter[since]=${this.filter.since}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}&sort=${this.sort}`)
         .then(response => {
           this.builds = response.data.items
           this.pagination = response.data.pagination
@@ -210,6 +260,12 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadBuilds, timeoutWithJitter)
       }
+    },
+
+    setSince (value) {
+      this.filter.since = value
+      this.pagination.page = 1
+      this.updateQueryParams()
     }
   },
 

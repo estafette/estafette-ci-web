@@ -1,16 +1,23 @@
 <template>
-  <div class="m-3">
-    <div class="row">
-      <div class="col-12 col-lg-3">
-        <!-- <release-target-selector
-          :model="filter.target"
-          :on-change="setTarget"
-        /> -->
-      </div>
-      <div class="col-7 col-lg-6 text-lg-center">
+  <div>
+    <div class="row m-0">
+      <div class="col-12 col-lg-6 col-xxl-4">
         <status-filter :filter="filter" />
       </div>
-      <div class="col-5 col-lg-3">
+      <div class="col-12 col-lg-6 col-xxl-2" />
+      <div class="col-12 col-lg-6 col-xxl-2" />
+      <div class="col-12 col-lg-6 col-xxl-2" />
+      <div class="col-12 col-lg-6 col-xxl-2 text-right">
+        <since-selector
+          :model="filter.since"
+          :on-change="setSince"
+        />
+      </div>
+    </div>
+
+    <div class="row m-0">
+      <div class="col-12 col-lg-9" />
+      <div class="d-none d-lg-block col-12 col-lg-3 text-right">
         <pagination-compact
           :pagination="pagination"
           :link-generator="paginationLinkGenerator"
@@ -21,11 +28,13 @@
 
     <transition-group-header
       :fields="fields"
+      class="ml-3 mr-3"
     />
 
     <transition-group
       name="list-complete"
       tag="div"
+      class="ml-3 mr-3"
       v-if="releases.length > 0"
     >
       <release-row
@@ -58,6 +67,7 @@ import { mapState } from 'vuex'
 import Spinner from '@/components/Spinner'
 import Pagination from '@/components/Pagination'
 import StatusFilter from '@/components/StatusFilter'
+import SinceSelector from '@/components/SinceSelector'
 import ReleaseRow from '@/components/ReleaseRow'
 import PaginationCompact from '@/components/PaginationCompact'
 import TransitionGroupHeader from '@/components/TransitionGroupHeader'
@@ -67,6 +77,7 @@ export default {
     Spinner,
     Pagination,
     StatusFilter,
+    SinceSelector,
     ReleaseRow,
     PaginationCompact,
     TransitionGroupHeader
@@ -87,7 +98,8 @@ export default {
         totalItems: 0
       },
       filter: {
-        status: 'all'
+        status: 'all',
+        since: '1d'
       },
       sort: '-updated_at',
       fields: [
@@ -155,6 +167,12 @@ export default {
         delete query.status
       }
 
+      if (this.filter && this.filter.since && this.filter.since !== '') {
+        query.since = this.filter.since
+      } else if (query.since) {
+        delete query.since
+      }
+
       if (this.pagination && this.pagination.page && this.pagination.page > 0) {
         query.page = this.pagination.page
       } else if (query.page) {
@@ -173,6 +191,7 @@ export default {
     setDataFromQueryParams (query) {
       this.pagination.page = query && query.page ? Number.parseInt(query.page, 10) : 1
       this.filter.status = query && query.status ? query.status : this.filterDefaults.status
+      this.filter.since = query && query.since ? query.since : this.filterDefaults.since
       this.sort = query && query.sort ? query.sort : this.sortDefaults
     },
 
@@ -186,7 +205,7 @@ export default {
         statusFilter += '&filter[status]=pending&filter[status]=canceling'
       }
 
-      this.axios.get(`/api/releases?${statusFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}&sort=${this.sort}`)
+      this.axios.get(`/api/releases?${statusFilter}&filter[since]=${this.filter.since}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}&sort=${this.sort}`)
         .then(response => {
           this.releases = response.data.items
           this.pagination = response.data.pagination
@@ -214,8 +233,9 @@ export default {
       }
     },
 
-    setTarget (value) {
-      this.filter.target = value
+    setSince (value) {
+      this.filter.since = value
+      this.pagination.page = 1
       this.updateQueryParams()
     }
   },
