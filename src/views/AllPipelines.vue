@@ -1,15 +1,24 @@
 <template>
   <div>
     <div class="row m-0">
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-6 col-xxl-4">
         <status-filter :filter="filter" />
       </div>
-      <div class="col-12 col-xxl-4">
-        <release-target-selector
+      <div class="col-12 col-lg-6 col-xxl-2">
+        <pipeline-filter
+          :model="filter.search"
+          :on-input="setSearch"
+        />
+      </div>
+      <div class="col-12 col-lg-6 col-xxl-2">
+        <release-target-filter
+          :filter="filter"
           :model="filter.target"
           :on-change="setTarget"
-          :targets="releaseTargets"
         />
+      </div>
+      <div class="col-12 col-lg-6 col-xxl-2">
+        <frequent-labels :filter="filter" />
       </div>
       <div class="col-12 col-lg-6 col-xxl-2 text-right">
         <since-selector
@@ -20,7 +29,12 @@
     </div>
 
     <div class="row m-0">
-      <div class="col-12 col-lg-9" />
+      <div class="col-12 col-lg-9">
+        <user-filter :filter="filter" />
+        <label-filter
+          :filter="filter"
+        />
+      </div>
       <div class="d-none d-lg-block col-12 col-lg-3 text-right">
         <pagination-compact
           :pagination="pagination"
@@ -91,18 +105,26 @@ import debounce from 'lodash/debounce'
 
 import Spinner from '@/components/Spinner'
 import PipelineRow from '@/components/PipelineRow'
+import StatusFilter from '@/components/StatusFilter'
+import UserFilter from '@/components/UserFilter'
+import LabelFilter from '@/components/LabelFilter'
+import FrequentLabels from '@/components/FrequentLabels'
+import PipelineFilter from '@/components/PipelineFilter'
+import ReleaseTargetFilter from '@/components/ReleaseTargetFilter'
 import SinceSelector from '@/components/SinceSelector'
 import PaginationCompact from '@/components/PaginationCompact'
 import Pagination from '@/components/Pagination'
-import StatusFilter from '@/components/StatusFilter'
-import ReleaseTargetSelector from '@/components/ReleaseTargetSelector'
 
 export default {
   components: {
     Spinner,
     PipelineRow,
     StatusFilter,
-    ReleaseTargetSelector,
+    UserFilter,
+    LabelFilter,
+    FrequentLabels,
+    PipelineFilter,
+    ReleaseTargetFilter,
     SinceSelector,
     PaginationCompact,
     Pagination
@@ -117,7 +139,6 @@ export default {
 
   data: function () {
     return {
-      releaseTargets: [],
       pipelines: [],
       pagination: {
         page: 1,
@@ -127,12 +148,12 @@ export default {
       },
       filter: {
         status: 'all',
+        target: '',
         since: '1d',
         labels: '',
         search: '',
         recentCommitter: 'false',
-        recentReleaser: 'false',
-        target: 'all'
+        recentReleaser: 'false'
       },
       loaded: false,
       refresh: true
@@ -143,7 +164,7 @@ export default {
     this.filterDefaults = { ...this.filter }
     this.setDataFromQueryParams(this.query)
     this.$router.replace({ query: this.getQueryParams() }).catch(() => {})
-    this.loadReleaseTargets()
+    this.loadPipelines()
   },
 
   methods: {
@@ -166,6 +187,12 @@ export default {
         query.status = this.filter.status
       } else if (query.status) {
         delete query.status
+      }
+
+      if (this.filter && this.filter.target && this.filter.target !== '') {
+        query.target = this.filter.target
+      } else if (query.target) {
+        delete query.target
       }
 
       if (this.filter && this.filter.since && this.filter.since !== '') {
@@ -198,12 +225,6 @@ export default {
         delete query.recentReleaser
       }
 
-      if (this.filter && this.filter.target && this.filter.target !== '') {
-        query.target = this.filter.target
-      } else if (query.target) {
-        delete query.target
-      }
-
       if (this.pagination && this.pagination.page && this.pagination.page > 0) {
         query.page = this.pagination.page
       } else if (query.page) {
@@ -216,37 +237,16 @@ export default {
     setDataFromQueryParams (query) {
       this.pagination.page = query && query.page ? Number.parseInt(query.page, 10) : 1
       this.filter.status = query && query.status ? query.status : this.filterDefaults.status
+      this.filter.target = query && query.target ? query.target : this.filterDefaults.target
       this.filter.since = query && query.since ? query.since : this.filterDefaults.since
       this.filter.labels = query && query.labels ? query.labels : this.filterDefaults.labels
       this.filter.search = query && query.search ? query.search : this.filterDefaults.search
       this.filter.recentCommitter = query && query.recentCommitter ? query.recentCommitter : this.filterDefaults.recentCommitter
       this.filter.recentReleaser = query && query.recentReleaser ? query.recentReleaser : this.filterDefaults.recentReleaser
-      this.filter.target = query && query.target ? query.target : this.filterDefaults.target
     },
 
     updateQueryParams () {
       this.$router.push({ query: this.getQueryParams() })
-    },
-
-    loadReleaseTargets () {
-      let statusFilter = `filter[status]=${this.filter.status}`
-      if (this.filter.status === 'running') {
-        statusFilter += '&filter[status]=pending&filter[status]=canceling'
-      }
-      const targetFilter = `filter[target]=${this.filter.target}`
-
-      this.axios.get(`/api/pipelines?${statusFilter}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&${targetFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
-        .then(response => {
-          this.pipelines = response.data.items
-          this.pagination = response.data.pagination
-
-          this.loaded = true
-
-          this.periodicallyRefreshPipelines(5)
-        })
-        .catch(e => {
-          this.periodicallyRefreshPipelines(30)
-        })
     },
 
     loadPipelines () {
@@ -259,7 +259,6 @@ export default {
       if (this.filter.status === 'running') {
         statusFilter += '&filter[status]=pending&filter[status]=canceling'
       }
-      const targetFilter = `filter[target]=${this.filter.target}`
 
       let sortParams = ''
       let recentCommitterFilterParams = ''
@@ -274,7 +273,7 @@ export default {
         sortParams = '&sort=-last_updated_at,repo_source,repo_owner,repo_name'
       }
 
-      this.axios.get(`/api/pipelines?${statusFilter}${recentCommitterFilterParams}${recentReleaserFilterParams}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&${targetFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}${sortParams}`)
+      this.axios.get(`/api/pipelines?${statusFilter}${recentCommitterFilterParams}${recentReleaserFilterParams}&filter[since]=${this.filter.since}&filter[target]=${this.filter.target}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}${sortParams}`)
         .then(response => {
           this.pipelines = response.data.items
           this.pagination = response.data.pagination
@@ -300,6 +299,12 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadPipelines, timeoutWithJitter)
       }
+    },
+
+    setTarget (value) {
+      this.filter.target = value
+      this.pagination.page = 1
+      this.updateQueryParams()
     },
 
     setSince (value) {

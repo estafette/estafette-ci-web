@@ -29,7 +29,7 @@ export default new Router({
       path: '/pipelines',
       name: 'Pipelines',
       component: () => import(/* webpackChunkName: "pipelines" */ '../views/Pipelines.vue'),
-      redirect: { name: 'PipelinesRecent' },
+      redirect: { name: 'AllPipelines' },
       meta: {
         text: 'Builds & releases',
         icon: 'tools',
@@ -39,46 +39,33 @@ export default new Router({
       },
       children: [
         {
-          path: 'recent',
-          name: 'PipelinesRecent',
+          path: 'all',
+          name: 'AllPipelines',
           props: (route) => ({ query: route.query }),
-          component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelinesRecent.vue'),
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/AllPipelines.vue'),
           meta: {
-            text: 'Recent',
-            icon: 'clock'
+            text: 'Pipelines',
+            icon: 'industry'
           }
         },
         {
-          path: 'by-release',
-          name: 'PipelinesByRelease',
-          props: (route) => ({ query: route.query }),
-          component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelinesByRelease.vue'),
-          meta: {
-            text: 'By release',
-            icon: 'upload',
-            hide: true
-          }
-        },
-        {
-          path: 'all-builds',
+          path: 'builds',
           name: 'AllBuilds',
           component: () => import(/* webpackChunkName: "builds" */ '../views/AllBuilds.vue'),
           props: (route) => ({ query: route.query }),
           meta: {
-            text: 'All builds',
-            icon: 'tools',
-            hide: true
+            text: 'Builds',
+            icon: 'tools'
           }
         },
         {
-          path: 'all-releases',
+          path: 'releases',
           name: 'AllReleases',
           component: () => import(/* webpackChunkName: "releases" */ '../views/AllReleases.vue'),
           props: (route) => ({ query: route.query }),
           meta: {
-            text: 'All releases',
-            icon: 'upload',
-            hide: true
+            text: 'Releases',
+            icon: 'upload'
           }
         }
       ]

@@ -44,10 +44,6 @@ export default {
     pipeline: {
       type: Object,
       default: null
-    },
-    targets: {
-      type: Array,
-      default: function () { return [] }
     }
   },
 
@@ -66,11 +62,6 @@ export default {
       if (this.pipeline && this.pipeline.releaseTargets) {
         this.pipeline.releaseTargets.forEach(rt => {
           releaseTargetOptions.push({ value: rt.name, text: rt.name })
-        })
-      }
-      if (this.targets) {
-        this.targets.forEach(t => {
-          releaseTargetOptions.push({ value: t.name, text: `${t.name} (${t.count})` })
         })
       }
 
