@@ -480,7 +480,7 @@ button.btn-clipboard {
   transition: max-width .2s;
 
   @media (hover: hover) {
-    &:hover {
+    .authenticated &:hover {
       display: inline-flex !important;
       overflow: visible !important;
       max-width: 300px;
