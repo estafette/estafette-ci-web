@@ -1,0 +1,82 @@
+{
+  "id": "566732252677111818",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-letsencrypt-certificate",
+  "repoBranch": "watch-for-namespaces",
+  "repoRevision": "0581da404bf111df70b1aa838e3446992c91ad67",
+  "buildVersion": "1.2.6-watch-for-namespaces-197",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-controllers"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette-team"
+    },
+    {
+      "key": "type",
+      "value": "service"
+    }
+  ],
+  "releaseTargets": [
+    {
+      "name": "release",
+      "activeReleases": [
+        {
+          "name": "release",
+          "id": "567201876814495756",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-letsencrypt-certificate",
+          "releaseVersion": "1.2.6",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2020-06-26T10:17:55.883089Z",
+          "startedAt": "2020-06-26T10:17:58.216387Z",
+          "updatedAt": "2020-06-26T10:18:30.980314Z",
+          "duration": 32000000000,
+          "pendingDuration": 2000000000
+        }
+      ]
+    }
+  ],
+  "manifest": "builder:\n  track: dev\n\nlabels:\n  app-group: estafette-controllers\n  type: service\n  team: estafette-team\n  language: golang\n\nversion:\n  semver:\n    major: 1\n    minor: 2\n    patch: 6\n    labelTemplate: '{{branch}}-{{auto}}'\n    releaseBranch: 1.2.6\n\nstages:\n  build-lint-and-package:\n    parallelStages:\n      build:\n        image: golang:1.14.0-alpine3.11\n        env:\n          CGO_ENABLED: 0\n          GOOS: linux\n        commands:\n        - go test ./...\n        - go build -a -installsuffix cgo -ldflags \"-X main.appgroup=${ESTAFETTE_LABEL_APP_GROUP} -X main.app=${ESTAFETTE_GIT_NAME} -X main.version=${ESTAFETTE_BUILD_VERSION} -X main.revision=${ESTAFETTE_GIT_REVISION} -X main.branch=${ESTAFETTE_GIT_BRANCH} -X main.buildDate=${ESTAFETTE_BUILD_DATETIME}\" -o ./publish/${ESTAFETTE_GIT_NAME} .\n\n      lint-helm-chart:\n        image: extensions/helm:dev\n        action: lint\n\n      package-helm-chart:\n        image: extensions/helm:dev\n        action: package\n\n  bake:\n    image: extensions/docker:dev\n    action: build\n    repositories:\n    - estafette\n    path: ./publish\n    copy:\n    - /etc/ssl/certs/ca-certificates.crt\n\n  check-container:\n    parallelStages:\n      check-efficiency:\n        image: extensions/docker:dev\n        action: dive\n        repositories:\n        - estafette\n\n      vulnerability-scan:\n        image: extensions/docker:dev\n        action: trivy\n        repositories:\n        - estafette\n\n  push-to-docker-hub:\n    image: extensions/docker:dev\n    action: push\n    repositories:\n    - estafette\n\n  test-helm-chart:\n    services:\n    - name: kubernetes\n      image: bsycorp/kind:latest-1.12\n      readiness:\n        path: /kubernetes-ready\n        port: 10080\n    image: extensions/helm:dev\n    action: test\n    values: |-\n      secret:\n        letsencryptAccountJson: {}\n        letsencryptAccountKey: abc\n        cloudflareApiEmail: bot@estafette.io\n        cloudflareApiKey: abc\n\n  clone-charts-repo:\n    image: extensions/git-clone:dev\n    repo: helm-charts\n    branch: master\n\n  publish-helm-chart:\n    image: extensions/helm:dev\n    action: publish\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    workspace: estafette\n    channels:\n    - '#build-status'\n    when:\n      status == 'succeeded' ||\n      status == 'failed'\n\nreleases:\n  release:\n    stages:\n      clone-charts-repo:\n        image: extensions/git-clone:dev\n        repo: helm-charts\n        branch: master\n\n      purge-prerelease-helm-charts:\n        image: extensions/helm:dev\n        action: purge\n\n      create-github-release:\n        image: extensions/github-release:dev",
+  "manifestWithDefaults": "builder:\n  track: dev\n  os: linux\nlabels:\n  app-group: estafette-controllers\n  language: golang\n  team: estafette-team\n  type: service\nversion:\n  semver:\n    major: 1\n    minor: 2\n    patch: \"6\"\n    labelTemplate: '{{branch}}-{{auto}}'\n    releaseBranch: 1.2.6\nstages:\n  build-lint-and-package:\n    when: status == 'succeeded'\n    parallelStages:\n    - image: golang:1.14.0-alpine3.11\n      shell: /bin/sh\n      workDir: /estafette-work\n      commands:\n      - go test ./...\n      - go build -a -installsuffix cgo -ldflags \"-X main.appgroup=${ESTAFETTE_LABEL_APP_GROUP}\n        -X main.app=${ESTAFETTE_GIT_NAME} -X main.version=${ESTAFETTE_BUILD_VERSION}\n        -X main.revision=${ESTAFETTE_GIT_REVISION} -X main.branch=${ESTAFETTE_GIT_BRANCH}\n        -X main.buildDate=${ESTAFETTE_BUILD_DATETIME}\" -o ./publish/${ESTAFETTE_GIT_NAME}\n        .\n      when: status == 'succeeded'\n      env:\n        CGO_ENABLED: \"0\"\n        GOOS: linux\n    - image: extensions/helm:dev\n      shell: /bin/sh\n      workDir: /estafette-work\n      when: status == 'succeeded'\n      action: lint\n    - image: extensions/helm:dev\n      shell: /bin/sh\n      workDir: /estafette-work\n      when: status == 'succeeded'\n      action: package\n  bake:\n    image: extensions/docker:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded'\n    action: build\n    copy:\n    - /etc/ssl/certs/ca-certificates.crt\n    path: ./publish\n    repositories:\n    - estafette\n  check-container:\n    when: status == 'succeeded'\n    parallelStages:\n    - image: extensions/docker:dev\n      shell: /bin/sh\n      workDir: /estafette-work\n      when: status == 'succeeded'\n      action: dive\n      repositories:\n      - estafette\n    - image: extensions/docker:dev\n      shell: /bin/sh\n      workDir: /estafette-work\n      when: status == 'succeeded'\n      action: trivy\n      repositories:\n      - estafette\n  push-to-docker-hub:\n    image: extensions/docker:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded'\n    action: push\n    repositories:\n    - estafette\n  test-helm-chart:\n    image: extensions/helm:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded'\n    services:\n    - name: kubernetes\n      image: bsycorp/kind:latest-1.12\n      shell: /bin/sh\n      multiStage: false\n      when: status == 'succeeded'\n      readiness:\n        path: /kubernetes-ready\n        timeoutSeconds: 60\n        port: 10080\n        protocol: http\n        hostname: kubernetes\n    action: test\n    values: |-\n      secret:\n        letsencryptAccountJson: {}\n        letsencryptAccountKey: abc\n        cloudflareApiEmail: bot@estafette.io\n        cloudflareApiKey: abc\n  clone-charts-repo:\n    image: extensions/git-clone:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded'\n    branch: master\n    repo: helm-charts\n  publish-helm-chart:\n    image: extensions/helm:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded'\n    action: publish\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded' || status == 'failed'\n    channels:\n    - '#build-status'\n    workspace: estafette\nreleases:\n  release:\n    builder:\n      track: dev\n      os: linux\n    stages:\n      clone-charts-repo:\n        image: extensions/git-clone:dev\n        shell: /bin/sh\n        workDir: /estafette-work\n        when: status == 'succeeded'\n        branch: master\n        repo: helm-charts\n      purge-prerelease-helm-charts:\n        image: extensions/helm:dev\n        shell: /bin/sh\n        workDir: /estafette-work\n        when: status == 'succeeded'\n        action: purge\n      create-github-release:\n        image: extensions/github-release:dev\n        shell: /bin/sh\n        workDir: /estafette-work\n        when: status == 'succeeded'\n",
+  "commits": [
+    {
+      "message": "Add info log about watching for new namespaces.",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-letsencrypt-certificate",
+        "branch": "watch-for-namespaces"
+      }
+    }
+  ],
+  "insertedAt": "2020-06-24T18:29:17.969946Z",
+  "startedAt": "2020-06-24T18:30:46.187699Z",
+  "updatedAt": "2020-06-24T18:34:39.020427Z",
+  "duration": 232000000000,
+  "pendingDuration": 88000000000
+}

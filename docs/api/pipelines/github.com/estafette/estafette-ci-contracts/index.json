@@ -1,11 +1,11 @@
 {
-  "id": "562456741080399884",
+  "id": "592449567231606796",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-contracts",
-  "repoBranch": "master",
-  "repoRevision": "68c70cc10da47b76fca4021bc1b87191fc9f6d21",
-  "buildVersion": "0.0.207",
+  "repoBranch": "main",
+  "repoRevision": "4adfc1f698dcbe28e5ef59349289904b3fe67152",
+  "buildVersion": "0.0.223",
   "buildStatus": "succeeded",
   "labels": [
     {
@@ -27,7 +27,7 @@
   ],
   "commits": [
     {
-      "message": "drop deprecated api key",
+      "message": "update ci-manifest to set both master and main as default release branches",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -40,13 +40,14 @@
       "git": {
         "event": "push",
         "repository": "github.com/estafette/estafette-ci-contracts",
-        "branch": "master"
+        "branch": "main"
       }
     }
   ],
-  "insertedAt": "2020-06-09T16:02:55.378141Z",
-  "updatedAt": "2020-06-09T16:03:47.391096Z",
-  "duration": 52000000000,
-  "pendingDuration": 0,
-  "lastUpdatedAt": "2020-06-09T16:03:47.391096Z"
+  "insertedAt": "2020-09-23T14:34:19.530802Z",
+  "startedAt": "2020-09-23T14:34:21.718627Z",
+  "updatedAt": "2020-09-23T14:35:02.07586Z",
+  "duration": 40000000000,
+  "pendingDuration": 2000000000,
+  "lastUpdatedAt": "2020-09-23T14:35:02.07586Z"
 }

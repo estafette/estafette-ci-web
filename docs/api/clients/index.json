@@ -1,7 +1,7 @@
 {
   "items":[
     {"id":"329834298342908983","name":"estafette-cron-event-sender","clientID":"asdasdlkja","clientSecret":"asd09edjkne3kjnwekj","roles":["cron.trigger"]},
-    {"id":"345345948398458904","name":"estafette-ci-gsuite-synchronizer","clientID":"gsdlfgkjgfdljk","clientSecret":"dfglerireir9df9fd","roles":["user.admin","group.admin","organization.admin"]}
+    {"id":"345345948398458904","name":"estafette-ci-gsuite-synchronizer","clientID":"gsdlfgkjgfdljk","clientSecret":"dfglerireir9df9fd","roles":["user.admin","group.admin","organization.admin"],"organizations":[{"id":"329834298342908983","name":"Org A"}]}
   ],
   "pagination":{
       "page":1,

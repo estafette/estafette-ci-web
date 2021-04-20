@@ -1,11 +1,11 @@
 {
-  "id": "562640786124210188",
+  "id": "592450644163330059",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-builder",
-  "repoBranch": "master",
-  "repoRevision": "ab1a5c2aff260d906d2ba4ae93e8897b83543b78",
-  "buildVersion": "0.0.668",
+  "repoBranch": "main",
+  "repoRevision": "22a628cfd5b92506876a032b4f319b7c893802bb",
+  "buildVersion": "0.0.686",
   "buildStatus": "succeeded",
   "labels": [
     {
@@ -52,29 +52,30 @@
       "activeReleases": [
         {
           "name": "dev",
-          "id": "562641488915169291",
+          "id": "592451328446300170",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-builder",
-          "releaseVersion": "0.0.668",
+          "releaseVersion": "0.0.686",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
               "pipeline": {
-                "buildVersion": "0.0.668",
+                "buildVersion": "0.0.686",
                 "repoSource": "github.com",
                 "repoOwner": "estafette",
                 "repoName": "estafette-ci-builder",
-                "repoBranch": "master",
+                "repoBranch": "main",
                 "status": "succeeded",
                 "event": "finished"
               }
             }
           ],
-          "insertedAt": "2020-06-10T07:42:35.943039Z",
-          "updatedAt": "2020-06-10T07:43:06.468886Z",
-          "duration": 30000000000,
-          "pendingDuration": 0
+          "insertedAt": "2020-09-23T14:43:17.010884Z",
+          "startedAt": "2020-09-23T14:43:26.816006Z",
+          "updatedAt": "2020-09-23T14:43:54.554562Z",
+          "duration": 27000000000,
+          "pendingDuration": 9000000000
         }
       ]
     },
@@ -83,11 +84,11 @@
       "activeReleases": [
         {
           "name": "beta",
-          "id": "561325733304205322",
+          "id": "592454658030796812",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-builder",
-          "releaseVersion": "0.0.666",
+          "releaseVersion": "0.0.686",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
@@ -96,10 +97,11 @@
               }
             }
           ],
-          "insertedAt": "2020-06-05T16:10:19.196566Z",
-          "updatedAt": "2020-06-05T16:10:48.641763Z",
-          "duration": 29000000000,
-          "pendingDuration": 0
+          "insertedAt": "2020-09-23T15:00:13.119452Z",
+          "startedAt": "2020-09-23T15:00:15.065972Z",
+          "updatedAt": "2020-09-23T15:01:12.245314Z",
+          "duration": 57000000000,
+          "pendingDuration": 1000000000
         }
       ]
     },
@@ -108,11 +110,11 @@
       "activeReleases": [
         {
           "name": "stable",
-          "id": "561325742644035594",
+          "id": "592454665109405707",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-builder",
-          "releaseVersion": "0.0.666",
+          "releaseVersion": "0.0.686",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
@@ -121,17 +123,18 @@
               }
             }
           ],
-          "insertedAt": "2020-06-05T16:10:22.046739Z",
-          "updatedAt": "2020-06-05T16:10:53.824982Z",
-          "duration": 31000000000,
-          "pendingDuration": 0
+          "insertedAt": "2020-09-23T15:00:15.279583Z",
+          "startedAt": "2020-09-23T15:00:17.084398Z",
+          "updatedAt": "2020-09-23T15:01:13.062834Z",
+          "duration": 55000000000,
+          "pendingDuration": 1000000000
         }
       ]
     }
   ],
   "commits": [
     {
-      "message": "build go.cd agent from 20.4.0",
+      "message": "update ci-manifest to set both master and main as default release branches",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -155,14 +158,17 @@
   ],
   "triggerEvents": [
     {
-      "manual": {
-        "userID": "me@estafette.io"
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-ci-builder",
+        "branch": "main"
       }
     }
   ],
-  "insertedAt": "2020-06-10T07:39:01.468045Z",
-  "updatedAt": "2020-06-10T07:42:35.072201Z",
-  "duration": 213000000000,
-  "pendingDuration": 0,
-  "lastUpdatedAt": "2020-06-10T07:43:06.468886Z"
+  "insertedAt": "2020-09-23T14:39:48.184142Z",
+  "startedAt": "2020-09-23T14:39:49.283057Z",
+  "updatedAt": "2020-09-23T14:43:16.478717Z",
+  "duration": 207000000000,
+  "pendingDuration": 1000000000,
+  "lastUpdatedAt": "2020-09-23T15:01:13.062834Z"
 }
