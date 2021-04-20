@@ -1,0 +1,21 @@
+{
+  "items": [
+    {
+      "id": "651563556450893841",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-web",
+      "repoBranch": "snyk-fix-be435b3099f3908c7dab4c302b6a50f9",
+      "repoRevision": "b501898e64def1f7ad1707aed1605126f8a6bb94",
+      "buildID": "",
+      "steps": null,
+      "insertedAt": "2021-04-20T09:43:37.373639Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 1
+  }
+}

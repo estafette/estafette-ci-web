@@ -1,0 +1,56 @@
+{
+  "id": "651568089797394450",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-demo",
+  "repoBranch": "main",
+  "repoRevision": "42de68e383615d44f2f99cad25c5d565dd260f29",
+  "buildVersion": "0.0.45",
+  "buildStatus": "failed",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette-team"
+    }
+  ],
+  "manifest": "labels:\n  app-group: estafette-ci\n  team: estafette-team\n  language: golang\n\nversion:\n  semver:\n    major: 0\n    minor: 0\n\nstages:\n  build:\n    image: golang:1.16-alpine\n    env:\n      CGO_ENABLED: 0\n      GOOS: linux\n      API_BASE_URL: ***\n      CLIENT_ID: ***\n      CLIENT_SECRET: ***\n    commands:\n    - go test ./...\n    - go build -a -installsuffix cgo -ldflags \"-X main.appgroup=${ESTAFETTE_LABEL_APP_GROUP} -X main.app=${ESTAFETTE_GIT_NAME} -X main.version=${ESTAFETTE_BUILD_VERSION} -X main.revision=${ESTAFETTE_GIT_REVISION} -X main.branch=${ESTAFETTE_GIT_BRANCH} -X main.buildDate=${ESTAFETTE_BUILD_DATETIME}\" -o ./${ESTAFETTE_GIT_NAME} .\n\n  extract-data:\n    image: golang:1.16-alpine\n    env:\n      CGO_ENABLED: 0\n      GOOS: linux\n      API_BASE_URL: ***\n      CLIENT_ID: ***\n      CLIENT_SECRET: ***\n      PIPELINES_TO_EXTRACT: github.com/estafette/estafette-ci-api,github.com/estafette/estafette-ci-builder,github.com/estafette/estafette-ci-contracts,github.com/estafette/estafette-ci-crypt,github.com/estafette/estafette-ci-demo,github.com/estafette/estafette-ci-manifest,github.com/estafette/estafette-ci-web,github.com/estafette/estafette-cloudflare-dns,github.com/estafette/estafette-letsencrypt-certificate\n      LOG_OBFUSCATE_REGEX: ***\n      ESTAFETTE_LOG_FORMAT: console\n    commands:\n    - ./${ESTAFETTE_GIT_NAME}\n\n  git-clone-web:\n    image: extensions/git-clone:dev\n    repo: estafette-ci-web\n    branch: main\n\n  copy-mock-data:\n    image: golang:1.16-alpine\n    env:\n      GIT_USER_EMAIL: ***\n      GIT_USER_NAME: ***\n    commands:\n    - rm -rf estafette-ci-web/mocks/api/pipelines\n    - cp -r mocks/api/pipelines estafette-ci-web/mocks/api\n    - apk add git\n    - cd estafette-ci-web\n    - git config --global user.email \"${GIT_USER_EMAIL}\"\n    - git config --global user.name \"${GIT_USER_NAME}\"\n    - git add --all \u0026\u0026 git commit --allow-empty -m \"estafette-ci-demo ${ESTAFETTE_BUILD_VERSION}\"\n    - git push origin main\n",
+  "manifestWithDefaults": "builder:\n  track: stable\n  os: linux\nlabels:\n  app-group: estafette-ci\n  language: golang\n  team: estafette-team\nversion:\n  semver:\n    major: 0\n    minor: 0\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch:\n    - master\n    - main\nstages:\n  build:\n    image: golang:1.16-alpine\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - go test ./...\n    - go build -a -installsuffix cgo -ldflags \"-X main.appgroup=${ESTAFETTE_LABEL_APP_GROUP}\n      -X main.app=${ESTAFETTE_GIT_NAME} -X main.version=${ESTAFETTE_BUILD_VERSION}\n      -X main.revision=${ESTAFETTE_GIT_REVISION} -X main.branch=${ESTAFETTE_GIT_BRANCH}\n      -X main.buildDate=${ESTAFETTE_BUILD_DATETIME}\" -o ./${ESTAFETTE_GIT_NAME} .\n    when: status == 'succeeded'\n    env:\n      API_BASE_URL: ***\n      CGO_ENABLED: \"0\"\n      CLIENT_ID: ***\n      CLIENT_SECRET: ***\n      GOOS: linux\n  extract-data:\n    image: golang:1.16-alpine\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - ./${ESTAFETTE_GIT_NAME}\n    when: status == 'succeeded'\n    env:\n      API_BASE_URL: ***\n      CGO_ENABLED: \"0\"\n      CLIENT_ID: ***\n      CLIENT_SECRET: ***\n      ESTAFETTE_LOG_FORMAT: console\n      GOOS: linux\n      LOG_OBFUSCATE_REGEX: ***\n      PIPELINES_TO_EXTRACT: github.com/estafette/estafette-ci-api,github.com/estafette/estafette-ci-builder,github.com/estafette/estafette-ci-contracts,github.com/estafette/estafette-ci-crypt,github.com/estafette/estafette-ci-demo,github.com/estafette/estafette-ci-manifest,github.com/estafette/estafette-ci-web,github.com/estafette/estafette-cloudflare-dns,github.com/estafette/estafette-letsencrypt-certificate\n  git-clone-web:\n    image: extensions/git-clone:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded'\n    branch: main\n    repo: estafette-ci-web\n  copy-mock-data:\n    image: golang:1.16-alpine\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - rm -rf estafette-ci-web/mocks/api/pipelines\n    - cp -r mocks/api/pipelines estafette-ci-web/mocks/api\n    - apk add git\n    - cd estafette-ci-web\n    - git config --global user.email \"${GIT_USER_EMAIL}\"\n    - git config --global user.name \"${GIT_USER_NAME}\"\n    - git add --all \u0026\u0026 git commit --allow-empty -m \"estafette-ci-demo ${ESTAFETTE_BUILD_VERSION}\"\n    - git push origin main\n    when: status == 'succeeded'\n    env:\n      GIT_USER_EMAIL: ***\n      GIT_USER_NAME: ***\n",
+  "commits": [
+    {
+      "message": "unmarshal alllogs responses into dedicated response structs",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "fired": true,
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-ci-demo",
+        "branch": "main"
+      }
+    }
+  ],
+  "insertedAt": "2021-04-20T10:06:40.841016Z",
+  "startedAt": "2021-04-20T10:06:42.607709Z",
+  "updatedAt": "2021-04-20T10:07:17.460797Z",
+  "duration": 34000000000,
+  "pendingDuration": 1000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
+}

@@ -1,11 +1,11 @@
 {
-  "id": "592466465699790860",
+  "id": "647938708585054224",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-manifest",
   "repoBranch": "main",
-  "repoRevision": "33630bc9b1bd7a79d2b8b5c06b5d8360ec6fea22",
-  "buildVersion": "0.1.166",
+  "repoRevision": "6e78fb716b847bda7462e5c4d7cb968082f985f2",
+  "buildVersion": "0.1.180",
   "buildStatus": "succeeded",
   "labels": [
     {
@@ -27,7 +27,7 @@
   ],
   "commits": [
     {
-      "message": "trigger on both master and main branch by default; get defaultbranch for build action from preferences",
+      "message": "use github.com/jinzhu/copier for deepcopy",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -37,6 +37,7 @@
   ],
   "triggerEvents": [
     {
+      "fired": true,
       "git": {
         "event": "push",
         "repository": "github.com/estafette/estafette-ci-manifest",
@@ -44,10 +45,26 @@
       }
     }
   ],
-  "insertedAt": "2020-09-23T16:00:16.533996Z",
-  "startedAt": "2020-09-23T16:00:18.178553Z",
-  "updatedAt": "2020-09-23T16:00:55.388585Z",
-  "duration": 37000000000,
+  "insertedAt": "2021-04-07T14:26:41.594143Z",
+  "startedAt": "2021-04-07T14:26:43.357066Z",
+  "updatedAt": "2021-04-07T14:27:17.964286Z",
+  "duration": 34000000000,
   "pendingDuration": 1000000000,
-  "lastUpdatedAt": "2020-09-23T16:00:55.388585Z"
+  "lastUpdatedAt": "2021-04-07T14:27:17.964286Z",
+  "extraInfo": {
+    "medianPendingDuration": 1000000000,
+    "medianDuration": 51000000000
+  },
+  "groups": [
+    {
+      "id": "568087204531535884",
+      "name": "Estafette"
+    }
+  ],
+  "organizations": [
+    {
+      "id": "568393673343696906",
+      "name": "Estafette"
+    }
+  ]
 }

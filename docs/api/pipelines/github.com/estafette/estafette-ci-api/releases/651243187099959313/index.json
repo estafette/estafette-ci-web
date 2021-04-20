@@ -1,0 +1,28 @@
+{
+  "name": "tooling-estafette",
+  "action": "deploy-canary",
+  "id": "651243187099959313",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-api",
+  "releaseVersion": "1.0.0-main-1658",
+  "releaseStatus": "succeeded",
+  "triggerEvents": [
+    {
+      "fired": true,
+      "manual": {
+        "userID": "me@estafette.io"
+      }
+    }
+  ],
+  "insertedAt": "2021-04-19T06:34:08.406607Z",
+  "startedAt": "2021-04-19T06:34:10.607686Z",
+  "updatedAt": "2021-04-19T06:34:32.526919Z",
+  "duration": 21000000000,
+  "pendingDuration": 2000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
+}

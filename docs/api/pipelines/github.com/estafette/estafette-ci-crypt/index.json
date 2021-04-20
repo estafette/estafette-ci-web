@@ -1,11 +1,11 @@
 {
-  "id": "587906518126067723",
+  "id": "635745212316319756",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-crypt",
   "repoBranch": "main",
-  "repoRevision": "52744ab86c30ea575c7a112ad1c5639a487fbeea",
-  "buildVersion": "0.0.40",
+  "repoRevision": "2bdac368fc50e1a14d7e7122bad36a12f43cb533",
+  "buildVersion": "0.0.42",
   "buildStatus": "succeeded",
   "labels": [
     {
@@ -27,7 +27,7 @@
   ],
   "commits": [
     {
-      "message": "change default branch to main",
+      "message": "add GetInvalidRestrictedSecrets",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -37,6 +37,7 @@
   ],
   "triggerEvents": [
     {
+      "fired": true,
       "git": {
         "event": "push",
         "repository": "github.com/estafette/estafette-ci-crypt",
@@ -44,10 +45,26 @@
       }
     }
   ],
-  "insertedAt": "2020-09-07T13:27:10.970548Z",
-  "startedAt": "2020-09-07T13:27:12.101802Z",
-  "updatedAt": "2020-09-07T13:27:49.240127Z",
-  "duration": 37000000000,
+  "insertedAt": "2021-02-23T12:47:21.844255Z",
+  "startedAt": "2021-02-23T12:47:23.000472Z",
+  "updatedAt": "2021-02-23T12:48:11.021732Z",
+  "duration": 48000000000,
   "pendingDuration": 1000000000,
-  "lastUpdatedAt": "2020-09-07T13:27:49.240127Z"
+  "lastUpdatedAt": "2021-02-23T12:48:11.021732Z",
+  "extraInfo": {
+    "medianPendingDuration": 0,
+    "medianDuration": 37000000000
+  },
+  "groups": [
+    {
+      "id": "568087204531535884",
+      "name": "Estafette"
+    }
+  ],
+  "organizations": [
+    {
+      "id": "568393673343696906",
+      "name": "Estafette"
+    }
+  ]
 }

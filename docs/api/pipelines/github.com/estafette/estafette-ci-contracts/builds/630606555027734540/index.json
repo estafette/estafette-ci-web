@@ -1,0 +1,60 @@
+{
+  "id": "630606555027734540",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-contracts",
+  "repoBranch": "main",
+  "repoRevision": "9bdb5f65bc34f0553b9cf1c6d683b851f8a6203c",
+  "buildVersion": "0.0.236",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette"
+    },
+    {
+      "key": "type",
+      "value": "library"
+    }
+  ],
+  "manifest": "builder:\n  track: dev\n\nlabels:\n  app-group: estafette-ci\n  type: library\n  team: estafette\n  language: golang\n\nversion:\n  semver:\n    major: 0\n    minor: 0\n    releaseBranch: main\n\nstages:\n  build:\n    image: golang:1.15.2-alpine3.12\n    env:\n      CGO_ENABLED: 0\n      GOOS: linux\n    commands:\n    - go test ./...\n\n  tag-revision:\n    image: golang:1.15.2-alpine3.12\n    commands:\n    - apk add git\n    - git tag v${ESTAFETTE_BUILD_VERSION}\n    - git push origin v${ESTAFETTE_BUILD_VERSION}\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    workspace: estafette\n    channels:\n    - '#build-status'\n    when:\n      status == 'succeeded' ||\n      status == 'failed'",
+  "manifestWithDefaults": "builder:\n  track: dev\n  os: linux\nlabels:\n  app-group: estafette-ci\n  language: golang\n  team: estafette\n  type: library\nversion:\n  semver:\n    major: 0\n    minor: 0\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: main\nstages:\n  build:\n    image: golang:1.15.2-alpine3.12\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - go test ./...\n    when: status == 'succeeded'\n    env:\n      CGO_ENABLED: \"0\"\n      GOOS: linux\n  tag-revision:\n    image: golang:1.15.2-alpine3.12\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - apk add git\n    - git tag v${ESTAFETTE_BUILD_VERSION}\n    - git push origin v${ESTAFETTE_BUILD_VERSION}\n    when: status == 'succeeded'\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded' || status == 'failed'\n    channels:\n    - '#build-status'\n    workspace: estafette\n",
+  "commits": [
+    {
+      "message": "add driver and durable property to docker network config",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "fired": true,
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-ci-contracts",
+        "branch": "main"
+      }
+    }
+  ],
+  "insertedAt": "2021-02-05T09:10:48.091601Z",
+  "startedAt": "2021-02-05T09:10:51.839441Z",
+  "updatedAt": "2021-02-05T09:11:52.523702Z",
+  "duration": 60000000000,
+  "pendingDuration": 3000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
+}

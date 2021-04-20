@@ -1,12 +1,12 @@
 {
-  "id": "592926855538180108",
+  "id": "611916537931399178",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-cloudflare-dns",
   "repoBranch": "main",
-  "repoRevision": "de68c8fa229084e79514617b1636af597c5a4b67",
-  "buildVersion": "1.2.6-main-122",
-  "buildStatus": "failed",
+  "repoRevision": "b9a98cc0147565bfb0da0de14ed592d6d51ee602",
+  "buildVersion": "1.2.11-main-143",
+  "buildStatus": "succeeded",
   "labels": [
     {
       "key": "app-group",
@@ -31,11 +31,11 @@
       "activeReleases": [
         {
           "name": "release",
-          "id": "525584413844635650",
+          "id": "611917160581988362",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-cloudflare-dns",
-          "releaseVersion": "1.2.5",
+          "releaseVersion": "1.2.10",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
@@ -44,12 +44,27 @@
               }
             }
           ],
-          "insertedAt": "2020-01-31T10:20:34.107584Z",
-          "updatedAt": "2020-01-31T10:21:00.179341Z",
-          "duration": 26000000000,
-          "pendingDuration": 0
+          "insertedAt": "2020-12-01T08:51:37.540541Z",
+          "startedAt": "2020-12-01T08:51:38.643997Z",
+          "updatedAt": "2020-12-01T08:52:13.700552Z",
+          "duration": 35000000000,
+          "pendingDuration": 1000000000,
+          "extraInfo": {
+            "medianPendingDuration": 0,
+            "medianDuration": 32000000000
+          }
         }
       ]
+    }
+  ],
+  "commits": [
+    {
+      "message": "bump version to 1.2.11",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
     }
   ],
   "triggerEvents": [
@@ -61,10 +76,26 @@
       }
     }
   ],
-  "insertedAt": "2020-09-25T07:01:56.362539Z",
-  "startedAt": "2020-09-25T07:01:57.4685Z",
-  "updatedAt": "2020-09-25T07:05:37.327564Z",
-  "duration": 219000000000,
-  "pendingDuration": 1000000000,
-  "lastUpdatedAt": "2020-09-25T07:05:37.327564Z"
+  "insertedAt": "2020-12-01T08:48:27.522537Z",
+  "startedAt": "2020-12-01T08:48:32.177754Z",
+  "updatedAt": "2020-12-01T08:51:15.432193Z",
+  "duration": 163000000000,
+  "pendingDuration": 4000000000,
+  "lastUpdatedAt": "2020-12-01T08:52:13.700552Z",
+  "extraInfo": {
+    "medianPendingDuration": 2000000000,
+    "medianDuration": 178000000000
+  },
+  "groups": [
+    {
+      "id": "568087204531535884",
+      "name": "Estafette"
+    }
+  ],
+  "organizations": [
+    {
+      "id": "568030038580756491",
+      "name": "Travix"
+    }
+  ]
 }

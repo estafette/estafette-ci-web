@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "id": "647942783934431248",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "releaseID": "647942678648455186",
+      "steps": null,
+      "insertedAt": "2021-04-07T14:47:25.292292Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 1
+  }
+}

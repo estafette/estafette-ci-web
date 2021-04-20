@@ -1,0 +1,21 @@
+{
+  "items": [
+    {
+      "id": "623884256403685387",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-letsencrypt-certificate",
+      "repoBranch": "feature-upload-cf-ssl",
+      "repoRevision": "de3f8a8a5a465acd22b8c340741eff15d90ccdc8",
+      "buildID": "",
+      "steps": null,
+      "insertedAt": "2021-01-12T15:19:25.357258Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 1
+  }
+}

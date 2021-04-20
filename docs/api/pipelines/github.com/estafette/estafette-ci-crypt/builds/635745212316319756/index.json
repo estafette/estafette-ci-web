@@ -1,0 +1,60 @@
+{
+  "id": "635745212316319756",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-crypt",
+  "repoBranch": "main",
+  "repoRevision": "2bdac368fc50e1a14d7e7122bad36a12f43cb533",
+  "buildVersion": "0.0.42",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette-team"
+    },
+    {
+      "key": "type",
+      "value": "library"
+    }
+  ],
+  "manifest": "builder:\n  track: stable\n\nlabels:\n  app-group: estafette-ci\n  type: library\n  team: estafette-team\n  language: golang\n\nversion:\n  semver:\n    major: 0\n    minor: 0\n    releaseBranch: main\n\nstages:\n  build:\n    image: golang:1.15.1-alpine3.12\n    env:\n      CGO_ENABLED: 0\n      GOOS: linux\n    commands:\n    - go test ./...\n\n  tag-revision:\n    image: golang:1.15.1-alpine3.12\n    commands:\n    - apk add git\n    - git tag v${ESTAFETTE_BUILD_VERSION}\n    - git push origin v${ESTAFETTE_BUILD_VERSION}\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    workspace: estafette\n    channels:\n    - '#build-status'\n    when:\n      status == 'succeeded' ||\n      status == 'failed'",
+  "manifestWithDefaults": "builder:\n  track: stable\n  os: linux\nlabels:\n  app-group: estafette-ci\n  language: golang\n  team: estafette-team\n  type: library\nversion:\n  semver:\n    major: 0\n    minor: 0\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: main\nstages:\n  build:\n    image: golang:1.15.1-alpine3.12\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - go test ./...\n    when: status == 'succeeded'\n    env:\n      CGO_ENABLED: \"0\"\n      GOOS: linux\n  tag-revision:\n    image: golang:1.15.1-alpine3.12\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - apk add git\n    - git tag v${ESTAFETTE_BUILD_VERSION}\n    - git push origin v${ESTAFETTE_BUILD_VERSION}\n    when: status == 'succeeded'\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded' || status == 'failed'\n    channels:\n    - '#build-status'\n    workspace: estafette\n",
+  "commits": [
+    {
+      "message": "add GetInvalidRestrictedSecrets",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "fired": true,
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-ci-crypt",
+        "branch": "main"
+      }
+    }
+  ],
+  "insertedAt": "2021-02-23T12:47:21.844255Z",
+  "startedAt": "2021-02-23T12:47:23.000472Z",
+  "updatedAt": "2021-02-23T12:48:11.021732Z",
+  "duration": 48000000000,
+  "pendingDuration": 1000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
+}

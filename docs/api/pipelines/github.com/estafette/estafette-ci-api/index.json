@@ -1,11 +1,11 @@
 {
-  "id": "592469175722573834",
+  "id": "651526780707766288",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-api",
   "repoBranch": "main",
-  "repoRevision": "343bc81964e03f08132d9571a1b9154b37f1e4de",
-  "buildVersion": "0.1.1479",
+  "repoRevision": "42fca6a2c28b25eaaa86674001d98f4b665382cb",
+  "buildVersion": "1.0.0-main-1664",
   "buildStatus": "succeeded",
   "labels": [
     {
@@ -36,87 +36,104 @@
           "name": "deploy-stable"
         },
         {
-          "name": "rollback-canary"
+          "name": "rollback-canary",
+          "hideBadge": true
         },
         {
-          "name": "restart-stable"
+          "name": "restart-stable",
+          "hideBadge": true
         }
       ],
       "activeReleases": [
         {
           "name": "tooling-estafette",
           "action": "deploy-stable",
-          "id": "592650992061874186",
+          "id": "651535887587737617",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-api",
-          "releaseVersion": "0.1.1479",
+          "releaseVersion": "1.0.0-main-1664",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
+              "fired": true,
               "manual": {
                 "userID": "me@estafette.io"
               }
             }
           ],
-          "insertedAt": "2020-09-24T07:38:49.51071Z",
-          "startedAt": "2020-09-24T07:38:51.263323Z",
-          "updatedAt": "2020-09-24T07:40:05.311153Z",
-          "duration": 74000000000,
-          "pendingDuration": 1000000000
+          "insertedAt": "2021-04-20T07:22:53.506671Z",
+          "startedAt": "2021-04-20T07:22:55.705503Z",
+          "updatedAt": "2021-04-20T07:24:17.673659Z",
+          "duration": 81000000000,
+          "pendingDuration": 2000000000,
+          "extraInfo": {
+            "medianPendingDuration": 2000000000,
+            "medianDuration": 73000000000
+          }
         },
         {
           "name": "tooling-estafette",
           "action": "deploy-canary",
-          "id": "592645792065716235",
+          "id": "651528706845048849",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-api",
-          "releaseVersion": "0.1.1479",
+          "releaseVersion": "1.0.0-main-1664",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
+              "fired": true,
               "manual": {
                 "userID": "me@estafette.io"
               }
             }
           ],
-          "insertedAt": "2020-09-24T07:12:22.59776Z",
-          "startedAt": "2020-09-24T07:12:24.517492Z",
-          "updatedAt": "2020-09-24T07:13:14.869706Z",
-          "duration": 50000000000,
-          "pendingDuration": 1000000000
+          "insertedAt": "2021-04-20T06:46:22.11791Z",
+          "startedAt": "2021-04-20T06:46:24.311128Z",
+          "updatedAt": "2021-04-20T06:47:06.61984Z",
+          "duration": 42000000000,
+          "pendingDuration": 2000000000,
+          "extraInfo": {
+            "medianPendingDuration": 2000000000,
+            "medianDuration": 21000000000
+          }
         },
         {
           "name": "tooling-estafette",
           "action": "restart-stable",
-          "id": "568915176051081227",
+          "id": "638298246834487308",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-api",
-          "releaseVersion": "0.1.1415",
+          "releaseVersion": "0.1.1599",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
+              "fired": true,
               "manual": {
                 "userID": "me@estafette.io"
               }
             }
           ],
-          "insertedAt": "2020-07-02T11:32:13.316032Z",
-          "startedAt": "2020-07-02T11:32:18.441645Z",
-          "updatedAt": "2020-07-02T11:33:44.817023Z",
-          "duration": 86000000000,
-          "pendingDuration": 5000000000
+          "insertedAt": "2021-03-04T13:12:46.147878Z",
+          "startedAt": "2021-03-04T13:12:53.165466Z",
+          "updatedAt": "2021-03-04T13:14:29.5048Z",
+          "duration": 96000000000,
+          "pendingDuration": 7000000000,
+          "extraInfo": {
+            "medianPendingDuration": 3000000000,
+            "medianDuration": 97000000000
+          }
         },
         {
           "name": "tooling-estafette",
           "action": "rollback-canary",
-          "id": "568585507784818700",
+          "id": "603773002935861260",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-api",
-          "releaseVersion": "0.1.1401",
+          "releaseVersion": "0.1.1502",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
@@ -125,18 +142,50 @@
               }
             }
           ],
-          "insertedAt": "2020-07-01T07:35:26.545313Z",
-          "startedAt": "2020-07-01T07:35:31.04694Z",
-          "updatedAt": "2020-07-01T07:36:04.275219Z",
-          "duration": 33000000000,
-          "pendingDuration": 4000000000
+          "insertedAt": "2020-11-02T14:28:17.868303Z",
+          "startedAt": "2020-11-02T14:28:21.107892Z",
+          "updatedAt": "2020-11-02T14:28:57.687318Z",
+          "duration": 36000000000,
+          "pendingDuration": 3000000000,
+          "extraInfo": {
+            "medianPendingDuration": 3000000000,
+            "medianDuration": 32000000000
+          }
+        }
+      ]
+    },
+    {
+      "name": "release-helm-chart"
+    },
+    {
+      "name": "helm-diff",
+      "activeReleases": [
+        {
+          "name": "helm-diff",
+          "id": "503219038331437061",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-api",
+          "releaseVersion": "1.0.0-add-official-helm-chart-892",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2019-11-13T10:24:23.162207Z",
+          "updatedAt": "2019-11-13T10:24:46.091556Z",
+          "duration": 22000000000,
+          "pendingDuration": 0
         }
       ]
     }
   ],
   "commits": [
     {
-      "message": "set default branch in manifest preferences to main if the current branch is main",
+      "message": "gin gonic 1.7.1",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -146,19 +195,21 @@
   ],
   "triggers": [
     {
+      "name": "migrator",
       "pipeline": {
         "event": "finished",
         "status": "succeeded",
         "name": "github.com/estafette/estafette-ci-db-migrator",
-        "branch": "master"
+        "branch": "main"
       },
       "builds": {
-        "branch": "master"
+        "branch": "main"
       }
     }
   ],
   "triggerEvents": [
     {
+      "fired": true,
       "git": {
         "event": "push",
         "repository": "github.com/estafette/estafette-ci-api",
@@ -166,10 +217,30 @@
       }
     }
   ],
-  "insertedAt": "2020-09-23T16:14:03.567224Z",
-  "startedAt": "2020-09-23T16:14:05.592749Z",
-  "updatedAt": "2020-09-23T16:17:28.828474Z",
-  "duration": 203000000000,
-  "pendingDuration": 2000000000,
-  "lastUpdatedAt": "2020-09-24T07:40:05.311153Z"
+  "insertedAt": "2021-04-20T06:36:34.307267Z",
+  "startedAt": "2021-04-20T06:36:36.298541Z",
+  "updatedAt": "2021-04-20T06:42:06.199929Z",
+  "duration": 329000000000,
+  "pendingDuration": 1000000000,
+  "lastUpdatedAt": "2021-04-20T07:24:17.673659Z",
+  "extraInfo": {
+    "medianPendingDuration": 1000000000,
+    "medianDuration": 334000000000
+  },
+  "groups": [
+    {
+      "id": "568087204531535884",
+      "name": "Estafette"
+    }
+  ],
+  "organizations": [
+    {
+      "id": "568393673343696906",
+      "name": "Estafette"
+    },
+    {
+      "id": "568030038580756491",
+      "name": "Travix"
+    }
+  ]
 }

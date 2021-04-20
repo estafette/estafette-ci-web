@@ -1,0 +1,600 @@
+event:log
+data:{"step":"builder-info","type":"stage","logLine":{"line":1,"timestamp":"2021-04-20T10:10:18.333156098Z","streamType":"stdout","text":"Starting \u001b[1mestafette-ci-builder\u001b[0m version \u001b[1m0.0.845\u001b[0m... \u001b[36mbranch=\u001b[0mmain \u001b[36mbuildDate=\u001b[0m2021-04-07T14:31:57Z \u001b[36mgoVersion=\u001b[0mgo1.16.3 \u001b[36mos=\u001b[0mlinux \u001b[36mrevision=\u001b[0m1cefe2c7d1737576ced2f0d01fa437268ae4be25"},"status":"SUCCEEDED","autoInjected":true}
+
+event:log
+data:{"step":"injected-before","type":"stage","status":"RUNNING","autoInjected":true}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/envvars","tag":"stable","isPulled":false,"imageSize":0,"pullDuration":0},"status":"PENDING","autoInjected":true}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/git-clone","tag":"dev","isPulled":false,"imageSize":0,"pullDuration":0,"isTrusted":true,"hasInjectedCredentials":true},"status":"PENDING","autoInjected":true}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/github-status","tag":"dev","isPulled":false,"imageSize":0,"pullDuration":0,"isTrusted":true,"hasInjectedCredentials":true},"status":"PENDING","autoInjected":true}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/envvars","tag":"stable","isPulled":false,"imageSize":8530431,"pullDuration":2320707263},"status":"RUNNING","autoInjected":true}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/git-clone","tag":"dev","isPulled":false,"imageSize":27605918,"pullDuration":2798956639,"isTrusted":true,"hasInjectedCredentials":true},"status":"RUNNING","autoInjected":true}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/github-status","tag":"dev","isPulled":false,"imageSize":11651189,"pullDuration":2910381980,"isTrusted":true,"hasInjectedCredentials":true},"status":"RUNNING","autoInjected":true}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":1,"timestamp":"2021-04-20T10:10:21.315093607Z","streamType":"stdout","text":"Starting \u001b[1mestafette-extension-envvars\u001b[0m version \u001b[1m0.1.48\u001b[0m... \u001b[36mbranch=\u001b[0mmain \u001b[36mbuildDate=\u001b[0m2021-02-10T16:33:41Z \u001b[36mgoVersion=\u001b[0mgo1.15.7 \u001b[36mos=\u001b[0mlinux \u001b[36mrevision=\u001b[0m5dba58209bcd7d937fe6c258b4b1f7818361d45f\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":2,"timestamp":"2021-04-20T10:10:21.315112041Z","streamType":"stdout","text":"All available estafette environment variables; the _DNS_SAFE suffixed ones can be used to set dns labels. Since leading digits are not allowed some of them are empty.\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":3,"timestamp":"2021-04-20T10:10:21.315113844Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":4,"timestamp":"2021-04-20T10:10:21.315116145Z","streamType":"stdout","text":"ESTAFETTE_BUILD_CURRENT_COUNTER: 1086\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":5,"timestamp":"2021-04-20T10:10:21.315117889Z","streamType":"stdout","text":"ESTAFETTE_BUILD_CURRENT_COUNTER_DNS_SAFE: \n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":6,"timestamp":"2021-04-20T10:10:21.315119505Z","streamType":"stdout","text":"ESTAFETTE_BUILD_DATETIME: 2021-04-20T10:10:18Z\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":7,"timestamp":"2021-04-20T10:10:21.315120945Z","streamType":"stdout","text":"ESTAFETTE_BUILD_DATETIME_DNS_SAFE: t10-10-18z\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":8,"timestamp":"2021-04-20T10:10:21.315122218Z","streamType":"stdout","text":"ESTAFETTE_BUILD_ID: 651568794079166480\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":9,"timestamp":"2021-04-20T10:10:21.315123534Z","streamType":"stdout","text":"ESTAFETTE_BUILD_ID_DNS_SAFE: \n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":10,"timestamp":"2021-04-20T10:10:21.315124696Z","streamType":"stdout","text":"ESTAFETTE_BUILD_MAX_COUNTER: 1086\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":11,"timestamp":"2021-04-20T10:10:21.315126751Z","streamType":"stdout","text":"ESTAFETTE_BUILD_MAX_COUNTER_CURRENT_BRANCH: 1086\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":12,"timestamp":"2021-04-20T10:10:21.315128174Z","streamType":"stdout","text":"ESTAFETTE_BUILD_MAX_COUNTER_CURRENT_BRANCH_DNS_SAFE: \n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":13,"timestamp":"2021-04-20T10:10:21.315129163Z","streamType":"stdout","text":"ESTAFETTE_BUILD_MAX_COUNTER_DNS_SAFE: \n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":14,"timestamp":"2021-04-20T10:10:21.315130383Z","streamType":"stdout","text":"ESTAFETTE_BUILD_STATUS: succeeded\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":15,"timestamp":"2021-04-20T10:10:21.315131591Z","streamType":"stdout","text":"ESTAFETTE_BUILD_STATUS_DNS_SAFE: succeeded\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":16,"timestamp":"2021-04-20T10:10:21.315133135Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION: 1.0.0-main-1086\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":17,"timestamp":"2021-04-20T10:10:21.315134364Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_DNS_SAFE: main-1086\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":18,"timestamp":"2021-04-20T10:10:21.315135488Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_LABEL: main-1086\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":19,"timestamp":"2021-04-20T10:10:21.315136863Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_LABEL_DNS_SAFE: main-1086\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":20,"timestamp":"2021-04-20T10:10:21.315138013Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_MAJOR: 1\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":21,"timestamp":"2021-04-20T10:10:21.315139034Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_MAJOR_DNS_SAFE: \n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":22,"timestamp":"2021-04-20T10:10:21.315184646Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_MINOR: 0\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":23,"timestamp":"2021-04-20T10:10:21.315185704Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_MINOR_DNS_SAFE: \n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":24,"timestamp":"2021-04-20T10:10:21.315186766Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_PATCH: 1086\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":25,"timestamp":"2021-04-20T10:10:21.315187718Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_PATCH_DNS_SAFE: \n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":26,"timestamp":"2021-04-20T10:10:21.315189582Z","streamType":"stdout","text":"ESTAFETTE_CI_SERVER_BASE_URL: https://***/\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":27,"timestamp":"2021-04-20T10:10:21.315192081Z","streamType":"stdout","text":"ESTAFETTE_CI_SERVER_BASE_URL_DNS_SAFE: https-estafette-***-com\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":28,"timestamp":"2021-04-20T10:10:21.315193366Z","streamType":"stdout","text":"ESTAFETTE_EXTENSION_CUSTOM_PROPERTIES: {}\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":29,"timestamp":"2021-04-20T10:10:21.315196397Z","streamType":"stdout","text":"ESTAFETTE_EXTENSION_CUSTOM_PROPERTIES_YAML: {}\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":30,"timestamp":"2021-04-20T10:10:21.315197078Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":31,"timestamp":"2021-04-20T10:10:21.315198208Z","streamType":"stdout","text":"ESTAFETTE_GIT_BRANCH: main\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":32,"timestamp":"2021-04-20T10:10:21.315199177Z","streamType":"stdout","text":"ESTAFETTE_GIT_BRANCH_DNS_SAFE: main\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":33,"timestamp":"2021-04-20T10:10:21.315200814Z","streamType":"stdout","text":"ESTAFETTE_GIT_FULLNAME: estafette/estafette-ci-web\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":34,"timestamp":"2021-04-20T10:10:21.315202448Z","streamType":"stdout","text":"ESTAFETTE_GIT_FULLNAME_DNS_SAFE: estafette-estafette-ci-web\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":35,"timestamp":"2021-04-20T10:10:21.315203515Z","streamType":"stdout","text":"ESTAFETTE_GIT_NAME: estafette-ci-web\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":36,"timestamp":"2021-04-20T10:10:21.315204618Z","streamType":"stdout","text":"ESTAFETTE_GIT_NAME_DNS_SAFE: estafette-ci-web\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":37,"timestamp":"2021-04-20T10:10:21.315215869Z","streamType":"stdout","text":"ESTAFETTE_GIT_OWNER: estafette\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":38,"timestamp":"2021-04-20T10:10:21.315216975Z","streamType":"stdout","text":"ESTAFETTE_GIT_OWNER_DNS_SAFE: estafette\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":39,"timestamp":"2021-04-20T10:10:21.315218996Z","streamType":"stdout","text":"ESTAFETTE_GIT_REVISION: 3d6a36fd1e258e78897a2bdd63153324e7c73068\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":40,"timestamp":"2021-04-20T10:10:21.31522097Z","streamType":"stdout","text":"ESTAFETTE_GIT_REVISION_DNS_SAFE: d6a36fd1e258e78897a2bdd63153324e7c73068\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":41,"timestamp":"2021-04-20T10:10:21.315222204Z","streamType":"stdout","text":"ESTAFETTE_GIT_SOURCE: github.com\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":42,"timestamp":"2021-04-20T10:10:21.315223626Z","streamType":"stdout","text":"ESTAFETTE_GIT_SOURCE_DNS_SAFE: github-com\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":43,"timestamp":"2021-04-20T10:10:21.315224872Z","streamType":"stdout","text":"ESTAFETTE_LABEL_APP_GROUP: estafette-ci\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":44,"timestamp":"2021-04-20T10:10:21.315226076Z","streamType":"stdout","text":"ESTAFETTE_LABEL_APP_GROUP_DNS_SAFE: estafette-ci\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":45,"timestamp":"2021-04-20T10:10:21.315227266Z","streamType":"stdout","text":"ESTAFETTE_LABEL_LANGUAGE: nodejs\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":46,"timestamp":"2021-04-20T10:10:21.31522837Z","streamType":"stdout","text":"ESTAFETTE_LABEL_LANGUAGE_DNS_SAFE: nodejs\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":47,"timestamp":"2021-04-20T10:10:21.315229622Z","streamType":"stdout","text":"ESTAFETTE_LABEL_TEAM: estafette-team\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":48,"timestamp":"2021-04-20T10:10:21.315230785Z","streamType":"stdout","text":"ESTAFETTE_LABEL_TEAM_DNS_SAFE: estafette-team\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":49,"timestamp":"2021-04-20T10:10:21.315231996Z","streamType":"stdout","text":"ESTAFETTE_LABEL_TYPE: web\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":50,"timestamp":"2021-04-20T10:10:21.315233083Z","streamType":"stdout","text":"ESTAFETTE_LABEL_TYPE_DNS_SAFE: web\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":51,"timestamp":"2021-04-20T10:10:21.315234277Z","streamType":"stdout","text":"ESTAFETTE_LOG_FORMAT: console\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":52,"timestamp":"2021-04-20T10:10:21.31523532Z","streamType":"stdout","text":"ESTAFETTE_STAGE_NAME: envvars\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":53,"timestamp":"2021-04-20T10:10:21.315236554Z","streamType":"stdout","text":"ESTAFETTE_TRIGGER_GIT_BRANCH: main\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":54,"timestamp":"2021-04-20T10:10:21.315237759Z","streamType":"stdout","text":"ESTAFETTE_TRIGGER_GIT_BRANCH_DNS_SAFE: main\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":55,"timestamp":"2021-04-20T10:10:21.315238804Z","streamType":"stdout","text":"ESTAFETTE_TRIGGER_GIT_EVENT: push\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":56,"timestamp":"2021-04-20T10:10:21.315239865Z","streamType":"stdout","text":"ESTAFETTE_TRIGGER_GIT_EVENT_DNS_SAFE: push\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":57,"timestamp":"2021-04-20T10:10:21.315241515Z","streamType":"stdout","text":"ESTAFETTE_TRIGGER_GIT_REPOSITORY: github.com/estafette/estafette-ci-web\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":58,"timestamp":"2021-04-20T10:10:21.315244335Z","streamType":"stdout","text":"ESTAFETTE_TRIGGER_GIT_REPOSITORY_DNS_SAFE: github-com-estafette-estafette-ci-web\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":59,"timestamp":"2021-04-20T10:10:21.315244901Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":60,"timestamp":"2021-04-20T10:10:21.315246651Z","streamType":"stdout","text":"All global envvars as defined in the manifest.\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":61,"timestamp":"2021-04-20T10:10:21.315247157Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":62,"timestamp":"2021-04-20T10:10:21.315247966Z","streamType":"stdout","text":"HOME: /\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":63,"timestamp":"2021-04-20T10:10:21.31524908Z","streamType":"stdout","text":"HOSTNAME: e3b5b96d9efe\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":64,"timestamp":"2021-04-20T10:10:21.315251024Z","streamType":"stdout","text":"PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"duration":1187164591,"status":"SUCCEEDED","autoInjected":true}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":1,"timestamp":"2021-04-20T10:10:21.868956274Z","streamType":"stdout","text":"Starting \u001b[1mestafette-extension-git-clone\u001b[0m version \u001b[1m0.1.112\u001b[0m... \u001b[36mbranch=\u001b[0mmain \u001b[36mbuildDate=\u001b[0m2021-03-10T17:01:33Z \u001b[36mgoVersion=\u001b[0mgo1.16 \u001b[36mos=\u001b[0mlinux \u001b[36mrevision=\u001b[0mbe7ca83146a3bf7ed9622207981dc8a18f722865\n"}}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":2,"timestamp":"2021-04-20T10:10:21.868972027Z","streamType":"stdout","text":"Reading credentials from file at path /credentials/github_api_token.json...\n"}}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":3,"timestamp":"2021-04-20T10:10:21.868981857Z","streamType":"stdout","text":"Cloning git repository estafette-ci-web to branch main and revision 3d6a36fd1e258e78897a2bdd63153324e7c73068 with shallow clone is true and depth 50...\n"}}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":4,"timestamp":"2021-04-20T10:10:21.868990284Z","streamType":"stdout","text":"\u001b[38;5;250m\u003e git clone --depth=50 --branch=main --no-tags https://x-access-token:***@github.com/estafette/estafette-ci-web /estafette-work\u001b[0m\n"}}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":5,"timestamp":"2021-04-20T10:10:21.868992661Z","streamType":"stderr","text":"Cloning into '/estafette-work'...\n"}}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":1,"timestamp":"2021-04-20T10:10:22.100170531Z","streamType":"stdout","text":"Starting \u001b[1mestafette-extension-github-status\u001b[0m version \u001b[1m0.1.74\u001b[0m... \u001b[36mbranch=\u001b[0mmain \u001b[36mbuildDate=\u001b[0m2021-02-10T16:36:50Z \u001b[36mgoVersion=\u001b[0mgo1.15.7 \u001b[36mos=\u001b[0mlinux \u001b[36mrevision=\u001b[0m35db0200d8d23f4f27e8644117f388e511038efb\n"}}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":2,"timestamp":"2021-04-20T10:10:22.100183853Z","streamType":"stdout","text":"Reading credentials from file at path /credentials/github_api_token.json...\n"}}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":3,"timestamp":"2021-04-20T10:10:22.100227829Z","streamType":"stdout","text":"Read 1 credentials\n"}}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":4,"timestamp":"2021-04-20T10:10:22.100234079Z","streamType":"stdout","text":"Setting logs url https://***/pipelines/github.com/estafette/estafette-ci-web/builds/651568794079166480/logs\n"}}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":5,"timestamp":"2021-04-20T10:10:22.471215131Z","streamType":"stdout","text":"Received successful response for 'https://api.github.com/repos/estafette/estafette-ci-web/statuses/3d6a36fd1e258e78897a2bdd63153324e7c73068' Github api call with status code 201\n"}}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":6,"timestamp":"2021-04-20T10:10:22.471231215Z","streamType":"stdout","text":"Finished estafette-extension-github-status...\n"}}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"duration":1464795524,"status":"SUCCEEDED","autoInjected":true}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":6,"timestamp":"2021-04-20T10:10:25.797251111Z","streamType":"stdout","text":"\u001b[38;5;250m\u003e git checkout --quiet --force 3d6a36fd1e258e78897a2bdd63153324e7c73068\u001b[0m\n"}}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":7,"timestamp":"2021-04-20T10:10:26.310091625Z","streamType":"stdout","text":"Finished cloning git repository estafette-ci-web to branch main and revision 3d6a36fd1e258e78897a2bdd63153324e7c73068 with shallow clone is true and depth 50\n"}}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"duration":5425614613,"status":"SUCCEEDED","autoInjected":true}
+
+event:log
+data:{"step":"injected-before","type":"stage","duration":8227083700,"status":"SUCCEEDED","autoInjected":true}
+
+event:log
+data:{"step":"audit-and-restore","type":"stage","status":"RUNNING"}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"image":{"name":"node","tag":"15-alpine","isPulled":false,"imageSize":0,"pullDuration":0},"status":"PENDING"}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"image":{"name":"extensions/npm-audit","tag":"dev","isPulled":false,"imageSize":0,"pullDuration":0,"isTrusted":true,"hasInjectedCredentials":true},"status":"PENDING"}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"image":{"name":"extensions/snyk","tag":"dev","isPulled":false,"imageSize":0,"pullDuration":0,"isTrusted":true,"hasInjectedCredentials":true},"status":"PENDING"}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"image":{"name":"extensions/npm-audit","tag":"dev","isPulled":false,"imageSize":141210882,"pullDuration":6003686657,"isTrusted":true,"hasInjectedCredentials":true},"status":"RUNNING"}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"image":{"name":"node","tag":"15-alpine","isPulled":false,"imageSize":111721043,"pullDuration":10007140563},"status":"RUNNING"}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":1,"timestamp":"2021-04-20T10:10:37.285988043Z","streamType":"stdout","text":"Starting estafette-extension-npm-audit version 0.0.104-snyk-fix-ac1783c809650154ee160a403c241e67... \u001b[36mbranch=\u001b[0msnyk-fix-ac1783c809650154ee160a403c241e67 \u001b[36mbuildDate=\u001b[0m2021-04-01T07:44:07Z \u001b[36mgoVersion=\u001b[0mgo1.15.6 \u001b[36mos=\u001b[0mlinux \u001b[36mrevision=\u001b[0m6ca02284a8518d53fcb1538054e3f1028d0add1c\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":2,"timestamp":"2021-04-20T10:10:37.286001773Z","streamType":"stdout","text":"Reading credentials from file at path /credentials/slack_webhook.json...\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":3,"timestamp":"2021-04-20T10:10:37.286004863Z","streamType":"stdout","text":"Unmarshalling Slack credentials...\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":4,"timestamp":"2021-04-20T10:10:37.286007841Z","streamType":"stdout","text":"Checking if Slack credential estafette exists...\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":5,"timestamp":"2021-04-20T10:10:37.286010752Z","streamType":"stdout","text":"Checking credential slack-webhook-estafette for workspace estafette...\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":6,"timestamp":"2021-04-20T10:10:37.286013406Z","streamType":"stdout","text":"Found credential slack-webhook-estafette for workspace estafette\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":7,"timestamp":"2021-04-20T10:10:37.28601469Z","streamType":"stdout","text":"Auditing repo...\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":8,"timestamp":"2021-04-20T10:10:37.28601571Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":9,"timestamp":"2021-04-20T10:10:37.286017663Z","streamType":"stdout","text":"\u001b[38;5;250m\u003e npm audit --json --only=prod\u001b[0m\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":1,"timestamp":"2021-04-20T10:10:37.304087805Z","streamType":"stdout","text":"\u001b[38;5;250m\u003e exec npm ci\u001b[0m\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":10,"timestamp":"2021-04-20T10:10:38.998849715Z","streamType":"stderr","text":"npm notice \n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":11,"timestamp":"2021-04-20T10:10:38.998868186Z","streamType":"stderr","text":"npm notice New minor version of npm available! 7.6.3 -\u003e 7.10.0\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":12,"timestamp":"2021-04-20T10:10:38.998875228Z","streamType":"stderr","text":"npm notice Changelog: \u003chttps://github.com/npm/cli/releases/tag/v7.10.0\u003e\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":13,"timestamp":"2021-04-20T10:10:38.998879773Z","streamType":"stderr","text":"npm notice Run `npm install -g npm@7.10.0` to update!\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":14,"timestamp":"2021-04-20T10:10:38.998881349Z","streamType":"stderr","text":"npm notice \n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":15,"timestamp":"2021-04-20T10:10:39.00752649Z","streamType":"stdout","text":"\u001b[38;5;250m\u003e npm audit --json --only=dev\u001b[0m\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"image":{"name":"extensions/snyk","tag":"dev","isPulled":false,"imageSize":581827478,"pullDuration":13608215665,"isTrusted":true,"hasInjectedCredentials":true},"status":"RUNNING"}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":16,"timestamp":"2021-04-20T10:10:40.796538143Z","streamType":"stderr","text":"npm notice \n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":17,"timestamp":"2021-04-20T10:10:40.796560345Z","streamType":"stderr","text":"npm notice New minor version of npm available! 7.6.3 -\u003e 7.10.0\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":18,"timestamp":"2021-04-20T10:10:40.796568144Z","streamType":"stderr","text":"npm notice Changelog: \u003chttps://github.com/npm/cli/releases/tag/v7.10.0\u003e\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":19,"timestamp":"2021-04-20T10:10:40.796573349Z","streamType":"stderr","text":"npm notice Run `npm install -g npm@7.10.0` to update!\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":20,"timestamp":"2021-04-20T10:10:40.796575598Z","streamType":"stderr","text":"npm notice \n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":21,"timestamp":"2021-04-20T10:10:40.807872981Z","streamType":"stdout","text":"Checking 48 prod dependencies for vulnerabilities with severity higher or equal than low\n"}}
+
+event:","
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":22,"timestamp":"2021-04-20T10:10:40.807893972Z","streamType":"stdout","text":"Checking 1196 dev dependencies for vulnerabilities with severity higher or equal than moderate\n"}}
+
+event:4-2
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":23,"timestamp":"2021-04-20T10:10:40.807898299Z","streamType":"stdout","text":"\u001b[38;5;250m\u003e npm audit\u001b[0m\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":1,"timestamp":"2021-04-20T10:10:41.286316619Z","streamType":"stdout","text":"Starting estafette-extension-snyk version 0.1.30... \u001b[36mbranch=\u001b[0mmain \u001b[36mbuildDate=\u001b[0m2021-04-20T09:13:42Z \u001b[36mgoVersion=\u001b[0mgo1.16.3 \u001b[36mos=\u001b[0mlinux \u001b[36mrevision=\u001b[0m9fd07d0e428810220535c649cc6f83398c9d8090\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":2,"timestamp":"2021-04-20T10:10:41.286345445Z","streamType":"stdout","text":"Reading credentials from file at path /credentials/snyk_api_token.json...\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":3,"timestamp":"2021-04-20T10:10:41.28635021Z","streamType":"stdout","text":"Unmarshalling injected snyk api token credentials\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":4,"timestamp":"2021-04-20T10:10:41.286354052Z","streamType":"stdout","text":"\u001b[38;5;250m\u003e snyk auth ***\u001b[0m\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":24,"timestamp":"2021-04-20T10:10:42.360339188Z","streamType":"stdout","text":"# npm audit report\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":25,"timestamp":"2021-04-20T10:10:42.360355653Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":26,"timestamp":"2021-04-20T10:10:42.36035924Z","streamType":"stdout","text":"ini  \u003c1.3.6\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":27,"timestamp":"2021-04-20T10:10:42.360366979Z","streamType":"stdout","text":"Prototype Pollution - https://npmjs.com/advisories/1589\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":28,"timestamp":"2021-04-20T10:10:42.360370829Z","streamType":"stdout","text":"fix available via `npm audit fix`\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":29,"timestamp":"2021-04-20T10:10:42.360374176Z","streamType":"stdout","text":"node_modules/fsevents/node_modules/ini\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":30,"timestamp":"2021-04-20T10:10:42.360375296Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":31,"timestamp":"2021-04-20T10:10:42.360382907Z","streamType":"stdout","text":"1 low severity vulnerability\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":32,"timestamp":"2021-04-20T10:10:42.360383927Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":33,"timestamp":"2021-04-20T10:10:42.360386904Z","streamType":"stdout","text":"To address all issues, run:\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":34,"timestamp":"2021-04-20T10:10:42.360388573Z","streamType":"stdout","text":"  npm audit fix\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":35,"timestamp":"2021-04-20T10:10:42.360389462Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"audit","parentStage":"audit-and-restore","type":"stage","depth":1,"duration":10320053666,"status":"SUCCEEDED"}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":5,"timestamp":"2021-04-20T10:10:43.209332124Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":6,"timestamp":"2021-04-20T10:10:43.209353855Z","streamType":"stdout","text":"Your account has been authenticated. Snyk is now ready to be used.\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":7,"timestamp":"2021-04-20T10:10:43.209354993Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":8,"timestamp":"2021-04-20T10:10:43.758511112Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":9,"timestamp":"2021-04-20T10:10:43.779031941Z","streamType":"stdout","text":"\u001b[38;5;250m\u003e snyk test --severity-threshold=medium --fail-on=all\u001b[0m\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":10,"timestamp":"2021-04-20T10:10:46.16881439Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":11,"timestamp":"2021-04-20T10:10:46.16883382Z","streamType":"stdout","text":"Testing /estafette-work...\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":12,"timestamp":"2021-04-20T10:10:46.168835054Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":13,"timestamp":"2021-04-20T10:10:46.168853933Z","streamType":"stdout","text":"Organization:      xivart\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":14,"timestamp":"2021-04-20T10:10:46.168857083Z","streamType":"stdout","text":"Package manager:   npm\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":15,"timestamp":"2021-04-20T10:10:46.168859917Z","streamType":"stdout","text":"Target file:       package-lock.json\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":16,"timestamp":"2021-04-20T10:10:46.168862647Z","streamType":"stdout","text":"Project name:      estafette-ci-web\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":17,"timestamp":"2021-04-20T10:10:46.168863853Z","streamType":"stdout","text":"Open source:       no\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":18,"timestamp":"2021-04-20T10:10:46.168865595Z","streamType":"stdout","text":"Project path:      /estafette-work\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":19,"timestamp":"2021-04-20T10:10:46.168867246Z","streamType":"stdout","text":"Licenses:          enabled\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":20,"timestamp":"2021-04-20T10:10:46.168867834Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":21,"timestamp":"2021-04-20T10:10:46.168872699Z","streamType":"stdout","text":"✓ Tested 46 dependencies for known issues, no vulnerable paths found.\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":22,"timestamp":"2021-04-20T10:10:46.168873159Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":23,"timestamp":"2021-04-20T10:10:46.168874473Z","streamType":"stdout","text":"Next steps:\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":24,"timestamp":"2021-04-20T10:10:46.16887832Z","streamType":"stdout","text":"- Run `snyk monitor` to be notified about new related vulnerabilities.\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":25,"timestamp":"2021-04-20T10:10:46.168880263Z","streamType":"stdout","text":"- Run `snyk test` as part of your CI/test.\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":26,"timestamp":"2021-04-20T10:10:46.643959369Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"snyk","parentStage":"audit-and-restore","type":"stage","depth":1,"duration":6794000285,"status":"SUCCEEDED"}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":2,"timestamp":"2021-04-20T10:10:52.726972769Z","streamType":"stderr","text":"npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":3,"timestamp":"2021-04-20T10:10:53.409827234Z","streamType":"stderr","text":"npm WARN deprecated har-validator@5.1.5: this library is no longer supported\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":4,"timestamp":"2021-04-20T10:10:54.668498294Z","streamType":"stderr","text":"npm WARN deprecated eslint-plugin-standard@5.0.0: standard 16.0.0 and eslint-config-standard 16.0.0 no longer require the eslint-plugin-standard package. You can remove it from your dependencies with 'npm rm eslint-plugin-standard'. More info here: https://github.com/standard/standard/issues/1316\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":5,"timestamp":"2021-04-20T10:10:55.031494517Z","streamType":"stderr","text":"npm WARN deprecated eslint-loader@4.0.2: This loader has been deprecated. Please use eslint-webpack-plugin\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":6,"timestamp":"2021-04-20T10:10:57.640469175Z","streamType":"stderr","text":"npm WARN deprecated babel-eslint@10.1.0: babel-eslint is now @babel/eslint-parser. This package will no longer receive updates.\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":7,"timestamp":"2021-04-20T10:11:02.858306273Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":8,"timestamp":"2021-04-20T10:11:02.858325916Z","streamType":"stdout","text":"added 1174 packages, and audited 1175 packages in 25s\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":9,"timestamp":"2021-04-20T10:11:02.8583271Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":10,"timestamp":"2021-04-20T10:11:02.858337702Z","streamType":"stdout","text":"65 packages are looking for funding\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":11,"timestamp":"2021-04-20T10:11:02.858340094Z","streamType":"stdout","text":"  run `npm fund` for details\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":12,"timestamp":"2021-04-20T10:11:02.863495494Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":13,"timestamp":"2021-04-20T10:11:02.863511344Z","streamType":"stdout","text":"1 low severity vulnerability\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":14,"timestamp":"2021-04-20T10:11:02.86351255Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":15,"timestamp":"2021-04-20T10:11:02.86351539Z","streamType":"stdout","text":"To address all issues, run:\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":16,"timestamp":"2021-04-20T10:11:02.863517121Z","streamType":"stdout","text":"  npm audit fix\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":17,"timestamp":"2021-04-20T10:11:02.863517756Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":18,"timestamp":"2021-04-20T10:11:02.863519568Z","streamType":"stdout","text":"Run `npm audit` for details.\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":19,"timestamp":"2021-04-20T10:11:02.864035986Z","streamType":"stderr","text":"npm notice \n"}}
+
+event:c n
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":20,"timestamp":"2021-04-20T10:11:02.864092137Z","streamType":"stderr","text":"npm notice New minor version of npm available! 7.7.6 -\u003e 7.10.0\n"}}
+
+event:n"}
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":21,"timestamp":"2021-04-20T10:11:02.864237684Z","streamType":"stderr","text":"npm notice Changelog: \u003chttps://github.com/npm/cli/releases/tag/v7.10.0\u003e\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":22,"timestamp":"2021-04-20T10:11:02.864259389Z","streamType":"stderr","text":"npm notice Run `npm install -g npm@7.10.0` to update!\n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"logLine":{"line":23,"timestamp":"2021-04-20T10:11:02.864260879Z","streamType":"stderr","text":"npm notice \n"}}
+
+event:log
+data:{"step":"restore","parentStage":"audit-and-restore","type":"stage","depth":1,"duration":26725460499,"status":"SUCCEEDED"}
+
+event:log
+data:{"step":"audit-and-restore","type":"stage","duration":36735826134,"status":"SUCCEEDED"}
+
+event:log
+data:{"step":"lint-and-build","type":"stage","status":"RUNNING"}
+
+event:log
+data:{"step":"package-helm-chart","parentStage":"lint-and-build","type":"stage","depth":1,"image":{"name":"extensions/helm","tag":"dev","isPulled":false,"imageSize":0,"pullDuration":0,"isTrusted":true,"hasInjectedCredentials":true},"status":"PENDING"}
+
+event:log
+data:{"step":"lint-helm-chart","parentStage":"lint-and-build","type":"stage","depth":1,"image":{"name":"extensions/helm","tag":"dev","isPulled":false,"imageSize":0,"pullDuration":0,"isTrusted":true,"hasInjectedCredentials":true},"status":"PENDING"}
+
+event:log
+data:{"step":"build","parentStage":"lint-and-build","type":"stage","depth":1,"image":{"name":"node","tag":"15-alpine","isPulled":true,"imageSize":0,"pullDuration":0},"status":"RUNNING"}
+
+event:log
+data:{"step":"lint","parentStage":"lint-and-build","type":"stage","depth":1,"image":{"name":"node","tag":"15-alpine","isPulled":true,"imageSize":0,"pullDuration":0},"status":"RUNNING"}
+
+event:log
+data:{"step":"build","parentStage":"lint-and-build","type":"stage","depth":1,"logLine":{"line":1,"timestamp":"2021-04-20T10:11:04.041451536Z","streamType":"stdout","text":"\u001b[38;5;250m\u003e exec npm run build\u001b[0m\n"}}
+
+event:log
+data:{"step":"lint","parentStage":"lint-and-build","type":"stage","depth":1,"logLine":{"line":1,"timestamp":"2021-04-20T10:11:04.082831329Z","streamType":"stdout","text":"\u001b[38;5;250m\u003e exec npm run lint\u001b[0m\n"}}
+
+event:log
+data:{"step":"build","parentStage":"lint-and-build","type":"stage","depth":1,"logLine":{"line":2,"timestamp":"2021-04-20T10:11:04.604422296Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"build","parentStage":"lint-and-build","type":"stage","depth":1,"logLine":{"line":3,"timestamp":"2021-04-20T10:11:04.604512096Z","streamType":"stdout","text":"\u003e estafette-ci-web@1.0.0 build\n"}}
+
+event:log
+data:{"step":"build","parentStage":"lint-and-build","type":"stage","depth":1,"logLine":{"line":4,"timestamp":"2021-04-20T10:11:04.604516332Z","streamType":"stdout","text":"\u003e webpack --config webpack/webpack.prod.js\n"}}
+
+event:log
+data:{"step":"build","parentStage":"lint-and-build","type":"stage","depth":1,"logLine":{"line":5,"timestamp":"2021-04-20T10:11:04.60451709Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"lint","parentStage":"lint-and-build","type":"stage","depth":1,"logLine":{"line":2,"timestamp":"2021-04-20T10:11:04.606684572Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"lint","parentStage":"lint-and-build","type":"stage","depth":1,"logLine":{"line":3,"timestamp":"2021-04-20T10:11:04.606717672Z","streamType":"stdout","text":"\u003e estafette-ci-web@1.0.0 lint\n"}}
+
+event:1,"
+data:{"step":"lint","parentStage":"lint-and-build","type":"stage","depth":1,"logLine":{"line":4,"timestamp":"2021-04-20T10:11:04.606726936Z","streamType":"stdout","text":"\u003e eslint --max-warnings 0 --color '{src,test,webpack,mocks}/**/*.{js,vue}'\n"}}
+
+event:,"d
+data:{"step":"lint","parentStage":"lint-and-build","type":"stage","depth":1,"logLine":{"line":5,"timestamp":"2021-04-20T10:11:04.60672804Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"build","parentStage":"lint-and-build","type":"stage","depth":1,"logLine":{"line":6,"timestamp":"2021-04-20T10:11:05.375236417Z","streamType":"stdout","text":"webpack config {\"context\":\"/estafette-work\",\"entry\":{\"app\":\"./src/main.js\"},\"output\":{\"publicPath\":\"/\",\"filename\":\"static/js/[name].[contenthash].js\",\"path\":\"/estafette-work/dist\"},\"resolve\":{\"extensions\":[\".js\",\".vue\",\".json\"],\"alias\":{\"vue$\":\"vue/dist/vue.esm.js\",\"@\":\"/estafette-work/src\"}},\"optimization\":{\"minimizer\":[{\"options\":{\"test\":{},\"extractComments\":true,\"parallel\":true,\"terserOptions\":{}}},{\"pluginDescriptor\":{\"name\":\"OptimizeCssAssetsWebpackPlugin\"},\"options\":{\"assetProcessors\":[{\"phase\":\"compilation.optimize-chunk-assets\",\"regExp\":{}}],\"assetNameRegExp\":{},\"cssProcessorOptions\":{},\"cssProcessorPluginOptions\":{}},\"phaseAssetProcessors\":{\"compilation.optimize-chunk-assets\":[{\"phase\":\"compilation.optimize-chunk-assets\",\"regExp\":{}}],\"compilation.optimize-assets\":[],\"emit\":[]},\"deleteAssetsMap\":{}}],\"sideEffects\":true,\"runtimeChunk\":\"single\",\"splitChunks\":{\"chunks\":\"all\"},\"moduleIds\":\"deterministic\"},\"stats\":{\"colors\":true,\"modules\":false,\"children\":false},\"plugins\":[{\"keys\":[\"ADD_TRAILING_SLASH_TO_API_REQUEST\"],\"defaultValues\":{\"ADD_TRAILING_SLASH_TO_API_REQUEST\":false}},{},{\"dangerouslyAllowCleanPatternsOutsideProject\":false,\"dry\":false,\"verbose\":false,\"cleanStaleWebpackAssets\":true,\"protectWebpackAssets\":true,\"cleanAfterEveryBuildPatterns\":[],\"cleanOnceBeforeBuildPatterns\":[\"**/*\"],\"currentAssets\":[],\"initialClean\":false,\"outputPath\":\"\"},{\"userOptions\":{\"filename\":\"index.html\",\"template\":\"index.html\",\"inject\":true},\"version\":5},{\"options\":{}},{\"_sortedModulesCache\":{},\"options\":{\"filename\":\"static/css/[name].[contenthash].css\",\"ignoreOrder\":false,\"chunkFilename\":\"static/css/[name].[contenthash].css\"},\"runtimeOptions\":{\"linkType\":\"text/css\"}}],\"module\":{\"rules\":[{\"enforce\":\"pre\",\"test\":{},\"include\":[\"/estafette-work/src\",\"/estafette-work/test\"],\"loader\":\"eslint-loader\"},{\"test\":{},\"include\":\"/estafette-work/src\",\"loader\":\"babel-loader\",\"options\":{\"plugins\":[\"@babel/plugin-syntax-dynamic-import\"],\"presets\":[[\"@babel/preset-env\",{\"modules\":false}]]}},{\"test\":{},\"include\":\"/estafette-work/src\",\"loader\":\"vue-loader\"},{\"test\":{},\"include\":\"/estafette-work/src\",\"loader\":\"file-loader\",\"options\":{\"name\":\"static/images/[name].[hash].[ext]\"}},{\"test\":{},\"include\":\"/estafette-work/src\",\"loader\":\"file-loader\",\"options\":{\"name\":\"static/fonts/[name].[hash].[ext]\"}},{\"test\":{},\"use\":[\"/estafette-work/node_modules/mini-css-extract-plugin/dist/loader.js\",\"css-loader\",\"sass-loader\"]}]},\"mode\":\"production\"}\n"}}
+

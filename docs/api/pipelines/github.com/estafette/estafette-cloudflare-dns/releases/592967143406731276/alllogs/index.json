@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "id": "592967273647341579",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-cloudflare-dns",
+      "releaseID": "592967143406731276",
+      "steps": null,
+      "insertedAt": "2020-09-25T10:27:30.990742Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 1
+  }
+}
