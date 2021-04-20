@@ -21,6 +21,7 @@ stages:
     parallelStages:
       snyk:
         image: extensions/snyk:dev
+        severity-threshold: medium
 
       audit:
         image: extensions/npm-audit:dev
