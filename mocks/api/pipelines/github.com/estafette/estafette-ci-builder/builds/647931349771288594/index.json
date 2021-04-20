@@ -35,6 +35,7 @@
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
+              "fired": true,
               "pipeline": {
                 "buildVersion": "0.0.845",
                 "repoSource": "github.com",
@@ -50,7 +51,11 @@
           "startedAt": "2021-04-07T14:35:33.707102Z",
           "updatedAt": "2021-04-07T14:36:01.70099Z",
           "duration": 27000000000,
-          "pendingDuration": 1000000000
+          "pendingDuration": 1000000000,
+          "extraInfo": {
+            "medianPendingDuration": 1000000000,
+            "medianDuration": 29000000000
+          }
         }
       ]
     },
@@ -67,6 +72,7 @@
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
+              "fired": true,
               "manual": {
                 "userID": "me@estafette.io"
               }
@@ -76,7 +82,11 @@
           "startedAt": "2021-04-07T14:46:54.413844Z",
           "updatedAt": "2021-04-07T14:47:25.274308Z",
           "duration": 30000000000,
-          "pendingDuration": 1000000000
+          "pendingDuration": 1000000000,
+          "extraInfo": {
+            "medianPendingDuration": 1000000000,
+            "medianDuration": 37000000000
+          }
         }
       ]
     },
@@ -93,6 +103,7 @@
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
+              "fired": true,
               "manual": {
                 "userID": "me@estafette.io"
               }
@@ -102,7 +113,11 @@
           "startedAt": "2021-04-07T14:51:13.615148Z",
           "updatedAt": "2021-04-07T14:51:51.808352Z",
           "duration": 38000000000,
-          "pendingDuration": 1000000000
+          "pendingDuration": 1000000000,
+          "extraInfo": {
+            "medianPendingDuration": 1000000000,
+            "medianDuration": 42000000000
+          }
         }
       ]
     },
@@ -119,6 +134,7 @@
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
+              "fired": true,
               "pipeline": {
                 "buildVersion": "0.0.845",
                 "repoSource": "github.com",
@@ -134,7 +150,11 @@
           "startedAt": "2021-04-07T14:40:17.045453Z",
           "updatedAt": "2021-04-07T14:42:56.85418Z",
           "duration": 159000000000,
-          "pendingDuration": 284000000000
+          "pendingDuration": 284000000000,
+          "extraInfo": {
+            "medianPendingDuration": 284000000000,
+            "medianDuration": 126000000000
+          }
         }
       ]
     },
@@ -151,6 +171,7 @@
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
+              "fired": true,
               "manual": {
                 "userID": "me@estafette.io"
               }
@@ -160,7 +181,11 @@
           "startedAt": "2021-04-07T14:47:03.460768Z",
           "updatedAt": "2021-04-07T14:48:24.639708Z",
           "duration": 81000000000,
-          "pendingDuration": 7000000000
+          "pendingDuration": 7000000000,
+          "extraInfo": {
+            "medianPendingDuration": 274000000000,
+            "medianDuration": 117000000000
+          }
         }
       ]
     },
@@ -177,6 +202,7 @@
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
+              "fired": true,
               "manual": {
                 "userID": "me@estafette.io"
               }
@@ -186,7 +212,11 @@
           "startedAt": "2021-04-07T14:51:21.514106Z",
           "updatedAt": "2021-04-07T14:52:33.705501Z",
           "duration": 72000000000,
-          "pendingDuration": 7000000000
+          "pendingDuration": 7000000000,
+          "extraInfo": {
+            "medianPendingDuration": 187000000000,
+            "medianDuration": 120000000000
+          }
         }
       ]
     }
@@ -231,6 +261,7 @@
   ],
   "triggerEvents": [
     {
+      "fired": true,
       "git": {
         "event": "push",
         "repository": "github.com/estafette/estafette-ci-builder",
@@ -242,5 +273,10 @@
   "startedAt": "2021-04-07T13:49:17.716834Z",
   "updatedAt": "2021-04-07T13:49:42.215504Z",
   "duration": 24000000000,
-  "pendingDuration": 1000000000
+  "pendingDuration": 1000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
 }

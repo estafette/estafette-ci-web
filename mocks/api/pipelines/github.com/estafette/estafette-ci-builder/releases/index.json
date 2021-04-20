@@ -10,6 +10,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -19,7 +20,12 @@
       "startedAt": "2021-04-07T14:51:21.514106Z",
       "updatedAt": "2021-04-07T14:52:33.705501Z",
       "duration": 72000000000,
-      "pendingDuration": 7000000000
+      "pendingDuration": 7000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "stable",
@@ -31,6 +37,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -40,7 +47,12 @@
       "startedAt": "2021-04-07T14:51:13.615148Z",
       "updatedAt": "2021-04-07T14:51:51.808352Z",
       "duration": 38000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "nanoserver-1809-beta",
@@ -52,6 +64,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -61,7 +74,12 @@
       "startedAt": "2021-04-07T14:47:03.460768Z",
       "updatedAt": "2021-04-07T14:48:24.639708Z",
       "duration": 81000000000,
-      "pendingDuration": 7000000000
+      "pendingDuration": 7000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "beta",
@@ -73,6 +91,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -82,7 +101,12 @@
       "startedAt": "2021-04-07T14:46:54.413844Z",
       "updatedAt": "2021-04-07T14:47:25.274308Z",
       "duration": 30000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "dev",
@@ -94,6 +118,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "pipeline": {
             "buildVersion": "0.0.845",
             "repoSource": "github.com",
@@ -121,6 +146,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "pipeline": {
             "buildVersion": "0.0.845",
             "repoSource": "github.com",
@@ -148,6 +174,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -157,7 +184,12 @@
       "startedAt": "2021-03-29T07:23:24.010975Z",
       "updatedAt": "2021-03-29T07:25:24.370334Z",
       "duration": 120000000000,
-      "pendingDuration": 386000000000
+      "pendingDuration": 386000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "stable",
@@ -169,6 +201,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -178,7 +211,12 @@
       "startedAt": "2021-03-29T07:16:57.708514Z",
       "updatedAt": "2021-03-29T07:17:40.234025Z",
       "duration": 42000000000,
-      "pendingDuration": 2000000000
+      "pendingDuration": 2000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "nanoserver-1809-beta",
@@ -190,6 +228,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -199,7 +238,12 @@
       "startedAt": "2021-03-29T07:21:26.388441Z",
       "updatedAt": "2021-03-29T07:23:23.622935Z",
       "duration": 117000000000,
-      "pendingDuration": 274000000000
+      "pendingDuration": 274000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "beta",
@@ -211,6 +255,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -220,7 +265,12 @@
       "startedAt": "2021-03-29T07:16:51.535844Z",
       "updatedAt": "2021-03-29T07:17:27.485041Z",
       "duration": 35000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     }
   ],
   "pagination": {

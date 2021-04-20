@@ -1,0 +1,21 @@
+{
+  "items": [
+    {
+      "id": "647933877227946000",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "main",
+      "repoRevision": "d16e8438c1026dc0f2ee9a19b7c975617feb8de2",
+      "buildID": "",
+      "steps": null,
+      "insertedAt": "2021-04-07T14:02:07.181114Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 1
+  }
+}

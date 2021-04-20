@@ -19,7 +19,12 @@
       "startedAt": "2020-12-01T08:51:38.643997Z",
       "updatedAt": "2020-12-01T08:52:13.700552Z",
       "duration": 35000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "release",
@@ -40,7 +45,12 @@
       "startedAt": "2020-11-02T09:08:25.282224Z",
       "updatedAt": "2020-11-02T09:09:06.151422Z",
       "duration": 40000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "release",
@@ -61,7 +71,12 @@
       "startedAt": "2020-11-02T08:58:05.678948Z",
       "updatedAt": "2020-11-02T08:58:36.380564Z",
       "duration": 30000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "release",
@@ -82,7 +97,12 @@
       "startedAt": "2020-10-07T08:08:19.388339Z",
       "updatedAt": "2020-10-07T08:08:55.775666Z",
       "duration": 36000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "release",
@@ -103,7 +123,12 @@
       "startedAt": "2020-09-28T14:56:02.840233Z",
       "updatedAt": "2020-09-28T14:56:44.86423Z",
       "duration": 42000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "release",
@@ -124,7 +149,12 @@
       "startedAt": "2020-09-25T10:26:53.159864Z",
       "updatedAt": "2020-09-25T10:27:30.970185Z",
       "duration": 37000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "release",

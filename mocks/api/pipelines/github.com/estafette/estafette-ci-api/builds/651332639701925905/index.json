@@ -36,10 +36,12 @@
           "name": "deploy-stable"
         },
         {
-          "name": "rollback-canary"
+          "name": "rollback-canary",
+          "hideBadge": true
         },
         {
-          "name": "restart-stable"
+          "name": "restart-stable",
+          "hideBadge": true
         }
       ],
       "activeReleases": [
@@ -54,6 +56,7 @@
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
+              "fired": true,
               "manual": {
                 "userID": "me@estafette.io"
               }
@@ -63,7 +66,11 @@
           "startedAt": "2021-04-20T07:22:55.705503Z",
           "updatedAt": "2021-04-20T07:24:17.673659Z",
           "duration": 81000000000,
-          "pendingDuration": 2000000000
+          "pendingDuration": 2000000000,
+          "extraInfo": {
+            "medianPendingDuration": 2000000000,
+            "medianDuration": 73000000000
+          }
         },
         {
           "name": "tooling-estafette",
@@ -76,6 +83,7 @@
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
+              "fired": true,
               "manual": {
                 "userID": "me@estafette.io"
               }
@@ -85,7 +93,11 @@
           "startedAt": "2021-04-20T06:46:24.311128Z",
           "updatedAt": "2021-04-20T06:47:06.61984Z",
           "duration": 42000000000,
-          "pendingDuration": 2000000000
+          "pendingDuration": 2000000000,
+          "extraInfo": {
+            "medianPendingDuration": 2000000000,
+            "medianDuration": 21000000000
+          }
         },
         {
           "name": "tooling-estafette",
@@ -98,6 +110,7 @@
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
+              "fired": true,
               "manual": {
                 "userID": "me@estafette.io"
               }
@@ -107,7 +120,11 @@
           "startedAt": "2021-03-04T13:12:53.165466Z",
           "updatedAt": "2021-03-04T13:14:29.5048Z",
           "duration": 96000000000,
-          "pendingDuration": 7000000000
+          "pendingDuration": 7000000000,
+          "extraInfo": {
+            "medianPendingDuration": 3000000000,
+            "medianDuration": 97000000000
+          }
         },
         {
           "name": "tooling-estafette",
@@ -129,7 +146,11 @@
           "startedAt": "2020-11-02T14:28:21.107892Z",
           "updatedAt": "2020-11-02T14:28:57.687318Z",
           "duration": 36000000000,
-          "pendingDuration": 3000000000
+          "pendingDuration": 3000000000,
+          "extraInfo": {
+            "medianPendingDuration": 3000000000,
+            "medianDuration": 32000000000
+          }
         }
       ]
     },
@@ -176,6 +197,7 @@
   ],
   "triggers": [
     {
+      "name": "migrator",
       "pipeline": {
         "event": "finished",
         "status": "succeeded",
@@ -189,6 +211,7 @@
   ],
   "triggerEvents": [
     {
+      "fired": true,
       "git": {
         "event": "push",
         "repository": "github.com/estafette/estafette-ci-api",
@@ -200,5 +223,10 @@
   "startedAt": "2021-04-19T14:09:09.106765Z",
   "updatedAt": "2021-04-19T14:14:45.135747Z",
   "duration": 336000000000,
-  "pendingDuration": 1000000000
+  "pendingDuration": 1000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
 }

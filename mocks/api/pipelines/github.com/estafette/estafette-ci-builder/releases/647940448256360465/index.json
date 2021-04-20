@@ -8,6 +8,7 @@
   "releaseStatus": "succeeded",
   "triggerEvents": [
     {
+      "fired": true,
       "pipeline": {
         "buildVersion": "0.0.845",
         "repoSource": "github.com",

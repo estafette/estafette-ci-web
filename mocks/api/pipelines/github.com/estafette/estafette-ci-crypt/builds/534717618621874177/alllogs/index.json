@@ -1,0 +1,21 @@
+{
+  "items": [
+    {
+      "id": "534717733938561028",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-crypt",
+      "repoBranch": "pipeline-whitelist-regex",
+      "repoRevision": "369cb7534cb33777281ee47567b56ae1e00f9d19",
+      "buildID": "",
+      "steps": null,
+      "insertedAt": "2020-03-03T16:35:02.202546Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 1
+  }
+}

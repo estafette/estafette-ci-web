@@ -81,6 +81,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-builder",
@@ -92,7 +93,12 @@
       "startedAt": "2021-04-07T14:31:56.490388Z",
       "updatedAt": "2021-04-07T14:35:32.083281Z",
       "duration": 215000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "647932391169884178",
@@ -175,6 +181,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-builder",
@@ -186,7 +193,12 @@
       "startedAt": "2021-04-07T13:54:41.509702Z",
       "updatedAt": "2021-04-07T13:55:08.814048Z",
       "duration": 27000000000,
-      "pendingDuration": 7000000000
+      "pendingDuration": 7000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "647931349771288594",
@@ -269,6 +281,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-builder",
@@ -280,7 +293,12 @@
       "startedAt": "2021-04-07T13:49:17.716834Z",
       "updatedAt": "2021-04-07T13:49:42.215504Z",
       "duration": 24000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "644995271736229904",
@@ -363,6 +381,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-builder",
@@ -374,7 +393,12 @@
       "startedAt": "2021-03-28T04:55:37.745662Z",
       "updatedAt": "2021-03-28T04:59:04.213289Z",
       "duration": 206000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "644995014202621970",
@@ -457,6 +481,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-builder",
@@ -468,7 +493,12 @@
       "startedAt": "2021-03-28T04:54:19.213275Z",
       "updatedAt": "2021-03-28T04:54:55.404643Z",
       "duration": 36000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "644994627204644880",
@@ -551,6 +581,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-builder",
@@ -562,7 +593,12 @@
       "startedAt": "2021-03-28T04:52:20.293753Z",
       "updatedAt": "2021-03-28T04:52:39.923962Z",
       "duration": 19000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "644993244937060368",
@@ -645,6 +681,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-builder",
@@ -656,7 +693,12 @@
       "startedAt": "2021-03-28T04:45:19.525247Z",
       "updatedAt": "2021-03-28T04:48:25.113247Z",
       "duration": 185000000000,
-      "pendingDuration": 2000000000
+      "pendingDuration": 2000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "644990818117681168",
@@ -739,6 +781,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-builder",
@@ -750,7 +793,12 @@
       "startedAt": "2021-03-28T04:34:19.21868Z",
       "updatedAt": "2021-03-28T04:37:37.594376Z",
       "duration": 198000000000,
-      "pendingDuration": 82000000000
+      "pendingDuration": 82000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "643985796014047250",
@@ -833,6 +881,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-builder",
@@ -844,7 +893,12 @@
       "startedAt": "2021-03-24T15:21:09.438324Z",
       "updatedAt": "2021-03-24T15:25:22.787624Z",
       "duration": 253000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "643408438929784850",
@@ -927,6 +981,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-builder",
@@ -938,7 +993,12 @@
       "startedAt": "2021-03-22T14:24:34.095028Z",
       "updatedAt": "2021-03-22T14:27:57.021676Z",
       "duration": 202000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     }
   ],
   "pagination": {

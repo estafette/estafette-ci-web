@@ -11,6 +11,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -20,7 +21,12 @@
       "startedAt": "2021-04-19T12:13:22.519375Z",
       "updatedAt": "2021-04-19T12:14:30.287797Z",
       "duration": 67000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "tooling-estafette",
@@ -33,6 +39,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -42,7 +49,12 @@
       "startedAt": "2021-04-19T09:51:26.081349Z",
       "updatedAt": "2021-04-19T09:52:32.322886Z",
       "duration": 66000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "tooling-estafette",
@@ -55,6 +67,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -64,7 +77,12 @@
       "startedAt": "2021-04-19T09:25:08.45403Z",
       "updatedAt": "2021-04-19T09:26:13.265727Z",
       "duration": 64000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "tooling-estafette",
@@ -77,6 +95,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -86,7 +105,12 @@
       "startedAt": "2021-04-19T09:17:57.657782Z",
       "updatedAt": "2021-04-19T09:18:59.018497Z",
       "duration": 61000000000,
-      "pendingDuration": 11000000000
+      "pendingDuration": 11000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "tooling-estafette",
@@ -99,6 +123,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -108,7 +133,12 @@
       "startedAt": "2021-04-19T09:15:05.861746Z",
       "updatedAt": "2021-04-19T09:16:13.32457Z",
       "duration": 67000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "tooling-estafette",
@@ -121,6 +151,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -130,7 +161,12 @@
       "startedAt": "2021-04-16T15:43:33.82924Z",
       "updatedAt": "2021-04-16T15:44:41.350826Z",
       "duration": 67000000000,
-      "pendingDuration": 2000000000
+      "pendingDuration": 2000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "tooling-estafette",
@@ -143,6 +179,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -152,7 +189,12 @@
       "startedAt": "2021-04-16T12:35:52.677739Z",
       "updatedAt": "2021-04-16T12:37:02.577681Z",
       "duration": 69000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "tooling-estafette",
@@ -165,6 +207,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -174,7 +217,12 @@
       "startedAt": "2021-04-16T12:01:53.142171Z",
       "updatedAt": "2021-04-16T12:03:03.802698Z",
       "duration": 70000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "tooling-estafette",
@@ -187,6 +235,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -196,7 +245,12 @@
       "startedAt": "2021-04-07T06:48:21.965541Z",
       "updatedAt": "2021-04-07T06:49:28.62697Z",
       "duration": 66000000000,
-      "pendingDuration": 2000000000
+      "pendingDuration": 2000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "tooling-estafette",
@@ -209,6 +263,7 @@
       "releaseStatus": "succeeded",
       "triggerEvents": [
         {
+          "fired": true,
           "manual": {
             "userID": "me@estafette.io"
           }
@@ -218,7 +273,12 @@
       "startedAt": "2021-03-30T12:56:44.691492Z",
       "updatedAt": "2021-03-30T12:57:52.049642Z",
       "duration": 67000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     }
   ],
   "pagination": {

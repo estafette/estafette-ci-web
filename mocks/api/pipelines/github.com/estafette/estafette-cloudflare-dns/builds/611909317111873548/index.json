@@ -48,7 +48,11 @@
           "startedAt": "2020-12-01T08:51:38.643997Z",
           "updatedAt": "2020-12-01T08:52:13.700552Z",
           "duration": 35000000000,
-          "pendingDuration": 1000000000
+          "pendingDuration": 1000000000,
+          "extraInfo": {
+            "medianPendingDuration": 0,
+            "medianDuration": 32000000000
+          }
         }
       ]
     }
@@ -78,5 +82,10 @@
   "startedAt": "2020-12-01T08:11:49.257257Z",
   "updatedAt": "2020-12-01T08:14:49.272438Z",
   "duration": 180000000000,
-  "pendingDuration": 5000000000
+  "pendingDuration": 5000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
 }

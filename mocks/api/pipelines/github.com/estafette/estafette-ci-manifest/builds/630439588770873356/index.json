@@ -39,6 +39,7 @@
   ],
   "triggerEvents": [
     {
+      "fired": true,
       "git": {
         "event": "push",
         "repository": "github.com/estafette/estafette-ci-manifest",
@@ -50,5 +51,10 @@
   "startedAt": "2021-02-04T19:01:35.534105Z",
   "updatedAt": "2021-02-04T19:02:31.120967Z",
   "duration": 55000000000,
-  "pendingDuration": 1000000000
+  "pendingDuration": 1000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
 }

@@ -39,6 +39,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-manifest",
@@ -50,7 +51,12 @@
       "startedAt": "2021-04-07T14:26:43.357066Z",
       "updatedAt": "2021-04-07T14:27:17.964286Z",
       "duration": 34000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "647933696651100176",
@@ -91,6 +97,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-manifest",
@@ -102,7 +109,12 @@
       "startedAt": "2021-04-07T14:01:26.241165Z",
       "updatedAt": "2021-04-07T14:02:07.153076Z",
       "duration": 40000000000,
-      "pendingDuration": 14000000000
+      "pendingDuration": 14000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "647932973884145682",
@@ -143,6 +155,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-manifest",
@@ -154,7 +167,12 @@
       "startedAt": "2021-04-07T13:57:33.079445Z",
       "updatedAt": "2021-04-07T13:57:54.721146Z",
       "duration": 21000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "630588413360668683",
@@ -195,6 +213,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-manifest",
@@ -206,7 +225,12 @@
       "startedAt": "2021-02-05T07:38:39.678291Z",
       "updatedAt": "2021-02-05T07:39:33.560285Z",
       "duration": 53000000000,
-      "pendingDuration": 7000000000
+      "pendingDuration": 7000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "630585460947222539",
@@ -247,6 +271,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-manifest",
@@ -258,7 +283,12 @@
       "startedAt": "2021-02-05T07:23:40.17133Z",
       "updatedAt": "2021-02-05T07:24:32.22788Z",
       "duration": 52000000000,
-      "pendingDuration": 9000000000
+      "pendingDuration": 9000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "630439588770873356",
@@ -299,6 +329,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-manifest",
@@ -310,7 +341,12 @@
       "startedAt": "2021-02-04T19:01:35.534105Z",
       "updatedAt": "2021-02-04T19:02:31.120967Z",
       "duration": 55000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "630437684606926859",
@@ -351,6 +387,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-manifest",
@@ -362,7 +399,12 @@
       "startedAt": "2021-02-04T18:52:21.943447Z",
       "updatedAt": "2021-02-04T18:53:13.998318Z",
       "duration": 52000000000,
-      "pendingDuration": 29000000000
+      "pendingDuration": 29000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "628064050133860362",
@@ -414,7 +456,12 @@
       "startedAt": "2021-01-27T09:38:58.850489Z",
       "updatedAt": "2021-01-27T09:39:49.413825Z",
       "duration": 50000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "627811118534492172",
@@ -466,7 +513,12 @@
       "startedAt": "2021-01-26T12:12:34.005583Z",
       "updatedAt": "2021-01-26T12:13:25.744093Z",
       "duration": 51000000000,
-      "pendingDuration": 5000000000
+      "pendingDuration": 5000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "626073178207977484",
@@ -518,7 +570,12 @@
       "startedAt": "2021-01-20T08:52:53.215087Z",
       "updatedAt": "2021-01-20T08:53:49.182255Z",
       "duration": 55000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     }
   ],
   "pagination": {

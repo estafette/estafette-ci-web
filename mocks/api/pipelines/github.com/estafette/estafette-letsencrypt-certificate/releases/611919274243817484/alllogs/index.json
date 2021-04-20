@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "id": "611919395983228939",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-letsencrypt-certificate",
+      "releaseID": "611919274243817484",
+      "steps": null,
+      "insertedAt": "2020-12-01T09:02:59.730863Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 1
+  }
+}

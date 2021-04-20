@@ -39,6 +39,7 @@
   ],
   "triggerEvents": [
     {
+      "fired": true,
       "git": {
         "event": "push",
         "repository": "github.com/estafette/estafette-ci-contracts",
@@ -50,5 +51,10 @@
   "startedAt": "2021-02-04T19:05:38.322455Z",
   "updatedAt": "2021-02-04T19:06:30.884944Z",
   "duration": 52000000000,
-  "pendingDuration": 1000000000
+  "pendingDuration": 1000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
 }

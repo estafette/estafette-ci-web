@@ -33,7 +33,8 @@
           "name": "deploy-simple"
         },
         {
-          "name": "restart-simple"
+          "name": "restart-simple",
+          "hideBadge": true
         }
       ],
       "activeReleases": [
@@ -48,6 +49,7 @@
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
+              "fired": true,
               "manual": {
                 "userID": "me@estafette.io"
               }
@@ -57,7 +59,11 @@
           "startedAt": "2021-04-19T12:13:22.519375Z",
           "updatedAt": "2021-04-19T12:14:30.287797Z",
           "duration": 67000000000,
-          "pendingDuration": 1000000000
+          "pendingDuration": 1000000000,
+          "extraInfo": {
+            "medianPendingDuration": 1000000000,
+            "medianDuration": 67000000000
+          }
         },
         {
           "name": "tooling-estafette",
@@ -98,6 +104,7 @@
   ],
   "triggerEvents": [
     {
+      "fired": true,
       "git": {
         "event": "push",
         "repository": "github.com/estafette/estafette-ci-web",
@@ -109,5 +116,10 @@
   "startedAt": "2021-04-19T12:07:17.716532Z",
   "updatedAt": "2021-04-19T12:12:11.884939Z",
   "duration": 294000000000,
-  "pendingDuration": 1000000000
+  "pendingDuration": 1000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
 }

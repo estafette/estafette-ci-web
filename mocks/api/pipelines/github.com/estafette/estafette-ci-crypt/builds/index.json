@@ -39,6 +39,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-crypt",
@@ -50,7 +51,12 @@
       "startedAt": "2021-02-23T12:47:23.000472Z",
       "updatedAt": "2021-02-23T12:48:11.021732Z",
       "duration": 48000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "635714277481644044",
@@ -91,6 +97,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-crypt",
@@ -102,7 +109,12 @@
       "startedAt": "2021-02-23T10:10:02.333292Z",
       "updatedAt": "2021-02-23T10:10:54.361216Z",
       "duration": 52000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "587906518126067723",
@@ -154,7 +166,12 @@
       "startedAt": "2020-09-07T13:27:12.101802Z",
       "updatedAt": "2020-09-07T13:27:49.240127Z",
       "duration": 37000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "585922429021323276",
@@ -206,7 +223,12 @@
       "startedAt": "2020-08-31T13:15:36.86706Z",
       "updatedAt": "2020-08-31T13:16:09.503535Z",
       "duration": 32000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "570897790076157962",
@@ -258,7 +280,12 @@
       "startedAt": "2020-07-09T11:36:21.22075Z",
       "updatedAt": "2020-07-09T11:38:17.082572Z",
       "duration": 115000000000,
-      "pendingDuration": 2000000000
+      "pendingDuration": 2000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "555776260444815372",

@@ -39,6 +39,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-contracts",
@@ -50,7 +51,12 @@
       "startedAt": "2021-04-07T14:30:12.222004Z",
       "updatedAt": "2021-04-07T14:30:46.151657Z",
       "duration": 33000000000,
-      "pendingDuration": 0
+      "pendingDuration": 0,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "630613186472312844",
@@ -91,6 +97,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-contracts",
@@ -102,7 +109,12 @@
       "startedAt": "2021-02-05T09:44:35.740934Z",
       "updatedAt": "2021-02-05T09:45:27.503993Z",
       "duration": 51000000000,
-      "pendingDuration": 3000000000
+      "pendingDuration": 3000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "630606555027734540",
@@ -143,6 +155,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-contracts",
@@ -154,7 +167,12 @@
       "startedAt": "2021-02-05T09:10:51.839441Z",
       "updatedAt": "2021-02-05T09:11:52.523702Z",
       "duration": 60000000000,
-      "pendingDuration": 3000000000
+      "pendingDuration": 3000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "630596753481596940",
@@ -195,6 +213,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-contracts",
@@ -206,7 +225,12 @@
       "startedAt": "2021-02-05T08:20:58.486911Z",
       "updatedAt": "2021-02-05T08:21:49.750335Z",
       "duration": 51000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "630590576609689612",
@@ -247,6 +271,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-contracts",
@@ -258,7 +283,12 @@
       "startedAt": "2021-02-05T07:50:33.368724Z",
       "updatedAt": "2021-02-05T07:51:26.524013Z",
       "duration": 53000000000,
-      "pendingDuration": 61000000000
+      "pendingDuration": 61000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "630440383206260748",
@@ -299,6 +329,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-contracts",
@@ -310,7 +341,12 @@
       "startedAt": "2021-02-04T19:05:38.322455Z",
       "updatedAt": "2021-02-04T19:06:30.884944Z",
       "duration": 52000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "624453632205258762",
@@ -362,7 +398,12 @@
       "startedAt": "2021-01-14T15:35:26.56505Z",
       "updatedAt": "2021-01-14T15:36:22.881107Z",
       "duration": 56000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "624451058173673482",
@@ -414,7 +455,12 @@
       "startedAt": "2021-01-14T15:22:21.228907Z",
       "updatedAt": "2021-01-14T15:23:12.947327Z",
       "duration": 51000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "624449114053181450",
@@ -466,7 +512,12 @@
       "startedAt": "2021-01-14T15:12:27.917118Z",
       "updatedAt": "2021-01-14T15:13:18.284152Z",
       "duration": 50000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "624444373463203851",
@@ -518,7 +569,12 @@
       "startedAt": "2021-01-14T14:48:28.185863Z",
       "updatedAt": "2021-01-14T14:49:29.383264Z",
       "duration": 61000000000,
-      "pendingDuration": 8000000000
+      "pendingDuration": 8000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     }
   ],
   "pagination": {

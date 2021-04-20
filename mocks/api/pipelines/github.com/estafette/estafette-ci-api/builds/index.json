@@ -38,10 +38,12 @@
               "name": "deploy-stable"
             },
             {
-              "name": "rollback-canary"
+              "name": "rollback-canary",
+              "hideBadge": true
             },
             {
-              "name": "restart-stable"
+              "name": "restart-stable",
+              "hideBadge": true
             }
           ]
         },
@@ -64,6 +66,7 @@
       ],
       "triggers": [
         {
+          "name": "migrator",
           "pipeline": {
             "event": "finished",
             "status": "succeeded",
@@ -77,6 +80,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-api",
@@ -88,7 +92,12 @@
       "startedAt": "2021-04-20T06:36:36.298541Z",
       "updatedAt": "2021-04-20T06:42:06.199929Z",
       "duration": 329000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "651525023010848786",
@@ -128,10 +137,12 @@
               "name": "deploy-stable"
             },
             {
-              "name": "rollback-canary"
+              "name": "rollback-canary",
+              "hideBadge": true
             },
             {
-              "name": "restart-stable"
+              "name": "restart-stable",
+              "hideBadge": true
             }
           ]
         },
@@ -154,6 +165,7 @@
       ],
       "triggers": [
         {
+          "name": "migrator",
           "pipeline": {
             "event": "finished",
             "status": "succeeded",
@@ -167,6 +179,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-api",
@@ -178,7 +191,12 @@
       "startedAt": "2021-04-20T06:27:39.858601Z",
       "updatedAt": "2021-04-20T06:33:14.560727Z",
       "duration": 334000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "651335648982499345",
@@ -218,10 +236,12 @@
               "name": "deploy-stable"
             },
             {
-              "name": "rollback-canary"
+              "name": "rollback-canary",
+              "hideBadge": true
             },
             {
-              "name": "restart-stable"
+              "name": "restart-stable",
+              "hideBadge": true
             }
           ]
         },
@@ -244,6 +264,7 @@
       ],
       "triggers": [
         {
+          "name": "migrator",
           "pipeline": {
             "event": "finished",
             "status": "succeeded",
@@ -257,6 +278,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-api",
@@ -268,7 +290,12 @@
       "startedAt": "2021-04-19T14:24:27.177208Z",
       "updatedAt": "2021-04-19T14:30:30.835392Z",
       "duration": 363000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "651332639701925905",
@@ -308,10 +335,12 @@
               "name": "deploy-stable"
             },
             {
-              "name": "rollback-canary"
+              "name": "rollback-canary",
+              "hideBadge": true
             },
             {
-              "name": "restart-stable"
+              "name": "restart-stable",
+              "hideBadge": true
             }
           ]
         },
@@ -334,6 +363,7 @@
       ],
       "triggers": [
         {
+          "name": "migrator",
           "pipeline": {
             "event": "finished",
             "status": "succeeded",
@@ -347,6 +377,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-api",
@@ -358,7 +389,12 @@
       "startedAt": "2021-04-19T14:09:09.106765Z",
       "updatedAt": "2021-04-19T14:14:45.135747Z",
       "duration": 336000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "651252264872017937",
@@ -398,10 +434,12 @@
               "name": "deploy-stable"
             },
             {
-              "name": "rollback-canary"
+              "name": "rollback-canary",
+              "hideBadge": true
             },
             {
-              "name": "restart-stable"
+              "name": "restart-stable",
+              "hideBadge": true
             }
           ]
         },
@@ -424,6 +462,7 @@
       ],
       "triggers": [
         {
+          "name": "migrator",
           "pipeline": {
             "event": "finished",
             "status": "succeeded",
@@ -437,6 +476,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-api",
@@ -448,7 +488,12 @@
       "startedAt": "2021-04-19T07:20:20.207863Z",
       "updatedAt": "2021-04-19T07:25:46.001296Z",
       "duration": 325000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "651248855800643601",
@@ -488,10 +533,12 @@
               "name": "deploy-stable"
             },
             {
-              "name": "rollback-canary"
+              "name": "rollback-canary",
+              "hideBadge": true
             },
             {
-              "name": "restart-stable"
+              "name": "restart-stable",
+              "hideBadge": true
             }
           ]
         },
@@ -514,6 +561,7 @@
       ],
       "triggers": [
         {
+          "name": "migrator",
           "pipeline": {
             "event": "finished",
             "status": "succeeded",
@@ -527,6 +575,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-api",
@@ -538,7 +587,12 @@
       "startedAt": "2021-04-19T07:02:59.802017Z",
       "updatedAt": "2021-04-19T07:05:30.125115Z",
       "duration": 150000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "650500832158416913",
@@ -578,10 +632,12 @@
               "name": "deploy-stable"
             },
             {
-              "name": "rollback-canary"
+              "name": "rollback-canary",
+              "hideBadge": true
             },
             {
-              "name": "restart-stable"
+              "name": "restart-stable",
+              "hideBadge": true
             }
           ]
         },
@@ -604,6 +660,7 @@
       ],
       "triggers": [
         {
+          "name": "migrator",
           "pipeline": {
             "event": "finished",
             "status": "succeeded",
@@ -617,6 +674,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-api",
@@ -628,7 +686,12 @@
       "startedAt": "2021-04-16T15:39:58.191733Z",
       "updatedAt": "2021-04-16T15:45:50.190896Z",
       "duration": 351000000000,
-      "pendingDuration": 98000000000
+      "pendingDuration": 98000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "650498545598103570",
@@ -668,10 +731,12 @@
               "name": "deploy-stable"
             },
             {
-              "name": "rollback-canary"
+              "name": "rollback-canary",
+              "hideBadge": true
             },
             {
-              "name": "restart-stable"
+              "name": "restart-stable",
+              "hideBadge": true
             }
           ]
         },
@@ -694,6 +759,7 @@
       ],
       "triggers": [
         {
+          "name": "migrator",
           "pipeline": {
             "event": "finished",
             "status": "succeeded",
@@ -707,6 +773,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-api",
@@ -718,7 +785,12 @@
       "startedAt": "2021-04-16T15:27:56.557845Z",
       "updatedAt": "2021-04-16T15:30:14.609114Z",
       "duration": 138000000000,
-      "pendingDuration": 74000000000
+      "pendingDuration": 74000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "650491489168556049",
@@ -758,10 +830,12 @@
               "name": "deploy-stable"
             },
             {
-              "name": "rollback-canary"
+              "name": "rollback-canary",
+              "hideBadge": true
             },
             {
-              "name": "restart-stable"
+              "name": "restart-stable",
+              "hideBadge": true
             }
           ]
         },
@@ -784,6 +858,7 @@
       ],
       "triggers": [
         {
+          "name": "migrator",
           "pipeline": {
             "event": "finished",
             "status": "succeeded",
@@ -797,6 +872,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-api",
@@ -808,7 +884,12 @@
       "startedAt": "2021-04-16T14:50:49.953742Z",
       "updatedAt": "2021-04-16T14:53:26.71345Z",
       "duration": 156000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "650475523818061842",
@@ -848,10 +929,12 @@
               "name": "deploy-stable"
             },
             {
-              "name": "rollback-canary"
+              "name": "rollback-canary",
+              "hideBadge": true
             },
             {
-              "name": "restart-stable"
+              "name": "restart-stable",
+              "hideBadge": true
             }
           ]
         },
@@ -874,6 +957,7 @@
       ],
       "triggers": [
         {
+          "name": "migrator",
           "pipeline": {
             "event": "finished",
             "status": "succeeded",
@@ -887,6 +971,7 @@
       ],
       "triggerEvents": [
         {
+          "fired": true,
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-api",
@@ -898,7 +983,12 @@
       "startedAt": "2021-04-16T13:29:37.58604Z",
       "updatedAt": "2021-04-16T13:32:08.793364Z",
       "duration": 151000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     }
   ],
   "pagination": {

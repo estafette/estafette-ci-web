@@ -45,7 +45,12 @@
       "startedAt": "2021-01-18T09:38:22.122392Z",
       "updatedAt": "2021-01-18T09:41:24.709991Z",
       "duration": 182000000000,
-      "pendingDuration": 2000000000
+      "pendingDuration": 2000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "625514740239106058",
@@ -102,7 +107,12 @@
       "startedAt": "2021-01-18T09:32:31.027108Z",
       "updatedAt": "2021-01-18T09:36:00.295315Z",
       "duration": 209000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "624164058782466059",
@@ -159,7 +169,12 @@
       "startedAt": "2021-01-13T15:02:35.646536Z",
       "updatedAt": "2021-01-13T15:05:50.261979Z",
       "duration": 194000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "624156332238864396",
@@ -216,7 +231,12 @@
       "startedAt": "2021-01-13T14:23:17.857961Z",
       "updatedAt": "2021-01-13T14:26:31.926898Z",
       "duration": 194000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "623883376536158218",
@@ -273,7 +293,12 @@
       "startedAt": "2021-01-12T15:16:09.483582Z",
       "updatedAt": "2021-01-12T15:19:25.318854Z",
       "duration": 195000000000,
-      "pendingDuration": 72000000000
+      "pendingDuration": 72000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "623609811663486986",
@@ -330,7 +355,12 @@
       "startedAt": "2021-01-11T16:03:39.427121Z",
       "updatedAt": "2021-01-11T16:06:56.237073Z",
       "duration": 196000000000,
-      "pendingDuration": 7000000000
+      "pendingDuration": 7000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "622764362023960587",
@@ -387,7 +417,12 @@
       "startedAt": "2021-01-08T16:23:22.350748Z",
       "updatedAt": "2021-01-08T16:26:45.021277Z",
       "duration": 202000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "622762452205240331",
@@ -444,7 +479,12 @@
       "startedAt": "2021-01-08T16:13:39.785572Z",
       "updatedAt": "2021-01-08T16:17:22.711142Z",
       "duration": 222000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "611918321351426060",
@@ -501,7 +541,12 @@
       "startedAt": "2020-12-01T08:57:33.788273Z",
       "updatedAt": "2020-12-01T09:00:15.126791Z",
       "duration": 161000000000,
-      "pendingDuration": 2000000000
+      "pendingDuration": 2000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "id": "611918205210066954",
@@ -548,7 +593,12 @@
       "startedAt": "2020-12-01T08:56:58.579063Z",
       "updatedAt": "2020-12-01T08:59:46.126816Z",
       "duration": 167000000000,
-      "pendingDuration": 2000000000
+      "pendingDuration": 2000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     }
   ],
   "pagination": {

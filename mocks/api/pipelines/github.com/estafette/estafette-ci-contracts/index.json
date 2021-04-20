@@ -37,6 +37,7 @@
   ],
   "triggerEvents": [
     {
+      "fired": true,
       "git": {
         "event": "push",
         "repository": "github.com/estafette/estafette-ci-contracts",
@@ -49,5 +50,21 @@
   "updatedAt": "2021-04-07T14:30:46.151657Z",
   "duration": 33000000000,
   "pendingDuration": 0,
-  "lastUpdatedAt": "2021-04-07T14:30:46.151657Z"
+  "lastUpdatedAt": "2021-04-07T14:30:46.151657Z",
+  "extraInfo": {
+    "medianPendingDuration": 1000000000,
+    "medianDuration": 51000000000
+  },
+  "groups": [
+    {
+      "id": "568087204531535884",
+      "name": "Estafette"
+    }
+  ],
+  "organizations": [
+    {
+      "id": "568393673343696906",
+      "name": "Estafette"
+    }
+  ]
 }

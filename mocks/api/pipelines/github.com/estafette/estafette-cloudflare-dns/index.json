@@ -48,7 +48,11 @@
           "startedAt": "2020-12-01T08:51:38.643997Z",
           "updatedAt": "2020-12-01T08:52:13.700552Z",
           "duration": 35000000000,
-          "pendingDuration": 1000000000
+          "pendingDuration": 1000000000,
+          "extraInfo": {
+            "medianPendingDuration": 0,
+            "medianDuration": 32000000000
+          }
         }
       ]
     }
@@ -77,5 +81,21 @@
   "updatedAt": "2020-12-01T08:51:15.432193Z",
   "duration": 163000000000,
   "pendingDuration": 4000000000,
-  "lastUpdatedAt": "2020-12-01T08:52:13.700552Z"
+  "lastUpdatedAt": "2020-12-01T08:52:13.700552Z",
+  "extraInfo": {
+    "medianPendingDuration": 2000000000,
+    "medianDuration": 178000000000
+  },
+  "groups": [
+    {
+      "id": "568087204531535884",
+      "name": "Estafette"
+    }
+  ],
+  "organizations": [
+    {
+      "id": "568030038580756491",
+      "name": "Travix"
+    }
+  ]
 }

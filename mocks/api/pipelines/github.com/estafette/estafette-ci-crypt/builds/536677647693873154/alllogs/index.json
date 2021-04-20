@@ -1,0 +1,21 @@
+{
+  "items": [
+    {
+      "id": "536677788942991362",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-crypt",
+      "repoBranch": "master",
+      "repoRevision": "e6eafebe3fa06a6ba20db24858ee1fdea65d2e08",
+      "buildID": "",
+      "steps": null,
+      "insertedAt": "2020-03-10T14:44:23.519817Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 1
+  }
+}

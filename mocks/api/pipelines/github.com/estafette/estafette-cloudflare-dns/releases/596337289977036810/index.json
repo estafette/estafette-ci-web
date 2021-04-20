@@ -17,5 +17,10 @@
   "startedAt": "2020-10-07T08:08:19.388339Z",
   "updatedAt": "2020-10-07T08:08:55.775666Z",
   "duration": 36000000000,
-  "pendingDuration": 1000000000
+  "pendingDuration": 1000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
 }

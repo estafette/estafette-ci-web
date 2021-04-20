@@ -39,6 +39,7 @@
   ],
   "triggerEvents": [
     {
+      "fired": true,
       "git": {
         "event": "push",
         "repository": "github.com/estafette/estafette-ci-crypt",
@@ -50,5 +51,10 @@
   "startedAt": "2021-02-23T10:10:02.333292Z",
   "updatedAt": "2021-02-23T10:10:54.361216Z",
   "duration": 52000000000,
-  "pendingDuration": 1000000000
+  "pendingDuration": 1000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
 }

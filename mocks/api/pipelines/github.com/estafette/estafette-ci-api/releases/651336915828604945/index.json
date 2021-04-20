@@ -9,6 +9,7 @@
   "releaseStatus": "succeeded",
   "triggerEvents": [
     {
+      "fired": true,
       "manual": {
         "userID": "me@estafette.io"
       }
@@ -18,5 +19,10 @@
   "startedAt": "2021-04-19T14:30:53.563904Z",
   "updatedAt": "2021-04-19T14:31:13.950456Z",
   "duration": 20000000000,
-  "pendingDuration": 1000000000
+  "pendingDuration": 1000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
 }

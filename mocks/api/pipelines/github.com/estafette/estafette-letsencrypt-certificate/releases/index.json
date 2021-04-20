@@ -19,7 +19,12 @@
       "startedAt": "2021-01-18T09:42:54.355695Z",
       "updatedAt": "2021-01-18T09:43:54.649068Z",
       "duration": 60000000000,
-      "pendingDuration": 2000000000
+      "pendingDuration": 2000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "release",
@@ -40,7 +45,12 @@
       "startedAt": "2021-01-18T09:37:01.527906Z",
       "updatedAt": "2021-01-18T09:37:49.121833Z",
       "duration": 47000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "release",
@@ -61,7 +71,12 @@
       "startedAt": "2020-12-01T09:02:26.096518Z",
       "updatedAt": "2020-12-01T09:02:59.662003Z",
       "duration": 33000000000,
-      "pendingDuration": 3000000000
+      "pendingDuration": 3000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "release",
@@ -82,7 +97,12 @@
       "startedAt": "2020-11-02T08:58:02.083091Z",
       "updatedAt": "2020-11-02T08:58:40.635901Z",
       "duration": 38000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
     },
     {
       "name": "release",

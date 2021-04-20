@@ -1,0 +1,600 @@
+event:log
+data:{"step":"builder-info","type":"stage","logLine":{"line":1,"timestamp":"2021-04-20T10:09:22.454019368Z","streamType":"stdout","text":"Starting \u001b[1mestafette-ci-builder\u001b[0m version \u001b[1m0.0.845\u001b[0m... \u001b[36mbranch=\u001b[0mmain \u001b[36mbuildDate=\u001b[0m2021-04-07T14:31:57Z \u001b[36mgoVersion=\u001b[0mgo1.16.3 \u001b[36mos=\u001b[0mlinux \u001b[36mrevision=\u001b[0m1cefe2c7d1737576ced2f0d01fa437268ae4be25"},"status":"SUCCEEDED","autoInjected":true}
+
+event:log
+data:{"step":"injected-before","type":"stage","status":"RUNNING","autoInjected":true}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/git-clone","tag":"stable","isPulled":false,"imageSize":0,"pullDuration":0,"isTrusted":true,"hasInjectedCredentials":true},"status":"PENDING","autoInjected":true}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/github-status","tag":"stable","isPulled":false,"imageSize":0,"pullDuration":0,"isTrusted":true,"hasInjectedCredentials":true},"status":"PENDING","autoInjected":true}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/envvars","tag":"stable","isPulled":false,"imageSize":0,"pullDuration":0},"status":"PENDING","autoInjected":true}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/envvars","tag":"stable","isPulled":false,"imageSize":8530431,"pullDuration":2241235307},"status":"RUNNING","autoInjected":true}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/git-clone","tag":"stable","isPulled":false,"imageSize":27605918,"pullDuration":2779826443,"isTrusted":true,"hasInjectedCredentials":true},"status":"RUNNING","autoInjected":true}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"image":{"name":"extensions/github-status","tag":"stable","isPulled":false,"imageSize":11651189,"pullDuration":2909346024,"isTrusted":true,"hasInjectedCredentials":true},"status":"RUNNING","autoInjected":true}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":1,"timestamp":"2021-04-20T10:09:25.412335575Z","streamType":"stdout","text":"Starting \u001b[1mestafette-extension-envvars\u001b[0m version \u001b[1m0.1.48\u001b[0m... \u001b[36mbranch=\u001b[0mmain \u001b[36mbuildDate=\u001b[0m2021-02-10T16:33:41Z \u001b[36mgoVersion=\u001b[0mgo1.15.7 \u001b[36mos=\u001b[0mlinux \u001b[36mrevision=\u001b[0m5dba58209bcd7d937fe6c258b4b1f7818361d45f\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":2,"timestamp":"2021-04-20T10:09:25.412350658Z","streamType":"stdout","text":"All available estafette environment variables; the _DNS_SAFE suffixed ones can be used to set dns labels. Since leading digits are not allowed some of them are empty.\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":3,"timestamp":"2021-04-20T10:09:25.412352054Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":4,"timestamp":"2021-04-20T10:09:25.412353677Z","streamType":"stdout","text":"ESTAFETTE_BUILD_CURRENT_COUNTER: 46\n"}}
+
+event:"lo
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":5,"timestamp":"2021-04-20T10:09:25.412354919Z","streamType":"stdout","text":"ESTAFETTE_BUILD_CURRENT_COUNTER_DNS_SAFE: \n"}}
+
+event::{"
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":6,"timestamp":"2021-04-20T10:09:25.4123563Z","streamType":"stdout","text":"ESTAFETTE_BUILD_DATETIME: 2021-04-20T10:09:22Z\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":7,"timestamp":"2021-04-20T10:09:25.412370388Z","streamType":"stdout","text":"ESTAFETTE_BUILD_DATETIME_DNS_SAFE: t10-09-22z\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":8,"timestamp":"2021-04-20T10:09:25.412371472Z","streamType":"stdout","text":"ESTAFETTE_BUILD_ID: 651568609681178642\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":9,"timestamp":"2021-04-20T10:09:25.412372766Z","streamType":"stdout","text":"ESTAFETTE_BUILD_ID_DNS_SAFE: \n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":10,"timestamp":"2021-04-20T10:09:25.412373794Z","streamType":"stdout","text":"ESTAFETTE_BUILD_MAX_COUNTER: 46\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":11,"timestamp":"2021-04-20T10:09:25.412375063Z","streamType":"stdout","text":"ESTAFETTE_BUILD_MAX_COUNTER_CURRENT_BRANCH: 46\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":12,"timestamp":"2021-04-20T10:09:25.412376743Z","streamType":"stdout","text":"ESTAFETTE_BUILD_MAX_COUNTER_CURRENT_BRANCH_DNS_SAFE: \n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":13,"timestamp":"2021-04-20T10:09:25.412380322Z","streamType":"stdout","text":"ESTAFETTE_BUILD_MAX_COUNTER_DNS_SAFE: \n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":14,"timestamp":"2021-04-20T10:09:25.412383813Z","streamType":"stdout","text":"ESTAFETTE_BUILD_STATUS: succeeded\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":15,"timestamp":"2021-04-20T10:09:25.412394525Z","streamType":"stdout","text":"ESTAFETTE_BUILD_STATUS_DNS_SAFE: succeeded\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":16,"timestamp":"2021-04-20T10:09:25.412506484Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION: 0.0.46\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":17,"timestamp":"2021-04-20T10:09:25.412509971Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_DNS_SAFE: \n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":18,"timestamp":"2021-04-20T10:09:25.412512023Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_LABEL: main\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":19,"timestamp":"2021-04-20T10:09:25.412513839Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_LABEL_DNS_SAFE: main\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":20,"timestamp":"2021-04-20T10:09:25.412515582Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_MAJOR: 0\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":21,"timestamp":"2021-04-20T10:09:25.412517068Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_MAJOR_DNS_SAFE: \n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":22,"timestamp":"2021-04-20T10:09:25.412518743Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_MINOR: 0\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":23,"timestamp":"2021-04-20T10:09:25.412520317Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_MINOR_DNS_SAFE: \n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":24,"timestamp":"2021-04-20T10:09:25.412521985Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_PATCH: 46\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":25,"timestamp":"2021-04-20T10:09:25.412523368Z","streamType":"stdout","text":"ESTAFETTE_BUILD_VERSION_PATCH_DNS_SAFE: \n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":26,"timestamp":"2021-04-20T10:09:25.412526955Z","streamType":"stdout","text":"ESTAFETTE_CI_SERVER_BASE_URL: https://estafette.***.com/\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":27,"timestamp":"2021-04-20T10:09:25.41253242Z","streamType":"stdout","text":"ESTAFETTE_CI_SERVER_BASE_URL_DNS_SAFE: https-estafette-***-com\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":28,"timestamp":"2021-04-20T10:09:25.412534344Z","streamType":"stdout","text":"ESTAFETTE_EXTENSION_CUSTOM_PROPERTIES: {}\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":29,"timestamp":"2021-04-20T10:09:25.412536174Z","streamType":"stdout","text":"ESTAFETTE_EXTENSION_CUSTOM_PROPERTIES_YAML: {}\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":30,"timestamp":"2021-04-20T10:09:25.41253777Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":31,"timestamp":"2021-04-20T10:09:25.412539293Z","streamType":"stdout","text":"ESTAFETTE_GIT_BRANCH: main\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":32,"timestamp":"2021-04-20T10:09:25.41254112Z","streamType":"stdout","text":"ESTAFETTE_GIT_BRANCH_DNS_SAFE: main\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":33,"timestamp":"2021-04-20T10:09:25.412543761Z","streamType":"stdout","text":"ESTAFETTE_GIT_FULLNAME: estafette/estafette-ci-demo\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":34,"timestamp":"2021-04-20T10:09:25.41254598Z","streamType":"stdout","text":"ESTAFETTE_GIT_FULLNAME_DNS_SAFE: estafette-estafette-ci-demo\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":35,"timestamp":"2021-04-20T10:09:25.412580683Z","streamType":"stdout","text":"ESTAFETTE_GIT_NAME: estafette-ci-demo\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":36,"timestamp":"2021-04-20T10:09:25.412582906Z","streamType":"stdout","text":"ESTAFETTE_GIT_NAME_DNS_SAFE: estafette-ci-demo\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":37,"timestamp":"2021-04-20T10:09:25.412609066Z","streamType":"stdout","text":"ESTAFETTE_GIT_OWNER: estafette\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":38,"timestamp":"2021-04-20T10:09:25.412610764Z","streamType":"stdout","text":"ESTAFETTE_GIT_OWNER_DNS_SAFE: estafette\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":39,"timestamp":"2021-04-20T10:09:25.41261408Z","streamType":"stdout","text":"ESTAFETTE_GIT_REVISION: 56f62bdaa0b00e06b029620ccc39f40d1c4ff894\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":40,"timestamp":"2021-04-20T10:09:25.412616804Z","streamType":"stdout","text":"ESTAFETTE_GIT_REVISION_DNS_SAFE: f62bdaa0b00e06b029620ccc39f40d1c4ff894\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":41,"timestamp":"2021-04-20T10:09:25.412618807Z","streamType":"stdout","text":"ESTAFETTE_GIT_SOURCE: github.com\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":42,"timestamp":"2021-04-20T10:09:25.412620533Z","streamType":"stdout","text":"ESTAFETTE_GIT_SOURCE_DNS_SAFE: github-com\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":43,"timestamp":"2021-04-20T10:09:25.412622284Z","streamType":"stdout","text":"ESTAFETTE_LABEL_APP_GROUP: estafette-ci\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":44,"timestamp":"2021-04-20T10:09:25.412624056Z","streamType":"stdout","text":"ESTAFETTE_LABEL_APP_GROUP_DNS_SAFE: estafette-ci\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":45,"timestamp":"2021-04-20T10:09:25.412625553Z","streamType":"stdout","text":"ESTAFETTE_LABEL_LANGUAGE: golang\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":46,"timestamp":"2021-04-20T10:09:25.412626944Z","streamType":"stdout","text":"ESTAFETTE_LABEL_LANGUAGE_DNS_SAFE: golang\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":47,"timestamp":"2021-04-20T10:09:25.412628762Z","streamType":"stdout","text":"ESTAFETTE_LABEL_TEAM: estafette-team\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":48,"timestamp":"2021-04-20T10:09:25.41263072Z","streamType":"stdout","text":"ESTAFETTE_LABEL_TEAM_DNS_SAFE: estafette-team\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":49,"timestamp":"2021-04-20T10:09:25.412654267Z","streamType":"stdout","text":"ESTAFETTE_LOG_FORMAT: console\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":50,"timestamp":"2021-04-20T10:09:25.412656304Z","streamType":"stdout","text":"ESTAFETTE_STAGE_NAME: envvars\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":51,"timestamp":"2021-04-20T10:09:25.412658051Z","streamType":"stdout","text":"ESTAFETTE_TRIGGER_GIT_BRANCH: main\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":52,"timestamp":"2021-04-20T10:09:25.412662023Z","streamType":"stdout","text":"ESTAFETTE_TRIGGER_GIT_BRANCH_DNS_SAFE: main\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":53,"timestamp":"2021-04-20T10:09:25.412663983Z","streamType":"stdout","text":"ESTAFETTE_TRIGGER_GIT_EVENT: push\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":54,"timestamp":"2021-04-20T10:09:25.412665671Z","streamType":"stdout","text":"ESTAFETTE_TRIGGER_GIT_EVENT_DNS_SAFE: push\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":55,"timestamp":"2021-04-20T10:09:25.412668914Z","streamType":"stdout","text":"ESTAFETTE_TRIGGER_GIT_REPOSITORY: github.com/estafette/estafette-ci-demo\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":56,"timestamp":"2021-04-20T10:09:25.412672484Z","streamType":"stdout","text":"ESTAFETTE_TRIGGER_GIT_REPOSITORY_DNS_SAFE: github-com-estafette-estafette-ci-demo\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":57,"timestamp":"2021-04-20T10:09:25.412673642Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":58,"timestamp":"2021-04-20T10:09:25.412676206Z","streamType":"stdout","text":"All global envvars as defined in the manifest.\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":59,"timestamp":"2021-04-20T10:09:25.412677035Z","streamType":"stdout","text":"\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":60,"timestamp":"2021-04-20T10:09:25.412690433Z","streamType":"stdout","text":"HOME: /\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":61,"timestamp":"2021-04-20T10:09:25.412692985Z","streamType":"stdout","text":"HOSTNAME: 7860c6ec8f50\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":62,"timestamp":"2021-04-20T10:09:25.412696022Z","streamType":"stdout","text":"PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n"}}
+
+event:log
+data:{"step":"envvars","parentStage":"injected-before","type":"stage","depth":1,"duration":1300097006,"status":"SUCCEEDED","autoInjected":true}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":1,"timestamp":"2021-04-20T10:09:26.034685336Z","streamType":"stdout","text":"Starting \u001b[1mestafette-extension-git-clone\u001b[0m version \u001b[1m0.1.112\u001b[0m... \u001b[36mbranch=\u001b[0mmain \u001b[36mbuildDate=\u001b[0m2021-03-10T17:01:33Z \u001b[36mgoVersion=\u001b[0mgo1.16 \u001b[36mos=\u001b[0mlinux \u001b[36mrevision=\u001b[0mbe7ca83146a3bf7ed9622207981dc8a18f722865\n"}}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":2,"timestamp":"2021-04-20T10:09:26.034699624Z","streamType":"stdout","text":"Reading credentials from file at path /credentials/github_api_token.json...\n"}}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":3,"timestamp":"2021-04-20T10:09:26.034836529Z","streamType":"stdout","text":"Cloning git repository estafette-ci-demo to branch main and revision 56f62bdaa0b00e06b029620ccc39f40d1c4ff894 with shallow clone is true and depth 50...\n"}}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":4,"timestamp":"2021-04-20T10:09:26.034854011Z","streamType":"stdout","text":"\u001b[38;5;250m\u003e git clone --depth=50 --branch=main --no-tags https://x-access-token:***@github.com/estafette/estafette-ci-demo /estafette-work\u001b[0m\n"}}
+
+event:-04
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":5,"timestamp":"2021-04-20T10:09:26.034856834Z","streamType":"stderr","text":"Cloning into '/estafette-work'...\n"}}
+
+event:10:
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":1,"timestamp":"2021-04-20T10:09:26.379872656Z","streamType":"stdout","text":"Starting \u001b[1mestafette-extension-github-status\u001b[0m version \u001b[1m0.1.74\u001b[0m... \u001b[36mbranch=\u001b[0mmain \u001b[36mbuildDate=\u001b[0m2021-02-10T16:36:50Z \u001b[36mgoVersion=\u001b[0mgo1.15.7 \u001b[36mos=\u001b[0mlinux \u001b[36mrevision=\u001b[0m35db0200d8d23f4f27e8644117f388e511038efb\n"}}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":2,"timestamp":"2021-04-20T10:09:26.379884269Z","streamType":"stdout","text":"Reading credentials from file at path /credentials/github_api_token.json...\n"}}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":3,"timestamp":"2021-04-20T10:09:26.379886918Z","streamType":"stdout","text":"Read 1 credentials\n"}}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":4,"timestamp":"2021-04-20T10:09:26.379891503Z","streamType":"stdout","text":"Setting logs url https://estafette.***.com/pipelines/github.com/estafette/estafette-ci-demo/builds/651568609681178642/logs\n"}}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":5,"timestamp":"2021-04-20T10:09:26.797536455Z","streamType":"stdout","text":"Received successful response for 'https://api.github.com/repos/estafette/estafette-ci-demo/statuses/56f62bdaa0b00e06b029620ccc39f40d1c4ff894' Github api call with status code 201\n"}}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":6,"timestamp":"2021-04-20T10:09:26.797548667Z","streamType":"stdout","text":"Finished estafette-extension-github-status...\n"}}
+
+event:log
+data:{"step":"set-pending-build-status","parentStage":"injected-before","type":"stage","depth":1,"duration":1701478234,"status":"SUCCEEDED","autoInjected":true}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":6,"timestamp":"2021-04-20T10:09:27.778597179Z","streamType":"stdout","text":"\u001b[38;5;250m\u003e git checkout --quiet --force 56f62bdaa0b00e06b029620ccc39f40d1c4ff894\u001b[0m\n"}}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"logLine":{"line":7,"timestamp":"2021-04-20T10:09:27.782603803Z","streamType":"stdout","text":"Finished cloning git repository estafette-ci-demo to branch main and revision 56f62bdaa0b00e06b029620ccc39f40d1c4ff894 with shallow clone is true and depth 50\n"}}
+
+event:log
+data:{"step":"git-clone","parentStage":"injected-before","type":"stage","depth":1,"duration":2852954093,"status":"SUCCEEDED","autoInjected":true}
+
+event:log
+data:{"step":"injected-before","type":"stage","duration":5634957118,"status":"SUCCEEDED","autoInjected":true}
+
+event:log
+data:{"step":"build","type":"stage","image":{"name":"golang","tag":"1.16-alpine","isPulled":false,"imageSize":0,"pullDuration":0},"status":"PENDING"}
+
+event:log
+data:{"step":"build","type":"stage","image":{"name":"golang","tag":"1.16-alpine","isPulled":false,"imageSize":301382006,"pullDuration":7645767273},"status":"RUNNING"}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":1,"timestamp":"2021-04-20T10:09:37.518728717Z","streamType":"stdout","text":"\u001b[38;5;250m\u003e go test ./... \u0026\u001b[0m\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":2,"timestamp":"2021-04-20T10:09:37.729440462Z","streamType":"stderr","text":"go: downloading github.com/r3labs/sse v0.0.0-20200310095403-ee05428e4d0e\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":3,"timestamp":"2021-04-20T10:09:37.729457921Z","streamType":"stderr","text":"go: downloading github.com/rs/zerolog v1.19.0\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":4,"timestamp":"2021-04-20T10:09:37.729460976Z","streamType":"stderr","text":"go: downloading github.com/estafette/estafette-foundation v0.0.57\n"}}
+
+event:ing
+data:{"step":"build","type":"stage","logLine":{"line":5,"timestamp":"2021-04-20T10:09:37.729475292Z","streamType":"stderr","text":"go: downloading github.com/sethgrid/pester v1.1.0\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":6,"timestamp":"2021-04-20T10:09:37.729478174Z","streamType":"stderr","text":"go: downloading github.com/opentracing-contrib/go-stdlib v1.0.0\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":7,"timestamp":"2021-04-20T10:09:37.729564003Z","streamType":"stderr","text":"go: downloading github.com/opentracing/opentracing-go v1.1.0\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":8,"timestamp":"2021-04-20T10:09:37.729570109Z","streamType":"stderr","text":"go: downloading github.com/uber/jaeger-client-go v2.20.1+incompatible\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":9,"timestamp":"2021-04-20T10:09:37.729574414Z","streamType":"stderr","text":"go: downloading github.com/estafette/estafette-ci-contracts v0.0.238\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":10,"timestamp":"2021-04-20T10:09:37.729579388Z","streamType":"stderr","text":"go: downloading github.com/alecthomas/kingpin v2.2.6+incompatible\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":11,"timestamp":"2021-04-20T10:09:37.732414518Z","streamType":"stderr","text":"go: downloading github.com/stretchr/testify v1.6.1\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":12,"timestamp":"2021-04-20T10:09:37.766397947Z","streamType":"stderr","text":"go: downloading github.com/fsnotify/fsnotify v1.4.7\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":13,"timestamp":"2021-04-20T10:09:37.766410815Z","streamType":"stderr","text":"go: downloading github.com/logrusorgru/aurora v0.0.0-20191116043053-66b7ad493a23\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":14,"timestamp":"2021-04-20T10:09:37.766413287Z","streamType":"stderr","text":"go: downloading github.com/google/uuid v1.1.1\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":15,"timestamp":"2021-04-20T10:09:37.767089086Z","streamType":"stderr","text":"go: downloading github.com/prometheus/client_golang v0.9.2\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":16,"timestamp":"2021-04-20T10:09:37.770597229Z","streamType":"stderr","text":"go: downloading gopkg.in/cenkalti/backoff.v1 v1.1.0\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":17,"timestamp":"2021-04-20T10:09:37.782197516Z","streamType":"stderr","text":"go: downloading github.com/estafette/estafette-ci-manifest v0.1.180\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":18,"timestamp":"2021-04-20T10:09:37.786230155Z","streamType":"stderr","text":"go: downloading github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":19,"timestamp":"2021-04-20T10:09:37.786466221Z","streamType":"stderr","text":"go: downloading github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":20,"timestamp":"2021-04-20T10:09:37.79614316Z","streamType":"stderr","text":"go: downloading golang.org/x/net v0.0.0-20191116160921-f9c825593386\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":21,"timestamp":"2021-04-20T10:09:37.805865854Z","streamType":"stderr","text":"go: downloading github.com/davecgh/go-spew v1.1.1\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":22,"timestamp":"2021-04-20T10:09:37.806117372Z","streamType":"stderr","text":"go: downloading gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":23,"timestamp":"2021-04-20T10:09:37.806128019Z","streamType":"stderr","text":"go: downloading github.com/pmezard/go-difflib v1.0.0\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":24,"timestamp":"2021-04-20T10:09:37.809127298Z","streamType":"stderr","text":"go: downloading golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":25,"timestamp":"2021-04-20T10:09:37.816872148Z","streamType":"stderr","text":"go: downloading github.com/jinzhu/copier v0.2.8\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":26,"timestamp":"2021-04-20T10:09:37.817370152Z","streamType":"stderr","text":"go: downloading gopkg.in/yaml.v2 v2.2.2\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":27,"timestamp":"2021-04-20T10:09:37.817530407Z","streamType":"stderr","text":"go: downloading github.com/robfig/cron v0.0.0-20180505203441-b41be1df6967\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":28,"timestamp":"2021-04-20T10:09:37.843713753Z","streamType":"stderr","text":"go: downloading github.com/prometheus/common v0.2.0\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":29,"timestamp":"2021-04-20T10:09:37.84434601Z","streamType":"stderr","text":"go: downloading github.com/prometheus/client_model v0.0.0-20190115171406-56726106282f\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":30,"timestamp":"2021-04-20T10:09:37.85252867Z","streamType":"stderr","text":"go: downloading github.com/prometheus/procfs v0.0.0-20190117184657-bf6a532e95b1\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":31,"timestamp":"2021-04-20T10:09:37.852878396Z","streamType":"stderr","text":"go: downloading github.com/golang/protobuf v1.2.0\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":32,"timestamp":"2021-04-20T10:09:37.853169132Z","streamType":"stderr","text":"go: downloading github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":33,"timestamp":"2021-04-20T10:09:37.885818338Z","streamType":"stderr","text":"go: downloading github.com/pkg/errors v0.8.1\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":34,"timestamp":"2021-04-20T10:09:37.885832168Z","streamType":"stderr","text":"go: downloading github.com/uber/jaeger-lib v2.2.0+incompatible\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":35,"timestamp":"2021-04-20T10:09:37.890196906Z","streamType":"stderr","text":"go: downloading go.uber.org/atomic v1.5.1\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":36,"timestamp":"2021-04-20T10:09:37.906812678Z","streamType":"stderr","text":"go: downloading github.com/matttproud/golang_protobuf_extensions v1.0.1\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":37,"timestamp":"2021-04-20T10:09:45.316692412Z","streamType":"stdout","text":"ok  \tgithub.com/estafette/estafette-ci-demo\t0.168s\n"}}
+
+event:log
+data:{"step":"build","type":"stage","logLine":{"line":38,"timestamp":"2021-04-20T10:09:45.375882577Z","streamType":"stdout","text":"\u001b[38;5;250m\u003e go build -a -installsuffix cgo -ldflags \"-X main.appgroup=estafette-ci -X main.app=estafette-ci-demo -X main.version=0.0.46 -X main.revision=56f62bdaa0b00e06b029620ccc39f40d1c4ff894 -X main.branch=main -X main.buildDate=2021-04-20T10:09:22Z\" -o ./estafette-ci-demo .\u001b[0m\n"}}
+
+event:log
+data:{"step":"build","type":"stage","duration":19578119977,"status":"SUCCEEDED"}
+
+event:log
+data:{"step":"extract-data","type":"stage","image":{"name":"golang","tag":"1.16-alpine","isPulled":true,"imageSize":0,"pullDuration":0},"status":"RUNNING"}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":1,"timestamp":"2021-04-20T10:09:55.899222567Z","streamType":"stdout","text":"\u001b[38;5;250m\u003e exec ./estafette-ci-demo\u001b[0m\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":2,"timestamp":"2021-04-20T10:09:55.899248996Z","streamType":"stdout","text":"Starting estafette-ci-demo version 0.0.46... \u001b[36mbranch=\u001b[0mmain \u001b[36mbuildDate=\u001b[0m2021-04-20T10:09:22Z \u001b[36mgoVersion=\u001b[0mgo1.16.3 \u001b[36mos=\u001b[0mlinux \u001b[36mrevision=\u001b[0m56f62bdaa0b00e06b029620ccc39f40d1c4ff894\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":3,"timestamp":"2021-04-20T10:09:56.004868115Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":4,"timestamp":"2021-04-20T10:09:56.016063806Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":5,"timestamp":"2021-04-20T10:09:56.051821097Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651252264872017937\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":6,"timestamp":"2021-04-20T10:09:56.077621008Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651525023010848786\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":7,"timestamp":"2021-04-20T10:09:56.083716608Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651248855800643601\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":8,"timestamp":"2021-04-20T10:09:56.096130436Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/650500832158416913\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":9,"timestamp":"2021-04-20T10:09:56.11968578Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":10,"timestamp":"2021-04-20T10:09:56.131182466Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651525023010848786/warnings\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":11,"timestamp":"2021-04-20T10:09:56.133892149Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/650500832158416913/warnings\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":12,"timestamp":"2021-04-20T10:09:56.135790239Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651248855800643601/warnings\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":13,"timestamp":"2021-04-20T10:09:56.136118106Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651252264872017937/warnings\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":14,"timestamp":"2021-04-20T10:09:56.139491582Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651332639701925905\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":15,"timestamp":"2021-04-20T10:09:56.141815638Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651335648982499345\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":16,"timestamp":"2021-04-20T10:09:56.152930223Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651526780707766288\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":17,"timestamp":"2021-04-20T10:09:56.165968367Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/650491489168556049\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":18,"timestamp":"2021-04-20T10:09:56.177979952Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/650498545598103570\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":19,"timestamp":"2021-04-20T10:09:56.178074945Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651248855800643601/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":20,"timestamp":"2021-04-20T10:09:56.18528699Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/650475523818061842\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":21,"timestamp":"2021-04-20T10:09:56.192255652Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651252264872017937/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":22,"timestamp":"2021-04-20T10:09:56.202731932Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651526780707766288/warnings\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":23,"timestamp":"2021-04-20T10:09:56.207064538Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651525023010848786/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":24,"timestamp":"2021-04-20T10:09:56.224471758Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/650500832158416913/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":25,"timestamp":"2021-04-20T10:09:56.234176478Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/650491489168556049/warnings\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":26,"timestamp":"2021-04-20T10:09:56.234194823Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651335648982499345/warnings\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":27,"timestamp":"2021-04-20T10:09:56.236560372Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651332639701925905/warnings\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":28,"timestamp":"2021-04-20T10:09:56.25714512Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/650475523818061842/warnings\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":29,"timestamp":"2021-04-20T10:09:56.286971343Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651526780707766288/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":30,"timestamp":"2021-04-20T10:09:56.288097576Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/650491489168556049/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":31,"timestamp":"2021-04-20T10:09:56.290250149Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651335648982499345/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":32,"timestamp":"2021-04-20T10:09:56.316175356Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/650475523818061842/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":33,"timestamp":"2021-04-20T10:09:56.323246188Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651248855800643601/logsbyid/651249353245523985\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":34,"timestamp":"2021-04-20T10:09:56.329898619Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651535887587737617\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":35,"timestamp":"2021-04-20T10:09:56.330824471Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/650498545598103570/warnings\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":36,"timestamp":"2021-04-20T10:09:56.339282305Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/650500832158416913/logsbyid/650502308682989586\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":37,"timestamp":"2021-04-20T10:09:56.348096567Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651252264872017937/logsbyid/651253337423839250\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":38,"timestamp":"2021-04-20T10:09:56.352608635Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651528706845048849\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":39,"timestamp":"2021-04-20T10:09:56.362684758Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651525023010848786/logsbyid/651526126379466769\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":40,"timestamp":"2021-04-20T10:09:56.383027641Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651332639701925905/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":41,"timestamp":"2021-04-20T10:09:56.386604107Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651338501303926801\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":42,"timestamp":"2021-04-20T10:09:56.392872543Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651526296777916433\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":43,"timestamp":"2021-04-20T10:09:56.398038974Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/650491489168556049/logsbyid/650492008479064080\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":44,"timestamp":"2021-04-20T10:09:56.399672637Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651338501303926801/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":45,"timestamp":"2021-04-20T10:09:56.399682991Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651535887587737617/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":46,"timestamp":"2021-04-20T10:09:56.403172955Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651528706845048849/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":47,"timestamp":"2021-04-20T10:09:56.404476664Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651526296777916433/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":48,"timestamp":"2021-04-20T10:09:56.405975075Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651336915828604945\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":49,"timestamp":"2021-04-20T10:09:56.415141203Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651336915828604945/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":50,"timestamp":"2021-04-20T10:09:56.435381122Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/650498545598103570/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":51,"timestamp":"2021-04-20T10:09:56.451685359Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651526780707766288/logsbyid/651527868436774929\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":52,"timestamp":"2021-04-20T10:09:56.45838422Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651335679940624401\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":53,"timestamp":"2021-04-20T10:09:56.460066166Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/650475523818061842/logsbyid/650476024050581522\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":54,"timestamp":"2021-04-20T10:09:56.462193459Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651335648982499345/logsbyid/651336846199685138\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":55,"timestamp":"2021-04-20T10:09:56.469847242Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651258826613751825\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":56,"timestamp":"2021-04-20T10:09:56.469876481Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651335187388006417\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":57,"timestamp":"2021-04-20T10:09:56.471842248Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651526296777916433/logsbyid/651526373964185617\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":58,"timestamp":"2021-04-20T10:09:56.474026944Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651535887587737617/logsbyid/651536163523067921\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":59,"timestamp":"2021-04-20T10:09:56.477733744Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651528706845048849/logsbyid/651528852804599825\n"}}
+
+event:ci-
+data:{"step":"extract-data","type":"stage","logLine":{"line":60,"timestamp":"2021-04-20T10:09:56.477756088Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651258826613751825/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":61,"timestamp":"2021-04-20T10:09:56.47881059Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/651332639701925905/logsbyid/651333747335856145\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":62,"timestamp":"2021-04-20T10:09:56.478827746Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651243187099959313\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":63,"timestamp":"2021-04-20T10:09:56.480372473Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651335187388006417/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":64,"timestamp":"2021-04-20T10:09:56.491920247Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651338501303926801/logsbyid/651338778925957137\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":65,"timestamp":"2021-04-20T10:09:56.493168261Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651335679940624401/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":66,"timestamp":"2021-04-20T10:09:56.5032084Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651256427577475090\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":67,"timestamp":"2021-04-20T10:09:56.508046008Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651336915828604945/logsbyid/651336987391262737\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":68,"timestamp":"2021-04-20T10:09:56.513449423Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651256427577475090/alllogs\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":69,"timestamp":"2021-04-20T10:09:56.54624452Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/builds/650498545598103570/logsbyid/650499242864607250\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":70,"timestamp":"2021-04-20T10:09:56.57551611Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651335679940624401/logsbyid/651335893484208146\n"}}
+
+event:log
+data:{"step":"extract-data","type":"stage","logLine":{"line":71,"timestamp":"2021-04-20T10:09:56.580392248Z","streamType":"stdout","text":"Fetched and saved /api/pipelines/github.com/estafette/estafette-ci-api/releases/651256427577475090/logsbyid/651256562776440849\n"}}
+

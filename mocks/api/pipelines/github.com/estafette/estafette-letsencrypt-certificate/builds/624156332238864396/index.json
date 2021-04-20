@@ -48,7 +48,11 @@
           "startedAt": "2021-01-18T09:42:54.355695Z",
           "updatedAt": "2021-01-18T09:43:54.649068Z",
           "duration": 60000000000,
-          "pendingDuration": 2000000000
+          "pendingDuration": 2000000000,
+          "extraInfo": {
+            "medianPendingDuration": 0,
+            "medianDuration": 32000000000
+          }
         }
       ]
     }
@@ -78,5 +82,10 @@
   "startedAt": "2021-01-13T14:23:17.857961Z",
   "updatedAt": "2021-01-13T14:26:31.926898Z",
   "duration": 194000000000,
-  "pendingDuration": 1000000000
+  "pendingDuration": 1000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
 }
