@@ -1,11 +1,11 @@
 {
-  "id": "651568609681178642",
+  "id": "651569369396576272",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-demo",
   "repoBranch": "main",
-  "repoRevision": "56f62bdaa0b00e06b029620ccc39f40d1c4ff894",
-  "buildVersion": "0.0.46",
+  "repoRevision": "7f4f164b95766b8a50f05c08b73ec823204fdedd",
+  "buildVersion": "0.0.47",
   "buildStatus": "running",
   "labels": [
     {
@@ -23,7 +23,7 @@
   ],
   "commits": [
     {
-      "message": "fetch logs from logsbyid path",
+      "message": "store alllogs for all build/release statuses",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -41,12 +41,12 @@
       }
     }
   ],
-  "insertedAt": "2021-04-20T10:09:19.497097Z",
-  "startedAt": "2021-04-20T10:09:21.394057Z",
-  "updatedAt": "2021-04-20T10:09:21.394057Z",
+  "insertedAt": "2021-04-20T10:13:11.343738Z",
+  "startedAt": "2021-04-20T10:13:13.067368Z",
+  "updatedAt": "2021-04-20T10:13:13.067368Z",
   "duration": 0,
   "pendingDuration": 1000000000,
-  "lastUpdatedAt": "2021-04-20T10:09:21.394057Z",
+  "lastUpdatedAt": "2021-04-20T10:13:13.067368Z",
   "extraInfo": {
     "medianPendingDuration": 1000000000,
     "medianDuration": 69000000000

@@ -1,12 +1,12 @@
 {
-  "id": "651564267497947154",
+  "id": "651568794079166480",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-web",
   "repoBranch": "main",
-  "repoRevision": "6de496ce0793d015f2de2f857f16dc19ef8e210c",
-  "buildVersion": "1.0.0-main-1085",
-  "buildStatus": "succeeded",
+  "repoRevision": "3d6a36fd1e258e78897a2bdd63153324e7c73068",
+  "buildVersion": "1.0.0-main-1086",
+  "buildStatus": "running",
   "labels": [
     {
       "key": "app-group",
@@ -92,7 +92,7 @@
   ],
   "commits": [
     {
-      "message": "estafette-ci-demo 0.0.43",
+      "message": "estafette-ci-demo 0.0.46",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -110,12 +110,12 @@
       }
     }
   ],
-  "insertedAt": "2021-04-20T09:47:14.367776Z",
-  "startedAt": "2021-04-20T09:47:16.106015Z",
-  "updatedAt": "2021-04-20T09:51:49.030162Z",
-  "duration": 272000000000,
+  "insertedAt": "2021-04-20T10:10:15.770811Z",
+  "startedAt": "2021-04-20T10:10:17.235597Z",
+  "updatedAt": "2021-04-20T10:10:17.235597Z",
+  "duration": 0,
   "pendingDuration": 1000000000,
-  "lastUpdatedAt": "2021-04-20T09:51:49.030162Z",
+  "lastUpdatedAt": "2021-04-20T10:10:17.235597Z",
   "extraInfo": {
     "medianPendingDuration": 1000000000,
     "medianDuration": 284000000000
