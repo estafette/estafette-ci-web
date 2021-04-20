@@ -19,6 +19,9 @@ version:
 stages:
   audit-and-restore:
     parallelStages:
+      snyk:
+        image: extensions/snyk:dev
+
       audit:
         image: extensions/npm-audit:dev
         action: audit
