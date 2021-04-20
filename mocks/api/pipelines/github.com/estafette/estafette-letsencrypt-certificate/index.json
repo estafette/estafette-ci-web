@@ -1,12 +1,12 @@
 {
-  "id": "592931953286512650",
+  "id": "625515886809153548",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-letsencrypt-certificate",
-  "repoBranch": "main",
-  "repoRevision": "c6e0d6310a23f112c2692c0bc1caea5740ee1f0c",
-  "buildVersion": "1.2.6-main-200",
-  "buildStatus": "failed",
+  "repoBranch": "1.2.9",
+  "repoRevision": "6cca01855410808eed638d6df4c6add710c3f012",
+  "buildVersion": "1.2.9",
+  "buildStatus": "succeeded",
   "labels": [
     {
       "key": "app-group",
@@ -31,11 +31,11 @@
       "activeReleases": [
         {
           "name": "release",
-          "id": "567201876814495756",
+          "id": "625516779784241163",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-letsencrypt-certificate",
-          "releaseVersion": "1.2.6",
+          "releaseVersion": "1.2.9",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
@@ -44,10 +44,10 @@
               }
             }
           ],
-          "insertedAt": "2020-06-26T10:17:55.883089Z",
-          "startedAt": "2020-06-26T10:17:58.216387Z",
-          "updatedAt": "2020-06-26T10:18:30.980314Z",
-          "duration": 32000000000,
+          "insertedAt": "2021-01-18T09:42:51.955229Z",
+          "startedAt": "2021-01-18T09:42:54.355695Z",
+          "updatedAt": "2021-01-18T09:43:54.649068Z",
+          "duration": 60000000000,
           "pendingDuration": 2000000000
         }
       ]
@@ -58,14 +58,14 @@
       "git": {
         "event": "push",
         "repository": "github.com/estafette/estafette-letsencrypt-certificate",
-        "branch": "main"
+        "branch": "1.2.9"
       }
     }
   ],
-  "insertedAt": "2020-09-25T07:27:52.07153Z",
-  "startedAt": "2020-09-25T07:27:54.200487Z",
-  "updatedAt": "2020-09-25T07:31:47.567636Z",
-  "duration": 233000000000,
+  "insertedAt": "2021-01-18T09:38:19.440965Z",
+  "startedAt": "2021-01-18T09:38:22.122392Z",
+  "updatedAt": "2021-01-18T09:41:24.709991Z",
+  "duration": 182000000000,
   "pendingDuration": 2000000000,
-  "lastUpdatedAt": "2020-09-25T07:31:47.567636Z"
+  "lastUpdatedAt": "2021-01-18T09:43:54.649068Z"
 }

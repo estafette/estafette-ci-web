@@ -1,14 +1,14 @@
 {
   "items": [
     {
-      "id": "592931953286512650",
+      "id": "625515886809153548",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-letsencrypt-certificate",
-      "repoBranch": "main",
-      "repoRevision": "c6e0d6310a23f112c2692c0bc1caea5740ee1f0c",
-      "buildVersion": "1.2.6-main-200",
-      "buildStatus": "failed",
+      "repoBranch": "1.2.9",
+      "repoRevision": "6cca01855410808eed638d6df4c6add710c3f012",
+      "buildVersion": "1.2.9",
+      "buildStatus": "succeeded",
       "labels": [
         {
           "key": "app-group",
@@ -30,6 +30,63 @@
       "releaseTargets": [
         {
           "name": "release"
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
+            "branch": "1.2.9"
+          }
+        }
+      ],
+      "insertedAt": "2021-01-18T09:38:19.440965Z",
+      "startedAt": "2021-01-18T09:38:22.122392Z",
+      "updatedAt": "2021-01-18T09:41:24.709991Z",
+      "duration": 182000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "id": "625514740239106058",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-letsencrypt-certificate",
+      "repoBranch": "main",
+      "repoRevision": "6cca01855410808eed638d6df4c6add710c3f012",
+      "buildVersion": "1.2.9-main-220",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "commits": [
+        {
+          "message": "Add feature to upload certificate to Cloudflare. (#40)\n\n* Add feature to upload certificate to Cloudflare.\r\n\r\n* Remove unused methods from restClient.\r\n\r\n* Use upsert ssl config to avoid cloudflare errors.\r\n\r\n* Add zone information to error message when updating cloudflare ssl config.\r\n\r\n* Refactor Upsert to not do anything if the certificate has the same expiration date.\r\n\r\n* Add some comments for the reasoning behind code choices.",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
         }
       ],
       "triggerEvents": [
@@ -41,554 +98,457 @@
           }
         }
       ],
-      "insertedAt": "2020-09-25T07:27:52.07153Z",
-      "startedAt": "2020-09-25T07:27:54.200487Z",
-      "updatedAt": "2020-09-25T07:31:47.567636Z",
-      "duration": 233000000000,
-      "pendingDuration": 2000000000
-    },
-    {
-      "id": "567197811448152076",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-letsencrypt-certificate",
-      "repoBranch": "1.2.6",
-      "repoRevision": "c6e0d6310a23f112c2692c0bc1caea5740ee1f0c",
-      "buildVersion": "1.2.6",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-controllers"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette-team"
-        },
-        {
-          "key": "type",
-          "value": "service"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "release"
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
-            "branch": "1.2.6"
-          }
-        }
-      ],
-      "insertedAt": "2020-06-26T09:57:15.231674Z",
-      "startedAt": "2020-06-26T09:57:18.981312Z",
-      "updatedAt": "2020-06-26T10:00:56.20586Z",
-      "duration": 217000000000,
-      "pendingDuration": 3000000000
-    },
-    {
-      "id": "567194059463426060",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-letsencrypt-certificate",
-      "repoBranch": "master",
-      "repoRevision": "c6e0d6310a23f112c2692c0bc1caea5740ee1f0c",
-      "buildVersion": "1.2.6-master-198",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-controllers"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette-team"
-        },
-        {
-          "key": "type",
-          "value": "service"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "release"
-        }
-      ],
-      "commits": [
-        {
-          "message": "Watch for namespaces (#33)\n\n* Add watch verb to namespaces in clusterrole.\r\n\r\n* Add check for namespace creation timestamp.\r\n\r\n* Update WatchNamespaces function with k8s go client library.\r\n\r\n* Use informer for watching namespaces.\r\n\r\n* Add info log about watching for new namespaces.",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
-            "branch": "master"
-          }
-        }
-      ],
-      "insertedAt": "2020-06-26T09:38:10.216729Z",
-      "startedAt": "2020-06-26T09:39:19.47998Z",
-      "updatedAt": "2020-06-26T09:43:03.57039Z",
-      "duration": 224000000000,
-      "pendingDuration": 69000000000
-    },
-    {
-      "id": "566732252677111818",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-letsencrypt-certificate",
-      "repoBranch": "watch-for-namespaces",
-      "repoRevision": "0581da404bf111df70b1aa838e3446992c91ad67",
-      "buildVersion": "1.2.6-watch-for-namespaces-197",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-controllers"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette-team"
-        },
-        {
-          "key": "type",
-          "value": "service"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "release"
-        }
-      ],
-      "commits": [
-        {
-          "message": "Add info log about watching for new namespaces.",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
-            "branch": "watch-for-namespaces"
-          }
-        }
-      ],
-      "insertedAt": "2020-06-24T18:29:17.969946Z",
-      "startedAt": "2020-06-24T18:30:46.187699Z",
-      "updatedAt": "2020-06-24T18:34:39.020427Z",
-      "duration": 232000000000,
-      "pendingDuration": 88000000000
-    },
-    {
-      "id": "566727076102635531",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-letsencrypt-certificate",
-      "repoBranch": "watch-for-namespaces",
-      "repoRevision": "5b02200d519d4c3b3d11dd83de194bd3ce90b98c",
-      "buildVersion": "1.2.6-watch-for-namespaces-196",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-controllers"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette-team"
-        },
-        {
-          "key": "type",
-          "value": "service"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "release"
-        }
-      ],
-      "commits": [
-        {
-          "message": "Use informer for watching namespaces.",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
-            "branch": "watch-for-namespaces"
-          }
-        }
-      ],
-      "insertedAt": "2020-06-24T18:02:58.204771Z",
-      "startedAt": "2020-06-24T18:04:16.645893Z",
-      "updatedAt": "2020-06-24T18:07:49.155117Z",
-      "duration": 212000000000,
-      "pendingDuration": 78000000000
-    },
-    {
-      "id": "566707221816606731",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-letsencrypt-certificate",
-      "repoBranch": "watch-for-namespaces",
-      "repoRevision": "bf3b68c19ac5fdb2f040f635352ec19851ca78c9",
-      "buildVersion": "1.2.6-watch-for-namespaces-195",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-controllers"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette-team"
-        },
-        {
-          "key": "type",
-          "value": "service"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "release"
-        }
-      ],
-      "commits": [
-        {
-          "message": "Update WatchNamespaces function with k8s go client library.",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
-            "branch": "watch-for-namespaces"
-          }
-        }
-      ],
-      "insertedAt": "2020-06-24T16:21:59.157583Z",
-      "startedAt": "2020-06-24T16:22:03.980693Z",
-      "updatedAt": "2020-06-24T16:25:41.122123Z",
-      "duration": 217000000000,
-      "pendingDuration": 4000000000
-    },
-    {
-      "id": "566704274950488075",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-letsencrypt-certificate",
-      "repoBranch": "watch-for-namespaces",
-      "repoRevision": "6b80633028e4887174d0910609ed86121465dbea",
-      "buildVersion": "1.2.6-watch-for-namespaces-194",
-      "buildStatus": "failed",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-controllers"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette-team"
-        },
-        {
-          "key": "type",
-          "value": "service"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "release"
-        }
-      ],
-      "commits": [
-        {
-          "message": "Add watch verb to namespaces in clusterrole.",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        },
-        {
-          "message": "Base docker image on alpine so I can debug.",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        },
-        {
-          "message": "Specify port when initializing liveness.",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        },
-        {
-          "message": "Upgrade estafette-foundation version; Remove specific port from init liveness.",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        },
-        {
-          "message": "Fix error handling when listing secrets inside watchNamespaces.",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        },
-        {
-          "message": "Move watcher creating out of for loop.",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
-            "branch": "watch-for-namespaces"
-          }
-        }
-      ],
-      "insertedAt": "2020-06-24T16:06:59.845334Z",
-      "startedAt": "2020-06-24T16:07:04.157968Z",
-      "updatedAt": "2020-06-24T16:08:05.757431Z",
-      "duration": 61000000000,
-      "pendingDuration": 4000000000
-    },
-    {
-      "id": "566699761063264268",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-letsencrypt-certificate",
-      "repoBranch": "master",
-      "repoRevision": "4f5c8270cc785c31199e4804f5049ae85ffd3183",
-      "buildVersion": "1.2.6-master-193",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-controllers"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette-team"
-        },
-        {
-          "key": "type",
-          "value": "service"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "release"
-        }
-      ],
-      "commits": [
-        {
-          "message": "Use k8s.io/client-go v0.17.0 (#35)\n\n* Refactor list and watch secrets functions; Refactor copy to all namespaces; Upgrade estafette-foundation.\r\n\r\n* Replace api library being used from ericchiang/k8s to official k8s client-go; Refactor where needed for replacement of api library.\r\n\r\n* Add more info in ObjectReference of Event.",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
-            "branch": "master"
-          }
-        }
-      ],
-      "insertedAt": "2020-06-24T15:44:02.316236Z",
-      "startedAt": "2020-06-24T15:44:04.504522Z",
-      "updatedAt": "2020-06-24T15:47:29.773518Z",
-      "duration": 205000000000,
-      "pendingDuration": 2000000000
-    },
-    {
-      "id": "566696224514441228",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-letsencrypt-certificate",
-      "repoBranch": "use-k8s-go-client",
-      "repoRevision": "b455b9020a39d2267d64b32a679ce9ef43bdb53c",
-      "buildVersion": "1.2.6-use-k8s-go-client-192",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-controllers"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette-team"
-        },
-        {
-          "key": "type",
-          "value": "service"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "release"
-        }
-      ],
-      "commits": [
-        {
-          "message": "Add more info in ObjectReference of Event.",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
-            "branch": "use-k8s-go-client"
-          }
-        }
-      ],
-      "insertedAt": "2020-06-24T15:26:03.047254Z",
-      "startedAt": "2020-06-24T15:26:20.634786Z",
-      "updatedAt": "2020-06-24T15:30:12.511061Z",
-      "duration": 231000000000,
-      "pendingDuration": 17000000000
-    },
-    {
-      "id": "566691322254819340",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-letsencrypt-certificate",
-      "repoBranch": "use-k8s-go-client",
-      "repoRevision": "7e57b42559ceaafb303d89c030cf8d7827bf3269",
-      "buildVersion": "1.2.6-use-k8s-go-client-191",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-controllers"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette-team"
-        },
-        {
-          "key": "type",
-          "value": "service"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "release"
-        }
-      ],
-      "commits": [
-        {
-          "message": "Events cannot be created without namespace.",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
-            "branch": "use-k8s-go-client"
-          }
-        }
-      ],
-      "insertedAt": "2020-06-24T15:01:06.996318Z",
-      "startedAt": "2020-06-24T15:01:08.241942Z",
-      "updatedAt": "2020-06-24T15:04:54.970413Z",
-      "duration": 226000000000,
+      "insertedAt": "2021-01-18T09:32:29.53543Z",
+      "startedAt": "2021-01-18T09:32:31.027108Z",
+      "updatedAt": "2021-01-18T09:36:00.295315Z",
+      "duration": 209000000000,
       "pendingDuration": 1000000000
+    },
+    {
+      "id": "624164058782466059",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-letsencrypt-certificate",
+      "repoBranch": "feature-upload-cf-ssl",
+      "repoRevision": "233ab40766647508181aa5c5df325cc0acb1d1c5",
+      "buildVersion": "1.2.9-feature-upload-cf-ssl-219",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "commits": [
+        {
+          "message": "Add some comments for the reasoning behind code choices.",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
+            "branch": "feature-upload-cf-ssl"
+          }
+        }
+      ],
+      "insertedAt": "2021-01-13T15:02:34.266795Z",
+      "startedAt": "2021-01-13T15:02:35.646536Z",
+      "updatedAt": "2021-01-13T15:05:50.261979Z",
+      "duration": 194000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "624156332238864396",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-letsencrypt-certificate",
+      "repoBranch": "feature-upload-cf-ssl",
+      "repoRevision": "204042678d77237342640f475744560859e77fda",
+      "buildVersion": "1.2.9-feature-upload-cf-ssl-218",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "commits": [
+        {
+          "message": "Refactor Upsert to not do anything if the certificate has the same expiration date.",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
+            "branch": "feature-upload-cf-ssl"
+          }
+        }
+      ],
+      "insertedAt": "2021-01-13T14:23:16.312765Z",
+      "startedAt": "2021-01-13T14:23:17.857961Z",
+      "updatedAt": "2021-01-13T14:26:31.926898Z",
+      "duration": 194000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "623883376536158218",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-letsencrypt-certificate",
+      "repoBranch": "feature-upload-cf-ssl",
+      "repoRevision": "de3f8a8a5a465acd22b8c340741eff15d90ccdc8",
+      "buildVersion": "1.2.9-feature-upload-cf-ssl-217",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "commits": [
+        {
+          "message": "Add zone information to error message when updating cloudflare ssl config.",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
+            "branch": "feature-upload-cf-ssl"
+          }
+        }
+      ],
+      "insertedAt": "2021-01-12T15:14:56.842882Z",
+      "startedAt": "2021-01-12T15:16:09.483582Z",
+      "updatedAt": "2021-01-12T15:19:25.318854Z",
+      "duration": 195000000000,
+      "pendingDuration": 72000000000
+    },
+    {
+      "id": "623609811663486986",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-letsencrypt-certificate",
+      "repoBranch": "feature-upload-cf-ssl",
+      "repoRevision": "53afedd258177ac9c158a7492c7f58ca90a27692",
+      "buildVersion": "1.2.9-feature-upload-cf-ssl-216",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "commits": [
+        {
+          "message": "Use upsert ssl config to avoid cloudflare errors.",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
+            "branch": "feature-upload-cf-ssl"
+          }
+        }
+      ],
+      "insertedAt": "2021-01-11T16:03:31.46914Z",
+      "startedAt": "2021-01-11T16:03:39.427121Z",
+      "updatedAt": "2021-01-11T16:06:56.237073Z",
+      "duration": 196000000000,
+      "pendingDuration": 7000000000
+    },
+    {
+      "id": "622764362023960587",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-letsencrypt-certificate",
+      "repoBranch": "feature-upload-cf-ssl",
+      "repoRevision": "f6f9e05a9c78ec519b051bdc3e2043f08269cc43",
+      "buildVersion": "1.2.9-feature-upload-cf-ssl-215",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "commits": [
+        {
+          "message": "Remove unused methods from restClient.",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
+            "branch": "feature-upload-cf-ssl"
+          }
+        }
+      ],
+      "insertedAt": "2021-01-08T16:23:20.714977Z",
+      "startedAt": "2021-01-08T16:23:22.350748Z",
+      "updatedAt": "2021-01-08T16:26:45.021277Z",
+      "duration": 202000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "622762452205240331",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-letsencrypt-certificate",
+      "repoBranch": "feature-upload-cf-ssl",
+      "repoRevision": "430f68d623dab7704a71be86c1e612a18977562b",
+      "buildVersion": "1.2.9-feature-upload-cf-ssl-214",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "commits": [
+        {
+          "message": "Add feature to upload certificate to Cloudflare.",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
+            "branch": "feature-upload-cf-ssl"
+          }
+        }
+      ],
+      "insertedAt": "2021-01-08T16:13:37.884589Z",
+      "startedAt": "2021-01-08T16:13:39.785572Z",
+      "updatedAt": "2021-01-08T16:17:22.711142Z",
+      "duration": 222000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "611918321351426060",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-letsencrypt-certificate",
+      "repoBranch": "main",
+      "repoRevision": "38382341cb7d069b71af82b6a63d16c03eb5573e",
+      "buildVersion": "1.2.9-main-213",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "commits": [
+        {
+          "message": "bump version to 1.2.9",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2020-12-01T08:57:31.778933Z",
+      "startedAt": "2020-12-01T08:57:33.788273Z",
+      "updatedAt": "2020-12-01T09:00:15.126791Z",
+      "duration": 161000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "id": "611918205210066954",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-letsencrypt-certificate",
+      "repoBranch": "1.2.8",
+      "repoRevision": "f55eaa03a80a4364882344e5f041a25018894b66",
+      "buildVersion": "1.2.8",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-controllers"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette-team"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "release"
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-letsencrypt-certificate",
+            "branch": "1.2.8"
+          }
+        }
+      ],
+      "insertedAt": "2020-12-01T08:56:56.335647Z",
+      "startedAt": "2020-12-01T08:56:58.579063Z",
+      "updatedAt": "2020-12-01T08:59:46.126816Z",
+      "duration": 167000000000,
+      "pendingDuration": 2000000000
     }
   ],
   "pagination": {

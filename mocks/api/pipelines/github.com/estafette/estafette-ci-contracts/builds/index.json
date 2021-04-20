@@ -1,13 +1,13 @@
 {
   "items": [
     {
-      "id": "592449567231606796",
+      "id": "647939395512565776",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-contracts",
       "repoBranch": "main",
-      "repoRevision": "4adfc1f698dcbe28e5ef59349289904b3fe67152",
-      "buildVersion": "0.0.223",
+      "repoRevision": "1c70b35be0a9ac6f3ff795fe59d61978f002755b",
+      "buildVersion": "0.0.238",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -29,7 +29,7 @@
       ],
       "commits": [
         {
-          "message": "update ci-manifest to set both master and main as default release branches",
+          "message": "update manifest to avoid use of removed github.com/gavv/deepcopy",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -46,20 +46,20 @@
           }
         }
       ],
-      "insertedAt": "2020-09-23T14:34:19.530802Z",
-      "startedAt": "2020-09-23T14:34:21.718627Z",
-      "updatedAt": "2020-09-23T14:35:02.07586Z",
-      "duration": 40000000000,
-      "pendingDuration": 2000000000
+      "insertedAt": "2021-04-07T14:30:11.227735Z",
+      "startedAt": "2021-04-07T14:30:12.222004Z",
+      "updatedAt": "2021-04-07T14:30:46.151657Z",
+      "duration": 33000000000,
+      "pendingDuration": 0
     },
     {
-      "id": "587904243786711052",
+      "id": "630613186472312844",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-contracts",
       "repoBranch": "main",
-      "repoRevision": "3938e8969fe1c70ace94bd272d82073218a8f869",
-      "buildVersion": "0.0.222",
+      "repoRevision": "bf2bb3940148c0405fce2ab3f053b77a5f0ef422",
+      "buildVersion": "0.0.237",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -81,7 +81,7 @@
       ],
       "commits": [
         {
-          "message": "build with golang 1.15.1",
+          "message": "drop properties now available through docker config",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -98,20 +98,124 @@
           }
         }
       ],
-      "insertedAt": "2020-09-07T13:15:36.897477Z",
-      "startedAt": "2020-09-07T13:15:37.960233Z",
-      "updatedAt": "2020-09-07T13:16:14.758756Z",
-      "duration": 36000000000,
+      "insertedAt": "2021-02-05T09:44:31.847801Z",
+      "startedAt": "2021-02-05T09:44:35.740934Z",
+      "updatedAt": "2021-02-05T09:45:27.503993Z",
+      "duration": 51000000000,
+      "pendingDuration": 3000000000
+    },
+    {
+      "id": "630606555027734540",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "main",
+      "repoRevision": "9bdb5f65bc34f0553b9cf1c6d683b851f8a6203c",
+      "buildVersion": "0.0.236",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add driver and durable property to docker network config",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-02-05T09:10:48.091601Z",
+      "startedAt": "2021-02-05T09:10:51.839441Z",
+      "updatedAt": "2021-02-05T09:11:52.523702Z",
+      "duration": 60000000000,
+      "pendingDuration": 3000000000
+    },
+    {
+      "id": "630596753481596940",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "main",
+      "repoRevision": "5a90aee7abf97a3750a2ca8587b60bc677cd1c9e",
+      "buildVersion": "0.0.235",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "change pointers in dockerconfig into normal properties",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-02-05T08:20:56.897014Z",
+      "startedAt": "2021-02-05T08:20:58.486911Z",
+      "updatedAt": "2021-02-05T08:21:49.750335Z",
+      "duration": 51000000000,
       "pendingDuration": 1000000000
     },
     {
-      "id": "587904120410439692",
+      "id": "630590576609689612",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-contracts",
       "repoBranch": "main",
-      "repoRevision": "6049b821630c27da97f33848bf2546168797e995",
-      "buildVersion": "0.0.221",
+      "repoRevision": "1359391bf8deea858586f412d227d00699de70a9",
+      "buildVersion": "0.0.234",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -133,7 +237,7 @@
       ],
       "commits": [
         {
-          "message": "change default branch to main",
+          "message": "drop mtuPerOperatingSystems from manifestPreferences; add dockerConfig to builderConfig",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -150,20 +254,20 @@
           }
         }
       ],
-      "insertedAt": "2020-09-07T13:14:59.24595Z",
-      "startedAt": "2020-09-07T13:15:03.348101Z",
-      "updatedAt": "2020-09-07T13:15:43.395289Z",
-      "duration": 40000000000,
-      "pendingDuration": 4000000000
+      "insertedAt": "2021-02-05T07:49:31.865378Z",
+      "startedAt": "2021-02-05T07:50:33.368724Z",
+      "updatedAt": "2021-02-05T07:51:26.524013Z",
+      "duration": 53000000000,
+      "pendingDuration": 61000000000
     },
     {
-      "id": "585927181509394442",
+      "id": "630440383206260748",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-contracts",
-      "repoBranch": "master",
-      "repoRevision": "be426a98ce7afed0f2e08a19eab934027bf827c9",
-      "buildVersion": "0.0.220",
+      "repoBranch": "main",
+      "repoRevision": "8aeb203e41510495c98eb3f8ec67994735ff4610",
+      "buildVersion": "0.0.233",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -185,7 +289,7 @@
       ],
       "commits": [
         {
-          "message": "ensure full line is matched by allowedPipelines / allowedTrustedImages regexes",
+          "message": "test manifest preferences mtuPerOperatingSystem in config",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -198,232 +302,24 @@
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-contracts",
-            "branch": "master"
+            "branch": "main"
           }
         }
       ],
-      "insertedAt": "2020-08-31T13:39:45.372425Z",
-      "startedAt": "2020-08-31T13:39:47.469642Z",
-      "updatedAt": "2020-08-31T13:40:27.03758Z",
-      "duration": 39000000000,
-      "pendingDuration": 2000000000
-    },
-    {
-      "id": "585921605477761034",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-contracts",
-      "repoBranch": "master",
-      "repoRevision": "9638e695689642dcb792a7701bcf752a5ea2355c",
-      "buildVersion": "0.0.219",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette"
-        },
-        {
-          "key": "type",
-          "value": "library"
-        }
-      ],
-      "commits": [
-        {
-          "message": "switch away from non-incluse whitelist property names to allowed...",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-contracts",
-            "branch": "master"
-          }
-        }
-      ],
-      "insertedAt": "2020-08-31T13:11:23.702581Z",
-      "startedAt": "2020-08-31T13:11:30.049075Z",
-      "updatedAt": "2020-08-31T13:12:05.666211Z",
-      "duration": 35000000000,
-      "pendingDuration": 6000000000
-    },
-    {
-      "id": "569205955983867915",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-contracts",
-      "repoBranch": "master",
-      "repoRevision": "3c42123dc2e7c22cd6c843895511bf1f9f6fa6f9",
-      "buildVersion": "0.0.218",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette"
-        },
-        {
-          "key": "type",
-          "value": "library"
-        }
-      ],
-      "commits": [
-        {
-          "message": "add description to group",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-contracts",
-            "branch": "master"
-          }
-        }
-      ],
-      "insertedAt": "2020-07-03T12:11:12.309202Z",
-      "startedAt": "2020-07-03T12:11:17.205314Z",
-      "updatedAt": "2020-07-03T12:11:56.270526Z",
-      "duration": 39000000000,
-      "pendingDuration": 4000000000
-    },
-    {
-      "id": "568071557428248586",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-contracts",
-      "repoBranch": "master",
-      "repoRevision": "c4e5b6cc74d6e9308bae18faa1edb9dc7cc9447b",
-      "buildVersion": "0.0.217",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette"
-        },
-        {
-          "key": "type",
-          "value": "library"
-        }
-      ],
-      "commits": [
-        {
-          "message": "trigger build",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-contracts",
-            "branch": "master"
-          }
-        }
-      ],
-      "insertedAt": "2020-06-29T12:01:21.343784Z",
-      "startedAt": "2020-06-29T12:01:23.567206Z",
-      "updatedAt": "2020-06-29T12:02:04.734195Z",
-      "duration": 41000000000,
-      "pendingDuration": 2000000000
-    },
-    {
-      "id": "568016983006183434",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-contracts",
-      "repoBranch": "master",
-      "repoRevision": "5013e9a667b3e135d74c448f58a180e5dbf9104e",
-      "buildVersion": "0.0.216",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette"
-        },
-        {
-          "key": "type",
-          "value": "library"
-        }
-      ],
-      "commits": [
-        {
-          "message": "add active property to group, organization",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-contracts",
-            "branch": "master"
-          }
-        }
-      ],
-      "insertedAt": "2020-06-29T07:23:46.551897Z",
-      "startedAt": "2020-06-29T07:23:47.829254Z",
-      "updatedAt": "2020-06-29T07:24:26.874406Z",
-      "duration": 39000000000,
+      "insertedAt": "2021-02-04T19:05:36.476144Z",
+      "startedAt": "2021-02-04T19:05:38.322455Z",
+      "updatedAt": "2021-02-04T19:06:30.884944Z",
+      "duration": 52000000000,
       "pendingDuration": 1000000000
     },
     {
-      "id": "567159140191928331",
+      "id": "624453632205258762",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-contracts",
-      "repoBranch": "master",
-      "repoRevision": "9ddd74bcfb9e16fd6a54229c6e62f96a54a5b9ea",
-      "buildVersion": "0.0.215",
+      "repoBranch": "main",
+      "repoRevision": "53e7a5504b013d4e4cc68a214f6843d8b4054178",
+      "buildVersion": "0.0.232",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -445,7 +341,7 @@
       ],
       "commits": [
         {
-          "message": "add extra info to computed releases for progress",
+          "message": "use LogType and LogStatus in TailLogLine",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -458,24 +354,24 @@
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-contracts",
-            "branch": "master"
+            "branch": "main"
           }
         }
       ],
-      "insertedAt": "2020-06-26T06:40:33.700892Z",
-      "startedAt": "2020-06-26T06:40:35.704508Z",
-      "updatedAt": "2020-06-26T06:41:17.835482Z",
-      "duration": 42000000000,
-      "pendingDuration": 2000000000
+      "insertedAt": "2021-01-14T15:35:25.062099Z",
+      "startedAt": "2021-01-14T15:35:26.56505Z",
+      "updatedAt": "2021-01-14T15:36:22.881107Z",
+      "duration": 56000000000,
+      "pendingDuration": 1000000000
     },
     {
-      "id": "567093815142318092",
+      "id": "624451058173673482",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-contracts",
-      "repoBranch": "master",
-      "repoRevision": "1506a5ee898011b7da49b062a496ac13fdffbd37",
-      "buildVersion": "0.0.214",
+      "repoBranch": "main",
+      "repoRevision": "66a88f8c881c0a149d9c9faf5362461440ee829b",
+      "buildVersion": "0.0.231",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -497,7 +393,7 @@
       ],
       "commits": [
         {
-          "message": "add extra info to pipeline",
+          "message": "add conversions from logstatus to status and vice versa",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -510,15 +406,119 @@
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-contracts",
-            "branch": "master"
+            "branch": "main"
           }
         }
       ],
-      "insertedAt": "2020-06-26T01:08:18.077661Z",
-      "startedAt": "2020-06-26T01:08:22.523368Z",
-      "updatedAt": "2020-06-26T01:08:59.551606Z",
-      "duration": 37000000000,
-      "pendingDuration": 4000000000
+      "insertedAt": "2021-01-14T15:22:19.530158Z",
+      "startedAt": "2021-01-14T15:22:21.228907Z",
+      "updatedAt": "2021-01-14T15:23:12.947327Z",
+      "duration": 51000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "624449114053181450",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "main",
+      "repoRevision": "959182442be7bf684b04c750bfb0564bf345b706",
+      "buildVersion": "0.0.230",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add functions to compare LogStatus and Status",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-01-14T15:12:26.231554Z",
+      "startedAt": "2021-01-14T15:12:27.917118Z",
+      "updatedAt": "2021-01-14T15:13:18.284152Z",
+      "duration": 50000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "624444373463203851",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "main",
+      "repoRevision": "1a34dcea54515365b5162e300a0bffe75ba7fef8",
+      "buildVersion": "0.0.229",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add HasInjectedCredentials property to BuildLogStepDockerImage",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-contracts",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-01-14T14:48:19.518392Z",
+      "startedAt": "2021-01-14T14:48:28.185863Z",
+      "updatedAt": "2021-01-14T14:49:29.383264Z",
+      "duration": 61000000000,
+      "pendingDuration": 8000000000
     }
   ],
   "pagination": {

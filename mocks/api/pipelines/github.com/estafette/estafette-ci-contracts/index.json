@@ -1,11 +1,11 @@
 {
-  "id": "592449567231606796",
+  "id": "647939395512565776",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-contracts",
   "repoBranch": "main",
-  "repoRevision": "4adfc1f698dcbe28e5ef59349289904b3fe67152",
-  "buildVersion": "0.0.223",
+  "repoRevision": "1c70b35be0a9ac6f3ff795fe59d61978f002755b",
+  "buildVersion": "0.0.238",
   "buildStatus": "succeeded",
   "labels": [
     {
@@ -27,7 +27,7 @@
   ],
   "commits": [
     {
-      "message": "update ci-manifest to set both master and main as default release branches",
+      "message": "update manifest to avoid use of removed github.com/gavv/deepcopy",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -44,10 +44,10 @@
       }
     }
   ],
-  "insertedAt": "2020-09-23T14:34:19.530802Z",
-  "startedAt": "2020-09-23T14:34:21.718627Z",
-  "updatedAt": "2020-09-23T14:35:02.07586Z",
-  "duration": 40000000000,
-  "pendingDuration": 2000000000,
-  "lastUpdatedAt": "2020-09-23T14:35:02.07586Z"
+  "insertedAt": "2021-04-07T14:30:11.227735Z",
+  "startedAt": "2021-04-07T14:30:12.222004Z",
+  "updatedAt": "2021-04-07T14:30:46.151657Z",
+  "duration": 33000000000,
+  "pendingDuration": 0,
+  "lastUpdatedAt": "2021-04-07T14:30:46.151657Z"
 }

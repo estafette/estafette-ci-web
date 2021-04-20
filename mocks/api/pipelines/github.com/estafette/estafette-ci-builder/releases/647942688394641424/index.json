@@ -1,0 +1,21 @@
+{
+  "name": "nanoserver-1809-beta",
+  "id": "647942688394641424",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-builder",
+  "releaseVersion": "0.0.845",
+  "releaseStatus": "succeeded",
+  "triggerEvents": [
+    {
+      "manual": {
+        "userID": "me@estafette.io"
+      }
+    }
+  ],
+  "insertedAt": "2021-04-07T14:46:56.135657Z",
+  "startedAt": "2021-04-07T14:47:03.460768Z",
+  "updatedAt": "2021-04-07T14:48:24.639708Z",
+  "duration": 81000000000,
+  "pendingDuration": 7000000000
+}

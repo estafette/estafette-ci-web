@@ -2,6 +2,90 @@
   "items": [
     {
       "name": "release",
+      "id": "625516779784241163",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-letsencrypt-certificate",
+      "releaseVersion": "1.2.9",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2021-01-18T09:42:51.955229Z",
+      "startedAt": "2021-01-18T09:42:54.355695Z",
+      "updatedAt": "2021-01-18T09:43:54.649068Z",
+      "duration": 60000000000,
+      "pendingDuration": 2000000000
+    },
+    {
+      "name": "release",
+      "id": "625515625139961866",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-letsencrypt-certificate",
+      "releaseVersion": "1.2.9-main-220",
+      "releaseStatus": "failed",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2021-01-18T09:36:59.585613Z",
+      "startedAt": "2021-01-18T09:37:01.527906Z",
+      "updatedAt": "2021-01-18T09:37:49.121833Z",
+      "duration": 47000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "name": "release",
+      "id": "611919274243817484",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-letsencrypt-certificate",
+      "releaseVersion": "1.2.8",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2020-12-01T09:02:22.578828Z",
+      "startedAt": "2020-12-01T09:02:26.096518Z",
+      "updatedAt": "2020-12-01T09:02:59.662003Z",
+      "duration": 33000000000,
+      "pendingDuration": 3000000000
+    },
+    {
+      "name": "release",
+      "id": "603708064271269898",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-letsencrypt-certificate",
+      "releaseVersion": "1.2.7",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2020-11-02T08:58:00.160635Z",
+      "startedAt": "2020-11-02T08:58:02.083091Z",
+      "updatedAt": "2020-11-02T08:58:40.635901Z",
+      "duration": 38000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "name": "release",
       "id": "567201876814495756",
       "repoSource": "github.com",
       "repoOwner": "estafette",
@@ -119,66 +203,6 @@
       "insertedAt": "2019-11-11T13:22:51.964793Z",
       "updatedAt": "2019-11-11T13:24:08.960542Z",
       "duration": 76000000000,
-      "pendingDuration": 0
-    },
-    {
-      "name": "release",
-      "id": "502650760320188417",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-letsencrypt-certificate",
-      "releaseVersion": "1.2.1",
-      "releaseStatus": "succeeded",
-      "triggerEvents": [
-        {
-          "manual": {
-            "userID": "me@estafette.io"
-          }
-        }
-      ],
-      "insertedAt": "2019-11-11T10:13:58.475983Z",
-      "updatedAt": "2019-11-11T10:14:25.09662Z",
-      "duration": 26000000000,
-      "pendingDuration": 0
-    },
-    {
-      "name": "release",
-      "id": "502650439447248897",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-letsencrypt-certificate",
-      "releaseVersion": "1.2.1",
-      "releaseStatus": "failed",
-      "triggerEvents": [
-        {
-          "manual": {
-            "userID": "me@estafette.io"
-          }
-        }
-      ],
-      "insertedAt": "2019-11-11T10:12:20.552973Z",
-      "updatedAt": "2019-11-11T10:12:40.351478Z",
-      "duration": 19000000000,
-      "pendingDuration": 0
-    },
-    {
-      "name": "release",
-      "id": "501270345692479493",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-letsencrypt-certificate",
-      "releaseVersion": "1.2.133",
-      "releaseStatus": "succeeded",
-      "triggerEvents": [
-        {
-          "manual": {
-            "userID": "me@estafette.io"
-          }
-        }
-      ],
-      "insertedAt": "2019-11-06T13:12:49.363554Z",
-      "updatedAt": "2019-11-06T13:13:15.475723Z",
-      "duration": 26000000000,
       "pendingDuration": 0
     }
   ],

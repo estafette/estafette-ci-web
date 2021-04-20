@@ -1,13 +1,13 @@
 {
   "items": [
     {
-      "id": "592466465699790860",
+      "id": "647938708585054224",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-manifest",
       "repoBranch": "main",
-      "repoRevision": "33630bc9b1bd7a79d2b8b5c06b5d8360ec6fea22",
-      "buildVersion": "0.1.166",
+      "repoRevision": "6e78fb716b847bda7462e5c4d7cb968082f985f2",
+      "buildVersion": "0.1.180",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -29,7 +29,7 @@
       ],
       "commits": [
         {
-          "message": "trigger on both master and main branch by default; get defaultbranch for build action from preferences",
+          "message": "use github.com/jinzhu/copier for deepcopy",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -46,21 +46,21 @@
           }
         }
       ],
-      "insertedAt": "2020-09-23T16:00:16.533996Z",
-      "startedAt": "2020-09-23T16:00:18.178553Z",
-      "updatedAt": "2020-09-23T16:00:55.388585Z",
-      "duration": 37000000000,
+      "insertedAt": "2021-04-07T14:26:41.594143Z",
+      "startedAt": "2021-04-07T14:26:43.357066Z",
+      "updatedAt": "2021-04-07T14:27:17.964286Z",
+      "duration": 34000000000,
       "pendingDuration": 1000000000
     },
     {
-      "id": "592448441764839434",
+      "id": "647933696651100176",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-manifest",
       "repoBranch": "main",
-      "repoRevision": "a0486af9ad2ff3aeddd453c29433ff0ab496dcca",
-      "buildVersion": "0.1.165",
-      "buildStatus": "succeeded",
+      "repoRevision": "d16e8438c1026dc0f2ee9a19b7c975617feb8de2",
+      "buildVersion": "0.1.179",
+      "buildStatus": "failed",
       "labels": [
         {
           "key": "app-group",
@@ -81,7 +81,7 @@
       ],
       "commits": [
         {
-          "message": "add main besides master to be treated as default release branch",
+          "message": "replace github.com/gavv/deepcopy with github.com/mohae/deepcopy",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -98,228 +98,72 @@
           }
         }
       ],
-      "insertedAt": "2020-09-23T14:28:36.065548Z",
-      "startedAt": "2020-09-23T14:28:38.782392Z",
-      "updatedAt": "2020-09-23T14:29:15.723237Z",
-      "duration": 36000000000,
-      "pendingDuration": 2000000000
-    },
-    {
-      "id": "587904353416052746",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-manifest",
-      "repoBranch": "main",
-      "repoRevision": "bd92c39c3b9dad7277726d8379ad4186bd9233a2",
-      "buildVersion": "0.1.164",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette"
-        },
-        {
-          "key": "type",
-          "value": "library"
-        }
-      ],
-      "commits": [
-        {
-          "message": "build with golang 1.15.1",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-manifest",
-            "branch": "main"
-          }
-        }
-      ],
-      "insertedAt": "2020-09-07T13:16:10.35352Z",
-      "startedAt": "2020-09-07T13:16:11.826395Z",
-      "updatedAt": "2020-09-07T13:16:49.597144Z",
-      "duration": 37000000000,
-      "pendingDuration": 1000000000
-    },
-    {
-      "id": "587903636571881483",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-manifest",
-      "repoBranch": "main",
-      "repoRevision": "07c904936aba12a22bf549d04e848c9c364e06f5",
-      "buildVersion": "0.1.163",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette"
-        },
-        {
-          "key": "type",
-          "value": "library"
-        }
-      ],
-      "commits": [
-        {
-          "message": "change default branch to main",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-manifest",
-            "branch": "main"
-          }
-        }
-      ],
-      "insertedAt": "2020-09-07T13:12:31.590161Z",
-      "startedAt": "2020-09-07T13:12:36.426406Z",
-      "updatedAt": "2020-09-07T13:13:15.902246Z",
-      "duration": 39000000000,
-      "pendingDuration": 4000000000
-    },
-    {
-      "id": "585925851153956876",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-manifest",
-      "repoBranch": "master",
-      "repoRevision": "61ef661cf384eaecd39dc9c7e8d7f9845fd7c4fa",
-      "buildVersion": "0.1.162",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette"
-        },
-        {
-          "key": "type",
-          "value": "library"
-        }
-      ],
-      "commits": [
-        {
-          "message": "ensure full string is matched for trigger regexes",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-manifest",
-            "branch": "master"
-          }
-        }
-      ],
-      "insertedAt": "2020-08-31T13:32:59.380083Z",
-      "startedAt": "2020-08-31T13:33:01.360261Z",
-      "updatedAt": "2020-08-31T13:33:40.479426Z",
-      "duration": 39000000000,
-      "pendingDuration": 1000000000
-    },
-    {
-      "id": "581989243535360012",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-manifest",
-      "repoBranch": "master",
-      "repoRevision": "f6e19a49c885c76ea98eb0d53f4b2322fb51d304",
-      "buildVersion": "0.1.161",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette"
-        },
-        {
-          "key": "type",
-          "value": "library"
-        }
-      ],
-      "commits": [
-        {
-          "message": "don't return err from deepcopy",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-manifest",
-            "branch": "master"
-          }
-        }
-      ],
-      "insertedAt": "2020-08-17T15:50:22.074676Z",
-      "startedAt": "2020-08-17T15:50:24.086002Z",
-      "updatedAt": "2020-08-17T15:51:04.984004Z",
+      "insertedAt": "2021-04-07T14:01:12.073305Z",
+      "startedAt": "2021-04-07T14:01:26.241165Z",
+      "updatedAt": "2021-04-07T14:02:07.153076Z",
       "duration": 40000000000,
-      "pendingDuration": 2000000000
+      "pendingDuration": 14000000000
     },
     {
-      "id": "581988143054716938",
+      "id": "647932973884145682",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-manifest",
-      "repoBranch": "master",
-      "repoRevision": "dffb61ce9d9ce6ff8a8be93436ccc0f237d7961d",
-      "buildVersion": "0.1.160",
+      "repoBranch": "main",
+      "repoRevision": "6c1b179730b74d327c6cf5fa482e73008dbcd209",
+      "buildVersion": "0.1.178",
+      "buildStatus": "failed",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "build with golang 1.16",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-04-07T13:57:31.502143Z",
+      "startedAt": "2021-04-07T13:57:33.079445Z",
+      "updatedAt": "2021-04-07T13:57:54.721146Z",
+      "duration": 21000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "630588413360668683",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "main",
+      "repoRevision": "37d5cdfd836f1705707f7748ae7bc698b481f9ee",
+      "buildVersion": "0.1.177",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -341,7 +185,7 @@
       ],
       "commits": [
         {
-          "message": "add DeepCopy func on manifest",
+          "message": "update tests for dropping mtu in builder",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -354,24 +198,76 @@
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-manifest",
-            "branch": "master"
+            "branch": "main"
           }
         }
       ],
-      "insertedAt": "2020-08-17T15:44:46.234635Z",
-      "startedAt": "2020-08-17T15:44:48.061231Z",
-      "updatedAt": "2020-08-17T15:45:40.919364Z",
+      "insertedAt": "2021-02-05T07:38:31.693998Z",
+      "startedAt": "2021-02-05T07:38:39.678291Z",
+      "updatedAt": "2021-02-05T07:39:33.560285Z",
+      "duration": 53000000000,
+      "pendingDuration": 7000000000
+    },
+    {
+      "id": "630585460947222539",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "main",
+      "repoRevision": "eeb13b22e8f54bcd215144c86b8e20151a0909a8",
+      "buildVersion": "0.1.176",
+      "buildStatus": "failed",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "drop mtu from builder and manifest preferences",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-02-05T07:23:30.689133Z",
+      "startedAt": "2021-02-05T07:23:40.17133Z",
+      "updatedAt": "2021-02-05T07:24:32.22788Z",
       "duration": 52000000000,
-      "pendingDuration": 1000000000
+      "pendingDuration": 9000000000
     },
     {
-      "id": "581111360484671498",
+      "id": "630439588770873356",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-manifest",
-      "repoBranch": "master",
-      "repoRevision": "2dd114b224929969e49119337ef7f137833075de",
-      "buildVersion": "0.1.159",
+      "repoBranch": "main",
+      "repoRevision": "acf2fb1f6b18664c4687a9a65b5a1419fa5da277",
+      "buildVersion": "0.1.175",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -393,7 +289,7 @@
       ],
       "commits": [
         {
-          "message": "build with golang 1.15.0",
+          "message": "add mtuPerOperatingSystem to manifest preferences",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -406,24 +302,24 @@
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-manifest",
-            "branch": "master"
+            "branch": "main"
           }
         }
       ],
-      "insertedAt": "2020-08-14T13:25:13.428785Z",
-      "startedAt": "2020-08-14T13:25:14.570185Z",
-      "updatedAt": "2020-08-14T13:25:55.611438Z",
-      "duration": 41000000000,
+      "insertedAt": "2021-02-04T19:01:34.033742Z",
+      "startedAt": "2021-02-04T19:01:35.534105Z",
+      "updatedAt": "2021-02-04T19:02:31.120967Z",
+      "duration": 55000000000,
       "pendingDuration": 1000000000
     },
     {
-      "id": "581111092210401290",
+      "id": "630437684606926859",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-manifest",
-      "repoBranch": "master",
-      "repoRevision": "1683fa8935f605e41bde313cb3093f41775373ff",
-      "buildVersion": "0.1.158",
+      "repoBranch": "main",
+      "repoRevision": "da71846a0c8fcab5eb6b024346528a0f4c840641",
+      "buildVersion": "0.1.174",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -445,7 +341,7 @@
       ],
       "commits": [
         {
-          "message": "allow release name to be set in array instead of mapslice as well",
+          "message": "add mtu to builder to override defaults",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -458,24 +354,24 @@
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-manifest",
-            "branch": "master"
+            "branch": "main"
           }
         }
       ],
-      "insertedAt": "2020-08-14T13:23:51.558022Z",
-      "startedAt": "2020-08-14T13:23:52.714674Z",
-      "updatedAt": "2020-08-14T13:24:31.9295Z",
-      "duration": 39000000000,
-      "pendingDuration": 1000000000
+      "insertedAt": "2021-02-04T18:51:52.929063Z",
+      "startedAt": "2021-02-04T18:52:21.943447Z",
+      "updatedAt": "2021-02-04T18:53:13.998318Z",
+      "duration": 52000000000,
+      "pendingDuration": 29000000000
     },
     {
-      "id": "581110730475995146",
+      "id": "628064050133860362",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-manifest",
-      "repoBranch": "master",
-      "repoRevision": "d35d53830627358f2a16f424016fc6dc2531689a",
-      "buildVersion": "0.1.157",
+      "repoBranch": "main",
+      "repoRevision": "7f234b5e9694a08a5c87bee8b6cd873cfd42b289",
+      "buildVersion": "0.1.173",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -497,7 +393,7 @@
       ],
       "commits": [
         {
-          "message": "allow stage name to be set in array instead of mapslice as well",
+          "message": "add fired property to event",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -510,15 +406,119 @@
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-manifest",
-            "branch": "master"
+            "branch": "main"
           }
         }
       ],
-      "insertedAt": "2020-08-14T13:22:01.165452Z",
-      "startedAt": "2020-08-14T13:22:05.329478Z",
-      "updatedAt": "2020-08-14T13:22:43.730637Z",
-      "duration": 38000000000,
-      "pendingDuration": 4000000000
+      "insertedAt": "2021-01-27T09:38:57.174186Z",
+      "startedAt": "2021-01-27T09:38:58.850489Z",
+      "updatedAt": "2021-01-27T09:39:49.413825Z",
+      "duration": 50000000000,
+      "pendingDuration": 1000000000
+    },
+    {
+      "id": "627811118534492172",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "main",
+      "repoRevision": "9ab2bab96e7abba48fd69c6061b56da487b15d8a",
+      "buildVersion": "0.1.172",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add name to trigger and event to support named triggers",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-01-26T12:12:28.575887Z",
+      "startedAt": "2021-01-26T12:12:34.005583Z",
+      "updatedAt": "2021-01-26T12:13:25.744093Z",
+      "duration": 51000000000,
+      "pendingDuration": 5000000000
+    },
+    {
+      "id": "626073178207977484",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-manifest",
+      "repoBranch": "main",
+      "repoRevision": "2a8d33db8ca008c9ac0e9bb27ee1d8fdd4daf275",
+      "buildVersion": "0.1.171",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "library"
+        }
+      ],
+      "commits": [
+        {
+          "message": "unmarshal storage medium",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-manifest",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-01-20T08:52:51.278923Z",
+      "startedAt": "2021-01-20T08:52:53.215087Z",
+      "updatedAt": "2021-01-20T08:53:49.182255Z",
+      "duration": 55000000000,
+      "pendingDuration": 1000000000
     }
   ],
   "pagination": {

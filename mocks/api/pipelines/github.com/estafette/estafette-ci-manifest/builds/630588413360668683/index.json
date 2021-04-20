@@ -1,0 +1,54 @@
+{
+  "id": "630588413360668683",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-manifest",
+  "repoBranch": "main",
+  "repoRevision": "37d5cdfd836f1705707f7748ae7bc698b481f9ee",
+  "buildVersion": "0.1.177",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette"
+    },
+    {
+      "key": "type",
+      "value": "library"
+    }
+  ],
+  "manifest": "# selects the dev track for builder in order to dogfood estafette's components\nbuilder:\n  track: dev\n\n# these turn into ESTAFETTE_LABEL_... envvars, automatically injected into all pipeline steps\nlabels:\n  app-group: estafette-ci\n  type: library\n  team: estafette\n  language: golang\n\n# generates a 0.0.x-\u003cbranch\u003e version made available as ESTAFETTE_BUILD_VERSION envvar, automatically injected into all pipeline steps\nversion:\n  semver:\n    major: 0\n    minor: 1\n    releaseBranch: main\n\n# global environments variables that are automatically injected into all pipeline steps and can be overridden by defining an envvar in a pipeline step with the same name\nenv:\n  VAR1: somevalue\n  VAR2: another value\n\n# pipeline stages to be executed sequentially; for each step the 'when' is evaluated to see whether it should be executed or skipped\nstages:\n  build:\n    image: golang:1.15.1-alpine3.12\n    env:\n      CGO_ENABLED: 0\n      GOOS: linux\n    commands:\n    - go test ./...\n\n  tag-revision:\n    image: golang:1.15.1-alpine3.12\n    commands:\n    - apk add git\n    - git tag v${ESTAFETTE_BUILD_VERSION}\n    - git push origin v${ESTAFETTE_BUILD_VERSION}\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    workspace: estafette\n    channels:\n    - '#build-status'\n    when:\n      status == 'succeeded' ||\n      status == 'failed'\n",
+  "manifestWithDefaults": "builder:\n  track: dev\n  os: linux\nlabels:\n  app-group: estafette-ci\n  language: golang\n  team: estafette\n  type: library\nversion:\n  semver:\n    major: 0\n    minor: 1\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: main\nenv:\n  VAR1: somevalue\n  VAR2: another value\nstages:\n  build:\n    image: golang:1.15.1-alpine3.12\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - go test ./...\n    when: status == 'succeeded'\n    env:\n      CGO_ENABLED: \"0\"\n      GOOS: linux\n  tag-revision:\n    image: golang:1.15.1-alpine3.12\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - apk add git\n    - git tag v${ESTAFETTE_BUILD_VERSION}\n    - git push origin v${ESTAFETTE_BUILD_VERSION}\n    when: status == 'succeeded'\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded' || status == 'failed'\n    channels:\n    - '#build-status'\n    workspace: estafette\n",
+  "commits": [
+    {
+      "message": "update tests for dropping mtu in builder",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-ci-manifest",
+        "branch": "main"
+      }
+    }
+  ],
+  "insertedAt": "2021-02-05T07:38:31.693998Z",
+  "startedAt": "2021-02-05T07:38:39.678291Z",
+  "updatedAt": "2021-02-05T07:39:33.560285Z",
+  "duration": 53000000000,
+  "pendingDuration": 7000000000
+}

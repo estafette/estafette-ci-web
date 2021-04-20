@@ -1,11 +1,11 @@
 {
-  "id": "592182289108893706",
+  "id": "651562929560027153",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-web",
   "repoBranch": "main",
-  "repoRevision": "8527d8f18679396806f41c189d3f2c26b519e95f",
-  "buildVersion": "0.1.1017",
+  "repoRevision": "1681e8b3672cbdad34e8c6da07801290dc0635df",
+  "buildVersion": "1.0.0-main-1084",
   "buildStatus": "succeeded",
   "labels": [
     {
@@ -40,11 +40,11 @@
         {
           "name": "tooling-estafette",
           "action": "deploy-simple",
-          "id": "592182883225894922",
+          "id": "651309877869707281",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-web",
-          "releaseVersion": "0.1.1017",
+          "releaseVersion": "1.0.0-main-1077",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
@@ -53,10 +53,10 @@
               }
             }
           ],
-          "insertedAt": "2020-09-22T15:57:54.031044Z",
-          "startedAt": "2020-09-22T15:57:55.180568Z",
-          "updatedAt": "2020-09-22T15:59:32.946909Z",
-          "duration": 97000000000,
+          "insertedAt": "2021-04-19T12:13:20.8144Z",
+          "startedAt": "2021-04-19T12:13:22.519375Z",
+          "updatedAt": "2021-04-19T12:14:30.287797Z",
+          "duration": 67000000000,
           "pendingDuration": 1000000000
         },
         {
@@ -86,7 +86,7 @@
   ],
   "commits": [
     {
-      "message": "tail last 100 instead of 250 log lines for increased stability",
+      "message": "update marked package to 2.0.3",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -103,10 +103,10 @@
       }
     }
   ],
-  "insertedAt": "2020-09-22T15:54:52.720885Z",
-  "startedAt": "2020-09-22T15:54:54.679569Z",
-  "updatedAt": "2020-09-22T15:57:09.47765Z",
-  "duration": 134000000000,
+  "insertedAt": "2021-04-20T09:40:26.061608Z",
+  "startedAt": "2021-04-20T09:40:27.425148Z",
+  "updatedAt": "2021-04-20T09:45:25.863273Z",
+  "duration": 298000000000,
   "pendingDuration": 1000000000,
-  "lastUpdatedAt": "2020-09-22T15:59:32.946909Z"
+  "lastUpdatedAt": "2021-04-20T09:45:25.863273Z"
 }
