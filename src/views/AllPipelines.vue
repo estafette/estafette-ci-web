@@ -12,6 +12,7 @@
       </div>
       <div class="col-12 col-lg-6 col-xxl-2">
         <release-target-filter
+          mode="pipelines"
           :filter="filter"
           :model="filter.target"
           :on-change="setTarget"

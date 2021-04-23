@@ -33,6 +33,10 @@ export default {
   },
 
   props: {
+    mode: {
+      type: String,
+      default: 'pipelines'
+    },
     filter: {
       type: Object,
       default: null
@@ -75,7 +79,7 @@ export default {
         statusFilter += '&filter[status]=pending&filter[status]=canceling'
       }
 
-      this.axios.get(`/api/releasetargets?${statusFilter}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/releasetargets/${this.mode}?${statusFilter}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.targets = response.data.items
           this.periodicallyRefreshReleaseTargets(5)
@@ -117,7 +121,7 @@ export default {
 
       if (this.targets) {
         this.targets.forEach(t => {
-          releaseTargetOptions.push({ value: t.name, text: `${t.name} (${t.pipelinescount})` })
+          releaseTargetOptions.push({ value: t.name, text: `${t.name} (${t.count})` })
         })
       }
 

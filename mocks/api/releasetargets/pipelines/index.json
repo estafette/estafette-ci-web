@@ -2,27 +2,27 @@
   "items":[
      {
         "name":"production",
-        "pipelinescount":8
+        "count":8
      },
      {
         "name":"staging",
-        "pipelinescount":7
+        "count":7
      },
      {
         "name":"development",
-        "pipelinescount":3
+        "count":3
      },
      {
         "name":"dev",
-        "pipelinescount":1
+        "count":1
      },
      {
         "name":"beta",
-        "pipelinescount":1
+        "count":1
      },
      {
         "name":"stable",
-        "pipelinescount":1
+        "count":1
      }
   ],
   "pagination":{
