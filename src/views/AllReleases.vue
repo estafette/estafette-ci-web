@@ -1,12 +1,16 @@
 <template>
   <div>
     <div class="row m-0">
-      <div class="col-12 col-lg-6 col-xxl-4">
+      <div class="col-12 col-xxl-8">
         <status-filter :filter="filter" />
       </div>
-      <div class="col-12 col-lg-6 col-xxl-2" />
-      <div class="col-12 col-lg-6 col-xxl-2" />
-      <div class="col-12 col-lg-6 col-xxl-2" />
+      <div class="col-12 col-lg-6 col-xxl-2">
+        <release-target-filter
+          :filter="filter"
+          :model="filter.target"
+          :on-change="setTarget"
+        />
+      </div>
       <div class="col-12 col-lg-6 col-xxl-2 text-right">
         <since-selector
           :model="filter.since"
@@ -68,6 +72,7 @@ import Spinner from '@/components/Spinner'
 import Pagination from '@/components/Pagination'
 import StatusFilter from '@/components/StatusFilter'
 import SinceSelector from '@/components/SinceSelector'
+import ReleaseTargetFilter from '@/components/ReleaseTargetFilter'
 import ReleaseRow from '@/components/ReleaseRow'
 import PaginationCompact from '@/components/PaginationCompact'
 import TransitionGroupHeader from '@/components/TransitionGroupHeader'
@@ -78,6 +83,7 @@ export default {
     Pagination,
     StatusFilter,
     SinceSelector,
+    ReleaseTargetFilter,
     ReleaseRow,
     PaginationCompact,
     TransitionGroupHeader
@@ -99,6 +105,7 @@ export default {
       },
       filter: {
         status: 'all',
+        target: '',
         since: '1d'
       },
       sort: '-updated_at',
@@ -167,6 +174,12 @@ export default {
         delete query.status
       }
 
+      if (this.filter && this.filter.target && this.filter.target !== '') {
+        query.target = this.filter.target
+      } else if (query.target) {
+        delete query.target
+      }
+
       if (this.filter && this.filter.since && this.filter.since !== '') {
         query.since = this.filter.since
       } else if (query.since) {
@@ -191,6 +204,7 @@ export default {
     setDataFromQueryParams (query) {
       this.pagination.page = query && query.page ? Number.parseInt(query.page, 10) : 1
       this.filter.status = query && query.status ? query.status : this.filterDefaults.status
+      this.filter.target = query && query.target ? query.target : this.filterDefaults.target
       this.filter.since = query && query.since ? query.since : this.filterDefaults.since
       this.sort = query && query.sort ? query.sort : this.sortDefaults
     },
@@ -205,7 +219,7 @@ export default {
         statusFilter += '&filter[status]=pending&filter[status]=canceling'
       }
 
-      this.axios.get(`/api/releases?${statusFilter}&filter[since]=${this.filter.since}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}&sort=${this.sort}`)
+      this.axios.get(`/api/releases?${statusFilter}&filter[target]=${this.filter.target}&filter[since]=${this.filter.since}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}&sort=${this.sort}`)
         .then(response => {
           this.releases = response.data.items
           this.pagination = response.data.pagination
@@ -231,6 +245,12 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadReleases, timeoutWithJitter)
       }
+    },
+
+    setTarget (value) {
+      this.filter.target = value
+      this.pagination.page = 1
+      this.updateQueryParams()
     },
 
     setSince (value) {

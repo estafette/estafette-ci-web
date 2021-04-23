@@ -1,11 +1,9 @@
 <template>
   <div>
     <div class="row m-0">
-      <div class="col-12 col-lg-6 col-xxl-4">
+      <div class="col-12 col-xxl-8">
         <status-filter :filter="filter" />
       </div>
-      <div class="col-12 col-lg-6 col-xxl-2" />
-      <div class="col-12 col-lg-6 col-xxl-2" />
       <div class="col-12 col-lg-6 col-xxl-2">
         <frequent-labels :filter="filter" />
       </div>
