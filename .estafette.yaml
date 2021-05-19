@@ -199,6 +199,9 @@ releases:
             path: /robots.txt
           metrics:
             scrape: false
+        vpa:
+          enabled: true
+          updateMode: "Off"
         hosts:
         - estafette.secret(1Q0TpnxVNRBT-Ef5.wMLGlenN2F_oZl-vPNvMfur_geiDicdkmsuyumPWMzntP1hf.wtjGnPrKgkjiJQS4LtnEYKHomuCoauYsurqd9mWpqV3O3oPFd3QpqLNjhoJA4d7CYV9snJU=)
         - estafette.secret(Yckgy_NXzit9gA2t.l8LZcWPZbKkf5fMydVx6beetqZ_5sINemOrovXxfv0IbUmETD2TE.ldjZeHDeNr4Vpb8-KFxpavSwpdS1up1EbF1RNaa5S0SJ23IeCp9OQWfCjvf-ceIgFv8pwyg=)
