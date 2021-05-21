@@ -189,16 +189,23 @@ releases:
         container:
           repository: estafette
           cpu:
-            request: 10m
+            request: 12m
           memory:
-            request: 15Mi
-            limit: 512Mi
+            request: 125Mi
+            limit: 125Mi
           liveness:
             path: /robots.txt
           readiness:
             path: /robots.txt
           metrics:
             scrape: false
+        sidecars:
+        - type: openresty
+          cpu:
+            request: 12m
+          memory:
+            request: 125Mi
+            limit: 125Mi
         vpa:
           enabled: true
           updateMode: "Off"
