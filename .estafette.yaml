@@ -60,6 +60,7 @@ stages:
   bake:
     image: extensions/docker:dev
     action: build
+    severity: unknown
     repositories:
     - estafette
     path: ./dist
@@ -68,21 +69,6 @@ stages:
     - nginx.vh.default.conf
     - docker-entrypoint.sh
     - package-lock.json
-
-  check-container:
-    parallelStages:
-      check-efficiency:
-        image: extensions/docker:dev
-        action: dive
-        repositories:
-        - estafette
-
-      # incorrectly flags a vulnerability (see https://github.com/nginxinc/docker-nginx/issues/429), disabling for now
-      # vulnerability-scan:
-      #   image: extensions/docker:dev
-      #   action: trivy
-      #   repositories:
-      #   - estafette
 
   test:
     services:
