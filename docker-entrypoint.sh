@@ -12,7 +12,7 @@ sigterm_handler() {
   nginx -s quit
   wait $nginx_pid
   echo "NGINX has gracefully terminated, exiting entrypoint script..."
-  exit
+  exit 0
 }
 
 # run openresty
