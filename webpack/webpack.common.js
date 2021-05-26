@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
@@ -28,7 +28,7 @@ module.exports = {
       new TerserPlugin({
         parallel: true
       }),
-      new OptimizeCSSAssetsPlugin({})
+      new CssMinimizerWebpackPlugin({})
     ],
     sideEffects: true,
     runtimeChunk: 'single',
