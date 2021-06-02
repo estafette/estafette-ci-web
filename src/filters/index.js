@@ -8,6 +8,8 @@ import buildProgressBarValue from './buildProgressBarValue'
 import buildProgressBarLabel from './buildProgressBarLabel'
 import releaseProgressBarValue from './releaseProgressBarValue'
 import releaseProgressBarLabel from './releaseProgressBarLabel'
+import botProgressBarValue from './botProgressBarValue'
+import botProgressBarLabel from './botProgressBarLabel'
 import defaultValue from './defaultValue'
 import capitalize from './capitalize'
 import colorDurationClass from './colorDurationClass'
@@ -26,6 +28,8 @@ Vue.filter('buildProgressBarValue', buildProgressBarValue)
 Vue.filter('buildProgressBarLabel', buildProgressBarLabel)
 Vue.filter('releaseProgressBarValue', releaseProgressBarValue)
 Vue.filter('releaseProgressBarLabel', releaseProgressBarLabel)
+Vue.filter('botProgressBarValue', botProgressBarValue)
+Vue.filter('botProgressBarLabel', botProgressBarLabel)
 Vue.filter('defaultValue', defaultValue)
 Vue.filter('capitalize', capitalize)
 Vue.filter('colorDurationClass', colorDurationClass)

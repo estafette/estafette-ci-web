@@ -51,7 +51,7 @@ export default new Router({
         {
           path: 'builds',
           name: 'AllBuilds',
-          component: () => import(/* webpackChunkName: "builds" */ '../views/AllBuilds.vue'),
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/AllBuilds.vue'),
           props: (route) => ({ query: route.query }),
           meta: {
             text: 'Builds',
@@ -61,11 +61,21 @@ export default new Router({
         {
           path: 'releases',
           name: 'AllReleases',
-          component: () => import(/* webpackChunkName: "releases" */ '../views/AllReleases.vue'),
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/AllReleases.vue'),
           props: (route) => ({ query: route.query }),
           meta: {
             text: 'Releases',
             icon: 'upload'
+          }
+        },
+        {
+          path: 'bots',
+          name: 'AllBots',
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/AllBots.vue'),
+          props: (route) => ({ query: route.query }),
+          meta: {
+            text: 'Bots',
+            icon: 'robot'
           }
         }
       ]
@@ -108,6 +118,16 @@ export default new Router({
           meta: {
             text: 'Releases',
             icon: 'upload'
+          }
+        },
+        {
+          path: 'bots',
+          name: 'PipelineBots',
+          props: (route) => ({ query: route.query, ...route.params }),
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineBots.vue'),
+          meta: {
+            text: 'Bots',
+            icon: 'robot'
           }
         },
         {
@@ -187,6 +207,27 @@ export default new Router({
           name: 'PipelineReleaseLogs',
           props: true,
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineReleaseLogs.vue'),
+          meta: {
+            text: 'Logs',
+            icon: 'poll-h'
+          }
+        }
+      ]
+    },
+    {
+      path: '/pipelines/:repoSource/:repoOwner/:repoName/bots/:botID',
+      name: 'PipelineBotDetails',
+      props: true,
+      meta: {
+        hide: true
+      },
+      component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineBotDetails.vue'),
+      children: [
+        {
+          path: 'logs/:logid?',
+          name: 'PipelineBotLogs',
+          props: true,
+          component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineBotLogs.vue'),
           meta: {
             text: 'Logs',
             icon: 'poll-h'
