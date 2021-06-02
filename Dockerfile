@@ -1,7 +1,14 @@
-FROM nginx:1.21.0-alpine
+FROM nginx:1.21-alpine
 
 LABEL maintainer="estafette.io" \
       description="The estafette-ci-web is the component that renders the Esfafette CI web interface"
+
+# fix vulnerabilities
+RUN apk update \
+    && apk add --upgrade \
+      curl \
+      libcurl \
+    && rm /var/cache/apk/*
 
 COPY . /usr/share/nginx/html
 COPY nginx.vh.default.conf /etc/nginx/conf.d/default.conf
