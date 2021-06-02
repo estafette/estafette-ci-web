@@ -61,6 +61,42 @@
         <!-- {{ event.git.branch }} -->
       </div>
       <div
+        v-if="event.github"
+        :title="event.github.repository"
+      >
+        <font-awesome-icon
+          :icon="['fab', 'github']"
+          class="triggered-by-icon"
+        />
+        <!-- <a
+          :href="'https://'+event.github.repository"
+          target="_blank"
+          class="text-body"
+          @click.stop
+        >
+          {{ event.github.repository }}
+        </a> -->
+        {{ event.github.event }}
+      </div>
+      <div
+        v-if="event.bitbucket"
+        :title="event.bitbucket.repository"
+      >
+        <font-awesome-icon
+          :icon="['fab', 'bitbucket']"
+          class="triggered-by-icon"
+        />
+        <!-- <a
+          :href="'https://'+event.bitbucket.repository"
+          target="_blank"
+          class="text-body"
+          @click.stop
+        >
+          {{ event.bitbucket.repository }}
+        </a> -->
+        {{ event.bitbucket.event }}
+      </div>
+      <div
         v-if="event.pubsub"
         :title="'projects/'+event.pubsub.project+'/topics/'+event.pubsub.topic"
       >
@@ -100,9 +136,10 @@
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTools, faUpload, faUserCircle, faClock, faCodeBranch, faBezierCurve } from '@fortawesome/free-solid-svg-icons'
+import { faGithub, faBitbucket } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faTools, faUpload, faUserCircle, faClock, faCodeBranch, faBezierCurve)
+library.add(faTools, faUpload, faUserCircle, faClock, faCodeBranch, faBezierCurve, faGithub, faBitbucket)
 
 export default {
   components: {

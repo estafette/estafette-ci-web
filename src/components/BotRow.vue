@@ -44,7 +44,7 @@
     </property-block>
     <property-block
       label="Triggered by"
-      class="col-xxxl-2"
+      class="col-xxxl-4"
     >
       <triggered-by :events="bot.triggerEvents" />
     </property-block>
