@@ -38,6 +38,7 @@
       label="Actions"
     >
       <cancel-button :bot="bot" />
+      <rerun-button :bot="bot" />
     </property-block>
   </div>
 </template>
@@ -46,6 +47,7 @@
 import { mapState } from 'vuex'
 import { BProgress, BProgressBar } from 'bootstrap-vue'
 import CancelButton from '@/components/CancelButton'
+import RerunButton from '@/components/RerunButton'
 import TriggeredBy from '@/components/TriggeredBy'
 import PropertyBlock from '@/components/PropertyBlock'
 import RepositoryTitle from '@/components/RepositoryTitle'
@@ -57,6 +59,7 @@ export default {
     BProgress,
     BProgressBar,
     CancelButton,
+    RerunButton,
     TriggeredBy,
     PropertyBlock,
     RepositoryTitle,
@@ -103,7 +106,7 @@ export default {
     }),
 
     showActions () {
-      return this.user && this.user.active && this.bot && (this.bot.botStatus === 'pending' || this.bot.botStatus === 'running' || this.bot.botStatus === 'canceling')
+      return this.user && this.user.active && this.bot && (this.bot.botStatus === 'failed' || this.bot.botStatus === 'pending' || this.bot.botStatus === 'running' || this.bot.botStatus === 'canceled' || this.bot.botStatus === 'canceling')
     }
   }
 }
