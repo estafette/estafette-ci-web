@@ -1,6 +1,6 @@
 <template>
   <b-input-group
-    v-if="user.active && ((build && (build.buildStatus === 'pending' || build.buildStatus === 'running' || build.buildStatus === 'canceling')) || (release && (release.releaseStatus === 'pending' || release.releaseStatus === 'running' || release.releaseStatus === 'canceling')))"
+    v-if="user.active && ((build && (build.buildStatus === 'pending' || build.buildStatus === 'running' || build.buildStatus === 'canceling')) || (release && (release.releaseStatus === 'pending' || release.releaseStatus === 'running' || release.releaseStatus === 'canceling')) || (bot && (bot.botStatus === 'pending' || bot.botStatus === 'running' || bot.botStatus === 'canceling')))"
     style="width: auto;"
   >
     <b-input-group-text
@@ -46,6 +46,10 @@ export default {
     release: {
       type: Object,
       default: null
+    },
+    bot: {
+      type: Object,
+      default: null
     }
   },
   data: function () {
@@ -70,6 +74,15 @@ export default {
             .then(response => {
               // eslint-disable-next-line vue/no-mutating-props
               this.release.releaseStatus = 'canceling'
+            })
+            .catch(e => {
+              console.warn(e)
+            })
+        } else if (this.bot && (this.bot.botStatus === 'pending' || this.bot.botStatus === 'running' || this.bot.botStatus === 'canceling')) {
+          this.axios.delete(`/api/pipelines/${this.bot.repoSource}/${this.bot.repoOwner}/${this.bot.repoName}/bots/${this.bot.id}`)
+            .then(response => {
+              // eslint-disable-next-line vue/no-mutating-props
+              this.bot.botStatus = 'canceling'
             })
             .catch(e => {
               console.warn(e)
