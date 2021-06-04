@@ -69,17 +69,12 @@ export default {
 
   methods: {
     loadBotNames () {
-      let labelFilterParams = ''
-      if (this.filter && this.filter.labels && this.filter.labels.length > 0) {
-        labelFilterParams = this.filter.labels.split(',').join('&filter[labels]=')
-      }
-
       let statusFilter = `filter[status]=${this.filter.status}`
       if (this.filter.status === 'running') {
         statusFilter += '&filter[status]=pending&filter[status]=canceling'
       }
 
-      this.axios.get(`/api/pipelines/${this.pipeline.repoSource}/${this.pipeline.repoOwner}/${this.pipeline.repoName}/botnames?${statusFilter}&filter[since]=${this.filter.since}&filter[search]=${this.filter.search}&filter[labels]=${labelFilterParams}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/pipelines/${this.pipeline.repoSource}/${this.pipeline.repoOwner}/${this.pipeline.repoName}/botnames?${statusFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.bots = response.data.items
           this.periodicallyRefreshBotNames(5)
