@@ -1,0 +1,18 @@
+{
+  "items":[
+     {
+        "name":"main",
+        "count":313
+     },
+     {
+      "name":"master",
+      "count":189
+    }
+],
+  "pagination":{
+     "page":1,
+     "size":20,
+     "totalPages":26,
+     "totalItems":502
+  }
+}

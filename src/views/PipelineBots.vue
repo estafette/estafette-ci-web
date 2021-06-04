@@ -2,11 +2,12 @@
   <div class="m-3">
     <div class="row">
       <div class="col-12 col-lg-3">
-        <!-- <bot-target-selector
-          :model="filter.target"
-          :on-change="setTarget"
+        <bot-name-filter
+          :filter="filter"
+          :model="filter.bot"
+          :on-change="setBot"
           :pipeline="pipeline"
-        /> -->
+        />
       </div>
       <div class="col-7 col-lg-6 text-lg-center">
         <status-filter :filter="filter" />
@@ -78,7 +79,7 @@ import Pagination from '@/components/Pagination'
 import StatusFilter from '@/components/StatusFilter'
 import BotRow from '@/components/BotRow'
 import PaginationCompact from '@/components/PaginationCompact'
-// import BotTargetSelector from '@/components/BotTargetSelector'
+import BotNameFilter from '@/components/BotNameFilter'
 
 export default {
   components: {
@@ -86,8 +87,8 @@ export default {
     Pagination,
     StatusFilter,
     BotRow,
-    PaginationCompact //,
-    // BotTargetSelector
+    PaginationCompact,
+    BotNameFilter
   },
   props: {
     repoSource: {
@@ -122,7 +123,7 @@ export default {
       },
       filter: {
         status: 'all',
-        target: 'all'
+        bot: 'all'
       },
       loaded: false,
       refresh: true
@@ -158,10 +159,10 @@ export default {
         delete query.status
       }
 
-      if (this.filter && this.filter.target && this.filter.target !== '') {
-        query.target = this.filter.target
-      } else if (query.target) {
-        delete query.target
+      if (this.filter && this.filter.bot && this.filter.bot !== '') {
+        query.bot = this.filter.bot
+      } else if (query.bot) {
+        delete query.bot
       }
 
       if (this.pagination && this.pagination.page && this.pagination.page > 0) {
@@ -188,9 +189,9 @@ export default {
       if (this.filter.status === 'running') {
         statusFilter += '&filter[status]=pending&filter[status]=canceling'
       }
-      const targetFilter = `filter[target]=${this.filter.target}`
+      const botFilter = `filter[bot]=${this.filter.bot}`
 
-      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/bots?${statusFilter}&${targetFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/bots?${statusFilter}&${botFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.bots = response.data.items
           this.pagination = response.data.pagination
@@ -216,8 +217,8 @@ export default {
       }
     },
 
-    setTarget (value) {
-      this.filter.target = value
+    setBot (value) {
+      this.filter.bot = value
       this.updateQueryParams()
     }
   },

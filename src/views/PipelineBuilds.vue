@@ -1,8 +1,18 @@
 <template>
   <div class="m-3">
     <div class="row">
-      <div class="col-12 text-center">
+      <div class="col-12 col-lg-3">
+        <build-branch-filter
+          :filter="filter"
+          :model="filter.branch"
+          :on-change="setBranch"
+          :pipeline="pipeline"
+        />
+      </div>
+      <div class="col-7 col-lg-6 text-lg-center">
         <status-filter :filter="filter" />
+      </div>
+      <div class="col-5 col-lg-3">
         <pagination-compact
           :pagination="pagination"
           :link-generator="paginationLinkGenerator"
@@ -76,6 +86,7 @@ import StatusFilter from '@/components/StatusFilter'
 import PaginationCompact from '@/components/PaginationCompact'
 import BuildRow from '@/components/BuildRow'
 import Pagination from '@/components/Pagination'
+import BuildBranchFilter from '@/components/BuildBranchFilter'
 
 export default {
   components: {
@@ -83,7 +94,8 @@ export default {
     StatusFilter,
     PaginationCompact,
     BuildRow,
-    Pagination
+    Pagination,
+    BuildBranchFilter
   },
 
   props: {
@@ -118,7 +130,8 @@ export default {
         totalItems: 0
       },
       filter: {
-        status: 'all'
+        status: 'all',
+        branch: 'all'
       },
       loaded: false,
       refresh: true
@@ -153,6 +166,11 @@ export default {
       } else if (query.status) {
         delete query.status
       }
+      if (this.filter && this.filter.branch && this.filter.branch !== '') {
+        query.branch = this.filter.branch
+      } else if (query.branch) {
+        delete query.branch
+      }
 
       if (this.pagination && this.pagination.page && this.pagination.page > 0) {
         query.page = this.pagination.page
@@ -177,8 +195,9 @@ export default {
       if (this.filter.status === 'running') {
         statusFilter += '&filter[status]=pending&filter[status]=canceling'
       }
+      const branchFilter = `filter[branch]=${this.filter.branch}`
 
-      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds?${statusFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds?${statusFilter}&${branchFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.builds = response.data.items
           this.pagination = response.data.pagination
@@ -202,6 +221,11 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadBuilds, timeoutWithJitter)
       }
+    },
+
+    setBranch (value) {
+      this.filter.branch = value
+      this.updateQueryParams()
     }
   },
 
