@@ -42,6 +42,18 @@
           class="mb-3"
         />
       </div>
+      <div
+        v-if="pipeline.manifest.bots && pipeline.manifest.bots > 0"
+        class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
+      >
+        <pipeline-stats-timeline
+          :pipeline="pipeline"
+          :filter="filter"
+          type="bots"
+          status="warning"
+          class="mb-3"
+        />
+      </div>
 
       <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
         <pipeline-stats-cpu
@@ -64,6 +76,18 @@
           class="mb-3"
         />
       </div>
+      <div
+        v-if="pipeline.manifest.bots && pipeline.manifest.bots > 0"
+        class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
+      >
+        <pipeline-stats-cpu
+          :pipeline="pipeline"
+          :filter="filter"
+          type="bots"
+          status="warning"
+          class="mb-3"
+        />
+      </div>
 
       <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
         <pipeline-stats-memory
@@ -83,6 +107,18 @@
           :filter="filter"
           type="releases"
           status="success"
+          class="mb-3"
+        />
+      </div>
+      <div
+        v-if="pipeline.manifest.bots && pipeline.manifest.bots > 0"
+        class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
+      >
+        <pipeline-stats-memory
+          :pipeline="pipeline"
+          :filter="filter"
+          type="bots"
+          status="warning"
           class="mb-3"
         />
       </div>
@@ -129,11 +165,11 @@ export default {
         last: '100'
       },
       lastOptions: [
-        { value: '25', text: 'Last 25 builds/releases' },
-        { value: '100', text: 'Last 100 builds/releases' },
-        { value: '250', text: 'Last 250 builds/releases' },
-        { value: '1000', text: 'Last 1000 builds/releases' },
-        { value: '25000', text: 'All builds/releases' }
+        { value: '25', text: 'Last 25 builds/releases/bots' },
+        { value: '100', text: 'Last 100 builds/releases/bots' },
+        { value: '250', text: 'Last 250 builds/releases/bots' },
+        { value: '1000', text: 'Last 1000 builds/releases/bots' },
+        { value: '100000', text: 'All builds/releases/bots' }
       ]
     }
   },
