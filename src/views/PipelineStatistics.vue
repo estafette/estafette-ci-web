@@ -31,7 +31,7 @@
         />
       </div>
       <div
-        v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
+        v-if="hasReleases()"
         class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
       >
         <pipeline-stats-timeline
@@ -43,7 +43,7 @@
         />
       </div>
       <div
-        v-if="pipeline.manifest.bots && pipeline.manifest.bots > 0"
+        v-if="hasBots()"
         class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
       >
         <pipeline-stats-timeline
@@ -65,7 +65,7 @@
         />
       </div>
       <div
-        v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
+        v-if="hasReleases()"
         class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
       >
         <pipeline-stats-cpu
@@ -77,7 +77,7 @@
         />
       </div>
       <div
-        v-if="pipeline.manifest.bots && pipeline.manifest.bots > 0"
+        v-if="hasBots()"
         class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
       >
         <pipeline-stats-cpu
@@ -99,7 +99,7 @@
         />
       </div>
       <div
-        v-if="pipeline.releaseTargets && pipeline.releaseTargets.length > 0"
+        v-if="hasReleases()"
         class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
       >
         <pipeline-stats-memory
@@ -111,7 +111,7 @@
         />
       </div>
       <div
-        v-if="pipeline.manifest.bots && pipeline.manifest.bots > 0"
+        v-if="hasBots()"
         class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
       >
         <pipeline-stats-memory
@@ -190,6 +190,15 @@ export default {
     setLast (value) {
       this.filter.last = value
       this.updateQueryParams()
+    }
+  },
+
+  computed: {
+    hasReleases () {
+      return this.pipeline && this.pipeline.releaseTargets && this.pipeline.releaseTargets.length > 0
+    },
+    hasBots () {
+      return this.pipeline && this.pipeline.triggers && this.pipeline.triggers.some(t => t.runs)
     }
   }
 }
