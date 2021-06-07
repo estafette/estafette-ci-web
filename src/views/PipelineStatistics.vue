@@ -21,7 +21,7 @@
     </div>
 
     <div class="mt-0 mr-3 mb-3 ml-3 row">
-      <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
+      <div class="col-12 col-xl-6 col-xxxl-4">
         <pipeline-stats-timeline
           :pipeline="pipeline"
           :filter="filter"
@@ -32,7 +32,7 @@
       </div>
       <div
         v-if="hasReleases"
-        class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
+        class="col-12 col-xl-6 col-xxxl-4"
       >
         <pipeline-stats-timeline
           :pipeline="pipeline"
@@ -44,7 +44,7 @@
       </div>
       <div
         v-if="hasBots"
-        class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
+        class="col-12 col-xl-6 col-xxxl-4"
       >
         <pipeline-stats-timeline
           :pipeline="pipeline"
@@ -55,7 +55,7 @@
         />
       </div>
 
-      <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
+      <div class="col-12 col-xl-6 col-xxxl-4">
         <pipeline-stats-cpu
           :pipeline="pipeline"
           :filter="filter"
@@ -66,7 +66,7 @@
       </div>
       <div
         v-if="hasReleases"
-        class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
+        class="col-12 col-xl-6 col-xxxl-4"
       >
         <pipeline-stats-cpu
           :pipeline="pipeline"
@@ -78,7 +78,7 @@
       </div>
       <div
         v-if="hasBots"
-        class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
+        class="col-12 col-xl-6 col-xxxl-4"
       >
         <pipeline-stats-cpu
           :pipeline="pipeline"
@@ -89,7 +89,7 @@
         />
       </div>
 
-      <div class="col-12 col-lg-6 col-xxl-4 col-xxxl-3">
+      <div class="col-12 col-xl-6 col-xxxl-4">
         <pipeline-stats-memory
           :pipeline="pipeline"
           :filter="filter"
@@ -100,7 +100,7 @@
       </div>
       <div
         v-if="hasReleases"
-        class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
+        class="col-12 col-xl-6 col-xxxl-4"
       >
         <pipeline-stats-memory
           :pipeline="pipeline"
@@ -112,7 +112,7 @@
       </div>
       <div
         v-if="hasBots"
-        class="col-12 col-lg-6 col-xxl-4 col-xxxl-3"
+        class="col-12 col-xl-6 col-xxxl-4"
       >
         <pipeline-stats-memory
           :pipeline="pipeline"
