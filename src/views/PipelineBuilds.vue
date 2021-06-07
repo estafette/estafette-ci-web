@@ -131,7 +131,7 @@ export default {
       },
       filter: {
         status: 'all',
-        branch: 'all'
+        branch: ''
       },
       loaded: false,
       refresh: true

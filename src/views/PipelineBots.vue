@@ -123,7 +123,7 @@ export default {
       },
       filter: {
         status: 'all',
-        bot: 'all'
+        bot: ''
       },
       loaded: false,
       refresh: true
