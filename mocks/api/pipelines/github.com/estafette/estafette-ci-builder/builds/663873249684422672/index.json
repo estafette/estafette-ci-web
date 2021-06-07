@@ -1,0 +1,261 @@
+{
+  "id": "663873249684422672",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-builder",
+  "repoBranch": "main",
+  "repoRevision": "c4bf5e2948ea76ab7a00f763cf2f3579483a6b84",
+  "buildVersion": "0.0.877",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette"
+    }
+  ],
+  "releaseTargets": [
+    {
+      "name": "dev",
+      "activeReleases": [
+        {
+          "name": "dev",
+          "id": "664302984403714064",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-builder",
+          "releaseVersion": "0.0.883",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "fired": true,
+              "pipeline": {
+                "buildVersion": "0.0.883",
+                "repoSource": "github.com",
+                "repoOwner": "estafette",
+                "repoName": "estafette-ci-builder",
+                "repoBranch": "main",
+                "status": "succeeded",
+                "event": "finished"
+              }
+            }
+          ],
+          "insertedAt": "2021-06-04T09:39:42.251648Z",
+          "startedAt": "2021-06-04T09:39:43.964714Z",
+          "updatedAt": "2021-06-04T09:40:14.909457Z",
+          "duration": 30000000000,
+          "pendingDuration": 1000000000,
+          "extraInfo": {
+            "medianPendingDuration": 1000000000,
+            "medianDuration": 29000000000
+          }
+        }
+      ]
+    },
+    {
+      "name": "beta",
+      "activeReleases": [
+        {
+          "name": "beta",
+          "id": "663997181020307474",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-builder",
+          "releaseVersion": "0.0.882",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "fired": true,
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2021-06-03T07:44:18.465171Z",
+          "startedAt": "2021-06-03T07:44:19.50968Z",
+          "updatedAt": "2021-06-03T07:45:05.632364Z",
+          "duration": 46000000000,
+          "pendingDuration": 1000000000,
+          "extraInfo": {
+            "medianPendingDuration": 1000000000,
+            "medianDuration": 32000000000
+          }
+        }
+      ]
+    },
+    {
+      "name": "stable",
+      "activeReleases": [
+        {
+          "name": "stable",
+          "id": "663997192423964688",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-builder",
+          "releaseVersion": "0.0.882",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "fired": true,
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2021-06-03T07:44:21.945403Z",
+          "startedAt": "2021-06-03T07:44:23.099666Z",
+          "updatedAt": "2021-06-03T07:45:26.718082Z",
+          "duration": 63000000000,
+          "pendingDuration": 1000000000,
+          "extraInfo": {
+            "medianPendingDuration": 1000000000,
+            "medianDuration": 40000000000
+          }
+        }
+      ]
+    },
+    {
+      "name": "nanoserver-1809-dev",
+      "activeReleases": [
+        {
+          "name": "nanoserver-1809-dev",
+          "id": "663802179528294416",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-builder",
+          "releaseVersion": "0.0.876",
+          "releaseStatus": "canceled",
+          "triggerEvents": [
+            {
+              "fired": true,
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2021-06-02T15:12:28.732612Z",
+          "updatedAt": "2021-06-02T15:24:29.039388Z",
+          "duration": 720000000000,
+          "pendingDuration": 0,
+          "extraInfo": {
+            "medianPendingDuration": 7000000000,
+            "medianDuration": 125000000000
+          }
+        }
+      ]
+    },
+    {
+      "name": "nanoserver-1809-beta",
+      "activeReleases": [
+        {
+          "name": "nanoserver-1809-beta",
+          "id": "663802187485839377",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-builder",
+          "releaseVersion": "0.0.876",
+          "releaseStatus": "canceled",
+          "triggerEvents": [
+            {
+              "fired": true,
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2021-06-02T15:12:31.161105Z",
+          "updatedAt": "2021-06-02T15:24:28.064983Z",
+          "duration": 716000000000,
+          "pendingDuration": 0,
+          "extraInfo": {
+            "medianPendingDuration": 274000000000,
+            "medianDuration": 117000000000
+          }
+        }
+      ]
+    },
+    {
+      "name": "nanoserver-1809-stable",
+      "activeReleases": [
+        {
+          "name": "nanoserver-1809-stable",
+          "id": "663802194910576656",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "estafette-ci-builder",
+          "releaseVersion": "0.0.876",
+          "releaseStatus": "canceled",
+          "triggerEvents": [
+            {
+              "fired": true,
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2021-06-02T15:12:33.426892Z",
+          "updatedAt": "2021-06-02T15:24:27.176241Z",
+          "duration": 713000000000,
+          "pendingDuration": 0,
+          "extraInfo": {
+            "medianPendingDuration": 8000000000,
+            "medianDuration": 93000000000
+          }
+        }
+      ]
+    }
+  ],
+  "manifest": "builder:\n  track: stable\n\nlabels:\n  app-group: estafette-ci\n  team: estafette\n  language: golang\n\nversion:\n  semver:\n    major: 0\n    minor: 0\n    releaseBranch: main\n\nstages:\n  build-and-test:\n    parallelStages:\n      test:\n        image: golang:1.16-alpine\n        commands:\n        - apk add --update --no-cache build-base\n        - go test -race ./...\n\n      build:\n        image: golang:1.16-alpine\n        env:\n          CGO_ENABLED: 0\n        commands:\n        - go build -v -ldflags \"-X main.appgroup=${ESTAFETTE_LABEL_APP_GROUP} -X main.app=${ESTAFETTE_GIT_NAME} -X main.version=${ESTAFETTE_BUILD_VERSION} -X main.revision=${ESTAFETTE_GIT_REVISION} -X main.branch=${ESTAFETTE_GIT_BRANCH} -X main.buildDate=${ESTAFETTE_BUILD_DATETIME}\" -o ./publish/${ESTAFETTE_GIT_NAME}\n\n  bake-all:\n    parallelStages:\n      bake:\n        image: extensions/docker:dev\n        action: build\n        severity: unknown\n        dontExpand:\n        - ESTAFETTE_WORKDIR\n        repositories:\n        - estafette\n        path: ./publish\n        copy:\n        - templates\n        - daemon.json\n\n      bake-gocd-agent:\n        image: extensions/docker:dev\n        action: build\n        severity: high\n        no-cache: true\n        versionTagSuffix: gocd\n        repositories:\n        - estafette\n        path: ./publish\n        copy:\n        - templates\n        dockerfile: Dockerfile.gocd\n\n  clean-working-directory:\n    image: golang:1.16-alpine\n    commands:\n    # - rm -rf ..?* .[!.]* *\n    - mkdir -p integration-test\n\n  test:\n    image: estafette/estafette-ci-builder:${ESTAFETTE_BUILD_VERSION}\n    env:\n      ESTAFETTE_WORKDIR: /estafette-work/integration-test\n      BUILDER_CONFIG:\n        '{\n          \"jobType\":\"build\",\n          \"track\":\"dev\",\n          \"dockerConfig\":{\n            \"runType\":\"dind\",\n            \"mtu\":1460\n          },\n          \"manifest\":{\n            \"Builder\":{\n              \"Track\":\"stable\",\n              \"OperatingSystem\":\"linux\"\n            },\n            \"Labels\":{\n              \"app\":\"estafette-ci-builder\",\n              \"app-group\":\"estafette-ci\",\n              \"language\":\"golang\",\n              \"team\":\"estafette-team\"\n            },\n            \"Version\":{\n              \"SemVer\":{\n                \"Major\":0,\n                \"Minor\":0,\n                \"Patch\":\"{{auto}}\",\n                \"LabelTemplate\":\"{{branch}}\",\n                \"ReleaseBranch\":\"master\"\n              },\n              \"Custom\":null\n            },\n            \"GlobalEnvVars\":null,\n            \"Releases\":null\n          },\n\n          \"stages\":[\n            {\n              \"Name\":\"services-test\",\n              \"ContainerImage\":\"alpine:latest\",\n              \"Shell\":\"/bin/sh\",\n              \"WorkingDirectory\":\"/estafette-work\",\n              \"Commands\": [\n                \"route\",\n                \"ip addr show eth0\",\n                \"cat /etc/hosts\",\n                \"cat /etc/resolv.conf\",\n                \"apk add curl\",\n                \"curl -v --connect-timeout 2 --retry 10 --retry-delay 2 --retry-connrefused http://nginx:80/\"\n              ],\n              \"When\":\"status == ''succeeded''\",\n              \"EnvVars\":null,\n              \"AutoInjected\":false,\n              \"Retries\":0,\n              \"Services\": [\n                {\n                  \"Name\": \"nginx\",\n                  \"ContainerImage\": \"nginx:alpine\",\n                  \"Shell\":\"/bin/sh\",\n                  \"When\":\"status == ''succeeded''\",\n                  \"Readiness\": {\n                    \"Path\": \"/\",\n                    \"TimeoutSeconds\": 30,\n                    \"Hostname\": \"nginx\",\n                    \"Port\": 80,\n                    \"Protocol\": \"http\"\n                  }\n                },\n                {\n                  \"Name\": \"cockroachdb\",\n                  \"ContainerImage\": \"cockroachdb/cockroach:v21.1.1\",\n                  \"Commands\":[\n                    \"/cockroach/cockroach start-single-node --insecure --advertise-addr cockroachdb\"\n                  ],\n                  \"EnvVars\":{\n                    \"COCKROACH_SKIP_ENABLING_DIAGNOSTIC_REPORTING\":\"true\"\n                  },\n                  \"Shell\":\"/bin/sh\",\n                  \"When\":\"status == ''succeeded''\",\n                  \"Readiness\": {\n                    \"Path\": \"/health?ready=1\",\n                    \"TimeoutSeconds\": 30,\n                    \"Hostname\": \"cockroachdb\",\n                    \"Port\": 8080,\n                    \"Protocol\": \"http\"\n                  }\n                }\n              ]\n            },\n            {\n              \"Name\":\"git-clone\",\n              \"ContainerImage\":\"extensions/git-clone:dev\",\n              \"Shell\":\"/bin/sh\",\n              \"WorkingDirectory\":\"/estafette-work\",\n              \"Commands\":null,\n              \"shallow\": false,\n              \"When\":\"status == ''succeeded''\",\n              \"EnvVars\":null,\n              \"AutoInjected\":true,\n              \"Retries\":0,\n              \"CustomProperties\":null\n            },\n            {\n              \"Name\":\"parallel-builds\",\n              \"ContainerImage\":\"\",\n              \"Shell\":\"/bin/sh\",\n              \"WorkingDirectory\":\"/estafette-work\",\n              \"Commands\":[],\n              \"When\":\"status == ''succeeded''\",\n              \"EnvVars\":{},\n              \"AutoInjected\":false,\n              \"Retries\":0,\n              \"CustomProperties\":null,\n              \"ParallelStages\":[\n                {\n                  \"Name\":\"buildA\",\n                  \"ContainerImage\":\n                  \"golang:1.16-alpine\",\n                  \"Shell\":\"/bin/sh\",\n                  \"WorkingDirectory\":\"/estafette-work\",\n                  \"Commands\":[\n                    \"go test ./...\",\n                    \"go build -v -ldflags \\\"-X main.version=${ESTAFETTE_BUILD_VERSION} -X main.revision=${ESTAFETTE_GIT_REVISION} -X main.branch=${ESTAFETTE_GIT_BRANCH} -X main.buildDate=${ESTAFETTE_BUILD_DATETIME}\\\" -o ./publish/${ESTAFETTE_GIT_NAME}\",\n                    \"echo $PWD\",\n                    \"ls -latr\",\n                    \"ls -latr ./publish\"\n                  ],\n                  \"When\":\"status == ''succeeded''\",\n                  \"EnvVars\":{\n                    \"CGO_ENABLED\":\"0\",\n                    \"GOOS\":\"linux\",\n                    \"GOARCH\":\"amd64\"\n                  },\n                  \"AutoInjected\":false,\n                  \"Retries\":0,\n                  \"CustomProperties\":null\n                },\n                {\n                  \"Name\":\"buildB\",\n                  \"ContainerImage\":\"alpine:3.10\",\n                  \"Shell\":\"/bin/sh\",\n                  \"WorkingDirectory\":\"/estafette-work\",\n                  \"Commands\":[\n                    \"echo hi\"\n                  ],\n                  \"When\":\"status == ''succeeded''\"\n                }\n              ]\n            },\n            {\n              \"Name\":\"bake-estafette\",\n              \"ContainerImage\":\"extensions/docker:dev\",\n              \"Shell\":\"/bin/sh\",\n              \"WorkingDirectory\":\"/estafette-work\",\n              \"Commands\":null,\n              \"When\":\"status == ''succeeded''\",\n              \"EnvVars\":null,\n              \"AutoInjected\":false,\n              \"Retries\":0,\n              \"CustomProperties\":{\n                \"action\":\"build\",\n                \"no-cache\":true,\n                \"severity\":\"unknown\",\n                \"tag\":\"testtag\",\n                \"dontExpand\":[\"ESTAFETTE_WORKDIR\"],\n                \"path\":\"./publish\",\n                \"repositories\":[\"estafette\"],\n                \"copy\":[\"templates\",\"daemon.json\"]\n              }\n            }\n          ],\n\n          \"jobName\":\"build-estafette-estafette-ci-builder-391855387650326531\",\n          \"ciServer\":{\n            \"baseUrl\":\"https://httpstat.us/200\",\n            \"builderEventsUrl\":\"https://httpstat.us/200\",\n            \"postLogsUrl\":\"https://httpstat.us/200\",\n            \"jwt\":\"\"\n          },\n          \"build\":{\n            \"ID\":\"391855387650326531\"\n          },\n          \"git\":{\n            \"repoSource\":\"github.com\",\n            \"repoOwner\":\"estafette\",\n            \"repoName\":\"estafette-ci-builder\",\n            \"repoBranch\":\"main\"\n          },\n          \"version\":{\n            \"version\":\"0.0.0-main\",\n            \"major\":0,\n            \"minor\":0,\n            \"patch\":\"0\",\n            \"autoincrement\":0\n          },\n          \"credentials\":null,\n          \"trustedImages\":[\n            {\n              \"path\":\"extensions/docker\",\n              \"runDocker\":true\n            },\n            {\n              \"path\":\"estafette/estafette-ci-builder\",\n              \"runPrivileged\":true\n            },\n            {\n              \"path\":\"golang\",\n              \"runDocker\":true,\n              \"allowCommands\":true\n            },\n            {\n              \"path\":\"extensions/git-clone\"\n            },\n            {\n              \"path\":\"bsycorp/kind\",\n              \"runPrivileged\":true\n            }\n          ]\n        }'\n      SECRET_DECRYPTION_KEY: \"8c6E5e7R8ameE2L6qxEcN5Yc3Q7P4Yd4\"\n      ESTAFETTE_LOG_FORMAT: console\n\n  push-all:\n    parallelStages:\n      push-to-docker-hub:\n        image: extensions/docker:dev\n        action: push\n        repositories:\n        - estafette\n\n      push-gocd-agent-to-docker-hub:\n        image: extensions/docker:dev\n        action: push\n        versionTagSuffix: gocd\n        repositories:\n        - estafette\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    workspace: estafette\n    channels:\n    - '#build-status'\n    when:\n      status == 'succeeded' ||\n      status == 'failed'\n\nreleases:\n  dev:\n    triggers:\n    - pipeline:\n        name: self\n        branch: .+\n    stages:\n      tag-all:\n        parallelStages:\n          tag-container-image:\n            image: extensions/docker:dev\n            action: tag\n            repositories:\n            - estafette\n            tags:\n            - dev\n\n          tag-gocd-agent-container-image:\n            image: extensions/docker:dev\n            action: tag\n            versionTagSuffix: gocd\n            repositories:\n            - estafette\n            tags:\n            - dev-gocd\n\n  beta:\n    stages:\n      tag-all:\n        parallelStages:\n          tag-container-image:\n            image: extensions/docker:dev\n            action: tag\n            repositories:\n            - estafette\n            tags:\n            - beta\n\n          tag-gocd-agent-container-image:\n            image: extensions/docker:dev\n            action: tag\n            versionTagSuffix: gocd\n            repositories:\n            - estafette\n            tags:\n            - beta-gocd\n\n      slack-notify:\n        image: extensions/slack-build-status:dev\n        workspace: estafette\n        channels:\n        - '#build-status'\n        when:\n          status == 'succeeded' ||\n          status == 'failed'\n\n  stable:\n    stages:\n      tag-all:\n        parallelStages:\n          tag-container-image:\n            image: extensions/docker:dev\n            action: tag\n            repositories:\n            - estafette\n            tags:\n            - stable\n            - latest\n\n          tag-gocd-agent-container-image:\n            image: extensions/docker:dev\n            action: tag\n            versionTagSuffix: gocd\n            repositories:\n            - estafette\n            tags:\n            - stable-gocd\n            - latest-gocd\n\n      slack-notify:\n        image: extensions/slack-build-status:dev\n        workspace: estafette\n        channels:\n        - '#build-status'\n        when:\n          status == 'succeeded' ||\n          status == 'failed'\n\n  nanoserver-1809-dev:\n    builder:\n      os: windows\n      track: nanoserver-1809-stable\n    # triggers:\n    # - pipeline:\n    #     name: self\n    #     branch: .+\n    clone: true\n    stages:\n      build:\n        image: estafette/golang:1.16.0-nanoserver-1809\n        shell: cmd\n        env:\n          CGO_ENABLED: 0\n          GOOS: windows\n          GOARCH: amd64\n        commands:\n        - go build -v -ldflags \"-X main.app=%ESTAFETTE_GIT_NAME% -X main.version=%ESTAFETTE_BUILD_VERSION% -X main.revision=%ESTAFETTE_GIT_REVISION% -X main.branch=%ESTAFETTE_GIT_BRANCH% -X main.buildDate=%ESTAFETTE_BUILD_DATETIME%\" -o ./publish/%ESTAFETTE_GIT_NAME%.exe\n\n      bake:\n        image: extensions/docker:nanoserver-1809-dev\n        action: build\n        no-cache: true\n        expand-variables: false\n        repositories:\n        - estafette\n        dockerfile: Dockerfile.nanoserver-1809\n        path: ./publish\n        copy:\n        - templates\n\n      push-to-docker-hub:\n        image: extensions/docker:nanoserver-1809-dev\n        action: push\n        repositories:\n        - estafette\n        tags:\n        - nanoserver-1809-dev\n        pushVersionTag: false\n\n  nanoserver-1809-beta:\n    builder:\n      os: windows\n      track: nanoserver-1809-dev\n    clone: true\n    stages:\n      build:\n        image: estafette/golang:1.16.0-nanoserver-1809\n        shell: cmd\n        env:\n          CGO_ENABLED: 0\n          GOOS: windows\n          GOARCH: amd64\n        commands:\n        - go build -v -ldflags \"-X main.app=%ESTAFETTE_GIT_NAME% -X main.version=%ESTAFETTE_BUILD_VERSION% -X main.revision=%ESTAFETTE_GIT_REVISION% -X main.branch=%ESTAFETTE_GIT_BRANCH% -X main.buildDate=%ESTAFETTE_BUILD_DATETIME%\" -o ./publish/%ESTAFETTE_GIT_NAME%.exe\n\n      bake:\n        image: extensions/docker:nanoserver-1809-dev\n        action: build\n        no-cache: true\n        expand-variables: false\n        repositories:\n        - estafette\n        dockerfile: Dockerfile.nanoserver-1809\n        path: ./publish\n        copy:\n        - templates\n\n      push-to-docker-hub:\n        image: extensions/docker:nanoserver-1809-dev\n        action: push\n        repositories:\n        - estafette\n        tags:\n        - nanoserver-1809-beta\n        pushVersionTag: false\n\n  nanoserver-1809-stable:\n    builder:\n      os: windows\n      track: nanoserver-1809-stable\n    clone: true\n    stages:\n      build:\n        image: estafette/golang:1.16.0-nanoserver-1809\n        shell: cmd\n        env:\n          CGO_ENABLED: 0\n          GOOS: windows\n          GOARCH: amd64\n        commands:\n        - go build -v -ldflags \"-X main.app=%ESTAFETTE_GIT_NAME% -X main.version=%ESTAFETTE_BUILD_VERSION% -X main.revision=%ESTAFETTE_GIT_REVISION% -X main.branch=%ESTAFETTE_GIT_BRANCH% -X main.buildDate=%ESTAFETTE_BUILD_DATETIME%\" -o ./publish/%ESTAFETTE_GIT_NAME%.exe\n\n      bake:\n        image: extensions/docker:nanoserver-1809-dev\n        action: build\n        no-cache: true\n        expand-variables: false\n        repositories:\n        - estafette\n        dockerfile: Dockerfile.nanoserver-1809\n        path: ./publish\n        copy:\n        - templates\n\n      push-to-docker-hub:\n        image: extensions/docker:nanoserver-1809-dev\n        action: push\n        repositories:\n        - estafette\n        tags:\n        - nanoserver-1809-stable\n        pushVersionTag: false\n",
+  "manifestWithDefaults": "builder:\n  track: stable\n  os: linux\n  type: docker\nlabels:\n  app-group: estafette-ci\n  language: golang\n  team: estafette\nversion:\n  semver:\n    major: 0\n    minor: 0\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: main\nstages:\n  build-and-test:\n    when: status == 'succeeded'\n    parallelStages:\n    - image: golang:1.16-alpine\n      shell: /bin/sh\n      workDir: /estafette-work\n      commands:\n      - apk add --update --no-cache build-base\n      - go test -race ./...\n      when: status == 'succeeded'\n    - image: golang:1.16-alpine\n      shell: /bin/sh\n      workDir: /estafette-work\n      commands:\n      - go build -v -ldflags \"-X main.appgroup=${ESTAFETTE_LABEL_APP_GROUP} -X main.app=${ESTAFETTE_GIT_NAME}\n        -X main.version=${ESTAFETTE_BUILD_VERSION} -X main.revision=${ESTAFETTE_GIT_REVISION}\n        -X main.branch=${ESTAFETTE_GIT_BRANCH} -X main.buildDate=${ESTAFETTE_BUILD_DATETIME}\"\n        -o ./publish/${ESTAFETTE_GIT_NAME}\n      when: status == 'succeeded'\n      env:\n        CGO_ENABLED: \"0\"\n  bake-all:\n    when: status == 'succeeded'\n    parallelStages:\n    - image: extensions/docker:dev\n      shell: /bin/sh\n      workDir: /estafette-work\n      when: status == 'succeeded'\n      action: build\n      copy:\n      - templates\n      - daemon.json\n      dontExpand:\n      - ESTAFETTE_WORKDIR\n      path: ./publish\n      repositories:\n      - estafette\n      severity: unknown\n    - image: extensions/docker:dev\n      shell: /bin/sh\n      workDir: /estafette-work\n      when: status == 'succeeded'\n      action: build\n      copy:\n      - templates\n      dockerfile: Dockerfile.gocd\n      no-cache: true\n      path: ./publish\n      repositories:\n      - estafette\n      severity: high\n      versionTagSuffix: gocd\n  clean-working-directory:\n    image: golang:1.16-alpine\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - mkdir -p integration-test\n    when: status == 'succeeded'\n  test:\n    image: estafette/estafette-ci-builder:${ESTAFETTE_BUILD_VERSION}\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded'\n    env:\n      BUILDER_CONFIG: |-\n        { \"jobType\":\"build\", \"track\":\"dev\", \"dockerConfig\":{ \"runType\":\"dind\", \"mtu\":1460 }, \"manifest\":{ \"Builder\":{ \"Track\":\"stable\", \"OperatingSystem\":\"linux\" }, \"Labels\":{ \"app\":\"estafette-ci-builder\", \"app-group\":\"estafette-ci\", \"language\":\"golang\", \"team\":\"estafette-team\" }, \"Version\":{ \"SemVer\":{ \"Major\":0, \"Minor\":0, \"Patch\":\"{{auto}}\", \"LabelTemplate\":\"{{branch}}\", \"ReleaseBranch\":\"master\" }, \"Custom\":null }, \"GlobalEnvVars\":null, \"Releases\":null },\n        \"stages\":[ { \"Name\":\"services-test\", \"ContainerImage\":\"alpine:latest\", \"Shell\":\"/bin/sh\", \"WorkingDirectory\":\"/estafette-work\", \"Commands\": [ \"route\", \"ip addr show eth0\", \"cat /etc/hosts\", \"cat /etc/resolv.conf\", \"apk add curl\", \"curl -v --connect-timeout 2 --retry 10 --retry-delay 2 --retry-connrefused http://nginx:80/\" ], \"When\":\"status == 'succeeded'\", \"EnvVars\":null, \"AutoInjected\":false, \"Retries\":0, \"Services\": [ { \"Name\": \"nginx\", \"ContainerImage\": \"nginx:alpine\", \"Shell\":\"/bin/sh\", \"When\":\"status == 'succeeded'\", \"Readiness\": { \"Path\": \"/\", \"TimeoutSeconds\": 30, \"Hostname\": \"nginx\", \"Port\": 80, \"Protocol\": \"http\" } }, { \"Name\": \"cockroachdb\", \"ContainerImage\": \"cockroachdb/cockroach:v21.1.1\", \"Commands\":[ \"/cockroach/cockroach start-single-node --insecure --advertise-addr cockroachdb\" ], \"EnvVars\":{ \"COCKROACH_SKIP_ENABLING_DIAGNOSTIC_REPORTING\":\"true\" }, \"Shell\":\"/bin/sh\", \"When\":\"status == 'succeeded'\", \"Readiness\": { \"Path\": \"/health?ready=1\", \"TimeoutSeconds\": 30, \"Hostname\": \"cockroachdb\", \"Port\": 8080, \"Protocol\": \"http\" } } ] }, { \"Name\":\"git-clone\", \"ContainerImage\":\"extensions/git-clone:dev\", \"Shell\":\"/bin/sh\", \"WorkingDirectory\":\"/estafette-work\", \"Commands\":null, \"shallow\": false, \"When\":\"status == 'succeeded'\", \"EnvVars\":null, \"AutoInjected\":true, \"Retries\":0, \"CustomProperties\":null }, { \"Name\":\"parallel-builds\", \"ContainerImage\":\"\", \"Shell\":\"/bin/sh\", \"WorkingDirectory\":\"/estafette-work\", \"Commands\":[], \"When\":\"status == 'succeeded'\", \"EnvVars\":{}, \"AutoInjected\":false, \"Retries\":0, \"CustomProperties\":null, \"ParallelStages\":[ { \"Name\":\"buildA\", \"ContainerImage\": \"golang:1.16-alpine\", \"Shell\":\"/bin/sh\", \"WorkingDirectory\":\"/estafette-work\", \"Commands\":[ \"go test ./...\", \"go build -v -ldflags \\\"-X main.version=${ESTAFETTE_BUILD_VERSION} -X main.revision=${ESTAFETTE_GIT_REVISION} -X main.branch=${ESTAFETTE_GIT_BRANCH} -X main.buildDate=${ESTAFETTE_BUILD_DATETIME}\\\" -o ./publish/${ESTAFETTE_GIT_NAME}\", \"echo $PWD\", \"ls -latr\", \"ls -latr ./publish\" ], \"When\":\"status == 'succeeded'\", \"EnvVars\":{ \"CGO_ENABLED\":\"0\", \"GOOS\":\"linux\", \"GOARCH\":\"amd64\" }, \"AutoInjected\":false, \"Retries\":0, \"CustomProperties\":null }, { \"Name\":\"buildB\", \"ContainerImage\":\"alpine:3.10\", \"Shell\":\"/bin/sh\", \"WorkingDirectory\":\"/estafette-work\", \"Commands\":[ \"echo hi\" ], \"When\":\"status == 'succeeded'\" } ] }, { \"Name\":\"bake-estafette\", \"ContainerImage\":\"extensions/docker:dev\", \"Shell\":\"/bin/sh\", \"WorkingDirectory\":\"/estafette-work\", \"Commands\":null, \"When\":\"status == 'succeeded'\", \"EnvVars\":null, \"AutoInjected\":false, \"Retries\":0, \"CustomProperties\":{ \"action\":\"build\", \"no-cache\":true, \"severity\":\"unknown\", \"tag\":\"testtag\", \"dontExpand\":[\"ESTAFETTE_WORKDIR\"], \"path\":\"./publish\", \"repositories\":[\"estafette\"], \"copy\":[\"templates\",\"daemon.json\"] } } ],\n        \"jobName\":\"build-estafette-estafette-ci-builder-391855387650326531\", \"ciServer\":{ \"baseUrl\":\"https://httpstat.us/200\", \"builderEventsUrl\":\"https://httpstat.us/200\", \"postLogsUrl\":\"https://httpstat.us/200\", \"jwt\":\"\" }, \"build\":{ \"ID\":\"391855387650326531\" }, \"git\":{ \"repoSource\":\"github.com\", \"repoOwner\":\"estafette\", \"repoName\":\"estafette-ci-builder\", \"repoBranch\":\"main\" }, \"version\":{ \"version\":\"0.0.0-main\", \"major\":0, \"minor\":0, \"patch\":\"0\", \"autoincrement\":0 }, \"credentials\":null, \"trustedImages\":[ { \"path\":\"extensions/docker\", \"runDocker\":true }, { \"path\":\"estafette/estafette-ci-builder\", \"runPrivileged\":true }, { \"path\":\"golang\", \"runDocker\":true, \"allowCommands\":true }, { \"path\":\"extensions/git-clone\" }, { \"path\":\"bsycorp/kind\", \"runPrivileged\":true } ] }\n      ESTAFETTE_LOG_FORMAT: console\n      ESTAFETTE_WORKDIR: /estafette-work/integration-test\n      SECRET_DECRYPTION_KEY: 8c6E5e7R8ameE2L6qxEcN5Yc3Q7P4Yd4\n  push-all:\n    when: status == 'succeeded'\n    parallelStages:\n    - image: extensions/docker:dev\n      shell: /bin/sh\n      workDir: /estafette-work\n      when: status == 'succeeded'\n      action: push\n      repositories:\n      - estafette\n    - image: extensions/docker:dev\n      shell: /bin/sh\n      workDir: /estafette-work\n      when: status == 'succeeded'\n      action: push\n      repositories:\n      - estafette\n      versionTagSuffix: gocd\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded' || status == 'failed'\n    channels:\n    - '#build-status'\n    workspace: estafette\nreleases:\n  dev:\n    builder:\n      track: stable\n      os: linux\n      type: docker\n    clone: false\n    triggers:\n    - pipeline:\n        event: finished\n        status: succeeded\n        name: self\n        branch: .+\n      releases:\n        target: dev\n        version: same\n    stages:\n      tag-all:\n        when: status == 'succeeded'\n        parallelStages:\n        - image: extensions/docker:dev\n          shell: /bin/sh\n          workDir: /estafette-work\n          when: status == 'succeeded'\n          action: tag\n          repositories:\n          - estafette\n          tags:\n          - dev\n        - image: extensions/docker:dev\n          shell: /bin/sh\n          workDir: /estafette-work\n          when: status == 'succeeded'\n          action: tag\n          repositories:\n          - estafette\n          tags:\n          - dev-gocd\n          versionTagSuffix: gocd\n  beta:\n    builder:\n      track: stable\n      os: linux\n      type: docker\n    clone: false\n    stages:\n      tag-all:\n        when: status == 'succeeded'\n        parallelStages:\n        - image: extensions/docker:dev\n          shell: /bin/sh\n          workDir: /estafette-work\n          when: status == 'succeeded'\n          action: tag\n          repositories:\n          - estafette\n          tags:\n          - beta\n        - image: extensions/docker:dev\n          shell: /bin/sh\n          workDir: /estafette-work\n          when: status == 'succeeded'\n          action: tag\n          repositories:\n          - estafette\n          tags:\n          - beta-gocd\n          versionTagSuffix: gocd\n      slack-notify:\n        image: extensions/slack-build-status:dev\n        shell: /bin/sh\n        workDir: /estafette-work\n        when: status == 'succeeded' || status == 'failed'\n        channels:\n        - '#build-status'\n        workspace: estafette\n  stable:\n    builder:\n      track: stable\n      os: linux\n      type: docker\n    clone: false\n    stages:\n      tag-all:\n        when: status == 'succeeded'\n        parallelStages:\n        - image: extensions/docker:dev\n          shell: /bin/sh\n          workDir: /estafette-work\n          when: status == 'succeeded'\n          action: tag\n          repositories:\n          - estafette\n          tags:\n          - stable\n          - latest\n        - image: extensions/docker:dev\n          shell: /bin/sh\n          workDir: /estafette-work\n          when: status == 'succeeded'\n          action: tag\n          repositories:\n          - estafette\n          tags:\n          - stable-gocd\n          - latest-gocd\n          versionTagSuffix: gocd\n      slack-notify:\n        image: extensions/slack-build-status:dev\n        shell: /bin/sh\n        workDir: /estafette-work\n        when: status == 'succeeded' || status == 'failed'\n        channels:\n        - '#build-status'\n        workspace: estafette\n  nanoserver-1809-dev:\n    builder:\n      track: nanoserver-1809-stable\n      os: windows\n      type: docker\n    clone: true\n    stages:\n      build:\n        image: estafette/golang:1.16.0-nanoserver-1809\n        shell: cmd\n        workDir: C:/estafette-work\n        commands:\n        - go build -v -ldflags \"-X main.app=%ESTAFETTE_GIT_NAME% -X main.version=%ESTAFETTE_BUILD_VERSION%\n          -X main.revision=%ESTAFETTE_GIT_REVISION% -X main.branch=%ESTAFETTE_GIT_BRANCH%\n          -X main.buildDate=%ESTAFETTE_BUILD_DATETIME%\" -o ./publish/%ESTAFETTE_GIT_NAME%.exe\n        when: status == 'succeeded'\n        env:\n          CGO_ENABLED: \"0\"\n          GOARCH: amd64\n          GOOS: windows\n      bake:\n        image: extensions/docker:nanoserver-1809-dev\n        shell: powershell\n        workDir: C:/estafette-work\n        when: status == 'succeeded'\n        action: build\n        copy:\n        - templates\n        dockerfile: Dockerfile.nanoserver-1809\n        expand-variables: false\n        no-cache: true\n        path: ./publish\n        repositories:\n        - estafette\n      push-to-docker-hub:\n        image: extensions/docker:nanoserver-1809-dev\n        shell: powershell\n        workDir: C:/estafette-work\n        when: status == 'succeeded'\n        action: push\n        pushVersionTag: false\n        repositories:\n        - estafette\n        tags:\n        - nanoserver-1809-dev\n  nanoserver-1809-beta:\n    builder:\n      track: nanoserver-1809-dev\n      os: windows\n      type: docker\n    clone: true\n    stages:\n      build:\n        image: estafette/golang:1.16.0-nanoserver-1809\n        shell: cmd\n        workDir: C:/estafette-work\n        commands:\n        - go build -v -ldflags \"-X main.app=%ESTAFETTE_GIT_NAME% -X main.version=%ESTAFETTE_BUILD_VERSION%\n          -X main.revision=%ESTAFETTE_GIT_REVISION% -X main.branch=%ESTAFETTE_GIT_BRANCH%\n          -X main.buildDate=%ESTAFETTE_BUILD_DATETIME%\" -o ./publish/%ESTAFETTE_GIT_NAME%.exe\n        when: status == 'succeeded'\n        env:\n          CGO_ENABLED: \"0\"\n          GOARCH: amd64\n          GOOS: windows\n      bake:\n        image: extensions/docker:nanoserver-1809-dev\n        shell: powershell\n        workDir: C:/estafette-work\n        when: status == 'succeeded'\n        action: build\n        copy:\n        - templates\n        dockerfile: Dockerfile.nanoserver-1809\n        expand-variables: false\n        no-cache: true\n        path: ./publish\n        repositories:\n        - estafette\n      push-to-docker-hub:\n        image: extensions/docker:nanoserver-1809-dev\n        shell: powershell\n        workDir: C:/estafette-work\n        when: status == 'succeeded'\n        action: push\n        pushVersionTag: false\n        repositories:\n        - estafette\n        tags:\n        - nanoserver-1809-beta\n  nanoserver-1809-stable:\n    builder:\n      track: nanoserver-1809-stable\n      os: windows\n      type: docker\n    clone: true\n    stages:\n      build:\n        image: estafette/golang:1.16.0-nanoserver-1809\n        shell: cmd\n        workDir: C:/estafette-work\n        commands:\n        - go build -v -ldflags \"-X main.app=%ESTAFETTE_GIT_NAME% -X main.version=%ESTAFETTE_BUILD_VERSION%\n          -X main.revision=%ESTAFETTE_GIT_REVISION% -X main.branch=%ESTAFETTE_GIT_BRANCH%\n          -X main.buildDate=%ESTAFETTE_BUILD_DATETIME%\" -o ./publish/%ESTAFETTE_GIT_NAME%.exe\n        when: status == 'succeeded'\n        env:\n          CGO_ENABLED: \"0\"\n          GOARCH: amd64\n          GOOS: windows\n      bake:\n        image: extensions/docker:nanoserver-1809-dev\n        shell: powershell\n        workDir: C:/estafette-work\n        when: status == 'succeeded'\n        action: build\n        copy:\n        - templates\n        dockerfile: Dockerfile.nanoserver-1809\n        expand-variables: false\n        no-cache: true\n        path: ./publish\n        repositories:\n        - estafette\n      push-to-docker-hub:\n        image: extensions/docker:nanoserver-1809-dev\n        shell: powershell\n        workDir: C:/estafette-work\n        when: status == 'succeeded'\n        action: push\n        pushVersionTag: false\n        repositories:\n        - estafette\n        tags:\n        - nanoserver-1809-stable\n",
+  "commits": [
+    {
+      "message": "update build/release/job status in CiBuilderEvent",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggers": [
+    {
+      "pipeline": {
+        "event": "finished",
+        "status": "succeeded",
+        "name": "github.com/estafette/estafette-ci-builder",
+        "branch": ".+"
+      },
+      "releases": {
+        "target": "dev",
+        "version": "same"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "fired": true,
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-ci-builder",
+        "branch": "main"
+      }
+    }
+  ],
+  "insertedAt": "2021-06-02T21:13:57.622893Z",
+  "startedAt": "2021-06-02T21:15:06.890061Z",
+  "updatedAt": "2021-06-02T21:18:25.435482Z",
+  "duration": 198000000000,
+  "pendingDuration": 69000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
+}

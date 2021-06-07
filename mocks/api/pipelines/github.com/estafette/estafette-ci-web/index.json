@@ -1,12 +1,12 @@
 {
-  "id": "651568794079166480",
+  "id": "664372343046012945",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-web",
   "repoBranch": "main",
-  "repoRevision": "3d6a36fd1e258e78897a2bdd63153324e7c73068",
-  "buildVersion": "1.0.0-main-1086",
-  "buildStatus": "running",
+  "repoRevision": "9f8dabadb4b13187cfe4471991b767d9091738d7",
+  "buildVersion": "1.0.0-main-1112",
+  "buildStatus": "succeeded",
   "labels": [
     {
       "key": "app-group",
@@ -41,11 +41,11 @@
         {
           "name": "tooling-estafette",
           "action": "deploy-simple",
-          "id": "651309877869707281",
+          "id": "664373422710980625",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-web",
-          "releaseVersion": "1.0.0-main-1077",
+          "releaseVersion": "1.0.0-main-1112",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
@@ -55,14 +55,14 @@
               }
             }
           ],
-          "insertedAt": "2021-04-19T12:13:20.8144Z",
-          "startedAt": "2021-04-19T12:13:22.519375Z",
-          "updatedAt": "2021-04-19T12:14:30.287797Z",
-          "duration": 67000000000,
+          "insertedAt": "2021-06-04T15:37:58.317229Z",
+          "startedAt": "2021-06-04T15:38:00.29033Z",
+          "updatedAt": "2021-06-04T15:39:04.394577Z",
+          "duration": 64000000000,
           "pendingDuration": 1000000000,
           "extraInfo": {
             "medianPendingDuration": 1000000000,
-            "medianDuration": 67000000000
+            "medianDuration": 66000000000
           }
         },
         {
@@ -92,7 +92,7 @@
   ],
   "commits": [
     {
-      "message": "estafette-ci-demo 0.0.46",
+      "message": "drop invalid filters from branches and bot filters",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -110,15 +110,15 @@
       }
     }
   ],
-  "insertedAt": "2021-04-20T10:10:15.770811Z",
-  "startedAt": "2021-04-20T10:10:17.235597Z",
-  "updatedAt": "2021-04-20T10:10:17.235597Z",
-  "duration": 0,
-  "pendingDuration": 1000000000,
-  "lastUpdatedAt": "2021-04-20T10:10:17.235597Z",
+  "insertedAt": "2021-06-04T15:32:28.829422Z",
+  "startedAt": "2021-06-04T15:32:34.175242Z",
+  "updatedAt": "2021-06-04T15:37:25.958029Z",
+  "duration": 291000000000,
+  "pendingDuration": 5000000000,
+  "lastUpdatedAt": "2021-06-04T15:39:04.394577Z",
   "extraInfo": {
     "medianPendingDuration": 1000000000,
-    "medianDuration": 284000000000
+    "medianDuration": 290000000000
   },
   "groups": [
     {

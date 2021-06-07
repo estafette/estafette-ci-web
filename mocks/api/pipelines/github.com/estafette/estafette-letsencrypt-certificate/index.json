@@ -1,11 +1,11 @@
 {
-  "id": "625515886809153548",
+  "id": "657200275663814672",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-letsencrypt-certificate",
-  "repoBranch": "1.2.9",
-  "repoRevision": "6cca01855410808eed638d6df4c6add710c3f012",
-  "buildVersion": "1.2.9",
+  "repoBranch": "main",
+  "repoRevision": "bd4d0f3f88f71a93f38a6602d3c42f434957ad25",
+  "buildVersion": "1.2.11-main-224",
   "buildStatus": "succeeded",
   "labels": [
     {
@@ -31,50 +31,62 @@
       "activeReleases": [
         {
           "name": "release",
-          "id": "625516779784241163",
+          "id": "657201968156409872",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-letsencrypt-certificate",
-          "releaseVersion": "1.2.9",
+          "releaseVersion": "1.2.10",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
+              "fired": true,
               "manual": {
                 "userID": "me@estafette.io"
               }
             }
           ],
-          "insertedAt": "2021-01-18T09:42:51.955229Z",
-          "startedAt": "2021-01-18T09:42:54.355695Z",
-          "updatedAt": "2021-01-18T09:43:54.649068Z",
-          "duration": 60000000000,
-          "pendingDuration": 2000000000,
+          "insertedAt": "2021-05-10T07:42:04.070833Z",
+          "startedAt": "2021-05-10T07:42:05.537383Z",
+          "updatedAt": "2021-05-10T07:42:35.861327Z",
+          "duration": 30000000000,
+          "pendingDuration": 1000000000,
           "extraInfo": {
-            "medianPendingDuration": 0,
+            "medianPendingDuration": 1000000000,
             "medianDuration": 32000000000
           }
         }
       ]
     }
   ],
-  "triggerEvents": [
+  "commits": [
     {
-      "git": {
-        "event": "push",
-        "repository": "github.com/estafette/estafette-letsencrypt-certificate",
-        "branch": "1.2.9"
+      "message": "bump version to 1.2.11",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
       }
     }
   ],
-  "insertedAt": "2021-01-18T09:38:19.440965Z",
-  "startedAt": "2021-01-18T09:38:22.122392Z",
-  "updatedAt": "2021-01-18T09:41:24.709991Z",
-  "duration": 182000000000,
-  "pendingDuration": 2000000000,
-  "lastUpdatedAt": "2021-01-18T09:43:54.649068Z",
+  "triggerEvents": [
+    {
+      "fired": true,
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-letsencrypt-certificate",
+        "branch": "main"
+      }
+    }
+  ],
+  "insertedAt": "2021-05-10T07:33:27.563039Z",
+  "startedAt": "2021-05-10T07:33:29.166605Z",
+  "updatedAt": "2021-05-10T07:36:36.584113Z",
+  "duration": 187000000000,
+  "pendingDuration": 1000000000,
+  "lastUpdatedAt": "2021-05-10T07:42:35.861327Z",
   "extraInfo": {
     "medianPendingDuration": 1000000000,
-    "medianDuration": 194000000000
+    "medianDuration": 195000000000
   },
   "groups": [
     {

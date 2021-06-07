@@ -1,13 +1,13 @@
 {
   "items": [
     {
-      "id": "647939737112412176",
+      "id": "664302210794422290",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-builder",
       "repoBranch": "main",
-      "repoRevision": "1cefe2c7d1737576ced2f0d01fa437268ae4be25",
-      "buildVersion": "0.0.845",
+      "repoRevision": "f3307c327eaa6cd885b19e0ea120ba103a76a05a",
+      "buildVersion": "0.0.883",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -45,7 +45,7 @@
       ],
       "commits": [
         {
-          "message": "update manifest to avoid use of removed github.com/gavv/deepcopy",
+          "message": "upgrade to docker 20.10.7",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -65,18 +65,6 @@
             "target": "dev",
             "version": "same"
           }
-        },
-        {
-          "pipeline": {
-            "event": "finished",
-            "status": "succeeded",
-            "name": "github.com/estafette/estafette-ci-builder",
-            "branch": ".+"
-          },
-          "releases": {
-            "target": "nanoserver-1809-dev",
-            "version": "same"
-          }
         }
       ],
       "triggerEvents": [
@@ -89,10 +77,10 @@
           }
         }
       ],
-      "insertedAt": "2021-04-07T14:31:55.475668Z",
-      "startedAt": "2021-04-07T14:31:56.490388Z",
-      "updatedAt": "2021-04-07T14:35:32.083281Z",
-      "duration": 215000000000,
+      "insertedAt": "2021-06-04T09:35:46.164567Z",
+      "startedAt": "2021-06-04T09:35:47.255915Z",
+      "updatedAt": "2021-06-04T09:39:41.793065Z",
+      "duration": 234000000000,
       "pendingDuration": 1000000000,
       "organizations": [
         {
@@ -101,213 +89,13 @@
       ]
     },
     {
-      "id": "647932391169884178",
+      "id": "663996012489900048",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-builder",
       "repoBranch": "main",
-      "repoRevision": "8d3c7c8d809ea05d22142efc8e7968c1a066cbe2",
-      "buildVersion": "0.0.844",
-      "buildStatus": "failed",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "dev"
-        },
-        {
-          "name": "beta"
-        },
-        {
-          "name": "stable"
-        },
-        {
-          "name": "nanoserver-1809-dev"
-        },
-        {
-          "name": "nanoserver-1809-beta"
-        },
-        {
-          "name": "nanoserver-1809-stable"
-        }
-      ],
-      "commits": [
-        {
-          "message": "install git to retrieve modules",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggers": [
-        {
-          "pipeline": {
-            "event": "finished",
-            "status": "succeeded",
-            "name": "github.com/estafette/estafette-ci-builder",
-            "branch": ".+"
-          },
-          "releases": {
-            "target": "dev",
-            "version": "same"
-          }
-        },
-        {
-          "pipeline": {
-            "event": "finished",
-            "status": "succeeded",
-            "name": "github.com/estafette/estafette-ci-builder",
-            "branch": ".+"
-          },
-          "releases": {
-            "target": "nanoserver-1809-dev",
-            "version": "same"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "fired": true,
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-builder",
-            "branch": "main"
-          }
-        }
-      ],
-      "insertedAt": "2021-04-07T13:54:33.671992Z",
-      "startedAt": "2021-04-07T13:54:41.509702Z",
-      "updatedAt": "2021-04-07T13:55:08.814048Z",
-      "duration": 27000000000,
-      "pendingDuration": 7000000000,
-      "organizations": [
-        {
-          "name": "Estafette"
-        }
-      ]
-    },
-    {
-      "id": "647931349771288594",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-builder",
-      "repoBranch": "main",
-      "repoRevision": "99e19b72dac998d93c86259a1d3ab00ebed78c79",
-      "buildVersion": "0.0.843",
-      "buildStatus": "failed",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "dev"
-        },
-        {
-          "name": "beta"
-        },
-        {
-          "name": "stable"
-        },
-        {
-          "name": "nanoserver-1809-dev"
-        },
-        {
-          "name": "nanoserver-1809-beta"
-        },
-        {
-          "name": "nanoserver-1809-stable"
-        }
-      ],
-      "commits": [
-        {
-          "message": "rebuild go.cd agent with docker 20.10.5-dind",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggers": [
-        {
-          "pipeline": {
-            "event": "finished",
-            "status": "succeeded",
-            "name": "github.com/estafette/estafette-ci-builder",
-            "branch": ".+"
-          },
-          "releases": {
-            "target": "dev",
-            "version": "same"
-          }
-        },
-        {
-          "pipeline": {
-            "event": "finished",
-            "status": "succeeded",
-            "name": "github.com/estafette/estafette-ci-builder",
-            "branch": ".+"
-          },
-          "releases": {
-            "target": "nanoserver-1809-dev",
-            "version": "same"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "fired": true,
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-builder",
-            "branch": "main"
-          }
-        }
-      ],
-      "insertedAt": "2021-04-07T13:49:15.862207Z",
-      "startedAt": "2021-04-07T13:49:17.716834Z",
-      "updatedAt": "2021-04-07T13:49:42.215504Z",
-      "duration": 24000000000,
-      "pendingDuration": 1000000000,
-      "organizations": [
-        {
-          "name": "Estafette"
-        }
-      ]
-    },
-    {
-      "id": "644995271736229904",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-builder",
-      "repoBranch": "main",
-      "repoRevision": "0294e8714f3afaa963bc72b0d58edc7ffdab9d93",
-      "buildVersion": "0.0.842",
+      "repoRevision": "076db7deea17841183e99d8ebe25ffde9daf2c7b",
+      "buildVersion": "0.0.882",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -345,7 +133,7 @@
       ],
       "commits": [
         {
-          "message": "install build-base for race detector",
+          "message": "don't send X-Estafette-Event header",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -365,18 +153,6 @@
             "target": "dev",
             "version": "same"
           }
-        },
-        {
-          "pipeline": {
-            "event": "finished",
-            "status": "succeeded",
-            "name": "github.com/estafette/estafette-ci-builder",
-            "branch": ".+"
-          },
-          "releases": {
-            "target": "nanoserver-1809-dev",
-            "version": "same"
-          }
         }
       ],
       "triggerEvents": [
@@ -389,11 +165,11 @@
           }
         }
       ],
-      "insertedAt": "2021-03-28T04:55:35.954151Z",
-      "startedAt": "2021-03-28T04:55:37.745662Z",
-      "updatedAt": "2021-03-28T04:59:04.213289Z",
-      "duration": 206000000000,
-      "pendingDuration": 1000000000,
+      "insertedAt": "2021-06-03T07:38:21.857963Z",
+      "startedAt": "2021-06-03T07:38:22.803604Z",
+      "updatedAt": "2021-06-03T07:41:48.465052Z",
+      "duration": 205000000000,
+      "pendingDuration": 0,
       "organizations": [
         {
           "name": "Estafette"
@@ -401,213 +177,13 @@
       ]
     },
     {
-      "id": "644995014202621970",
+      "id": "663986659227992080",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-builder",
       "repoBranch": "main",
-      "repoRevision": "385696cbfffed7cd6d0c733872c867200494012c",
-      "buildVersion": "0.0.841",
-      "buildStatus": "failed",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "dev"
-        },
-        {
-          "name": "beta"
-        },
-        {
-          "name": "stable"
-        },
-        {
-          "name": "nanoserver-1809-dev"
-        },
-        {
-          "name": "nanoserver-1809-beta"
-        },
-        {
-          "name": "nanoserver-1809-stable"
-        }
-      ],
-      "commits": [
-        {
-          "message": "run tests in parallel with build",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggers": [
-        {
-          "pipeline": {
-            "event": "finished",
-            "status": "succeeded",
-            "name": "github.com/estafette/estafette-ci-builder",
-            "branch": ".+"
-          },
-          "releases": {
-            "target": "dev",
-            "version": "same"
-          }
-        },
-        {
-          "pipeline": {
-            "event": "finished",
-            "status": "succeeded",
-            "name": "github.com/estafette/estafette-ci-builder",
-            "branch": ".+"
-          },
-          "releases": {
-            "target": "nanoserver-1809-dev",
-            "version": "same"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "fired": true,
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-builder",
-            "branch": "main"
-          }
-        }
-      ],
-      "insertedAt": "2021-03-28T04:54:17.36087Z",
-      "startedAt": "2021-03-28T04:54:19.213275Z",
-      "updatedAt": "2021-03-28T04:54:55.404643Z",
-      "duration": 36000000000,
-      "pendingDuration": 1000000000,
-      "organizations": [
-        {
-          "name": "Estafette"
-        }
-      ]
-    },
-    {
-      "id": "644994627204644880",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-builder",
-      "repoBranch": "main",
-      "repoRevision": "aea6edecb0482ddd2497af7e9f42850398198cc2",
-      "buildVersion": "0.0.840",
-      "buildStatus": "failed",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "dev"
-        },
-        {
-          "name": "beta"
-        },
-        {
-          "name": "stable"
-        },
-        {
-          "name": "nanoserver-1809-dev"
-        },
-        {
-          "name": "nanoserver-1809-beta"
-        },
-        {
-          "name": "nanoserver-1809-stable"
-        }
-      ],
-      "commits": [
-        {
-          "message": "test for race conditions",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggers": [
-        {
-          "pipeline": {
-            "event": "finished",
-            "status": "succeeded",
-            "name": "github.com/estafette/estafette-ci-builder",
-            "branch": ".+"
-          },
-          "releases": {
-            "target": "dev",
-            "version": "same"
-          }
-        },
-        {
-          "pipeline": {
-            "event": "finished",
-            "status": "succeeded",
-            "name": "github.com/estafette/estafette-ci-builder",
-            "branch": ".+"
-          },
-          "releases": {
-            "target": "nanoserver-1809-dev",
-            "version": "same"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "fired": true,
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-builder",
-            "branch": "main"
-          }
-        }
-      ],
-      "insertedAt": "2021-03-28T04:52:19.258832Z",
-      "startedAt": "2021-03-28T04:52:20.293753Z",
-      "updatedAt": "2021-03-28T04:52:39.923962Z",
-      "duration": 19000000000,
-      "pendingDuration": 1000000000,
-      "organizations": [
-        {
-          "name": "Estafette"
-        }
-      ]
-    },
-    {
-      "id": "644993244937060368",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-builder",
-      "repoBranch": "main",
-      "repoRevision": "dadf2340ad3c0b8235c794fb14e4b9a704d93bf9",
-      "buildVersion": "0.0.839",
+      "repoRevision": "e12e0fea043c3525459d814386f3ea658e742739",
+      "buildVersion": "0.0.881",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -645,7 +221,7 @@
       ],
       "commits": [
         {
-          "message": "fix race condition",
+          "message": "rename BuildEvent enum to BuildEventType",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -665,18 +241,6 @@
             "target": "dev",
             "version": "same"
           }
-        },
-        {
-          "pipeline": {
-            "event": "finished",
-            "status": "succeeded",
-            "name": "github.com/estafette/estafette-ci-builder",
-            "branch": ".+"
-          },
-          "releases": {
-            "target": "nanoserver-1809-dev",
-            "version": "same"
-          }
         }
       ],
       "triggerEvents": [
@@ -689,11 +253,11 @@
           }
         }
       ],
-      "insertedAt": "2021-03-28T04:45:17.423921Z",
-      "startedAt": "2021-03-28T04:45:19.525247Z",
-      "updatedAt": "2021-03-28T04:48:25.113247Z",
-      "duration": 185000000000,
-      "pendingDuration": 2000000000,
+      "insertedAt": "2021-06-03T06:50:47.468961Z",
+      "startedAt": "2021-06-03T06:50:48.441425Z",
+      "updatedAt": "2021-06-03T06:54:07.760949Z",
+      "duration": 199000000000,
+      "pendingDuration": 0,
       "organizations": [
         {
           "name": "Estafette"
@@ -701,13 +265,13 @@
       ]
     },
     {
-      "id": "644990818117681168",
+      "id": "663985768705130512",
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-builder",
       "repoBranch": "main",
-      "repoRevision": "febdf075434931c67b6103b0c920c7f9a1cf75ee",
-      "buildVersion": "0.0.838",
+      "repoRevision": "7dfc24b9aa33b6867f7bca8366a484e13bdefe3e",
+      "buildVersion": "0.0.880",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -745,7 +309,7 @@
       ],
       "commits": [
         {
-          "message": "fix filenames to adhere to golang filename convention",
+          "message": "set BuildEvent in CiBuilderEvent",
           "author": {
             "email": "me@estafette.io",
             "name": "Just Me",
@@ -765,18 +329,6 @@
             "target": "dev",
             "version": "same"
           }
-        },
-        {
-          "pipeline": {
-            "event": "finished",
-            "status": "succeeded",
-            "name": "github.com/estafette/estafette-ci-builder",
-            "branch": ".+"
-          },
-          "releases": {
-            "target": "nanoserver-1809-dev",
-            "version": "same"
-          }
         }
       ],
       "triggerEvents": [
@@ -789,210 +341,538 @@
           }
         }
       ],
-      "insertedAt": "2021-03-28T04:32:56.817511Z",
-      "startedAt": "2021-03-28T04:34:19.21868Z",
-      "updatedAt": "2021-03-28T04:37:37.594376Z",
-      "duration": 198000000000,
-      "pendingDuration": 82000000000,
-      "organizations": [
-        {
-          "name": "Estafette"
-        }
-      ]
-    },
-    {
-      "id": "643985796014047250",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-builder",
-      "repoBranch": "main",
-      "repoRevision": "3d3c0f444393a1e43b329f997b77537b88677ea3",
-      "buildVersion": "0.0.837",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "dev"
-        },
-        {
-          "name": "beta"
-        },
-        {
-          "name": "stable"
-        },
-        {
-          "name": "nanoserver-1809-dev"
-        },
-        {
-          "name": "nanoserver-1809-beta"
-        },
-        {
-          "name": "nanoserver-1809-stable"
-        }
-      ],
-      "commits": [
-        {
-          "message": "obfuscate the base64 encoded version of a secret (when encoded to store in k8s secret)",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggers": [
-        {
-          "pipeline": {
-            "event": "finished",
-            "status": "succeeded",
-            "name": "github.com/estafette/estafette-ci-builder",
-            "branch": ".+"
-          },
-          "releases": {
-            "target": "dev",
-            "version": "same"
-          }
-        },
-        {
-          "pipeline": {
-            "event": "finished",
-            "status": "succeeded",
-            "name": "github.com/estafette/estafette-ci-builder",
-            "branch": ".+"
-          },
-          "releases": {
-            "target": "nanoserver-1809-dev",
-            "version": "same"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "fired": true,
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-builder",
-            "branch": "main"
-          }
-        }
-      ],
-      "insertedAt": "2021-03-24T15:21:08.411983Z",
-      "startedAt": "2021-03-24T15:21:09.438324Z",
-      "updatedAt": "2021-03-24T15:25:22.787624Z",
-      "duration": 253000000000,
-      "pendingDuration": 1000000000,
-      "organizations": [
-        {
-          "name": "Estafette"
-        }
-      ]
-    },
-    {
-      "id": "643408438929784850",
-      "repoSource": "github.com",
-      "repoOwner": "estafette",
-      "repoName": "estafette-ci-builder",
-      "repoBranch": "main",
-      "repoRevision": "ff2b28f51b7095c05bf986ac33929afa25ba2e89",
-      "buildVersion": "0.0.836",
-      "buildStatus": "succeeded",
-      "labels": [
-        {
-          "key": "app-group",
-          "value": "estafette-ci"
-        },
-        {
-          "key": "language",
-          "value": "golang"
-        },
-        {
-          "key": "team",
-          "value": "estafette"
-        }
-      ],
-      "releaseTargets": [
-        {
-          "name": "dev"
-        },
-        {
-          "name": "beta"
-        },
-        {
-          "name": "stable"
-        },
-        {
-          "name": "nanoserver-1809-dev"
-        },
-        {
-          "name": "nanoserver-1809-beta"
-        },
-        {
-          "name": "nanoserver-1809-stable"
-        }
-      ],
-      "commits": [
-        {
-          "message": "rebuild go.cd agent with jdk 15",
-          "author": {
-            "email": "me@estafette.io",
-            "name": "Just Me",
-            "username": "JustMe"
-          }
-        }
-      ],
-      "triggers": [
-        {
-          "pipeline": {
-            "event": "finished",
-            "status": "succeeded",
-            "name": "github.com/estafette/estafette-ci-builder",
-            "branch": ".+"
-          },
-          "releases": {
-            "target": "dev",
-            "version": "same"
-          }
-        },
-        {
-          "pipeline": {
-            "event": "finished",
-            "status": "succeeded",
-            "name": "github.com/estafette/estafette-ci-builder",
-            "branch": ".+"
-          },
-          "releases": {
-            "target": "nanoserver-1809-dev",
-            "version": "same"
-          }
-        }
-      ],
-      "triggerEvents": [
-        {
-          "fired": true,
-          "git": {
-            "event": "push",
-            "repository": "github.com/estafette/estafette-ci-builder",
-            "branch": "main"
-          }
-        }
-      ],
-      "insertedAt": "2021-03-22T14:24:33.01265Z",
-      "startedAt": "2021-03-22T14:24:34.095028Z",
-      "updatedAt": "2021-03-22T14:27:57.021676Z",
+      "insertedAt": "2021-06-03T06:46:15.702864Z",
+      "startedAt": "2021-06-03T06:46:17.485864Z",
+      "updatedAt": "2021-06-03T06:49:40.312008Z",
       "duration": 202000000000,
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "id": "663983711593594898",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "repoBranch": "main",
+      "repoRevision": "ff651fd133fb13e792af9c3081bf7653ab6a6587",
+      "buildVersion": "0.0.879",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "dev"
+        },
+        {
+          "name": "beta"
+        },
+        {
+          "name": "stable"
+        },
+        {
+          "name": "nanoserver-1809-dev"
+        },
+        {
+          "name": "nanoserver-1809-beta"
+        },
+        {
+          "name": "nanoserver-1809-stable"
+        }
+      ],
+      "commits": [
+        {
+          "message": "fix compile error",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-builder",
+            "branch": ".+"
+          },
+          "releases": {
+            "target": "dev",
+            "version": "same"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "fired": true,
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-builder",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-03T06:35:47.922263Z",
+      "startedAt": "2021-06-03T06:35:56.133573Z",
+      "updatedAt": "2021-06-03T06:39:30.092368Z",
+      "duration": 213000000000,
+      "pendingDuration": 8000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "id": "663983273139306513",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "repoBranch": "main",
+      "repoRevision": "e400a1f76b134e41acdf0bd7429ddb2ad703f941",
+      "buildVersion": "0.0.878",
+      "buildStatus": "failed",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "dev"
+        },
+        {
+          "name": "beta"
+        },
+        {
+          "name": "stable"
+        },
+        {
+          "name": "nanoserver-1809-dev"
+        },
+        {
+          "name": "nanoserver-1809-beta"
+        },
+        {
+          "name": "nanoserver-1809-stable"
+        }
+      ],
+      "commits": [
+        {
+          "message": "drop deprecated fields from CiBuilderEvent and use SetStatus to update build/release/bot status",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-builder",
+            "branch": ".+"
+          },
+          "releases": {
+            "target": "dev",
+            "version": "same"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "fired": true,
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-builder",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-03T06:33:34.116574Z",
+      "startedAt": "2021-06-03T06:33:35.780117Z",
+      "updatedAt": "2021-06-03T06:34:41.833594Z",
+      "duration": 66000000000,
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "id": "663873249684422672",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "repoBranch": "main",
+      "repoRevision": "c4bf5e2948ea76ab7a00f763cf2f3579483a6b84",
+      "buildVersion": "0.0.877",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "dev"
+        },
+        {
+          "name": "beta"
+        },
+        {
+          "name": "stable"
+        },
+        {
+          "name": "nanoserver-1809-dev"
+        },
+        {
+          "name": "nanoserver-1809-beta"
+        },
+        {
+          "name": "nanoserver-1809-stable"
+        }
+      ],
+      "commits": [
+        {
+          "message": "update build/release/job status in CiBuilderEvent",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-builder",
+            "branch": ".+"
+          },
+          "releases": {
+            "target": "dev",
+            "version": "same"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "fired": true,
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-builder",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-02T21:13:57.622893Z",
+      "startedAt": "2021-06-02T21:15:06.890061Z",
+      "updatedAt": "2021-06-02T21:18:25.435482Z",
+      "duration": 198000000000,
+      "pendingDuration": 69000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "id": "663796448772653073",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "repoBranch": "main",
+      "repoRevision": "5f5b17856acb45e47de8f017818c023b5245deb0",
+      "buildVersion": "0.0.876",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "dev"
+        },
+        {
+          "name": "beta"
+        },
+        {
+          "name": "stable"
+        },
+        {
+          "name": "nanoserver-1809-dev"
+        },
+        {
+          "name": "nanoserver-1809-beta"
+        },
+        {
+          "name": "nanoserver-1809-stable"
+        }
+      ],
+      "commits": [
+        {
+          "message": "switch to contracts.EstafetteCiBuilderEvent",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-builder",
+            "branch": ".+"
+          },
+          "releases": {
+            "target": "dev",
+            "version": "same"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "fired": true,
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-builder",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-02T14:43:19.844524Z",
+      "startedAt": "2021-06-02T14:43:21.667163Z",
+      "updatedAt": "2021-06-02T14:47:00.981116Z",
+      "duration": 219000000000,
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "id": "663795298999533584",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "repoBranch": "main",
+      "repoRevision": "ac5dbf5b3f16ee078c2e9f59baae8213dcd374da",
+      "buildVersion": "0.0.875",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "dev"
+        },
+        {
+          "name": "beta"
+        },
+        {
+          "name": "stable"
+        },
+        {
+          "name": "nanoserver-1809-dev"
+        },
+        {
+          "name": "nanoserver-1809-beta"
+        },
+        {
+          "name": "nanoserver-1809-stable"
+        }
+      ],
+      "commits": [
+        {
+          "message": "update BuilderConfig to drop deprecated fields",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-builder",
+            "branch": ".+"
+          },
+          "releases": {
+            "target": "dev",
+            "version": "same"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "fired": true,
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-builder",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-02T14:37:28.961699Z",
+      "startedAt": "2021-06-02T14:38:41.112872Z",
+      "updatedAt": "2021-06-02T14:42:18.653565Z",
+      "duration": 217000000000,
+      "pendingDuration": 72000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "id": "663782398192418832",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-builder",
+      "repoBranch": "main",
+      "repoRevision": "5bbfa77ff9ccc0aca2d0606ab53c1077444cffde",
+      "buildVersion": "0.0.874",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "dev"
+        },
+        {
+          "name": "beta"
+        },
+        {
+          "name": "stable"
+        },
+        {
+          "name": "nanoserver-1809-dev"
+        },
+        {
+          "name": "nanoserver-1809-beta"
+        },
+        {
+          "name": "nanoserver-1809-stable"
+        }
+      ],
+      "commits": [
+        {
+          "message": "set severity: high while waiting for a fix to https://github.com/gocd/gocd/issues/9397",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-builder",
+            "branch": ".+"
+          },
+          "releases": {
+            "target": "dev",
+            "version": "same"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "fired": true,
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/estafette-ci-builder",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-02T13:31:51.947861Z",
+      "startedAt": "2021-06-02T13:31:53.692426Z",
+      "updatedAt": "2021-06-02T13:35:30.715967Z",
+      "duration": 217000000000,
       "pendingDuration": 1000000000,
       "organizations": [
         {
