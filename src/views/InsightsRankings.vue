@@ -26,10 +26,17 @@
         />
       </div>
       <div class="col-12 col-xl-6 col-xxxl-4">
+        <stats-pipeline-ranking-table
+          :filter="filter"
+          type="bots"
+          status="warning"
+        />
+      </div>
+      <div class="col-12 col-xl-6 col-xxxl-4">
         <stats-label-ranking-table
           :filter="filter"
           type="frequent"
-          status="warning"
+          status="info"
         />
       </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded border bg-white pt-1 pl-3 pr-3">
+  <div class="rounded border bg-white pt-1 pl-3 pr-3 mb-3">
     <h1
       class="text-center"
       :class="`text-${status}`"

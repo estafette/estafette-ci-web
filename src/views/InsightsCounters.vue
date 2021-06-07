@@ -36,6 +36,15 @@
         :status="status"
       />
     </div>
+
+    <div class="row ml-0">
+      <stats-bots-count
+        v-for="status in statuses"
+        :key="status"
+        :filter="filter"
+        :status="status"
+      />
+    </div>
   </div>
 </template>
 
@@ -47,6 +56,7 @@ export default {
     StatsPipelinesCount: () => import(/* webpackChunkName: "tweenlite" */ '@/components/StatsPipelinesCount'),
     StatsBuildsCount: () => import(/* webpackChunkName: "tweenlite" */ '@/components/StatsBuildsCount'),
     StatsReleasesCount: () => import(/* webpackChunkName: "tweenlite" */ '@/components/StatsReleasesCount'),
+    StatsBotsCount: () => import(/* webpackChunkName: "tweenlite" */ '@/components/StatsBotsCount'),
     SinceSelector
   },
 
