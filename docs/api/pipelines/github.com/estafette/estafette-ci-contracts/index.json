@@ -1,11 +1,11 @@
 {
-  "id": "647939395512565776",
+  "id": "663986258637160464",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-contracts",
   "repoBranch": "main",
-  "repoRevision": "1c70b35be0a9ac6f3ff795fe59d61978f002755b",
-  "buildVersion": "0.0.238",
+  "repoRevision": "262feb8c7593d238532524f26f0ed779a3f1dbe7",
+  "buildVersion": "0.0.260",
   "buildStatus": "succeeded",
   "labels": [
     {
@@ -27,7 +27,7 @@
   ],
   "commits": [
     {
-      "message": "update manifest to avoid use of removed github.com/gavv/deepcopy",
+      "message": "rename BuildEvent enum to BuildEventType",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -45,15 +45,15 @@
       }
     }
   ],
-  "insertedAt": "2021-04-07T14:30:11.227735Z",
-  "startedAt": "2021-04-07T14:30:12.222004Z",
-  "updatedAt": "2021-04-07T14:30:46.151657Z",
-  "duration": 33000000000,
-  "pendingDuration": 0,
-  "lastUpdatedAt": "2021-04-07T14:30:46.151657Z",
+  "insertedAt": "2021-06-03T06:48:45.218155Z",
+  "startedAt": "2021-06-03T06:48:49.567502Z",
+  "updatedAt": "2021-06-03T06:49:25.268453Z",
+  "duration": 35000000000,
+  "pendingDuration": 4000000000,
+  "lastUpdatedAt": "2021-06-03T06:49:25.268453Z",
   "extraInfo": {
     "medianPendingDuration": 1000000000,
-    "medianDuration": 51000000000
+    "medianDuration": 35000000000
   },
   "groups": [
     {

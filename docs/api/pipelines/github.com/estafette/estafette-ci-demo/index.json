@@ -1,11 +1,11 @@
 {
-  "id": "651569369396576272",
+  "id": "665120071639400465",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-demo",
   "repoBranch": "main",
-  "repoRevision": "7f4f164b95766b8a50f05c08b73ec823204fdedd",
-  "buildVersion": "0.0.47",
+  "repoRevision": "96e910ce80a9caee99f9cde2dc46dcc66f2a840e",
+  "buildVersion": "0.0.48",
   "buildStatus": "running",
   "labels": [
     {
@@ -23,7 +23,7 @@
   ],
   "commits": [
     {
-      "message": "store alllogs for all build/release statuses",
+      "message": "fetch pipeline bots",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -41,15 +41,15 @@
       }
     }
   ],
-  "insertedAt": "2021-04-20T10:13:11.343738Z",
-  "startedAt": "2021-04-20T10:13:13.067368Z",
-  "updatedAt": "2021-04-20T10:13:13.067368Z",
+  "insertedAt": "2021-06-07T06:55:37.487067Z",
+  "startedAt": "2021-06-07T06:56:47.547531Z",
+  "updatedAt": "2021-06-07T06:56:47.547531Z",
   "duration": 0,
-  "pendingDuration": 1000000000,
-  "lastUpdatedAt": "2021-04-20T10:13:13.067368Z",
+  "pendingDuration": 70000000000,
+  "lastUpdatedAt": "2021-06-07T06:56:47.547531Z",
   "extraInfo": {
     "medianPendingDuration": 1000000000,
-    "medianDuration": 69000000000
+    "medianDuration": 53000000000
   },
   "groups": [
     {

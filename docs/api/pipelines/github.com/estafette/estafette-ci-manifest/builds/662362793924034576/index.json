@@ -1,0 +1,100 @@
+{
+  "id": "662362793924034576",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-manifest",
+  "repoBranch": "bots-support",
+  "repoRevision": "06b7f65fb8848f09a4e16ddcf1bdfe079ac9a413",
+  "buildVersion": "0.1.185-bots-support",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette"
+    },
+    {
+      "key": "type",
+      "value": "library"
+    }
+  ],
+  "manifest": "# selects the dev track for builder in order to dogfood estafette's components\nbuilder:\n  track: dev\n\n# these turn into ESTAFETTE_LABEL_... envvars, automatically injected into all pipeline steps\nlabels:\n  app-group: estafette-ci\n  type: library\n  team: estafette\n  language: golang\n\n# generates a 0.0.x-\u003cbranch\u003e version made available as ESTAFETTE_BUILD_VERSION envvar, automatically injected into all pipeline steps\nversion:\n  semver:\n    major: 0\n    minor: 1\n    releaseBranch: main\n\n# global environments variables that are automatically injected into all pipeline steps and can be overridden by defining an envvar in a pipeline step with the same name\nenv:\n  VAR1: somevalue\n  VAR2: another value\n\n# pipeline stages to be executed sequentially; for each step the 'when' is evaluated to see whether it should be executed or skipped\nstages:\n  build:\n    image: golang:1.16-alpine\n    env:\n      CGO_ENABLED: 0\n      GOOS: linux\n    commands:\n    - go test ./...\n\n  tag-revision:\n    image: golang:1.16-alpine\n    commands:\n    - apk add git\n    - git tag v${ESTAFETTE_BUILD_VERSION}\n    - git push origin v${ESTAFETTE_BUILD_VERSION}\n\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    workspace: estafette\n    channels:\n    - '#build-status'\n    when:\n      status == 'succeeded' ||\n      status == 'failed'\n",
+  "manifestWithDefaults": "builder:\n  track: dev\n  os: linux\n  type: docker\nlabels:\n  app-group: estafette-ci\n  language: golang\n  team: estafette\n  type: library\nversion:\n  semver:\n    major: 0\n    minor: 1\n    patch: '{{auto}}'\n    labelTemplate: '{{branch}}'\n    releaseBranch: main\nenv:\n  VAR1: somevalue\n  VAR2: another value\nstages:\n  build:\n    image: golang:1.16-alpine\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - go test ./...\n    when: status == 'succeeded'\n    env:\n      CGO_ENABLED: \"0\"\n      GOOS: linux\n  tag-revision:\n    image: golang:1.16-alpine\n    shell: /bin/sh\n    workDir: /estafette-work\n    commands:\n    - apk add git\n    - git tag v${ESTAFETTE_BUILD_VERSION}\n    - git push origin v${ESTAFETTE_BUILD_VERSION}\n    when: status == 'succeeded'\n  slack-notify:\n    image: extensions/slack-build-status:dev\n    shell: /bin/sh\n    workDir: /estafette-work\n    when: status == 'succeeded' || status == 'failed'\n    channels:\n    - '#build-status'\n    workspace: estafette\n",
+  "commits": [
+    {
+      "message": "build with golang 1.13.6",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    },
+    {
+      "message": "build with golang 1.14.0",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    },
+    {
+      "message": "add EstafetteManifestPreferences to configure manifest validation rules",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    },
+    {
+      "message": "add json annotation to manifest preferences",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    },
+    {
+      "message": "set type to library",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    },
+    {
+      "message": "add archived property",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "fired": true,
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/estafette-ci-manifest",
+        "branch": "bots-support"
+      }
+    }
+  ],
+  "insertedAt": "2021-05-28T13:11:23.10557Z",
+  "startedAt": "2021-05-28T13:11:25.085086Z",
+  "updatedAt": "2021-05-28T13:11:59.219362Z",
+  "duration": 34000000000,
+  "pendingDuration": 1000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
+}

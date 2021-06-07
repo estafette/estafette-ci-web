@@ -1,0 +1,28 @@
+{
+  "name": "tooling-estafette",
+  "action": "deploy-simple",
+  "id": "659842254000685073",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-web",
+  "releaseVersion": "1.0.0-main-1094",
+  "releaseStatus": "succeeded",
+  "triggerEvents": [
+    {
+      "fired": true,
+      "manual": {
+        "userID": "me@estafette.io"
+      }
+    }
+  ],
+  "insertedAt": "2021-05-19T15:31:15.366034Z",
+  "startedAt": "2021-05-19T15:31:20.168837Z",
+  "updatedAt": "2021-05-19T15:32:39.304201Z",
+  "duration": 79000000000,
+  "pendingDuration": 4000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "items": [
+    {
+      "id": "663986389960065040",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "estafette-ci-contracts",
+      "repoBranch": "main",
+      "repoRevision": "262feb8c7593d238532524f26f0ed779a3f1dbe7",
+      "buildID": "",
+      "steps": null,
+      "insertedAt": "2021-06-03T06:49:25.295184Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 1
+  }
+}

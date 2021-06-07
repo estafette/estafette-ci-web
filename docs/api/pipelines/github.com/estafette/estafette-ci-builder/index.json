@@ -1,11 +1,11 @@
 {
-  "id": "647939737112412176",
+  "id": "664302210794422290",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-builder",
   "repoBranch": "main",
-  "repoRevision": "1cefe2c7d1737576ced2f0d01fa437268ae4be25",
-  "buildVersion": "0.0.845",
+  "repoRevision": "f3307c327eaa6cd885b19e0ea120ba103a76a05a",
+  "buildVersion": "0.0.883",
   "buildStatus": "succeeded",
   "labels": [
     {
@@ -27,17 +27,17 @@
       "activeReleases": [
         {
           "name": "dev",
-          "id": "647940448256360465",
+          "id": "664302984403714064",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-builder",
-          "releaseVersion": "0.0.845",
+          "releaseVersion": "0.0.883",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
               "fired": true,
               "pipeline": {
-                "buildVersion": "0.0.845",
+                "buildVersion": "0.0.883",
                 "repoSource": "github.com",
                 "repoOwner": "estafette",
                 "repoName": "estafette-ci-builder",
@@ -47,10 +47,10 @@
               }
             }
           ],
-          "insertedAt": "2021-04-07T14:35:32.499777Z",
-          "startedAt": "2021-04-07T14:35:33.707102Z",
-          "updatedAt": "2021-04-07T14:36:01.70099Z",
-          "duration": 27000000000,
+          "insertedAt": "2021-06-04T09:39:42.251648Z",
+          "startedAt": "2021-06-04T09:39:43.964714Z",
+          "updatedAt": "2021-06-04T09:40:14.909457Z",
+          "duration": 30000000000,
           "pendingDuration": 1000000000,
           "extraInfo": {
             "medianPendingDuration": 1000000000,
@@ -64,11 +64,11 @@
       "activeReleases": [
         {
           "name": "beta",
-          "id": "647942678648455186",
+          "id": "663997181020307474",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-builder",
-          "releaseVersion": "0.0.845",
+          "releaseVersion": "0.0.882",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
@@ -78,14 +78,14 @@
               }
             }
           ],
-          "insertedAt": "2021-04-07T14:46:53.161314Z",
-          "startedAt": "2021-04-07T14:46:54.413844Z",
-          "updatedAt": "2021-04-07T14:47:25.274308Z",
-          "duration": 30000000000,
+          "insertedAt": "2021-06-03T07:44:18.465171Z",
+          "startedAt": "2021-06-03T07:44:19.50968Z",
+          "updatedAt": "2021-06-03T07:45:05.632364Z",
+          "duration": 46000000000,
           "pendingDuration": 1000000000,
           "extraInfo": {
             "medianPendingDuration": 1000000000,
-            "medianDuration": 37000000000
+            "medianDuration": 32000000000
           }
         }
       ]
@@ -95,11 +95,11 @@
       "activeReleases": [
         {
           "name": "stable",
-          "id": "647943527872888848",
+          "id": "663997192423964688",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-builder",
-          "releaseVersion": "0.0.845",
+          "releaseVersion": "0.0.882",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
@@ -109,14 +109,14 @@
               }
             }
           ],
-          "insertedAt": "2021-04-07T14:51:12.32415Z",
-          "startedAt": "2021-04-07T14:51:13.615148Z",
-          "updatedAt": "2021-04-07T14:51:51.808352Z",
-          "duration": 38000000000,
+          "insertedAt": "2021-06-03T07:44:21.945403Z",
+          "startedAt": "2021-06-03T07:44:23.099666Z",
+          "updatedAt": "2021-06-03T07:45:26.718082Z",
+          "duration": 63000000000,
           "pendingDuration": 1000000000,
           "extraInfo": {
             "medianPendingDuration": 1000000000,
-            "medianDuration": 42000000000
+            "medianDuration": 40000000000
           }
         }
       ]
@@ -126,34 +126,27 @@
       "activeReleases": [
         {
           "name": "nanoserver-1809-dev",
-          "id": "647940448256327697",
+          "id": "663802179528294416",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-builder",
-          "releaseVersion": "0.0.845",
-          "releaseStatus": "succeeded",
+          "releaseVersion": "0.0.876",
+          "releaseStatus": "canceled",
           "triggerEvents": [
             {
               "fired": true,
-              "pipeline": {
-                "buildVersion": "0.0.845",
-                "repoSource": "github.com",
-                "repoOwner": "estafette",
-                "repoName": "estafette-ci-builder",
-                "repoBranch": "main",
-                "status": "succeeded",
-                "event": "finished"
+              "manual": {
+                "userID": "me@estafette.io"
               }
             }
           ],
-          "insertedAt": "2021-04-07T14:35:32.499708Z",
-          "startedAt": "2021-04-07T14:40:17.045453Z",
-          "updatedAt": "2021-04-07T14:42:56.85418Z",
-          "duration": 159000000000,
-          "pendingDuration": 284000000000,
+          "insertedAt": "2021-06-02T15:12:28.732612Z",
+          "updatedAt": "2021-06-02T15:24:29.039388Z",
+          "duration": 720000000000,
+          "pendingDuration": 0,
           "extraInfo": {
-            "medianPendingDuration": 284000000000,
-            "medianDuration": 126000000000
+            "medianPendingDuration": 7000000000,
+            "medianDuration": 125000000000
           }
         }
       ]
@@ -163,12 +156,12 @@
       "activeReleases": [
         {
           "name": "nanoserver-1809-beta",
-          "id": "647942688394641424",
+          "id": "663802187485839377",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-builder",
-          "releaseVersion": "0.0.845",
-          "releaseStatus": "succeeded",
+          "releaseVersion": "0.0.876",
+          "releaseStatus": "canceled",
           "triggerEvents": [
             {
               "fired": true,
@@ -177,11 +170,10 @@
               }
             }
           ],
-          "insertedAt": "2021-04-07T14:46:56.135657Z",
-          "startedAt": "2021-04-07T14:47:03.460768Z",
-          "updatedAt": "2021-04-07T14:48:24.639708Z",
-          "duration": 81000000000,
-          "pendingDuration": 7000000000,
+          "insertedAt": "2021-06-02T15:12:31.161105Z",
+          "updatedAt": "2021-06-02T15:24:28.064983Z",
+          "duration": 716000000000,
+          "pendingDuration": 0,
           "extraInfo": {
             "medianPendingDuration": 274000000000,
             "medianDuration": 117000000000
@@ -194,12 +186,12 @@
       "activeReleases": [
         {
           "name": "nanoserver-1809-stable",
-          "id": "647943534739357712",
+          "id": "663802194910576656",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-builder",
-          "releaseVersion": "0.0.845",
-          "releaseStatus": "succeeded",
+          "releaseVersion": "0.0.876",
+          "releaseStatus": "canceled",
           "triggerEvents": [
             {
               "fired": true,
@@ -208,14 +200,13 @@
               }
             }
           ],
-          "insertedAt": "2021-04-07T14:51:14.419615Z",
-          "startedAt": "2021-04-07T14:51:21.514106Z",
-          "updatedAt": "2021-04-07T14:52:33.705501Z",
-          "duration": 72000000000,
-          "pendingDuration": 7000000000,
+          "insertedAt": "2021-06-02T15:12:33.426892Z",
+          "updatedAt": "2021-06-02T15:24:27.176241Z",
+          "duration": 713000000000,
+          "pendingDuration": 0,
           "extraInfo": {
-            "medianPendingDuration": 187000000000,
-            "medianDuration": 120000000000
+            "medianPendingDuration": 8000000000,
+            "medianDuration": 93000000000
           }
         }
       ]
@@ -223,7 +214,7 @@
   ],
   "commits": [
     {
-      "message": "update manifest to avoid use of removed github.com/gavv/deepcopy",
+      "message": "upgrade to docker 20.10.7",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -243,18 +234,6 @@
         "target": "dev",
         "version": "same"
       }
-    },
-    {
-      "pipeline": {
-        "event": "finished",
-        "status": "succeeded",
-        "name": "github.com/estafette/estafette-ci-builder",
-        "branch": ".+"
-      },
-      "releases": {
-        "target": "nanoserver-1809-dev",
-        "version": "same"
-      }
     }
   ],
   "triggerEvents": [
@@ -267,15 +246,15 @@
       }
     }
   ],
-  "insertedAt": "2021-04-07T14:31:55.475668Z",
-  "startedAt": "2021-04-07T14:31:56.490388Z",
-  "updatedAt": "2021-04-07T14:35:32.083281Z",
-  "duration": 215000000000,
+  "insertedAt": "2021-06-04T09:35:46.164567Z",
+  "startedAt": "2021-06-04T09:35:47.255915Z",
+  "updatedAt": "2021-06-04T09:39:41.793065Z",
+  "duration": 234000000000,
   "pendingDuration": 1000000000,
-  "lastUpdatedAt": "2021-04-07T14:52:33.705501Z",
+  "lastUpdatedAt": "2021-06-04T09:40:14.909457Z",
   "extraInfo": {
     "medianPendingDuration": 1000000000,
-    "medianDuration": 202000000000
+    "medianDuration": 205000000000
   },
   "groups": [
     {

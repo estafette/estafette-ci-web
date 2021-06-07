@@ -1,11 +1,11 @@
 {
-  "id": "647938708585054224",
+  "id": "663226580904869905",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-manifest",
   "repoBranch": "main",
-  "repoRevision": "6e78fb716b847bda7462e5c4d7cb968082f985f2",
-  "buildVersion": "0.1.180",
+  "repoRevision": "ec9991f012f1ec7c5a06f5dbcd695fe9acac4633",
+  "buildVersion": "0.1.190",
   "buildStatus": "succeeded",
   "labels": [
     {
@@ -27,7 +27,47 @@
   ],
   "commits": [
     {
-      "message": "use github.com/jinzhu/copier for deepcopy",
+      "message": "add bots definition to manifest to act on any github or bitbucket event",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    },
+    {
+      "message": "add builder, clone and triggers to bots",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    },
+    {
+      "message": "add bitbucket and github triggers instead of events property on bots to reuse trigger system",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    },
+    {
+      "message": "match github and bitbucket events on repository by default if the event is repo specific",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    },
+    {
+      "message": "set bot on botaction to trigger correct bot",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    },
+    {
+      "message": "add event body property to bitbucket/github events",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -45,15 +85,15 @@
       }
     }
   ],
-  "insertedAt": "2021-04-07T14:26:41.594143Z",
-  "startedAt": "2021-04-07T14:26:43.357066Z",
-  "updatedAt": "2021-04-07T14:27:17.964286Z",
-  "duration": 34000000000,
-  "pendingDuration": 1000000000,
-  "lastUpdatedAt": "2021-04-07T14:27:17.964286Z",
+  "insertedAt": "2021-05-31T14:24:49.972942Z",
+  "startedAt": "2021-05-31T14:25:03.378744Z",
+  "updatedAt": "2021-05-31T14:25:39.835556Z",
+  "duration": 36000000000,
+  "pendingDuration": 13000000000,
+  "lastUpdatedAt": "2021-05-31T14:25:39.835556Z",
   "extraInfo": {
     "medianPendingDuration": 1000000000,
-    "medianDuration": 51000000000
+    "medianDuration": 36000000000
   },
   "groups": [
     {

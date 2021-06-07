@@ -1,11 +1,11 @@
 {
-  "id": "651526780707766288",
+  "id": "664371374972960785",
   "repoSource": "github.com",
   "repoOwner": "estafette",
   "repoName": "estafette-ci-api",
   "repoBranch": "main",
-  "repoRevision": "42fca6a2c28b25eaaa86674001d98f4b665382cb",
-  "buildVersion": "1.0.0-main-1664",
+  "repoRevision": "6a25676b2dee566f8e951a4e21164122e074584e",
+  "buildVersion": "1.0.0-main-1728",
   "buildStatus": "succeeded",
   "labels": [
     {
@@ -48,11 +48,11 @@
         {
           "name": "tooling-estafette",
           "action": "deploy-stable",
-          "id": "651535887587737617",
+          "id": "664373458571591697",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-api",
-          "releaseVersion": "1.0.0-main-1664",
+          "releaseVersion": "1.0.0-main-1728",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
@@ -62,24 +62,24 @@
               }
             }
           ],
-          "insertedAt": "2021-04-20T07:22:53.506671Z",
-          "startedAt": "2021-04-20T07:22:55.705503Z",
-          "updatedAt": "2021-04-20T07:24:17.673659Z",
-          "duration": 81000000000,
+          "insertedAt": "2021-06-04T15:38:09.260982Z",
+          "startedAt": "2021-06-04T15:38:11.572968Z",
+          "updatedAt": "2021-06-04T15:39:25.13434Z",
+          "duration": 73000000000,
           "pendingDuration": 2000000000,
           "extraInfo": {
             "medianPendingDuration": 2000000000,
-            "medianDuration": 73000000000
+            "medianDuration": 77000000000
           }
         },
         {
           "name": "tooling-estafette",
           "action": "deploy-canary",
-          "id": "651528706845048849",
+          "id": "664372945397841937",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-api",
-          "releaseVersion": "1.0.0-main-1664",
+          "releaseVersion": "1.0.0-main-1728",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
@@ -89,24 +89,24 @@
               }
             }
           ],
-          "insertedAt": "2021-04-20T06:46:22.11791Z",
-          "startedAt": "2021-04-20T06:46:24.311128Z",
-          "updatedAt": "2021-04-20T06:47:06.61984Z",
-          "duration": 42000000000,
+          "insertedAt": "2021-06-04T15:35:32.652756Z",
+          "startedAt": "2021-06-04T15:35:34.746145Z",
+          "updatedAt": "2021-06-04T15:36:09.231216Z",
+          "duration": 34000000000,
           "pendingDuration": 2000000000,
           "extraInfo": {
             "medianPendingDuration": 2000000000,
-            "medianDuration": 21000000000
+            "medianDuration": 20000000000
           }
         },
         {
           "name": "tooling-estafette",
           "action": "restart-stable",
-          "id": "638298246834487308",
+          "id": "664308454879461393",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-api",
-          "releaseVersion": "0.1.1599",
+          "releaseVersion": "1.0.0-main-1722",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
@@ -116,40 +116,41 @@
               }
             }
           ],
-          "insertedAt": "2021-03-04T13:12:46.147878Z",
-          "startedAt": "2021-03-04T13:12:53.165466Z",
-          "updatedAt": "2021-03-04T13:14:29.5048Z",
-          "duration": 96000000000,
-          "pendingDuration": 7000000000,
+          "insertedAt": "2021-06-04T10:07:31.708355Z",
+          "startedAt": "2021-06-04T10:07:33.422702Z",
+          "updatedAt": "2021-06-04T10:08:33.80782Z",
+          "duration": 60000000000,
+          "pendingDuration": 1000000000,
           "extraInfo": {
             "medianPendingDuration": 3000000000,
-            "medianDuration": 97000000000
+            "medianDuration": 90000000000
           }
         },
         {
           "name": "tooling-estafette",
           "action": "rollback-canary",
-          "id": "603773002935861260",
+          "id": "663722926313242642",
           "repoSource": "github.com",
           "repoOwner": "estafette",
           "repoName": "estafette-ci-api",
-          "releaseVersion": "0.1.1502",
+          "releaseVersion": "1.0.0-main-1710",
           "releaseStatus": "succeeded",
           "triggerEvents": [
             {
+              "fired": true,
               "manual": {
                 "userID": "me@estafette.io"
               }
             }
           ],
-          "insertedAt": "2020-11-02T14:28:17.868303Z",
-          "startedAt": "2020-11-02T14:28:21.107892Z",
-          "updatedAt": "2020-11-02T14:28:57.687318Z",
-          "duration": 36000000000,
-          "pendingDuration": 3000000000,
+          "insertedAt": "2021-06-02T08:29:22.570649Z",
+          "startedAt": "2021-06-02T08:29:24.685091Z",
+          "updatedAt": "2021-06-02T08:29:42.049986Z",
+          "duration": 17000000000,
+          "pendingDuration": 2000000000,
           "extraInfo": {
             "medianPendingDuration": 3000000000,
-            "medianDuration": 32000000000
+            "medianDuration": 17000000000
           }
         }
       ]
@@ -185,7 +186,7 @@
   ],
   "commits": [
     {
-      "message": "gin gonic 1.7.1",
+      "message": "fix default bot sorting",
       "author": {
         "email": "me@estafette.io",
         "name": "Just Me",
@@ -217,15 +218,15 @@
       }
     }
   ],
-  "insertedAt": "2021-04-20T06:36:34.307267Z",
-  "startedAt": "2021-04-20T06:36:36.298541Z",
-  "updatedAt": "2021-04-20T06:42:06.199929Z",
-  "duration": 329000000000,
+  "insertedAt": "2021-06-04T15:27:33.397005Z",
+  "startedAt": "2021-06-04T15:27:34.463625Z",
+  "updatedAt": "2021-06-04T15:34:31.039904Z",
+  "duration": 416000000000,
   "pendingDuration": 1000000000,
-  "lastUpdatedAt": "2021-04-20T07:24:17.673659Z",
+  "lastUpdatedAt": "2021-06-04T15:39:25.13434Z",
   "extraInfo": {
     "medianPendingDuration": 1000000000,
-    "medianDuration": 334000000000
+    "medianDuration": 405000000000
   },
   "groups": [
     {
