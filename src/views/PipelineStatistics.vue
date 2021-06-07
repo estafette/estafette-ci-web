@@ -30,6 +30,25 @@
           class="mb-3"
         />
       </div>
+      <div class="col-12 col-xl-6 col-xxxl-4">
+        <pipeline-stats-cpu
+          :pipeline="pipeline"
+          :filter="filter"
+          type="builds"
+          status="primary"
+          class="mb-3"
+        />
+      </div>
+      <div class="col-12 col-xl-6 col-xxxl-4">
+        <pipeline-stats-memory
+          :pipeline="pipeline"
+          :filter="filter"
+          type="builds"
+          status="primary"
+          class="mb-3"
+        />
+      </div>
+
       <div
         v-if="hasReleases"
         class="col-12 col-xl-6 col-xxxl-4"
@@ -43,6 +62,31 @@
         />
       </div>
       <div
+        v-if="hasReleases"
+        class="col-12 col-xl-6 col-xxxl-4"
+      >
+        <pipeline-stats-cpu
+          :pipeline="pipeline"
+          :filter="filter"
+          type="releases"
+          status="success"
+          class="mb-3"
+        />
+      </div>
+      <div
+        v-if="hasReleases"
+        class="col-12 col-xl-6 col-xxxl-4"
+      >
+        <pipeline-stats-memory
+          :pipeline="pipeline"
+          :filter="filter"
+          type="releases"
+          status="success"
+          class="mb-3"
+        />
+      </div>
+
+      <div
         v-if="hasBots"
         class="col-12 col-xl-6 col-xxxl-4"
       >
@@ -54,28 +98,6 @@
           class="mb-3"
         />
       </div>
-
-      <div class="col-12 col-xl-6 col-xxxl-4">
-        <pipeline-stats-cpu
-          :pipeline="pipeline"
-          :filter="filter"
-          type="builds"
-          status="primary"
-          class="mb-3"
-        />
-      </div>
-      <div
-        v-if="hasReleases"
-        class="col-12 col-xl-6 col-xxxl-4"
-      >
-        <pipeline-stats-cpu
-          :pipeline="pipeline"
-          :filter="filter"
-          type="releases"
-          status="success"
-          class="mb-3"
-        />
-      </div>
       <div
         v-if="hasBots"
         class="col-12 col-xl-6 col-xxxl-4"
@@ -85,28 +107,6 @@
           :filter="filter"
           type="bots"
           status="warning"
-          class="mb-3"
-        />
-      </div>
-
-      <div class="col-12 col-xl-6 col-xxxl-4">
-        <pipeline-stats-memory
-          :pipeline="pipeline"
-          :filter="filter"
-          type="builds"
-          status="primary"
-          class="mb-3"
-        />
-      </div>
-      <div
-        v-if="hasReleases"
-        class="col-12 col-xl-6 col-xxxl-4"
-      >
-        <pipeline-stats-memory
-          :pipeline="pipeline"
-          :filter="filter"
-          type="releases"
-          status="success"
           class="mb-3"
         />
       </div>
