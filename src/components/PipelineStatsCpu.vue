@@ -77,6 +77,9 @@ export default {
             color: this.getColor(this.status)
           }
         },
+        legend: {
+          showForSingleSeries: this.type !== 'builds'
+        },
         type: 'line',
         stroke: {
           curve: 'smooth'
