@@ -1,17 +1,24 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-12 col-xl-6">
+      <div class="col-12 col-xl-6 col-xxxl-4">
         <stats-adoption
           type="builds"
           status="primary"
           class="mb-3"
         />
       </div>
-      <div class="col-12 col-xl-6">
+      <div class="col-12 col-xl-6 col-xxxl-4">
         <stats-adoption
           type="releases"
           status="success"
+          class="mb-3"
+        />
+      </div>
+      <div class="col-12 col-xl-6 col-xxxl-4">
+        <stats-adoption
+          type="bots"
+          status="warning"
           class="mb-3"
         />
       </div>

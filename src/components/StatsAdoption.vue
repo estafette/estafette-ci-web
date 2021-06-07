@@ -121,6 +121,9 @@ export default {
 
         case 'success':
           return '#28a745'
+
+        case 'warning':
+          return '#ffc107'
       }
       return '#212529'
     },
