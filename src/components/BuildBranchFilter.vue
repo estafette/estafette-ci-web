@@ -74,7 +74,7 @@ export default {
         statusFilter += '&filter[status]=pending&filter[status]=canceling'
       }
 
-      this.axios.get(`/api/pipelines/${this.pipeline.repoSource}/${this.pipeline.repoOwner}/${this.pipeline.repoName}/buildbranches?${statusFilter}&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
+      this.axios.get(`/api/pipelines/${this.pipeline.repoSource}/${this.pipeline.repoOwner}/${this.pipeline.repoName}/buildbranches?${statusFilter}&filter[since]=1m&page[number]=${this.pagination.page}&page[size]=${this.pagination.size}`)
         .then(response => {
           this.branches = response.data.items
           this.periodicallyRefreshBuildBranches(5)
