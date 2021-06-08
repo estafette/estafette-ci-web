@@ -90,6 +90,14 @@ const handleLoginRedirect = (to, next) => {
 
 // check if user is authenticated
 router.beforeEach((to, from, next) => {
+  if (to && to.meta && to.meta.title && to.meta.title !== '') {
+    document.title = 'Estafette | ' + to.meta.title
+  } else if (to && to.meta && to.meta.text && to.meta.text !== '') {
+    document.title = 'Estafette | ' + to.meta.text
+  } else {
+    document.title = 'Estafette'
+  }
+
   // if already on login page don't try to load user
   if (to.name === 'Login') {
     next()

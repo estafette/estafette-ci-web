@@ -12,6 +12,7 @@ export default new Router({
       name: 'Home',
       component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
       meta: {
+        title: 'Home',
         icon: 'home',
         exact: true
       }
@@ -44,6 +45,7 @@ export default new Router({
           props: (route) => ({ query: route.query }),
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/AllPipelines.vue'),
           meta: {
+            title: 'All pipelines',
             text: 'Pipelines',
             icon: 'industry'
           }
@@ -54,6 +56,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/AllBuilds.vue'),
           props: (route) => ({ query: route.query }),
           meta: {
+            title: 'All builds',
             text: 'Builds',
             icon: 'tools'
           }
@@ -64,6 +67,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/AllReleases.vue'),
           props: (route) => ({ query: route.query }),
           meta: {
+            title: 'All releases',
             text: 'Releases',
             icon: 'upload'
           }
@@ -74,6 +78,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/AllBots.vue'),
           props: (route) => ({ query: route.query }),
           meta: {
+            title: 'All bots',
             text: 'Bots',
             icon: 'robot'
           }
@@ -96,6 +101,7 @@ export default new Router({
           props: true,
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineOverview.vue'),
           meta: {
+            title: 'Pipeline > Overview',
             text: 'Overview',
             icon: 'industry'
           }
@@ -106,6 +112,7 @@ export default new Router({
           props: (route) => ({ query: route.query, ...route.params }),
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineBuilds.vue'),
           meta: {
+            title: 'Pipeline > Builds',
             text: 'Builds',
             icon: 'tools'
           }
@@ -116,6 +123,7 @@ export default new Router({
           props: (route) => ({ query: route.query, ...route.params }),
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineReleases.vue'),
           meta: {
+            title: 'Pipeline > Releases',
             text: 'Releases',
             icon: 'upload'
           }
@@ -126,6 +134,7 @@ export default new Router({
           props: (route) => ({ query: route.query, ...route.params }),
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineBots.vue'),
           meta: {
+            title: 'Pipeline > Bots',
             text: 'Bots',
             icon: 'robot'
           }
@@ -136,6 +145,7 @@ export default new Router({
           props: true,
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineTriggers.vue'),
           meta: {
+            title: 'Pipeline > Triggers',
             text: 'Trigger',
             icon: 'project-diagram'
           }
@@ -146,6 +156,7 @@ export default new Router({
           props: (route) => ({ query: route.query }),
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineStatistics.vue'),
           meta: {
+            title: 'Pipeline > Insights',
             text: 'Insights',
             icon: 'lightbulb'
           }
@@ -156,6 +167,7 @@ export default new Router({
           props: true,
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/SecretEncrypter.vue'),
           meta: {
+            title: 'Pipeline > Secrets',
             text: 'Secrets',
             icon: 'user-secret'
           }
@@ -177,6 +189,7 @@ export default new Router({
           props: true,
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineBuildLogs.vue'),
           meta: {
+            title: 'Pipeline > Build logs',
             text: 'Logs',
             icon: 'poll-h'
           }
@@ -187,6 +200,7 @@ export default new Router({
           props: true,
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineBuildManifest.vue'),
           meta: {
+            title: 'Pipeline > Build manifest',
             text: 'Manifest',
             icon: 'book'
           }
@@ -208,6 +222,7 @@ export default new Router({
           props: true,
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineReleaseLogs.vue'),
           meta: {
+            title: 'Pipeline > Release logs',
             text: 'Logs',
             icon: 'poll-h'
           }
@@ -229,6 +244,7 @@ export default new Router({
           props: true,
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/PipelineBotLogs.vue'),
           meta: {
+            title: 'Pipeline > Bot logs',
             text: 'Logs',
             icon: 'poll-h'
           }
@@ -254,6 +270,7 @@ export default new Router({
           props: (route) => ({ query: route.query }),
           component: () => import(/* webpackChunkName: "catalog" */ '../views/CatalogGroups.vue'),
           meta: {
+            title: 'Catalog > Groups',
             text: 'Groups',
             icon: 'users'
           }
@@ -264,6 +281,7 @@ export default new Router({
           props: (route) => ({ query: route.query }),
           component: () => import(/* webpackChunkName: "catalog" */ '../views/CatalogServices.vue'),
           meta: {
+            title: 'Catalog > Services',
             text: 'Services',
             icon: 'shapes'
           }
@@ -274,6 +292,7 @@ export default new Router({
           props: (route) => ({ query: route.query }),
           component: () => import(/* webpackChunkName: "catalog" */ '../views/CatalogEntities.vue'),
           meta: {
+            title: 'Catalog > Entities',
             text: 'Entities',
             icon: 'cubes'
           }
@@ -286,6 +305,7 @@ export default new Router({
       props: true,
       component: () => import(/* webpackChunkName: "admin" */ '../views/CatalogGroupDetails.vue'),
       meta: {
+        title: 'Catalog > Groups',
         hide: true
       }
     },
@@ -305,6 +325,7 @@ export default new Router({
           props: true,
           component: () => import(/* webpackChunkName: "catalog" */ '../views/CatalogItemOverview.vue'),
           meta: {
+            title: 'Catalog > Services',
             text: 'Overview',
             icon: 'industry'
           }
@@ -330,6 +351,7 @@ export default new Router({
           props: true,
           component: () => import(/* webpackChunkName: "insights" */ '../views/InsightsCounters.vue'),
           meta: {
+            title: 'Insights > Counters',
             text: 'Counters',
             icon: 'chart-pie'
           }
@@ -340,6 +362,7 @@ export default new Router({
           props: true,
           component: () => import(/* webpackChunkName: "insights" */ '../views/InsightsRankings.vue'),
           meta: {
+            title: 'Insights > Rankings',
             text: 'Rankings',
             icon: 'list-ol'
           }
@@ -350,6 +373,7 @@ export default new Router({
           props: true,
           component: () => import(/* webpackChunkName: "insights" */ '../views/InsightsTrends.vue'),
           meta: {
+            title: 'Insights > Trends',
             text: 'Trends',
             icon: 'chart-line'
           }
@@ -374,6 +398,7 @@ export default new Router({
           name: 'ManifestGenerator',
           props: true,
           meta: {
+            title: 'Create > Generate',
             icon: 'hammer',
             text: 'Generate'
           },
@@ -384,6 +409,7 @@ export default new Router({
           name: 'ManifestValidator',
           props: true,
           meta: {
+            title: 'Create > Validate',
             text: 'Validate',
             icon: 'clipboard-check'
           },
@@ -408,6 +434,7 @@ export default new Router({
           props: true,
           component: () => import(/* webpackChunkName: "configuration" */ '../views/ConfigurationCredentials.vue'),
           meta: {
+            title: 'Configuration > Credentials',
             text: 'Credentials',
             icon: 'key'
           }
@@ -419,6 +446,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "configuration" */ '../views/ConfigurationTrustedImages.vue'),
           meta: {
             requiredRole: 'administrator',
+            title: 'Configuration > Trusted Images',
             text: 'Trusted Images',
             icon: 'shield-alt'
           }
@@ -444,6 +472,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "admin" */ '../views/AdminUsers.vue'),
           meta: {
             requiredRole: 'administrator',
+            title: 'Admin > Users',
             text: 'Users',
             icon: 'user'
           }
@@ -455,6 +484,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "admin" */ '../views/AdminUserUpdate.vue'),
           meta: {
             requiredRole: 'administrator',
+            title: 'Admin > Users',
             hide: true
           }
         },
@@ -465,6 +495,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "admin" */ '../views/AdminGroups.vue'),
           meta: {
             requiredRole: 'administrator',
+            title: 'Admin > Groups',
             text: 'Groups',
             icon: 'users'
           }
@@ -476,6 +507,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "admin" */ '../views/AdminGroupCreate.vue'),
           meta: {
             requiredRole: 'administrator',
+            title: 'Admin > Groups',
             hide: true
           }
         },
@@ -486,6 +518,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "admin" */ '../views/AdminGroupUpdate.vue'),
           meta: {
             requiredRole: 'administrator',
+            title: 'Admin > Groups',
             hide: true
           }
         },
@@ -496,6 +529,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "admin" */ '../views/AdminOrganizations.vue'),
           meta: {
             requiredRole: 'administrator',
+            title: 'Admin > Organizations',
             text: 'Organizations',
             icon: 'sitemap'
           }
@@ -507,6 +541,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "admin" */ '../views/AdminOrganizationCreate.vue'),
           meta: {
             requiredRole: 'administrator',
+            title: 'Admin > Organizations',
             hide: true
           }
         },
@@ -517,6 +552,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "admin" */ '../views/AdminOrganizationUpdate.vue'),
           meta: {
             requiredRole: 'administrator',
+            title: 'Admin > Organizations',
             hide: true
           }
         },
@@ -527,6 +563,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "admin" */ '../views/AdminClients.vue'),
           meta: {
             requiredRole: 'administrator',
+            title: 'Admin > Clients',
             text: 'Clients',
             icon: 'mobile-alt'
           }
@@ -538,6 +575,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "admin" */ '../views/AdminClientCreate.vue'),
           meta: {
             requiredRole: 'administrator',
+            title: 'Admin > Clients',
             hide: true
           }
         },
@@ -548,6 +586,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "admin" */ '../views/AdminClientUpdate.vue'),
           meta: {
             requiredRole: 'administrator',
+            title: 'Admin > Clients',
             hide: true
           }
         },
@@ -558,6 +597,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "admin" */ '../views/AdminPipelines.vue'),
           meta: {
             requiredRole: 'administrator',
+            title: 'Admin > Pipelines',
             text: 'Pipelines',
             icon: 'tools'
           }
@@ -569,6 +609,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "admin" */ '../views/AdminPipelineUpdate.vue'),
           meta: {
             requiredRole: 'administrator',
+            title: 'Admin > Pipelines',
             hide: true
           }
         },
@@ -579,6 +620,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "pipelines" */ '../views/SecretEncrypter.vue'),
           meta: {
             requiredRole: 'administrator',
+            title: 'Admin > Secrets',
             text: 'Secrets',
             icon: 'user-secret'
           }
@@ -612,6 +654,7 @@ export default new Router({
           props: true,
           component: () => import(/* webpackChunkName: "preferences" */ '../views/UserDetails.vue'),
           meta: {
+            title: 'User > Details',
             text: 'Details',
             icon: 'passport'
           }
