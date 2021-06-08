@@ -532,6 +532,7 @@
           @click="blurActiveElement"
           v-b-tooltip.hover
           title="Toggle timestamps"
+          class="d-none d-xl-flex"
         >
           <font-awesome-icon
             icon="stopwatch"
