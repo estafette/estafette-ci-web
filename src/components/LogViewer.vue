@@ -496,7 +496,7 @@
       >
         <b-button
           @click="scrollUp"
-          v-b-tooltip.hover
+          v-b-tooltip.hover.left
           title="Scroll up"
         >
           <font-awesome-icon
@@ -508,7 +508,7 @@
           v-if="isTailing()"
           :pressed.sync="scrollEnabled"
           @click="blurActiveElement"
-          v-b-tooltip.hover
+          v-b-tooltip.hover.left
           title="Toggle tailing"
         >
           <font-awesome-icon
@@ -519,7 +519,7 @@
         <b-button
           :pressed.sync="showInjectedStages"
           @click="blurActiveElement"
-          v-b-tooltip.hover
+          v-b-tooltip.hover.left
           title="Toggle injected stages"
         >
           <font-awesome-icon
@@ -530,7 +530,7 @@
         <b-button
           :pressed.sync="showTimestamps"
           @click="blurActiveElement"
-          v-b-tooltip.hover
+          v-b-tooltip.hover.left
           title="Toggle timestamps"
           class="d-none d-xl-flex"
         >
@@ -542,7 +542,7 @@
         <b-button
           :pressed.sync="showTruncatedLogs"
           @click="blurActiveElement"
-          v-b-tooltip.hover
+          v-b-tooltip.hover.left
           title="Toggle truncated logs"
         >
           <font-awesome-icon
@@ -552,7 +552,7 @@
         </b-button>
         <b-button
           @click="scrollDown"
-          v-b-tooltip.hover
+          v-b-tooltip.hover.left
           title="Scroll down"
         >
           <font-awesome-icon
