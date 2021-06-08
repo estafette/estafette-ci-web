@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="steps && steps.length > 0"
-    class="accordion m-3"
+    class="accordion m-0"
   >
     <div class="row-header">
       <div class="col-1 text-center">
@@ -22,7 +22,7 @@
       <div class="col-1 text-right">
         Execution time
       </div>
-      <div class="col-1 text-right">
+      <div class="col-1 text-right pr-5">
         Total time
       </div>
     </div>
@@ -83,12 +83,14 @@
                 v-if="step.image.isTrusted"
                 icon="shield-alt"
                 class="small text-muted"
+                v-b-tooltip.hover
                 title="This image is configured as trusted by Estafette CI"
               />
               <font-awesome-icon
                 v-if="step.image.hasInjectedCredentials"
                 icon="key"
                 class="small text-muted"
+                v-b-tooltip.hover
                 title="This image has injected credentials"
               />
             </span>
@@ -154,7 +156,7 @@
           </property-block>
           <property-block
             label="Total time"
-            class="col-xxxl-1 text-xxxl-right"
+            class="col-xxxl-1 text-xxxl-right pr-5"
             :value="(step.image ? step.image.pullDuration : 0) + step.duration | formatDuration"
           >
             <span v-if="step.image && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
@@ -236,7 +238,7 @@
         >
           <div
             v-if="visible && step.logLines && step.logLines.length > 0"
-            class="text-light text-monospace bg-dark m-0 p-3"
+            class="text-light text-monospace bg-dark m-0 p-3 pr-5"
           >
             <div
               class="row no-gutters"
@@ -282,12 +284,14 @@
                   v-if="service.image.isTrusted"
                   icon="shield-alt"
                   class="small text-muted"
+                  v-b-tooltip.hover
                   title="This image is configured as trusted by Estafette CI"
                 />
                 <font-awesome-icon
                   v-if="service.image.hasInjectedCredentials"
                   icon="key"
                   class="small text-muted"
+                  v-b-tooltip.hover
                   title="This image has injected credentials"
                 />
               </span>
@@ -323,7 +327,7 @@
                 {{ service.duration | formatDuration }}
               </span>
             </div>
-            <div class="col-2 col-lg-1 text-right d-none d-md-flex">
+            <div class="col-2 col-lg-1 text-right d-none d-md-flex pr-5">
               <span v-if="service.image && (service.status == 'RUNNING' || service.status == 'SUCCEEDED' || service.status == 'FAILED')">
                 {{ (service.image ? service.image.pullDuration : 0) + service.duration | formatDuration }}
               </span>
@@ -331,7 +335,7 @@
           </div>
 
           <div
-            class="text-light text-monospace bg-dark m-0 p-3"
+            class="text-light text-monospace bg-dark m-0 p-3 pr-5"
             v-if="service.logLines && service.logLines.length > 0"
           >
             <div
@@ -378,12 +382,14 @@
                   v-if="nestedStep.image.isTrusted"
                   icon="shield-alt"
                   class="small text-muted mb-1"
+                  v-b-tooltip.hover
                   title="This image is configured as trusted by Estafette CI"
                 />
                 <font-awesome-icon
                   v-if="nestedStep.image.hasInjectedCredentials"
                   icon="key"
                   class="small text-muted"
+                  v-b-tooltip.hover
                   title="This image has injected credentials"
                 />
               </span>
@@ -419,7 +425,7 @@
                 {{ nestedStep.duration | formatDuration }}
               </span>
             </div>
-            <div class="col-2 col-lg-1 text-right d-none d-md-flex">
+            <div class="col-2 col-lg-1 text-right d-none d-md-flex pr-5">
               <span v-if="nestedStep.image && (nestedStep.status == 'RUNNING' || nestedStep.status == 'SUCCEEDED' || nestedStep.status == 'FAILED')">
                 {{ (nestedStep.image ? nestedStep.image.pullDuration : 0) + nestedStep.duration | formatDuration }}
               </span>
@@ -427,7 +433,7 @@
           </div>
 
           <div
-            class="text-light text-monospace bg-dark m-0 p-3"
+            class="text-light text-monospace bg-dark m-0 p-3 pr-5"
             v-if="nestedStep.logLines && nestedStep.logLines.length > 0"
           >
             <div
@@ -483,7 +489,7 @@
       />
       <property-block
         label="Total time"
-        class="col-xxxl-1 text-xxxl-right"
+        class="col-xxxl-1 text-xxxl-right pr-5"
         :value="totalPullDuration + totalDuration | formatDuration"
       />
     </div>
@@ -498,6 +504,7 @@
           @click="scrollUp"
           v-b-tooltip.hover.left
           title="Scroll up"
+          size="lg"
         >
           <font-awesome-icon
             icon="chevron-up"
@@ -510,6 +517,7 @@
           @click="blurActiveElement"
           v-b-tooltip.hover.left
           title="Toggle tailing"
+          size="lg"
         >
           <font-awesome-icon
             icon="eye"
@@ -521,6 +529,7 @@
           @click="blurActiveElement"
           v-b-tooltip.hover.left
           title="Toggle injected stages"
+          size="lg"
         >
           <font-awesome-icon
             icon="syringe"
@@ -533,6 +542,7 @@
           v-b-tooltip.hover.left
           title="Toggle timestamps"
           class="d-none d-xl-flex"
+          size="lg"
         >
           <font-awesome-icon
             icon="stopwatch"
@@ -544,6 +554,7 @@
           @click="blurActiveElement"
           v-b-tooltip.hover.left
           title="Toggle truncated logs"
+          size="lg"
         >
           <font-awesome-icon
             icon="expand-alt"
@@ -554,6 +565,7 @@
           @click="scrollDown"
           v-b-tooltip.hover.left
           title="Scroll down"
+          size="lg"
         >
           <font-awesome-icon
             icon="chevron-down"
@@ -775,7 +787,7 @@ export default {
             line: l.line,
             timestamp: null,
             streamType: l.streamType,
-            text: '== TOO MANY LINES; TRUNCATED BY ESTAFETTE; SHOW ALL BY CHECKING \'SHOW FULL LOGS\' =='
+            text: '== TOO MANY LINES; TRUNCATED BY ESTAFETTE; SHOW ALL BY TOGGLING \'TRUNCATED LOGS\' IN THE TOOLBAR ON THE RIGHT =='
           }
         }
 

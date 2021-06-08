@@ -580,37 +580,38 @@ button.btn-clipboard {
 
 .log-buttons {
   @extend .position-fixed;
-  @extend .rounded;
+  @extend .rounded-left;
   @extend .bg-dark;
   @extend .text-light;
   @extend .text-nowrap;
   @extend .text-center;
 
   top: 50%;
-  right: 30px;
+  right: 0;
   transform: translate(0, -50%);
   width: fit-content !important;
-  box-shadow: 0 0 0.25em #f8f9fa;
-  opacity: 0.8;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 
   button {
     @extend .pt-3;
     @extend .pr-2;
     @extend .pb-3;
     @extend .pl-2;
+    @extend .border-0;
+    @extend .m-0;
 
-    color: hsla(0,0%,100%,.5) !important;
+    color: #aaa !important;
+    background-color: #343a40 !important;
 
     &:focus { 
       outline: none !important;
       box-shadow: none !important;
-      color: hsla(0,0%,100%,.5) !important;
+      color: #aaa !important;
     }
 
     &:hover,
     &.active {
       color: #fff !important;
-      background-color: #343a40 !important;
     }
   }
 
