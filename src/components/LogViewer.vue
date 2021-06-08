@@ -3,25 +3,6 @@
     v-if="steps && steps.length > 0"
     class="accordion m-3"
   >
-    <b-form-group
-      description="Estafette injects stages for handling cross-cutting concerns. Check to see the injected stages."
-      class="m-3"
-    >
-      <b-form-checkbox v-model="showInjectedStages">
-        Show injected stages
-      </b-form-checkbox>
-    </b-form-group>
-
-    <b-form-group
-      v-if="hasTruncatedLogs"
-      :description="'Estafette truncates logs when a stage has more than '+maxLinesToShow+' lines. Check to see the full logs.'"
-      class="m-3"
-    >
-      <b-form-checkbox v-model="showTruncatedLogs">
-        Show full logs
-      </b-form-checkbox>
-    </b-form-group>
-
     <div class="row-header">
       <div class="col-1 text-center">
         Status
@@ -262,7 +243,10 @@
               v-for="(line, lineIndex) in cappedLogLines(step.logLines)"
               :key="line.line ? line.line : lineIndex"
             >
-              <div class="col-1 log-timestamp text-white-50 d-none d-xl-flex">
+              <div
+                v-if="showTimestamps"
+                class="col-1 log-timestamp text-white-50 d-none d-xl-flex"
+              >
                 {{ line.timestamp | moment('YYYY-MM-DD HH:mm:ss') }}
               </div>
               <div
@@ -355,7 +339,10 @@
               v-for="(line, lineIndex) in cappedLogLines(service.logLines)"
               :key="line.line ? line.line : lineIndex"
             >
-              <div class="col-1 log-timestamp text-white-50 d-none d-xl-flex">
+              <div
+                v-if="showTimestamps"
+                class="col-1 log-timestamp text-white-50 d-none d-xl-flex"
+              >
                 {{ line.timestamp | moment('YYYY-MM-DD HH:mm:ss') }}
               </div>
               <div
@@ -448,7 +435,10 @@
               v-for="(line, lineIndex) in cappedLogLines(nestedStep.logLines)"
               :key="line.line ? line.line : lineIndex"
             >
-              <div class="col-1 log-timestamp text-white-50 d-none d-xl-flex">
+              <div
+                v-if="showTimestamps"
+                class="col-1 log-timestamp text-white-50 d-none d-xl-flex"
+              >
                 {{ line.timestamp | moment('YYYY-MM-DD HH:mm:ss') }}
               </div>
               <div
@@ -501,31 +491,75 @@
     <div
       class="log-buttons"
     >
-      <b-nav
+      <b-button-group
         vertical
       >
-        <b-nav-item @click="scrollUp">
+        <b-button
+          @click="scrollUp"
+          v-b-tooltip.hover
+          title="Scroll up"
+        >
           <font-awesome-icon
             icon="chevron-up"
             class="sidebar-icon"
           />
-        </b-nav-item>
-        <b-nav-item
+        </b-button>
+        <b-button
           v-if="isTailing()"
-          @click="scrollToggle"
+          :pressed.sync="scrollEnabled"
+          @click="blurActiveElement"
+          v-b-tooltip.hover
+          title="Toggle tailing"
         >
           <font-awesome-icon
-            :icon="scrollEnabled ? 'eye-slash' : 'eye'"
+            icon="eye"
             class="sidebar-icon"
           />
-        </b-nav-item>
-        <b-nav-item @click="scrollDown">
+        </b-button>
+        <b-button
+          :pressed.sync="showInjectedStages"
+          @click="blurActiveElement"
+          v-b-tooltip.hover
+          title="Toggle injected stages"
+        >
+          <font-awesome-icon
+            icon="syringe"
+            class="sidebar-icon"
+          />
+        </b-button>
+        <b-button
+          :pressed.sync="showTimestamps"
+          @click="blurActiveElement"
+          v-b-tooltip.hover
+          title="Toggle timestamps"
+        >
+          <font-awesome-icon
+            icon="stopwatch"
+            class="sidebar-icon"
+          />
+        </b-button>
+        <b-button
+          :pressed.sync="showTruncatedLogs"
+          @click="blurActiveElement"
+          v-b-tooltip.hover
+          title="Toggle truncated logs"
+        >
+          <font-awesome-icon
+            icon="expand-alt"
+            class="sidebar-icon"
+          />
+        </b-button>
+        <b-button
+          @click="scrollDown"
+          v-b-tooltip.hover
+          title="Scroll down"
+        >
           <font-awesome-icon
             icon="chevron-down"
             class="sidebar-icon"
           />
-        </b-nav-item>
-      </b-nav>
+        </b-button>
+      </b-button-group>
     </div>
   </div>
   <div
@@ -540,16 +574,16 @@
 import debounce from 'lodash/debounce'
 
 import AnsiUp from 'ansi_up'
-import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BFormCheckbox, BFormGroup, BNav, BNavItem } from 'bootstrap-vue'
+import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BButtonGroup } from 'bootstrap-vue'
 
 import PropertyBlock from '@/components/PropertyBlock'
 import LogWarning from '@/components/LogWarning'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faShieldAlt, faKey, faEye, faEyeSlash, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faShieldAlt, faKey, faEye, faChevronUp, faChevronDown, faStopwatch, faExpandAlt, faSyringe } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faShieldAlt, faKey, faEye, faEyeSlash, faChevronUp, faChevronDown)
+library.add(faShieldAlt, faKey, faEye, faChevronUp, faChevronDown, faStopwatch, faExpandAlt, faSyringe)
 
 export default {
   components: {
@@ -557,13 +591,10 @@ export default {
     BCard,
     BCardHeader,
     BCollapse,
-    BFormCheckbox,
-    BFormGroup,
     PropertyBlock,
     LogWarning,
     FontAwesomeIcon,
-    BNav,
-    BNavItem
+    BButtonGroup
   },
   directives: {
     'b-toggle': VBToggle
@@ -588,6 +619,7 @@ export default {
       refresh: true,
       tailedSteps: [],
       showInjectedStages: false,
+      showTimestamps: false,
       maxLinesToShow: 500,
       maxLinesToShowWhenTailing: 50,
       showTruncatedLogs: false,
@@ -920,18 +952,22 @@ export default {
       { maxWait: 5000 }
     ),
 
-    scrollToggle () {
-      this.scrollEnabled = !this.scrollEnabled
-    },
-
-    scrollUp () {
+    scrollUp (event) {
+      this.blurActiveElement()
       this.scrollEnabled = false
       window.scrollTo(0, 0)
     },
 
-    scrollDown () {
+    scrollDown (event) {
+      this.blurActiveElement()
       this.scrollEnabled = false
       window.scrollTo(0, document.body.scrollHeight)
+    },
+
+    blurActiveElement () {
+      if ('activeElement' in document) {
+        document.activeElement.blur()
+      }
     }
   },
 
