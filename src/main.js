@@ -90,14 +90,6 @@ const handleLoginRedirect = (to, next) => {
 
 // check if user is authenticated
 router.beforeEach((to, from, next) => {
-  if (to && to.meta && to.meta.title && to.meta.title !== '') {
-    document.title = 'Estafette | ' + to.meta.title
-  } else if (to && to.meta && to.meta.text && to.meta.text !== '') {
-    document.title = 'Estafette | ' + to.meta.text
-  } else {
-    document.title = 'Estafette'
-  }
-
   // if already on login page don't try to load user
   if (to.name === 'Login') {
     next()
@@ -112,6 +104,27 @@ router.beforeEach((to, from, next) => {
   } else {
     handleLoginRedirect(to, next)
   }
+})
+
+router.afterEach((to, from) => {
+  Vue.nextTick(() => {
+    // set page title by getting the name from each match along the route
+    document.title = 'Estafette | ' + to.matched.reduce((title, r) => {
+      if (title && title !== '') {
+        title += ' > '
+      }
+
+      if (r.meta && r.meta.title) {
+        title += typeof r.meta.title === 'function' ? r.meta.title(to) : r.meta.title
+      } else if (r.meta && r.meta.text) {
+        title += r.meta.text
+      } else {
+        title += r.name
+      }
+
+      return title.toLocaleLowerCase()
+    }, '')
+  })
 })
 
 Vue.config.productionTip = false

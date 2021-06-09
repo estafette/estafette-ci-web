@@ -114,6 +114,10 @@ export default {
     repoName: {
       type: String,
       default: null
+    },
+    pipeline: {
+      type: Object,
+      default: null
     }
   },
   directives: {
