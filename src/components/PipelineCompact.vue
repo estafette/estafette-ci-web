@@ -10,13 +10,13 @@
       <repository-title :repo="pipeline" />
     </property-block>
     <property-block
-      v-if="type === ''"
       label="Version"
       :value="pipeline.buildVersion"
     />
     <property-block
-      v-if="type === '' || type === 'build'"
+      v-if="type === 'build'"
       label="Status"
+      wide
       :value="pipeline.buildStatus"
     >
       <router-link :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: pipeline.id }}">
@@ -31,34 +31,15 @@
       </router-link>
     </property-block>
     <property-block
-      v-if="type === '' || type === 'build'"
+      v-if="type === 'build'"
       label="Built at"
+      wide
       :value="pipeline.insertedAt | formatDatetime"
     >
       {{ pipeline.insertedAt | formatDatetime }}
       <duration-label
         :duration="pipeline.duration"
         :pending-duration="pipeline.pendingDuration"
-      />
-    </property-block>
-    <property-block
-      v-if="type === ''"
-      label="Branch"
-      :value="pipeline.repoBranch"
-    />
-    <property-block
-      v-if="type === ''"
-      label="Revision"
-    >
-      <commit-link :build="pipeline" />
-    </property-block>
-    <property-block
-      v-if="type === ''"
-      label="Commit(s)"
-    >
-      <commits
-        :commits="pipeline.commits"
-        :limit="1"
       />
     </property-block>
     <div
@@ -84,24 +65,20 @@
 
 <script>
 import { BProgress, BProgressBar } from 'bootstrap-vue'
-import CommitLink from '@/components/CommitLink'
 import ReleaseBadge from '@/components/ReleaseBadge'
 import PropertyBlock from '@/components/PropertyBlock'
 import RepositoryTitle from '@/components/RepositoryTitle'
 import DurationLabel from '@/components/DurationLabel'
-import Commits from '@/components/Commits'
 import refresh from '../helpers/refresh'
 
 export default {
   components: {
     BProgress,
     BProgressBar,
-    CommitLink,
     ReleaseBadge,
     PropertyBlock,
     RepositoryTitle,
-    DurationLabel,
-    Commits
+    DurationLabel
   },
 
   props: {

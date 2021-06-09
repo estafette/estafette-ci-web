@@ -297,10 +297,9 @@ button.btn-clipboard {
 
   @extend .clickable;
 
-  .property-block {  
-    @extend .col-md-12;
-    @extend .col-lg-12;
-    @extend .col-xxl-12;
+  .property-block {
+    @extend .col-12;
+    @extend .col-xl-6;
   }  
 }
 
