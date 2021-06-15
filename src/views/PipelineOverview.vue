@@ -49,7 +49,7 @@
           </div>
 
           <div class="row no-gutters">
-            <div class="col">
+            <div class="col text-truncate">
               <b-button
                 :to="{ name: 'PipelineBuildLogs', params: { repoSource: pipeline.repoSource, repoOwner: pipeline.repoOwner, repoName: pipeline.repoName, id: build.id }}"
                 exact
