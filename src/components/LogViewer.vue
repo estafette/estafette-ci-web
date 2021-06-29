@@ -42,17 +42,32 @@
           <property-block
             label="Status"
             class="col-xxxl-1 text-xxxl-center"
-            :value="step.status"
+            :class="step.status | bootstrapClass('text')"
           >
-            <span
-              class="badge mt-2"
+            <div
+              class="badge mt-2 mb-3"
               :class="step.status | bootstrapClass('badge')"
             >
               {{ step.status }}
-            </span>
+            </div>
+            <br>
+            <extension-icon
+              :image="step.image"
+              class="h4"
+              v-b-tooltip.hover
+              title="This step uses a known extension image"
+            />
+            <font-awesome-icon
+              v-if="step.autoInjected"
+              icon="syringe"
+              class="h4"
+              v-b-tooltip.hover
+              title="This step is automatically injected by Estafette CI"
+            />
             <log-warning
               :step="step"
               :max-lines-to-show="maxLinesToShow"
+              class="h4"
             />
           </property-block>
           <property-block
@@ -62,13 +77,6 @@
             :value="step.step"
           >
             {{ step.step }}
-            <span
-              v-if="step.autoInjected"
-              class="small text-muted"
-              title="This step is automatically injected by Estafette CI"
-            >
-              (injected)
-            </span>
           </property-block>
           <property-block
             label="Image"
@@ -78,7 +86,6 @@
               v-if="step.image && step.image.name"
               :title="step.image.name+':'+step.image.tag"
             >
-              <extension-icon :image="step.image" />
               {{ step.image.name }}:{{ step.image.tag }}
               <font-awesome-icon
                 v-if="step.image.isTrusted"
@@ -282,7 +289,6 @@
             />
             <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">
               <span v-if="service.image && service.image.name">
-                <extension-icon :image="service.image" />
                 {{ service.image.name }}:{{ service.image.tag }}
                 <font-awesome-icon
                   v-if="service.image.isTrusted"
@@ -381,7 +387,6 @@
             />
             <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">
               <span v-if="nestedStep.image && nestedStep.image.name">
-                <extension-icon :image="nestedStep.image" />
                 {{ nestedStep.image.name }}:{{ nestedStep.image.tag }}
                 <font-awesome-icon
                   v-if="nestedStep.image.isTrusted"
