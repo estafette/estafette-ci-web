@@ -55,14 +55,14 @@
               :image="step.image"
               class="h4"
               v-b-tooltip.hover
-              title="This step uses a known extension image"
+              title="This stage uses a known extension image"
             />
             <font-awesome-icon
               v-if="step.autoInjected"
               icon="syringe"
               class="h4"
               v-b-tooltip.hover
-              title="This step is automatically injected by Estafette CI"
+              title="This stage is automatically injected by Estafette CI"
             />
             <log-warning
               :step="step"
