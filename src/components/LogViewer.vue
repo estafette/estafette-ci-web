@@ -78,6 +78,7 @@
               v-if="step.image && step.image.name"
               :title="step.image.name+':'+step.image.tag"
             >
+              <extension-icon :image="step.image" />
               {{ step.image.name }}:{{ step.image.tag }}
               <font-awesome-icon
                 v-if="step.image.isTrusted"
@@ -186,6 +187,7 @@
               class="mr-2 mb-1"
               :title="service.step"
             >
+              <extension-icon :image="service.image" />
               {{ service.step }}
               <span>
                 {{ (service.image ? service.image.pullDuration : 0) + service.duration | formatDuration }}
@@ -216,6 +218,7 @@
               class="mr-2 mb-1"
               :title="nestedStep.step"
             >
+              <extension-icon :image="nestedStep.image" />
               {{ nestedStep.step }}
               <span>
                 {{ (nestedStep.image ? nestedStep.image.pullDuration : 0) + nestedStep.duration | formatDuration }}
@@ -279,6 +282,7 @@
             />
             <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">
               <span v-if="service.image && service.image.name">
+                <extension-icon :image="service.image" />
                 {{ service.image.name }}:{{ service.image.tag }}
                 <font-awesome-icon
                   v-if="service.image.isTrusted"
@@ -377,11 +381,12 @@
             />
             <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">
               <span v-if="nestedStep.image && nestedStep.image.name">
+                <extension-icon :image="nestedStep.image" />
                 {{ nestedStep.image.name }}:{{ nestedStep.image.tag }}
                 <font-awesome-icon
                   v-if="nestedStep.image.isTrusted"
                   icon="shield-alt"
-                  class="small text-muted mb-1"
+                  class="small text-muted"
                   v-b-tooltip.hover
                   title="This image is configured as trusted by Estafette CI"
                 />
@@ -591,6 +596,7 @@ import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BButtonGroup } from '
 
 import PropertyBlock from '@/components/PropertyBlock'
 import LogWarning from '@/components/LogWarning'
+import ExtensionIcon from '@/components/ExtensionIcon'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faShieldAlt, faKey, faEye, faChevronUp, faChevronDown, faStopwatch, faExpandAlt, faSyringe } from '@fortawesome/free-solid-svg-icons'
@@ -607,7 +613,8 @@ export default {
     PropertyBlock,
     LogWarning,
     FontAwesomeIcon,
-    BButtonGroup
+    BButtonGroup,
+    ExtensionIcon
   },
   directives: {
     'b-toggle': VBToggle
