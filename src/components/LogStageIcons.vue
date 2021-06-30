@@ -1,5 +1,5 @@
 <template>
-  <span>
+  <span class="ml-1">
     <log-warning
       :step="step"
       :max-lines-to-show="maxLinesToShow"
