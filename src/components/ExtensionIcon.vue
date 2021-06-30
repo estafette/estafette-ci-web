@@ -2,6 +2,8 @@
   <font-awesome-icon
     v-if="supported"
     :icon="['fab', icon]"
+    v-b-tooltip.hover
+    title="This stage uses a known extension image"
   />
 </template>
 

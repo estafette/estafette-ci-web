@@ -42,32 +42,11 @@
           <property-block
             label="Status"
             class="col-xxxl-1 text-xxxl-center"
-            :class="step.status | bootstrapClass('text')"
           >
-            <div
-              class="badge mt-2 mb-3"
-              :class="step.status | bootstrapClass('badge')"
-            >
-              {{ step.status }}
-            </div>
-            <br>
-            <extension-icon
-              :image="step.image"
-              class="h4"
-              v-b-tooltip.hover
-              title="This stage uses a known extension image"
-            />
-            <font-awesome-icon
-              v-if="step.autoInjected"
-              icon="syringe"
-              class="h4"
-              v-b-tooltip.hover
-              title="This stage is automatically injected by Estafette CI"
-            />
-            <log-warning
-              :step="step"
-              :max-lines-to-show="maxLinesToShow"
-              class="h4"
+            <status-icon
+              :status="step.status"
+              class="h4 mt-1"
+              :class="step.status | bootstrapClass('text')"
             />
           </property-block>
           <property-block
@@ -76,7 +55,23 @@
             value-css-class="h4"
             :value="step.step"
           >
-            {{ step.step }}
+            <span class="mr-2">{{ step.step }}</span>
+            <extension-icon
+              :image="step.image"
+              class="h4 align-middle text-secondary"
+            />
+            <font-awesome-icon
+              v-if="step.autoInjected"
+              icon="syringe"
+              class="h4 align-middletext-secondary"
+              v-b-tooltip.hover
+              title="This stage is automatically injected by Estafette CI"
+            />
+            <log-warning
+              :step="step"
+              :max-lines-to-show="maxLinesToShow"
+              class="h4 align-middle text-secondary"
+            />
           </property-block>
           <property-block
             label="Image"
@@ -473,12 +468,11 @@
         class="col-xxxl-1 text-xxxl-center"
         :value="totalStatus"
       >
-        <span
-          class="badge"
-          :class="totalStatus | bootstrapClass('badge')"
-        >
-          {{ totalStatus }}
-        </span>
+        <status-icon
+          :status="totalStatus"
+          class="h4 mt-1"
+          :class="totalStatus | bootstrapClass('text')"
+        />
       </property-block>
       <div class="property-block col-xxxl-4" />
       <div class="property-block col-xxxl-3" />
@@ -601,6 +595,7 @@ import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BButtonGroup } from '
 
 import PropertyBlock from '@/components/PropertyBlock'
 import LogWarning from '@/components/LogWarning'
+import StatusIcon from '@/components/StatusIcon'
 import ExtensionIcon from '@/components/ExtensionIcon'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -619,6 +614,7 @@ export default {
     LogWarning,
     FontAwesomeIcon,
     BButtonGroup,
+    StatusIcon,
     ExtensionIcon
   },
   directives: {
