@@ -55,22 +55,13 @@
             value-css-class="h4"
             :value="step.step"
           >
-            <span class="mr-2">{{ step.step }}</span>
-            <extension-icon
-              :image="step.image"
-              class="h4 align-middle text-secondary"
-            />
+            {{ step.step }}
             <font-awesome-icon
               v-if="step.autoInjected"
-              icon="syringe"
-              class="h4 align-middle text-secondary"
+              icon="bolt"
+              class="small text-muted ml-2"
               v-b-tooltip.hover
               title="This stage is automatically injected by Estafette CI"
-            />
-            <log-warning
-              :step="step"
-              :max-lines-to-show="maxLinesToShow"
-              class="h4 align-middle text-secondary"
             />
           </property-block>
           <property-block
@@ -82,24 +73,11 @@
               :title="step.image.name+':'+step.image.tag"
             >
               {{ step.image.name }}:{{ step.image.tag }}
-              <font-awesome-icon
-                v-if="step.image.isTrusted"
-                icon="shield-alt"
-                class="small text-muted"
-                v-b-tooltip.hover
-                title="This image is configured as trusted by Estafette CI"
-              />
-              <font-awesome-icon
-                v-if="step.image.hasInjectedCredentials"
-                icon="key"
-                class="small text-muted"
-                v-b-tooltip.hover
-                title="This image has injected credentials"
-              />
             </span>
-            <span v-else>
-              -
-            </span>
+            <log-stage-icons
+              :step="step"
+              :max-lines-to-show="maxLinesToShow"
+            />
           </property-block>
           <property-block
             label="Image size"
@@ -194,7 +172,7 @@
               <span>
                 {{ (service.image ? service.image.pullDuration : 0) + service.duration | formatDuration }}
               </span>
-              <log-warning
+              <log-stage-icons
                 :step="service"
                 :max-lines-to-show="maxLinesToShow"
               />
@@ -225,7 +203,7 @@
               <span>
                 {{ (nestedStep.image ? nestedStep.image.pullDuration : 0) + nestedStep.duration | formatDuration }}
               </span>
-              <log-warning
+              <log-stage-icons
                 :step="nestedStep"
                 :max-lines-to-show="maxLinesToShow"
               />
@@ -285,19 +263,9 @@
             <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">
               <span v-if="service.image && service.image.name">
                 {{ service.image.name }}:{{ service.image.tag }}
-                <font-awesome-icon
-                  v-if="service.image.isTrusted"
-                  icon="shield-alt"
-                  class="small text-muted"
-                  v-b-tooltip.hover
-                  title="This image is configured as trusted by Estafette CI"
-                />
-                <font-awesome-icon
-                  v-if="service.image.hasInjectedCredentials"
-                  icon="key"
-                  class="small text-muted"
-                  v-b-tooltip.hover
-                  title="This image has injected credentials"
+                <log-stage-icons
+                  :step="service"
+                  :max-lines-to-show="maxLinesToShow"
                 />
               </span>
             </div>
@@ -383,19 +351,9 @@
             <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">
               <span v-if="nestedStep.image && nestedStep.image.name">
                 {{ nestedStep.image.name }}:{{ nestedStep.image.tag }}
-                <font-awesome-icon
-                  v-if="nestedStep.image.isTrusted"
-                  icon="shield-alt"
-                  class="small text-muted"
-                  v-b-tooltip.hover
-                  title="This image is configured as trusted by Estafette CI"
-                />
-                <font-awesome-icon
-                  v-if="nestedStep.image.hasInjectedCredentials"
-                  icon="key"
-                  class="small text-muted"
-                  v-b-tooltip.hover
-                  title="This image has injected credentials"
+                <log-stage-icons
+                  :step="nestedStep"
+                  :max-lines-to-show="maxLinesToShow"
                 />
               </span>
             </div>
@@ -536,7 +494,7 @@
           size="lg"
         >
           <font-awesome-icon
-            icon="syringe"
+            icon="bolt"
             class="sidebar-icon"
           />
         </b-button>
@@ -594,15 +552,14 @@ import AnsiUp from 'ansi_up'
 import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BButtonGroup } from 'bootstrap-vue'
 
 import PropertyBlock from '@/components/PropertyBlock'
-import LogWarning from '@/components/LogWarning'
 import StatusIcon from '@/components/StatusIcon'
-import ExtensionIcon from '@/components/ExtensionIcon'
+import LogStageIcons from '@/components/LogStageIcons'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faShieldAlt, faKey, faEye, faChevronUp, faChevronDown, faStopwatch, faExpandAlt, faSyringe } from '@fortawesome/free-solid-svg-icons'
+import { faEye, faChevronUp, faChevronDown, faStopwatch, faExpandAlt, faBolt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faShieldAlt, faKey, faEye, faChevronUp, faChevronDown, faStopwatch, faExpandAlt, faSyringe)
+library.add(faEye, faChevronUp, faChevronDown, faStopwatch, faExpandAlt, faBolt)
 
 export default {
   components: {
@@ -611,11 +568,10 @@ export default {
     BCardHeader,
     BCollapse,
     PropertyBlock,
-    LogWarning,
+    LogStageIcons,
     FontAwesomeIcon,
     BButtonGroup,
-    StatusIcon,
-    ExtensionIcon
+    StatusIcon
   },
   directives: {
     'b-toggle': VBToggle
