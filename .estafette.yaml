@@ -33,19 +33,25 @@ stages:
         - '#npm-audit'
 
       restore:
-        image: node:15-alpine
+        image: node:16-alpine
+        env:
+          npm_config_update-notifier: false
         commands:
         - npm ci
 
   lint-and-build:
     parallelStages:
       lint:
-        image: node:15-alpine
+        image: node:16-alpine
+        env:
+          npm_config_update-notifier: false
         commands:
         - npm run lint
 
       build:
-        image: node:15-alpine
+        image: node:16-alpine
+        env:
+          npm_config_update-notifier: false
         commands:
         - npm run build
 
@@ -78,7 +84,9 @@ stages:
         path: /robots.txt
         port: 5000
 
-    image: node:15-alpine
+    image: node:16-alpine
+    env:
+      npm_config_update-notifier: false
     commands:
     - apk add curl
     - curl --fail http://ci.estafette.io:5000/manifest/encrypt
