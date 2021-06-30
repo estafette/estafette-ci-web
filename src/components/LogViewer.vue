@@ -63,7 +63,7 @@
             <font-awesome-icon
               v-if="step.autoInjected"
               icon="syringe"
-              class="h4 align-middletext-secondary"
+              class="h4 align-middle text-secondary"
               v-b-tooltip.hover
               title="This stage is automatically injected by Estafette CI"
             />
