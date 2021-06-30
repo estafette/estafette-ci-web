@@ -3,16 +3,16 @@
     v-if="step && step.logLines && step.logLines.length > maxLinesToShow"
     v-b-tooltip.hover
     :title="`This stage has a total of ${step.logLines.length} log lines; please make it less verbose to avoid it getting truncated`"
-    icon="exclamation-triangle"
+    icon="exclamation-circle"
   />
 </template>
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faExclamationTriangle)
+library.add(faExclamationCircle)
 
 export default {
   components: {
