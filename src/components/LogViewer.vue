@@ -36,6 +36,7 @@
       >
         <b-card-header
           class="row m-0 pt-3 pr-2 pb-3 pl-2 clickable border-0 rounded-0"
+          :class="step.status | bootstrapClass('text')"
           v-b-toggle="step.collapseID"
           role="tab"
         >
@@ -46,7 +47,6 @@
             <status-icon
               :status="step.status"
               class="h4 mt-1"
-              :class="step.status | bootstrapClass('text')"
             />
           </property-block>
           <property-block
@@ -420,7 +420,10 @@
       </b-card>
     </div>
 
-    <div class="log-summary-block">
+    <div
+      class="log-summary-block"
+      :class="totalStatus | bootstrapClass('text')"
+    >
       <property-block
         label="Status"
         class="col-xxxl-1 text-xxxl-center"
@@ -429,7 +432,6 @@
         <status-icon
           :status="totalStatus"
           class="h4 mt-1"
-          :class="totalStatus | bootstrapClass('text')"
         />
       </property-block>
       <div class="property-block col-xxxl-4" />
