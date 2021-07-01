@@ -3,30 +3,6 @@
     v-if="steps && steps.length > 0"
     class="accordion m-0"
   >
-    <div class="row-header">
-      <div class="col-1 text-center">
-        Status
-      </div>
-      <div class="col-4">
-        Stage
-      </div>
-      <div class="col-3">
-        Image
-      </div>
-      <div class="col-1 text-right">
-        Image size
-      </div>
-      <div class="col-1 text-right">
-        Pull time
-      </div>
-      <div class="col-1 text-right">
-        Execution time
-      </div>
-      <div class="col-1 text-right pr-5">
-        Total time
-      </div>
-    </div>
-
     <div role="tablist">
       <b-card
         no-body
@@ -41,32 +17,27 @@
           role="tab"
         >
           <property-block
-            label="Status"
-            class="col-xxxl-1 text-xxxl-center"
-          >
-            <status-icon
-              :status="step.status"
-              class="h4 mt-1"
-            />
-          </property-block>
-          <property-block
             label="Stage"
-            class="col-xxxl-4"
+            label-css-class="pl-5"
             value-css-class="h4"
             :value="step.step"
           >
+            <status-icon
+              :status="step.status"
+              style="width: 42px;"
+            />
             {{ step.step }}
             <font-awesome-icon
               v-if="step.autoInjected"
               icon="bolt"
-              class="small text-muted ml-2"
+              class="small ml-2"
               v-b-tooltip.hover
               title="This stage is automatically injected by Estafette CI"
             />
           </property-block>
           <property-block
             label="Image"
-            class="col-xxxl-3"
+            class="d-none d-lg-block"
           >
             <span
               v-if="step.image && step.image.name"
@@ -84,7 +55,7 @@
           </property-block>
           <property-block
             label="Image size"
-            class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
+            class="d-none d-xxl-block text-right"
           >
             <span v-if="step.image && step.image.name && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
               <span
@@ -95,9 +66,8 @@
               </span>
               <em
                 v-else
-                class="text-muted"
               >
-                (cached)
+                -
               </em>
             </span>
             <span v-else>
@@ -106,7 +76,7 @@
           </property-block>
           <property-block
             label="Pull time"
-            class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
+            class="d-none d-xxxl-block col-xxxl-1 text-right"
           >
             <span v-if="step.image && step.image.name && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
               <span
@@ -117,9 +87,8 @@
               </span>
               <em
                 v-else
-                class="text-muted"
               >
-                (cached)
+                -
               </em>
             </span>
             <span v-else>
@@ -128,7 +97,7 @@
           </property-block>
           <property-block
             label="Execution time"
-            class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
+            class="d-none d-xxxl-block col-xxxl-1 text-right"
             :value="step.duration | formatDuration"
           >
             <span v-if="step.duration && (step.status == 'SUCCEEDED' || step.status == 'FAILED')">
@@ -140,7 +109,7 @@
           </property-block>
           <property-block
             label="Total time"
-            class="col-xxxl-1 text-xxxl-right pr-5"
+            class="d-none d-md-block pr-5 col-xxxl-1 text-right"
             :value="(step.image ? step.image.pullDuration : 0) + step.duration | formatDuration"
           >
             <span v-if="step.image && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
@@ -159,6 +128,7 @@
         >
           <property-block
             label="Service containers"
+            class="text-center"
             wide
             label-css-class="d-xxxl-block"
           >
@@ -190,6 +160,7 @@
         >
           <property-block
             label="Parallel stages"
+            class="text-center"
             wide
             label-css-class="d-xxxl-block"
           >
@@ -222,6 +193,12 @@
           role="tabpanel"
           v-slot="{ visible }"
         >
+          <log-stage-detail
+            :visible="visible"
+            :step="step"
+            :max-lines-to-show="maxLinesToShow"
+          />
+
           <div
             v-if="visible && step.logLines && step.logLines.length > 0"
             class="text-light text-monospace bg-dark m-0 p-3 pr-5"
@@ -254,61 +231,11 @@
           role="tabpanel"
           v-slot="{ visible }"
         >
-          <div
-            v-if="visible"
-            class="row m-0 pt-3 pr-2 pb-3 pl-2 border-0 rounded-0 bg-light"
-          >
-            <div class="col-4 col-md-2 col-xl-1 text-center" />
-            <div
-              class="col-8 col-lg-5 col-xl-4 text-truncate h4"
-              :title="service.step"
-            />
-            <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">
-              <span v-if="service.image && service.image.name">
-                {{ service.image.name }}:{{ service.image.tag }}
-                <log-stage-icons
-                  :step="service"
-                  :max-lines-to-show="maxLinesToShow"
-                />
-              </span>
-            </div>
-            <div class="col-1 text-right d-none d-xl-flex">
-              <span v-if="service.image && service.image.name && (service.status == 'RUNNING' || service.status == 'SUCCEEDED' || service.status == 'FAILED')">
-                <span v-if="service.image && service.image.imageSize">
-                  {{ service.image.imageSize | formatBytes }}
-                </span>
-                <em
-                  v-else
-                  class="text-muted"
-                >
-                  (cached)
-                </em>
-              </span>
-            </div>
-            <div class="col-1 text-right d-none d-xl-flex">
-              <span v-if="service.image && service.image.name && (service.status == 'RUNNING' || service.status == 'SUCCEEDED' || service.status == 'FAILED')">
-                <span v-if="service.image.pullDuration && service.image.pullDuration > 0">
-                  {{ service.image.pullDuration | formatDuration }}
-                </span>
-                <em
-                  v-else
-                  class="text-muted"
-                >
-                  (cached)
-                </em>
-              </span>
-            </div>
-            <div class="col-1 text-right d-none d-xl-flex">
-              <span v-if="service.duration && (service.status == 'SUCCEEDED' || service.status == 'FAILED')">
-                {{ service.duration | formatDuration }}
-              </span>
-            </div>
-            <div class="col-2 col-lg-1 text-right d-none d-md-flex pr-5">
-              <span v-if="service.image && (service.status == 'RUNNING' || service.status == 'SUCCEEDED' || service.status == 'FAILED')">
-                {{ (service.image ? service.image.pullDuration : 0) + service.duration | formatDuration }}
-              </span>
-            </div>
-          </div>
+          <log-stage-detail
+            :visible="visible"
+            :step="service"
+            :max-lines-to-show="maxLinesToShow"
+          />
 
           <div
             class="text-light text-monospace bg-dark m-0 p-3 pr-5"
@@ -342,61 +269,11 @@
           role="tabpanel"
           v-slot="{ visible }"
         >
-          <div
-            v-if="visible"
-            class="row m-0 pt-3 pr-2 pb-3 pl-2 border-0 rounded-0 bg-light"
-          >
-            <div class="col-4 col-md-2 col-xl-1 text-center" />
-            <div
-              class="col-8 col-lg-5 col-xl-4 text-truncate h4"
-              :title="nestedStep.step"
-            />
-            <div class="col-4 col-xl-3 d-none d-lg-flex text-truncate">
-              <span v-if="nestedStep.image && nestedStep.image.name">
-                {{ nestedStep.image.name }}:{{ nestedStep.image.tag }}
-                <log-stage-icons
-                  :step="nestedStep"
-                  :max-lines-to-show="maxLinesToShow"
-                />
-              </span>
-            </div>
-            <div class="col-1 text-right d-none d-xl-flex">
-              <span v-if="nestedStep.image && nestedStep.image.name && (nestedStep.status == 'RUNNING' || nestedStep.status == 'SUCCEEDED' || nestedStep.status == 'FAILED')">
-                <span v-if="nestedStep.image && nestedStep.image.imageSize">
-                  {{ nestedStep.image.imageSize | formatBytes }}
-                </span>
-                <em
-                  v-else
-                  class="text-muted"
-                >
-                  (cached)
-                </em>
-              </span>
-            </div>
-            <div class="col-1 text-right d-none d-xl-flex">
-              <span v-if="nestedStep.image && nestedStep.image.name && (nestedStep.status == 'RUNNING' || nestedStep.status == 'SUCCEEDED' || nestedStep.status == 'FAILED')">
-                <span v-if="nestedStep.image.pullDuration && nestedStep.image.pullDuration > 0">
-                  {{ nestedStep.image.pullDuration | formatDuration }}
-                </span>
-                <em
-                  v-else
-                  class="text-muted"
-                >
-                  (cached)
-                </em>
-              </span>
-            </div>
-            <div class="col-1 text-right d-none d-xl-flex">
-              <span v-if="nestedStep.duration && (nestedStep.status == 'SUCCEEDED' || nestedStep.status == 'FAILED')">
-                {{ nestedStep.duration | formatDuration }}
-              </span>
-            </div>
-            <div class="col-2 col-lg-1 text-right d-none d-md-flex pr-5">
-              <span v-if="nestedStep.image && (nestedStep.status == 'RUNNING' || nestedStep.status == 'SUCCEEDED' || nestedStep.status == 'FAILED')">
-                {{ (nestedStep.image ? nestedStep.image.pullDuration : 0) + nestedStep.duration | formatDuration }}
-              </span>
-            </div>
-          </div>
+          <log-stage-detail
+            :visible="visible"
+            :step="nestedStep"
+            :max-lines-to-show="maxLinesToShow"
+          />
 
           <div
             class="text-light text-monospace bg-dark m-0 p-3 pr-5"
@@ -428,35 +305,36 @@
       :class="totalStatus | bootstrapClass('text')"
     >
       <property-block
-        label="Status"
-        class="col-xxxl-1 text-xxxl-center"
+        label="Total"
+        label-css-class="pl-5"
+        value-css-class="h4"
         :value="totalStatus"
       >
         <status-icon
           :status="totalStatus"
-          class="h4 mt-1"
+          class="h4"
+          style="width: 42px;"
         />
       </property-block>
-      <div class="property-block col-xxxl-4" />
-      <div class="property-block col-xxxl-3" />
+      <div class="property-block d-none d-lg-block" />
       <property-block
-        label="Total image size"
-        class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
+        label="Image size"
+        class="d-none d-xxl-block text-right"
         :value="totalImageSize | formatBytes"
       />
       <property-block
-        label="Total pull time"
-        class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
+        label="Pull time"
+        class="d-none d-xxxl-block col-xxxl-1 text-right"
         :value="totalPullDuration | formatDuration"
       />
       <property-block
-        label="Total execution time"
-        class="d-none d-xxxl-block col-xxxl-1 text-xxxl-right"
+        label="Execution time"
+        class="d-none d-xxxl-block col-xxxl-1 text-right"
         :value="totalDuration | formatDuration"
       />
       <property-block
         label="Total time"
-        class="col-xxxl-1 text-xxxl-right pr-5"
+        class="d-none d-md-block pr-5 col-xxxl-1 text-right"
         :value="totalPullDuration + totalDuration | formatDuration"
       />
     </div>
@@ -558,6 +436,8 @@ import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BButtonGroup } from '
 
 import PropertyBlock from '@/components/PropertyBlock'
 import StatusIcon from '@/components/StatusIcon'
+import ExtensionIcon from '@/components/ExtensionIcon'
+import LogStageDetail from '@/components/LogStageDetail'
 import LogStageIcons from '@/components/LogStageIcons'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -573,10 +453,12 @@ export default {
     BCardHeader,
     BCollapse,
     PropertyBlock,
+    LogStageDetail,
     LogStageIcons,
     FontAwesomeIcon,
     BButtonGroup,
-    StatusIcon
+    StatusIcon,
+    ExtensionIcon
   },
   directives: {
     'b-toggle': VBToggle

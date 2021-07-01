@@ -424,19 +424,20 @@ button.btn-clipboard {
   @extend .mb-2;
   @extend .ml-0;
   @extend .mr-0;
-
-  .property-block {
-    .property-label {
-      @extend .d-xxxl-none;
-    }
-  }
 }
 
 .log-summary-block {
   @extend .row-header-core;
 
+  @extend .pt-3;
+  @extend .pr-2;
+  @extend .pb-3;
+  @extend .pl-2;
+}
+
+.log-stage-block, .log-summary-block {
   .property-label {
-    @extend .d-xxxl-none;
+    color: rgba($black, .25) !important;
   }
 }
 
