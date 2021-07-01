@@ -9,10 +9,10 @@
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBitbucket, faCloudflare, faDocker, faGit, faGithub, faNpm, faSlack } from '@fortawesome/free-brands-svg-icons'
+import { faBitbucket, faCloudflare, faDocker, faGit, faGithub, faJava, faNode, faNpm, faPhp, faPython, faSlack, faRust } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faDocker, faGit, faSlack, faGithub, faBitbucket, faNpm, faCloudflare)
+library.add(faDocker, faGit, faSlack, faGithub, faBitbucket, faNpm, faCloudflare, faJava, faNode, faPhp, faPython, faRust)
 
 export default {
   components: {
@@ -35,7 +35,14 @@ export default {
         'extensions/bot-github': 'github',
         'extensions/bitbucket-status': 'bitbucket',
         'extensions/npm-audit': 'npm',
-        'extensions/cloudflare-purge': 'cloudflare'
+        'extensions/cloudflare-purge': 'cloudflare',
+        openjdk: 'java',
+        adoptopenjdk: 'java',
+        node: 'node',
+        php: 'php',
+        python: 'python',
+        docker: 'docker',
+        rust: 'rust'
       }
     }
   },
