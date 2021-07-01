@@ -74,6 +74,9 @@
             >
               {{ step.image.name }}:{{ step.image.tag }}
             </span>
+            <span v-else>
+              -
+            </span>
             <log-stage-icons
               :step="step"
               :max-lines-to-show="maxLinesToShow"
