@@ -194,32 +194,12 @@
           v-slot="{ visible }"
         >
           <log-stage-detail
-            :visible="visible"
+            :visible="visible && step.logLines && step.logLines.length > 0"
             :step="step"
             :max-lines-to-show="maxLinesToShow"
+            :show-timestamps="showTimestamps"
+            :show-truncated-logs="showTruncatedLogs"
           />
-
-          <div
-            v-if="visible && step.logLines && step.logLines.length > 0"
-            class="text-light text-monospace bg-dark m-0 p-3 pr-5"
-          >
-            <div
-              class="row no-gutters"
-              v-for="(line, lineIndex) in cappedLogLines(step.logLines)"
-              :key="line.line ? line.line : lineIndex"
-            >
-              <div
-                v-if="showTimestamps"
-                class="col-1 log-timestamp text-white-50 d-none d-xl-flex"
-              >
-                {{ line.timestamp | moment('YYYY-MM-DD HH:mm:ss') }}
-              </div>
-              <div
-                class="col log-text"
-                v-html="formatLog(line.text)"
-              />
-            </div>
-          </div>
         </b-collapse>
 
         <b-collapse
@@ -235,29 +215,9 @@
             :visible="visible"
             :step="service"
             :max-lines-to-show="maxLinesToShow"
+            :show-timestamps="showTimestamps"
+            :show-truncated-logs="showTruncatedLogs"
           />
-
-          <div
-            class="text-light text-monospace bg-dark m-0 p-3 pr-5"
-            v-if="service.logLines && service.logLines.length > 0"
-          >
-            <div
-              class="row no-gutters"
-              v-for="(line, lineIndex) in cappedLogLines(service.logLines)"
-              :key="line.line ? line.line : lineIndex"
-            >
-              <div
-                v-if="showTimestamps"
-                class="col-1 log-timestamp text-white-50 d-none d-xl-flex"
-              >
-                {{ line.timestamp | moment('YYYY-MM-DD HH:mm:ss') }}
-              </div>
-              <div
-                class="col log-text"
-                v-html="formatLog(line.text)"
-              />
-            </div>
-          </div>
         </b-collapse>
 
         <b-collapse
@@ -273,29 +233,9 @@
             :visible="visible"
             :step="nestedStep"
             :max-lines-to-show="maxLinesToShow"
+            :show-timestamps="showTimestamps"
+            :show-truncated-logs="showTruncatedLogs"
           />
-
-          <div
-            class="text-light text-monospace bg-dark m-0 p-3 pr-5"
-            v-if="nestedStep.logLines && nestedStep.logLines.length > 0"
-          >
-            <div
-              class="row no-gutters"
-              v-for="(line, lineIndex) in cappedLogLines(nestedStep.logLines)"
-              :key="line.line ? line.line : lineIndex"
-            >
-              <div
-                v-if="showTimestamps"
-                class="col-1 log-timestamp text-white-50 d-none d-xl-flex"
-              >
-                {{ line.timestamp | moment('YYYY-MM-DD HH:mm:ss') }}
-              </div>
-              <div
-                class="col log-text"
-                v-html="formatLog(line.text)"
-              />
-            </div>
-          </div>
         </b-collapse>
       </b-card>
     </div>
@@ -431,7 +371,6 @@
 <script>
 import debounce from 'lodash/debounce'
 
-import AnsiUp from 'ansi_up'
 import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BButtonGroup } from 'bootstrap-vue'
 
 import PropertyBlock from '@/components/PropertyBlock'
@@ -586,12 +525,6 @@ export default {
   },
 
   methods: {
-    formatLog (value) {
-      if (!value) return value
-      const ansi = new AnsiUp()
-      return ansi.ansi_to_html(value)
-    },
-
     loadLogs () {
       if (!this.allowTail || this.status === 'succeeded' || this.status === 'failed' || this.status === 'canceled') {
         this.tailedSteps = []
@@ -623,36 +556,6 @@ export default {
       if (this.refresh) {
         this.refreshTimeout = setTimeout(this.loadLogs, timeoutWithJitter)
       }
-    },
-
-    cappedLogLines (logLines) {
-      const firstLinesToShow = 5
-      if (!logLines || logLines.length <= this.maxLinesToShow || this.showTruncatedLogs) {
-        return logLines
-      }
-
-      const firstLines = logLines.slice(0, firstLinesToShow)
-      const truncatedLines = logLines.slice(firstLinesToShow, firstLinesToShow + 3).map((l, i) => {
-        if (i === 1) {
-          return {
-            line: l.line,
-            timestamp: null,
-            streamType: l.streamType,
-            text: '== TOO MANY LINES; TRUNCATED BY ESTAFETTE; SHOW ALL BY TOGGLING \'TRUNCATED LOGS\' IN THE TOOLBAR ON THE RIGHT =='
-          }
-        }
-
-        return {
-          line: l.line,
-          timestamp: null,
-          streamType: l.streamType,
-          text: ' '
-        }
-      })
-      const lastLines = logLines.slice(logLines.length - this.maxLinesToShow + firstLinesToShow + 3)
-
-      // get first 5 lines and last 1955
-      return firstLines.concat(truncatedLines).concat(lastLines)
     },
 
     isTailing () {
