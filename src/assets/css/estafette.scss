@@ -395,7 +395,7 @@ button.btn-clipboard {
 }
 
 .property-label {
-  @extend .text-black-50;
+  color: rgba($black, .25) !important;
   @extend .small;
   @extend .mb-1;
 }
@@ -434,13 +434,6 @@ button.btn-clipboard {
   @extend .pb-3;
   @extend .pl-2;
 }
-
-.log-stage-block, .log-summary-block {
-  .property-label {
-    color: rgba($black, .25) !important;
-  }
-}
-
 
 // make room for the left navigation
 #app {
