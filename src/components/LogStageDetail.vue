@@ -148,7 +148,7 @@ export default {
     formatLog (value) {
       if (!value) return value
       const ansi = new AnsiUp()
-      return ansi.ansi_to_html(value)
+      return ansi.ansi_to_html(value).replace(/(?:\r\n|\r|\n)/g, '<br>')
     },
 
     cappedLogLines (logLines) {
