@@ -140,7 +140,6 @@
               class="mr-2 mb-1"
               :title="service.step"
             >
-              <extension-icon :image="service.image" />
               {{ service.step }}
               <span>
                 {{ (service.image ? service.image.pullDuration : 0) + service.duration | formatDuration }}
@@ -172,7 +171,6 @@
               class="mr-2 mb-1"
               :title="nestedStep.step"
             >
-              <extension-icon :image="nestedStep.image" />
               {{ nestedStep.step }}
               <span>
                 {{ (nestedStep.image ? nestedStep.image.pullDuration : 0) + nestedStep.duration | formatDuration }}
@@ -364,7 +362,6 @@ import { BButton, BCard, BCardHeader, BCollapse, VBToggle, BButtonGroup } from '
 
 import PropertyBlock from '@/components/PropertyBlock'
 import StatusIcon from '@/components/StatusIcon'
-import ExtensionIcon from '@/components/ExtensionIcon'
 import LogStageDetail from '@/components/LogStageDetail'
 import LogStageIcons from '@/components/LogStageIcons'
 
@@ -385,8 +382,7 @@ export default {
     LogStageIcons,
     FontAwesomeIcon,
     BButtonGroup,
-    StatusIcon,
-    ExtensionIcon
+    StatusIcon
   },
   directives: {
     'b-toggle': VBToggle
