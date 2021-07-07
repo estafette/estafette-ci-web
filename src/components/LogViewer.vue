@@ -108,11 +108,11 @@
             </span>
           </property-block>
           <property-block
-            label="Total time"
+            label="Stage time"
             class="d-none d-md-block pr-5 col-xxxl-1 text-right"
             :value="(step.image ? step.image.pullDuration : 0) + step.duration | formatDuration"
           >
-            <span v-if="step.image && (step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED')">
+            <span v-if="step.status == 'RUNNING' || step.status == 'SUCCEEDED' || step.status == 'FAILED'">
               {{ (step.image ? step.image.pullDuration : 0) + step.duration | formatDuration }}
             </span>
             <span v-else>
@@ -244,31 +244,20 @@
       class="log-summary-block"
       :class="totalStatus | bootstrapClass('text')"
     >
-      <property-block
-        label="Total"
-        label-css-class="pl-5"
-        value-css-class="h4"
-        :value="totalStatus"
-      >
-        <status-icon
-          :status="totalStatus"
-          class="h4"
-          style="width: 42px;"
-        />
-      </property-block>
+      <div class="property-block" />
       <div class="property-block d-none d-lg-block" />
       <property-block
-        label="Image size"
+        label="Total image size"
         class="d-none d-xxl-block text-right"
         :value="totalImageSize | formatBytes"
       />
       <property-block
-        label="Pull time"
+        label="Total pull time"
         class="d-none d-xxxl-block col-xxxl-1 text-right"
         :value="totalPullDuration | formatDuration"
       />
       <property-block
-        label="Execution time"
+        label="Total execution time"
         class="d-none d-xxxl-block col-xxxl-1 text-right"
         :value="totalDuration | formatDuration"
       />
