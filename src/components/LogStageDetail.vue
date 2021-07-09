@@ -148,7 +148,7 @@ export default {
     formatLog (value) {
       if (!value) return value
       const ansi = new AnsiUp()
-      return ansi.ansi_to_html(value).replace(/(?:\r\n|\r|\n)/g, '<br>')
+      return ansi.ansi_to_html(value)
     },
 
     cappedLogLines (logLines) {
@@ -183,3 +183,14 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.log-timestamp {
+  min-width: 200px;
+  max-width: 200px;
+}
+
+.log-text {
+  white-space: pre-wrap;
+}
+</style>

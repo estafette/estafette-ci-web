@@ -759,13 +759,4 @@ export default {
     outline: none;
   }
 }
-
-.log-timestamp {
-  min-width: 200px;
-  max-width: 200px;
-}
-
-.log-text {
-  white-space: pre-wrap;
-}
 </style>
