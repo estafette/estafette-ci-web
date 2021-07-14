@@ -475,21 +475,7 @@ export default {
     },
 
     totalStatus: function () {
-      if (!this.steps) {
-        return ''
-      }
-      return this.steps.reduce((acc, step) => {
-        if (acc === 'CANCELED' || step.status === 'CANCELED') {
-          return 'CANCELED'
-        }
-        if (acc === 'FAILED' || step.status === 'FAILED') {
-          return 'FAILED'
-        }
-        if (step.status === 'PENDING' || step.status === 'RUNNING') {
-          return 'RUNNING'
-        }
-        return 'SUCCEEDED'
-      }, 'SUCCEEDED')
+      return this.totalStatusMethod()
     },
 
     hasTruncatedLogs () {
@@ -520,13 +506,36 @@ export default {
             } else {
               this.steps = response.data
             }
+
+            if (this.totalStatusMethod() === 'FAILED') {
+              this.showTruncatedLogs = true
+            }
           })
           .catch(e => {
+            console.warn(e)
             this.periodicallyRefreshLogs(2)
           })
       } else {
         this.periodicallyRefreshLogs(2)
       }
+    },
+
+    totalStatusMethod () {
+      if (!this.steps) {
+        return ''
+      }
+      return this.steps.reduce((acc, step) => {
+        if (acc === 'CANCELED' || step.status === 'CANCELED') {
+          return 'CANCELED'
+        }
+        if (acc === 'FAILED' || step.status === 'FAILED') {
+          return 'FAILED'
+        }
+        if (step.status === 'PENDING' || step.status === 'RUNNING') {
+          return 'RUNNING'
+        }
+        return 'SUCCEEDED'
+      }, 'SUCCEEDED')
     },
 
     periodicallyRefreshLogs (intervalSeconds) {
