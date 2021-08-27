@@ -12,9 +12,9 @@ version:
   semver:
     major: 1
     minor: 0
-    patch: 4
+    patch: 5
     labelTemplate: '{{branch}}-{{auto}}'
-    releaseBranch: 1.0.4
+    releaseBranch: 1.0.5
 
 stages:
   audit-and-restore:
@@ -234,3 +234,4 @@ releases:
 
       create-github-release:
         image: extensions/github-release:dev
+        ignoreMissingMilestone: true

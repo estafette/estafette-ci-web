@@ -614,6 +614,17 @@ export default new Router({
             text: 'Secrets',
             icon: 'user-secret'
           }
+        },
+        {
+          path: 'integrations',
+          name: 'AdminIntegrations',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../views/AdminIntegrations.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            text: 'Integrations',
+            icon: 'plug'
+          }
         }
       ]
     },
