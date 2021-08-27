@@ -8,8 +8,8 @@ const mergedConfig = merge(common, {
   devtool: 'inline-source-map',
   devServer: {
     historyApiFallback: true,
-    before: app => {
-      app.use(ApiMocker('/api', 'mocks/api'))
+    onBeforeSetupMiddleware: devServer => {
+      devServer.app.use(ApiMocker('/api', 'mocks/api'))
     }
   },
   module: {
