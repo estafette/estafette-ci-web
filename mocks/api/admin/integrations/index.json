@@ -1,7 +1,7 @@
 {
   "bitbucket": {
     "addonKey": "estafette-ci",
-    "redirectUri": "https://ci-integrations.estafette.io/api/integrations/bitbucket/redirect",
+    "redirectURI": "https://ci-integrations.estafette.io/api/integrations/bitbucket/redirect",
     "installations":[
       {
         "key":"estafette-ci",

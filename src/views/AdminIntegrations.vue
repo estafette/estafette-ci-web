@@ -33,7 +33,7 @@
 
       <b-button
         variant="primary"
-        :href="`https://bitbucket.org/site/addons/authorize?addon_key=${integrations.bitbucket.addonKey}&redirect_uri=${integrations.bitbucket.redirectUri}`"
+        :href="`https://bitbucket.org/site/addons/authorize?addon_key=${integrations.bitbucket.addonKey}&redirect_uri=${integrations.bitbucket.redirectURI}`"
       >
         <font-awesome-icon
           :icon="['fab', 'bitbucket']"
