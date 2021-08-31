@@ -26,5 +26,27 @@
         }
       }
     ]
+  },
+  "github": {
+    "manifest": {
+      "name": "estafette-ci",
+      "description": "Estafette - The The resilient and cloud-native CI/CD platform",
+      "url": "https://ci.estafette.io/",
+      "hook_attributes": {
+        "url": "https://ci-webhooks.estafette.io/api/integrations/github/events"
+      },
+      "redirect_url": "https://ci-webhooks.estafette.io/api/integrations/github/redirect",
+      "public": false,
+      "default_permissions": {
+        "contents": "write",
+        "issues": "write",
+        "metadata": "read",
+        "statuses": "write"
+      },
+      "default_events": [
+        "push",
+        "repository"
+      ]
+    }
   }
 }
