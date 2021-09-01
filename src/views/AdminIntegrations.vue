@@ -9,6 +9,43 @@
           Github
         </h2>
 
+        <div
+          v-for="app in integrations.github.apps"
+          :key="app.id"
+          class="compact-block"
+        >
+          <property-block
+            label="ID"
+            :value="`${app.id}`"
+          />
+          <property-block
+            label="Name"
+            :value="app.name"
+          />
+          <property-block
+            label="Slug"
+            :value="app.slug"
+          />
+          <property-block
+            label="Client ID"
+            :value="app.client_id"
+          />
+
+          <property-block
+            label="Actions"
+          >
+            <b-button
+              variant="primary"
+              :href="`https://github.com/apps/${app.name}/installations/new`"
+            >
+              <font-awesome-icon
+                :icon="['fab', 'github']"
+              />
+              Install Github App
+            </b-button>
+          </property-block>
+        </div>
+
         <b-form
           action="https://github.com/settings/apps/new?state=abc123"
           method="post"
@@ -46,7 +83,7 @@
         <div
           v-for="installation in integrations.bitbucket.installations"
           :key="installation.clientKey"
-          class="row-block"
+          class="compact-block"
         >
           <property-block
             v-if="installation.workspace"
@@ -70,7 +107,7 @@
           <font-awesome-icon
             :icon="['fab', 'bitbucket']"
           />
-          Connect to Bitbucket
+          Install Bitbucket App
         </b-button>
       </div>
     </div>
