@@ -37,6 +37,7 @@
             <b-button
               variant="primary"
               :href="`https://github.com/apps/${app.name}/installations/new`"
+              target="_blank"
             >
               <font-awesome-icon
                 :icon="['fab', 'github']"
@@ -46,8 +47,23 @@
           </property-block>
         </div>
 
+        <h4>Register Github App</h4>
+
+        <b-form-group
+          id="organization-group"
+          label="Organization:"
+          label-for="organization"
+        >
+          <b-form-input
+            id="organization"
+            v-model="organization"
+            type="text"
+            placeholder="Enter organization name or leave empty for using a personal account"
+          />
+        </b-form-group>
+
         <b-form
-          action="https://github.com/settings/apps/new?state=abc123"
+          :action="githubAppFormAction"
           method="post"
         >
           <b-form-input
@@ -65,7 +81,7 @@
             <font-awesome-icon
               :icon="['fab', 'github']"
             />
-            Register Github App
+            {{ githubRegisterAppButtonText }}
           </b-button>
         </b-form>
       </div>
@@ -99,6 +115,8 @@
             :value="installation.clientKey"
           />
         </div>
+
+        <h4>Install Bitbucket App</h4>
 
         <b-button
           variant="primary"
@@ -173,7 +191,7 @@
 </template>
 
 <script>
-import { BForm, BFormInput, BButton } from 'bootstrap-vue'
+import { BForm, BFormGroup, BFormInput, BButton } from 'bootstrap-vue'
 import PropertyBlock from '@/components/PropertyBlock'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBitbucket, faGithub } from '@fortawesome/free-brands-svg-icons'
@@ -184,6 +202,7 @@ library.add(faBitbucket, faGithub)
 export default {
   components: {
     BForm,
+    BFormGroup,
     BFormInput,
     BButton,
     PropertyBlock,
@@ -192,7 +211,9 @@ export default {
 
   data: function () {
     return {
-      integrations: {}
+      organization: '',
+      integrations: {},
+      refresh: true
     }
   },
 
@@ -205,7 +226,25 @@ export default {
       return this.axios.get('/api/admin/integrations')
         .then(response => {
           this.integrations = response.data
+          this.periodicallyRefreshIntegrations(15)
         })
+        .catch(e => {
+          this.periodicallyRefreshIntegrations(30)
+        })
+    },
+
+    periodicallyRefreshIntegrations (intervalSeconds) {
+      if (this.refreshTimeout) {
+        clearTimeout(this.refreshTimeout)
+      }
+
+      const max = 1000 * intervalSeconds * 0.75
+      const min = 1000 * intervalSeconds * 1.25
+      const timeoutWithJitter = Math.floor(Math.random() * (max - min + 1) + min)
+
+      if (this.refresh) {
+        this.refreshTimeout = setTimeout(this.loadIntegrations, timeoutWithJitter)
+      }
     }
   },
 
@@ -216,6 +255,29 @@ export default {
       }
 
       return JSON.stringify(this.integrations.github.manifest)
+    },
+
+    githubAppFormAction () {
+      if (!this.organization || this.organization === '') {
+        return 'https://github.com/settings/apps/new'
+      }
+
+      return `https://github.com/organizations/${this.organization}/settings/apps/new`
+    },
+
+    githubRegisterAppButtonText () {
+      if (!this.organization || this.organization === '') {
+        return 'Register Github App for a personal account'
+      }
+
+      return `Register Github App for organization '${this.organization}'`
+    }
+  },
+
+  beforeDestroy () {
+    this.refresh = false
+    if (this.refreshTimeout) {
+      clearTimeout(this.refreshTimeout)
     }
   }
 }
