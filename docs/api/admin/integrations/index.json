@@ -1,6 +1,7 @@
 {
   "bitbucket": {
     "addonKey": "estafette-ci",
+    "manifestURI": "https://ci-integrations.estafette.io/api/integrations/bitbucket/manifest",
     "redirectURI": "https://ci-integrations.estafette.io/api/integrations/bitbucket/redirect",
     "installations":[
       {
@@ -56,7 +57,26 @@
         "pem": "***",
         "webhook_secret": "***",
         "client_id": "Iv1.32982349fab12323",
-        "client_secret": "***"
+        "client_secret": "***",
+        "installations": null
+      },
+      {
+        "id": 4343,
+        "name": "estafette-ci-2",
+        "slug": "estafette-ci-2",
+        "pem": "***",
+        "webhook_secret": "***",
+        "client_id": "Iv1.43983498043aabf",
+        "client_secret": "***",
+        "installations": [
+          {
+            "id": 932480,
+            "app_id": 4343,
+            "account": {
+              "login": "estafette"
+            }
+          }
+        ]
       }
     ]
   }

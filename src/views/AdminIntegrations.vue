@@ -9,6 +9,8 @@
           Github
         </h2>
 
+        <h4>Apps</h4>
+
         <div
           v-for="app in integrations.github.apps"
           :key="app.id"
@@ -32,7 +34,30 @@
           />
 
           <property-block
+            v-if="app.installations"
+            label="Installations"
+            wide
+          >
+            <div
+              v-for="installation in app.installations"
+              :key="installation.id"
+              class="compact-block"
+            >
+              <property-block
+                label="ID"
+                :value="`${installation.id}`"
+              />
+              <property-block
+                v-if="installation.account"
+                label="Owner"
+                :value="installation.account.login"
+              />
+            </div>
+          </property-block>
+
+          <property-block
             label="Actions"
+            wide
           >
             <b-button
               variant="primary"
@@ -96,37 +121,57 @@
           Bitbucket
         </h2>
 
+        <h4>Apps</h4>
+
         <div
-          v-for="installation in integrations.bitbucket.installations"
-          :key="installation.clientKey"
           class="compact-block"
         >
           <property-block
-            v-if="installation.workspace"
-            label="Workspace"
-            :value="installation.workspace.slug"
-          />
-          <property-block
             label="Key"
-            :value="installation.key"
+            :value="integrations.bitbucket.addonKey"
           />
+
           <property-block
-            label="Client key"
-            :value="installation.clientKey"
-          />
+            v-if="integrations.bitbucket.installations"
+            label="Installations"
+            wide
+          >
+            <div
+              v-for="installation in integrations.bitbucket.installations"
+              :key="installation.clientKey"
+              class="compact-block"
+            >
+              <property-block
+                v-if="installation.workspace"
+                label="Workspace"
+                :value="installation.workspace.slug"
+              />
+              <property-block
+                label="Key"
+                :value="installation.key"
+              />
+              <property-block
+                label="Client key"
+                :value="installation.clientKey"
+              />
+            </div>
+          </property-block>
+
+          <property-block
+            label="Actions"
+            wide
+          >
+            <b-button
+              variant="primary"
+              :href="`https://bitbucket.org/site/addons/authorize?addon_key=${integrations.bitbucket.addonKey}&redirect_uri=${integrations.bitbucket.redirectURI}`"
+            >
+              <font-awesome-icon
+                :icon="['fab', 'bitbucket']"
+              />
+              Install Bitbucket App
+            </b-button>
+          </property-block>
         </div>
-
-        <h4>Install Bitbucket App</h4>
-
-        <b-button
-          variant="primary"
-          :href="`https://bitbucket.org/site/addons/authorize?addon_key=${integrations.bitbucket.addonKey}&redirect_uri=${integrations.bitbucket.redirectURI}`"
-        >
-          <font-awesome-icon
-            :icon="['fab', 'bitbucket']"
-          />
-          Install Bitbucket App
-        </b-button>
       </div>
     </div>
 
