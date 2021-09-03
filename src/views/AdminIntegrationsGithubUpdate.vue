@@ -185,7 +185,7 @@ export default {
         this.form.organizations = []
       }
 
-      this.axios.put(`/api/admin/integrations/github/${this.id}`, this.form)
+      this.axios.put('/api/admin/integrations/github/', this.form)
         .then(response => {
           this.$router.push({ name: 'AdminIntegrations' })
         })

@@ -181,7 +181,7 @@ export default {
         this.form.organizations = []
       }
 
-      this.axios.put(`/api/admin/integrations/bitbucket/${this.clientKey}`, this.form)
+      this.axios.put('/api/admin/integrations/bitbucket/', this.form)
         .then(response => {
           this.$router.push({ name: 'AdminIntegrations' })
         })
