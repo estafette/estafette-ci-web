@@ -24,7 +24,8 @@
           "slug":"personal",
           "name":"Personal account",
           "uuid":"{adf77224-9d01-4ac5-88f4-c8cfb1b9b88c}"
-        }
+        },
+        "organizations":[{"id":"329834298342908983","name":"Org A"}]
       }
     ]
   },
@@ -74,7 +75,8 @@
             "app_id": 4343,
             "account": {
               "login": "estafette"
-            }
+            },
+            "organizations":[{"id":"329834298342908983","name":"Org A"}]
           }
         ]
       }

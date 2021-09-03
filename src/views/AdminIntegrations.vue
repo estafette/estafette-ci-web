@@ -52,6 +52,32 @@
                 label="Owner"
                 :value="installation.account.login"
               />
+              <property-block
+                label="Organizations"
+                wide
+              >
+                <b-badge
+                  v-for="org in installation.organizations"
+                  :key="org.name"
+                  variant="success"
+                  class="mr-1"
+                >
+                  {{ org.name }}
+                </b-badge>
+              </property-block>
+
+              <property-block
+                label="Actions"
+                wide
+              >
+                <b-button
+                  size="sm"
+                  :to="{ name: 'AdminIntegrationsGithubUpdate', params: { id: `${installation.id}` } }"
+                  class="mr-1 mb-1"
+                >
+                  Edit
+                </b-button>
+              </property-block>
             </div>
           </property-block>
 
@@ -154,6 +180,33 @@
                 label="Client key"
                 :value="installation.clientKey"
               />
+
+              <property-block
+                label="Organizations"
+                wide
+              >
+                <b-badge
+                  v-for="org in installation.organizations"
+                  :key="org.name"
+                  variant="success"
+                  class="mr-1"
+                >
+                  {{ org.name }}
+                </b-badge>
+              </property-block>
+
+              <property-block
+                label="Actions"
+                wide
+              >
+                <b-button
+                  size="sm"
+                  :to="{ name: 'AdminIntegrationsBitbucketUpdate', params: { clientKey: `${installation.clientKey}` } }"
+                  class="mr-1 mb-1"
+                >
+                  Edit
+                </b-button>
+              </property-block>
             </div>
           </property-block>
 
@@ -236,7 +289,7 @@
 </template>
 
 <script>
-import { BForm, BFormGroup, BFormInput, BButton } from 'bootstrap-vue'
+import { BForm, BFormGroup, BFormInput, BButton, BBadge } from 'bootstrap-vue'
 import PropertyBlock from '@/components/PropertyBlock'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBitbucket, faGithub } from '@fortawesome/free-brands-svg-icons'
@@ -250,6 +303,7 @@ export default {
     BFormGroup,
     BFormInput,
     BButton,
+    BBadge,
     PropertyBlock,
     FontAwesomeIcon
   },

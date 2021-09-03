@@ -625,6 +625,30 @@ export default new Router({
             text: 'Integrations',
             icon: 'plug'
           }
+        },
+        {
+          path: 'integrations/github/:id/edit',
+          name: 'AdminIntegrationsGithubUpdate',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../views/AdminIntegrationsGithubUpdate.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            text: 'Integrations',
+            title: route => route && route.params ? `github installations > ${route.params.id}` : '',
+            hide: true
+          }
+        },
+        {
+          path: 'integrations/bitbucket/:clientKey/edit',
+          name: 'AdminIntegrationsBitbucketUpdate',
+          props: true,
+          component: () => import(/* webpackChunkName: "admin" */ '../views/AdminIntegrationsBitbucketUpdate.vue'),
+          meta: {
+            requiredRole: 'administrator',
+            text: 'Integrations',
+            title: route => route && route.params ? `bitbucket installations > ${route.params.id}` : '',
+            hide: true
+          }
         }
       ]
     },
