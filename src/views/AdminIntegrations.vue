@@ -150,20 +150,22 @@
         <h4>Apps</h4>
 
         <div
+          v-for="app in integrations.bitbucket.apps"
+          :key="app.key"
           class="compact-block"
         >
           <property-block
             label="Key"
-            :value="integrations.bitbucket.addonKey"
+            :value="app.key"
           />
 
           <property-block
-            v-if="integrations.bitbucket.installations"
+            v-if="app.installations"
             label="Installations"
             wide
           >
             <div
-              v-for="installation in integrations.bitbucket.installations"
+              v-for="installation in app.installations"
               :key="installation.clientKey"
               class="compact-block"
             >
@@ -216,7 +218,7 @@
           >
             <b-button
               variant="primary"
-              :href="`https://bitbucket.org/site/addons/authorize?addon_key=${integrations.bitbucket.addonKey}&redirect_uri=${integrations.bitbucket.redirectURI}`"
+              :href="`https://bitbucket.org/site/addons/authorize?addon_key=${app.key}&redirect_uri=${integrations.bitbucket.redirectURI}`"
             >
               <font-awesome-icon
                 :icon="['fab', 'bitbucket']"

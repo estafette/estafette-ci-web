@@ -154,16 +154,20 @@ export default {
     loadForm () {
       return this.axios.get('/api/admin/integrations')
         .then(response => {
-          if (response.data && response.data.bitbucket && response.data.bitbucket.installations) {
-            response.data.bitbucket.installations.forEach(installation => {
-              if (installation && `${installation.clientKey}` === this.clientKey) {
-                this.form = installation
+          if (response.data && response.data.bitbucket && response.data.bitbucket.apps) {
+            response.data.bitbucket.apps.forEach(app => {
+              if (app.installations) {
+                app.installations.forEach(installation => {
+                  if (installation && `${installation.clientKey}` === this.clientKey) {
+                    this.form = installation
 
-                if (this.form && this.form.organizations) {
-                  this.selectedOrganizations = this.form.organizations.map(o => o.name)
-                }
+                    if (this.form && this.form.organizations) {
+                      this.selectedOrganizations = this.form.organizations.map(o => o.name)
+                    }
 
-                this.loaded.installation = true
+                    this.loaded.installation = true
+                  }
+                })
               }
             })
           }

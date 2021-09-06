@@ -1,31 +1,35 @@
 {
   "bitbucket": {
-    "addonKey": "estafette-ci",
     "manifestURI": "https://ci-integrations.estafette.io/api/integrations/bitbucket/manifest",
     "redirectURI": "https://ci-integrations.estafette.io/api/integrations/bitbucket/redirect",
-    "installations":[
+    "apps":[
       {
         "key":"estafette-ci",
-        "baseApiUrl":"https://api.bitbucket.org",
-        "clientKey":"ari:cloud:bitbucket::app/{630c2ae3-dbaf-46d3-9fa9-c86e85c1a530}/estafette-ci",
-        "sharedSecret":"estafette.secret(***)",
-        "workspace":{
-            "slug":"estafette",
-            "name":"Estafette",
-            "uuid":"{630c2ae3-dbaf-46d3-9fa9-c86e85c1a530}"
-        }
-      },
-      {
-        "key":"estafette-ci",
-        "baseApiUrl":"https://api.bitbucket.org",
-        "clientKey":"ari:cloud:bitbucket::app/{adf77224-9d01-4ac5-88f4-c8cfb1b9b88c}/estafette-ci",
-        "sharedSecret":"estafette.secret(***)",
-        "workspace":{
-          "slug":"personal",
-          "name":"Personal account",
-          "uuid":"{adf77224-9d01-4ac5-88f4-c8cfb1b9b88c}"
-        },
-        "organizations":[{"id":"329834298342908983","name":"Org A"}]
+        "installations":[
+          {
+            "key":"estafette-ci",
+            "baseApiUrl":"https://api.bitbucket.org",
+            "clientKey":"ari:cloud:bitbucket::app/{630c2ae3-dbaf-46d3-9fa9-c86e85c1a530}/estafette-ci",
+            "sharedSecret":"estafette.secret(***)",
+            "workspace":{
+                "slug":"estafette",
+                "name":"Estafette",
+                "uuid":"{630c2ae3-dbaf-46d3-9fa9-c86e85c1a530}"
+            }
+          },
+          {
+            "key":"estafette-ci",
+            "baseApiUrl":"https://api.bitbucket.org",
+            "clientKey":"ari:cloud:bitbucket::app/{adf77224-9d01-4ac5-88f4-c8cfb1b9b88c}/estafette-ci",
+            "sharedSecret":"estafette.secret(***)",
+            "workspace":{
+              "slug":"personal",
+              "name":"Personal account",
+              "uuid":"{adf77224-9d01-4ac5-88f4-c8cfb1b9b88c}"
+            },
+            "organizations":[{"id":"329834298342908983","name":"Org A"}]
+          }
+        ]
       }
     ]
   },
