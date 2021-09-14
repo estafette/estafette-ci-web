@@ -1,6 +1,5 @@
 builder:
   track: dev
-  medium: memory
 
 labels:
   type: web
@@ -12,9 +11,6 @@ version:
   semver:
     major: 1
     minor: 0
-    patch: 0
-    labelTemplate: '{{branch}}-{{auto}}'
-    releaseBranch: 1.0.0
 
 stages:
   audit-and-restore:
@@ -55,14 +51,6 @@ stages:
         commands:
         - npm run build
 
-      lint-helm-chart:
-        image: extensions/helm:dev
-        action: lint
-
-      package-helm-chart:
-        image: extensions/helm:dev
-        action: package
-
   bake:
     image: extensions/docker:dev
     action: build
@@ -97,62 +85,6 @@ stages:
     action: push
     repositories:
     - estafette
-
-  test-helm-chart:
-    services:
-    - name: kubernetes
-      image: bsycorp/kind:latest-1.19
-      readiness:
-        path: /kubernetes-ready
-        port: 10080
-        timeoutSeconds: 120
-    image: extensions/helm:dev
-    action: test
-    values: |-
-      extraLabels:
-        team: estafette
-
-      extraSecrets:
-      - key: gcp
-        annotations: {}
-        mountPath: /gcp
-        data:
-          service-account-key.json: |
-            {}
-
-      extraConfigmaps:
-      - key: templates
-        annotations: {}
-        mountPath: /templates
-        data: |
-          manifest-docker.tmpl: |
-            labels:
-              container: {{.ContainerName}}
-              team: {{.TeamName}}
-              language: docker
-
-            stages:
-              bake:
-                image: extensions/docker:stable
-                action: build
-                repositories:
-                - estafette
-
-              push-to-docker-registry:
-                image: extensions/docker:stable
-                action: push
-                repositories:
-                - estafette
-
-  clone-charts-repo:
-    image: extensions/git-clone:dev
-    repo: helm-charts
-    branch: main
-
-  publish-helm-chart:
-    image: extensions/helm:dev
-    action: publish
-    repoBranch: main
 
   slack-notify:
     image: extensions/slack-build-status:dev

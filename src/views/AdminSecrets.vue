@@ -131,8 +131,8 @@ export default {
         pipelineAllowList: this.repoSource !== null && this.repoOwner !== null && this.repoName !== null ? `${this.repoSource}/${this.repoOwner}/${this.repoName}` : '.*',
         value: null
       },
-      pipelineAllowListReadonly: this.$route.name !== 'AdminSecretEncrypter',
-      showDoubleEncrypt: this.$route.name === 'AdminSecretEncrypter',
+      pipelineAllowListReadonly: this.$route.name !== 'AdminSecrets',
+      showDoubleEncrypt: this.$route.name === 'AdminSecrets',
       encrypting: false,
       secret: null
     }

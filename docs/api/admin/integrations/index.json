@@ -1,0 +1,89 @@
+{
+  "bitbucket": {
+    "manifestURI": "https://ci-integrations.estafette.io/api/integrations/bitbucket/manifest",
+    "redirectURI": "https://ci-integrations.estafette.io/api/integrations/bitbucket/redirect",
+    "apps":[
+      {
+        "key":"estafette-ci",
+        "installations":[
+          {
+            "key":"estafette-ci",
+            "baseApiUrl":"https://api.bitbucket.org",
+            "clientKey":"ari:cloud:bitbucket::app/{630c2ae3-dbaf-46d3-9fa9-c86e85c1a530}/estafette-ci",
+            "sharedSecret":"estafette.secret(***)",
+            "workspace":{
+                "slug":"estafette",
+                "name":"Estafette",
+                "uuid":"{630c2ae3-dbaf-46d3-9fa9-c86e85c1a530}"
+            }
+          },
+          {
+            "key":"estafette-ci",
+            "baseApiUrl":"https://api.bitbucket.org",
+            "clientKey":"ari:cloud:bitbucket::app/{adf77224-9d01-4ac5-88f4-c8cfb1b9b88c}/estafette-ci",
+            "sharedSecret":"estafette.secret(***)",
+            "workspace":{
+              "slug":"personal",
+              "name":"Personal account",
+              "uuid":"{adf77224-9d01-4ac5-88f4-c8cfb1b9b88c}"
+            },
+            "organizations":[{"id":"329834298342908983","name":"Org A"}]
+          }
+        ]
+      }
+    ]
+  },
+  "github": {
+    "manifest": {
+      "name": "estafette-ci",
+      "description": "Estafette - The The resilient and cloud-native CI/CD platform",
+      "url": "https://ci.estafette.io/",
+      "hook_attributes": {
+        "url": "https://ci-webhooks.estafette.io/api/integrations/github/events"
+      },
+      "redirect_url": "https://ci-webhooks.estafette.io/api/integrations/github/redirect",
+      "public": false,
+      "default_permissions": {
+        "contents": "write",
+        "issues": "write",
+        "metadata": "read",
+        "statuses": "write"
+      },
+      "default_events": [
+        "push",
+        "repository"
+      ]
+    },
+    "apps":[
+      {
+        "id": 12345,
+        "name": "estafette-ci",
+        "slug": "estafette-ci",
+        "pem": "***",
+        "webhook_secret": "***",
+        "client_id": "Iv1.32982349fab12323",
+        "client_secret": "***",
+        "installations": null
+      },
+      {
+        "id": 4343,
+        "name": "estafette-ci-2",
+        "slug": "estafette-ci-2",
+        "pem": "***",
+        "webhook_secret": "***",
+        "client_id": "Iv1.43983498043aabf",
+        "client_secret": "***",
+        "installations": [
+          {
+            "id": 932480,
+            "app_id": 4343,
+            "account": {
+              "login": "estafette"
+            },
+            "organizations":[{"id":"329834298342908983","name":"Org A"}]
+          }
+        ]
+      }
+    ]
+  }
+}
