@@ -40,18 +40,22 @@ export default {
   props: {
     repoSource: {
       type: String,
+      required: true,
       default: null
     },
     repoOwner: {
       type: String,
+      required: true,
       default: null
     },
     repoName: {
       type: String,
+      required: true,
       default: null
     },
     releaseID: {
       type: String,
+      required: true,
       default: null
     }
   },
