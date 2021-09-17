@@ -12,90 +12,102 @@
         <h4>Apps</h4>
 
         <div
-          v-for="app in integrations.github.apps"
-          :key="app.id"
-          class="compact-block"
+          v-if="integrations.github.apps && integrations.github.apps.length > 0"
         >
-          <property-block
-            label="ID"
-            :value="`${app.id}`"
-          />
-          <property-block
-            label="Name"
-            :value="app.name"
-          />
-          <property-block
-            label="Slug"
-            :value="app.slug"
-          />
-          <property-block
-            label="Client ID"
-            :value="app.client_id"
-          />
-
-          <property-block
-            v-if="app.installations"
-            label="Installations"
-            wide
+          <div
+            v-for="app in integrations.github.apps"
+            :key="app.id"
+            class="compact-block"
           >
-            <div
-              v-for="installation in app.installations"
-              :key="installation.id"
-              class="compact-block"
+            <property-block
+              label="ID"
+              :value="`${app.id}`"
+            />
+            <property-block
+              label="Name"
+              :value="app.name"
+            />
+            <property-block
+              label="Slug"
+              :value="app.slug"
+            />
+            <property-block
+              label="Client ID"
+              :value="app.client_id"
+            />
+
+            <property-block
+              v-if="app.installations"
+              label="Installations"
+              wide
             >
-              <property-block
-                label="ID"
-                :value="`${installation.id}`"
-              />
-              <property-block
-                v-if="installation.account"
-                label="Owner"
-                :value="installation.account.login"
-              />
-              <property-block
-                label="Organizations"
-                wide
+              <div
+                v-for="installation in app.installations"
+                :key="installation.id"
+                class="compact-block"
               >
-                <b-badge
-                  v-for="org in installation.organizations"
-                  :key="org.name"
-                  variant="success"
-                  class="mr-1"
+                <property-block
+                  label="ID"
+                  :value="`${installation.id}`"
+                />
+                <property-block
+                  v-if="installation.account"
+                  label="Owner"
+                  :value="installation.account.login"
+                />
+                <property-block
+                  label="Organizations"
+                  wide
                 >
-                  {{ org.name }}
-                </b-badge>
-              </property-block>
+                  <b-badge
+                    v-for="org in installation.organizations"
+                    :key="org.name"
+                    variant="success"
+                    class="mr-1"
+                  >
+                    {{ org.name }}
+                  </b-badge>
+                </property-block>
 
-              <property-block
-                label="Actions"
-                wide
+                <property-block
+                  label="Actions"
+                  wide
+                >
+                  <b-button
+                    size="sm"
+                    :to="{ name: 'AdminIntegrationsGithubUpdate', params: { id: `${installation.id}` } }"
+                    class="mr-1 mb-1"
+                  >
+                    Edit
+                  </b-button>
+                </property-block>
+              </div>
+            </property-block>
+
+            <property-block
+              label="Actions"
+              wide
+            >
+              <b-button
+                variant="primary"
+                :href="`https://github.com/apps/${app.name}/installations/new`"
+                target="_blank"
               >
-                <b-button
-                  size="sm"
-                  :to="{ name: 'AdminIntegrationsGithubUpdate', params: { id: `${installation.id}` } }"
-                  class="mr-1 mb-1"
-                >
-                  Edit
-                </b-button>
-              </property-block>
-            </div>
-          </property-block>
-
-          <property-block
-            label="Actions"
-            wide
-          >
-            <b-button
-              variant="primary"
-              :href="`https://github.com/apps/${app.name}/installations/new`"
+                <font-awesome-icon
+                  :icon="['fab', 'github']"
+                />
+                Install Github App
+              </b-button>
+            </property-block>
+          </div>
+        </div>
+        <div v-else>
+          <p>
+            You haven't set up any Bitbucket apps yet, check the <a
+              href="https://estafette.io/getting-started/github-integration/"
               target="_blank"
-            >
-              <font-awesome-icon
-                :icon="['fab', 'github']"
-              />
-              Install Github App
-            </b-button>
-          </property-block>
+            >documentation</a> on how to set this up.
+          </p>
         </div>
 
         <h4>Register Github App</h4>
@@ -150,82 +162,94 @@
         <h4>Apps</h4>
 
         <div
-          v-for="app in integrations.bitbucket.apps"
-          :key="app.key"
-          class="compact-block"
+          v-if="integrations.bitbucket.apps && integrations.bitbucket.apps.length > 0"
         >
-          <property-block
-            label="Key"
-            :value="app.key"
-          />
-
-          <property-block
-            v-if="app.installations"
-            label="Installations"
-            wide
+          <div
+            v-for="app in integrations.bitbucket.apps"
+            :key="app.key"
+            class="compact-block"
           >
-            <div
-              v-for="installation in app.installations"
-              :key="installation.clientKey"
-              class="compact-block"
+            <property-block
+              label="Key"
+              :value="app.key"
+            />
+
+            <property-block
+              v-if="app.installations"
+              label="Installations"
+              wide
             >
-              <property-block
-                v-if="installation.workspace"
-                label="Workspace"
-                :value="installation.workspace.slug"
-              />
-              <property-block
-                label="Key"
-                :value="installation.key"
-              />
-              <property-block
-                label="Client key"
-                :value="installation.clientKey"
-              />
-
-              <property-block
-                label="Organizations"
-                wide
+              <div
+                v-for="installation in app.installations"
+                :key="installation.clientKey"
+                class="compact-block"
               >
-                <b-badge
-                  v-for="org in installation.organizations"
-                  :key="org.name"
-                  variant="success"
-                  class="mr-1"
-                >
-                  {{ org.name }}
-                </b-badge>
-              </property-block>
+                <property-block
+                  v-if="installation.workspace"
+                  label="Workspace"
+                  :value="installation.workspace.slug"
+                />
+                <property-block
+                  label="Key"
+                  :value="installation.key"
+                />
+                <property-block
+                  label="Client key"
+                  :value="installation.clientKey"
+                />
 
-              <property-block
-                label="Actions"
-                wide
-              >
-                <b-button
-                  size="sm"
-                  :to="{ name: 'AdminIntegrationsBitbucketUpdate', params: { clientKey: `${installation.clientKey}` } }"
-                  class="mr-1 mb-1"
+                <property-block
+                  label="Organizations"
+                  wide
                 >
-                  Edit
-                </b-button>
-              </property-block>
-            </div>
-          </property-block>
+                  <b-badge
+                    v-for="org in installation.organizations"
+                    :key="org.name"
+                    variant="success"
+                    class="mr-1"
+                  >
+                    {{ org.name }}
+                  </b-badge>
+                </property-block>
 
-          <property-block
-            label="Actions"
-            wide
-          >
-            <b-button
-              variant="primary"
-              :href="`https://bitbucket.org/site/addons/authorize?addon_key=${app.key}&redirect_uri=${integrations.bitbucket.redirectURI}`"
+                <property-block
+                  label="Actions"
+                  wide
+                >
+                  <b-button
+                    size="sm"
+                    :to="{ name: 'AdminIntegrationsBitbucketUpdate', params: { clientKey: `${installation.clientKey}` } }"
+                    class="mr-1 mb-1"
+                  >
+                    Edit
+                  </b-button>
+                </property-block>
+              </div>
+            </property-block>
+
+            <property-block
+              label="Actions"
+              wide
             >
-              <font-awesome-icon
-                :icon="['fab', 'bitbucket']"
-              />
-              Install Bitbucket App
-            </b-button>
-          </property-block>
+              <b-button
+                variant="primary"
+                :href="`https://bitbucket.org/site/addons/authorize?addon_key=${app.key}&redirect_uri=${integrations.bitbucket.redirectURI}`"
+              >
+                <font-awesome-icon
+                  :icon="['fab', 'bitbucket']"
+                />
+                Install Bitbucket App
+              </b-button>
+            </property-block>
+          </div>
+        </div>
+        <div v-else>
+          <p>
+            You haven't set up any Bitbucket apps yet, check the <a
+              href="https://estafette.io/getting-started/bitbucket-integration/"
+              target="_blank"
+            >documentation</a> on how to set this up.
+          </p>
         </div>
       </div>
     </div>
@@ -251,7 +275,7 @@
 
         <p>
           More detail can be found at <a
-            href="https://estafette.io/getting-started/github/"
+            href="https://estafette.io/getting-started/github-integration/"
             target="_blank"
           >
             estafette.io</a>
@@ -280,7 +304,7 @@
 
         <p>
           More detail can be found at <a
-            href="https://estafette.io/getting-started/bitbucket/"
+            href="https://estafette.io/getting-started/bitbucket-integration/"
             target="_blank"
           >
             estafette.io</a>
