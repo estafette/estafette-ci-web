@@ -1,6 +1,5 @@
 {
   "bitbucket": {
-    "manifestURI": "https://ci-integrations.estafette.io/api/integrations/bitbucket/manifest",
     "redirectURI": "https://ci-integrations.estafette.io/api/integrations/bitbucket/redirect",
     "apps":[
       {

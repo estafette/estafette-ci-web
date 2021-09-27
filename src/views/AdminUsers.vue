@@ -112,14 +112,14 @@
         >
           Edit
         </b-button>
-        <b-button
+        <!-- <b-button
           size="sm"
           variant="danger"
           :href="`/api/auth/impersonate/${row.item.id}`"
           class="mr-1 mb-1"
         >
           Impersonate
-        </b-button>
+        </b-button> -->
       </template>
       <template #row-details="row">
         <b-card>
