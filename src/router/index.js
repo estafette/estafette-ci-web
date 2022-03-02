@@ -440,6 +440,16 @@ export default new Router({
             text: 'Trusted Images',
             icon: 'shield-alt'
           }
+        },
+        {
+          path: 'build-control',
+          name: 'BuildControl',
+          props: true,
+          component: () => import(/* webpackChunkName: "configuration" */ '../views/ConfigurationBuildControl.vue'),
+          meta: {
+            text: 'Build Control',
+            icon: 'check-square'
+          }
         }
       ]
     },
