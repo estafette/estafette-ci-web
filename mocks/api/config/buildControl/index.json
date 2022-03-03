@@ -1,0 +1,1 @@
+{"config":"buildControl:\n  bitbucket:\n    allowed:\n      projects:\n        - project1\n        - project2\n      repos:\n        - repo1\n    blocked:\n      projects:\n        - project3\n        - project4\n      repos:\n        - repo2\n  github:\n    allowed:\n      - repo3\n    blocked:\n      - repo4"}

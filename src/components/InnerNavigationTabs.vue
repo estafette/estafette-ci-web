@@ -61,10 +61,37 @@ import { mapState } from 'vuex'
 import { BNav, BNavItem, BDropdown, BDropdownItem } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faKey, faShieldAlt, faUser, faUsers, faSitemap, faShapes, faCubes, faHammer, faUserSecret, faClipboardCheck, faChartPie, faListOl, faChartLine, faHeart, faPassport, faIndustry, faTools, faUpload, faRobot, faProjectDiagram, faLightbulb, faPollH, faBook, faMobileAlt, faPlug } from '@fortawesome/free-solid-svg-icons'
+import {
+  faKey,
+  faShieldAlt,
+  faUser,
+  faUsers,
+  faSitemap,
+  faShapes,
+  faCubes,
+  faHammer,
+  faUserSecret,
+  faClipboardCheck,
+  faChartPie,
+  faListOl,
+  faChartLine,
+  faHeart,
+  faPassport,
+  faIndustry,
+  faTools,
+  faUpload,
+  faRobot,
+  faProjectDiagram,
+  faLightbulb,
+  faPollH,
+  faBook,
+  faMobileAlt,
+  faPlug,
+  faCheckSquare
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faKey, faShieldAlt, faUser, faUsers, faSitemap, faShapes, faCubes, faHammer, faUserSecret, faClipboardCheck, faChartPie, faListOl, faChartLine, faHeart, faPassport, faIndustry, faTools, faUpload, faRobot, faProjectDiagram, faLightbulb, faUserSecret, faPollH, faBook, faMobileAlt, faPlug)
+library.add(faKey, faShieldAlt, faUser, faUsers, faSitemap, faShapes, faCubes, faHammer, faUserSecret, faClipboardCheck, faChartPie, faListOl, faChartLine, faHeart, faPassport, faIndustry, faTools, faUpload, faRobot, faProjectDiagram, faLightbulb, faUserSecret, faPollH, faBook, faMobileAlt, faPlug, faCheckSquare)
 
 export default {
   components: {
