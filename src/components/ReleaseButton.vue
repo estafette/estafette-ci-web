@@ -194,7 +194,7 @@ export default {
               this.error = e
               this.$refs['my-modal'].show()
             } else {
-              console.warn('123', e)
+              console.warn(e)
             }
           })
       }
