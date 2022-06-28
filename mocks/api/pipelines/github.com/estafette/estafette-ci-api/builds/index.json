@@ -104,9 +104,9 @@
       "repoSource": "github.com",
       "repoOwner": "estafette",
       "repoName": "estafette-ci-api",
-      "repoBranch": "main",
+      "repoBranch": "feature/test-123",
       "repoRevision": "d5c290aec655c2bb9cd5526665acd67846d38d10",
-      "buildVersion": "1.0.0-main-1727",
+      "buildVersion": "1.0.0-feature-test-123-1727",
       "buildStatus": "succeeded",
       "labels": [
         {
@@ -170,10 +170,10 @@
             "event": "finished",
             "status": "succeeded",
             "name": "github.com/estafette/estafette-ci-db-migrator",
-            "branch": "main"
+            "branch": "feature/test-123"
           },
           "builds": {
-            "branch": "main"
+            "branch": "feature/test-123"
           }
         }
       ],
@@ -183,7 +183,7 @@
           "git": {
             "event": "push",
             "repository": "github.com/estafette/estafette-ci-api",
-            "branch": "main"
+            "branch": "feature/test-123"
           }
         }
       ],

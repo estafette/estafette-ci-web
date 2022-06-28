@@ -48,18 +48,86 @@
         </b-dropdown-item-button>
       </div>
     </b-dropdown>
+    <b-modal
+      ref="my-modal"
+      hide-footer
+      title="Release restricted"
+    >
+      <div
+        class="d-block text-center"
+        v-if="error"
+      >
+        <h4>
+          Release to '{{ error.cluster }}' is restricted
+          <br>
+          from this branch!
+        </h4>
+        <div
+          class="text-left"
+          v-if="error.repositoryReleaseControl.allowed && error.repositoryReleaseControl.allowed.length > 0"
+        >
+          Allowed branches
+        </div>
+        <ul
+          class="text-left"
+          v-if="error.repositoryReleaseControl.allowed && error.repositoryReleaseControl.allowed.length > 0"
+        >
+          <li
+            v-for="branch in error.repositoryReleaseControl.allowed"
+            :key="branch"
+          >
+            {{ branch }}
+          </li>
+        </ul>
+        <div
+          class="text-left"
+          v-if="error.repositoryReleaseControl.blocked && error.repositoryReleaseControl.blocked.length > 0"
+        >
+          Blocked branches
+        </div>
+        <ul
+          class="text-left"
+          v-if="error.repositoryReleaseControl.blocked && error.repositoryReleaseControl.blocked.length > 0"
+        >
+          <li
+            v-for="branch in error.repositoryReleaseControl.blocked"
+            :key="branch"
+          >
+            {{ branch }}
+          </li>
+        </ul>
+      </div>
+      <b-button
+        block
+        class="mt-3"
+        variant="outline-danger"
+        @click="hideModal"
+      >
+        Close
+      </b-button>
+    </b-modal>
   </b-input-group>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import { BDropdown, BDropdownHeader, BDropdownItemButton, BInputGroup, BInputGroupText } from 'bootstrap-vue'
+import {
+  BDropdown,
+  BDropdownHeader,
+  BDropdownItemButton,
+  BInputGroup,
+  BInputGroupText,
+  BModal,
+  BButton
+} from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUpload } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(faUpload)
+
+const releaseNotAllowed = 'Release not allowed on this branch'
 
 export default {
   components: {
@@ -68,7 +136,9 @@ export default {
     BDropdownItemButton,
     BInputGroup,
     BInputGroupText,
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    BModal,
+    BButton
   },
   props: {
     pipeline: {
@@ -80,19 +150,25 @@ export default {
       default: null
     }
   },
-
   data: function () {
     return {
-      clicked: false
+      clicked: false,
+      error: {
+        cluster: '',
+        repositoryReleaseControl: {
+          allowed: [],
+          blocked: []
+        }
+      }
     }
   },
 
   methods: {
     releaseTargetDisabled: function (releaseTarget) {
       return this.pipeline &&
-             this.pipeline.releaseTargets &&
-             this.pipeline.releaseTargets.length > 0 &&
-             this.pipeline.releaseTargets.some(rt => rt.name === releaseTarget.name && rt.activeReleases && rt.activeReleases.some(ar => ar && ar.releaseStatus === 'running'))
+        this.pipeline.releaseTargets &&
+        this.pipeline.releaseTargets.length > 0 &&
+        this.pipeline.releaseTargets.some(rt => rt.name === releaseTarget.name && rt.activeReleases && rt.activeReleases.some(ar => ar && ar.releaseStatus === 'running'))
     },
 
     startRelease: function (releaseTarget, action, event) {
@@ -114,7 +190,12 @@ export default {
             this.updateRelease(startedRelease)
           })
           .catch(e => {
-            console.warn(e)
+            if (e.message === releaseNotAllowed) {
+              this.error = e
+              this.$refs['my-modal'].show()
+            } else {
+              console.warn(e)
+            }
           })
       }
     },
@@ -156,6 +237,10 @@ export default {
 
     hasActions: function (releaseTarget) {
       return releaseTarget && releaseTarget.actions && releaseTarget.actions.length > 0
+    },
+
+    hideModal: function () {
+      this.$refs['my-modal'].hide()
     }
   },
 
