@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-alert
-      :show="dismissCountDown"
+      show
       dismissible
       variant="warning"
       @dismissed="redirect"

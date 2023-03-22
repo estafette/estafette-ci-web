@@ -109,7 +109,7 @@ export default {
               })
             return
           }
-          this.periodicallyRefreshPipeline(30)
+          this.periodicallyRefreshPipeline(18000)
         })
     },
 
