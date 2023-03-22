@@ -1,8 +1,12 @@
 <template>
   <div>
-    <section-header section-route-name="Pipelines"/>
-    <migration-notice v-if="migration" :toSource="migration.toSource" :toOwner="migration.toOwner"
-                      :toName="migration.toName"/>
+    <section-header section-route-name="Pipelines" />
+    <migration-notice
+      v-if="migration"
+      :to-source="migration.toSource"
+      :to-owner="migration.toOwner"
+      :to-name="migration.toName"
+    />
 
     <b-breadcrumb
       :items="breadcrumbs"
@@ -14,7 +18,7 @@
       v-if="pipeline"
     />
 
-    <inner-navigation-tabs section-route-name="Pipelines"/>
+    <inner-navigation-tabs section-route-name="Pipelines" />
 
     <router-view
       :pipeline="pipeline"
@@ -101,8 +105,8 @@ export default {
                   this.migration = response.data
                 }
               }).catch(e => {
-              console.warn('pipeline not found and not migrated', e)
-            })
+                console.warn('pipeline not found and not migrated', e)
+              })
             return
           }
           this.periodicallyRefreshPipeline(30)

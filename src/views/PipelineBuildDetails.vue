@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section-header section-route-name="Pipelines"/>
+    <section-header section-route-name="Pipelines" />
     <migration-notice
       v-if="migration"
       :to-source="migration.repoSource"
@@ -26,7 +26,7 @@
       :build="build"
     />
 
-    <inner-navigation-tabs section-route-name="Pipelines"/>
+    <inner-navigation-tabs section-route-name="Pipelines" />
 
     <router-view
       :build="build"
