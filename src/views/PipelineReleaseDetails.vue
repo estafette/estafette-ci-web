@@ -1,6 +1,14 @@
 <template>
   <div>
     <section-header section-route-name="Pipelines" />
+    <migration-notice
+      v-if="migration"
+      :to-source="migration.repoSource"
+      :to-owner="migration.repoOwner"
+      :to-name="migration.repoName"
+      :to-id="migration.id"
+      page="releases"
+    />
 
     <b-breadcrumb
       :items="breadcrumbs"
@@ -27,6 +35,7 @@
 import { mapState } from 'vuex'
 import { BBreadcrumb } from 'bootstrap-vue'
 import SectionHeader from '@/components/SectionHeader'
+import MigrationNotice from '@/components/MigrationNotice'
 import ReleaseHeader from '@/components/ReleaseHeader'
 import InnerNavigationTabs from '@/components/InnerNavigationTabs'
 
@@ -35,6 +44,7 @@ export default {
     BBreadcrumb,
     SectionHeader,
     ReleaseHeader,
+    MigrationNotice,
     InnerNavigationTabs
   },
   props: {
@@ -64,6 +74,7 @@ export default {
       release: null,
       pipeline: null,
       refresh: true,
+      migration: null,
       breadcrumbs: [
         {
           text: 'Builds & releases',
@@ -90,6 +101,22 @@ export default {
 
   methods: {
     loadRelease () {
+      this.axios.get(`/api/migrations/releases/${this.id}`)
+        .then(response => {
+          if (response.data) {
+            this.migration = response.data
+          }
+        }).catch(e => {
+          console.debug('release probably not migrated', e)
+        })
+      this.axios.get(`/api/migrations/release/${this.id}`)
+        .then(response => {
+          if (response.data && response.data.toName) {
+            this.migration = response.data
+          }
+        }).catch(e => {
+          console.debug('release probably not migrated', e)
+        })
       this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/releases/${this.releaseID}`)
         .then(response => {
           this.release = response.data
@@ -108,7 +135,7 @@ export default {
           if (this.release.releaseStatus !== 'succeeded' && this.release.releaseStatus !== 'failed') {
             this.periodicallyRefreshRelease(5)
           } else {
-            this.periodicallyRefreshRelease(15)
+            this.periodicallyRefreshRelease(18000)
           }
         })
         .catch(e => {

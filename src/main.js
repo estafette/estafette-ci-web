@@ -54,12 +54,15 @@ Vue.axios.interceptors.response.use((response) => {
   if (error.response && error.response.data) {
     if (typeof error.response.data.error === 'object') {
       return Promise.reject(error.response.data.error)
-    } else {
+    } else if (error.response.data.error) {
       return Promise.reject(new Error(error.response.data.error))
+    } else if (error.response.data.code) {
+      return Promise.reject(new Error(error.response.data.code))
+    } else if (error.response.data.message) {
+      return Promise.reject(new Error(error.response.data.message))
     }
-  } else {
-    return Promise.reject(new Error(error.message))
   }
+  return Promise.reject(new Error(error.message))
 })
 
 // redirect to login page when user gets logged out

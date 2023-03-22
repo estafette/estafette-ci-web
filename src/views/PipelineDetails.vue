@@ -1,6 +1,8 @@
 <template>
   <div>
-    <section-header section-route-name="Pipelines" />
+    <section-header section-route-name="Pipelines"/>
+    <migration-notice v-if="migration" :toSource="migration.toSource" :toOwner="migration.toOwner"
+                      :toName="migration.toName"/>
 
     <b-breadcrumb
       :items="breadcrumbs"
@@ -12,7 +14,7 @@
       v-if="pipeline"
     />
 
-    <inner-navigation-tabs section-route-name="Pipelines" />
+    <inner-navigation-tabs section-route-name="Pipelines"/>
 
     <router-view
       :pipeline="pipeline"
@@ -26,6 +28,7 @@
 import { mapState } from 'vuex'
 import { BBreadcrumb } from 'bootstrap-vue'
 import PipelineHeader from '@/components/PipelineHeader'
+import MigrationNotice from '@/components/MigrationNotice'
 import SectionHeader from '@/components/SectionHeader'
 import InnerNavigationTabs from '@/components/InnerNavigationTabs'
 
@@ -34,6 +37,7 @@ export default {
     BBreadcrumb,
     SectionHeader,
     PipelineHeader,
+    MigrationNotice,
     InnerNavigationTabs
   },
   props: {
@@ -54,6 +58,7 @@ export default {
     return {
       pipeline: null,
       refresh: true,
+      migration: null,
       breadcrumbs: [
         {
           text: 'Builds & releases',
@@ -61,7 +66,14 @@ export default {
         },
         {
           text: `${this.repoName}`,
-          to: { name: 'PipelineOverview', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } },
+          to: {
+            name: 'PipelineOverview',
+            params: {
+              repoSource: this.repoSource,
+              repoOwner: this.repoOwner,
+              repoName: this.repoName
+            }
+          },
           active: true
         }
       ]
@@ -81,6 +93,18 @@ export default {
           this.periodicallyRefreshPipeline(5)
         })
         .catch(e => {
+          if (e.message === 'Not Found') {
+            this.refresh = false
+            this.axios.get(`/api/migrations/from/${this.repoSource}/${this.repoOwner}/${this.repoName}`)
+              .then(response => {
+                if (response.data && response.data.toName) {
+                  this.migration = response.data
+                }
+              }).catch(e => {
+              console.warn('pipeline not found and not migrated', e)
+            })
+            return
+          }
           this.periodicallyRefreshPipeline(30)
         })
     },
