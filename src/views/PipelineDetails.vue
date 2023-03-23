@@ -90,6 +90,14 @@ export default {
 
   methods: {
     loadPipeline () {
+      this.axios.get(`/api/migrations/from/${this.repoSource}/${this.repoOwner}/${this.repoName}`)
+        .then(response => {
+          if (response.data && response.data.toName) {
+            this.migration = response.data
+          }
+        }).catch(e => {
+          console.warn('pipeline not found and not migrated', e)
+        })
       this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}`)
         .then(response => {
           this.pipeline = response.data
@@ -97,16 +105,8 @@ export default {
           this.periodicallyRefreshPipeline(5)
         })
         .catch(e => {
-          if (e.message === 'Not Found') {
+          if (e.code === 'Not Found') {
             this.refresh = false
-            this.axios.get(`/api/migrations/from/${this.repoSource}/${this.repoOwner}/${this.repoName}`)
-              .then(response => {
-                if (response.data && response.data.toName) {
-                  this.migration = response.data
-                }
-              }).catch(e => {
-                console.warn('pipeline not found and not migrated', e)
-              })
             return
           }
           this.periodicallyRefreshPipeline(18000)

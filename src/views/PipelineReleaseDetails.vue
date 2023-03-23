@@ -101,17 +101,9 @@ export default {
 
   methods: {
     loadRelease () {
-      this.axios.get(`/api/migrations/releases/${this.id}`)
+      this.axios.get(`/api/migrations/releases/${this.releaseID}`)
         .then(response => {
           if (response.data) {
-            this.migration = response.data
-          }
-        }).catch(e => {
-          console.debug('release probably not migrated', e)
-        })
-      this.axios.get(`/api/migrations/release/${this.id}`)
-        .then(response => {
-          if (response.data && response.data.toName) {
             this.migration = response.data
           }
         }).catch(e => {

@@ -1,20 +1,23 @@
 <template>
   <div>
     <b-alert
-      show
+      :show="dismissCountDown"
       dismissible
-      variant="warning"
+      variant="primary"
       @dismissed="redirect"
+      @dismiss-count-down="countDownChanged"
     >
       <p>
-        This repository has been migrated to
-        <b-link :href="redirectURL">
-          /{{ this.toSource }}/{{ this.toOwner }}/{{ this.toName }}
+        This repository has been migrated, redirecting to
+        <b-link
+          :href="redirectURL"
+          class="alert-link"
+        >
+          {{ this.toSource }}/{{ this.toOwner }}/{{ this.toName }}
         </b-link>
-        , redirecting...
       </p>
       <b-progress
-        variant="warning"
+        variant="primary"
         :max="dismissSecs"
         :value="dismissCountDown"
         height="4px"
@@ -24,11 +27,13 @@
 </template>
 
 <script>
-import { BAlert } from 'bootstrap-vue'
+import { BAlert, BLink, BProgress } from 'bootstrap-vue'
 
 export default {
   components: {
-    BAlert
+    BAlert,
+    BLink,
+    BProgress
   },
   props: {
     toSource: {
@@ -56,19 +61,22 @@ export default {
     let redirectURL = `/pipelines/${this.toSource}/${this.toOwner}/${this.toName}`
     switch (this.page) {
       case 'builds':
-        redirectURL = `/pipelines/${this.toSource}/${this.toOwner}/${this.toName}/builds/${this.toId}`
+        redirectURL = `/pipelines/${this.toSource}/${this.toOwner}/${this.toName}/builds/${this.toId}/logs`
         break
       case 'releases':
-        redirectURL = `/pipelines/${this.toSource}/${this.toOwner}/${this.toName}/releases/${this.toId}`
+        redirectURL = `/pipelines/${this.toSource}/${this.toOwner}/${this.toName}/releases/${this.toId}/logs`
         break
     }
     return {
       redirectURL,
       dismissSecs: 5,
-      dismissCountDown: 0
+      dismissCountDown: 5
     }
   },
   methods: {
+    countDownChanged (dismissCountDown) {
+      this.dismissCountDown = dismissCountDown
+    },
     redirect () {
       window.location.href = this.redirectURL
     }

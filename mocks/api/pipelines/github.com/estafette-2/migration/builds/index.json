@@ -1,0 +1,1000 @@
+{
+  "items": [
+    {
+      "id": "664371374972960785",
+      "repoSource": "github.com",
+      "repoOwner": "estafette-2",
+      "repoName": "migration",
+      "repoBranch": "main",
+      "repoRevision": "6a25676b2dee566f8e951a4e21164122e074584e",
+      "buildVersion": "1.0.0-main-1728",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "tooling-estafette",
+          "actions": [
+            {
+              "name": "deploy-canary"
+            },
+            {
+              "name": "deploy-stable"
+            },
+            {
+              "name": "rollback-canary",
+              "hideBadge": true
+            },
+            {
+              "name": "restart-stable",
+              "hideBadge": true
+            }
+          ]
+        },
+        {
+          "name": "release-helm-chart"
+        },
+        {
+          "name": "helm-diff"
+        }
+      ],
+      "commits": [
+        {
+          "message": "fix default bot sorting",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "name": "migrator",
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-db-migrator",
+            "branch": "main"
+          },
+          "builds": {
+            "branch": "main"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "fired": true,
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/migration",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-04T15:27:33.397005Z",
+      "startedAt": "2021-06-04T15:27:34.463625Z",
+      "updatedAt": "2021-06-04T15:34:31.039904Z",
+      "duration": 416000000000,
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "id": "664369086217650192",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "repoBranch": "feature/test-123",
+      "repoRevision": "d5c290aec655c2bb9cd5526665acd67846d38d10",
+      "buildVersion": "1.0.0-feature-test-123-1727",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "tooling-estafette",
+          "actions": [
+            {
+              "name": "deploy-canary"
+            },
+            {
+              "name": "deploy-stable"
+            },
+            {
+              "name": "rollback-canary",
+              "hideBadge": true
+            },
+            {
+              "name": "restart-stable",
+              "hideBadge": true
+            }
+          ]
+        },
+        {
+          "name": "release-helm-chart"
+        },
+        {
+          "name": "helm-diff"
+        }
+      ],
+      "commits": [
+        {
+          "message": "fix GetPipelineBotNamesCount",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "name": "migrator",
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-db-migrator",
+            "branch": "feature/test-123"
+          },
+          "builds": {
+            "branch": "feature/test-123"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "fired": true,
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/migration",
+            "branch": "feature/test-123"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-04T15:15:54.924164Z",
+      "startedAt": "2021-06-04T15:15:56.043291Z",
+      "updatedAt": "2021-06-04T15:23:18.697835Z",
+      "duration": 442000000000,
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "id": "664368043538087954",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "repoBranch": "main",
+      "repoRevision": "b87f426f1cbd9250cf563e91ce5c7ecb20e270e0",
+      "buildVersion": "1.0.0-main-1726",
+      "buildStatus": "failed",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "tooling-estafette",
+          "actions": [
+            {
+              "name": "deploy-canary"
+            },
+            {
+              "name": "deploy-stable"
+            },
+            {
+              "name": "rollback-canary",
+              "hideBadge": true
+            },
+            {
+              "name": "restart-stable",
+              "hideBadge": true
+            }
+          ]
+        },
+        {
+          "name": "release-helm-chart"
+        },
+        {
+          "name": "helm-diff"
+        }
+      ],
+      "commits": [
+        {
+          "message": "fix GetPipelineBots sorting column",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "name": "migrator",
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-db-migrator",
+            "branch": "main"
+          },
+          "builds": {
+            "branch": "main"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "fired": true,
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/migration",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-04T15:10:36.723586Z",
+      "startedAt": "2021-06-04T15:11:53.763353Z",
+      "updatedAt": "2021-06-04T15:14:32.599336Z",
+      "duration": 158000000000,
+      "pendingDuration": 77000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "id": "664363576263606289",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "repoBranch": "main",
+      "repoRevision": "17d878905de4401365393605f5242e530fd15078",
+      "buildVersion": "1.0.0-main-1725",
+      "buildStatus": "failed",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "tooling-estafette",
+          "actions": [
+            {
+              "name": "deploy-canary"
+            },
+            {
+              "name": "deploy-stable"
+            },
+            {
+              "name": "rollback-canary",
+              "hideBadge": true
+            },
+            {
+              "name": "restart-stable",
+              "hideBadge": true
+            }
+          ]
+        },
+        {
+          "name": "release-helm-chart"
+        },
+        {
+          "name": "helm-diff"
+        }
+      ],
+      "commits": [
+        {
+          "message": "fix bot name field",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "name": "migrator",
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-db-migrator",
+            "branch": "main"
+          },
+          "builds": {
+            "branch": "main"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "fired": true,
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/migration",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-04T14:47:53.419558Z",
+      "startedAt": "2021-06-04T14:47:55.233456Z",
+      "updatedAt": "2021-06-04T14:50:27.650946Z",
+      "duration": 152000000000,
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "id": "664361916846833682",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "repoBranch": "main",
+      "repoRevision": "3641fcff07a7e199e474422f26e2d07c5942f92a",
+      "buildVersion": "1.0.0-main-1724",
+      "buildStatus": "failed",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "tooling-estafette",
+          "actions": [
+            {
+              "name": "deploy-canary"
+            },
+            {
+              "name": "deploy-stable"
+            },
+            {
+              "name": "rollback-canary",
+              "hideBadge": true
+            },
+            {
+              "name": "restart-stable",
+              "hideBadge": true
+            }
+          ]
+        },
+        {
+          "name": "release-helm-chart"
+        },
+        {
+          "name": "helm-diff"
+        }
+      ],
+      "commits": [
+        {
+          "message": "refactor adding where clauses",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "name": "migrator",
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-db-migrator",
+            "branch": "main"
+          },
+          "builds": {
+            "branch": "main"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "fired": true,
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/migration",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-04T14:39:27.005888Z",
+      "startedAt": "2021-06-04T14:39:29.151371Z",
+      "updatedAt": "2021-06-04T14:42:09.643588Z",
+      "duration": 160000000000,
+      "pendingDuration": 2000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "id": "664347517287399440",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "repoBranch": "main",
+      "repoRevision": "0fd5e56664eca414569c982bcd21abac3d3d09d8",
+      "buildVersion": "1.0.0-main-1723",
+      "buildStatus": "failed",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "tooling-estafette",
+          "actions": [
+            {
+              "name": "deploy-canary"
+            },
+            {
+              "name": "deploy-stable"
+            },
+            {
+              "name": "rollback-canary",
+              "hideBadge": true
+            },
+            {
+              "name": "restart-stable",
+              "hideBadge": true
+            }
+          ]
+        },
+        {
+          "name": "release-helm-chart"
+        },
+        {
+          "name": "helm-diff"
+        }
+      ],
+      "commits": [
+        {
+          "message": "add filters and endpoints for build branches and bot names",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "name": "migrator",
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-db-migrator",
+            "branch": "main"
+          },
+          "builds": {
+            "branch": "main"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "fired": true,
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/migration",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-04T13:26:12.609083Z",
+      "startedAt": "2021-06-04T13:26:20.488494Z",
+      "updatedAt": "2021-06-04T13:28:49.383958Z",
+      "duration": 148000000000,
+      "pendingDuration": 7000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "id": "663997304868339728",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "repoBranch": "main",
+      "repoRevision": "dc8fb4c20f48705ad28b36b41c3614e25664fe32",
+      "buildVersion": "1.0.0-main-1722",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "tooling-estafette",
+          "actions": [
+            {
+              "name": "deploy-canary"
+            },
+            {
+              "name": "deploy-stable"
+            },
+            {
+              "name": "rollback-canary",
+              "hideBadge": true
+            },
+            {
+              "name": "restart-stable",
+              "hideBadge": true
+            }
+          ]
+        },
+        {
+          "name": "release-helm-chart"
+        },
+        {
+          "name": "helm-diff"
+        }
+      ],
+      "commits": [
+        {
+          "message": "don't log X-Estafette-Event",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "name": "migrator",
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-db-migrator",
+            "branch": "main"
+          },
+          "builds": {
+            "branch": "main"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "fired": true,
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/migration",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-03T07:44:56.260568Z",
+      "startedAt": "2021-06-03T07:46:06.777873Z",
+      "updatedAt": "2021-06-03T07:52:52.335078Z",
+      "duration": 405000000000,
+      "pendingDuration": 70000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "id": "663993661541253136",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "repoBranch": "main",
+      "repoRevision": "483ba6eba67f724eef2f47ad7d5304d39478f2b8",
+      "buildVersion": "1.0.0-main-1721",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "tooling-estafette",
+          "actions": [
+            {
+              "name": "deploy-canary"
+            },
+            {
+              "name": "deploy-stable"
+            },
+            {
+              "name": "rollback-canary",
+              "hideBadge": true
+            },
+            {
+              "name": "restart-stable",
+              "hideBadge": true
+            }
+          ]
+        },
+        {
+          "name": "release-helm-chart"
+        },
+        {
+          "name": "helm-diff"
+        }
+      ],
+      "commits": [
+        {
+          "message": "log user email for failure to rebuild already building version",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "name": "migrator",
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-db-migrator",
+            "branch": "main"
+          },
+          "builds": {
+            "branch": "main"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "fired": true,
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/migration",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-03T07:26:24.405235Z",
+      "startedAt": "2021-06-03T07:26:26.158856Z",
+      "updatedAt": "2021-06-03T07:33:01.907085Z",
+      "duration": 395000000000,
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "id": "663990903882350608",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "repoBranch": "main",
+      "repoRevision": "bc3eca855c2f83b5fe3ac0aec5dc86088ebca4cc",
+      "buildVersion": "1.0.0-main-1720",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "tooling-estafette",
+          "actions": [
+            {
+              "name": "deploy-canary"
+            },
+            {
+              "name": "deploy-stable"
+            },
+            {
+              "name": "rollback-canary",
+              "hideBadge": true
+            },
+            {
+              "name": "restart-stable",
+              "hideBadge": true
+            }
+          ]
+        },
+        {
+          "name": "release-helm-chart"
+        },
+        {
+          "name": "helm-diff"
+        }
+      ],
+      "commits": [
+        {
+          "message": "use CiBuilderEvent.BuildEventType instead of X-Estafette-Event header",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "name": "migrator",
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-db-migrator",
+            "branch": "main"
+          },
+          "builds": {
+            "branch": "main"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "fired": true,
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/migration",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-03T07:12:22.834606Z",
+      "startedAt": "2021-06-03T07:12:24.713717Z",
+      "updatedAt": "2021-06-03T07:20:02.82372Z",
+      "duration": 458000000000,
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "id": "663987700003864593",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "repoBranch": "main",
+      "repoRevision": "52ff4a70d56a97fc89522e17e1b4f459586e9449",
+      "buildVersion": "1.0.0-main-1719",
+      "buildStatus": "succeeded",
+      "labels": [
+        {
+          "key": "app-group",
+          "value": "estafette-ci"
+        },
+        {
+          "key": "language",
+          "value": "golang"
+        },
+        {
+          "key": "team",
+          "value": "estafette"
+        },
+        {
+          "key": "type",
+          "value": "service"
+        }
+      ],
+      "releaseTargets": [
+        {
+          "name": "tooling-estafette",
+          "actions": [
+            {
+              "name": "deploy-canary"
+            },
+            {
+              "name": "deploy-stable"
+            },
+            {
+              "name": "rollback-canary",
+              "hideBadge": true
+            },
+            {
+              "name": "restart-stable",
+              "hideBadge": true
+            }
+          ]
+        },
+        {
+          "name": "release-helm-chart"
+        },
+        {
+          "name": "helm-diff"
+        }
+      ],
+      "commits": [
+        {
+          "message": "inject bot stages",
+          "author": {
+            "email": "me@estafette.io",
+            "name": "Just Me",
+            "username": "JustMe"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "name": "migrator",
+          "pipeline": {
+            "event": "finished",
+            "status": "succeeded",
+            "name": "github.com/estafette/estafette-ci-db-migrator",
+            "branch": "main"
+          },
+          "builds": {
+            "branch": "main"
+          }
+        }
+      ],
+      "triggerEvents": [
+        {
+          "fired": true,
+          "git": {
+            "event": "push",
+            "repository": "github.com/estafette/migration",
+            "branch": "main"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-03T06:56:05.088499Z",
+      "startedAt": "2021-06-03T06:56:09.145449Z",
+      "updatedAt": "2021-06-03T07:02:41.789903Z",
+      "duration": 392000000000,
+      "pendingDuration": 4000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 10,
+    "totalPages": 1,
+    "totalItems": 10
+  }
+}

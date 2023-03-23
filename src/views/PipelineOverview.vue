@@ -230,7 +230,8 @@ export default {
     return {
       builds: [],
       loaded: false,
-      refresh: true
+      refresh: true,
+      migration: false
     }
   },
 
@@ -318,6 +319,14 @@ export default {
     },
 
     loadRecentBuilds () {
+      this.axios.get(`/api/migrations/from/${this.repoSource}/${this.repoOwner}/${this.repoName}`)
+        .then(response => {
+          if (response.data && response.data.toName) {
+            this.migration = response.data
+          }
+        }).catch(e => {
+          console.warn('pipeline not found and not migrated', e)
+        })
       this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds?page[size]=6`)
         .then(response => {
           this.builds = response.data.items
@@ -325,7 +334,11 @@ export default {
           this.loaded = true
         })
         .catch(e => {
-          this.periodicallyRefreshRecentBuilds(15)
+          if (e.code === 'Not Found') {
+            this.refresh = false
+            return
+          }
+          this.periodicallyRefreshRecentBuilds(18000)
         })
     },
 

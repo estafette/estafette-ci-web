@@ -1,0 +1,18 @@
+{
+  "id": "9f2b24bc-17d7-4e43-898a-d0fa3361cf4b",
+  "status": "completed",
+  "lastStep": "completion_done",
+  "builds": 42522,
+  "releases": 35945,
+  "totalDuration": 5754269760949,
+  "fromSource": "github.com",
+  "fromOwner": "estafette",
+  "fromName": "migration",
+  "toSource": "github.com",
+  "toOwner": "estafette-2",
+  "toName": "migration",
+  "callbackUrl": null,
+  "queuedAt": "2023-03-16 22:14:25.147690 +00:00",
+  "updatedAt": "2023-03-17 10:12:18.877321 +00:00",
+  "errorDetails": null
+}

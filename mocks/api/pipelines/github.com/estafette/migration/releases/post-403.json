@@ -1,0 +1,12 @@
+{
+  "code": "Forbidden",
+  "error": {
+    "cluster": "abc1",
+    "message": "Release not allowed on this branch",
+    "repositoryReleaseControl": {
+      "allowed": [
+        "main"
+      ]
+    }
+  }
+}

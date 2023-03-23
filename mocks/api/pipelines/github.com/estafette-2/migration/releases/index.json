@@ -1,0 +1,290 @@
+{
+  "items": [
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-stable",
+      "id": "664373458571591697",
+      "repoSource": "github.com",
+      "repoOwner": "estafette-2",
+      "repoName": "migration",
+      "releaseVersion": "1.0.0-main-1728",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "fired": true,
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-04T15:38:09.260982Z",
+      "startedAt": "2021-06-04T15:38:11.572968Z",
+      "updatedAt": "2021-06-04T15:39:25.13434Z",
+      "duration": 73000000000,
+      "pendingDuration": 2000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-canary",
+      "id": "664372945397841937",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "releaseVersion": "1.0.0-main-1728",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "fired": true,
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-04T15:35:32.652756Z",
+      "startedAt": "2021-06-04T15:35:34.746145Z",
+      "updatedAt": "2021-06-04T15:36:09.231216Z",
+      "duration": 34000000000,
+      "pendingDuration": 2000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-canary",
+      "id": "664370662483525649",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "releaseVersion": "1.0.0-main-1727",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "fired": true,
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-04T15:23:55.962505Z",
+      "startedAt": "2021-06-04T15:23:57.894978Z",
+      "updatedAt": "2021-06-04T15:24:18.666322Z",
+      "duration": 20000000000,
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "restart-stable",
+      "id": "664308454879461393",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "releaseVersion": "1.0.0-main-1722",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "fired": true,
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-04T10:07:31.708355Z",
+      "startedAt": "2021-06-04T10:07:33.422702Z",
+      "updatedAt": "2021-06-04T10:08:33.80782Z",
+      "duration": 60000000000,
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-stable",
+      "id": "663999267565928466",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "releaseVersion": "1.0.0-main-1722",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "fired": true,
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-03T07:54:55.228339Z",
+      "startedAt": "2021-06-03T07:54:57.433669Z",
+      "updatedAt": "2021-06-03T07:56:14.902659Z",
+      "duration": 77000000000,
+      "pendingDuration": 2000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-canary",
+      "id": "663999161512820752",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "releaseVersion": "1.0.0-main-1722",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "fired": true,
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-03T07:54:22.863548Z",
+      "startedAt": "2021-06-03T07:54:24.380836Z",
+      "updatedAt": "2021-06-03T07:54:45.82337Z",
+      "duration": 21000000000,
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-stable",
+      "id": "663995507641057297",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "releaseVersion": "1.0.0-main-1721",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "fired": true,
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-03T07:35:47.790497Z",
+      "startedAt": "2021-06-03T07:35:51.458557Z",
+      "updatedAt": "2021-06-03T07:37:07.224026Z",
+      "duration": 75000000000,
+      "pendingDuration": 3000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-canary",
+      "id": "663994988029083665",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "releaseVersion": "1.0.0-main-1721",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "fired": true,
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-03T07:33:09.217474Z",
+      "startedAt": "2021-06-03T07:33:11.769945Z",
+      "updatedAt": "2021-06-03T07:33:47.211376Z",
+      "duration": 35000000000,
+      "pendingDuration": 2000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-canary",
+      "id": "663993169974001680",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "releaseVersion": "1.0.0-main-1720",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "fired": true,
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-03T07:23:54.391013Z",
+      "startedAt": "2021-06-03T07:23:55.907831Z",
+      "updatedAt": "2021-06-03T07:24:16.034896Z",
+      "duration": 20000000000,
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    },
+    {
+      "name": "tooling-estafette",
+      "action": "deploy-stable",
+      "id": "9456",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "releaseVersion": "1.0.0-main-1719",
+      "releaseStatus": "succeeded",
+      "triggerEvents": [
+        {
+          "fired": true,
+          "manual": {
+            "userID": "me@estafette.io"
+          }
+        }
+      ],
+      "insertedAt": "2021-06-03T07:07:15.18363Z",
+      "startedAt": "2021-06-03T07:07:16.522663Z",
+      "updatedAt": "2021-06-03T07:08:38.50558Z",
+      "duration": 81000000000,
+      "pendingDuration": 1000000000,
+      "organizations": [
+        {
+          "name": "Estafette"
+        }
+      ]
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 10,
+    "totalPages": 1,
+    "totalItems": 10
+  }
+}

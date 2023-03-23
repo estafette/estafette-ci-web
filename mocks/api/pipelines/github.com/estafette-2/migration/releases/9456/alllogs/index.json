@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "id": "663990168905220112",
+      "repoSource": "github.com",
+      "repoOwner": "estafette",
+      "repoName": "migration",
+      "releaseID": "9456",
+      "steps": null,
+      "insertedAt": "2021-06-03T07:08:38.537661Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "size": 20,
+    "totalPages": 1,
+    "totalItems": 1
+  }
+}
