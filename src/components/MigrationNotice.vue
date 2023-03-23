@@ -7,9 +7,9 @@
       show
       variant="primary"
     >
-      <h5>Migrated on {{ migration.updatedAt | moment('YYYY/MM/DD HH:mm:ss') }}</h5>
+      <h5>Migrated</h5>
       <p>
-        This repository has been migrated. Redirecting to
+        This repository was migrated on {{ migration.updatedAt | moment('YYYY/MM/DD HH:mm:ss') }}. Redirecting to
         <b-link
           :href="redirectURL"
           class="alert-link"
