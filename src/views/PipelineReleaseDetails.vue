@@ -2,11 +2,10 @@
   <div>
     <section-header section-route-name="Pipelines" />
     <migration-notice
-      v-if="migration"
-      :to-source="migration.repoSource"
-      :to-owner="migration.repoOwner"
-      :to-name="migration.repoName"
-      :to-id="migration.id"
+      :repo-source="repoSource"
+      :repo-owner="repoOwner"
+      :repo-name="repoName"
+      :id="releaseID"
       page="releases"
     />
 

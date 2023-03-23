@@ -2,10 +2,10 @@
   <div>
     <section-header section-route-name="Pipelines" />
     <migration-notice
-      v-if="migration"
-      :to-source="migration.toSource"
-      :to-owner="migration.toOwner"
-      :to-name="migration.toName"
+      :repo-source="repoSource"
+      :repo-owner="repoOwner"
+      :repo-name="repoName"
+      :page="currentRoute"
     />
 
     <b-breadcrumb
@@ -63,6 +63,7 @@ export default {
       pipeline: null,
       refresh: true,
       migration: null,
+      currentRoute: this.$route.path.split('/').slice(-1)[0],
       breadcrumbs: [
         {
           text: 'Builds & releases',
@@ -90,14 +91,6 @@ export default {
 
   methods: {
     loadPipeline () {
-      this.axios.get(`/api/migrations/from/${this.repoSource}/${this.repoOwner}/${this.repoName}`)
-        .then(response => {
-          if (response.data && response.data.toName) {
-            this.migration = response.data
-          }
-        }).catch(e => {
-          console.warn('pipeline not found and not migrated', e)
-        })
       this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}`)
         .then(response => {
           this.pipeline = response.data
@@ -134,6 +127,12 @@ export default {
       return labels.slice().sort(function (a, b) {
         return a.key > b.key
       })
+    }
+  },
+
+  watch: {
+    '$route' (to, from) {
+      this.currentRoute = to.path.split('/').slice(-1)[0]
     }
   },
 

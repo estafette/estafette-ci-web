@@ -2,11 +2,10 @@
   <div>
     <section-header section-route-name="Pipelines" />
     <migration-notice
-      v-if="migration"
-      :to-source="migration.repoSource"
-      :to-owner="migration.repoOwner"
-      :to-name="migration.repoName"
-      :to-id="migration.id"
+      :repo-source="repoSource"
+      :repo-owner="repoOwner"
+      :repo-name="repoName"
+      :id="id"
       page="builds"
     />
 
@@ -118,14 +117,6 @@ export default {
 
   methods: {
     loadBuild () {
-      this.axios.get(`/api/migrations/builds/${this.id}`)
-        .then(response => {
-          if (response.data) {
-            this.migration = response.data
-          }
-        }).catch(e => {
-          console.debug('build probably not migrated', e)
-        })
       this.axios.get(`/api/pipelines/${this.repoSource}/${this.repoOwner}/${this.repoName}/builds/${this.id}`)
         .then(response => {
           this.build = response.data
