@@ -636,3 +636,44 @@ button.btn-clipboard {
     }
   }
 }
+
+.migrations {
+  .details {
+    margin: 1rem;
+  }
+}
+.popover {
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 0.3rem;
+  padding: 10px;
+  left: 15px;
+  .arrow {
+    position: absolute;
+    width: 0.5rem;
+    height: 1rem;
+    left: -9px;
+    &:before {
+      left: 0;
+      border-width: 0.5rem 0.5rem 0.5rem 0;
+      border-right-color: rgba(0, 0, 0, .25);
+      position: absolute;
+      display: block;
+      content: "";
+      border-style: solid;
+      color: transparent;
+    }
+
+    &:after {
+      left: 1px;
+      border-width: 0.5rem 0.5rem 0.5rem 0;
+      border-right-color: #fff;
+      position: absolute;
+      display: block;
+      content: "";
+      border-style: solid;
+      color: transparent;
+    }
+  }
+}
