@@ -334,7 +334,7 @@ export default {
           this.loaded = true
         })
         .catch(e => {
-          if (e.code === 'Not Found') {
+          if (e.message === 'Not Found') {
             this.refresh = false
             return
           }

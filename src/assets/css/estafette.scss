@@ -617,6 +617,7 @@ button.btn-clipboard {
   background-color: rgba(0, 0, 0, 0.05);
 }
 .migration-notice .alert {
+  max-width: 90%;
   p {
     margin-bottom: 1rem;
   }
@@ -640,6 +641,11 @@ button.btn-clipboard {
 .migrations {
   .details {
     margin: 1rem;
+  }
+  .ckw > svg {
+    animation-name: ckw;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
   }
 }
 .popover {
@@ -675,5 +681,14 @@ button.btn-clipboard {
       border-style: solid;
       color: transparent;
     }
+  }
+}
+
+@keyframes ckw {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

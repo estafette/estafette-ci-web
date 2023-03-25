@@ -25,6 +25,18 @@
       v-if="pipeline"
       class="m-3"
     />
+    <div
+      v-if="notFound"
+      class="row"
+    >
+      <div class="col-12 text-center">
+        <h3
+          class="text-muted"
+        >
+          Pipeline not found
+        </h3>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -63,6 +75,7 @@ export default {
       pipeline: null,
       refresh: true,
       migration: null,
+      notFound: false,
       currentRoute: this.$route.path.split('/').slice(-1)[0],
       breadcrumbs: [
         {
@@ -98,8 +111,9 @@ export default {
           this.periodicallyRefreshPipeline(5)
         })
         .catch(e => {
-          if (e.code === 'Not Found') {
+          if (e.message === 'NotFound') {
             this.refresh = false
+            this.notFound = true
             return
           }
           this.periodicallyRefreshPipeline(18000)

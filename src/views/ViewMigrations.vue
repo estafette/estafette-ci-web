@@ -76,16 +76,20 @@
           </span>
         </template>
         <template #cell(migration)="data">
-          <span
+          <a
+            :href="`/pipelines/${data.item.toSource}/${data.item.toOwner}/${data.item.toName}/overview`"
             v-b-popover.hover="{ variant: 'light', content: `${data.item.fromSource}/${data.item.fromOwner}/${data.item.fromName} ➞ ${data.item.toSource}/${data.item.toOwner}/${data.item.toName}`, placement: 'right' }"
           >
             {{ data.value }}
-          </span>
+          </a>
         </template>
         <template #cell(status)="data">
-          <span :class="statusClass(data.value)">
+          <div
+            style="display: inline-block; min-width: 18px;"
+            :class="statusClass(data.value)"
+          >
             <font-awesome-icon :icon="(statusOptions.find(s => s.value === data.value) || { icon: 'none' }).icon" />
-          </span>
+          </div>
           {{ (statusOptions.find(s => s.value === data.value) || { text: data.value }).text }}
         </template>
         <template #cell(lastStep)="data">
@@ -101,6 +105,9 @@
           >
             ❗️
           </b-button>
+          <span v-if="!data.value">
+            -
+          </span>
         </template>
       </b-table>
       <pagination
@@ -183,7 +190,8 @@ export default {
         },
         {
           key: 'errorDetails',
-          label: 'Error?'
+          label: 'Error',
+          class: 'text-center'
         },
         {
           key: 'totalDuration',
@@ -252,6 +260,8 @@ export default {
       switch (status) {
         case 'completed':
           return 'text-success'
+        case 'in_progress':
+          return 'ckw'
         case 'failed':
           return 'text-danger'
         case 'cancelled':
