@@ -103,7 +103,7 @@
             @click="showErrorDetails(data.item)"
             variant="outline-danger"
           >
-            ❗️
+            <font-awesome-icon icon="exclamation" />
           </b-button>
           <span v-if="!data.value">
             -
@@ -129,12 +129,13 @@ import {
   faHourglassStart,
   faSpinner,
   faTasks,
-  faTimesCircle
+  faTimesCircle,
+  faExclamation
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import moment from 'moment'
 
-library.add(faCheckCircle, faTasks, faHourglassStart, faSpinner, faCheckCircle, faTimesCircle, faBan)
+library.add(faCheckCircle, faTasks, faHourglassStart, faSpinner, faCheckCircle, faTimesCircle, faBan, faExclamation)
 Vue.directive('b-popover', VBPopover)
 Vue.use(ModalPlugin)
 
