@@ -1,0 +1,231 @@
+{
+  "id": "9123",
+  "repoSource": "github.com",
+  "repoOwner": "estafette-2",
+  "repoName": "migration",
+  "repoBranch": "main",
+  "repoRevision": "52ff4a70d56a97fc89522e17e1b4f459586e9449",
+  "buildVersion": "1.0.0-main-1719",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette"
+    },
+    {
+      "key": "type",
+      "value": "service"
+    }
+  ],
+  "releaseTargets": [
+    {
+      "name": "tooling-estafette",
+      "actions": [
+        {
+          "name": "deploy-canary"
+        },
+        {
+          "name": "deploy-stable"
+        },
+        {
+          "name": "rollback-canary",
+          "hideBadge": true
+        },
+        {
+          "name": "restart-stable",
+          "hideBadge": true
+        }
+      ],
+      "activeReleases": [
+        {
+          "name": "tooling-estafette",
+          "action": "deploy-stable",
+          "id": "664373458571591697",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "migration",
+          "releaseVersion": "1.0.0-main-1728",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "fired": true,
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2021-06-04T15:38:09.260982Z",
+          "startedAt": "2021-06-04T15:38:11.572968Z",
+          "updatedAt": "2021-06-04T15:39:25.13434Z",
+          "duration": 73000000000,
+          "pendingDuration": 2000000000,
+          "extraInfo": {
+            "medianPendingDuration": 2000000000,
+            "medianDuration": 77000000000
+          }
+        },
+        {
+          "name": "tooling-estafette",
+          "action": "deploy-canary",
+          "id": "664372945397841937",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "migration",
+          "releaseVersion": "1.0.0-main-1728",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "fired": true,
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2021-06-04T15:35:32.652756Z",
+          "startedAt": "2021-06-04T15:35:34.746145Z",
+          "updatedAt": "2021-06-04T15:36:09.231216Z",
+          "duration": 34000000000,
+          "pendingDuration": 2000000000,
+          "extraInfo": {
+            "medianPendingDuration": 2000000000,
+            "medianDuration": 20000000000
+          }
+        },
+        {
+          "name": "tooling-estafette",
+          "action": "restart-stable",
+          "id": "664308454879461393",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "migration",
+          "releaseVersion": "1.0.0-main-1722",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "fired": true,
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2021-06-04T10:07:31.708355Z",
+          "startedAt": "2021-06-04T10:07:33.422702Z",
+          "updatedAt": "2021-06-04T10:08:33.80782Z",
+          "duration": 60000000000,
+          "pendingDuration": 1000000000,
+          "extraInfo": {
+            "medianPendingDuration": 3000000000,
+            "medianDuration": 90000000000
+          }
+        },
+        {
+          "name": "tooling-estafette",
+          "action": "rollback-canary",
+          "id": "663722926313242642",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "migration",
+          "releaseVersion": "1.0.0-main-1710",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "fired": true,
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2021-06-02T08:29:22.570649Z",
+          "startedAt": "2021-06-02T08:29:24.685091Z",
+          "updatedAt": "2021-06-02T08:29:42.049986Z",
+          "duration": 17000000000,
+          "pendingDuration": 2000000000,
+          "extraInfo": {
+            "medianPendingDuration": 3000000000,
+            "medianDuration": 17000000000
+          }
+        }
+      ]
+    },
+    {
+      "name": "release-helm-chart"
+    },
+    {
+      "name": "helm-diff",
+      "activeReleases": [
+        {
+          "name": "helm-diff",
+          "id": "503219038331437061",
+          "repoSource": "github.com",
+          "repoOwner": "estafette",
+          "repoName": "migration",
+          "releaseVersion": "1.0.0-add-official-helm-chart-892",
+          "releaseStatus": "succeeded",
+          "triggerEvents": [
+            {
+              "manual": {
+                "userID": "me@estafette.io"
+              }
+            }
+          ],
+          "insertedAt": "2019-11-13T10:24:23.162207Z",
+          "updatedAt": "2019-11-13T10:24:46.091556Z",
+          "duration": 22000000000,
+          "pendingDuration": 0
+        }
+      ]
+    }
+  ],
+  "commits": [
+    {
+      "message": "inject bot stages",
+      "author": {
+        "email": "me@estafette.io",
+        "name": "Just Me",
+        "username": "JustMe"
+      }
+    }
+  ],
+  "triggers": [
+    {
+      "name": "migrator",
+      "pipeline": {
+        "event": "finished",
+        "status": "succeeded",
+        "name": "github.com/estafette/estafette-ci-db-migrator",
+        "branch": "main"
+      },
+      "builds": {
+        "branch": "main"
+      }
+    }
+  ],
+  "triggerEvents": [
+    {
+      "fired": true,
+      "git": {
+        "event": "push",
+        "repository": "github.com/estafette/migration",
+        "branch": "main"
+      }
+    }
+  ],
+  "insertedAt": "2021-06-03T06:56:05.088499Z",
+  "startedAt": "2021-06-03T06:56:09.145449Z",
+  "updatedAt": "2021-06-03T07:02:41.789903Z",
+  "duration": 392000000000,
+  "pendingDuration": 4000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
+}

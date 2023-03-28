@@ -410,6 +410,17 @@ export default new Router({
       ]
     },
     {
+      path: '/migrations',
+      name: 'Migrations',
+      props: true,
+      component: () => import(/* webpackChunkName: "views" */ '../views/ViewMigrations.vue'),
+      meta: {
+        icon: 'dolly',
+        position: 'bottom',
+        requiredRole: 'administrator'
+      }
+    },
+    {
       path: '/configuration',
       name: 'Configuration',
       props: true,

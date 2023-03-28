@@ -1,0 +1,28 @@
+{
+  "name": "tooling-estafette",
+  "action": "deploy-stable",
+  "id": "456",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "migration",
+  "releaseVersion": "1.0.0-main-1719",
+  "releaseStatus": "succeeded",
+  "triggerEvents": [
+    {
+      "fired": true,
+      "manual": {
+        "userID": "me@estafette.io"
+      }
+    }
+  ],
+  "insertedAt": "2021-06-03T07:07:15.18363Z",
+  "startedAt": "2021-06-03T07:07:16.522663Z",
+  "updatedAt": "2021-06-03T07:08:38.50558Z",
+  "duration": 81000000000,
+  "pendingDuration": 1000000000,
+  "organizations": [
+    {
+      "name": "Estafette"
+    }
+  ]
+}

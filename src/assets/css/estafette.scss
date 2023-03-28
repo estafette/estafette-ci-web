@@ -162,7 +162,7 @@ code {
 
   code {
     color: inherit;
-    background-color: transparent!important;    
+    background-color: transparent!important;
   }
 
   a {
@@ -300,7 +300,7 @@ button.btn-clipboard {
   .property-block {
     @extend .col-12;
     @extend .col-xl-6;
-  }  
+  }
 }
 
 .repo-source-and-owner {
@@ -501,7 +501,7 @@ button.btn-clipboard {
 
     // @extend .mb-3;
     // @extend .p-2;
-  
+
     // .display-4 {
     //   font-size: 2.0rem;
     //   line-height: 1.0;
@@ -596,7 +596,7 @@ button.btn-clipboard {
     color: #aaa !important;
     background-color: #343a40 !important;
 
-    &:focus { 
+    &:focus {
       outline: none !important;
       box-shadow: none !important;
       color: #aaa !important;
@@ -615,4 +615,80 @@ button.btn-clipboard {
 
 .table-striped tbody tr:nth-of-type(even) .label {
   background-color: rgba(0, 0, 0, 0.05);
+}
+.migration-notice .alert {
+  max-width: 90%;
+  p {
+    margin-bottom: 1rem;
+  }
+  .redirect-progress {
+    display: flex;
+    align-items: center;
+    .progress {
+      flex: 1;
+    }
+    .start-pause-button {
+      outline: none;
+      box-shadow: none;
+      padding: 0 0.35rem;
+      min-height: 26px;
+      min-width: 26px;
+      margin-right: 13px;
+    }
+  }
+}
+
+.migrations {
+  .details {
+    margin: 1rem;
+  }
+  .ckw > svg {
+    animation-name: ckw;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+  }
+}
+.popover {
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 0.3rem;
+  padding: 10px;
+  left: 15px;
+  .arrow {
+    position: absolute;
+    width: 0.5rem;
+    height: 1rem;
+    left: -9px;
+    &:before {
+      left: 0;
+      border-width: 0.5rem 0.5rem 0.5rem 0;
+      border-right-color: rgba(0, 0, 0, .25);
+      position: absolute;
+      display: block;
+      content: "";
+      border-style: solid;
+      color: transparent;
+    }
+
+    &:after {
+      left: 1px;
+      border-width: 0.5rem 0.5rem 0.5rem 0;
+      border-right-color: #fff;
+      position: absolute;
+      display: block;
+      content: "";
+      border-style: solid;
+      color: transparent;
+    }
+  }
+}
+
+@keyframes ckw {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

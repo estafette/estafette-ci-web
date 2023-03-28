@@ -1,6 +1,12 @@
 <template>
   <div>
     <section-header section-route-name="Pipelines" />
+    <migration-notice
+      :repo-source="repoSource"
+      :repo-owner="repoOwner"
+      :repo-name="repoName"
+      :page="currentRoute"
+    />
 
     <b-breadcrumb
       :items="breadcrumbs"
@@ -19,6 +25,18 @@
       v-if="pipeline"
       class="m-3"
     />
+    <div
+      v-if="notFound"
+      class="row"
+    >
+      <div class="col-12 text-center">
+        <h3
+          class="text-muted"
+        >
+          Pipeline not found
+        </h3>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,6 +44,7 @@
 import { mapState } from 'vuex'
 import { BBreadcrumb } from 'bootstrap-vue'
 import PipelineHeader from '@/components/PipelineHeader'
+import MigrationNotice from '@/components/MigrationNotice'
 import SectionHeader from '@/components/SectionHeader'
 import InnerNavigationTabs from '@/components/InnerNavigationTabs'
 
@@ -34,6 +53,7 @@ export default {
     BBreadcrumb,
     SectionHeader,
     PipelineHeader,
+    MigrationNotice,
     InnerNavigationTabs
   },
   props: {
@@ -54,6 +74,9 @@ export default {
     return {
       pipeline: null,
       refresh: true,
+      migration: null,
+      notFound: false,
+      currentRoute: this.$route.path.split('/').slice(-1)[0],
       breadcrumbs: [
         {
           text: 'Builds & releases',
@@ -61,7 +84,14 @@ export default {
         },
         {
           text: `${this.repoName}`,
-          to: { name: 'PipelineOverview', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } },
+          to: {
+            name: 'PipelineOverview',
+            params: {
+              repoSource: this.repoSource,
+              repoOwner: this.repoOwner,
+              repoName: this.repoName
+            }
+          },
           active: true
         }
       ]
@@ -81,7 +111,12 @@ export default {
           this.periodicallyRefreshPipeline(5)
         })
         .catch(e => {
-          this.periodicallyRefreshPipeline(30)
+          if (e.message === 'NotFound') {
+            this.refresh = false
+            this.notFound = true
+            return
+          }
+          this.periodicallyRefreshPipeline(18000)
         })
     },
 
@@ -106,6 +141,12 @@ export default {
       return labels.slice().sort(function (a, b) {
         return a.key > b.key
       })
+    }
+  },
+
+  watch: {
+    '$route' (to, from) {
+      this.currentRoute = to.path.split('/').slice(-1)[0]
     }
   },
 

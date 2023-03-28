@@ -39,10 +39,10 @@ import { mapState } from 'vuex'
 import { BNav, BNavItem } from 'bootstrap-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers, faSlidersH } from '@fortawesome/free-solid-svg-icons'
+import { faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers, faSlidersH, faDolly } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers, faSlidersH)
+library.add(faShippingFast, faTools, faBookOpen, faLightbulb, faPlusCircle, faCogs, faExternalLinkAlt, faUserCircle, faHome, faUsers, faSlidersH, faDolly)
 
 export default {
   components: {

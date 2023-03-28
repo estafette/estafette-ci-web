@@ -10,7 +10,8 @@ labels:
 version:
   semver:
     major: 1
-    minor: 0
+    minor: 4
+    patch: 0
 
 stages:
   audit-and-restore:
@@ -87,11 +88,12 @@ stages:
     - estafette
 
   tag-revision:
-    image: golang:1.17-alpine
+    image: bitnami/git
     commands:
-    - apk add git
     - git tag ${ESTAFETTE_BUILD_VERSION}
     - git push origin ${ESTAFETTE_BUILD_VERSION}
+    when: status == 'succeeded' &&
+      branch == 'main'
 
   slack-notify:
     image: extensions/slack-build-status:dev

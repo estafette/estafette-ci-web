@@ -1,6 +1,13 @@
 <template>
   <div>
     <section-header section-route-name="Pipelines" />
+    <migration-notice
+      :repo-source="repoSource"
+      :repo-owner="repoOwner"
+      :repo-name="repoName"
+      :id="id"
+      page="builds"
+    />
 
     <b-breadcrumb
       :items="breadcrumbs"
@@ -32,6 +39,7 @@
 import { mapState } from 'vuex'
 import { BBreadcrumb } from 'bootstrap-vue'
 import SectionHeader from '@/components/SectionHeader'
+import MigrationNotice from '@/components/MigrationNotice'
 import BuildHeader from '@/components/BuildHeader'
 import PipelineBuildWarnings from '@/components/PipelineBuildWarnings'
 import InnerNavigationTabs from '@/components/InnerNavigationTabs'
@@ -41,6 +49,7 @@ export default {
     BBreadcrumb,
     SectionHeader,
     BuildHeader,
+    MigrationNotice,
     PipelineBuildWarnings,
     InnerNavigationTabs
   },
@@ -67,6 +76,7 @@ export default {
       build: null,
       pipeline: null,
       refresh: true,
+      migration: null,
       breadcrumbs: [
         {
           text: 'Builds & releases',
@@ -74,11 +84,25 @@ export default {
         },
         {
           text: `${this.repoName}`,
-          to: { name: 'PipelineOverview', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
+          to: {
+            name: 'PipelineOverview',
+            params: {
+              repoSource: this.repoSource,
+              repoOwner: this.repoOwner,
+              repoName: this.repoName
+            }
+          }
         },
         {
           text: 'builds',
-          to: { name: 'PipelineBuilds', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName } }
+          to: {
+            name: 'PipelineBuilds',
+            params: {
+              repoSource: this.repoSource,
+              repoOwner: this.repoOwner,
+              repoName: this.repoName
+            }
+          }
         },
         {
           text: '...'
@@ -104,14 +128,22 @@ export default {
 
           this.breadcrumbs[this.breadcrumbs.length - 1] = {
             text: `${this.build.buildVersion}`,
-            to: { name: 'PipelineBuildLogs', params: { repoSource: this.repoSource, repoOwner: this.repoOwner, repoName: this.repoName, id: this.id } },
+            to: {
+              name: 'PipelineBuildLogs',
+              params: {
+                repoSource: this.repoSource,
+                repoOwner: this.repoOwner,
+                repoName: this.repoName,
+                id: this.id
+              }
+            },
             active: true
           }
 
           if (this.build.buildStatus !== 'succeeded' && this.build.buildStatus !== 'failed') {
             this.periodicallyRefreshBuild(5)
           } else {
-            this.periodicallyRefreshBuild(15)
+            this.periodicallyRefreshBuild(18000)
           }
         })
         .catch(e => {

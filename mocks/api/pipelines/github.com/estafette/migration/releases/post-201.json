@@ -1,0 +1,16 @@
+{
+  "name": "tooling-estafette",
+  "action": "release",
+  "id": "12313",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "migration",
+  "releaseVersion": "xyz",
+  "releaseStatus": "succeeded",
+  "triggerEvents": [],
+  "insertedAt": "2006-01-02 15:04:05.999999999 -0700 MST",
+  "startedAt": "2006-01-02 15:04:05.999999999 -0700 MST",
+  "updatedAt": "2006-01-02 15:04:05.999999999 -0700 MST",
+  "duration": 30000,
+  "pendingDuration": 0
+}
