@@ -1,11 +1,11 @@
 <template>
-  <router-link
-    to="#"
-    @click.native.prevent="navigateToBuildLogs(release.releaseVersion)"
+  <button
+    @click.prevent="navigateToBuildLogs(release.releaseVersion)"
     :class="['text-body']"
+    type="button"
   >
     {{ release.releaseVersion }}
-  </router-link>
+  </button>
 </template>
 
 <script>
