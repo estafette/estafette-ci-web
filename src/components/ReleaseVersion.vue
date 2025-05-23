@@ -1,11 +1,11 @@
 <template>
-  <router-link
-    to="#"
-    @click.native.prevent="navigateToBuildLogs(release.releaseVersion)"
-    :class="['text-body']"
+  <a
+    :href="buildUrl"
+    @click.stop
+    class="text-body"
   >
     {{ release.releaseVersion }}
-  </router-link>
+  </a>
 </template>
 
 <script>
@@ -15,34 +15,38 @@ export default {
   props: {
     release: {
       type: Object,
-      default: null
+      required: true
     }
   },
 
+  data: () => ({
+    buildUrl: '#'
+  }),
+
+  created () {
+    this.fetchBuildUrl()
+  },
+
   methods: {
-    navigateToBuildLogs (version) {
-      pipelineService.getBuildByVersion(
-        this.release.repoSource,
-        this.release.repoOwner,
-        this.release.repoName,
-        version
-      )
+    fetchBuildUrl () {
+      const { repoSource, repoOwner, repoName, releaseVersion } = this.release
+
+      pipelineService.getBuildByVersion(repoSource, repoOwner, repoName, releaseVersion)
         .then(response => {
-          if (response && response.data) {
-            this.$router.push({
+          if (response?.data) {
+            const route = this.$router.resolve({
               name: 'PipelineBuildLogs',
               params: {
-                repoSource: this.release.repoSource,
-                repoOwner: this.release.repoOwner,
-                repoName: this.release.repoName,
+                repoSource,
+                repoOwner,
+                repoName,
                 id: response.data.id
               }
             })
+            this.buildUrl = route.href
           }
         })
-        .catch(error => {
-          console.error('Error fetching build by version', error)
-        })
+        .catch(error => console.error('Error fetching build by version', error))
     }
   }
 }
