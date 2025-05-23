@@ -24,7 +24,11 @@
       label="Version"
       :value="release.releaseVersion"
       class="col-xxxl-2"
-    />
+    >
+      <release-version
+        :release="release"
+      />
+    </property-block>
     <property-block
       label="Status"
       class="col-xxxl-2"
@@ -73,6 +77,7 @@ import TriggeredBy from '@/components/TriggeredBy'
 import PropertyBlock from '@/components/PropertyBlock'
 import DurationLabel from '@/components/DurationLabel'
 import RepositoryTitle from '@/components/RepositoryTitle'
+import ReleaseVersion from '@/components/ReleaseVersion'
 import refresh from '../helpers/refresh'
 
 export default {
@@ -83,7 +88,8 @@ export default {
     TriggeredBy,
     PropertyBlock,
     DurationLabel,
-    RepositoryTitle
+    RepositoryTitle,
+    ReleaseVersion
   },
 
   props: {

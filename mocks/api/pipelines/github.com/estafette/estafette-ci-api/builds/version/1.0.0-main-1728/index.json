@@ -1,0 +1,60 @@
+{
+  "id": "664371374972960785",
+  "repoSource": "github.com",
+  "repoOwner": "estafette",
+  "repoName": "estafette-ci-api",
+  "repoBranch": "main",
+  "repoRevision": "6a25676b2dee566f8e951a4e21164122e074584e",
+  "buildVersion": "1.0.0-main-1728",
+  "buildStatus": "succeeded",
+  "labels": [
+    {
+      "key": "app-group",
+      "value": "estafette-ci"
+    },
+    {
+      "key": "language",
+      "value": "golang"
+    },
+    {
+      "key": "team",
+      "value": "estafette"
+    },
+    {
+      "key": "type",
+      "value": "service"
+    }
+  ],
+  "releaseTargets": [
+    {
+      "name": "tooling-estafette",
+      "actions": [
+        {
+          "name": "deploy-canary"
+        },
+        {
+          "name": "deploy-stable"
+        },
+        {
+          "name": "rollback-canary",
+          "hideBadge": true
+        },
+        {
+          "name": "restart-stable",
+          "hideBadge": true
+        }
+      ]
+    }
+  ],
+  "manifest": {},
+  "commits": [
+    {
+      "message": "Update dependencies",
+      "author": "John Doe",
+      "email": "john.doe@example.com",
+      "date": "2023-03-19T09:38:00Z"
+    }
+  ],
+  "insertedAt": "2023-03-19T09:38:00Z",
+  "updatedAt": "2023-03-19T09:45:00Z"
+}

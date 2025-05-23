@@ -18,7 +18,11 @@
     <property-block
       label="Version"
       :value="release.releaseVersion"
-    />
+    >
+      <release-version
+        :release="release"
+      />
+    </property-block>
     <property-block label="Status">
       <b-progress>
         <b-progress-bar
@@ -56,6 +60,7 @@ import TriggeredBy from '@/components/TriggeredBy'
 import PropertyBlock from '@/components/PropertyBlock'
 import RepositoryTitle from '@/components/RepositoryTitle'
 import DurationLabel from '@/components/DurationLabel'
+import ReleaseVersion from '@/components/ReleaseVersion'
 import refresh from '../helpers/refresh'
 
 export default {
@@ -66,7 +71,8 @@ export default {
     TriggeredBy,
     PropertyBlock,
     RepositoryTitle,
-    DurationLabel
+    DurationLabel,
+    ReleaseVersion
   },
 
   props: {

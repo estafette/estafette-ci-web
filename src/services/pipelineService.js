@@ -13,5 +13,9 @@ export default {
     }
 
     return axios.get(`/api/pipelines?${statusFilter}&filter[since]=${filter.since}&filter[search]=${filter.search}&filter[labels]=${labelFilterParams}&page[number]=${pagination.page}&page[size]=${pagination.size}`)
+  },
+
+  getBuildByVersion (repoSource, repoOwner, repoName, version) {
+    return axios.get(`/api/pipelines/${repoSource}/${repoOwner}/${repoName}/builds/version/${version}`)
   }
 }
