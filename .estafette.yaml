@@ -20,14 +20,14 @@ stages:
         image: extensions/snyk:dev
         severity-threshold: medium
 
-      audit:
-        image: extensions/npm-audit:dev
-        action: audit
-        level: low
-        dev-level: critical
-        workspace: estafette
-        channels:
-        - '#npm-audit'
+#      audit:
+#        image: extensions/npm-audit:dev
+#        action: audit
+#        level: low
+#        dev-level: critical
+#        workspace: estafette
+#        channels:
+#        - '#npm-audit'
 
       restore:
         image: node:16-alpine
